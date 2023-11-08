@@ -1,0 +1,1276 @@
+%!PS-Adobe-2.0%%Title: {DSK}<home>larry>lispcourse>OUTLINE08.PS%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate:  7-Nov-2023 21:39:56%%EndComments/bdef {bind def} bind def
+/ldef {load def} bdef
+/S /show ldef
+/M /moveto ldef
+/DR {transform round exch round exch itransform} bdef
+/L {gsave newpath setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/L1 {gsave newpath 0 setdash setgray setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/F {findfont exch scalefont setfont} bdef
+/CLP {newpath M dup 0 rlineto exch 0 exch rlineto
+  neg 0 rlineto closepath clip newpath} bdef
+/R {gsave setgray newpath M dup 0 rlineto exch 0 exch
+  rlineto neg 0 rlineto closepath eofill grestore} bdef
+/ellipsedict 9 dict def
+ellipsedict /mtrx matrix put
+/ellipse
+ { ellipsedict begin
+  /endangle exch def
+  /startangle exch def
+  /orientation exch def
+  /minorrad exch def
+  /majorrad exch def
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  orientation rotate
+  majorrad minorrad scale
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+ end } bdef
+/concatprocs
+ {/proc2 exch cvlit def
+  /proc1 exch cvlit def
+  /newproc proc1 length proc2 length add array def
+  newproc 0 proc1 putinterval
+  newproc proc1 length proc2 putinterval
+  newproc cvx
+ } bdef
+/resmatrix matrix def
+/findresolution
+ {72 0 resmatrix defaultmatrix dtransform
+  /yres exch def /xres exch def
+  xres dup mul yres dup mul add sqrt
+ } bdef
+/thebitimage
+ {/maskp exch def
+  /bihgt exch def
+  /biwid exch def
+  /byte 1 string def
+  /strbufl biwid 8 div ceiling cvi def
+  /strbuf strbufl string def
+  maskp not{{1 exch sub} currenttransfer concatprocs settransfer} if
+  biwid bihgt
+  maskp { true } { 1 } ifelse
+  [biwid 0 0 bihgt 0 0]
+  {/col 0 def
+   {currentfile byte readhexstring pop 0 get
+    dup 16#B2 eq {pop
+    currentfile byte readhexstring pop 0 get 1 add
+    currentfile byte readhexstring pop pop /nbyte byte 0 get def
+    { strbuf col nbyte put /col col 1 add def} repeat}
+   {dup 16#B3 eq {pop /col col
+    currentfile byte readhexstring pop
+    0 get add 1 add def}
+    {16#B4 eq {currentfile byte readhexstring pop pop} if
+     strbuf col byte 0 get put /col col 1 add def} ifelse
+   } ifelse
+   col strbufl ge { exit } if } loop
+   strbuf }
+  maskp { imagemask } { image } ifelse
+ } bdef
+/setuserscreendict 22 dict def
+setuserscreendict begin
+ /tempctm matrix def
+ /temprot matrix def
+ /tempscale matrix def
+end
+/setuserscreen
+ {setuserscreendict begin
+   /spotfunction exch def
+   /screenangle exch def
+   /cellsize exch def
+   /m tempctm currentmatrix def
+   /rm screenangle temprot rotate def
+   /sm cellsize dup tempscale scale def
+   sm rm m m concatmatrix m concatmatrix pop
+   1 0 m dtransform /y1 exch def /x1 exch def
+   /veclength x1 dup mul y1 dup mul add sqrt def
+   /frequency findresolution veclength div def
+   /newscreenangle y1 x1 atan def
+   m 2 get m 1 get mul m 0 get m 3 get mul sub
+   0 gt { { neg } /spotfunction load concatprocs
+          /spotfunction exch def } if
+   frequency newscreenangle /spotfunction load setscreen
+  end
+ } bdef
+/setpatterndict 18 dict def
+setpatterndict begin
+ /bitison
+  {/ybit exch def /xbit exch def
+   /bytevalue bstring ybit bwidth mul xbit 8 idiv add get def
+   /mask 1 7 xbit 8 mod sub bitshift def
+   bytevalue mask and 0 ne
+  } bdef
+end
+/bitpatternspotfunction
+ {setpatterndict begin
+   /y exch def /x exch def
+   /xindex x 1 add 2 div bpside mul 1 sub cvi def
+   /yindex y 1 add 2 div bpside mul 1 sub cvi def
+   xindex yindex bitison
+    {/onbits onbits 1 add def 1}
+    {/offbits offbits 1 add def 0} ifelse
+  end
+ } bdef
+/setpattern
+ {setpatterndict begin
+   /cellsz exch def
+   /angle exch def
+   /bwidth exch def
+   /bpside exch def
+   /bstring exch def
+   /onbits 0 def /offbits 0 def
+   cellsz angle /bitpatternspotfunction load setuserscreen
+   {} settransfer
+   offbits offbits onbits add div setgray
+  end
+ } bdef
+% - - - - - Fraction-setting code, to support NS fonts better - - - - -
+/fractiondict 20 dict def
+/fractionshow 
+{ fractiondict begin
+/denom exch def 
+/num exch def 
+/regfont currentfont def
+/fractfont currentfont [.65 0 0 .6 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(1) true charpath flattenpath pathbbox 
+/height exch def pop pop pop
+ grestore
+0 .4 height mul rmoveto
+fractfont setfont num show
+0 .4 height mul neg rmoveto regfont setfont (\244) show
+fractfont setfont denom show regfont setfont end } bdef
+/f14 { (1) (4) fractionshow } bdef
+/f12 { (1) (2) fractionshow } bdef
+/f34 { (3) (4) fractionshow } bdef
+/f18 { (1) (8) fractionshow } bdef
+/f38 { (3) (8) fractionshow } bdef
+/f58 { (5) (8) fractionshow } bdef
+/f78 { (7) (8) fractionshow } bdef
+/f13 { (1) (3) fractionshow } bdef
+/f23 { (2) (3) fractionshow } bdef
+/bboxdict 20 dict def
+/bboxchk { bboxdict begin
+/regfont currentfont def
+/chkfont currentfont [1.25 0 0 1.25 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(\161) true charpath flattenpath pathbbox 
+/height exch def pop pop pop 
+ grestore 
+ currentpoint 
+ .2 height mul .3 height mul rmoveto
+chkfont setfont (\063) show
+ moveto
+ regfont setfont
+(\161) show end } bdef
+/rencdict 15 dict def
+/encodefont { rencdict begin
+/newname exch def
+/oldfont exch def
+/newcodes [
+8#001 /Aacute
+8#002 /Acircumflex
+8#003 /Adieresis
+8#004 /Agrave
+8#005 /Aring
+8#006 /Atilde
+8#007 /Ccedilla
+8#010 /Eacute
+8#011 /Ecircumflex
+8#012 /Edieresis
+8#013 /Egrave
+8#014 /Iacute
+8#015 /Icircumflex
+8#016 /Idieresis
+8#017 /Igrave
+8#020 /Ntilde
+8#021 /Oacute
+8#022 /Ocircumflex
+8#023 /Odieresis
+8#024 /Ograve
+8#025 /Otilde
+8#026 /Scaron
+8#027 /Uacute
+8#030 /Ucircumflex
+8#031 /Udieresis
+8#032 /Ugrave
+8#033 /Ydieresis
+8#034 /Zcaron
+8#177 /periodinferior
+8#201 /aacute
+8#202 /acircumflex
+8#203 /adieresis
+8#204 /agrave
+8#205 /aring
+8#206 /atilde
+8#207 /ccedilla
+8#210 /eacute
+8#211 /ecircumflex
+8#212 /edieresis
+8#213 /egrave
+8#214 /iacute
+8#215 /icircumflex
+8#216 /idieresis
+8#217 /igrave
+8#220 /ntilde
+8#221 /oacute
+8#222 /ocircumflex
+8#223 /odieresis
+8#224 /ograve
+8#225 /otilde
+8#226 /scaron
+8#227 /uacute
+8#230 /ucircumflex
+8#231 /udieresis
+8#232 /ugrave
+8#233 /ydieresis
+8#234 /zcaron
+8#235 /Eth
+8#236 /eth
+8#237 /Thorn
+8#240 /thorn
+ ] def
+/olddict oldfont findfont def /newfont olddict maxlength dict def
+olddict { exch dup /FID ne { dup /Encoding eq
+{ exch dup length array copy newfont 3 1 roll put }
+{ exch newfont 3 1 roll put } ifelse }
+ { pop pop } ifelse } forall
+newfont /FontName newname put
+newcodes aload pop
+newcodes length 2 idiv { newfont /Encoding get 3 1 roll put } repeat 
+newname newfont definefont pop end } def
+ /accentdict 10 dict def 
+ /accentor { accentdict begin /scaler exch def /delta exch def 
+/unders exch def /accents exch def /mainch exch def /scrt (X) def
+ /w1 mainch stringwidth pop def 
+ currentpoint mainch show currentpoint 4 2 roll 
+accents { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         w1 w2 sub 2 div delta rmoveto scrt show 
+         /delta delta 150 scaler mul 9 div add def
+        } forall 
+unders { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         ch 46 eq { w1 w2 sub 2 div -175 scaler mul 9 div rmoveto scrt show 0 175 rmoveto }
+           { w1 w2 sub 2 div 0 rmoveto scrt show } ifelse 
+        } forall 
+ pop pop moveto end } def 
+%%EndProlog
+%%BeginSetup
+letter/imagesizefactor 1 def%%EndSetup/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+
+%%Page: 1 1
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+54000 75600 M (F.G.H.          ) S
+54000 73800 M (2/14/85 ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (LispCourse #8:  Tailoring Parameters, the File Package, Init Files) S
+7200 67157 M (Tailoring Interlisp to your needs and desires:  \(FLGS, Parameters, etc.\)) S
+1200 /Times-Bold-Acnt F
+10800 63506 M (Parameters & FLGs) S
+1200 /Times-Roman-Acnt F
+14400 61106 M (There are literally thousands of atoms in Interlisp whose values are used by the ) S
+14400 59306 M (system and/or by various packages to decide how to "behave".  By setting the ) S
+14400 57506 M (values of these atoms, you can tailor Interlisp to your particular needs and to your ) S
+14400 55706 M (particular style of interaction.) S
+14400 53306 M (For example, the system uses the value of the atom DEFAULTPRINTINGHOST ) S
+14400 51506 M (to determine what printer to use to print your output.  SETQing ) S
+14400 49706 M (DEFAULTPRINTINGHOST to  'Quake will make your output go to Quake, ) S
+14400 47906 M (while SETQing it to 'Expresso will direct your output to Expresso.  In general, ) S
+14400 46106 M (most packages in Interlisp use the value of DEFAULTPRINTINGHOST to ) S
+14400 44306 M (determine where to send their printed output. [There is no guarantee of this.  But ) S
+14400 42506 M (when it comes to printer output, packages are very well behaved.] ) S
+14400 40106 M (DEFAULTPRINTINGHOST) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(functions a ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(parameter) S
+1200 /Times-Roman-Acnt F
+( that you set to specify how ) S
+14400 38306 M (you want your system to behave.  Its value can be the name of any available ) S
+14400 36506 M (printer, or it can be a list of the names of several printers of different types \(e.g., a ) S
+14400 34706 M (Press, FullPress and an InterPress printer [e.g., \(Quake LispPrint: Stinger\)]\).) S
+14400 32306 M (Parameters that take on values of T \(non-NIL\) or NIL are generally known as ) S
+14400 30506 M (FLGs since in general their names end in "FLG".  For example, PROMPT#FLG ) S
+14400 28706 M (determines whether or not the number appears before the back-arrow prompt in ) S
+14400 26906 M (your top-level tty window.  If PROMPT#FLG is T, the number is there \(e.g., the ) S
+14400 25106 M (prompt will be "12_"\).  If PROMPT#FLG is NIL, no number will be printed \(e.g., ) S
+14400 23306 M (the prompt will be "_"\).) S
+14400 20906 M (FLGs are no different from any other parameters.  They are just parameters used ) S
+14400 19106 M (to make a simple Yes-No decision.  FLGs are to parameters what predicates are to ) S
+14400 17306 M (functions.  Note also that not all parameters that function like FLGs have names ) S
+14400 15506 M (ending in "FLG".  So it goes.) S
+14400 13106 M (Note that DEFAULTPRINTINGHOST is a system-wide parameter.  Its value is ) S
+14400 11306 M (used by Interlisp and all of the various packages.) S
+1200 /Times-Bold-Acnt F
+10800 8306 M (Default Settings) S
+grestore savepage restore showpage
+
+%%Page: 2 2
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (2) S
+7200 75600 M (LispCourse #8:  Tailoring \(FLGS, Parameters, etc.\), the File Package, Init files) S
+14400 71106 M (All parameters and FLGs have default settings.  You don't have to fool with a ) S
+14400 69306 M (parameter unless you don't like the default setting!) S
+14400 66306 M (For example,  PROMPT#FLG is set to T by the system.  You don't even have to ) S
+14400 64506 M (know about PROMPT#FLG unless you want to get rid of those pesky little ) S
+14400 62706 M (numbers, in which case you have to find out about PROMPT#FLG and set it to ) S
+14400 60906 M (NIL.) S
+1200 /Times-Roman-Acnt F
+14400 57906 M (Parameters like DEFAULTPRINTINGHOST really have to be set differently for ) S
+14400 56106 M (every group of Interlisp users since they use different printers.  BUT as a user you ) S
+14400 54306 M (generally don't have to worry about it \(unless your printer is down and you want ) S
+14400 52506 M (to change where your printout goes\) because it will be set to the proper value in ) S
+14400 50706 M (your Init file \(see below!!!\).) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 47706 M (Package-specific Parameters and FLGs) S
+1200 /Times-Roman-Acnt F
+14400 44706 M (Almost all packages have their own set of parameters and FLGs that can be set to ) S
+14400 42906 M (slightly \(or sometimes not so slightly\) modify their behavior. ) S
+14400 39906 M (Example:  DEdit has 3 parameters that determine its behavior.) S
+18000 36906 M (EDITEMBEDTOKEN \234 Value is used as the special "embed token" ) S
+24000 35106 M (described last class.  Default value \(used in examples last ) S
+24000 33306 M (class\) is &.) S
+18000 30906 M (DEditLinger \234 if T, then when you exit DEdit, the DEdit window will ) S
+24000 29106 M (remain on the screen to be used for the next DEdit.  If NIL, ) S
+24000 27306 M (the DEdit window will be closed when you exit and reopened ) S
+24000 25506 M (next time you call DEdit.  Note this parameter applies only to ) S
+24000 23706 M (the top-level call to DEdit and not to recursive calls which ) S
+24000 21906 M (always close their windows.  Default value is T.  [Note: this is ) S
+24000 20106 M (a FLG without "FLG" in its name.]) S
+18000 17706 M (DEDITTYPEINCOMS \234  value is a list that defines the control character ) S
+24000 15906 M (commands that you can type in to DEdit.  Default value is a ) S
+24000 14106 M (list that contains definitions for the Ctrl-F and Ctrl-S ) S
+24000 12306 M (described last time.  Also contains a Ctrl-Z command not ) S
+24000 10506 M (described last time.  [Note: this is a parameter for real hackers ) S
+24000 8706 M (only.]) S
+grestore savepage restore showpage
+
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (3) S
+7200 75600 M (LispCourse #8:  Tailoring \(FLGS, Parameters, etc.\), the File Package, Init files) S
+14400 71106 M (Second Example:  Chat has 5 parameters.  ) S
+1000 /Times-Roman-Acnt F
+(\(Note: Chat is a package we haven't yet ) S
+14400 69455 M (covered, so if you aren't familiar with it, don't worry.  Just look at the kind of things the ) S
+14400 67855 M (parameters allow you to tailor\).) S
+1200 /Times-Roman-Acnt F
+18000 65506 M (CLOSECHATWINDOWFLG \234 If non-NIL, every Chat window is closed ) S
+24000 63706 M (on exit.  If NIL, the initial setting, then the primary Chat ) S
+24000 61906 M (window is not closed.  Default value is ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(????.) S
+1200 /Times-Roman-Acnt F
+18000 59506 M (CHAT.FONT \234 If non-NIL, the font that Chat windows are created with.  If ) S
+24000 57706 M (CHAT.FONT is NIL, Chat windows are created with ) S
+24000 55906 M (\(DEFAULTFONT 'DISPLAY\) ) S
+1000 /Times-Roman-Acnt F
+([To be covered in a later class!]) S
+1200 /Times-Roman-Acnt F
+(.  ) S
+24000 54106 M (Default value is ) S
+1200 /Times-Italic-Acnt F
+(????) S
+1200 /Times-Roman-Acnt F
+(.) S
+18000 51706 M (DEFAULTCHATHOST \234  The host to which CHAT connects when it is ) S
+24000 49906 M (called with no HOST argument. Default value is ) S
+1200 /Times-Italic-Acnt F
+(????) S
+1200 /Times-Roman-Acnt F
+(.) S
+18000 47506 M (CHAT.ALLHOSTS \234 A list of host names, as uppercase litatoms, that the ) S
+24000 45706 M (user desires to Chat to.  Chatting to a host not on the list adds ) S
+24000 43906 M (it to the list.  These names are placed in the menu that the ) S
+24000 42106 M (background Chat command prompts with.  Default value is ) S
+1200 /Times-Italic-Acnt F
+24000 40306 M (????) S
+1200 /Times-Roman-Acnt F
+(.) S
+18000 37306 M (CHAT.DISPLAYTYPE \234 The type of display \(a number\) that Chat should ) S
+24000 35506 M (tell the remote host the user is on.  If Datamedia emulation is ) S
+24000 33706 M (desired, this variable should be set to the number ) S
+24000 31906 M (corresponding to the terminal type Datamedia for the remote ) S
+24000 30106 M (host.  If the remote host does not respond to the terminal type ) S
+24000 28306 M (protocol in Pup Telnet, this variable is irrelevant.  Default ) S
+24000 26506 M (value is 10.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 23506 M (How to find out about available parameters and FLGs.) S
+14400 20506 M (Package-specific parameters) S
+1200 /Times-Roman-Acnt F
+14400 18106 M (Package-specific parameters are usually included in the package documentation.) S
+14400 15706 M (For example, the DEdit parameters described above are described under the ) S
+14400 13906 M (heading "DEdit Parameters" in the DEdit section of the Interlisp Reference ) S
+14400 12106 M (Manual \(see Section 20.1.4\).  The Chat parameters are described at the end of the ) S
+14400 10306 M (Chat section of the Interlisp Reference Manual \(see Section 20.5\).  They have no ) S
+grestore savepage restore showpage
+
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (4) S
+7200 75600 M (LispCourse #8:  Tailoring \(FLGS, Parameters, etc.\), the File Package, Init files) S
+14400 71106 M (heading, but are preceded by the sentence: "The following variables control ) S
+14400 69306 M (aspects of Chat's behavior.") S
+14400 66906 M (If you want to change the behavior of some particular package, look in the ) S
+14400 65106 M (documentation for that package.  You will almost certainly find a list of ) S
+14400 63306 M (parameters.  To find the documentation of a package is another matter.  Some are ) S
+14400 61506 M (documented in the IRM \(Chat, DEdit, TEdit, etc.\), the rest are documented in ) S
+14400 59706 M (separate documents usually stored in the same directory as their LOAD files.  ) S
+14400 57906 M (You just have to poke around to find them.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 54906 M (System-wide parameters) S
+1200 /Times-Roman-Acnt F
+14400 52506 M (Good luck!) S
+14400 49506 M (Documentation for system-wide parameters is scattered all over the IRM.  ) S
+14400 47706 M (Moreover, there is no independent listing or description of them in esistence ) S
+14400 45906 M (ANYWHERE.) S
+14400 42906 M (If you want to change some system behavior, your only chance is to poke around ) S
+14400 41106 M (the IRM, looking for where that behavior is described.  Sometimes along with the ) S
+14400 39306 M (description there will be a description of some interesting parameters.  ) S
+14400 36306 M (You might expect DEFAULTPRINTINGHOST to be documented in the ) S
+14400 34506 M (INPUT/OUTPUT chapter \(#6\) of the IRM.  After all most of the printing ) S
+14400 32706 M (functions are described there.  But in fact, DEFAULTPRINTINGHOST is ) S
+14400 30906 M (documented in the Interlisp-D Sepcifics chapter \(#18\).  This fact was easy to ) S
+14400 29106 M (discover because I could look up DEFAULTPRINTINGHOST in the index.  But ) S
+14400 27306 M (if I wanted to find "the parameter that changes my default printer".  Hah!) S
+14400 24306 M (Learn to do the following:) S
+18000 21306 M (Accept things as they are and don't mess with parameters.) S
+18000 18306 M (Wander around the IRM looking for interesting parameters and FLGs.) S
+18000 15306 M (Look at the Init files from lots of experienced users.  They are a gold mine ) S
+18000 13506 M (of parameters being set.) S
+18000 10506 M (When you see someone whose system behaves differntly from yours, ask ) S
+18000 8706 M (how they did that.) S
+grestore savepage restore showpage
+
+%%Page: 5 5
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (5) S
+7200 75600 M (LispCourse #8:  Tailoring \(FLGS, Parameters, etc.\), the File Package, Init files) S
+18000 71106 M (Ask your local Interlisp wizard lots of questions.) S
+18000 68106 M (Dream up and implement a good, permanent solution to the problem of ) S
+18000 66306 M (managing and documenting the thousands of system parameters.  ) S
+18000 64506 M (Parameters are great, but only if you can find out about them.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 61506 M (Some More Interesting System-Wide Parameters and FLGs) S
+1200 /Times-Roman-Acnt F
+14400 58506 M (INITIALSLST \234 a list of the form \(\() S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(UserName1) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(FirstName1) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(Initials1) S
+1200 /Times-Roman-Acnt F
+(\)\() S
+1200 /Times-Italic-Acnt F
+(UserName2) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+20400 56706 M (FirstName2) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(Initials2) S
+1200 /Times-Roman-Acnt F
+(\) ... \() S
+1200 /Times-Italic-Acnt F
+(UserNameN) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(FirstNameN) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(InitialsN) S
+1200 /Times-Roman-Acnt F
+(\)\).   The ) S
+20400 54906 M (system makes sure that if UserNamei is logs in, then various parts of ) S
+20400 53106 M (the system will use FirstNamei as the users first name and Initialsi as ) S
+20400 51306 M (the users initials.  For example, my Init file sets this parameter to  ) S
+20400 49506 M (\(\(Halasz Frank fgh:\)\).  Thus the system says "Hi, Frank." when is ) S
+20400 47706 M (comes up with a clean sysout.  It also puts my initials "fgh:" in a ) S
+20400 45906 M (comment in the beginning of evey function that I edit.  Note the ) S
+20400 44106 M (INITIALSLST must be set in your Init file or you must run ) S
+20400 42306 M ("\(SETINITIALS\)" after setting INITIALSLST to a new value so that ) S
+20400 40506 M (the system recognizes the changes INITIALSLST.) S
+14400 37506 M (LOGINHOST/DIR \234  the host and directory that is considered to be your home ) S
+20400 35706 M (directory by various programs.  E.g., my Init file sets ) S
+20400 33906 M (LOGINHOST/DIR to be {PHYLUM}<HALASZ>.) S
+14400 30906 M (DIRECTORIES \234  a list of host/directories that the system will look on when it ) S
+20400 29106 M (can't find a file.  Used by the LOAD function and certain other ) S
+20400 27306 M (functions, but not by TEdit, COPYFILE and many other functions.  ) S
+20400 25506 M (Ususally you just want to add on to the default value of this list.  For ) S
+20400 23706 M (example, NoteCards does the following when it comes up: "\(SETQ ) S
+20400 21906 M (DIRECTOIRES \(CONS '{PHYLUM}<NOTECARDS>CURRENT> ) S
+20400 20106 M (DIRECTORIES\)\)".  This just makes sure that the NoteCards ) S
+20400 18306 M (directories are searched along with all the standard Lisp ones when ) S
+20400 16506 M (the system can't find a file.) S
+14400 13506 M (WINDOWTITLESHADE \234  the shade that the right part \(i.e., the part to the right ) S
+20400 11706 M (of the title\) of every window title bar will be.  Value can be any ) S
+20400 9906 M (shade \(i.e., a number less than 65535\) but the values of ) S
+grestore savepage restore showpage
+
+%%Page: 6 6
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (6) S
+7200 75600 M (LispCourse #8:  Tailoring \(FLGS, Parameters, etc.\), the File Package, Init files) S
+20400 71106 M (BLACKSHADE, WHITESHADE and GRAYSHADE are ) S
+20400 69306 M (particularly easy shades to use.) S
+14400 66306 M (???? and many, many more I can't think of now.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 62557 M (The File Package) S
+1200 /Times-Bold-Acnt F
+10800 59506 M (Introduction) S
+1200 /Times-Roman-Acnt F
+14400 56506 M (When you DEFINEQ a function, the function definition is entered into the ) S
+14400 54706 M (system's virtual memory.) S
+14400 51706 M (When you SETQ an atom to a value, the atom-value pair is entered into the ) S
+14400 49906 M (system's virtual memory.) S
+14400 46906 M (When you apply a function or when you evaluate an atom, the system just looks ) S
+14400 45106 M (up the function definition or atom in its virtual memory.) S
+1200 /Times-Roman-Acnt F
+14400 42106 M (All is fine and dandy UNTIL your virtual memory is destroyed; for example, ) S
+14400 40306 M (when you copy a clean sysout to your disk and restart Lisp or when your machine ) S
+14400 38506 M (bombs leaving an inconsistent vmem. ) S
+14400 35506 M (When your vmem goes away, the effect of your DEFINEQs and SETQs goes ) S
+14400 33706 M (away as well.  When a new sysout is loaded \(i.e., a "new" vmem is started\), you ) S
+14400 31906 M (have to redefine all the functions and reset all the variables.) S
+14400 28906 M (You could type all those DEFINEQs and SETQs again.  But there is an easier ) S
+14400 27106 M (way:  the File Package.) S
+14400 24106 M (The File Package helps you write out on a file all the Lisp function calls necessary ) S
+14400 22306 M (to redefine a given set of functions and/or to reset the values for a given set of ) S
+14400 20506 M (variables.  ) S
+14400 17506 M (Then when you load a new vmem \(or for that matter, in another person's vmem\), ) S
+14400 15706 M (LOADing this file will cause these DEFINEQs and SETQs on the file to be ) S
+14400 13906 M (evaluated just as if you had typed them in, thus redefining all the functions and ) S
+14400 12106 M (resetting the values of all the variables.) S
+grestore savepage restore showpage
+
+%%Page: 7 7
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (7) S
+7200 75600 M (LispCourse #8:  Tailoring \(FLGS, Parameters, etc.\), the File Package, Init files) S
+14400 71106 M (So LOADing is just the process of evaluating in a bunch of DEFINEQs and ) S
+14400 69306 M (SETQs from a file rather than from the user's type-in.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 65706 M (MAKEFILE and LOAD, with LISTFILES too.) S
+1200 /Times-Roman-Acnt F
+14400 62106 M (There are two major functions in the File Package:) S
+1200 /Times-Bold-Acnt F
+14400 59506 M (MAKEFILE) S
+1200 /Times-Roman-Acnt F
+( \234 makes a LOADable file.  The first argument specifies the name of ) S
+14400 57706 M (the file to be made.  The making of a LOADable file is controlled by the files ) S
+14400 55906 M (COMS list described in the next section.) S
+1200 /Times-Bold-Acnt F
+14400 53306 M (LOAD) S
+1200 /Times-Roman-Acnt F
+( \234 reads in a LOADable file made by MAKEFILE and evaluates all the Lisp ) S
+14400 51506 M (function calls thereon.  The first argument is the name of the file.) S
+14400 48906 M (A third, handy function is ) S
+1200 /Times-Bold-Acnt F
+(LISTFILES) S
+1200 /Times-Roman-Acnt F
+( which prints a LOADable file on your ) S
+14400 47106 M (DEFAULTPRINTINGHOST with a handy little index included.  Note that ) S
+14400 45306 M (LISTFILES is a special form \(NLambda function\).) S
+1400 /Times-Bold-Acnt F
+10800 41557 M (The COMS list) S
+1200 /Times-Bold-Acnt F
+14400 37906 M (Introduction) S
+1200 /Times-Roman-Acnt F
+18000 35306 M (The COMS list contains a set of commands that the File Package uses to ) S
+18000 33506 M (determine what functions, variables, and other Lisp objects you want to ) S
+18000 31706 M (appear on a file made by MAKEFILE.) S
+18000 29306 M (Each LOADable file \(i.e., file made by MAKEFILE\) has its own COMS ) S
+18000 27506 M (list.) S
+18000 25106 M (Terminology:  The root part of a file name is the file name without its ) S
+18000 23306 M (extension.   For example, the root part of EXAMPLES.LISP is ) S
+18000 21506 M (EXAMPLES.) S
+18000 19106 M (The COMS for a file is the value of the atom constructed by adding ) S
+18000 17306 M (COMS on to the root of its file name.) S
+18000 14906 M (For example, if the name of a file is EXAMPLES, then the COMS for that ) S
+18000 13106 M (file is the value of the atom EXAMPLESCOMS.) S
+18000 10706 M (Note this limits your choice of file names a bit.  You cannot have two ) S
+18000 8906 M (LOADable files with the same root part.  E.g.,  you can't have an ) S
+grestore savepage restore showpage
+
+%%Page: 8 8
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (8) S
+7200 75600 M (LispCourse #8:  Tailoring \(FLGS, Parameters, etc.\), the File Package, Init files) S
+18000 71106 M (EXAMPLES.OLD and an EXAMPLES.NEW because they both would ) S
+18000 69306 M (want to have the value of EXAMPLESCOMS as their COMS list and ) S
+18000 67506 M (hence would interfere with each other.) S
+18000 65106 M (Warning:  This is one place where Interlisp is case sensitive.  All loadable ) S
+18000 63306 M (files must be named in ALL CAPS.  The File Package does not handle ) S
+18000 61506 M (non-CAPS well at all.  Your file name must be EXAMPLES and you ) S
+18000 59706 M (COMS must be EXAMPLESCOMS; Examples and ExamplesCOMS will ) S
+18000 57906 M (not work!) S
+grestore savepage restore showpage
+
+%%Page: 9 9
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 10 10
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (9) S
+7200 75600 M (LispCourse #8:  Tailoring \(FLGS, Parameters, etc.\), the File Package, Init files) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 71106 M (The structure of a COMS list) S
+1200 /Times-Roman-Acnt F
+18000 67506 M (A COMS list has the following form:) S
+21600 65106 M (\(\() S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(FilePackageCommand1) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(Arg1.1 Arg1.2 ... Arg1.P) S
+1200 /Times-Roman-Acnt F
+(\)) S
+21600 63306 M (\() S
+1200 /Times-Italic-Acnt F
+(FilePackageCommand2) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(Arg2.1 Arg2.2 ... Arg2.Q) S
+1200 /Times-Roman-Acnt F
+(\)) S
+21600 61506 M (...) S
+21600 59706 M (\() S
+1200 /Times-Italic-Acnt F
+(FilePackageCommandN) S
+1200 /Times-Roman-Acnt F
+(  ) S
+1200 /Times-Italic-Acnt F
+(ArgN.1 ArgN.2 ... ArgN.R) S
+1200 /Times-Roman-Acnt F
+(\)\)) S
+18000 56706 M (Each clause in this list tells the FilePackage to write something on the file.  ) S
+18000 54906 M (What is written is determined by the ) S
+1200 /Times-Italic-Acnt F
+(FilePackageCommandi) S
+1200 /Times-Roman-Acnt F
+( that is the ) S
+18000 53106 M (CAR of the clause and by the ) S
+1200 /Times-Italic-Acnt F
+(Args) S
+1200 /Times-Roman-Acnt F
+( that are in the CDR of the clause.) S
+18000 49506 M (There are many possible ) S
+1200 /Times-Italic-Acnt F
+(FilePackageCommands) S
+1200 /Times-Roman-Acnt F
+(.) S
+18000 45906 M (The most important are:) S
+1200 /Times-Bold-Acnt F
+18000 42906 M (FNS) S
+1200 /Times-Roman-Acnt F
+( \234 tells the File Package to write function definitions on the file.  The ) S
+21600 41106 M (FP essentially write a DEFINEQ for every function named in the ) S
+21600 39306 M (rest of the list.) S
+21600 36906 M (Example: \(FNS CountList CountAtoms CloseWindowList\) tells ) S
+21600 35106 M (the FP to write DEFINEQs for the three functions onto the file.) S
+1200 /Times-Bold-Acnt F
+18000 32106 M (VARS) S
+1200 /Times-Roman-Acnt F
+( \234 tells the file package to write the values of variables on the file.  ) S
+21600 30306 M (The FP essentially writes SETQs for every variable named in the ) S
+1200 /Times-Italic-Acnt F
+21600 28506 M (Arg) S
+1200 /Times-Roman-Acnt F
+( items in the rest of the list. ) S
+21600 26106 M (If a ) S
+1200 /Times-Italic-Acnt F
+(Arg) S
+1200 /Times-Roman-Acnt F
+( is simply an ) S
+1200 /Times-Bold-Acnt F
+(atom) S
+1200 /Times-Roman-Acnt F
+(, then the FP will write a SETQ that sets ) S
+21600 24306 M (the atom to the value it had WHEN THE FILE WAS WRITTEN.) S
+25200 21906 M (So if ) S
+1200 /Times-Italic-Acnt F
+(Arg) S
+1200 /Times-Roman-Acnt F
+( is simply MyVariable and if MyVariable has the ) S
+25200 20106 M (value 12 when the file is written, the FP will write \(SETQ ) S
+25200 18306 M (MyVariable 12\) onto the file.  When the file is LOADed, ) S
+25200 16506 M (MyVariable will be set to 12.  BUT if MyVariable had the ) S
+25200 14706 M (value 77 when the file was written, the SETQ would be ) S
+25200 12906 M (\(SETQ MyVariable 77\) , with the corresponding change ) S
+25200 11106 M (when the file was LOADed.) S
+grestore savepage restore showpage
+
+%%Page: 11 11
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (10) S
+7200 75600 M (LispCourse #8:  Tailoring \(FLGS, Parameters, etc.\), the File Package, Init files) S
+21600 71106 M (If a ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Arg) S
+1200 /Times-Roman-Acnt F
+( is a ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(list) S
+1200 /Times-Roman-Acnt F
+(, then the FP will CONS a SETQ onto this list and ) S
+21600 69306 M (write the result down onto the file.  For example, if ) S
+1200 /Times-Italic-Acnt F
+(Arg) S
+1200 /Times-Roman-Acnt F
+( is ) S
+21600 67506 M (\(MyVariable 5\).  The FP will write \(SETQ MyVariable 5 \) onto ) S
+21600 65706 M (the file so that MyVariable will always be set to 5 when the file is ) S
+21600 63906 M (LOADed.) S
+21600 61506 M (For example,  \(VARS DEFAULTPRINTINGHOST ) S
+21600 59706 M (\(LOGINHOST/DIR '{PHYLUM}<HALASZ>\) \(FOUR \(PLUS 2 ) S
+21600 57906 M (2\)\)\) is a FP COMS clause.) S
+1200 /Times-Bold-Acnt F
+18000 54906 M (ADDVARS) S
+1200 /Times-Roman-Acnt F
+( \234 like VARS except that each ) S
+1200 /Times-Italic-Acnt F
+(Arg ) S
+1200 /Times-Roman-Acnt F
+(is a list of two items, the ) S
+21600 53106 M (CAR is a variable name and the CDR is a value.  ADDVARS write ) S
+21600 51306 M (the necessary Lisp code on the file so that when the file is ) S
+21600 49506 M (LOADed, the value is added to the list that is already the value of ) S
+21600 47706 M (the variable.) S
+21600 45306 M (Example:  \(ADDVARS \(DIRECTORIES ) S
+21600 43506 M ({phylum}<notecards>current>\) \) .) S
+25200 41106 M (Then when the file is LOADed, the atom ) S
+25200 39306 M ({phylum}<notecards>current> will be added to the list that ) S
+25200 37506 M (is already the value of DIRECTORIES.  If DIRECTORIES ) S
+25200 35706 M (had the value \({PHYLUM}<HALASZ> {ERIS}<LISP>\) ) S
+25200 33906 M (before the LOAD, then after the LOAD it would have the ) S
+25200 32106 M (value \({phylum}<notecards>current> ) S
+25200 30306 M ({PHYLUM}<HALASZ> {ERIS}<LISP>\).) S
+1200 /Times-Bold-Acnt F
+18000 27306 M (FILES) S
+1200 /Times-Roman-Acnt F
+( \234  tells the file package to write load commands for some other files ) S
+21600 25506 M (on this file.  The FP essentially writes LOADs for every files ) S
+21600 23706 M (named in the rest of the list.   When the file is LOADed, it will ) S
+21600 21906 M (cause these other files to be LOADed as well.) S
+21600 19506 M (For example, \(FILES NOTECARDS1 NOTECARDS2 ) S
+21600 17706 M (NOTECARDS3 NOTECARDSREST\) might be a clause in the ) S
+21600 15906 M (COMS file for NOTECARDS.LSP.  Then whenever ) S
+21600 14106 M (NOTECARDS.LSP was LOADed, the files NOTECARDS1, ) S
+21600 12306 M (NOTECARDS2, NOTECARDS3, and NOTECARDSREST would ) S
+21600 10506 M (also be loaded.) S
+grestore savepage restore showpage
+
+%%Page: 12 12
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (11) S
+7200 75600 M (LispCourse #8:  Tailoring \(FLGS, Parameters, etc.\), the File Package, Init files) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 71106 M (P) S
+1200 /Times-Roman-Acnt F
+( \234 tells the FP to print each ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Arg) S
+1200 /Times-Roman-Acnt F
+( item in the rest of the list out on the file.  ) S
+21600 69306 M (Then when the file is LOADed, these items will be evaluated.) S
+21600 66906 M (Example:  \(P \(LAFITE 'ON\)\(PRINT "Hello, Tiger"\)\(CLOSEW ) S
+21600 65106 M (LOGOW\)\) tells the FP to write \(LAFITE 'ON\), \(PRINT "Hello, ) S
+21600 63306 M (Tiger"\), and \(CLOSEW LOGOW\) on the file.  Then when this file ) S
+21600 61506 M (is LOADed, these function calls will be executed causing LAFITE ) S
+21600 59706 M (to be turned on, "Hello, Tiger" to be printed in the tty window, and ) S
+21600 57906 M (the Interlisp-D logo window to be closed.) S
+1200 /Times-Bold-Acnt F
+18000 54906 M (*) S
+1200 /Times-Roman-Acnt F
+( \234 tells the FP that this is a comment.  * can be used to put comments in ) S
+21600 53106 M (your COMS lists so that they are more understandable.) S
+18000 49506 M (Note that there can be as many FNS clauses as you like in a COMS list.  ) S
+18000 47706 M (They can be in any order as well.  It usually helps to group your functions ) S
+18000 45906 M (into FNS clauses in a way that makes some structural sense to you.    Ditto ) S
+18000 44106 M (for VARS, P, ADDVARS, *.) S
+1200 /Times-Bold-Acnt F
+10800 40506 M (What does MAKEFILE do?) S
+1200 /Times-Roman-Acnt F
+14400 37806 M (MAKEFILE looks at the COMS list for the file it is making and simply follows ) S
+14400 36006 M (the instructions there.) S
+14400 33606 M (Actually, the first thing it does is equivalent to \(VARS ) S
+1200 /Times-Italic-Acnt F
+(File) S
+1200 /Times-Roman-Acnt F
+(COMS\).  That is it ) S
+14400 31806 M (writes out a SETQ so that the COMS for ) S
+1200 /Times-Italic-Acnt F
+(File) S
+1200 /Times-Roman-Acnt F
+( is reset when it is LOADed.  So the ) S
+14400 30006 M (first thing you always see in a LOADable file is the SETQ for the file's COMS ) S
+14400 28206 M (list.) S
+14400 25806 M (Then, MAKEFILE follows the FP clauses in the COMS list in order.  If the ) S
+14400 24006 M (COMS says FNS, MAKEFILE writes out DEFINEQs.  If the COMS says VARS, ) S
+14400 22206 M (the FP writes out SETQs.  And so on.) S
+14400 19806 M (When its done, it returns the name of the file it just made.) S
+1200 /Times-Bold-Acnt F
+10800 16206 M (How does LOAD work?) S
+1200 /Times-Roman-Acnt F
+14400 13506 M (LOAD just reads in the file and evaluates each item \(DEFINEQ, SETQ, etc.\) in ) S
+14400 11706 M (the file,  just like "normal" Lisp reads the user's type-in and evaluates it.) S
+grestore savepage restore showpage
+
+%%Page: 13 13
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (12) S
+7200 75600 M (LispCourse #8:  Tailoring \(FLGS, Parameters, etc.\), the File Package, Init files) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 71106 M (How does the user work with the FP?) S
+1200 /Times-Roman-Acnt F
+14400 68706 M (1.  Define a few functions \234 say, CarOfListItems, CountList and CloseWindowList.) S
+14400 66306 M (2.  SETQ a few variables \234 say, AtomList, WhoCaresList and FranksAge) S
+14400 63906 M (3.  Create a COMS for this file, which we'll call EXAMPLE.LSP.) S
+21600 61506 M (\(SETQ EXAMPLECOMS) S
+25200 59706 M ('\(\(FNS CarOfListItems CountList CloseWindowList\)) S
+25200 58206 M (  \(VARS AtomList \(WhoCaresList \(LIST 'Who 'Cares\)\) ) S
+28800 56706 M (FranksAge\)\)\)) S
+14400 54606 M (4.  Evaluate "\(MAKEFILE 'EXAMPLE.LSP\)", creating the file EXAMPLE.LSP.) S
+14400 52206 M (5.  Define a new function, say ExampleFunction.) S
+14400 49806 M (6.  Evaluate "\(DC EXAMPLE\)" which will call DEdit on EXAMPLECOMS.) S
+18000 47406 M (You can then edit the EXAMPLECOMS list.  In particular, add a new ) S
+18000 45606 M (clause \(FNS ExampleFunction\) or add ExampleFunction to the already ) S
+18000 43806 M (existing FNS clause.) S
+14400 41406 M (7.  Redo Step 4 to make an updated version of EXAMPLE.LSP.) S
+14400 39006 M (8.  Get a new sysout, i.e., wipe out your vmem.) S
+14400 36606 M (9. Try to evaluate \(CountList '\(A B C\)\).  You will get a "undefined function" ) S
+18000 34806 M (error because in your clean vmem CountList has not yet been defined.) S
+14400 32406 M (10. Evaluate "\(LOAD 'EXAMPLE.LSP\)".) S
+14400 30006 M (11.  Try to evaluate \(CountList '\(A B C\)\), resulting in "3". CountList was defined ) S
+18000 28206 M (during the LOAD.) S
+14400 25806 M (12. Change CountList to return 2 times the list length.) S
+14400 23406 M (13.  Evaluate "\(MAKEFILE 'EXAMPLE.LSP\)" to update EXAMPLE.LSP with ) S
+18000 21606 M (this change.  No need to remake the EXAMPLECOMS because it was ) S
+18000 19806 M (properly set during the LOAD.) S
+14400 17406 M (14.  Define a new function, say LastExample.) S
+14400 15006 M (15.  Evaluate "\(DC EXAMPLE\)" and edit the COMS to add LastExample to some ) S
+18000 13206 M (FNS clause.) S
+14400 10806 M (16.  Evaluate "\(MAKEFILE 'EXAMPLE.LSP\)" to update EXAMPLE.LSP with ) S
+18000 9006 M (this change. ) S
+grestore savepage restore showpage
+
+%%Page: 14 14
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (13) S
+7200 75600 M (LispCourse #8:  Tailoring \(FLGS, Parameters, etc.\), the File Package, Init files) S
+14400 71106 M (17.  You get the picture.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 67506 M (Example LOADable File) S
+1200 /Times-Roman-Acnt F
+14400 64806 M (A LISTFILES of the EXAMPLE.LSP file \(created by "\(LISTFILES ) S
+14400 63006 M (EXAMPLE.LSP\)"\) is in the Appendix. ) S
+14400 60606 M (The first page is the handy index created by LISTFILES for your convenience in ) S
+14400 58806 M (handling large files.  The MAKEFILE output really starts on the second page.) S
+1200 /Times-Bold-Acnt F
+14400 56406 M (IMPORTANT NOTE:) S
+1200 /Times-Roman-Acnt F
+( There are no SETQs.  Thats because I've been lying a ) S
+14400 54606 M (bit.  The FP uses the functions RPAQ and RPAQQ instead of SETQ and SETQQ.  ) S
+14400 52806 M (Just translate in your head, the RPAQs and RPAQQs into SETQs and SETQQs.  ) S
+14400 51006 M (For all practical purposes they are the same. ) S
+14400 48606 M (Note that the first variable set in the file is in fact the EXAMPLECOMS.) S
+grestore savepage restore showpage
+
+%%Page: 15 15
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 16 16
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (14) S
+7200 75600 M (LispCourse #8:  Tailoring \(FLGS, Parameters, etc.\), the File Package, Init files) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 71106 M (The FP has ways to make life really easy) S
+14400 68106 M (FILES?) S
+1200 /Times-Roman-Acnt F
+18000 65706 M (The function \(FILES?\) will list in your tty window all functions, variables ) S
+18000 63906 M (and other Lisp objects that you have defined but not saved using a ) S
+18000 62106 M (MAKEFILE.  It will then ask you if you want to say where these things ) S
+18000 60306 M (go.  If you say Yes, it will ask for each function and variable to what file it ) S
+18000 58506 M (belongs.  You give it a file name, and it will add it to the appropriate ) S
+18000 56706 M (clause in the COMS for the file name. ) S
+18000 54306 M (You can even, specify a new file name and it will create the appropriate ) S
+18000 52506 M (COMS list from scratch.) S
+18000 50106 M (If you give NIL as the file name, it will not add the function or variable to ) S
+18000 48306 M (any COMS and it will never ask you about it again.) S
+18000 45906 M (If you simply type a <return>, it will not add it to any COMS, but will ask ) S
+18000 44106 M (again the next time you call FILES?.) S
+1200 /Times-Bold-Acnt F
+14400 41106 M (MAKEFILES) S
+1200 /Times-Roman-Acnt F
+18000 38706 M (Does a FILES? to capture all the orphans.) S
+18000 36306 M (Then for each file that has to be updated for any reason, does a ) S
+18000 34506 M (MAKEFILE.) S
+14400 30906 M (Note:  Some users exist on FILES? and MAKEFILES alone and never touch a ) S
+14400 29106 M (COMS directly.  Other \(like me\) prefer to keep track of our own changes, use ) S
+14400 27306 M (DEdit on the COMS, and then call MAKEFILE ourselves.   The choice is yours to ) S
+14400 25506 M (make.) S
+1200 /Times-Bold-Acnt F
+10800 21906 M (Final Note on the FP) S
+1200 /Times-Roman-Acnt F
+14400 19206 M (I have described about 20% of the FP.  But its probably all you need to know for a ) S
+14400 17406 M (while.  ) S
+14400 15006 M (The FP is documented in glorious detail in Chapter 11 of the IRM.) S
+14400 12606 M (Section 11.7 is probalby the most interesting because it describes the ) S
+14400 10806 M (FilePackageCommands you can put in your COMS lists.) S
+14400 8406 M (Sections 11.1 and 11.2 cover LOAD and MAKEFILE et al.) S
+grestore savepage restore showpage
+
+%%Page: 17 17
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (15) S
+7200 75600 M (LispCourse #8:  Tailoring \(FLGS, Parameters, etc.\), the File Package, Init files) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (At Last, Init Files) S
+1200 /Times-Roman-Acnt F
+10800 67306 M (An Init file is just another LOADable file.  Nothing mysterious about it all.  In fact, as ) S
+10800 65506 M (LOADable files go its quite dull!) S
+10800 63106 M (An Init file is a special LOADable file for the following reason:) S
+14400 60506 M (When Lisp starts up from a clean sysout, the first thing it does is evaluate the ) S
+14400 58706 M (function "\(GREET\)".) S
+18000 56306 M (GREET immediately goes out and finds a file called INIT.LISP on your ) S
+18000 54506 M (local disk \(if it can't find it, it asks you to specify where it is\).) S
+18000 52106 M (GREET LOADs INIT.LISP.) S
+18000 49706 M (Then GREET tries to find another Init file, one that is somehow associated ) S
+18000 47906 M (with your login.   It looks in a number of places like on your directory on ) S
+18000 46106 M (your file server.) S
+18000 43706 M (The first Init file it finds, it LOADs.) S
+10800 41306 M (So, Init files are just LOADable files that Lisp always LOADs the first time it comes up ) S
+10800 39506 M (froma clean sysout.) S
+10800 35906 M (There are two Init files:) S
+14400 32306 M (1\) A ) S
+1200 /Times-Bold-Acnt F
+(site-specific Init file) S
+1200 /Times-Roman-Acnt F
+( that is common to all users at a given site \(e.g., ISL, ) S
+14400 30506 M (KSA, etc\)) S
+18000 28106 M (This init file sets things like DEFAULTPRINTINGHOST, ) S
+18000 26306 M (DIRECTORIES, FONTDIRECTORIES, CH.NET.HOSTS, etc.  All those ) S
+18000 24506 M (parameters that have to do with what printer to use, what file server to use, ) S
+18000 22706 M (what your ethernet looks like, where to find the local copies of the Lisp ) S
+18000 20906 M (files, AND where to look for the user specific init files.) S
+18000 18506 M (At PARC, the site-specific init files are located on ) S
+18000 16706 M ({eris}<lisp>harmony>basics>init.cis \(for ISL\) and init.ksa for KSA.  The ) S
+18000 14906 M (appropriate file should be copied to your local disk and renamed to be ) S
+18000 13106 M (INIT.LISP.) S
+14400 9506 M (2\)  A ) S
+1200 /Times-Bold-Acnt F
+(user-specific Init file) S
+1200 /Times-Roman-Acnt F
+( that is setup by each user as he or she pleases) S
+grestore savepage restore showpage
+
+%%Page: 18 18
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (16) S
+7200 75600 M (LispCourse #8:  Tailoring \(FLGS, Parameters, etc.\), the File Package, Init files) S
+18000 71106 M (This init file is generally used to set all those parameters and FLGs to ) S
+18000 69306 M (make the system behave "correctly", to make the screen look pretty, to ) S
+18000 67506 M (load the files for all the packages that are frequently used, etc.) S
+21600 65106 M (My Init file has four basic clauses:) S
+21600 63006 M (A ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(VARS) S
+1200 /Times-Roman-Acnt F
+( clause that sets parameters like INITIALSLST, ) S
+21600 61206 M (WINDOWTITLESHADE, DeditLinger, CHAT.FONT,  ) S
+21600 59406 M (CLOSECHATWINDOWFLG, etc. to my liking.) S
+21600 57306 M (An ) S
+1200 /Times-Bold-Acnt F
+(ADDVARS) S
+1200 /Times-Roman-Acnt F
+( clause something like:  \(ADDVARS ) S
+21600 55506 M (\(DIRECTORIES ) S
+21600 53706 M ({PHYLUM}<HALASZ>LISP>\)\(DIRECTORIES ) S
+21600 51906 M ({PHYLUM}<NOTECARDS>RELEASE1.1>\)\)) S
+21600 49806 M (A ) S
+1200 /Times-Bold-Acnt F
+(FILES) S
+1200 /Times-Roman-Acnt F
+( clause that loads CROCK, ARCHIVETOOL, SKETCH, ) S
+21600 48006 M (BITMAPFNS, FILEBROWSER, and other such optional packages ) S
+21600 46206 M (from either {eris}<lispusers> or from ) S
+21600 44406 M ({eris}<lisp>harmony>library>.) S
+21600 42306 M (A ) S
+1200 /Times-Bold-Acnt F
+(P) S
+1200 /Times-Roman-Acnt F
+( clause something like: \(P \(CROCK \(CREATEREGION 816 ) S
+21600 40506 M (687 128 115\)\)\(CLOSEW LOGOW\)\(LAFITE 'ON\)\) which causes ) S
+21600 38706 M (CROCK to start up, the Logo window to close and Lafite to start ) S
+21600 36906 M (up when my Init file is LOADed.) S
+18000 34306 M (At PARC, your Init file should be named with one of the following names:) S
+21600 31906 M ({ERIS}<user>LISP>INIT.DCOM, {ERIS}<user>LISP>INIT, ) S
+21600 30106 M ({ERIS}<user>INIT.DCOM, ) S
+21600 28306 M ({ERIS}<user>INIT.LISP,{PHYLUM}<user>LISP>INIT.DCOM, ) S
+21600 26506 M ({PHYLUM}<user>LISP>INIT, {PHYLUM}<user>INIT.DCOM, ) S
+21600 24706 M ({PHYLUM}<user>INIT.LISP, {IVY}<user>LISP>INIT.DCOM, ) S
+21600 22906 M ({IVY}<user>LISP>INIT, {IVY}<user>INIT.DCOM, ) S
+21600 21106 M ({IVY}<user>INIT.LISP,  where user should be replaced by your ) S
+21600 19306 M (login name.) S
+1200 /Times-Bold-Acnt F
+10800 15706 M (Commonly asked questions:) S
+14400 13106 M (How do I change my init file?) S
+grestore savepage restore showpage
+
+%%Page: 19 19
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (17) S
+7200 75600 M (LispCourse #8:  Tailoring \(FLGS, Parameters, etc.\), the File Package, Init files) S
+18000 71106 M (Use "\(DC INIT\)" to DEdit the INITCOMS, then do a \(MAKEFILE ) S
+18000 69306 M ('{PHYLUM}<user>LISP>INIT\) or \(MAKEFILE ) S
+18000 67506 M ('{IVY}<user>INIT.LISP\) or whatever.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 64906 M (How do I start an Init file?) S
+1200 /Times-Roman-Acnt F
+18000 62306 M (You have two choices:) S
+21600 59906 M (Create an INITCOMS from scratch using \(SETQ INITCOMS ) S
+21600 58106 M ('\(\(FNS ...\)\)\), then edit it using DC, then do a MAKEFILE.) S
+21600 55706 M (Copy someone elses INIT file to your directory, load Lisp, edit the ) S
+21600 53906 M (INITCOMS using DC to change all the "bad" parameters settings, ) S
+21600 52106 M (then do a MAKEFILE to update the INIT file with your changes.) S
+1200 /Times-Bold-Acnt F
+14400 49506 M (What do I put in my Init file?) S
+1200 /Times-Roman-Acnt F
+18000 46906 M (Whatever you like.  Generally, you set parameters for the system and ) S
+18000 45106 M (specific packages you commonly use.  You also load your commonly used ) S
+18000 43306 M (packages.) S
+18000 40906 M (Don't keep your own functions in your init file.  Put your functions in a ) S
+18000 39106 M (file called MYUTILITIES.LISP or some such, and then put a \(FILES ) S
+18000 37306 M (MYUTILITIES.LISP\) clause in your INITCOMS so this file gets ) S
+18000 35506 M (LOADed when your Init file gets LOADed.) S
+1200 /Times-Bold-Acnt F
+10800 31906 M (Final Comments:) S
+1200 /Times-Roman-Acnt F
+14400 29306 M (1.  You don't need Init files.  The system runs fine without them.  Though, it can't ) S
+14400 27506 M (find printers, etc. because DEFAULTPRINTINGHOST, etc, haven't been set.  ) S
+14400 25706 M (The system will run perfectly without your personal Init file.  You might have to ) S
+14400 23906 M (load some packages by hand every time the system gets reloaded, but ...) S
+14400 21306 M (2.  If you want to take over an already loaded system from someone else, you can ) S
+14400 19506 M (call \(GREET\) yourself.  This will "ungreet" the previous person and then redo the ) S
+14400 17706 M (GREET sequence with your Init file.) S
+1400 /Times-Bold-Acnt F
+7200 13957 M (References) S
+1200 /Times-Roman-Acnt F
+10800 11506 M (The IRM, Chapter 11) S
+10800 9106 M ({ERIS}<LISP>HARMONY>DOC>INITFILES.TEDIT) S
+grestore savepage restore showpage
+
+%%Page: 20 20
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (18) S
+7200 75600 M (LispCourse #8:  Tailoring \(FLGS, Parameters, etc.\), the File Package, Init files) S
+10800 71106 M (The Init file documentation from the Sysdoc group.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 67357 M (Exercises) S
+1200 /Times-Roman-Acnt F
+10800 64306 M (Define a few fucntions like CountAtoms and then save them on a file.  Get a new sysout ) S
+10800 62506 M (and try LOADing the file.  Etc.) S
+10800 59506 M (Make yourself a nice, interesting Init file.) S
+grestore savepage restore showpage
+
+%%Trailer

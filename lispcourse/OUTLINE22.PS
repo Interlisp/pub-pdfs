@@ -1,0 +1,1936 @@
+%!PS-Adobe-2.0%%Title: {DSK}<home>larry>lispcourse>OUTLINE22.PS%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate:  7-Nov-2023 21:40:12%%EndComments/bdef {bind def} bind def
+/ldef {load def} bdef
+/S /show ldef
+/M /moveto ldef
+/DR {transform round exch round exch itransform} bdef
+/L {gsave newpath setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/L1 {gsave newpath 0 setdash setgray setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/F {findfont exch scalefont setfont} bdef
+/CLP {newpath M dup 0 rlineto exch 0 exch rlineto
+  neg 0 rlineto closepath clip newpath} bdef
+/R {gsave setgray newpath M dup 0 rlineto exch 0 exch
+  rlineto neg 0 rlineto closepath eofill grestore} bdef
+/ellipsedict 9 dict def
+ellipsedict /mtrx matrix put
+/ellipse
+ { ellipsedict begin
+  /endangle exch def
+  /startangle exch def
+  /orientation exch def
+  /minorrad exch def
+  /majorrad exch def
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  orientation rotate
+  majorrad minorrad scale
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+ end } bdef
+/concatprocs
+ {/proc2 exch cvlit def
+  /proc1 exch cvlit def
+  /newproc proc1 length proc2 length add array def
+  newproc 0 proc1 putinterval
+  newproc proc1 length proc2 putinterval
+  newproc cvx
+ } bdef
+/resmatrix matrix def
+/findresolution
+ {72 0 resmatrix defaultmatrix dtransform
+  /yres exch def /xres exch def
+  xres dup mul yres dup mul add sqrt
+ } bdef
+/thebitimage
+ {/maskp exch def
+  /bihgt exch def
+  /biwid exch def
+  /byte 1 string def
+  /strbufl biwid 8 div ceiling cvi def
+  /strbuf strbufl string def
+  maskp not{{1 exch sub} currenttransfer concatprocs settransfer} if
+  biwid bihgt
+  maskp { true } { 1 } ifelse
+  [biwid 0 0 bihgt 0 0]
+  {/col 0 def
+   {currentfile byte readhexstring pop 0 get
+    dup 16#B2 eq {pop
+    currentfile byte readhexstring pop 0 get 1 add
+    currentfile byte readhexstring pop pop /nbyte byte 0 get def
+    { strbuf col nbyte put /col col 1 add def} repeat}
+   {dup 16#B3 eq {pop /col col
+    currentfile byte readhexstring pop
+    0 get add 1 add def}
+    {16#B4 eq {currentfile byte readhexstring pop pop} if
+     strbuf col byte 0 get put /col col 1 add def} ifelse
+   } ifelse
+   col strbufl ge { exit } if } loop
+   strbuf }
+  maskp { imagemask } { image } ifelse
+ } bdef
+/setuserscreendict 22 dict def
+setuserscreendict begin
+ /tempctm matrix def
+ /temprot matrix def
+ /tempscale matrix def
+end
+/setuserscreen
+ {setuserscreendict begin
+   /spotfunction exch def
+   /screenangle exch def
+   /cellsize exch def
+   /m tempctm currentmatrix def
+   /rm screenangle temprot rotate def
+   /sm cellsize dup tempscale scale def
+   sm rm m m concatmatrix m concatmatrix pop
+   1 0 m dtransform /y1 exch def /x1 exch def
+   /veclength x1 dup mul y1 dup mul add sqrt def
+   /frequency findresolution veclength div def
+   /newscreenangle y1 x1 atan def
+   m 2 get m 1 get mul m 0 get m 3 get mul sub
+   0 gt { { neg } /spotfunction load concatprocs
+          /spotfunction exch def } if
+   frequency newscreenangle /spotfunction load setscreen
+  end
+ } bdef
+/setpatterndict 18 dict def
+setpatterndict begin
+ /bitison
+  {/ybit exch def /xbit exch def
+   /bytevalue bstring ybit bwidth mul xbit 8 idiv add get def
+   /mask 1 7 xbit 8 mod sub bitshift def
+   bytevalue mask and 0 ne
+  } bdef
+end
+/bitpatternspotfunction
+ {setpatterndict begin
+   /y exch def /x exch def
+   /xindex x 1 add 2 div bpside mul 1 sub cvi def
+   /yindex y 1 add 2 div bpside mul 1 sub cvi def
+   xindex yindex bitison
+    {/onbits onbits 1 add def 1}
+    {/offbits offbits 1 add def 0} ifelse
+  end
+ } bdef
+/setpattern
+ {setpatterndict begin
+   /cellsz exch def
+   /angle exch def
+   /bwidth exch def
+   /bpside exch def
+   /bstring exch def
+   /onbits 0 def /offbits 0 def
+   cellsz angle /bitpatternspotfunction load setuserscreen
+   {} settransfer
+   offbits offbits onbits add div setgray
+  end
+ } bdef
+% - - - - - Fraction-setting code, to support NS fonts better - - - - -
+/fractiondict 20 dict def
+/fractionshow 
+{ fractiondict begin
+/denom exch def 
+/num exch def 
+/regfont currentfont def
+/fractfont currentfont [.65 0 0 .6 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(1) true charpath flattenpath pathbbox 
+/height exch def pop pop pop
+ grestore
+0 .4 height mul rmoveto
+fractfont setfont num show
+0 .4 height mul neg rmoveto regfont setfont (\244) show
+fractfont setfont denom show regfont setfont end } bdef
+/f14 { (1) (4) fractionshow } bdef
+/f12 { (1) (2) fractionshow } bdef
+/f34 { (3) (4) fractionshow } bdef
+/f18 { (1) (8) fractionshow } bdef
+/f38 { (3) (8) fractionshow } bdef
+/f58 { (5) (8) fractionshow } bdef
+/f78 { (7) (8) fractionshow } bdef
+/f13 { (1) (3) fractionshow } bdef
+/f23 { (2) (3) fractionshow } bdef
+/bboxdict 20 dict def
+/bboxchk { bboxdict begin
+/regfont currentfont def
+/chkfont currentfont [1.25 0 0 1.25 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(\161) true charpath flattenpath pathbbox 
+/height exch def pop pop pop 
+ grestore 
+ currentpoint 
+ .2 height mul .3 height mul rmoveto
+chkfont setfont (\063) show
+ moveto
+ regfont setfont
+(\161) show end } bdef
+/rencdict 15 dict def
+/encodefont { rencdict begin
+/newname exch def
+/oldfont exch def
+/newcodes [
+8#001 /Aacute
+8#002 /Acircumflex
+8#003 /Adieresis
+8#004 /Agrave
+8#005 /Aring
+8#006 /Atilde
+8#007 /Ccedilla
+8#010 /Eacute
+8#011 /Ecircumflex
+8#012 /Edieresis
+8#013 /Egrave
+8#014 /Iacute
+8#015 /Icircumflex
+8#016 /Idieresis
+8#017 /Igrave
+8#020 /Ntilde
+8#021 /Oacute
+8#022 /Ocircumflex
+8#023 /Odieresis
+8#024 /Ograve
+8#025 /Otilde
+8#026 /Scaron
+8#027 /Uacute
+8#030 /Ucircumflex
+8#031 /Udieresis
+8#032 /Ugrave
+8#033 /Ydieresis
+8#034 /Zcaron
+8#177 /periodinferior
+8#201 /aacute
+8#202 /acircumflex
+8#203 /adieresis
+8#204 /agrave
+8#205 /aring
+8#206 /atilde
+8#207 /ccedilla
+8#210 /eacute
+8#211 /ecircumflex
+8#212 /edieresis
+8#213 /egrave
+8#214 /iacute
+8#215 /icircumflex
+8#216 /idieresis
+8#217 /igrave
+8#220 /ntilde
+8#221 /oacute
+8#222 /ocircumflex
+8#223 /odieresis
+8#224 /ograve
+8#225 /otilde
+8#226 /scaron
+8#227 /uacute
+8#230 /ucircumflex
+8#231 /udieresis
+8#232 /ugrave
+8#233 /ydieresis
+8#234 /zcaron
+8#235 /Eth
+8#236 /eth
+8#237 /Thorn
+8#240 /thorn
+ ] def
+/olddict oldfont findfont def /newfont olddict maxlength dict def
+olddict { exch dup /FID ne { dup /Encoding eq
+{ exch dup length array copy newfont 3 1 roll put }
+{ exch newfont 3 1 roll put } ifelse }
+ { pop pop } ifelse } forall
+newfont /FontName newname put
+newcodes aload pop
+newcodes length 2 idiv { newfont /Encoding get 3 1 roll put } repeat 
+newname newfont definefont pop end } def
+ /accentdict 10 dict def 
+ /accentor { accentdict begin /scaler exch def /delta exch def 
+/unders exch def /accents exch def /mainch exch def /scrt (X) def
+ /w1 mainch stringwidth pop def 
+ currentpoint mainch show currentpoint 4 2 roll 
+accents { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         w1 w2 sub 2 div delta rmoveto scrt show 
+         /delta delta 150 scaler mul 9 div add def
+        } forall 
+unders { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         ch 46 eq { w1 w2 sub 2 div -175 scaler mul 9 div rmoveto scrt show 0 175 rmoveto }
+           { w1 w2 sub 2 div 0 rmoveto scrt show } ifelse 
+        } forall 
+ pop pop moveto end } def 
+%%EndProlog
+%%BeginSetup
+letter/imagesizefactor 1 def%%EndSetup/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+
+%%Page: 1 1
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+54000 75600 M (F.G.H.          ) S
+54000 73800 M (4/25/85) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (LispCourse #22:  Overview of Lisp Packages; Using the Documentation) S
+7200 67157 M (Lisp Packages) S
+1200 /Times-Roman-Acnt F
+10800 64306 M (Recall:  Lisp packages are sets of related functions contained on a single file \(or small set ) S
+10800 62506 M (of files\) that are designed to carry out some particular task in the Interlisp environment, ) S
+10800 60706 M (e.g., text editing, file transfer, etc.) S
+10800 57906 M (There are by convention two types of public packages in the Interlisp world, ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(LispUsers) S
+1200 /Times-Roman-Acnt F
+( ) S
+10800 56106 M (packages and ) S
+1200 /Times-Italic-Acnt F
+(Lisp Library) S
+1200 /Times-Roman-Acnt F
+( packages.  The former are random packages submitted by ) S
+10800 54306 M (random hackers.  The latter are packages maintained by the AISBU Lisp development ) S
+10800 52506 M (group.) S
+10800 49706 M (A third kind of "package" are the large application systems build on top of Interlisp such ) S
+10800 47906 M (as LFG and NoteCards.  We will not talk about these types of large applications here.) S
+10800 45106 M (To get the functionality of a package \(if it is not already contained in the default sysout\), ) S
+10800 43306 M (you need to find and then load the file\(s\) containing the package.) S
+1400 /Times-Bold-Acnt F
+7200 39557 M (LISP LIBRARY Packages of Interest to the Non-Programmer) S
+1200 /Times-Roman-Acnt F
+10800 35906 M (At PARC, the following packages are stored on {eris}<lisp>) S
+1200 /Times-Italic-Acnt F
+(release) S
+1200 /Times-Roman-Acnt F
+(>library> [where ) S
+1200 /Times-Italic-Acnt F
+10800 34106 M (release) S
+1200 /Times-Roman-Acnt F
+( is Hormony or Intermezzo, or ...].  They are packages designed and implemented ) S
+10800 32306 M (and maintained) S
+18171 31999 12833 31999 75 L
+18171 32306 M ( by  the AISBU Lisp group.  Thus their reliability and usability is ) S
+10800 30506 M (extremely high.) S
+1400 /Times-Bold-Acnt F
+10800 26757 M (The Big Ones) S
+1200 /Times-Bold-Acnt F
+14400 24306 M (FILEBROWSER) S
+1200 /Times-Roman-Acnt F
+( \234 Edit, Delete, Load, Compile, Copy, Rename, See, Hardcopy, ) S
+14400 22706 M (& Info on files on any file device through a common graphic interface.  Call: ) S
+14400 21106 M (\(FILEBROWSER FILEPATTERN\).  ) S
+1200 /Times-Italic-Acnt F
+(Documentation = ???) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+14400 18306 M (SKETCH) S
+1200 /Times-Roman-Acnt F
+( \234 Sketch is a drawing program that enables you to place text and ) S
+14400 16706 M (graphics to achieve desired images.  The figures can be copy-selected into TEdit ) S
+14400 15106 M (documents to allow a mixture of text and graphics in the same document.    ) S
+1200 /Times-Italic-Acnt F
+14400 13506 M (Documentation = SKETCH.TEDIT) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+14400 10706 M (TEDIT) S
+1200 /Times-Roman-Acnt F
+( \234 The Interlisp-D text editor.  ) S
+1200 /Times-Italic-Acnt F
+(Documentation = IRM) S
+1200 /Times-Roman-Acnt F
+( ) S
+grestore savepage restore showpage
+
+%%Page: 2 2
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (2) S
+7200 75600 M (LispCourse #22:  Overview of Lisp Packages; Using the Documentation) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 71106 M (GRAPHER) S
+1200 /Times-Roman-Acnt F
+( \234 contains a collection of functions and an editor for laying out, ) S
+14400 69506 M (displaying, and editing graphs \(i.e., networks of nodes and links\).   ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+14400 67906 M (Documentation = GRAPHER.TEDIT) S
+1200 /Times-Roman-Acnt F
+( ) S
+1400 /Times-Bold-Acnt F
+10800 64357 M (Mail Handling) S
+1200 /Times-Bold-Acnt F
+14400 61906 M (LAFITE) S
+1200 /Times-Roman-Acnt F
+( \234 Interlisp mail program, a la Laurel/Hardy.  ) S
+1200 /Times-Italic-Acnt F
+(Documentation = ) S
+14400 60306 M (LAFITE.TED) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+14400 57506 M (MAINTAIN) S
+1200 /Times-Roman-Acnt F
+( \234 Lisp implementation of Grapevine MAINTAIN program for adding ) S
+14400 55906 M (or deleting names from mail distribution lists.  ) S
+1200 /Times-Italic-Acnt F
+(Documentation = ???) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+14400 53106 M (NSMAIL) S
+1200 /Times-Roman-Acnt F
+( \234 Add on to Lafite for handling NS Mail.  ) S
+1200 /Times-Italic-Acnt F
+(Documentation = ) S
+14400 51506 M (NSMAIL.TEDIT) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+14400 48706 M (MAILSCAVENGE) S
+1200 /Times-Roman-Acnt F
+( \234 The Lisp Library package MAILSCAVENGE is used to ) S
+14400 47106 M (rebuild the internal pointers in a mail file that has been damaged.  Lafite generally ) S
+14400 45506 M (reports ``Can't parse file'' and terminates its Browse command when it detects ) S
+14400 43906 M (damage in a file.  The simplest remedy is to call MAILSCAVENGE, then browse ) S
+14400 42306 M (the file again.    ) S
+1200 /Times-Italic-Acnt F
+(Documentation = MAILSCAVENGE.TEDIT) S
+1200 /Times-Roman-Acnt F
+( ) S
+1400 /Times-Bold-Acnt F
+10800 38757 M (Networks & Files) S
+1200 /Times-Bold-Acnt F
+14400 36306 M (COPYFILES) S
+1200 /Times-Roman-Acnt F
+( \234 Functions for copying sets of files from one directory to another.  ) S
+1200 /Times-Italic-Acnt F
+14400 34706 M (Documentation = COPYFILES.TEDIT) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+14400 31906 M (FTPSERVER) S
+1200 /Times-Roman-Acnt F
+( \234 Lisp implementation of PUP FTP \(File Transfer Protocol\) server. ) S
+14400 30306 M (Lets others FTP from you while you're running lisp.  ) S
+1200 /Times-Italic-Acnt F
+(Documentation = ) S
+14400 28706 M (FTPSERVER.TEDIT) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+14400 25906 M (RS232, RS232CHAT, RS232EXEC, RS232FTP, RS232LOGIN) S
+1200 /Times-Roman-Acnt F
+( \234 Basic ) S
+14400 24306 M (software drivers for serving the RS232 serial interface including CHAT and FTP ) S
+14400 22706 M (service.   ) S
+1200 /Times-Italic-Acnt F
+(Documentation = RS232.TTY) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+14400 19906 M (TCP, TCPCHAT, TCPFTP) S
+1200 /Times-Roman-Acnt F
+( \234 Basic software drivers for communicating with ) S
+14400 18306 M (TCP/IP \(Arpanet protocols\) hosts \(e.g., Sun workstations, Vaxes, etc.\) including ) S
+14400 16706 M (CHAT and FTP service.   ) S
+1200 /Times-Italic-Acnt F
+(Documentation = TCP.TEDIT) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+14400 13906 M (TELERAID) S
+1200 /Times-Roman-Acnt F
+(  Interlisp-D has facilities for looking at sysout files and machines ) S
+14400 12306 M (across the network, used by hackers to debug when your DLion goes into a 9XXX ) S
+14400 10706 M (error in the maintenance panel.  ) S
+1200 /Times-Italic-Acnt F
+(Documentation =TELERAID.TEDIT) S
+1200 /Times-Roman-Acnt F
+(  ) S
+grestore savepage restore showpage
+
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (3) S
+7200 75600 M (LispCourse #22:  Overview of Lisp Packages; Using the Documentation) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+10800 70957 M (Special Printers) S
+1200 /Times-Bold-Acnt F
+14400 68506 M (FX80STREAM) S
+1200 /Times-Roman-Acnt F
+( \234 a library of routines used for driving an Epson FX-80 dot-matrix ) S
+14400 66906 M (printer.  With FX80STREAM you can use the full set of Interlisp-D device-) S
+14400 65306 M (independent graphical operations to compose pages on your FX-80, including ) S
+14400 63706 M (printing TEdit documents.   ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+( FX80STREAM.TEDIT) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+14400 60906 M (FXPRINTER, FXPARALLELPRINTER) S
+1200 /Times-Roman-Acnt F
+( \234 allows a user to print Lisp files to an ) S
+14400 59306 M (Epson FX-80 printer.    ) S
+1200 /Times-Italic-Acnt F
+(Documentation ) S
+1200 /Times-Roman-Acnt F
+(=) S
+1200 /Times-Italic-Acnt F
+( FXPRINTER.TED & ) S
+14400 57706 M (FXPARALLELPRINTER.TED) S
+1200 /Times-Bold-Acnt F
+14400 54906 M (PRINTER) S
+1200 /Times-Roman-Acnt F
+( \234 package to do hardcopy of bitmaps and listfiles with multiple fonts ) S
+14400 53306 M (for C.ITOH \(Cheap!!!\) printer connected to Dolphin parallel port.  ) S
+1200 /Times-Italic-Acnt F
+14400 51706 M (Documentation = PRINTER.TTY) S
+1200 /Times-Roman-Acnt F
+( ) S
+1400 /Times-Bold-Acnt F
+10800 48157 M (Fonts & Bitmaps) S
+1200 /Times-Bold-Acnt F
+14400 45706 M (READAIS) S
+1200 /Times-Roman-Acnt F
+( \234 Read, write, transform AIS \(color/grey scale\) files \(common files ) S
+14400 44106 M (containing pretty images\).  ) S
+1200 /Times-Italic-Acnt F
+(Documentation = READAIS.TXT) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+14400 41306 M (BIG) S
+1200 /Times-Roman-Acnt F
+( \234 Function NEWFONT sets up default fonts to be "size", where size is one of ) S
+14400 39706 M (the atoms BIG, MEDIUM, STANDARD, SMALL.  Changes the prettyprint fonts, ) S
+14400 38106 M (the default font for the break window, tyipin, etc. Does this by resetting ) S
+14400 36506 M (FONTPROFILE and then setting the fonts for all of the known windows.  ) S
+1200 /Times-Italic-Acnt F
+14400 34906 M (Documentation = BIG.TTY) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+14400 32106 M (BITMAPFNS) S
+1200 /Times-Roman-Acnt F
+( \234 Miscellaneous functions for manipulating BITMAPs. Reading ) S
+14400 30506 M (and writing bitmaps, reading certain press files, creating window with image of ) S
+14400 28906 M (bitmap.  ) S
+1200 /Times-Italic-Acnt F
+(Documentation = BITMAPFNS.TTY) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+14400 26106 M (EDITBITMAP) S
+1200 /Times-Roman-Acnt F
+( \234 provides an interface \(EDIT.BITMAP\) for manipulating ) S
+14400 24506 M (bitmaps. It puts up a menu of bitmap manipulation commands, one of which is ) S
+14400 22906 M (HAND.EDIT which accesses EDITBM, the Interlisp-D bitmap editor. Other ) S
+14400 21306 M (commands include shifting \(in four directions\), rotation \(left and right 90 degree\), ) S
+14400 19706 M (inverting \(horizontally, vertically, about diagonals\), interchanging black and ) S
+14400 18106 M (white, adding a border.  ) S
+1200 /Times-Italic-Acnt F
+(Documentation = EDITBITMAP.TTY) S
+1200 /Times-Roman-Acnt F
+( ) S
+1400 /Times-Bold-Acnt F
+10800 14557 M (Misc Tools) S
+1200 /Times-Bold-Acnt F
+14400 12106 M (PAGEHOLD) S
+1200 /Times-Roman-Acnt F
+( \234 Redefines the default PAGEFULLFN, and provides hooks for ) S
+14400 10506 M (making individual non-TTYDISPLAYSTREAM windows scrollable.  Scrolling  ) S
+14400 8906 M (is "held" for up to PAGE.WAIT.SECS seconds, during which time an attached ) S
+grestore savepage restore showpage
+
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (4) S
+7200 75600 M (LispCourse #22:  Overview of Lisp Packages; Using the Documentation) S
+14400 71106 M ("button" on the window softly flashes, and then the hold is "released". Holding ) S
+14400 69506 M (down either SHIFT key will continue the "hold" \(i.e., prevent "release"\); letting ) S
+14400 67906 M (up on either SHIFT key will "release" the "hold". ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Documentation = ) S
+14400 66306 M (PAGEHOLD.TEDIT) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 63506 M (SAMEDIR) S
+1200 /Times-Roman-Acnt F
+( \234 Advises MAKEFILE so that user can't inadvertently write out a file ) S
+14400 61906 M (onto a directory other than the one it came from.  Checks FILEDATES property ) S
+14400 60306 M (against connected directory.  ) S
+1200 /Times-Italic-Acnt F
+(Documentation = SAMEDIR.TTY) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+14400 57506 M (SINGLEFILEINDEX) S
+1200 /Times-Roman-Acnt F
+( \234 Package for giving user an alphabetical function index on ) S
+14400 55906 M (the front of any lisp file listed thru lisp.  Index number for a function indicates ) S
+14400 54306 M (function's linear occurence within file.  Within the lisp source, each function is ) S
+14400 52706 M (preceded by it's index number right justified on the page.  ) S
+1200 /Times-Italic-Acnt F
+(Documentation = ) S
+14400 51106 M (SINGLEFILEINDEX.TEDIT) S
+1200 /Times-Roman-Acnt F
+(  ) S
+1400 /Times-Bold-Acnt F
+10800 47557 M (Games & Demos) S
+1200 /Times-Bold-Acnt F
+14400 45106 M (HANOI) S
+1200 /Times-Roman-Acnt F
+( \234 Displays and solves famous Towers of Hanoi problem.  Can run as a ) S
+14400 43506 M (background process.  HANOIWINDOW can be reshaped.  Call: \(HANOI ) S
+14400 41906 M (NRINGS WINDOW FONT ONCE\).   ) S
+1200 /Times-Italic-Acnt F
+(Documentation = HANOI.TTY) S
+1200 /Times-Roman-Acnt F
+(   ) S
+1200 /Times-Bold-Acnt F
+14400 39106 M (KINETIC) S
+1200 /Times-Roman-Acnt F
+( \234 Graphics demo.  Fast random BITBLTs on a window.  Call: ) S
+14400 37506 M (\(KINETICDEMO\).   ) S
+1200 /Times-Italic-Acnt F
+(Documentation = ???) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+14400 34706 M (UTILPROC) S
+1200 /Times-Roman-Acnt F
+( \234 Simple utility processes, including hall-of-mirrors demo.  ) S
+1200 /Times-Italic-Acnt F
+14400 33106 M (Documentation = ???) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+14400 30306 M (WINK) S
+1200 /Times-Roman-Acnt F
+( \234 Movie of Marilyn Monroe winking.  Call: \(SHOWMOVIE\).  Needs ) S
+14400 28706 M (BITMAPFNS.   ) S
+1200 /Times-Italic-Acnt F
+(Documentation = ???) S
+1200 /Times-Roman-Acnt F
+( ) S
+1400 /Times-Bold-Acnt F
+7200 25157 M (LISPUSERS Packages of Interest to the Non-Programmer) S
+1200 /Times-Roman-Acnt F
+10800 21306 M (The following packages are stored on {eris}<lispusers> at PARC.  They are packages ) S
+10800 19506 M (designed and implemented by random Lisp hackers and are not) S
+41178 19199 39644 19199 75 L
+41178 19506 M ( supported by the AISBU ) S
+10800 17706 M (Lisp group.  Their reliability and usability various greatly.) S
+1400 /Times-Bold-Acnt F
+10800 13957 M (Tools \234 Editors, Printing functions, Graphics, etc.) S
+1200 /Times-Bold-Acnt F
+14400 11506 M (AREDIT) S
+1200 /Times-Roman-Acnt F
+( \234 Tool for submitting, viewing, & editing Lisp ARs \(action ) S
+14400 9906 M (requests/Interlisp bug reports\) from within Interlisp.  Type \(AR.FORM\) to create ) S
+grestore savepage restore showpage
+
+%%Page: 5 5
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (5) S
+7200 75600 M (LispCourse #22:  Overview of Lisp Packages; Using the Documentation) S
+14400 71106 M (a form for Getting, Putting, & Submitting ARs. ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+( ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Documentation = ) S
+14400 69506 M (AREDIT.TEDIT) S
+1200 /Times-Bold-Acnt F
+14400 66706 M (ARCHIVETOOL) S
+1200 /Times-Roman-Acnt F
+( \234 An Interlisp-D interafce to the PARC Cedar Archive system.  ) S
+14400 65106 M (Based on the FileBrowser and Lafite.  It automatically composes and sends ) S
+14400 63506 M (archive messages to the Archivist.  It also parses the returned messages and ) S
+14400 61906 M (deletes the archived files.  Retrieve requests are not yet supported.) S
+1200 /Times-Bold-Acnt F
+(  ) S
+1200 /Times-Italic-Acnt F
+14400 60306 M (Documentation = ARCHIVETOOL.TED) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+14400 57506 M (BIZGRAFIX) S
+1200 /Times-Roman-Acnt F
+( \234 Pie & bar chart, line graph creation.) S
+1200 /Times-Bold-Acnt F
+(  ) S
+1200 /Times-Italic-Acnt F
+(Documentation = ) S
+14400 55906 M (BIZGRAFIX.TEDIT) S
+1200 /Times-Bold-Acnt F
+14400 53106 M (CALENDAR) S
+1200 /Times-Roman-Acnt F
+( \234 A calendar/appointment-reminder program.  Displays any year, ) S
+14400 51506 M (month or day.  Messages alert you at predetermined time, or can optionally be ) S
+14400 49906 M (mailed \(via Lafite\) to any desired recipients.  CALL: \(CALENDAR\). ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+14400 48306 M (Documentation = CALENDAR.TED) S
+1200 /Times-Bold-Acnt F
+14400 45506 M (COMAPRETEXT) S
+1200 /Times-Roman-Acnt F
+( \234 COMPARETEXT is a rather non-standard text file ) S
+14400 43906 M (comparison program which tries to address two problems: \(1\) the problem of ) S
+14400 42306 M (detecting certain types of changes, such as detecting when a paragraph is moved ) S
+14400 40706 M (to a different part of a document; and \(2\) the problem of showing the user what ) S
+14400 39106 M (changes have been made in a document.) S
+/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+(  ) S
+1200 /Times-Italic-Acnt F
+(Documentation = ) S
+14400 37506 M (COMPARETEXT.TXT) S
+1200 /Times-Bold-Acnt F
+14400 34706 M (DIRECTORYTOOLS) S
+1200 /Times-Roman-Acnt F
+( \234  DirectoryTools contains one user function: ) S
+14400 33106 M (GRAPH.DIRECTORY which is used for graphing the subdirectory structure ) S
+14400 31506 M (under a file pattern. e.g:) S
+/bitbltsave save def 17250 21899 translate 25500 7700 scale 255 77 true thebitimage
+B21EFFFE
+B31F
+C0B21D0006
+B31F
+B31F
+B31F
+B31F
+B31F
+B31710223871F1C10706
+B319448902210886
+B31824B305
+B316071E28440902010106
+B31501F8113C4409E2010606
+C030000018B3107E001122440902210886
+C040000004B30F1F80B308
+C043C38884B30401F1C388101C7CF8E00007E000001E3C3839F1C7C706
+C0422448B306008448100840811001F8B2090006
+B3024904B30D7EB20A0006
+C1822089033FB203FFF100808FB302802380B30B
+C042230E04B20400010083089E0840F0C07CB30B
+C042244AB3078448900840811003E0B30A
+B30249B30E001FB30A
+C043C38884B30501C38F1F1C40F8E00000FCB309
+C030000018B304B20A0003E000101C4420E0B302
+C0B214001F0010224C2110B302
+B31500F8B307
+B316071022542020B302
+B316001EB302C0B302
+B3171022642110B302
+B31F
+B3171F1C44F8E0B302
+B317B2060006
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B31F
+B21EFFFE
+B30BE7FFFFCFB30F
+B30ADFDFFFFFF7EFB305BFB307
+FC72C70EDE39CCEEE31FCEDFDC3C77B7D82E3BF7D820E3DFB307
+FBB4B4DB76DDF6DB6EDFEFB6FFDDDBB777BBEDDBF7DBEFDDEFB307
+FF76DB76DC37DB6EC39FB6FF3DDF72F97BEFB877DBEFFBF7B307
+FCF6DB76C5B6DB62DB7FB4B45FDDDCF5F7BBEE7BB0DBE1E7EFB307
+FBB6C776D6798CEAE78FCEDFDDDBB6F7DBEDDBB7DBEFDDDFB307
+FC7FDF0FFFFFDFB202FFFE7FDC3C7777EBEE38705BE0E3BFB307
+B202FFFEB202FFFEB203FFE7FFFFCFB20EFFFE
+B302B21BFFFE
+
+bitbltsave restore
+1200 /Times-Italic-Acnt F
+14400 20106 M (Documentation = DIRECTORYTOOLS.TEDIT) S
+1200 /Times-Bold-Acnt F
+14400 17306 M (EDITFONT) S
+1200 /Times-Roman-Acnt F
+( \234 Gives the user functions for creating and editting DISPLAY fonts ) S
+14400 15706 M (which can be read and written as STRIKE font files. Includes: EDITFONT, ) S
+14400 14106 M (BLANKFONTCREATE, READSTRIKEFONTFILE, and ) S
+14400 12506 M (WRITESTRIKEFONTFILE. ) S
+1200 /Times-Bold-Acnt F
+(  ) S
+1200 /Times-Italic-Acnt F
+(Documentation = EDITFONT.TTY) S
+1200 /Times-Bold-Acnt F
+14400 9706 M (EDITHIST) S
+1200 /Times-Roman-Acnt F
+( \234 An extension to Interlisp's file package that permanently preserves ) S
+14400 8106 M (the history of new versions of files.  Every time a file is remade, a new entry ) S
+grestore savepage restore showpage
+
+%%Page: 6 6
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (6) S
+7200 75600 M (LispCourse #22:  Overview of Lisp Packages; Using the Documentation) S
+14400 71106 M (containing DATE, AUTHOR, FILE, CHANGES, & COMMENTS info is added. ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+( ) S
+14400 69506 M (Documentation = EDITHIST.DOC) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 66706 M (EXEC) S
+1200 /Times-Roman-Acnt F
+( \234 This small package allows the user to create extra EXEC windows in ) S
+14400 65106 M (which to do EVALQTing.  A new EXEC window may be created in either of two ) S
+14400 63506 M (ways.  The user may either do \(EXEC\) or button the EXEC menu item added to ) S
+14400 61906 M (the background menu. ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(Documentation = EXEC.TTY) S
+1200 /Times-Bold-Acnt F
+14400 59106 M (FINGER) S
+1200 /Times-Roman-Acnt F
+( \234 Finger is a facility for determining and displaying information about ) S
+14400 57506 M (other users running Interlisp-D.  It displays the user's name, the Etherhostname ) S
+14400 55906 M (\(or the octal net address when no nameserver is available\) and the user's idle time ) S
+14400 54306 M (\(time since last keystroke or mouseaction\).  Only other users who have the finger ) S
+14400 52706 M (server loaded will be displayed.  ) S
+1200 /Times-Italic-Acnt F
+(Documentation = FINGER.TEDIT) S
+1200 /Times-Bold-Acnt F
+14400 49906 M (HEADLINE) S
+1200 /Times-Roman-Acnt F
+( \234 Three functions for manipulating windows containing headlines: ) S
+14400 48306 M (HEADLINE, BILLBOARD, and CLOSEHEADLINES.  Useful for titling a ) S
+14400 46706 M (screen image or leaving message on screen while away. ) S
+1200 /Times-Bold-Acnt F
+(  ) S
+1200 /Times-Italic-Acnt F
+(Documentation = ) S
+14400 45106 M (HEADLINE.TTY) S
+1200 /Times-Bold-Acnt F
+14400 42306 M (HISTMENU) S
+1200 /Times-Roman-Acnt F
+( \234 Provides simple way to access Interlisp history list using menu.  ) S
+14400 40706 M (REDO, UNDO, FIX, and ?? selected items.  Call: \(HistoryMenu histMenuLength ) S
+14400 39106 M (histMenuPosition\). ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(Documentation = HISTMENU.TED) S
+1200 /Times-Bold-Acnt F
+14400 36306 M (LANDPRESS) S
+1200 /Times-Roman-Acnt F
+( \234 Allows landscape printing of ASCII text files on press printers ) S
+14400 34706 M (\(e.g., Dovers\).  Function LANDPRESS produces same product as MAKEPRESS, ) S
+14400 33106 M (only printed sideways on the page allowing for wider output. ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(Documentation = ) S
+14400 31506 M (LANDPRESS.TTY) S
+1200 /Times-Bold-Acnt F
+14400 28706 M (MAILOPS) S
+1200 /Times-Roman-Acnt F
+( \234 Functions for poking into and "scavenging" Laurel/Lafite/...  mail ) S
+14400 27106 M (files.  ) S
+1200 /Times-Italic-Acnt F
+(Documentation =) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(MAILOPS.TEDIT) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+( ) S
+14400 24306 M (NOTEPAD) S
+1200 /Times-Roman-Acnt F
+( \234 Allows user to do artwork at bitmap level in NOTEPAD windows. ) S
+14400 22706 M (Trajectories: sketch, line, circle, ellipse, open curve, closed curve. ) S
+14400 21106 M (Objects/editting: text, are of screen, shade rectangle, fill, edit area.  Style: brush, ) S
+14400 19506 M (use mask, mask, use grid, grid, use symmetry, point of symmetry, text font, shade. ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+14400 17906 M (Documentation =) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(NOTEPAD.TTY) S
+1200 /Times-Bold-Acnt F
+14400 15106 M (PRESSTOIP) S
+1200 /Times-Roman-Acnt F
+( \234 PRESS TO InterPress.  Converts PRESS files to INTERPRESS ) S
+14400 13506 M (files.  Call: \(PRESS.TO.IP PRESSFILE IPFILE\). ) S
+1200 /Times-Italic-Acnt F
+( Documentation =) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+14400 11906 M (PRESTOIP.TTY) S
+grestore savepage restore showpage
+
+%%Page: 7 7
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (7) S
+7200 75600 M (LispCourse #22:  Overview of Lisp Packages; Using the Documentation) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 71106 M (PROMPTREMINDERS) S
+1200 /Times-Roman-Acnt F
+( \234 User can be periodically reminded of important things ) S
+14400 69506 M (by messages which are aggressively winked and flashed in the ) S
+14400 67906 M (PROMPTWINDOW. ) S
+1200 /Times-Bold-Acnt F
+( ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Documentation =) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(PROMPTREMINDERS.TTY) S
+1200 /Times-Bold-Acnt F
+14400 65106 M (REMIND) S
+1200 /Times-Roman-Acnt F
+( \234 Facility for scheduling LISP events to take place at a specified later ) S
+14400 63506 M (time.  Reminders are stored on REMINDERS.LISP on user's directory and an ) S
+14400 61906 M (entry on AFTERSYSOUTFORMS causes them to be loaded via ) S
+14400 60306 M (LOADREMINDERS which may also be put in user's init file. ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(Documentation =) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+14400 58706 M (REMIND.TTY) S
+1200 /Times-Bold-Acnt F
+14400 55906 M (SPACEWINDOW) S
+1200 /Times-Roman-Acnt F
+( \234 Puts a small "Space Allocation" window on screen. Shows a ) S
+14400 54306 M (bar-chart of the amounts of the four types of memory space that have been ) S
+14400 52706 M (allocated \(fixed data, variable data, atoms, pnames\). Display is updated every 60 ) S
+14400 51106 M (seconds.  ) S
+1200 /Times-Italic-Acnt F
+(Documentation =) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(SPACEWINDOW.TXT) S
+1400 /Times-Bold-Acnt F
+10800 47557 M (Hardcopying Screen Images) S
+1200 /Times-Bold-Acnt F
+14400 44706 M (COPYIMAGE) S
+1200 /Times-Roman-Acnt F
+(  \234 a small utility which facilitates making hardcopy or PRESS ) S
+14400 43106 M (output of either ANY window on a screen, or else the entire screen. To use  load ) S
+14400 41506 M (COPYIMAGE.DCOM which updates the background menu, and then button the ) S
+14400 39906 M (CopyImage item of the background menu. Hardcopy output goes to the ) S
+14400 38306 M (FULLPRESS printer of your DEFAULTPRINTINGHOST. ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(Documentation = ) S
+14400 36706 M (COPYIMAGE.TTY) S
+1200 /Times-Bold-Acnt F
+14400 33906 M (FULLSCREEN) S
+1200 /Times-Roman-Acnt F
+( \234 This package allows an entire screen's image to be printed on ) S
+14400 32157 M (an Interpress printer.) S
+1400 /Times-Bold-Acnt F
+(  ) S
+1200 /Times-Italic-Acnt F
+(Documentation = FULLSCREEN.TXT) S
+1400 /Times-Bold-Acnt F
+10800 28557 M (Changes/Additions to the Interlisp-D Interface) S
+1200 /Times-Bold-Acnt F
+14400 25706 M (ANIMATE) S
+1200 /Times-Roman-Acnt F
+( \234 This small package contains functions for moving a non-rectangular ) S
+14400 24106 M (bitmap smoothly around the screen, ways of using these to get big cursors, and ) S
+14400 22506 M (bitmaps for a large arrow and a hand to be used as large cursors.  ) S
+1200 /Times-Italic-Acnt F
+(Documentation ) S
+14400 20906 M (=) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(ANIMATE.TTY) S
+1200 /Times-Bold-Acnt F
+14400 18106 M (AUXMENU) S
+1200 /Times-Roman-Acnt F
+( \234 This package creates a middle button background menu containing ) S
+14400 16506 M (a number of convenient functions. These functions include a menu-driven ) S
+14400 14906 M (CNDIR, LOGOUT, and other functions that require little user-interaction. The ) S
+14400 13306 M (purpose of the package is to minimize typeing.  ) S
+1200 /Times-Italic-Acnt F
+( Documentation =) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+14400 11706 M (AUXMENU.TEDIT) S
+grestore savepage restore showpage
+
+%%Page: 8 8
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (8) S
+7200 75600 M (LispCourse #22:  Overview of Lisp Packages; Using the Documentation) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 71106 M (DEDITK) S
+1200 /Times-Roman-Acnt F
+( \234 Adds single button method for combining the most frequently ) S
+14400 69506 M (combined pairs of BI/BO and BEFORE/AFTER/DELETE/REPLACE in DEDIT - ) S
+14400 67906 M (Load and call \(DEDITK\).   ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Documentation =) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(DEDITK.TED) S
+1200 /Times-Bold-Acnt F
+14400 65106 M (MACWINDOW) S
+1200 /Times-Roman-Acnt F
+( \234 Advises SHRINKW and EXPANDW to produce a zooming ) S
+14400 63506 M (effect by showing the outline of their window arguments as they shrink or grow. ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+14400 61906 M (Documentation =) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(MACWINDOW.TXT) S
+1200 /Times-Bold-Acnt F
+14400 59106 M (MOVE-WINDOWS) S
+1200 /Times-Roman-Acnt F
+( \234 MOVE-WINDOWS is a tool to help you re-arrange your ) S
+14400 57506 M (screen quickly. Once loaded, buttoning in the background will shift you into ) S
+14400 55906 M (window-moving mode. Buttoning again in the background will get you out of that ) S
+14400 54306 M (mode.   In window-moving mode, buttoning in a window with either the LEFT or ) S
+14400 52706 M (MIDDLE button will either reshape or move the window: if you button down near ) S
+14400 51106 M (a corner, the corner is moved; near a side, that side is moved; in the center, the ) S
+14400 49506 M (whole window is moved.  Buttoning in a window with the RIGHT button will call ) S
+14400 47906 M (the usually window menu \(DOWINDOWCOM\). This is the best way to close ) S
+14400 46306 M (windows, for example.  ) S
+1200 /Times-Italic-Acnt F
+(Documentation =) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(MOVE-WINDOWS.TEDIT) S
+1200 /Times-Bold-Acnt F
+14400 43506 M (SNAPSCROLL) S
+1000 /Times-Roman-Acnt F
+( \234  ) S
+1200 /Times-Roman-Acnt F
+(Loading SNAPSCROLL advises \(SNAPW\) so that snapshot ) S
+14400 41906 M (windows are henceforth shapeable and scrollable.  This enables the user to, for ) S
+14400 40306 M (example, snap a long list off the screen, and then reshape it to a reasonable size ) S
+14400 38706 M (and scan it at will.  ) S
+1200 /Times-Italic-Acnt F
+(Documentation =) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(SNAPSCROLL.TED) S
+1200 /Times-Bold-Acnt F
+14400 35906 M (TEDITKEY) S
+1000 /Times-Roman-Acnt F
+( \234  ) S
+1200 /Times-Roman-Acnt F
+(TEditKey is a package which provides a keyboard interface to ) S
+14400 34306 M (TEdit.   On a Dandelion, the interface takes advantage of the non-Alto keys.  On ) S
+14400 32706 M (Dorados and Dolphins, a window mimicking the Dlion function keys provides the ) S
+14400 31106 M (same abilities.  ) S
+1200 /Times-Italic-Acnt F
+(Documentation =) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(TEDITKEY.TEDIT) S
+1200 /Times-Bold-Acnt F
+14400 28306 M (TINYTIDY) S
+1000 /Times-Roman-Acnt F
+( \234  ) S
+1200 /Times-Roman-Acnt F
+(TINYTIDY takes the icons on your screen and lines them up along ) S
+14400 26706 M (the edge.  ) S
+1200 /Times-Italic-Acnt F
+(Documentation =) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(TINYTIDY.TEDIT) S
+1400 /Times-Bold-Acnt F
+10800 23757 M (Clocks) S
+1200 /Times-Bold-Acnt F
+14400 20906 M (CROCK) S
+1200 /Times-Roman-Acnt F
+( \234 Function for creating and manipulating an analog face clock. Menu ) S
+14400 19306 M (allows user to change style of clock.  Call: \(CROCK REGION\). ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(Documentation ) S
+14400 17706 M (=) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(CROCK.TEDIT) S
+1200 /Times-Bold-Acnt F
+14400 14906 M (LCROCK) S
+1200 /Times-Roman-Acnt F
+( \234 Puts a digital/analog clock in the unused area of the LOGOW.        ) S
+14400 13306 M (\(START.LCROCK <myLogo> <Position>\)  starts it up.  <myLogo>, if non-NIL, ) S
+14400 11706 M (will replace the "Interlisp-D"  logo; and <Position>, if non-NIL, will be the lower-) S
+14400 10106 M (left corner \(NIL  means to use the position of the existing logo window\).  The ) S
+grestore savepage restore showpage
+
+%%Page: 9 9
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (9) S
+7200 75600 M (LispCourse #22:  Overview of Lisp Packages; Using the Documentation) S
+14400 71106 M (glovalvar CROCKUPDATERATE.MS is the number of milliseconds between ) S
+14400 69506 M (automatic updates.   ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Documentation =) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(LCROCK.DOC) S
+grestore savepage restore showpage
+
+%%Page: 10 10
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 11 11
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (10) S
+7200 75600 M (LispCourse #22:  Overview of Lisp Packages; Using the Documentation) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+10800 70957 M (Games & Demos) S
+1200 /Times-Bold-Acnt F
+14400 68106 M (BLTDEMO) S
+1200 /Times-Roman-Acnt F
+( \234 Implements Smalltalk graphics demo in Interlisp.  Spinning star, ) S
+14400 66506 M (bouncing ring & box.  Call: \(BOUNCE X Y\) where X and Y are velocities ) S
+14400 64906 M (defaulting to 3.  Box shows whatever is near cursor. Interseting recursive effects ) S
+14400 63306 M (can be seen if you move the cursor near the box.   ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Documentation =) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+14400 61706 M (BLTDEMO.TXT) S
+1200 /Times-Bold-Acnt F
+14400 58906 M (FACEINVADER) S
+1200 /Times-Roman-Acnt F
+( \234 A game.  The object of the game is to shoot the bouncing ) S
+14400 57306 M ('face' before it overruns your base.  Call: \(FI INSTRUCTIONS?\).  ) S
+1200 /Times-Italic-Acnt F
+14400 55706 M (Documentation =) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(???) S
+1200 /Times-Bold-Acnt F
+14400 52906 M (JARGON) S
+1200 /Times-Roman-Acnt F
+( \234 N random broken definitions from the imfamous hacker's dictionary,  ) S
+14400 51306 M (snarfed from MIT-AI.  \(The globalvar JARGON.FILE.LOCATION points to the  ) S
+14400 49706 M (database file.\)  Starts up on load, or type \(JARGON.READ\)  ) S
+1200 /Times-Italic-Acnt F
+(Documentation =) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+14400 48106 M (???) S
+1200 /Times-Bold-Acnt F
+14400 45306 M (KAL) S
+1200 /Times-Roman-Acnt F
+( \234 Kaleidoscope demo.  Call: \(KAL\).  Control with middle button menu.  ) S
+1200 /Times-Italic-Acnt F
+14400 43706 M (Documentation) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(=) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(KAL.TED) S
+1200 /Times-Bold-Acnt F
+14400 40906 M (LIFE) S
+1200 /Times-Roman-Acnt F
+( \234 This Life program is a translation of the SmallTalk version in the book ) S
+14400 39306 M (Goldberg, Robson: The Language and its Implementation.  ) S
+1200 /Times-Italic-Acnt F
+(Documentation) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(=) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+14400 37706 M (LIFE.TXT) S
+1200 /Times-Bold-Acnt F
+14400 34906 M (LINEDEMO) S
+1200 /Times-Roman-Acnt F
+( \234 This package contains a couple of random demonstration programs ) S
+14400 33306 M (having to do with drawing random lines or polygons.) S
+1200 /Times-Bold-Acnt F
+(  ) S
+1200 /Times-Italic-Acnt F
+(Documentation) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(=) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+14400 31706 M (LINEDEMO.TED) S
+1200 /Times-Bold-Acnt F
+14400 28906 M (NQUEENS) S
+1200 /Times-Roman-Acnt F
+( \234 Solves N Queens problem.  How to place N queens on a chess board ) S
+14400 27306 M (so that they don't attack each other.  Graphics demo.  Call: \(NQUEENS N\).   ) S
+1200 /Times-Italic-Acnt F
+14400 25706 M (Documentation) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(=) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(???) S
+1200 /Times-Bold-Acnt F
+14400 22906 M (PACMAN) S
+1200 /Times-Roman-Acnt F
+( \234 Game.  Runs in b/w or color.  CALL: \(PACMAN\).   ) S
+1200 /Times-Italic-Acnt F
+(Documentation) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+14400 21306 M (=) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(???) S
+1200 /Times-Bold-Acnt F
+14400 18506 M (PEANO) S
+1200 /Times-Roman-Acnt F
+( \234 Peano curves graphics demo.  CALL: \(PEANODEMO LEVEL ) S
+14400 16906 M (SCALE\). ) S
+1200 /Times-Italic-Acnt F
+(Documentation) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(=) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(???) S
+1200 /Times-Bold-Acnt F
+14400 14106 M (PLAY) S
+1200 /Times-Roman-Acnt F
+( \234 Offers Interlisp-D users a disciplined way to play simple musical ) S
+14400 12506 M (melodies on Xerox 1108 machines.  \(PLAY.DEMO\) demos the PLAY package.  ) S
+14400 10906 M (Main functions: PLAY.NOTES, PLAY.MELODY, PLAY.KEYBOARD. ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+14400 9306 M (Documentation) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(=) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(PLAY.TTY) S
+grestore savepage restore showpage
+
+%%Page: 12 12
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (11) S
+7200 75600 M (LispCourse #22:  Overview of Lisp Packages; Using the Documentation) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 71106 M (QIX) S
+1200 /Times-Roman-Acnt F
+( \234 QIX is a small graphic demo modelled after the videogame of the same ) S
+14400 69506 M (name.) S
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+(  ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Documentation) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(=) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(QIX.TEDIT) S
+1200 /Times-Bold-Acnt F
+14400 66706 M (SOLITAIRE) S
+1200 /Times-Roman-Acnt F
+( \234 The card game Solitaire \(graphics demo\).  Call: \(SOLO\).  ) S
+1200 /Times-Italic-Acnt F
+14400 65106 M (Documentation) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(=) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(???) S
+1200 /Times-Bold-Acnt F
+14400 62306 M (TRAJECTORY-FOLLOWER) S
+1200 /Times-Roman-Acnt F
+( \234 Provides a function which causes a snake to ) S
+14400 60706 M (crawl along a trajectory.  Trajectory is specified by a set of KNOTS and a ) S
+14400 59106 M (CLOSED flag. ) S
+1200 /Times-Bold-Acnt F
+(  ) S
+1200 /Times-Italic-Acnt F
+(Documentation) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(=) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(TRAJECTORY-FOLLOWER.TTY) S
+1400 /Times-Bold-Acnt F
+10800 56157 M (DMT Equivalents \(i.e., run after machine has been idle for a bit\)) S
+1200 /Times-Bold-Acnt F
+14400 53306 M (BLACKOUT) S
+1200 /Times-Roman-Acnt F
+( \234 \(Blackout text interval\) makes a back window the size of the ) S
+14400 51706 M (screen and bounces a square around on it, like DMT, etc. Good for servers. Text ) S
+14400 50106 M (and interval default to "Type Key" and NIL \(= forever\) if not given. ) S
+1200 /Times-Bold-Acnt F
+(  ) S
+1200 /Times-Italic-Acnt F
+14400 48506 M (Documentation) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(=) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(BLACKOUT.TEDIT) S
+1200 /Times-Bold-Acnt F
+14400 45706 M (BOUNCE) S
+1200 /Times-Roman-Acnt F
+( \234 Is another dmt variant.  Blacks out the screen & draws patterns on it ) S
+14400 44106 M (until you hit a mouse button or type any character. Can be started 3 ways.   ) S
+1200 /Times-Italic-Acnt F
+14400 42506 M (Documentation) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(=) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(???) S
+1200 /Times-Bold-Acnt F
+14400 39706 M (FRACTAL) S
+1200 /Times-Roman-Acnt F
+( \234 An eyewash DMT program that draws fractals. ) S
+1200 /Times-Italic-Acnt F
+( Documentation) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(=) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+14400 38106 M (FRACTAL.TEDIT) S
+1400 /Times-Bold-Acnt F
+10800 35157 M (Alternative Page Hold Schemes) S
+1200 /Times-Bold-Acnt F
+14400 32306 M (NOWAITPRINT) S
+1200 /Times-Roman-Acnt F
+( \234 a function which will temporarily diddle a window's pagehold ) S
+14400 30706 M (characteristics so that a print-without-holding may be performed. ) S
+1200 /Times-Bold-Acnt F
+(  ) S
+1200 /Times-Italic-Acnt F
+(Documentation) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+14400 29106 M (=) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(NOWAITPRINT.TTY) S
+1200 /Times-Bold-Acnt F
+14400 26306 M (YAPFF) S
+1200 /Times-Roman-Acnt F
+( \234 is Yet Another Page Full Function. I actually don't like this one much ) S
+14400 24706 M (better than any of the others around, but its another point in the space of possible ) S
+14400 23106 M (actions on end-of-page.   ) S
+1200 /Times-Italic-Acnt F
+(Documentation) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(=) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(YAPFF.TEDIT) S
+1400 /Times-Bold-Acnt F
+7200 19557 M (Using the Interlisp-D Documentation) S
+1200 /Times-Bold-Acnt F
+10800 16506 M (The State of Interlisp-D w.r.t. Documentation) S
+1200 /Times-Roman-Acnt F
+14400 14306 M (Sad, sad, sad, sad.  ) S
+14400 11506 M (Interlisp-D documentation is:) S
+18000 9106 M (1.  ) S
+1200 /Times-Italic-Acnt F
+(Incomplete) S
+1200 /Times-Roman-Acnt F
+( \233 much of Interlisp is simply undocumented) S
+grestore savepage restore showpage
+
+%%Page: 13 13
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (12) S
+7200 75600 M (LispCourse #22:  Overview of Lisp Packages; Using the Documentation) S
+18000 71106 M (2.  ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Out of date) S
+1200 /Times-Roman-Acnt F
+( \233 last major manual revision was October, 1983) S
+18000 68306 M (3.  ) S
+1200 /Times-Italic-Acnt F
+(Dispersed) S
+1200 /Times-Roman-Acnt F
+( \233 documentation is spread across various binders, files, file ) S
+18000 66106 M (servers, etc.) S
+18000 62906 M (4.  ) S
+1200 /Times-Italic-Acnt F
+(For programmer's only) S
+1200 /Times-Roman-Acnt F
+( \233 There is almost no user level documentation ) S
+18000 60706 M (for the Interlisp-D environment;  its all oriented toward the programmer ) S
+18000 58506 M (and the system implementor.  Interlisp-D the language is not properly ) S
+18000 56306 M (distinguished from Interlisp-D the computer environment.) S
+1200 /Times-Italic-Acnt F
+14400 52706 M (Bottom line is that documentation is THE major flaw of Interlisp-D, especially for ) S
+14400 50906 M (the non-programming user of the Interlisp-D environment.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 47306 M (How to Use the Available Documentation) S
+1200 /Times-Roman-Acnt F
+14400 44906 M (Isolate the user information from among the programmer/implementor ) S
+14400 43106 M (information.) S
+14400 40306 M (How?  Beats me!!!!!!  ) S
+1200 /Times-Bold-Acnt F
+10800 36706 M (Documentation Sources) S
+1200 /Times-Roman-Acnt F
+14400 33906 M (General) S
+18000 31506 M (Interlisp Reference Manual) S
+21600 29706 M (\(October 1983 version, plus updates available on ) S
+21600 28106 M ({eris}<lispmanual>\)) S
+18000 25906 M (Release Notes \(Chorus, Fugue 1 to 6, Carol, Harmony, Intermezzo\)) S
+18000 23506 M (Documentation files for LispUsers and LispLibrary Packages) S
+14400 21106 M (Installation and use on a Dlion) S
+18000 18706 M (1108 Users Guide) S
+18000 16306 M (Mesa Users Guide \(Chapter 2, Getting Started & Chapter 35, Othello\)) S
+18000 13906 M ({eris}<lisp>harmony>doc>Hello.tedit \(PARC only\)) S
+18000 11506 M ({eris}<lisp>release>doc>GettingStarted.tedit \(PARC only\)) S
+18000 9106 M ({eris}<lisp>harmony>doc>LocalFile.TEDIT) S
+grestore savepage restore showpage
+
+%%Page: 14 14
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (13) S
+7200 75600 M (LispCourse #22:  Overview of Lisp Packages; Using the Documentation) S
+14400 71106 M (Installation and use on a Dolphin/Dorado) S
+18000 68706 M ({eris}<lisp>release>doc>GettingStarted.tedit \(PARC only\)) S
+18000 66306 M ({indigo}<altodocs>  \(PARC only\)) S
+14400 63906 M (Introductions \(?\)) S
+18000 61506 M (Friendly DLion primer from LRDC) S
+18000 59106 M (Sysdoc stuff?) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 55506 M (Overview of the relevant sections of the IRM \(October, 1983 version\)) S
+1200 /Times-Roman-Acnt F
+14400 52906 M (Sections 6.1, 18.16, & 18.17 \233 files from lisp's point of view) S
+14400 50306 M (Chapter 8 \233 the P.A. including the history list) S
+14400 47706 M (Chapter 9 \233 Error handling and Breaks) S
+14400 45106 M (Chapter 11 \233 the File package including INIT file maintenance) S
+14400 42506 M (Section 14.1 \233 Sysouts) S
+14400 39906 M (Section 14.2 \233 GREET and INIT files) S
+14400 37306 M (Section 14.3 \233 Directories) S
+14400 34706 M (Section 14.7 \233 GAINSPACE when arrays full) S
+14400 32106 M (Section 18.14 \233 the keyboard) S
+14400 29506 M (Section 18.18 \233 Hardcopies) S
+14400 26906 M (Section 18.20 \233 Processes and the PSW) S
+14400 24306 M (Section 19.20 \233 Windows) S
+14400 21706 M (Chapter 20 \233 DEdit, TEdit, CHAT, Break windows, EDITBM, TTYIN) S
+14400 18106 M (Basically, ignore the rest if you don't know how to program well.) S
+1200 /Times-Bold-Acnt F
+10800 15106 M (Release Notes) S
+1200 /Times-Roman-Acnt F
+14400 12706 M (Since the manual is constantly being made obsolete by new releases of the ) S
+14400 10906 M (system, you should learn to use the release notes.) S
+grestore savepage restore showpage
+
+%%Page: 15 15
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (14) S
+7200 75600 M (LispCourse #22:  Overview of Lisp Packages; Using the Documentation) S
+14400 71106 M (For each new release, study the release notes carefully trying to remember the ) S
+14400 69306 M (things that have changed;  just have to wade through looking for things that make ) S
+14400 67506 M (sense from user's point of view.  The index at front is a rough guide.) S
+14400 64706 M (It is often best to consult the release notes before going to the IRM, since much of ) S
+14400 62906 M (the information contained in the IRM will be out-of-date compared to the Release ) S
+14400 61106 M (Notes. ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 58306 M (Online help - the APROPOS function) S
+1200 /Times-Roman-Acnt F
+14400 55306 M (In general, there is no online help facilty in Interlisp-D.) S
+14400 52306 M (There is one handy function, however, called APROPOS.  APROPOS takes a ) S
+14400 50506 M (single argument which is an aribitrary literal atom.  \(APROPOS LitAtom\) will ) S
+14400 48706 M (search through your virtual memory, looking for all atoms whose name contains ) S
+14400 46906 M (the atom LitAtom.  \(APROPOS 'FLG\) prints the names, values, and function ) S
+14400 45106 M (definitions for all atoms in the current virtual memory that have FLG in their ) S
+14400 43306 M (name.  \(APROPOS 'FONT\) prints the names, values, and function arguments for ) S
+14400 41506 M (all atoms in the current virtual memory that have FONT in their name.) S
+14400 38506 M (Example, find the name of the variable that tells the name of the release \(e.g., ) S
+14400 36706 M (Harmony or Intermezzo\) being used:) S
+/Courier /Courier-Acnt encodefont
+1000 /Courier-Acnt F
+18000 34149 M (96_\(APROPOS \(QUOTE RELEASE]) S
+/Courier-Oblique /Courier-Oblique-Acnt encodefont
+1000 /Courier-Oblique-Acnt F
+18000 32549 M (RELEASE.MONITORLOCK ) S
+18000 31549 M (                - Function arglist: \(LOCK EVENIFNOTMINE\)) S
+18000 30549 M (RELEASE.PUP     - Function arglist: \(EPKT\)) S
+18000 29549 M (RELEASERESOURCE ) S
+18000 28549 M (                - Property list: \(MACRO \(ARGS \(& &\) \(SUBPAIR ) S
+18000 27549 M (& ) S
+18000 26549 M (ARGS --\)\)\)) S
+18000 25549 M (RELEASEBREAKWINDOW ) S
+18000 24549 M (                - Function arglist: \(BRKDS PREVIOUSDS\)) S
+18000 23549 M (RELEASE.XIP     - Function arglist: \(EPKT\)) S
+18000 22549 M (NIL) S
+1000 /Courier-Acnt F
+18000 21549 M (97_\(APROPOS 'NAME]) S
+1000 /Courier-Oblique-Acnt F
+18000 20549 M (FILENAME        - Function arglist: \(NAME\)) S
+18000 19549 M (FILENAMEFIELD   - Function arglist: \(FILE FIELDNAME\)) S
+18000 18549 M (PACKFILENAME    - Function arglist: U) S
+18000 17549 M (NAMEFIELD       - Function arglist: \(FILE SUFFIXFLG DIRFLG\)) S
+18000 16549 M (FULLNAME        - Function arglist: \(X RECOG\)) S
+18000 15549 M (DIRECTORYNAME   - Function arglist: \(DIRNAME STRPTR CREATE?\)) S
+18000 14549 M (PACKFILENAME.STRING ) S
+18000 13549 M (                - Function arglist: U) S
+18000 12549 M (HOSTNAME        - Function arglist: U) S
+18000 11549 M (                - Variable value: NIL) S
+18000 10549 M (DIRECTORYNAMEP  - Function arglist: \(DIRNAME HOSTNAME\)) S
+18000 9549 M (HOSTNAMEP       - Function arglist: \(NAME\)) S
+18000 8549 M (TYPENAME        - Function arglist: \(DATUM\)) S
+grestore savepage restore showpage
+
+%%Page: 16 16
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (15) S
+7200 75600 M (LispCourse #22:  Overview of Lisp Packages; Using the Documentation) S
+/Courier-Oblique /Courier-Oblique-Acnt encodefont
+1000 /Courier-Oblique-Acnt F
+18000 71349 M (STKNTHNAME      - Function arglist: \(N POS\)) S
+18000 70349 M (STKNAME         - Function arglist: \(POS\)) S
+18000 69349 M (SETSTKNAME      - Function arglist: \(POS NAME\)) S
+18000 68349 M (STKARGNAME      - Function arglist: \(N POS\)) S
+18000 67349 M (SETSTKARGNAME   - Function arglist: \(N POS NAME\)) S
+18000 66349 M (COMPILEDTYPENAMEP ) S
+18000 65349 M (                - Function arglist: \(X\)) S
+18000 64349 M (RENAMEFILE      - Function arglist: \(OLDFILE NEWFILE\)) S
+18000 63349 M (UNPACKFILENAME  - Function arglist: \(FILE ONEFIELDFLG DIRFLG ) S
+18000 62349 M (STRING\)) S
+18000 61349 M (UNPACKFILENAME.STRING ) S
+18000 60349 M (                - Function arglist: \(FILE ONEFIELDFLG ) S
+18000 59349 M (DIRFLG\)) S
+18000 58349 M (USERNAME        - Function arglist: \(FLG STRPTR ) S
+18000 57349 M (PRESERVECASE\)) S
+18000 56349 M (                - Variable value: HALASZ) S
+18000 55349 M (SETUSERNAME     - Function arglist: \(NAME\)) S
+18000 54349 M (ALTOFILENAME    - Function arglist: \(X\)) S
+18000 53349 M (TYPENAMEP       - Function arglist: \(DATUM TYPE\)) S
+18000 52349 M (                - Property list: \(DMACRO \(X ) S
+18000 51349 M (\(COMPILEDTYPENAMEP X) S
+18000 50349 M (\)\)\)) S
+18000 49349 M (CHANGENAME1     - Function arglist: \(DEF X Y\)) S
+18000 48349 M (CHANGENAME1A    - Function arglist: \(DEF OLD NEW MAP\)) S
+18000 47349 M (PROPNAMES       - Function arglist: \(ATM\)) S
+18000 46349 M (ROOTFILENAME    - Function arglist: \(NAME COMPFLG\)) S
+18000 45349 M (PROCESS.NAME    - Function arglist: \(PROC NAME\)) S
+18000 44349 M (ETHERHOSTNAME   - Function arglist: \(PORT USE.OCTAL.DEFAULT\)) S
+18000 43349 M (CANONICAL.HOSTNAME ) S
+18000 42349 M (                - Function arglist: \(HOSTNAME\)) S
+18000 41349 M (GREETFILENAME   - Function arglist: \(USER\)) S
+18000 40349 M (CHANGENAME      - Function arglist: \(FN FROM TO\)) S
+18000 39349 M (FSTKNAME        - Function arglist: \(POS\)) S
+18000 38349 M (FIRSTNAME       - Variable value: FRANK) S
+18000 37349 M (FONTNAME        - Function arglist: \(NAME\)) S
+18000 36349 M (                - Variable value: PARC) S
+18000 35349 M (DIRFILENAME     - Function arglist: \(FILEGROUP\)) S
+18000 34349 M (DIRPRINTNAME    - Function arglist: \(FILEGROUP FLG\)) S
+18000 33349 M (UPPERCASEFILENAMES ) S
+18000 32349 M (                - Variable value: T) S
+18000 31349 M (RESTORENAMES    - Function arglist: \(FN\)) S
+18000 30349 M (MSHASHFILENAME  - Variable value: NIL) S
+18000 29349 M (DEFAULTRENAMEMETHOD ) S
+18000 28349 M (                - Variable value: NIL) S
+18000 27349 M (RECORDFIELDNAMES ) S
+18000 26349 M (                - Function arglist: \(RECORDNAME FLG\)) S
+18000 25349 M (RENAME          - Function arglist: \(OLD NEW TYPES FILES ) S
+18000 24349 M (METHOD\)) S
+18000 23349 M (RESOURCENAME    - Property list: \(CLISPWORD \(FORWORD . ) S
+18000 22349 M (resourceName\)\)) S
+18000 21349 M (COMP.NAMEDLET   - Function arglist: \(ARGS\)) S
+18000 20349 M (NAMEDLET        - Property list: \(DMACRO COMP.NAMEDLET\)) S
+18000 19349 M (MSWORDNAME      - Function arglist: \(X\)) S
+18000 18349 M (MOUSESTATE-NAME ) S
+18000 17349 M (                - Function arglist: \(KEYNAME MOUSEONLYFLG\)) S
+18000 16349 M (NONSYSPROPNAMES ) S
+18000 15349 M (                - Function arglist: \(ATM\)) S
+18000 14349 M (INSPECTABLEFIELDNAMES ) S
+18000 13349 M (                - Function arglist: \(DECL TOPONLYFLG\)) S
+18000 12349 M (NAMEOFEDITW     - Function arglist: \(NAME TYPE\)) S
+18000 11349 M (PARSE.NSNAME    - Function arglist: \(NAME #PARTS ) S
+18000 10349 M (DEFAULTDOMAIN\)) S
+18000 9349 M (NSNAMETYPE#     - Variable value: 89) S
+18000 8349 M (                - Property list: \(GLOBALVAR T\)) S
+grestore savepage restore showpage
+
+%%Page: 17 17
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (16) S
+7200 75600 M (LispCourse #22:  Overview of Lisp Packages; Using the Documentation) S
+/Courier-Oblique /Courier-Oblique-Acnt encodefont
+1000 /Courier-Oblique-Acnt F
+18000 71349 M (JOBNAME         - Variable value: {LPT}LISPPRINT:PARC.;1) S
+18000 70349 M (NSNAME          - Property list: \(COURIERDEF \() S
+18000 69349 M (COURIER.READ.NSNAME COURIER.WRITE.NSNAME ) S
+18000 68349 M (COURIER.NSNAME.LENGTH\)\)) S
+18000 67349 M (NSNAME.TO.STRING ) S
+18000 66349 M (                - Function arglist: \(NSNAME FULLNAMEFLG\)) S
+18000 65349 M (COURIER.READ.NSNAME ) S
+18000 64349 M (                - Function arglist: \(STREAM PROGRAM TYPE\)) S
+18000 63349 M (COURIER.WRITE.NSNAME ) S
+18000 62349 M (                - Function arglist: \(STREAM NAME PROGRAM ) S
+18000 61349 M (TYPE\)) S
+18000 60349 M (COURIER.NSNAME.LENGTH ) S
+18000 59349 M (                - Function arglist: \(NSNAME PROGRAM TYPE\)) S
+18000 58349 M (NSNAME2         - Property list: \(COURIERDEF \() S
+18000 57349 M (COURIER.READ.NSNAME COURIER.WRITE.NSNAME\)\)) S
+18000 56349 M (NS.SERVER.NAMES.TO.ADDRESSES ) S
+18000 55349 M (                - Variable value: NIL) S
+18000 54349 M (EQUAL.CH.NAMES  - Function arglist: \(NAME1 NAME2\)) S
+18000 53349 M (CH.NAME.TO.STRING ) S
+18000 52349 M (                - Function arglist: \(NSNAME FULLNAMEFLG\)) S
+18000 51349 M (CANONICAL.CH.NAME ) S
+18000 50349 M (                - Function arglist: \(NAME\)) S
+18000 49349 M (CH.CANONICAL.NAME ) S
+18000 48349 M (                - Function arglist: \(NAME\)) S
+18000 47349 M (FONTNAME.IP     - Function arglist: \(FONTDESC\)) S
+18000 46349 M (FLOPPY.NAME     - Function arglist: \(NAME\)) S
+18000 45349 M (FLOPPY.SET.NAME ) S
+18000 44349 M (                - Function arglist: \(NAME\)) S
+18000 43349 M (FLOPPY.GET.NAME ) S
+18000 42349 M (                - Function arglist: NIL) S
+/Courier-BoldOblique /Courier-BoldOblique-Acnt encodefont
+1200 /Courier-BoldOblique-Acnt F
+18000 41219 M (MAKESYSNAME     - Variable value: INTERMEZZO) S
+1000 /Courier-Oblique-Acnt F
+18000 40149 M (MBUTTON.CHANGENAME ) S
+18000 39149 M (                - Function arglist: \(TEXTOBJ OBJ NEWNAME\)) S
+18000 38149 M (GV.PORTFROMNAME ) S
+18000 37149 M (                - Function arglist: \(SERVERNAME\)) S
+18000 36149 M (FULLUSERNAME    - Function arglist: \(UNPACKEDFLG\)) S
+18000 35149 M (GV.NEWNAME      - Function arglist: \(NAME GV.NEWNAME ) S
+18000 34149 M (IDENTIFYUSER PASSWORD\)) S
+18000 33149 M (GVNAMETYPE      - Variable value: 1) S
+18000 32149 M (REGROOTNLSNAME  - Variable value: "GrapevineRServer") S
+18000 31149 M (LA.SHORTFILENAME ) S
+18000 30149 M (                - Function arglist: \(FILE EXT ) S
+18000 29149 M (KEEPVERSIONFLG\)) S
+18000 28149 M (DEFAULTMAILFOLDERNAME ) S
+18000 27149 M (                - Variable value: {DSK2}ACTIVE.MAIL) S
+18000 26149 M (LA.LONGFILENAME ) S
+18000 25149 M (                - Function arglist: \(FILENAME EXT\)) S
+18000 23149 M (PROFILEFILENAME ) S
+18000 22149 M (                - Function arglist: NIL) S
+18000 21149 M (TOCFILENAME     - Function arglist: \(MAILFILE\)) S
+18000 20149 M (PROMPTFORFILENAME ) S
+18000 19149 M (                - Function arglist: \(WINDOW DEFAULT PROMPT\)) S
+18000 18149 M (LAFITEPROFILE.NAME ) S
+18000 17149 M (                - Variable value: LAFITE) S
+18000 16149 M (LAFITETEMPFILEHOSTNAME ) S
+18000 15149 M (                - Variable value: CORE) S
+18000 14149 M (LAFITE.READ.NAME.FIELD ) S
+18000 13149 M (                - Function arglist: \(STREAM ARGS\)) S
+18000 12149 M (FB.FETCHFILENAME ) S
+18000 11149 M (                - Function arglist: \(ENTRY\)) S
+18000 10149 M (FB.RENAMECOMMAND ) S
+18000 9149 M (                - Function arglist: \(PREFIX FILEENTRY ) S
+18000 8149 M (WINDOW\)) S
+grestore savepage restore showpage
+
+%%Page: 18 18
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (17) S
+7200 75600 M (LispCourse #22:  Overview of Lisp Packages; Using the Documentation) S
+/Courier-Oblique /Courier-Oblique-Acnt encodefont
+1000 /Courier-Oblique-Acnt F
+18000 71349 M (FB.STARTOFNAME  - Function arglist: \(FILENAME SPEC\)) S
+18000 70349 M (VTYPENAME       - Function arglist: \(DATUM\)) S
+18000 69349 M (DISPLAY/NAME    - Function arglist: \(ND\)) S
+18000 68349 M (                - Property list: \(CODE {CCODEP}#65,43610\)) S
+18000 67349 M (FONTNAMELIST    - Function arglist: \(FONTDESC\)) S
+18000 66349 M (                - Property list: \(CODE {CCODEP}#65,43524\)) S
+18000 65349 M (AR.USERNAME     - Function arglist: NIL) S
+18000 64349 M (AR.GET.FILENAME ) S
+18000 63349 M (                - Function arglist: \(NUM PUTFLG\)) S
+18000 62349 M (AR.SUBMIT.NUM.FILE.NAME ) S
+18000 61349 M (                - Variable value: ) S
+18000 60349 M ({PHYLUM}<LISPARS>LISPARS.NUM) S
+18000 59349 M (AR.FILENAME     - Function arglist: \(ARN\)) S
+18000 58349 M (AR.SUBMIT.FILE.NAME ) S
+18000 57349 M (                - Variable value: ) S
+18000 56349 M ({PHYLUM}<LISPARS>LISPARS.SUBMIT) S
+18000 55349 M (AR.INFO.FILE.NAME ) S
+18000 54349 M (                - Variable value: ) S
+18000 53349 M ({PHYLUM}<LISPARS>LISPARS.TDS) S
+18000 52349 M (AR.INDEX.DEFAULT.FILE.NAME ) S
+18000 51349 M (                - Variable value: {PHYLUM}<LISPARS>AR.INDEX) S
+18000 50349 M (HASHFILENAME    - Function arglist: \(HASHFILE\)) S
+18000 49349 M (SKETCH.ELEMENT.TYPE.NAMES ) S
+18000 48349 M (                - Variable value: \(MAP SKIMAGEOBJ GROUP ) S
+18000 47349 M (TEXTBOX ) S
+18000 46349 M (BOX --\)) S
+18000 45349 M (SKETCH.ELEMENT.NAMEP ) S
+18000 44349 M (                - Function arglist: \(X\)) S
+18000 43349 M (SK.UNDO.NAME    - Function arglist: \(HISTEVENT\)) S
+18000 42349 M (SK.GET.HARDCOPY.FILENAME ) S
+18000 41349 M (                - Function arglist: \(SKW\)) S
+1200 /Times-Roman-Acnt F
+14400 38706 M (APROPOS can be very handy to go wandering around the system looking for a ) S
+14400 36906 M (partially remembered variable or function name or for discovering what variables ) S
+14400 35106 M (effect, e.g., FONTS.) S
+14400 32306 M (Note the success of APROPOS at these tasks depends on the variables and ) S
+14400 30506 M (functions be named in a sensible manner.  A font-related variable named SIXTH-) S
+14400 28706 M (BASE would never be found by the \(APROPOS 'FONT\) function call.  Such is ) S
+14400 26906 M (not always the case in Interlisp-D.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 23157 M (Homework) S
+1200 /Times-Roman-Acnt F
+10800 20306 M (Start reviewing the Lisp programming covered in the first six or so sessions.) S
+grestore savepage restore showpage
+
+%%Trailer

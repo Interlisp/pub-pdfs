@@ -1,0 +1,2511 @@
+%!PS-Adobe-2.0%%Title: {DSK}<home>larry>lispcourse>OUTLINE13.PS%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate:  7-Nov-2023 21:40:01%%EndComments/bdef {bind def} bind def
+/ldef {load def} bdef
+/S /show ldef
+/M /moveto ldef
+/DR {transform round exch round exch itransform} bdef
+/L {gsave newpath setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/L1 {gsave newpath 0 setdash setgray setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/F {findfont exch scalefont setfont} bdef
+/CLP {newpath M dup 0 rlineto exch 0 exch rlineto
+  neg 0 rlineto closepath clip newpath} bdef
+/R {gsave setgray newpath M dup 0 rlineto exch 0 exch
+  rlineto neg 0 rlineto closepath eofill grestore} bdef
+/ellipsedict 9 dict def
+ellipsedict /mtrx matrix put
+/ellipse
+ { ellipsedict begin
+  /endangle exch def
+  /startangle exch def
+  /orientation exch def
+  /minorrad exch def
+  /majorrad exch def
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  orientation rotate
+  majorrad minorrad scale
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+ end } bdef
+/concatprocs
+ {/proc2 exch cvlit def
+  /proc1 exch cvlit def
+  /newproc proc1 length proc2 length add array def
+  newproc 0 proc1 putinterval
+  newproc proc1 length proc2 putinterval
+  newproc cvx
+ } bdef
+/resmatrix matrix def
+/findresolution
+ {72 0 resmatrix defaultmatrix dtransform
+  /yres exch def /xres exch def
+  xres dup mul yres dup mul add sqrt
+ } bdef
+/thebitimage
+ {/maskp exch def
+  /bihgt exch def
+  /biwid exch def
+  /byte 1 string def
+  /strbufl biwid 8 div ceiling cvi def
+  /strbuf strbufl string def
+  maskp not{{1 exch sub} currenttransfer concatprocs settransfer} if
+  biwid bihgt
+  maskp { true } { 1 } ifelse
+  [biwid 0 0 bihgt 0 0]
+  {/col 0 def
+   {currentfile byte readhexstring pop 0 get
+    dup 16#B2 eq {pop
+    currentfile byte readhexstring pop 0 get 1 add
+    currentfile byte readhexstring pop pop /nbyte byte 0 get def
+    { strbuf col nbyte put /col col 1 add def} repeat}
+   {dup 16#B3 eq {pop /col col
+    currentfile byte readhexstring pop
+    0 get add 1 add def}
+    {16#B4 eq {currentfile byte readhexstring pop pop} if
+     strbuf col byte 0 get put /col col 1 add def} ifelse
+   } ifelse
+   col strbufl ge { exit } if } loop
+   strbuf }
+  maskp { imagemask } { image } ifelse
+ } bdef
+/setuserscreendict 22 dict def
+setuserscreendict begin
+ /tempctm matrix def
+ /temprot matrix def
+ /tempscale matrix def
+end
+/setuserscreen
+ {setuserscreendict begin
+   /spotfunction exch def
+   /screenangle exch def
+   /cellsize exch def
+   /m tempctm currentmatrix def
+   /rm screenangle temprot rotate def
+   /sm cellsize dup tempscale scale def
+   sm rm m m concatmatrix m concatmatrix pop
+   1 0 m dtransform /y1 exch def /x1 exch def
+   /veclength x1 dup mul y1 dup mul add sqrt def
+   /frequency findresolution veclength div def
+   /newscreenangle y1 x1 atan def
+   m 2 get m 1 get mul m 0 get m 3 get mul sub
+   0 gt { { neg } /spotfunction load concatprocs
+          /spotfunction exch def } if
+   frequency newscreenangle /spotfunction load setscreen
+  end
+ } bdef
+/setpatterndict 18 dict def
+setpatterndict begin
+ /bitison
+  {/ybit exch def /xbit exch def
+   /bytevalue bstring ybit bwidth mul xbit 8 idiv add get def
+   /mask 1 7 xbit 8 mod sub bitshift def
+   bytevalue mask and 0 ne
+  } bdef
+end
+/bitpatternspotfunction
+ {setpatterndict begin
+   /y exch def /x exch def
+   /xindex x 1 add 2 div bpside mul 1 sub cvi def
+   /yindex y 1 add 2 div bpside mul 1 sub cvi def
+   xindex yindex bitison
+    {/onbits onbits 1 add def 1}
+    {/offbits offbits 1 add def 0} ifelse
+  end
+ } bdef
+/setpattern
+ {setpatterndict begin
+   /cellsz exch def
+   /angle exch def
+   /bwidth exch def
+   /bpside exch def
+   /bstring exch def
+   /onbits 0 def /offbits 0 def
+   cellsz angle /bitpatternspotfunction load setuserscreen
+   {} settransfer
+   offbits offbits onbits add div setgray
+  end
+ } bdef
+% - - - - - Fraction-setting code, to support NS fonts better - - - - -
+/fractiondict 20 dict def
+/fractionshow 
+{ fractiondict begin
+/denom exch def 
+/num exch def 
+/regfont currentfont def
+/fractfont currentfont [.65 0 0 .6 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(1) true charpath flattenpath pathbbox 
+/height exch def pop pop pop
+ grestore
+0 .4 height mul rmoveto
+fractfont setfont num show
+0 .4 height mul neg rmoveto regfont setfont (\244) show
+fractfont setfont denom show regfont setfont end } bdef
+/f14 { (1) (4) fractionshow } bdef
+/f12 { (1) (2) fractionshow } bdef
+/f34 { (3) (4) fractionshow } bdef
+/f18 { (1) (8) fractionshow } bdef
+/f38 { (3) (8) fractionshow } bdef
+/f58 { (5) (8) fractionshow } bdef
+/f78 { (7) (8) fractionshow } bdef
+/f13 { (1) (3) fractionshow } bdef
+/f23 { (2) (3) fractionshow } bdef
+/bboxdict 20 dict def
+/bboxchk { bboxdict begin
+/regfont currentfont def
+/chkfont currentfont [1.25 0 0 1.25 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(\161) true charpath flattenpath pathbbox 
+/height exch def pop pop pop 
+ grestore 
+ currentpoint 
+ .2 height mul .3 height mul rmoveto
+chkfont setfont (\063) show
+ moveto
+ regfont setfont
+(\161) show end } bdef
+/rencdict 15 dict def
+/encodefont { rencdict begin
+/newname exch def
+/oldfont exch def
+/newcodes [
+8#001 /Aacute
+8#002 /Acircumflex
+8#003 /Adieresis
+8#004 /Agrave
+8#005 /Aring
+8#006 /Atilde
+8#007 /Ccedilla
+8#010 /Eacute
+8#011 /Ecircumflex
+8#012 /Edieresis
+8#013 /Egrave
+8#014 /Iacute
+8#015 /Icircumflex
+8#016 /Idieresis
+8#017 /Igrave
+8#020 /Ntilde
+8#021 /Oacute
+8#022 /Ocircumflex
+8#023 /Odieresis
+8#024 /Ograve
+8#025 /Otilde
+8#026 /Scaron
+8#027 /Uacute
+8#030 /Ucircumflex
+8#031 /Udieresis
+8#032 /Ugrave
+8#033 /Ydieresis
+8#034 /Zcaron
+8#177 /periodinferior
+8#201 /aacute
+8#202 /acircumflex
+8#203 /adieresis
+8#204 /agrave
+8#205 /aring
+8#206 /atilde
+8#207 /ccedilla
+8#210 /eacute
+8#211 /ecircumflex
+8#212 /edieresis
+8#213 /egrave
+8#214 /iacute
+8#215 /icircumflex
+8#216 /idieresis
+8#217 /igrave
+8#220 /ntilde
+8#221 /oacute
+8#222 /ocircumflex
+8#223 /odieresis
+8#224 /ograve
+8#225 /otilde
+8#226 /scaron
+8#227 /uacute
+8#230 /ucircumflex
+8#231 /udieresis
+8#232 /ugrave
+8#233 /ydieresis
+8#234 /zcaron
+8#235 /Eth
+8#236 /eth
+8#237 /Thorn
+8#240 /thorn
+ ] def
+/olddict oldfont findfont def /newfont olddict maxlength dict def
+olddict { exch dup /FID ne { dup /Encoding eq
+{ exch dup length array copy newfont 3 1 roll put }
+{ exch newfont 3 1 roll put } ifelse }
+ { pop pop } ifelse } forall
+newfont /FontName newname put
+newcodes aload pop
+newcodes length 2 idiv { newfont /Encoding get 3 1 roll put } repeat 
+newname newfont definefont pop end } def
+ /accentdict 10 dict def 
+ /accentor { accentdict begin /scaler exch def /delta exch def 
+/unders exch def /accents exch def /mainch exch def /scrt (X) def
+ /w1 mainch stringwidth pop def 
+ currentpoint mainch show currentpoint 4 2 roll 
+accents { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         w1 w2 sub 2 div delta rmoveto scrt show 
+         /delta delta 150 scaler mul 9 div add def
+        } forall 
+unders { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         ch 46 eq { w1 w2 sub 2 div -175 scaler mul 9 div rmoveto scrt show 0 175 rmoveto }
+           { w1 w2 sub 2 div 0 rmoveto scrt show } ifelse 
+        } forall 
+ pop pop moveto end } def 
+%%EndProlog
+%%BeginSetup
+letter/imagesizefactor 1 def%%EndSetup/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+
+%%Page: 1 1
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+54000 75600 M (F.G.H.          ) S
+54000 73800 M (3/14/85) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (LispCourse #13:  Error Handling and the Break Package) S
+7200 67157 M (Background Concept:  The Stack) S
+1200 /Times-Roman-Acnt F
+10800 64106 M (Consider the following set of functions:) S
+14400 61106 M (\(DEFINEQ) S
+18000 58906 M (\(LoadMany \(LAMBDA \(LoadList\)) S
+21600 56906 M (\(COND) S
+25200 54906 M (\(LoadList) S
+28800 52906 M (\(LoadOne \(CAR LoadList\)\)) S
+28800 50906 M (\(LoadMany \(CDR LoadList\)\)\)\)\)\)) S
+18000 48506 M (\(LoadOne \(LAMBDA \(File\)) S
+21600 46506 M (\(LOAD File 'PROP\)\)\)\)) S
+10800 43706 M (Trace the following function call down to the first call to LOAD:  \(LoadMany '\(FOO ) S
+10800 42106 M (BAR\)\)) S
+/Helvetica /Helvetica-Acnt encodefont
+1200 /Helvetica-Acnt F
+16800 37330.0 M (LoadMany:  LoadList _ \(FOO BAR\)) S
+1200 /Helvetica-Acnt F
+19200 33530.0 M (LoadOne:  File _ FOO) S
+1200 /Helvetica-Acnt F
+22400 31130.0 M (LOAD:  FILE  _ FOO   LDFLG _ PROP) S
+2499 199 21501 30301 0 R
+2499 199 48601 30301 0 R
+199 26899 21701 32601 0 R
+199 26899 21701 30301 0 R
+7299 199 17501 28701 0 R
+7299 199 51001 28701 0 R
+199 33299 17701 35801 0 R
+199 33299 17701 28701 0 R
+19299 199 15101 20701 0 R
+19299 199 52601 20701 0 R
+199 37299 15301 39801 0 R
+199 37299 15301 20701 0 R
+1200 /Times-Roman-Acnt F
+10800 17806 M (When the Lisp evaluator starts to process the call to LOAD, it is keeping track of three ) S
+10800 16206 M (function calls:  the call to LoadMany, the call to LoadOne, and the call to LOAD.) S
+10800 13606 M (The Lisp evaluator needs to keep track of lots of information about these three function ) S
+10800 12006 M (calls.  For example for each function call the evaluator must record the exact function ) S
+10800 10406 M (called, the values of the arguments in the function call, where in the function body it ) S
+10800 8806 M (currently is, and so on.) S
+grestore savepage restore showpage
+
+%%Page: 2 2
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (2) S
+7200 75600 M (LispCourse #13:  Error Handling and the Break Package) S
+10800 71106 M (Lisp keeps this kind of information in a data structure called ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(the stack) S
+1200 /Times-Roman-Acnt F
+(.) S
+10800 68506 M (The stack consists a set of stack frames.  Each stack frame contains the information about ) S
+10800 66906 M (one function call.  The stack frames are ordered from most recent at the top of the stack ) S
+10800 65306 M (to oldest at the bottom of the stack.) S
+10800 62706 M (When a new function call is made, a new frame is added to the top of the stack.  When a ) S
+10800 61106 M (function call completes, its frame is removed from the top of the stack.  Thus the stack ) S
+10800 59506 M (grows and shrinks as function calls are made and then completed.) S
+14400 56306 M (For example, at the start of the LOAD function call the Lisp stack would look ) S
+14400 54706 M (something like:) S
+18000 52306 M (LOAD: ) S
+21600 50306 M (FILE _ FOO) S
+21600 48306 M (LDFLG _ PROP) S
+18000 46306 M (LoadOne: ) S
+21600 44306 M (File _ FOO) S
+18000 42306 M (LoadMany:) S
+21600 40306 M (LoadList _ \(FOO BAR\)) S
+14400 37106 M (After FOO is loaded and LoadOne completes, the Lisp stack would be:) S
+18000 34706 M (LoadMany:) S
+21600 32706 M (LoadList _ \(FOO BAR\)) S
+14400 29506 M (LoadMany then recurses to load BAR, so at the point that LOAD is called again ) S
+14400 27906 M (the stack would be:) S
+18000 25506 M (LOAD: ) S
+21600 23506 M (FILE _ BAR) S
+21600 21506 M (LDFLG _ PROP) S
+18000 19506 M (LoadOne: ) S
+21600 17506 M (File _ BAR) S
+18000 15506 M (LoadMany:) S
+21600 13506 M (LoadList _ \(BAR\)) S
+18000 11506 M (LoadMany:) S
+21600 9506 M (LoadList _ \(FOO BAR\)) S
+grestore savepage restore showpage
+
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (3) S
+7200 75600 M (LispCourse #13:  Error Handling and the Break Package) S
+10800 71106 M (Note that at each point, the stack contains an ordered list of the function calls that are in ) S
+10800 69506 M (progress.  Each function call on the stack is waiting for function call just above it to ) S
+10800 67906 M (complete and return a value.  The top of the stack contains information about the function ) S
+10800 66306 M (call currently being processed.) S
+10800 63706 M (In short, at any given time the stack contains a record of the current state of a ) S
+10800 62106 M (computation in progress.  ) S
+10800 59506 M (When an error occurs, the stack contains valuable information about the state the ) S
+10800 57906 M (computation was in when the error occured.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 54357 M (Errors:  Break or Abort?) S
+1200 /Times-Roman-Acnt F
+10800 51306 M (When the Lisp evaluator encounters an error that DWIM/CLISP cannot "correct", it does ) S
+10800 49506 M (one of two things:) S
+14400 47106 M (1\)  it ) S
+1200 /Times-Bold-Acnt F
+(aborts ) S
+1200 /Times-Roman-Acnt F
+(the computation in progress.  Unless the aborted program specifies ) S
+14400 45306 M (otherwise, control returns to the Lisp exec.  \(Programs can be written so that they ) S
+14400 43506 M ("handle" the abort by "fixing' or ignoring the error.\)) S
+1200 /Times-Roman-Acnt F
+14400 41106 M (2\)  it suspends the computation in progress and enters a ) S
+1200 /Times-Bold-Acnt F
+(break. ) S
+1200 /Times-Roman-Acnt F
+( From the break, ) S
+14400 39306 M (the user can "fix" the error and resume \(or abort\) the computation. ) S
+10800 36306 M (The decision whether to Abort or Break is based on the heuristic that complex ) S
+10800 34506 M (computations should be broken while simple computations should be aborted.  This ) S
+10800 32706 M (heuristic rests on the assumption that simple computations are easier redone rather than ) S
+10800 30906 M (fixed and resumed.) S
+10800 27906 M ("Complex" in this case is based on two factors, "depth" of the computation and time ) S
+10800 26106 M (spent so far in the computation.) S
+14400 23706 M ( Depth is basically the number of number of function calls on the stack when the ) S
+14400 21906 M (error occurs.  If this number passes a given threshold \(i.e., the value of ) S
+14400 20106 M (HELPDEPTH\), the computation will be broken.) S
+14400 17706 M (Time is measured by how long the computation has been in progress.  If this time ) S
+14400 15906 M (passes a given threshold \(i.e., the value of HELPTIME\), then the computation ) S
+14400 14106 M (will be broken.) S
+14400 11706 M (If neither the depth nor the time passes threshold, then the computation will be ) S
+14400 9906 M (aborted.) S
+grestore savepage restore showpage
+
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (4) S
+7200 75600 M (LispCourse #13:  Error Handling and the Break Package) S
+10800 71106 M (Some programs choose to handle their own aborts using the error processing machinery ) S
+10800 69306 M (provided by Interlisp.  The computation of "complexity" for these programs is slightly ) S
+10800 67506 M (different.  The effect is that breaks are less likely to occur and aborts are more likely to ) S
+10800 65706 M (occur.  When the abort does occur it is up to the program to decide what to do.) S
+14400 63306 M (When an error causes an abort, the program can try to "fix" the error or decide to ) S
+14400 61506 M (ignore it.  If it does either of these, the computation will proceed as if no error had ) S
+14400 59706 M (occurred \(though the program will probably print out some sort of error message ) S
+14400 57906 M (to let you know that the error did occur.\)  The program can also decide to force a ) S
+14400 56106 M (break or it can force a "true" abort and return to the Lisp exec.) S
+14400 53706 M (Standard packages like TEdit and DEdit almost always process their own aborts.  ) S
+14400 51906 M (They try to ignore or fix all but the most drastic errors so that the user isn't ) S
+14400 50106 M (constantly bombarded by breaks and/or aborts.) S
+10800 47106 M (When a computation is aborted, an error message is always printed in its TTY window ) S
+10800 45306 M (before control is given to the Lisp exec.  This message usually includes the type of error ) S
+10800 43506 M (and the offending object.  For example:  "Non-numeric arg: NIL" indicates that one of the ) S
+10800 41706 M (arguments to some function was NIL when it was to supposed to be some numeric value.  ) S
+10800 39306 M (There are some 50 standard types of error in Interlisp.  We will review some of these ) S
+10800 37506 M (later.) S
+14400 35106 M (Examples:) S
+18000 32506 M (12_\(PLUS T\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+18000 30106 M (NON-NUMERIC ARG) S
+18000 28906 M (T) S
+1200 /Times-Roman-Acnt F
+18000 26506 M (13_\(QQQQQ 4\)) S
+1200 /Times-Italic-Acnt F
+18000 24106 M (UNDEFINED CAR OF FORM) S
+18000 22906 M (QQQQQ) S
+1200 /Times-Roman-Acnt F
+18000 20506 M (14_\(SETQ NIL 5\)) S
+1200 /Times-Italic-Acnt F
+18000 18106 M (ATTEMPT TO SET NIL OR T) S
+18000 16906 M (5) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 13757 M (Breaks: the Break Exec and Break Windows) S
+grestore savepage restore showpage
+
+%%Page: 5 5
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (5) S
+7200 75600 M (LispCourse #13:  Error Handling and the Break Package) S
+10800 71106 M (When a Break occurs, the computation is suspended and a ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Break window) S
+1200 /Times-Roman-Acnt F
+( is opened on ) S
+10800 69306 M (the screen.  The title of this window is a message describing the error that caused the ) S
+10800 67506 M (break.  This error message is also printed in the window.) S
+10800 64906 M (A ) S
+1200 /Times-Italic-Acnt F
+(Break exec) S
+1200 /Times-Roman-Acnt F
+( is started in the Break window.  A Break exec is very similar to the Lisp ) S
+10800 63106 M (exec except it has an additional set of commands that can be used to "handle" the break.) S
+10800 60506 M (The Break package is primarily intended as a debugging tool for programmers.  Rather ) S
+10800 58706 M (than aborting a computation when an error occurs, Interlisp suspends the computation ) S
+10800 56906 M (and enters a break.  The break gives the user an opportunity to examine the suspended ) S
+10800 55106 M (computation, make changes that "fix" the error, and then restart the computation from ) S
+10800 53306 M (any point.  From a programmer's point of view this is a fantastic opportunity.) S
+10800 50706 M (Unfortunately, to make full use of breaks you need to have considerable expertise in ) S
+10800 48906 M (Interlisp programming.  The average user doesn't have sufficient expertise and therefore ) S
+10800 47106 M (can't really take advantage of the power of breaks.) S
+10800 44506 M (But, when an error occurs a break usually occurs.  So the all users have to learn to deal ) S
+10800 42706 M (with breaks as best they can.  We will cover "dealing with breaks" today and pick up the ) S
+10800 40906 M ("effective use of breaks" later in the programming part of the course.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 37306 M (What is a break and what is it good for?) S
+1200 /Times-Roman-Acnt F
+14400 34306 M (When a break occurs the ongoing computation is suspended at the point at which ) S
+14400 32506 M (the error occurred.  The break provides the tools for examining the state of the ) S
+14400 30706 M (computation including its stack, all of the variables its using, the definitions of the ) S
+14400 28906 M (functions it calls, etc.  Functions can be edited, the values of variables reset, ) S
+14400 27106 M (previous events undone, and so on.  The computation can then be restarted at any ) S
+14400 25306 M (point or it can be aborted completely.) S
+14400 22306 M (Basically, a break is an opportunity for the user to do what she can to recover ) S
+14400 20506 M (from errors, thereby saving any work that has been done by the computaion ) S
+14400 18706 M (before the error occurred.  The decision to abort the computation if the work can't ) S
+14400 16906 M (be saved or isn't worth savingis left in the hands of the user rather than the ) S
+14400 15106 M (system.) S
+14400 12106 M (Examples: ) S
+grestore savepage restore showpage
+
+%%Page: 6 6
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (6) S
+7200 75600 M (LispCourse #13:  Error Handling and the Break Package) S
+18000 71106 M (If during a COPYFILE you run out of space on your account on the file ) S
+18000 69306 M (server, the system will enter a break with a message saying "File system ) S
+18000 67506 M (resources exceeded".  From the break, you can delete some files on your ) S
+18000 65706 M (account to free up some space.  You can then type "OK" to restart the ) S
+18000 63906 M (COPYFILE.  If you can't find any files to delete and just want to stop the ) S
+18000 62106 M (COPYFILE, you can type "^" to abort the COPYFILE and return to the ) S
+18000 60306 M (Lisp exec.) S
+18000 57306 M (If you type "\(LOAD 'FOOBAR\)" to the Lisp exec and FOOBAR doesn't ) S
+18000 55506 M (exist, the system will \(sometimes\) enter a break with saying "File not ) S
+18000 53706 M (found FOOBAR".   If you really meant to load FUZBAL, you can type ) S
+18000 51906 M ("\(SETQ FILE 'FUZBAL\)" followed by "OK".  This will "correct" the ) S
+18000 50106 M (typo you made and restart the computation, causing the file FUZBAL to ) S
+18000 48306 M (be loaded.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 44706 M (The Break Exec) S
+1200 /Times-Roman-Acnt F
+14400 41706 M (The Break exec running inside the Break window is a read-eval-print loop just ) S
+14400 39906 M (like the Lisp exec.  The type-in prompt is a ":" rather than a "_" to distinguish the ) S
+14400 38106 M (Break exec from the Lisp exec.  ) S
+14400 35506 M (The history event numbers that preceed the prompt are shared between the Lisp ) S
+14400 33706 M (exec and the Break exec, i.e., there is only one history list that serves all execs, ) S
+14400 31906 M (Lisp and Break alike.) S
+14400 29306 M (The Break exec contains all of the functionality of the Lisp exec including TTYIN ) S
+14400 27506 M (and the Programmer's Assistant.  You can evaluate any Lisp expression, CLISP ) S
+14400 25706 M (expression, P.A. command, etc. just as you can in the Lisp exec.) S
+14400 23106 M (The Break exec contains a number of additional commands for managing the ) S
+14400 21306 M (Break, for repairing the computation, and for restarting/aborting the computation.  ) S
+14400 19506 M (These commands are like the P.A. commands in that you simply type them into ) S
+14400 17706 M (exec followed by a <RETURN>.  No parentheses etc. are necessary.) S
+1200 /Times-Bold-Acnt F
+14400 14306 M (BRKEXP:) S
+1200 /Times-Roman-Acnt F
+(  When you enter a break, the value of the variable BRKEXP is the S-) S
+14400 12506 M (expression that caused the error in the evaluator.  If you can't figure out what to ) S
+14400 10706 M (do from the error message printed in the break window, you can always examine ) S
+14400 8906 M (the value of BRKEXP. ) S
+grestore savepage restore showpage
+
+%%Page: 7 7
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (7) S
+7200 75600 M (LispCourse #13:  Error Handling and the Break Package) S
+14400 71106 M (BRKEXP can also be used as the expression to evaluate when leaving the break.  ) S
+14400 69306 M (Several of the break exec commands involve modifying or re-evaluating the ) S
+14400 67506 M (BRKEXP expression.) S
+18000 65106 M (Example:) S
+21600 62706 M (In the LOAD example above, the value of BRKEXP was ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 60906 M (\(OPENFILE FILE ACCESS RECOG BYTESIZE\)) S
+1200 /Times-Roman-Acnt F
+(.) S
+45562 61206 M (  ) S
+46162 60906 M (This suggests ) S
+21600 59106 M (that the variable ) S
+1200 /Times-Italic-Acnt F
+(FILE) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(is the "cause" of the error and should be set ) S
+21600 57306 M (to the correct file name.  Hence to fix the error, you SETQ ) S
+1200 /Times-Italic-Acnt F
+(FILE) S
+1200 /Times-Roman-Acnt F
+( to ) S
+21600 55506 M (the correct name.  You then use the OK break command to exit the ) S
+21600 53706 M (break and reevaluate the BRKEXP expression.) S
+21600 50906 M (41_\(LOAD 'FOOBAR\)) S
+1200 /Times-Italic-Acnt F
+21600 48906 M (FILE NOT FOUND) S
+21600 46906 M (FOOBAR) S
+21600 44906 M (\(OPENSTREAM broken\)) S
+1200 /Times-Roman-Acnt F
+21600 42906 M (42:BRKEXP) S
+1200 /Times-Italic-Acnt F
+21600 40906 M (\(OPENFILE FILE ACCESS RECOG BYTESIZE\)) S
+1200 /Times-Roman-Acnt F
+21600 38906 M (43:FILE) S
+1200 /Times-Italic-Acnt F
+21600 36906 M (FOOBAR) S
+1200 /Times-Roman-Acnt F
+21600 34906 M (44:\(SETQ FILE 'FUZBAL]) S
+1200 /Times-Italic-Acnt F
+21600 32906 M (FUZBAL) S
+1200 /Times-Roman-Acnt F
+21600 30906 M (45:FILE) S
+1200 /Times-Italic-Acnt F
+21600 28906 M (FUZBAL) S
+1200 /Times-Roman-Acnt F
+21600 26906 M (46:OK) S
+21600 24906 M ({DSK}FUZBAL) S
+21600 22906 M (47_) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 19506 M (Break Exec Commands:) S
+1200 /Times-Roman-Acnt F
+(  The following are special commands that can be used ) S
+14400 17706 M (to manage breaks from the break exec.) S
+1200 /Times-Bold-Acnt F
+14400 14306 M (Exiting from a break:) S
+1200 /Times-Roman-Acnt F
+18000 10906 M (When exiting from a break, you return some value.  This is used in by the ) S
+18000 9106 M (evaluator as the value of the expression that caused the error.  For ) S
+grestore savepage restore showpage
+
+%%Page: 8 8
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (8) S
+7200 75600 M (LispCourse #13:  Error Handling and the Break Package) S
+18000 71106 M (example, the expression ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(\(SETQ A \(PLUS 1 T\)\)) S
+1200 /Times-Roman-Acnt F
+( will cause a "non-numeric ) S
+18000 69306 M (arg" break while evaluating the ) S
+1200 /Times-Italic-Acnt F
+(\(PLUS 1 T\)) S
+1200 /Times-Roman-Acnt F
+( expression.  The value ) S
+18000 67506 M (returned from this break is used in place of the value of the) S
+1200 /Times-Italic-Acnt F
+( \(PLUS 1 T\) ) S
+1200 /Times-Roman-Acnt F
+18000 65706 M (expression and hence is the value that A will be set to.) S
+18000 62306 M (The following functions exit from a break, returning some value.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 58906 M (GO) S
+1200 /Times-Roman-Acnt F
+( \234 Evaluates the BRKEXP expression, prints the result in the ) S
+21600 57106 M (break window, and exits the break returning the evaluation result.) S
+1200 /Times-Bold-Acnt F
+21600 53706 M (OK) S
+1200 /Times-Roman-Acnt F
+( \234 Like GO, except doesn't print the result of the evaluation.) S
+1200 /Times-Bold-Acnt F
+21600 50306 M (RETURN ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Form) S
+1200 /Times-Roman-Acnt F
+( \234 Evaluates ) S
+1200 /Times-Italic-Acnt F
+(Form) S
+1200 /Times-Roman-Acnt F
+( and then exits from the break ) S
+21600 48506 M (returning the evaluation result.) S
+18000 45106 M (The) S
+( following function, exit from a break by aborting and hence doesn't ) 115 0 32 4 -1 roll widthshow
+18000 43306 M (return any value:) S
+1200 /Times-Bold-Acnt F
+21600 39906 M (^) S
+1200 /Times-Roman-Acnt F
+( \234 exits the break by causing an abort.  This will cause a return to ) 69 0 32 4 -1 roll widthshow
+21600 38106 M (the) S
+( Lisp exec unless aborts are explicitly processed by the broken ) 93 0 32 4 -1 roll widthshow
+21600 36306 M (program as described earlier.) S
+1200 /Times-Bold-Acnt F
+14400 32706 M (Other Commands:) S
+1200 /Times-Roman-Acnt F
+18000 29706 M (Many of the break exec commands rely on the value of the variable ) S
+18000 27906 M (LASTPOS.  LASTPOS points to an entry on the stack, i.e., to a function ) S
+18000 26106 M (call somewhere on the stack.  Many functions allow you to see various ) S
+18000 24306 M (characteristics of the LASTPOS function call.  You can move the value of ) S
+18000 22506 M (LASTPOS in order to examine various function calls on the stack.  ) S
+18000 20706 M (LASTPOS starts out at the expression causing the break.) S
+1200 /Times-Bold-Acnt F
+18000 17706 M (EVAL) S
+1200 /Times-Roman-Acnt F
+( \234 evaluates the BRKEXP expression but does not exit from the ) S
+18000 15906 M (break.  !VALUE is set to the result of the evaluation.  Can be used to see ) S
+18000 14106 M (what the break would return, if GO or OK were used.) S
+grestore savepage restore showpage
+
+%%Page: 9 9
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (9) S
+7200 75600 M (LispCourse #13:  Error Handling and the Break Package) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 71106 M (@ ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Atom) S
+1200 /Times-Roman-Acnt F
+( \234 moves LASTPOS to the most recent call to the function named ) S
+18000 69306 M (by ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Atom.) S
+1200 /Times-Bold-Acnt F
+(  ) S
+1200 /Times-Roman-Acnt F
+(To search for the second most recent call to the function named ) S
+18000 67506 M (by atom use "@ ) S
+1200 /Times-Italic-Acnt F
+(Atom Atom) S
+1200 /Times-Roman-Acnt F
+(" and so on.) S
+1200 /Times-Bold-Acnt F
+18000 64506 M (?= ) S
+1200 /Times-Roman-Acnt F
+(\234 prints out the values of the arguments to the function at LASTPOS.  ) S
+18000 62706 M (For example, in the LOAD break described above with LASTPOS ) S
+18000 60906 M (pointing to the OPENFILE function call, ?= would print out the values of ) S
+18000 59106 M (FILE, ACCESS, RECOG and BYTESIZE.) S
+1200 /Times-Bold-Acnt F
+18000 56106 M (BT DUMMYFRAMEP) S
+1200 /Times-Roman-Acnt F
+(\234 prints out the names of the function calls on the ) S
+18000 54306 M (stack starting from the most recent to the oldest \(called a ) S
+1200 /Times-Italic-Acnt F
+(backtrace) S
+1200 /Times-Roman-Acnt F
+(\).  The ) S
+18000 52506 M (DUMMYFRAMEP is optional, but gets a more concise backtrace with ) S
+18000 50706 M (less junk in it.) S
+1200 /Times-Bold-Acnt F
+18000 47706 M (REVERT) S
+1200 /Times-Roman-Acnt F
+( \234 ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(removes from the stack all function calls from the error back ) S
+18000 45906 M (through the function call specified by LASTPOS.  It then causes a break in ) S
+18000 44106 M (the function call specified by LASTPOS.) S
+1200 /Times-Bold-Acnt F
+(  ) S
+1200 /Times-Roman-Acnt F
+(Thus REVERT allows you to ) S
+18000 42306 M (back the computation up to some previous point before the error was ) S
+18000 40506 M (encountered.) S
+1200 /Times-Bold-Acnt F
+18000 37506 M (EDIT ) S
+1200 /Times-Roman-Acnt F
+(\234 calls DEdit on the function containing the BRKEXP expression.  ) S
+18000 35706 M (For example: if in the definition of the function FOO there is an ) S
+18000 33906 M (expression) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(like ) S
+1200 /Times-Italic-Acnt F
+(\(PLUS 1 T\)) S
+1200 /Times-Roman-Acnt F
+(, a break will occur with the value of BRKEXP ) S
+18000 32106 M (being ) S
+1200 /Times-Italic-Acnt F
+(\(PLUS 1 T\)) S
+1200 /Times-Roman-Acnt F
+(.  In this break, EDIT will call DEdit on the function ) S
+18000 30306 M (FOO because FOO is the function that contains the incorrect statement ) S
+1200 /Times-Italic-Acnt F
+18000 28506 M (\(PLUS 1 T\).) S
+1200 /Times-Bold-Acnt F
+14400 24906 M (Examples of Break Exec in use) S
+1200 /Times-Roman-Acnt F
+18000 22906 M (99_\(COPYFILE \(QUOTE {DSK2}ABC\)) S
+21600 21106 M (  \(QUOTE {DSK2}XYZ\)\)) S
+1200 /Times-Italic-Acnt F
+18000 17506 M (FILE NOT FOUND) S
+18000 15706 M ({DSK2}ABC) S
+18000 12106 M (\(OPENSTREAM broken\)) S
+1200 /Times-Roman-Acnt F
+18000 10306 M (100:BRKEXP) S
+1200 /Times-Italic-Acnt F
+18000 8506 M (\(OPENSTREAM FILE ACCESS RECOG BYTESIZE ) S
+1200 /Times-Roman-Acnt F
+(PARAMETERS\)) S
+grestore savepage restore showpage
+
+%%Page: 10 10
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (10) S
+7200 75600 M (LispCourse #13:  Error Handling and the Break Package) S
+18000 71106 M (1:BT DUMMYFRAMEP) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+18000 69306 M (OPENSTREAM) S
+18000 67506 M (ERRORSET) S
+18000 65706 M (COPYFILE) S
+18000 63906 M (EVAL) S
+18000 62106 M (LISPX) S
+18000 60306 M (ERRORSET) S
+18000 58506 M (EVALQT) S
+18000 56706 M (ERRORSET) S
+18000 54906 M (T) S
+1200 /Times-Roman-Acnt F
+18000 52906 M (2:?=) S
+1200 /Times-Italic-Acnt F
+18000 50906 M (*FILE* = {DSK2}ABC) S
+18000 48906 M (*ACCESS* = INPUT) S
+18000 46906 M (*RECOG* = NIL) S
+18000 44906 M (*BYTESIZE* = NIL) S
+18000 42906 M (*PARAMETERS* = \(\(SEQUENTIAL T\)\)) S
+1200 /Times-Roman-Acnt F
+18000 41106 M (3:\(COPYFILE '{DSK2}AAA '{DSK2}ABC]) S
+1200 /Times-Italic-Acnt F
+18000 39306 M ({DSK2}ABC.;1) S
+1200 /Times-Roman-Acnt F
+18000 37506 M (4:OK) S
+1200 /Times-Italic-Acnt F
+18000 35706 M (OPENSTREAM) S
+18000 33906 M ({DSK2}XYZ.;1) S
+1200 /Times-Roman-Acnt F
+18000 32106 M (5_) S
+14400 29906 M (----------------------------) S
+18000 26906 M (64_\(DEFINEQ) S
+21600 24906 M (\(EXAMPLE \(LAMBDA \(A B C\)) S
+25200 22906 M (\(PLUS) S
+28800 20906 M (\(EXAMPLEX A\)) S
+28800 18906 M (\(EXAMPLEX B\)) S
+28800 16906 M (\(EXAMPLEX C\)\)\)\)\)) S
+1200 /Times-Italic-Acnt F
+18000 14906 M (\(EXAMPLE\)) S
+1200 /Times-Roman-Acnt F
+18000 12906 M (65_\(DEFINEQ) S
+21600 10906 M (\(EXAMPLEX \(LAMBDA \(X\)) S
+25200 8906 M (\(EXAMPLEY X 1\)\)\)\)) S
+grestore savepage restore showpage
+
+%%Page: 11 11
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (11) S
+7200 75600 M (LispCourse #13:  Error Handling and the Break Package) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+18000 71106 M (\(EXAMPLEX\)) S
+1200 /Times-Roman-Acnt F
+18000 69106 M (66_\(DEFINEQ) S
+21600 67106 M (\(EXAMPLEY \(LAMBDA \(P Q\)) S
+28800 65106 M (\(PLUS P Q\)\)\)\)) S
+1200 /Times-Italic-Acnt F
+18000 63106 M (\(EXAMPLEY\)) S
+1200 /Times-Roman-Acnt F
+18000 61106 M (67_\(EXAMPLE 2 3 4\)) S
+1200 /Times-Italic-Acnt F
+18000 59106 M (12) S
+1200 /Times-Roman-Acnt F
+18000 57106 M (...) S
+18000 55106 M (77_\(EXAMPLE 1 2 T\)) S
+1200 /Times-Italic-Acnt F
+18000 51106 M (NON-NUMERIC ARG) S
+18000 49106 M (T) S
+1200 /Times-Italic-Acnt F
+18000 45106 M (\(PLUS broken\)) S
+1200 /Times-Roman-Acnt F
+18000 43106 M (80:BT DUMMYFRAMEP) S
+1200 /Times-Italic-Acnt F
+18000 41106 M (PLUS) S
+18000 39106 M (EXAMPLEY) S
+18000 37106 M (EXAMPLEX) S
+18000 35106 M (EXAMPLE) S
+18000 33106 M (EVAL) S
+18000 31106 M (LISPX) S
+18000 29106 M (ERRORSET) S
+18000 27106 M (EVALQT) S
+18000 25106 M (ERRORSET) S
+18000 23106 M (T) S
+1200 /Times-Roman-Acnt F
+18000 19106 M (81:?=) S
+1200 /Times-Italic-Acnt F
+18000 17106 M (*ARG1* = T) S
+18000 15106 M (*ARG2* = 1) S
+1200 /Times-Roman-Acnt F
+18000 13106 M (82:@ EXAMPLEY) S
+1200 /Times-Italic-Acnt F
+18000 11106 M (EXAMPLEY) S
+1200 /Times-Roman-Acnt F
+18000 9106 M (83:?=) S
+grestore savepage restore showpage
+
+%%Page: 12 12
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (12) S
+7200 75600 M (LispCourse #13:  Error Handling and the Break Package) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+18000 71106 M (P = T) S
+18000 69106 M (Q = 1) S
+1200 /Times-Roman-Acnt F
+18000 67106 M (84:@ EXAMPLEX) S
+1200 /Times-Italic-Acnt F
+18000 65106 M (EXAMPLEX) S
+1200 /Times-Roman-Acnt F
+18000 63106 M (85:?=) S
+1200 /Times-Italic-Acnt F
+18000 61106 M (X = T) S
+1200 /Times-Roman-Acnt F
+18000 59106 M (86:REVERT) S
+1200 /Times-Italic-Acnt F
+18000 57106 M (EXAMPLEX) S
+1200 /Times-Italic-Acnt F
+18000 53106 M (\(EXAMPLEX broken\)) S
+1200 /Times-Roman-Acnt F
+18000 51106 M (87: BT DUMMYFRAMEP) S
+1200 /Times-Italic-Acnt F
+18000 49106 M (EXAMPLEX) S
+18000 47106 M (EXAMPLE) S
+18000 45106 M (EVAL) S
+18000 43106 M (LISPX) S
+18000 41106 M (ERRORSET) S
+18000 39106 M (EVALQT) S
+18000 37106 M (ERRORSET) S
+18000 35106 M (T) S
+1200 /Times-Roman-Acnt F
+18000 31106 M (88:?=) S
+1200 /Times-Italic-Acnt F
+18000 29106 M (X = T) S
+1200 /Times-Roman-Acnt F
+18000 27106 M (89:X) S
+1200 /Times-Italic-Acnt F
+18000 25106 M (T) S
+1200 /Times-Roman-Acnt F
+18000 23106 M (90:\(SETQ X 55\)) S
+1200 /Times-Italic-Acnt F
+18000 21106 M (55) S
+1200 /Times-Roman-Acnt F
+18000 19106 M (91:X) S
+1200 /Times-Italic-Acnt F
+18000 17106 M (55) S
+1200 /Times-Roman-Acnt F
+18000 15106 M (92:BRKEXP) S
+1200 /Times-Italic-Acnt F
+18000 13106 M (\(PROGN \(* fgh: "13-Mar-85 22:54"\) \(EXAMPLEY X 1\)\)) S
+1200 /Times-Roman-Acnt F
+18000 11106 M (93:EVAL) S
+1200 /Times-Italic-Acnt F
+18000 9106 M (EXAMPLEX evaluated) S
+grestore savepage restore showpage
+
+%%Page: 13 13
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (13) S
+7200 75600 M (LispCourse #13:  Error Handling and the Break Package) S
+18000 71106 M (94:!VALUE) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+18000 69106 M (56) S
+1200 /Times-Roman-Acnt F
+18000 67106 M (95:OK) S
+1200 /Times-Italic-Acnt F
+18000 65106 M (EXAMPLEX) S
+18000 63106 M (61) S
+1200 /Times-Roman-Acnt F
+18000 61106 M (96_) S
+14400 58706 M (----------------------------) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+10800 54957 M (Break Windows) S
+1200 /Times-Roman-Acnt F
+14400 51906 M (When a break occurs, the system opens a break window and starts up the break ) S
+14400 50106 M (exec within this window.  All interaction with the break exec takes place in this ) S
+14400 48306 M (window, just as all interaction with the Lisp exec takes place in the TTY window.) S
+14400 45506 M (Break windows provide two other functions besides exec type-in:) S
+18000 43306 M (1.  menu-based access to many of the break exec commands) S
+18000 41106 M (2.  visual displays of the stack and stack frames) S
+1200 /Times-Bold-Acnt F
+14400 38106 M (Menu-based access to the break exec:) S
+1200 /Times-Roman-Acnt F
+18000 35106 M (Clicking on the middle mouse button anywhere in the break window will ) S
+18000 33306 M (bring up a menu consisting of 9 items: ) S
+1200 /Times-Italic-Acnt F
+(!EVAL, EVAL, EDIT, revert, ^, OK, ) S
+18000 31506 M (BT, BT!, ?=) S
+1200 /Times-Roman-Acnt F
+(.) S
+/bitbltsave save def 32750 17199 translate 6500 12200 scale 65 122 true thebitimage
+B2074400
+B308
+B2071100
+B308
+B2074400
+B308
+B2071100
+117FB203FFF11100
+4440B20300144400
+4444B306
+11B304111100
+11400FE0B304
+4444B20300144400
+44440FE0B304
+1142B20300111100
+1149B306
+44B304144400
+4446B306
+1140B303111100
+B308
+44B304144400
+B30202B304
+114FC0820000111100
+11482080B304
+444820820000144400
+B308
+114FC0B302111100
+114820B305
+44B304144400
+444FC7F2B304
+1140B20300111100
+B308
+44B304144400
+B308
+114FC0800000111100
+114820B305
+44B304144400
+B308
+114FC0B302111100
+114820B305
+44B304144400
+444FC7F0B304
+1140B20300111100
+B308
+44B304144400
+B308
+1143C2080000111100
+11442210B304
+444812200000144400
+44481340B304
+114812800000111100
+B30240B304
+444422200000144400
+4443C210B304
+1140B20300111100
+B308
+44B304144400
+B308
+1142B303111100
+B308
+44B304144400
+444A80B305
+1147B20300111100
+1142B306
+4440B303144400
+B308
+11B304111100
+B308
+44B304144400
+B308
+11483820E20C111100
+114844211210B302
+444840510210144400
+44487C51F2B303
+114D44891350111100
+114B3888E2FCB302
+4440B2020010144400
+B308
+11B30300111100
+B308
+44B304144400
+B308
+114FE7C10400111100
+11480421B304
+444804110400144400
+B308
+114FC4B302111100
+114804B305
+444804210400144400
+444FE7C13F80B302
+1140B20300111100
+B308
+44B304144400
+B308
+114FE08209F8111100
+114800820900B302
+44480141F100144400
+B30311B303
+114FC220A100111100
+114802B305
+444804104100144400
+444FE4B305
+1140B20300111100
+B308
+44B304144400
+4444B306
+1144FE08209F911100
+114080082090111100
+444480141F10144400
+B30311B303
+1144FC220A10111100
+114480B305
+444480410410144400
+4444FEB305
+1140B20300111100
+B308
+447FB203FFF44400
+B2074400
+B2071100
+B308
+B2074400
+B308
+
+bitbltsave restore
+1200 /Times-Roman-Acnt F
+18000 14506 M (Choosing ) S
+1200 /Times-Italic-Acnt F
+(EVAL) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Italic-Acnt F
+(EDIT, revert, ^, OK, or ?=) S
+1200 /Times-Roman-Acnt F
+(  from the menu simply carries ) S
+18000 12706 M (out the corresponding break exec command.  For example, choosing the ) S
+1200 /Times-Italic-Acnt F
+18000 10906 M (OK) S
+1200 /Times-Roman-Acnt F
+( entry will exit the break after evaluating the BRKEXP expression.) S
+grestore savepage restore showpage
+
+%%Page: 14 14
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (14) S
+7200 75600 M (LispCourse #13:  Error Handling and the Break Package) S
+18000 71106 M (Choosing the ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(BT ) S
+1200 /Times-Roman-Acnt F
+(command from this menu will bring up a small window ) S
+18000 69306 M (\(called the ) S
+1200 /Times-Italic-Acnt F
+(backtrace window) S
+1200 /Times-Roman-Acnt F
+(\) attached to the left or right edge of the ) S
+18000 67506 M (break window.  The stack backtrace will be printed in this window, one ) S
+18000 65706 M (item \(i.e., function call\) per line.  The window is scrollable if the whole ) S
+18000 63906 M (backtrace doesn't fit in the window.) S
+/bitbltsave save def 10800 49399 translate 48000 13200 scale 480 132 true thebitimage
+B23B44
+B33B
+B23B11
+B33B
+B23B44
+B33B
+B23B11
+B33B
+45B238FFE444
+B33B
+1180B22F000780B205007111
+B33B
+45B3318F80B3046444
+B33280B205006444
+11B3387111
+B33B
+45B3318F4A4C933C40006444
+B332884A5294A0B303
+11B3325292A0B3027111
+B3328E7392E338B303
+45B331884A52942040006444
+B336A0B303
+11B3318F738CE33DF0007111
+B33280B205007111
+45B33420B3026444
+B33540B304
+11B3318F123E61B3027111
+B332883A3091B304
+45B3322BF0B3036444
+B3328E6D50B305
+11B33188B3057111
+B33345B306
+45B3318F449067C000006444
+B33280B205006444
+11B3387111
+B33B
+45B3318F4A4C933C40006444
+B332884A5294A0B303
+11B3325292A0B3027111
+B3328E7392E338B303
+458F8E08B32E884A52942040006444
+458811B333A0B303
+118419B22E00078F738CE33DF0007111
+118215B32F80B205007111
+45811508B3356444
+458893B338
+118891B22E00078F399090B3027111
+11870EB32F881250B305
+4580B22F0007881050F0B3026444
+B333119C60B304
+1181B30E10B3211212F0B3027111
+1182B30E08B3225290B304
+45820E207C88E0844F912200B101C44711B322399CB3036444
+458411204099108448112A00C90224889104B32080B205006444
+11B306881F2A008902250811B3287111
+B3023C40A820850811B303260F91B32A
+4584112278A8C0878F0A2A00C992250899B3218F123EB3036444
+B30340C91084480A3600B161C48716B321883A30B305
+1182B309800004000008B3212BF0B3037111
+11820E3C7C88E3E78F8422B3278E6D50B305
+4581B20E0010B32088B3056444
+4580B30EB22000078845B306
+11B3318F4490B3037111
+B33280B205007111
+45B3386444
+B33B
+11B33186320483BDE0007111
+B332894A04812100B302
+45B33188B3056444
+B3334B8AE121C0B302
+11B3324A51812100007111
+B33289B307
+45B331863391F3A1E0006444
+B33280B205006444
+11818000000180B3327111
+1182B2030040B334
+45821E1C44F8422787B3298F4A4C933C40006444
+45821122448042244880B328884A5294A0B303
+11B302484043E4B32B5292A0B3027111
+118C11044820322448B22800078E7392E338B303
+458211187010414788B329884A52942040006444
+B30222508841448880B32CA0B303
+11B30248B32D8F738CE33DF0007111
+11821E1C4470408707B228000780B205007111
+45818000000180B22A00B3076444
+4580B22F00B309
+11B3318643D26125E8C47111
+B332894216912508B302
+45880E3E7C0111C100101C3889E0B32711290FD46444
+4588042040013221001022449910B325739E6139C5546444
+11B3324A1E8125057C7111
+B30552B304A9B3271A9125056C7111
+458F042078B3031EB3288673D267F9E2446444
+458804204001922100102244C9B32580B205006444
+11B3387111
+118F8E207C0111C7C01F1C4489E0B32D
+4580B22F00078F123E88B3026444
+B332883A30B305
+11B3322BF0F8B3027111
+B3328E6D5050B304
+45B33188B3056444
+B33345B306
+11B3318F449020B3027111
+B33280B205007111
+45B3386444
+B33B
+11B3318E4BD18B8000007111
+B332894A1191B202007111
+45B332521FA1B3026444
+B3328E738AC1B304
+11B331894A0AB3037111
+11B231FFB302A3B304
+45FE3FB303FE3FB321B206AAAF8E73C491B3026444
+45FDB205FFDFB32980B205006444
+11B329B2065557B3067111
+11FDF01FC1EFF407DDFF403F07FFFFBFF700C01FDFEF83FEFFDFFE0FF0FBFD80FFFFF43DFC3C25FA7FFFDFB310
+45FDF7E7BEEFEDFFDEFEDFDCFBB3037FDFFFDFCE7CB302F9F3CF3BF9BF3FFFF3DDFBDBCDF6B302B206AAAF8F4A4C933C40006444
+B302F77F6FDEB303DDFDB307AEFEB302FBFBDFBBF5BFBFFFF7EDF7FBECEFFFB309884A5294A0B303
+11FDF7FBFF67BF7FDF01DFDBFDFC3FB3056DFF7EFFDFF7FDBFDBEDBFDFB303FC6D5FB302B2065557885292A0B3027111
+11F3F7FBFEEB7F9FE77DDFDBB202FFB304DEEDB307DDB304F01F8DBFB30A8E7392E338B303
+45FDF7FBC1ECFFEFDFBBC03BB30280F77FC03FDDB303C077B302BDB303ECF7DBEDDFB302B206AAAF884A52942040006444
+B303BFEEFFF7DFBBDFBBB302BFF77FDFFFB304DFF7B306F3DD5BBDEDEE7FB30DA0B303
+11B3027F6F7DF7DFD7DFBBFDB306DBB3087DB302F43D9C7E1DF67FFC1FB20655578F738CE33DF0007111
+B302F77F6FBDB303BDB307D7EEFEFEFFDFFBFBBFDAFDBFBFFFF7B202FFFDB202FF9FB30780B205007111
+45FDF7E79CEFDEEFDFEFDFBCFBB306CFEE7CB302F9F3BFD9FDBF3FB308DFB206AAAFB3066444
+45FDF01FE3EFEF1FDFEFC07F07FFFF80777FC01FDFEF83E00FC03E0FBFDBFD80FFB31A
+11FE3FB203FFFE3FB221FFB2065557B206FFF111
+11B238FFF111
+B23BFF
+B33B
+B23B00
+B33B
+
+bitbltsave restore
+18000 44906 M (The ) S
+1200 /Times-Italic-Acnt F
+(!EVAL) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Italic-Acnt F
+(BT! ) S
+1200 /Times-Roman-Acnt F
+(are simply specialized versions of the ) S
+1200 /Times-Italic-Acnt F
+(EVAL) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Italic-Acnt F
+(BT) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+18000 43106 M (commands.) S
+1200 /Times-Bold-Acnt F
+14400 39706 M (The backtrace window and the frame inspector:) S
+1200 /Times-Roman-Acnt F
+18000 36706 M (Each item \(i.e., function call\) in the backtrace window is individually ) S
+18000 34906 M (selectable by clicking on the left or middle mouse buttons while the cursor ) S
+18000 33106 M (is over the item.  The selected item will be highlighted with a gray ) S
+18000 31306 M (background.) S
+18000 28506 M (Selecting an item in the backtrace window has two effects:) S
+21600 25706 M (1.  LASTPOS is set to the corresponding stack entry.  This is the ) S
+21600 24106 M (menu-based equivalent of the @ command in the break exec.) S
+21600 21706 M (2.  a stack frame inspector is opened on the corresponding stack ) S
+21600 20106 M (entry.  This stack frame inspector contains the name of the ) S
+21600 18506 M (function call and the functions arguments and their values.) S
+grestore savepage restore showpage
+
+%%Page: 15 15
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (15) S
+7200 75600 M (LispCourse #13:  Error Handling and the Break Package) S
+/bitbltsave save def 10800 43899 translate 47400 28100 scale 474 281 true thebitimage
+B23A2200
+B23A8880
+B33B
+B23A2200
+B33B
+8BB238FFC880
+B33B
+23B230000FB20600E200
+B33B
+8BB3311FB305C880
+B332B20600C880
+23B338E200
+B33B
+8BB3311E949926788000C880
+B3321094A52940B303
+23B332A52541B302E200
+B3321CE725C670B303
+8BB3311094A528408000C880
+B33529B304
+23B3311EE719C67BE000E200
+B332B20600E200
+8BB33440B302C880
+B33580B304
+23B3311E247CC2B302E200
+B33210746122B304
+8BB33257E1B303C880
+B3321CDAA1B305
+23B33110B305E200
+B3338AB306
+8BB3311E8920CF800000C880
+B332B20600C880
+23B338E200
+B33B
+8BB3311E949926788000C880
+B3321094A52940B303
+23B332A52541B302E200
+B3321CE725C670B303
+8B1F1C10B32E1094A528408000C880
+8B1022B33229B304
+230832B22E000F1EE719C67BE000E200
+23042AB32FB20600E200
+8B022A10B335C880
+8B1126B338
+231122B22E000F1E732120B302E200
+230E1CB32F1024A1B305
+8BB230000F1020A1E0B302C880
+B3332338C0B304
+2302B30E20B3212425E0B302E200
+2304B30E10B322A520B304
+8B041C40F911C1089F2244016203888E22B3227339B303C880
+8B0822408132210890225401920449112208B320B20600C880
+23B30509103E540112044A10B329E200
+B302788150410A1022B3034C1FB32B
+8B082244F151810F1E14540193244A1132B3211E247CB303C880
+B3038192210890146C0162C3890E2CB321107460B305
+2304B309000008000010B32157E0B303E200
+23041C78F911C7CF1F0844B3271CDAA0B305
+8B02B20E0020B32010B305C880
+8BB230000F108AB306
+23B3311E8920B303E200
+B332B20600E200
+8BB338C880
+B33208B20588C880
+23B3310C6409077BC000E200
+B33232B62B22622220E200
+8BB33110940902420000C880
+B332189F9DCACB8888C880
+23B3311094A302420000E200
+B33232B6A322622220E200
+8BB3310C6723E743C000C880
+B33208B20588C880
+2303B30203B32CB20600E200
+2304B3020080B334
+8B043C3889F0844F0EB3291E949926788000C880
+8B0422448900844891B3291094A52940B303
+23B302908087C8B32BA52541B302E200
+231822089040644890B3291CE725C670B303
+8B042230E020828F10B3291094A528408000C880
+B30244A110828911B32C29B304
+23B30291B32D1EE719C67BE000E200
+23043C3888E0810E0EB329B20600E200
+8B03B2020003B22B00B307C880
+8BB23000B309
+23B3310C87A4C24BD188E200
+B33212842D224A11B302
+8B101C7CF80223820020387113C0B3262C22521FA8C880
+8B10084080026442002044893220B325E73CC2738AB302
+23B332943D024A0AF8E200
+B305A4B30452B32735224A0AD8E200
+8B1E0840F0B3033CB3280CE7A4CFF3C488C880
+8B100840800324420020448992B325B20600C880
+23B338E200
+231F1C40F802238F803E388913C0B32D
+8BB230000F1E247D10B302C880
+B332107461B305
+23B33257E1F0B302E200
+B3321CDAA0A0B304
+8BB33110B305C880
+B3338AB306
+23B3311E892040B302E200
+B332B20600E200
+8BB338C880
+B33B
+23B3311C97A317B302E200
+B33212942322B304
+8BB332A43F42B302C880
+B3321CE71582B304
+23B3311294B304E200
+23B231FFB30246B304
+8BFC7FB303FC7FB321B206555F1CE78922B302C880
+8BFBB205FFBFB329B20600C880
+23B328FEB206AAAFB306E200
+23FBE03F83DFE80FBBFE807E0FFFFF7FEE01803FBFDF07FDFFBFFC1FE1F7FB01FFFFE87BF8784BF4FFFFBEB310
+8BFBEFCF7DDFDBFFBDFDBFB9F7B303FFBFFFBF9CF9B302F3E79E77F37E7FFFE7BBF7B79BECFFFFBFB206555F1E949926788000C880
+B302EEFEDFBDB303BBFBB3075DFDB302F7F7BF77EB7F7FFFEFDBEFF7D9DFB30A1094A52940B303
+23FBEFF7FECF7EFFBE03BFB7FBF87FB304BEDBFEB302EFFB7FB7DB7FBFB303F8DABFFFFFBEB206AAAF10A52541B302E200
+23E7EFF7FDD6FF3FCEFBBFB7B202FFB304BDB308BBB304E03F1B7FB30A1CE725C670B303
+8BFBEFF783D9FFDFBF778077B30201EEFF807FBBB30380B3037BB303D9EFB7DBBFFFFFBFB206555F1094A528408000C880
+B3037FDDFFEFBF77BFB3037FEEFFBFFFB304BFB307E7BAB77BDBDCB30D29B304
+23FBEFF6FEDEFBEFBFAFBF77FBB306B7B307B6FBB302E87B38FC3BECFFF83EB206AAAF1EE719C67BE000E200
+B302EEFEDF7BB3037BB307AFDDFDB302F7F77FB5FB7F7FFFEFB202FFFBB202FFB308B20600E200
+8BFBEFCF39DFBDDFBFDFBF79F7B3069FDCF9B302F3E77FB4B3FB7EB309BFB206555FB306C880
+8BFBE03FC7DFDE3FBFDF80FE0FFFFF00EEFF803FBFDF07C01F807C1F7FB7FB01FFB31A
+23FC7FB203FFFC7FB220FFFEB206AAAFB206FFE200
+23B238FFE200
+B23AFFC0
+B33B
+03B23800C000
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+B33B
+03044F8E3E1020B30688E3E0B32A
+0304481120B3089842B22900C000
+030488B338
+03050802B309A8B32C
+03078F0C3C1050B334
+0304481120B308C8B32C
+B30588B334
+03078F8E3E7CB30788E2B32B
+03B23800C000
+B33B
+B30F60B30260B3041020B31F
+B30F80B30210B3040810B31F
+B30F8787113E1089E1C0B323
+B30F844891201089122000000408B31F
+B311921010F9B325
+B30E03044112080C8912000F9FB321
+B30E0084461C041051E2B20200B321
+B30D50008448942210512220B323
+B31192B3060810B31F
+B30F8787111C1021C1C0B323
+B30D000060B2020060B204001020B31F
+B30FB22900C000
+B33B
+B33B
+B30F04071F3E0088E080080E1C44F0B31E
+B310021020009910800811224C88B31E
+B33B
+B314A9B30454B31F
+B30F0782103CB3030FB322
+B30D50014402102000C910800811226488A00280B31B
+B33B
+B30F47C7103E0088E3E00F8E2244F0B31E
+B30DB22B00C000
+B33B
+B30D102002B30E02B31A
+B30D204001B30E04B31A
+0307C70E204488E1C1B30541D1B30301F1C388112044711080B31C
+03040211B3024221B3044082208004B302008448B3022130800008B31A
+B30428B30B08B3050A2048B31F
+B302023C10884041B3058150801F00002100808F043C50215081B31C
+B3020C2210F84181B305B20280080000A900830884227821508540B31B
+B302112228884221B305814080040000710084488A2244219083800814B319
+B30444B307204141B20300A9B30291B303854004B31A
+0304070E3C4488E1C7C0B3044081B3032101C38F113C787113E100B31B
+03B20C00102002B303B20A0002B21800C000
+B30DB22B00C000
+B30D18B30218B328
+B30D20B30204B328
+030107101C7CF8B30621E1C44F842210F8B325
+03010890084080B30712244804221080B325
+B3108404141040B325
+B30DC110448203081020B325
+B3029E0840F0B30621118701040828B326
+B30290084080B30712250884142810B325
+B30F248884224408B325
+0307C71F1C40F8B307E1C447042244F8B325
+03B20C0018B2020018B22600C000
+B30DB22B00C000
+B30D18B30218B328
+B30D20B30204B328
+0304088E224071F3E0B30421E1C44F84227870B325
+B302912A402102B205002112244804224488B325
+03040911B30C84043EB327
+03040AB30AC110448203224480B325
+03078F112A782103C0B30421118701041478B326
+0304089136402102B205002112250884144888B325
+B30F2488B329
+0307CF0E227C7103E0B305E1C44704087070B325
+03B20C0018B2020018B22600C000
+B30DB22B00C000
+B33B
+B33B
+B306038710084071F3E0B32C
+B30604489008402102B22B00C000
+B33B
+B307089EB331
+B3089114782103C0B32C
+B307489114402102B22B00C000
+B30922B330
+B30603871E227C7103E0B32C
+B306B23200C000
+B33B
+B33B
+03B238FFC000
+B312B22655C000
+B33B
+B312B226AAC000
+03FC1FC1F7FFEFDFFB80600FFF7FDF84BDEF0FB328
+03F3EF3E77B303BFEFFFB30279BDEEF7B22655C000
+03F7F77FB30A7DBDEDFFB328
+03EFF6FFB7B3098DB302B226AAC000
+03EFFEFFB01FB308F1BDEC07B328
+B303B7EFD7C07BBFE01FFF01CF7DBDEDF7B22655C000
+B304F7BBDFFBBFEFFFFF7FD5BD9CEEEFB328
+03EFF6B30AD9C3A31F1FB226AAC000
+03F7F77F77F77DB306B204FFB328
+03F3EF3E77EEFEB30BB22655C000
+03FC1FC1F01EFEC03BBFE00FFF00B32D
+03B211FFB226AAC000
+B312B226FFC000
+B23B00
+B33B
+B33B
+B33B
+B33B
+B33B
+
+bitbltsave restore
+18000 39806 M (The stack frame inspector is a standard inspector window.  It has lots of ) S
+18000 38206 M (functionality which will not be covered here.  However, there are several ) S
+18000 36606 M (operations in the inspector that may be useful.  In particular:) S
+21600 34206 M (To call DEdit the function in the frame:) S
+25200 31806 M (First select the function name at the top of the inspector ) S
+25200 30206 M (window by placing the cursor over the name and clicking ) S
+25200 28606 M (the left mouse button.) S
+25200 26206 M (Then click the middle mouse button anywhere in the ) S
+25200 24606 M (inspector window.  This will bring up a menu with three ) S
+25200 23006 M (choices.  Choose the middle one:  ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(DisplayEdit) S
+1200 /Times-Roman-Acnt F
+(.  This will ) S
+25200 21406 M (bring up an editor on the function in the inspector window.) S
+21600 18406 M (To change the value of one of the arguments:) S
+25200 16006 M (First select the argument to be reset by placing the cursor ) S
+25200 14406 M (over the argument name and clicking the left mouse button.) S
+25200 12006 M (Then click the middle mouse button anywhere in the ) S
+25200 10406 M (inspector window.  This will bring up a menu with one ) S
+25200 8806 M (item.  Choose this item:  ) S
+1200 /Times-Italic-Acnt F
+(SET) S
+1200 /Times-Roman-Acnt F
+(.) S
+grestore savepage restore showpage
+
+%%Page: 16 16
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (16) S
+7200 75600 M (LispCourse #13:  Error Handling and the Break Package) S
+25200 71106 M (This will bring up type-in window just above the inspector ) S
+25200 69506 M (window.  Type the new value for the argument into this ) S
+25200 67906 M (window.  NOTE that the expression you type in will be ) S
+25200 66306 M (evaluated before the argument is set.  Hence to set the ) S
+25200 64706 M (argument to A, you have to type in \(QUOTE A\) and so on.) S
+/bitbltsave save def 14400 30499 translate 46900 32700 scale 469 327 true thebitimage
+B2394440
+B33A
+B2391110
+B33A
+B2394440
+B33A
+B2391110
+B33A
+5FB237FFFE40
+B33A
+18B2300078B205000710
+B33A
+58B331F8B3040640
+B332B205000640
+18B3370710
+B33A
+58B331F4A4C933C4000640
+B33284A5294A04B302
+18B33185292A0A04000710
+B332E7392E3384B302
+58B33184A5294204000640
+B3354AB303
+18B331F738CE33DF000710
+B332B205000710
+58B33302B3020640
+B33404B304
+18B331F123E61000000710
+B33283A309B304
+58B33182BFB3030640
+B332E6D5B305
+18B33186B3040710
+B3328455B305
+58B331F449067C00000640
+B332B205000640
+18B3370710
+B33A
+58B331F4A4C933C4000640
+B33284A5294A04B302
+18B33185292A0A04000710
+B332E7392E3384B302
+58F8E080B32E84A5294204000640
+588110B3324AB303
+184110B22E0078F738CE33DF000710
+1821B330B205000710
+5811E080B3340640
+588900B337
+188910B22E0078F39909B3020710
+1870E0B32F8125B305
+58B230007881050FB3020640
+B33319C6B304
+1810B30D01B322212FB3020710
+1820B30D0080B3212529B304
+5820E207C88E0844F912200B101C447110B3218399C9B3020640
+58411204099108448112A00C902248891040B320B205000640
+18B3054881F2A00890225081B3280710
+184113C40A8208508112B30360F9B32A
+584112278A8C0878F0A2A00C9922508990B321F123E0B3020640
+B302240C91084480A3600B161C487160B32183A3B203000640
+1821B30808000040000080B32082BFB3030710
+1820E3C7C88E3E78F84220B327E6D5B305
+5810B20D0001B220007886B3040640
+58B23000788455B305
+18B331F449B3030710
+B332B205000710
+58B3370640
+B332B205444640
+18B3316320483BDE000710
+B3317995B1591311110710
+58B3307884A0481210000640
+B332C4FCEE565C444640
+18B33184A5181210000710
+B3317995B5191311110710
+58B3307863391F3A1E000640
+B332B205444640
+1818B30218B32CB205000710
+1820B30204B334
+5821E1C44F84227870B329F4A4C933C4000640
+582112244804224488B32984A5294A04B302
+18B30284043EB32B85292A0A04000710
+18C110448203224480B329E7392E3384B302
+5821118701041478B32A84A5294204000640
+582112250884144888B32C4AB303
+1821122488B32DF738CE33DF000710
+1821E1C44704087070B329B205000710
+5818B2020018B22B00B3060640
+58B23000B308
+18B331643D26125E8C4710
+B3329421691250B302
+5880E3E7C0111C100101C3889EB327611290FD4640
+58804204001322100102244991B3259739E6139C554640
+18B33194A1E8125057C710
+B30415B3044AB328A9125056C710
+58F0420780B303E2B328673D267F9E244640
+588042040019B30202244CB326B205000640
+18B3370710
+18F8E207C0111C7C01F1C4489EB32D
+58B2300078F123E88000000640
+B33283A308B304
+18B33182BF0FB3020710
+B332E6D505B202000710
+58B33186B3040640
+B3328455B305
+18B331F44902B3020710
+B332B205000710
+58B3370640
+B33A
+18B331E4BD18B800000710
+B33294A11910B303
+58B3319521FAB3020640
+B332E738ACB304
+18B33194A0B3030710
+1FB230FFF894A0AA30B303
+5FE3B304E3B321FAB206AAF8E73C491000000640
+5FDFB304FDB32AB205000640
+1FB328F5B2065578B3050710
+1FDF01FC1EFF407DDFF403F07FFFFBFF700C01FDFEF83FEFFDFFE0FF0FBFD80FFFFF43DFC3C25FA7FFFDB310
+5FDF7E7BEEFEDFFDEFEDFDCFBFB30277FDFFFDFCE7CFB3029F3CF3BF9BF3FFFF3DDFBDBCDF67FFFDFAB206AAF8F4A4C933C4000640
+5FDF7F77F6FDEFB303DFDFB306FAB202EFFDFFBFBDFBBF5BFBFFFF7EDF7FBECEFFB30A84A5294A04B302
+1FDF7FBFF67BF7FDF01DFDBFDFC3B305F6DFF7B3027FDBFDBEDBFDB304C6D5B302F5B206557885292A0A04000710
+1F3F7FBFEEB7F9FE77DDFDBFFFFFB305EEB307BDB30501F8DBB30BE7392E3384B302
+5FDF7FBC1ECFFEFDFBBC03B302F80F77FC03FDDEB302FC07B302BBB304CF7DBEDDB302FAB206AAF884A5294204000640
+B302BBFEEFFF7DFBBDFBB302FBFF77FDFFB304FDFFB3073DD5BBDEDEE7B30D4AB303
+1FDF7FB7F6F7DF7DFD7DFBBFDFB306BEB307B7B30343D9C7E1DF67FFC1F5B2065578F738CE33DF000710
+B30277F6FBB304DFB3077EB202EFFDFFBFBBFDAFDBFBFFFF7FB202FFDFFFFFF9B308B205000710
+5FDF7E79CEFDEEFDFEFDFBCFBFB305FCFEE7CFB3029F3BFD9FDBF3B308FDFAB206AAF8B3050640
+5FDF01FE3EFEF1FDFEFC07F07FFFF80777FC01FDFEF83E00FC03E0FBFDBFD80FB31A
+1FE3B204FFE3B221FFF5B206557FB206FF10
+1FB238FF10
+5FB337FE40
+B33A
+18B237000710
+B33A
+58B3370640
+B33A
+18B3370710
+B33A
+58B3370640
+B33A
+18B3370710
+B33A
+58B3370640
+B33A
+18B3370710
+B33A
+58B3370640
+B33A
+18B3370710
+B33A
+58B3370640
+B33A
+18B3370710
+B33A
+58B3370640
+B33A
+18B3370710
+B33A
+58B3370640
+B33A
+18B3370710
+B33A
+58B3370640
+B33A
+18B3370710
+B33A
+58B3370640
+B33A
+18B3370710
+B33A
+58B3370640
+B33A
+18B3370710
+B33A
+58B3370640
+B33A
+18B3370710
+B33A
+58B3370640
+B33A
+18227C71F081B30604471FB3280710
+1822408900B308C210B32A
+5824B3360640
+58284011B3080542B32B
+183C7861E08280B3310710
+1822408900B30706B32C
+58B3038440B3310640
+583C7C71F3E4B3060447B32B
+18B237000710
+B33A
+58B30D03B30203B30581B31D0640
+B30E04B3020080B3044080B31E
+18B30E3C3889F0844F0EB3210710
+B30F22448900844891B3022040B31E
+58B310908087C8B3220640
+B30E1822089040644890007CF8B320
+18B30D042230E020828F10B20200B31E0710
+B30C0280042244A110828911B323
+58B31091B3064080B31C0640
+B30F3C3888E0810E0EB323
+18B30B000003B2020003B2050081B21D000710
+B30EB229000710
+58B3370640
+B33A
+18B30E2038F9F0044704004070E22780B31B0710
+B31010810004C884004089126440B31D
+58B3370640
+B3130548B304A4B31E
+18B30E3C1081E0B30378B31F0710
+B30C02800A2010810006B30240891324450014B31B
+58B3370640
+B30F3E3881F004471F007C71122785B31D
+18B30BB22B000710
+B33A
+58B30C810010B30E10B3170640
+B30C01020008B30E20B319
+183E38710224470E08B3050E88B3030F8E1C408902238884B31A0710
+1820108902244211B3040204110400200000080422B3022109B30240B319
+58B3020144B30B40B305510241B31C0640
+B30211E0844202B3060A8400F800010804047821E2810A8408B31B
+182010611087C20CB306040400400005480418442113C10A842AB3190710
+B3028911444211B3060A0400200003880422445112210C841C0040A0B318
+58B3021224B30601020A08B202000548B30289B3032A0020B3170640
+58203871E224470E3EB30504B30301080E1C7889E3C3889F08B31B
+18B20C00810010B302B20B0010B217000710
+B30DB22A000710
+58B30CC0B302C0B3250640
+B30C01B2030020B327
+18083880E3E7C0B3060F0E227C211087C0B3220710
+180844804204B206000108912240211084B223000710
+58B30E242020A082B3230640
+B30C0608822410184081B325
+180844F0420780B30501088C3808204141B3230710
+B302804204B20600010891284420A14080B324
+58B30E244421122040B3220640
+583E38F8E207C0B3060F0E2238211227C0B324
+18B20C00C0B20200C0B225000710
+187FB205FF80B304B22A000710
+58B30CC0B302C0B3250640
+B30C01B2030020B327
+185FBB8EEDFC7060B3050F0E227C2113C380B3220710
+B30276ADFEF7EFB3050891224021122440B324
+585FB7B30C242021F2B3240640
+585FAFB3090608822410191224B223000640
+18438776AC3EF7E1B30401088C380820A3C4B3230710
+185FBB764DFEF7EFB30691284420A24440B324
+58B30E24B3270640
+5841878EEC1C77E0B3050F0E223820438380B324
+187FB205FFB30400C0B20200C0B225000710
+18B237000710
+58B3370640
+B33A
+18B3051C388042038F9FB32A0710
+B30622448042010810B32C
+58B3370640
+B3062044F0B330
+18B30788A3C1081EB32A0710
+B306224488A2010810B32C
+58B3078912B32D0640
+B3061C38F113E3881FB32C
+18B305B231000710
+B33A
+58B3370640
+5FB237FFFE40
+1FB310FAB225AAAF10
+B33A
+5FB310FDB225555640
+5FE0FE0FBFFF7EFFDC03007FFBFEFC25EF787DB327
+1F9F79F3B303DDFF7FFFFBFEFBCDEF77BAB225AAAF10
+1FBFBBFBB30AEDEF6FFAB327
+5F7FB7FDB309FC6DEF6FFDB225555640
+5F7FF7FD80B308FF8DEF603DB327
+1FB302BF7EBE03DDFF00FFF80E7BEDEF6FBAB225AAAF10
+B304BDDEFFDDFF7FFFFBFEADECE7777AB327
+5F7FB7B30ACE1D18F8FDB225555640
+5FBFBBFBBFBBEEB305B204FFB328
+1F9F79F3BF77F6B30AFAB225AAAF10
+1FE0FE0F80F7F601DDFF007FF807B32C
+5FB210FFFDB225555640
+B311B226FFFE40
+1FB337FF10
+B33A
+58B237000640
+B33A
+18B3370710
+B33A
+58B3370640
+5880B338
+1840B3360710
+1820B338
+5810B3360640
+B33A
+1820B3360710
+1840B338
+5880B3360640
+58B237000640
+18B3370710
+B30520B333
+58B3370640
+582111C007112C4070E1C08711004070F1A0050204080161C00F84227C68F0C38684B318
+18211220088A324089122088910040891260B30492200804224099112449B3170710
+B3020008042240802040B3038112200A82B3021200080A3E408911040880B318
+582113E00F842240F8C180B303F8F2B30513E0080A224088F107C8B3170640
+58219220088A32648912208899006488126008B30392200F0A144088110449B319
+182161C007112C5870E1C38716005870E1A0088EB30261C00811B302E3C386B3170710
+1821B20E00200000B3020000B30300010000B319
+58F9B30880B306021C38B3020F910840B20300B3170640
+58B237000640
+18B3370710
+B30C04B30880B30580B31B
+58B30B08B30840B30540B3190640
+58F910C388000C447002238500084088E224071F3E00F8400207100050F843E3810E042070E201080E3E7CB30F
+1881112448001244880224450010408912A4021020002020020890005020C0844111042089120108042040B30D0710
+B30204080010448002240A80104091B30BFC2000804F813E10B316
+58811107C8B302F80227CAB302A1B30B28B302490124108113C1B3110640
+58F191044C80106488032448801078F112A782103CB30499B30383890E24088112228F042078B30F
+188163C38B003C587002C38880104089136402102000A020078716007EA002804501140889122288042040B30D0710
+188001B202001040B2040008B307604002B20200146001844511140489122448B312
+58F8B20400B3067CF0E227C7103E00204001C0B302200083830E0C0470E3C44F8E207CB30D0640
+58B20B0004B2080080B220000640
+18B30BB22B000710
+B33A
+5FB237FFFE40
+B33A
+B2391110
+B33A
+B2394440
+B33A
+B2391110
+
+bitbltsave restore
+25200 26806 M (The new setting for the argument will be displayed ) S
+25200 25206 M (immediately in the inspector window.) S
+grestore savepage restore showpage
+
+%%Page: 17 17
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (17) S
+7200 75600 M (LispCourse #13:  Error Handling and the Break Package) S
+/bitbltsave save def 14400 43999 translate 47900 28000 scale 479 280 true thebitimage
+B23B88
+B23B22
+B33B
+B23B88
+B33B
+222FB238FF22
+B33B
+888CB230003CB205000388
+B33B
+222CB3317CB30522
+B333B205000322
+888CB33888
+B33B
+222CB3317A526499E2000322
+B333425294A502B302
+888CB332949505B30288
+B333739C9719C2B302
+222CB331425294A102000322
+B336A5B303
+888CB3317B9C6719EF800388
+B333B205000388
+222CB33301B30322
+B33502B304
+888CB3317891F308B30288
+B33341D18488B303
+222CB3325FB30422
+B333736AB305
+888CB33143B30588
+B333422AB305
+222CB3317A24833EB30222
+B333B205000322
+888CB33888
+B33B
+222CB3317A526499E2000322
+B333425294A502B302
+888CB332949505B30288
+B333739C9719C2B302
+222C7C7040B32E425294A102000322
+222C4088B332A5B303
+888C2088B22E003C7B9C6719EF800388
+888C10B330B205000388
+222C08F040B33522
+222C4480B337
+888C4488B22E003C79CC8480B30288
+888C3870B32F4092B305
+222CB230003C408287B30322
+B3348CE3B202000322
+888C08B30E80B321909780B30288
+888C10B30E40B3219294B304
+222C107103E44704227C891005880E223888B32141CCE4B30322
+222C20890204C8842240895006481124448820B320B205000322
+888CB3052440F9500448112840B32988
+B303E2054104284089B303307CB32A
+222C208913C546043C785150064C912844C8B3217891F0B30322
+B30312064884224051B0058B0E2438B0B32141D180B304
+888C10B30804000020000040B3215FB30488
+B30271E3E4471F3C7C2110B327736AB305
+222C08B20E0080B32043B30522
+222CB230003C422AB305
+888CB3317A24B30488
+B333B205000388
+222CB33822
+B333B205222322
+888CB3313190241DEF000388
+B333CAD8AC8988888388
+222CB3314250240908000322
+B333627E772B2E222322
+888CB33142528C0908000388
+B333CADA8C8988888388
+222CB331319C8F9D0F000322
+B333B205222322
+888C0CB3020CB32CB205000388
+888C10B30202B334
+222C10F0E227C2113C38B3297A526499E2000322
+B30289122402112244B329425294A502B302
+888CB30242021FB32C949505B30288
+888C6088224101912240B329739C9719C2B302
+222C1088C380820A3CB32A425294A102000322
+B302891284420A2444B32CA5B303
+888CB30244B32D7B9C6719EF800388
+B302F0E22382043838B329B205000388
+222C0CB202000CB22B00B30722
+222CB23000B308
+888CB331321E93092F462388
+B3334A10B4B48928B302
+222C4071F3E0088E080080E1C44FB327B089487EA322
+B30221020009910800811224C880B3244B9CF309CE2AA322
+888CB3314A50F409282BE388
+B3050AB3042548B327D489282B6388
+222C782103C0B303F1B328339E933FCF122322
+222C402102000CB302811226B326B205000322
+888CB33888
+888C7C7103E0088E3E00F8E2244FB22400B308
+222CB230003C7891F440B30222
+B33341D184B304
+888CB3325F87C0B30288
+B333736A8280B303
+222CB33143B30522
+B333422AB305
+888CB3317A2481B202000388
+B333B205000388
+222CB33822
+B33B
+888CB331725E8C5CB30288
+B3334A508C88B303
+222CB33290FD08B30222
+B333739C56B304
+888CB3314A50B30488
+888FB230FFFC4A505518B303
+222FF1B304F1B321FDB206557C739E2488B30222
+222FEFB304FEB32AB205000322
+888FB328FAB206AABCB30688
+B30280FE0F7FA03EEFFA01F83FFFFDFFB80600FEFF7C1FF7FEFFF07F87DFEC07FFFFA1EFE1E12FD3FFFEB310
+222FEFBF3DF77F6FFEF7F6FEE7DFB302BBFEFFFEFE73E7B302CF9E79DFCDF9FFFF9EEFDEDE6FB4B3FFFEFDB206557C7A526499E2000322
+B303BBFB7EF7B303EFEFB306FD77F7B302DFDEFDDFADFDFFFFBF6FBFDF677FB30A425294A502B302
+888FEFBFDFFB3DFBFEF80EFEDFEFE1B305FB6FFBB302BFEDFEDF6DFEB304E36AFFFFFEFAB206AABC42949505B30288
+888F9FBFDFF75BFCFF3BEEFEDFFFFFB305F7B307DEEDB30480FC6DB30B739C9719C2B302
+222FEFBFDE0F67FF7EFDDE01B302FC07BBFE01FEEFB30303B302DDB30467BEDF6EB302FDB206557C425294A102000322
+B303DDFF77FFBEFDDEFDB302FDFFBBFEFFB305FFB3079EEADDEF6F73B30DA5B303
+888FEFBFDBFB7BEFBEFEBEFDDFEFB306DFB307DBB303A1ECE3F0EFB4B3FFE0FAB206AABC7B9C6719EF800388
+B303BBFB7DB304EFB307BF77F7B302DFDDFED7EDFDFFFFBFB202FFEFFFFFFCB308B205000388
+222FEFBF3CE77EF77EFF7EFDE7DFB3067F73E7B302CF9DFECFEDF9B308FEFDB206557CB30622
+B30280FF1F7F78FEFF7E03F83FFFFC03BBFE00FEFF7C1F007E01F07DFEDFEC07B31A
+888FF1B204FFF1B221FFFAB206AABFB206FF88
+888FB238FF88
+222FB33822
+B33B
+888CB237000388
+B33B
+222CB33822
+B33B
+888CB33888
+B33B
+222CB33822
+B33B
+888CB33888
+B33B
+222CB33822
+B33B
+888CB33888
+B33B
+222CB33822
+B33B
+888CB33888
+B33B
+222CB33822
+B33B
+888CB33888
+B33B
+222CB33822
+B33B
+888CB33888
+B33B
+222CB33822
+B33B
+888CB33888
+B33B
+222CB33822
+B33B
+888CB33888
+B33B
+222CB33822
+B33B
+888CB33888
+B33B
+222CB33822
+B33B
+888CB33888
+B33B
+222CB33822
+B33B
+888CB33888
+B33B
+222CB33822
+B33B
+888C113E38F84080B30502238F80B32888
+B302204480B3086108B228000388
+222C12B33722
+222C142008B309A1B32B
+888C1E3C30F04140B33288
+888C11204480B3070321B32B
+222CB3034220B33222
+222C1E3E38F9F2B306022388B32A
+888CB237000388
+B33B
+222CB30D018000000180B3044080B31D22
+B30F02B2030040B3042040B31E
+888CB30E1E1C44F8422787B32288
+B310112244804224488000001020B31E
+222CB310484043E4B32322
+B30F0C11044820322448003E7CB320
+888CB30D0211187010414788B20200B31F88
+B30D0140021122508841448880B322
+222CB31048B3062040B31D22
+B3101E1C4470408707B20200B320
+888CB30B0000018000000180B204004080B31D88
+B30FB229000388
+222CB33822
+B33B
+888CB30E101C7CF80223820020387113C0B31C88
+B311084080026442002044893220B31D
+222CB33822
+B315A4B30452B31E
+888CB30E1E0840F0B3033CB32088
+B30D01400510084080032442002044899222800AB31B
+222CB33822
+B3101F1C40F802238F803E388913C2B31D
+888CB30BB22B000388
+B33B
+222CB30C408008B30E08B31822
+B30E810004B30E10B319
+888C1F1C388112238704B3050744B30307C70E20448111C442B31B88
+888C1008448112210884B3030102088200100000040211B3021084C2000020B319
+222CB30280A2B30B20B305288120B31D22
+B30308F042210104B3050542007C00008402023C10F140854204B31B
+888C1008308843E106B306020200200002A4020C221089E0854215B31A88
+B3034488A2210884B305050200100001C402112228891086420E002050B318
+222CB3028912B30600810504B2020002A4B30244B303150010B31822
+B3021C38F11223871FB30502B3030084070E3C44F1E1C44F84B31B
+888CB20C00408008B303B20A0008B217000388
+B30EB22A000388
+222CB30C60B30260B32622
+B30E80B30210B327
+888C041C4071F3E0B3068787113E108843E0B32388
+B30222402102B2070084489120108842B223000388
+222CB30E9210105041B32422
+B30D03044112080C204080B324
+888C0422782103C0B3050084461C041020A0B32488
+B303402102B20700844894221050A040B324
+222CB30E922210891020B32322
+222C1F1C7C7103E0B3068787111C108913E0B324
+888CB20C0060B2020060B225000388
+888C3FB205FFC0B304B22A000388
+222CB30C60B3026018B32522
+B30E80B3021020B326
+888C2FDDC776FE383040B3048787113E107113E0B32388
+B303BB56FF7BF7C0B30484489120108912B223000388
+222C2FDBB30C9210108921B32422
+B302D7B30903044112080C894080B324
+888C21C3BB561F7BF0B3040084461C041089E0B32488
+888C2FDDBB26FF7BF7B30648942210891040B324
+222CB30E92B30320B32322
+222C20C3C7760E3BF040B3048787111C1071E3E0B324
+888C3FB205FFC0B30460B2020060B225000388
+888CB237000388
+222CB33822
+B33B
+888CB3050E1C402101C7CF80B32A88
+B30711224021008408B22A000388
+222CB33822
+B307102278B330
+888CB3074451E0840FB32B88
+B30711B302008408B32C
+222CB30889B32E22
+B3070E1C7889F1C40F80B32B
+888CB305B231000388
+B33B
+222CB33822
+222FB238FF22
+888FB310FDB225555788
+B33B
+222FB310FEB225AAAB22
+222FF07F07DFFFBF7FEE01803FFDFF7E12F7BC3EB327
+888FCFBCF9B304FFBFFFFDFF7DE6F7BBDDB225555788
+888FDFDDFDB30AF6F7B7FDB327
+222FBFDBFEB3097E36F7B7FEB225AAAB22
+B302FBFEC07FB3077FC6F7B01EB327
+888FB302DFBF5F01EEFF807FFC073DF6F7B7DDB225555788
+B305DEEF7FEEFFBFFFFDFF56F673BBBDB327
+222FBFDBB30A670E8C7C7EB225AAAB22
+222FDFDDFDDFDDF7B306B203FFFEB327
+888FCFBCF9DFBBFBB30AFDB225555788
+888FF07F07C07BFB00EEFF803FFC03B32C
+222FB210FFFEB225AAAB22
+B312B227FF22
+B23B88
+B33B
+B23B22
+B33B
+B23B88
+
+bitbltsave restore
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+10800 36757 M (Breaks within Breaks) S
+1200 /Times-Roman-Acnt F
+14400 33506 M (When working inside a break frequently evaluates an expression containing an ) S
+14400 31506 M (error.  If this error causes a break, a second break window will be opened and a ) S
+14400 29506 M (break exec started in this window.) S
+14400 26706 M (Exiting from this second break window using either a normal exit \(OK, GO, ) S
+14400 24706 M (RETURN\) or an abort \(^\) will simply return to the next higher level break exec, ) S
+14400 22706 M (i.e., the break in which the the break being exited occurred.) S
+14400 19906 M (Breaks within breaks are like DEdits.  You can exit from a higher level break only ) S
+14400 17906 M (by exiting from the next lower level break first.  ) S
+14400 15106 M (If an error occurs in the break exec that would normally cause an abort rather than ) S
+14400 13106 M (another break, then the abort error message is simply printed in the break window ) S
+14400 11106 M (and control returns to the break exec. ) S
+grestore savepage restore showpage
+
+%%Page: 18 18
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (18) S
+7200 75600 M (LispCourse #13:  Error Handling and the Break Package) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+10800 70957 M (Tailoring the Break Package) S
+1200 /Times-Roman-Acnt F
+14400 67906 M (The following parameters can be used to tailor various aspects of the error ) S
+14400 66306 M (handler, the break exec and break windows.) S
+1200 /Times-Bold-Acnt F
+14400 63506 M (HELPDEPTH) S
+1200 /Times-Roman-Acnt F
+( \234 an integer used as a threshold for determing whether to break or ) S
+14400 61906 M (abort.  When an error occurs, if the stack depth is greater than HELPDEPTH then ) S
+14400 60306 M (the computation is broken, otherwise its aborted.  Initially, 7.  A setting of 1 will ) S
+14400 58706 M (insure that a break always occurs.) S
+1200 /Times-Bold-Acnt F
+14400 55906 M (HELPTIME) S
+1200 /Times-Roman-Acnt F
+(  \234 an integer indicating the number of milliseconds that a ) S
+14400 54306 M (computation has to be in progress for a break to be used instead of an abort when ) S
+14400 52706 M (an error occurs.  Initially, 1000.) S
+1200 /Times-Bold-Acnt F
+14400 49906 M (HELPFLAG) S
+1200 /Times-Roman-Acnt F
+( \234 if NIL, no breaks will occur and all errors will cause an abort.  If ) S
+14400 48306 M (BREAK!, a break will occur for every error.  If T, the break or abort decision will ) S
+14400 46706 M (be made based on HELPDEPTH and HELPTIME as described above.  Initially, ) S
+14400 45106 M (T.) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+18000 42106 M (Note HELPFLAG must be set with SETTOPVAL as in \(SETTOPVAL ) S
+18000 40506 M ('HELPFLAG 'BREAK!\).  SETQ cannot be used to set this variable.) S
+1200 /Times-Bold-Acnt F
+14400 37706 M (AUTOBACKTRACEFLG) S
+1200 /Times-Roman-Acnt F
+(  \234 if non-NIL, a backtrace window is automatically ) S
+14400 36106 M (opened along with every break window.  If NIL, then the BT menu command ) S
+14400 34506 M (must be used to open the backtrace window.  Initially, NIL.) S
+1200 /Times-Bold-Acnt F
+14400 31706 M (CLOSEBREAKWINDOWFLG ) S
+1200 /Times-Roman-Acnt F
+(\234 if NIL, then a break window will remain on ) S
+14400 30106 M (the screen when the break is exited.  The window must then be closed by hand.  If ) S
+14400 28506 M (T, then each break window is closed as the break is exited.  Initially, T.) S
+1400 /Times-Bold-Acnt F
+10800 24757 M (Break Documentation) S
+1200 /Times-Roman-Acnt F
+14400 21906 M (Breaks and the Break Exec are documented in Sections 9.1 thru 9.3 of the IRM.  ) S
+14400 20306 M (Break Windows are documented in Section 20.3 of the IRM.  All of these sections ) S
+14400 18557 M (contain a mix of user and programmer materia) S
+1400 /Times-Roman-Acnt F
+(l.) S
+grestore savepage restore showpage
+
+%%Page: 19 19
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 20 20
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (19) S
+7200 75600 M (LispCourse #13:  Error Handling and the Break Package) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (The Standard Interlisp Errors) S
+1200 /Times-Roman-Acnt F
+18000 68106 M (There are currently fifty-plus standard types of errors in the Interlisp ) S
+18000 66306 M (system.  When an abort or a break occurs, most errors will print the ) S
+18000 64506 M (offending expression following the error message for that type of error, ) S
+18000 62706 M (e.g., NON-NUMERIC ARG NIL is very common.) S
+18000 59706 M (All of the standard Interlisp errors and error messages are described \(very\) ) S
+18000 57906 M (briefly in Section 9.8 of the IRM.  This section is reproduced in the ) S
+18000 56106 M (Appendix.) S
+18000 53106 M (Error #17 is a sort of generic error.  Many packages and system function ) S
+18000 51306 M (use the function called ERROR! to indicate an error not on the standard ) S
+18000 49506 M (error types list.  ERROR! will indicate an generic error and then print a ) S
+18000 47706 M (more specific error message given to it by the specific package or function ) S
+18000 45906 M (in which the error occurred.  ) S
+1400 /Times-Bold-Acnt F
+7200 41957 M (Exercises) S
+1200 /Times-Roman-Acnt F
+10800 38706 M (Set HELPDEPTH to 1.  Then start entering Lisp expression containing errors.  When ) S
+10800 37106 M (these expressions cause errors, browse around in the break trying to do various things.) S
+10800 33906 M (Define a few functions with errors and then execute them.  Browse around in the ) S
+10800 32306 M (resulting break.  Try to correct the error and restart the computation.) S
+grestore savepage restore showpage
+
+%%Trailer

@@ -1,0 +1,1172 @@
+%!PS-Adobe-2.0%%Title: {DSK}<home>larry>lispcourse>OUTLINE18.PS%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate:  7-Nov-2023 21:40:08%%EndComments/bdef {bind def} bind def
+/ldef {load def} bdef
+/S /show ldef
+/M /moveto ldef
+/DR {transform round exch round exch itransform} bdef
+/L {gsave newpath setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/L1 {gsave newpath 0 setdash setgray setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/F {findfont exch scalefont setfont} bdef
+/CLP {newpath M dup 0 rlineto exch 0 exch rlineto
+  neg 0 rlineto closepath clip newpath} bdef
+/R {gsave setgray newpath M dup 0 rlineto exch 0 exch
+  rlineto neg 0 rlineto closepath eofill grestore} bdef
+/ellipsedict 9 dict def
+ellipsedict /mtrx matrix put
+/ellipse
+ { ellipsedict begin
+  /endangle exch def
+  /startangle exch def
+  /orientation exch def
+  /minorrad exch def
+  /majorrad exch def
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  orientation rotate
+  majorrad minorrad scale
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+ end } bdef
+/concatprocs
+ {/proc2 exch cvlit def
+  /proc1 exch cvlit def
+  /newproc proc1 length proc2 length add array def
+  newproc 0 proc1 putinterval
+  newproc proc1 length proc2 putinterval
+  newproc cvx
+ } bdef
+/resmatrix matrix def
+/findresolution
+ {72 0 resmatrix defaultmatrix dtransform
+  /yres exch def /xres exch def
+  xres dup mul yres dup mul add sqrt
+ } bdef
+/thebitimage
+ {/maskp exch def
+  /bihgt exch def
+  /biwid exch def
+  /byte 1 string def
+  /strbufl biwid 8 div ceiling cvi def
+  /strbuf strbufl string def
+  maskp not{{1 exch sub} currenttransfer concatprocs settransfer} if
+  biwid bihgt
+  maskp { true } { 1 } ifelse
+  [biwid 0 0 bihgt 0 0]
+  {/col 0 def
+   {currentfile byte readhexstring pop 0 get
+    dup 16#B2 eq {pop
+    currentfile byte readhexstring pop 0 get 1 add
+    currentfile byte readhexstring pop pop /nbyte byte 0 get def
+    { strbuf col nbyte put /col col 1 add def} repeat}
+   {dup 16#B3 eq {pop /col col
+    currentfile byte readhexstring pop
+    0 get add 1 add def}
+    {16#B4 eq {currentfile byte readhexstring pop pop} if
+     strbuf col byte 0 get put /col col 1 add def} ifelse
+   } ifelse
+   col strbufl ge { exit } if } loop
+   strbuf }
+  maskp { imagemask } { image } ifelse
+ } bdef
+/setuserscreendict 22 dict def
+setuserscreendict begin
+ /tempctm matrix def
+ /temprot matrix def
+ /tempscale matrix def
+end
+/setuserscreen
+ {setuserscreendict begin
+   /spotfunction exch def
+   /screenangle exch def
+   /cellsize exch def
+   /m tempctm currentmatrix def
+   /rm screenangle temprot rotate def
+   /sm cellsize dup tempscale scale def
+   sm rm m m concatmatrix m concatmatrix pop
+   1 0 m dtransform /y1 exch def /x1 exch def
+   /veclength x1 dup mul y1 dup mul add sqrt def
+   /frequency findresolution veclength div def
+   /newscreenangle y1 x1 atan def
+   m 2 get m 1 get mul m 0 get m 3 get mul sub
+   0 gt { { neg } /spotfunction load concatprocs
+          /spotfunction exch def } if
+   frequency newscreenangle /spotfunction load setscreen
+  end
+ } bdef
+/setpatterndict 18 dict def
+setpatterndict begin
+ /bitison
+  {/ybit exch def /xbit exch def
+   /bytevalue bstring ybit bwidth mul xbit 8 idiv add get def
+   /mask 1 7 xbit 8 mod sub bitshift def
+   bytevalue mask and 0 ne
+  } bdef
+end
+/bitpatternspotfunction
+ {setpatterndict begin
+   /y exch def /x exch def
+   /xindex x 1 add 2 div bpside mul 1 sub cvi def
+   /yindex y 1 add 2 div bpside mul 1 sub cvi def
+   xindex yindex bitison
+    {/onbits onbits 1 add def 1}
+    {/offbits offbits 1 add def 0} ifelse
+  end
+ } bdef
+/setpattern
+ {setpatterndict begin
+   /cellsz exch def
+   /angle exch def
+   /bwidth exch def
+   /bpside exch def
+   /bstring exch def
+   /onbits 0 def /offbits 0 def
+   cellsz angle /bitpatternspotfunction load setuserscreen
+   {} settransfer
+   offbits offbits onbits add div setgray
+  end
+ } bdef
+% - - - - - Fraction-setting code, to support NS fonts better - - - - -
+/fractiondict 20 dict def
+/fractionshow 
+{ fractiondict begin
+/denom exch def 
+/num exch def 
+/regfont currentfont def
+/fractfont currentfont [.65 0 0 .6 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(1) true charpath flattenpath pathbbox 
+/height exch def pop pop pop
+ grestore
+0 .4 height mul rmoveto
+fractfont setfont num show
+0 .4 height mul neg rmoveto regfont setfont (\244) show
+fractfont setfont denom show regfont setfont end } bdef
+/f14 { (1) (4) fractionshow } bdef
+/f12 { (1) (2) fractionshow } bdef
+/f34 { (3) (4) fractionshow } bdef
+/f18 { (1) (8) fractionshow } bdef
+/f38 { (3) (8) fractionshow } bdef
+/f58 { (5) (8) fractionshow } bdef
+/f78 { (7) (8) fractionshow } bdef
+/f13 { (1) (3) fractionshow } bdef
+/f23 { (2) (3) fractionshow } bdef
+/bboxdict 20 dict def
+/bboxchk { bboxdict begin
+/regfont currentfont def
+/chkfont currentfont [1.25 0 0 1.25 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(\161) true charpath flattenpath pathbbox 
+/height exch def pop pop pop 
+ grestore 
+ currentpoint 
+ .2 height mul .3 height mul rmoveto
+chkfont setfont (\063) show
+ moveto
+ regfont setfont
+(\161) show end } bdef
+/rencdict 15 dict def
+/encodefont { rencdict begin
+/newname exch def
+/oldfont exch def
+/newcodes [
+8#001 /Aacute
+8#002 /Acircumflex
+8#003 /Adieresis
+8#004 /Agrave
+8#005 /Aring
+8#006 /Atilde
+8#007 /Ccedilla
+8#010 /Eacute
+8#011 /Ecircumflex
+8#012 /Edieresis
+8#013 /Egrave
+8#014 /Iacute
+8#015 /Icircumflex
+8#016 /Idieresis
+8#017 /Igrave
+8#020 /Ntilde
+8#021 /Oacute
+8#022 /Ocircumflex
+8#023 /Odieresis
+8#024 /Ograve
+8#025 /Otilde
+8#026 /Scaron
+8#027 /Uacute
+8#030 /Ucircumflex
+8#031 /Udieresis
+8#032 /Ugrave
+8#033 /Ydieresis
+8#034 /Zcaron
+8#177 /periodinferior
+8#201 /aacute
+8#202 /acircumflex
+8#203 /adieresis
+8#204 /agrave
+8#205 /aring
+8#206 /atilde
+8#207 /ccedilla
+8#210 /eacute
+8#211 /ecircumflex
+8#212 /edieresis
+8#213 /egrave
+8#214 /iacute
+8#215 /icircumflex
+8#216 /idieresis
+8#217 /igrave
+8#220 /ntilde
+8#221 /oacute
+8#222 /ocircumflex
+8#223 /odieresis
+8#224 /ograve
+8#225 /otilde
+8#226 /scaron
+8#227 /uacute
+8#230 /ucircumflex
+8#231 /udieresis
+8#232 /ugrave
+8#233 /ydieresis
+8#234 /zcaron
+8#235 /Eth
+8#236 /eth
+8#237 /Thorn
+8#240 /thorn
+ ] def
+/olddict oldfont findfont def /newfont olddict maxlength dict def
+olddict { exch dup /FID ne { dup /Encoding eq
+{ exch dup length array copy newfont 3 1 roll put }
+{ exch newfont 3 1 roll put } ifelse }
+ { pop pop } ifelse } forall
+newfont /FontName newname put
+newcodes aload pop
+newcodes length 2 idiv { newfont /Encoding get 3 1 roll put } repeat 
+newname newfont definefont pop end } def
+ /accentdict 10 dict def 
+ /accentor { accentdict begin /scaler exch def /delta exch def 
+/unders exch def /accents exch def /mainch exch def /scrt (X) def
+ /w1 mainch stringwidth pop def 
+ currentpoint mainch show currentpoint 4 2 roll 
+accents { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         w1 w2 sub 2 div delta rmoveto scrt show 
+         /delta delta 150 scaler mul 9 div add def
+        } forall 
+unders { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         ch 46 eq { w1 w2 sub 2 div -175 scaler mul 9 div rmoveto scrt show 0 175 rmoveto }
+           { w1 w2 sub 2 div 0 rmoveto scrt show } ifelse 
+        } forall 
+ pop pop moveto end } def 
+%%EndProlog
+%%BeginSetup
+letter/imagesizefactor 1 def%%EndSetup/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+
+%%Page: 1 1
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+54000 75600 M (F.G.H.          ) S
+54000 73800 M (4/2/85) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (LispCourse #18:  Files and Directories \234 Part 4) S
+7200 67157 M (Methods for Dealing with Files Outside of Interlisp) S
+1200 /Times-Roman-Acnt F
+10800 64706 M (Interlisp provides a nearly uniform interface for dealing with files on a wide variety of ) S
+10800 62906 M (devices.  Because it attempts to be uniform, it does not take full advantage of the full ) S
+10800 61106 M (capabilities of each device.  ) S
+10800 58706 M (Many devices allow you to log into the device directly and interact with a specialized ) S
+10800 56906 M (Exec for that device.  These device Execs give you access to the full power of each ) S
+10800 55106 M (device.  However, each such Exec is different, depending on the software running on that ) S
+10800 53306 M (device.) S
+10800 50906 M (There is NO access to the following devices outside of Interlisp:) S
+14400 48906 M (DLion Local Disk) S
+14400 46906 M (Floppies) S
+14400 44906 M (Core Devices) S
+10800 42506 M (There is are non-Interlisp Execs on the following devices:) S
+14400 40306 M (IFS file servers \(the IFS Exec\)) S
+14400 38106 M (NS file servers) S
+14400 35906 M (Vax-Unix file servers) S
+14400 33706 M (Dolphin/Dorado Local Disk \(the Alto Exec\)) S
+10800 31306 M (For devices that run as file servers, you can login from within Interlisp by using the ) S
+10800 29506 M (CHAT program.  For the Dolphin/Dorado Local Disk, you must log out of Lisp and use ) S
+10800 27706 M (the Alto Exec.) S
+1400 /Times-Bold-Acnt F
+7200 23957 M (CHATing to an IFS) S
+1200 /Times-Roman-Acnt F
+10800 21506 M (CHAT is a package in Interlisp that allows you to open a window that is a virtual ) S
+10800 19706 M (terminal to any other device on the network \(that supports virtual terminals\).  This ) S
+10800 17906 M (window acts exactly like a standard character-type computer terminal of the type you ) S
+10800 16106 M (never see around PARC.  From this virtual terminal you can log onto the device and enter ) S
+10800 14306 M (commands into its Exec directly without going through Interlisp.) S
+10800 11906 M (Files stored on an IFS can be manipulated by using CHAT to log into the IFS and then ) S
+10800 10106 M (using the file manipulation commands of the IFS executive.) S
+grestore savepage restore showpage
+
+%%Page: 2 2
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (2) S
+7200 75600 M (LispCourse #18:  Files and Directories \234 Part 4) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 71106 M (Opening a CHAT window) S
+1200 /Times-Roman-Acnt F
+14400 68706 M (To log into an IFS, use the CHAT package.  To start CHAT, type ) S
+1200 /Times-Bold-Acnt F
+(\(CHAT ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Host) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+14400 66906 M (into the Lisp Exec window.  ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Host ) S
+1200 /Times-Roman-Acnt F
+(is the name of the IFS you want to login to.  If ) S
+1200 /Times-Italic-Acnt F
+14400 65106 M (Host ) S
+1200 /Times-Roman-Acnt F
+(is not specified, then you will be prompted for a name in the Exec window.) S
+14400 62306 M (Alternatively, you can choose the ) S
+1200 /Times-Italic-Acnt F
+(CHAT) S
+1200 /Times-Roman-Acnt F
+( entry from the BackgroundMenu.  You ) S
+14400 60506 M (will then be given a menu with a list of IFS \(and other non-IFS\) servers.  Choose ) S
+14400 58706 M (the appropriate name or ) S
+1200 /Times-Italic-Acnt F
+(Other) S
+1200 /Times-Roman-Acnt F
+(, which will prompt you for a Host server \(i.e., an ) S
+14400 56906 M (IFS server in this case\) name in the Prompt window.) S
+14400 54506 M (CHAT will reuse the most recent CHAT window, if it is available.  Otherwise, it ) S
+14400 52306 M (will prompt you for a region and open a new Chat window in that region.) S
+14400 49506 M (Once the window opens, you are "chatting" to the IFS executive in the Chat ) S
+14400 47306 M (window.  Everything you type in is just forwarded to the IFS and is NOT ) S
+14400 45106 M (intepreted by Lisp.) S
+14400 42306 M (CHAT will automatically log you on to the IFS.  ) S
+1000 /Times-Roman-Acnt F
+(If you want to prevent CHAT from ) S
+14400 40255 M (logging in \(e.g., if yopu want to log in under someone else's name\), start CHAT using ) S
+1000 /Times-Bold-Acnt F
+(\(CHAT ) S
+1000 /Times-BoldItalic-Acnt F
+14400 38255 M (Host ) S
+1000 /Times-Bold-Acnt F
+('NONE\)) S
+1000 /Times-Roman-Acnt F
+( in the Lisp Exec window.) S
+1200 /Times-Bold-Acnt F
+10800 34906 M (The IFS executive) S
+1200 /Times-Roman-Acnt F
+14400 32506 M (The IFS executive has an ) S
+1200 /Times-Italic-Acnt F
+(@) S
+1200 /Times-Roman-Acnt F
+( prompt.  All commands must be terminated by ) S
+1200 /Times-Italic-Acnt F
+14400 30706 M (<RETURN>) S
+1200 /Times-Roman-Acnt F
+(.) S
+14400 28306 M (Some commands have sub-commands.  When the IFS is in sub-command mode ) S
+14400 26506 M (\(i.e., is expecting a sub-command\), then the prompt will be a ) S
+1200 /Times-Italic-Acnt F
+(@@) S
+1200 /Times-Roman-Acnt F
+(.  In sub-) S
+14400 24706 M (command mode, a ) S
+1200 /Times-Italic-Acnt F
+(<RETURN>) S
+1200 /Times-Roman-Acnt F
+( will exit the sub-command mode and execute the ) S
+14400 22906 M (current command.) S
+14400 20106 M (When typing into the IFS exec:) S
+1200 /Times-Bold-Acnt F
+18000 17706 M (BS) S
+1200 /Times-Roman-Acnt F
+( \234 erases the preceding character) S
+1200 /Times-Bold-Acnt F
+18000 15306 M (CTRL-W) S
+1200 /Times-Roman-Acnt F
+( \234 deletes a word) S
+1200 /Times-Bold-Acnt F
+18000 12906 M (DEL) S
+1200 /Times-Roman-Acnt F
+( \234 deletes an entire command or sub-command.) S
+1200 /Times-Bold-Acnt F
+18000 10506 M (CTRL-C) S
+1200 /Times-Roman-Acnt F
+( may be used to abort any command. ) S
+grestore savepage restore showpage
+
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (3) S
+7200 75600 M (LispCourse #18:  Files and Directories \234 Part 4) S
+14400 71106 M (Typeout will stop whenever the window fills up with text and IFS will wait for ) S
+14400 69306 M (you to type any character before continuing.  If you type ahead, this feature is ) S
+14400 67506 M (disabled.) S
+14400 65106 M (When typing a command to the IFS exec, you need only type enough of each ) S
+14400 63306 M (command to make it uniquely identifiable.  For example, the ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Directory) S
+1200 /Times-Roman-Acnt F
+( command ) S
+14400 61506 M (can be specified by typing ) S
+1200 /Times-Italic-Acnt F
+(Di,) S
+1200 /Times-Roman-Acnt F
+( but not by typing just ) S
+1200 /Times-Italic-Acnt F
+(D) S
+1200 /Times-Roman-Acnt F
+( because ) S
+1200 /Times-Italic-Acnt F
+(D) S
+1200 /Times-Roman-Acnt F
+( is not sufficient ) S
+14400 59706 M (to distinguish between the ) S
+1200 /Times-Italic-Acnt F
+(Directory) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Italic-Acnt F
+(Delete) S
+1200 /Times-Roman-Acnt F
+( commands.) S
+14400 57306 M (The available commands are:) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+19400 54706 M (Login \(user\) ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(user-name) S
+1200 /Times-Bold-Acnt F
+( \(password\) ) S
+1200 /Times-BoldItalic-Acnt F
+(password) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(\234) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(Logs you into IFS.  ) S
+19400 52906 M (This is necessary before issuing most other commands.  Ordinarly, ) S
+19400 51106 M (Chat will do this for you automatically.) S
+1200 /Times-Bold-Acnt F
+19400 48506 M (Logout ) S
+1200 /Times-Roman-Acnt F
+(or) S
+1200 /Times-Bold-Acnt F
+( Quit ) S
+1200 /Times-Roman-Acnt F
+(\234) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(Logs you out and closes the CHAT window.) S
+1200 /Times-Bold-Acnt F
+19400 45906 M (Connect \(to directory\) ) S
+1200 /Times-BoldItalic-Acnt F
+(directory-name) S
+1200 /Times-Bold-Acnt F
+( \(password\) ) S
+1200 /Times-BoldItalic-Acnt F
+(password) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(\234) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(Sets ) S
+19400 44106 M (your default directory to be ) S
+1200 /Times-Italic-Acnt F
+(directory-name) S
+1200 /Times-Roman-Acnt F
+(, and gives you owner-like ) S
+19400 42306 M (access to it.  The ) S
+1200 /Times-Italic-Acnt F
+(password) S
+1200 /Times-Roman-Acnt F
+( may be omitted if ) S
+1200 /Times-Italic-Acnt F
+(directory-name) S
+1200 /Times-Roman-Acnt F
+( is your ) S
+19400 40506 M (own directory or one to which you have connect privileges.) S
+1200 /Times-Bold-Acnt F
+19400 37906 M (Directory \(default\) ) S
+1200 /Times-BoldItalic-Acnt F
+(directory-name) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(\234 Sets your connected directory to ) S
+19400 36106 M (be ) S
+1200 /Times-Italic-Acnt F
+(directory-name) S
+1200 /Times-Roman-Acnt F
+(, but without changing your access rights \(and ) S
+19400 34306 M (therefore without requiring a password\).  Connected directories behave ) S
+19400 32506 M (as in Interlisp \(see LispCourse #16, p. 1\).) S
+1200 /Times-Bold-Acnt F
+19400 29906 M (List \(files\) ) S
+1200 /Times-BoldItalic-Acnt F
+(file-designators) S
+1200 /Times-Roman-Acnt F
+( \234 Lists the names of all files matching ) S
+1200 /Times-Italic-Acnt F
+(file-) S
+19400 28106 M (designators) S
+1200 /Times-Roman-Acnt F
+(, which is a list of up to 10 file names \(separated by spaces\), ) S
+19400 26306 M (any of which may contain `*'s to denote multiple files.  The files ) S
+19400 24506 M (matching each ) S
+1200 /Times-Italic-Acnt F
+(file-designator) S
+1200 /Times-Roman-Acnt F
+( are listed in alphabetical order.) S
+23100 22106 M (If you terminate the last ) S
+1200 /Times-Italic-Acnt F
+(file-designator) S
+1200 /Times-Roman-Acnt F
+( with a comma followed ) S
+23100 20306 M (by ) S
+1200 /Times-Italic-Acnt F
+(<RETURN>) S
+1200 /Times-Roman-Acnt F
+( \(rather than just ) S
+1200 /Times-Italic-Acnt F
+(<RETURN>) S
+1200 /Times-Roman-Acnt F
+(\), IFS enters a ) S
+23100 18506 M (sub-command mode \(with the @@ prompt\) in which you may ) S
+23100 16706 M (specify additional information to be printed about each file:) S
+1200 /Times-Bold-Acnt F
+26700 14706 M (Type ) S
+1200 /Times-Roman-Acnt F
+32400 14706 M (file type and byte size) S
+1200 /Times-Bold-Acnt F
+26700 12706 M (Size) S
+1200 /Times-Roman-Acnt F
+32400 12706 M (size in pages) S
+1200 /Times-Bold-Acnt F
+26700 10706 M (Length) S
+1200 /Times-Roman-Acnt F
+32400 10706 M (length in bytes) S
+1200 /Times-Bold-Acnt F
+26700 8706 M (Creation) S
+1200 /Times-Roman-Acnt F
+32400 8706 M (date of file creation) S
+grestore savepage restore showpage
+
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (4) S
+7200 75600 M (LispCourse #18:  Files and Directories \234 Part 4) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+26700 71106 M (Write) S
+1200 /Times-Roman-Acnt F
+32400 71106 M (date of last write) S
+1200 /Times-Bold-Acnt F
+26700 69106 M (Read) S
+1200 /Times-Roman-Acnt F
+32400 69106 M (date of last read) S
+1200 /Times-Bold-Acnt F
+26700 67106 M (Backup) S
+1200 /Times-Roman-Acnt F
+32400 67106 M (date of last backup) S
+1200 /Times-Bold-Acnt F
+26700 65106 M (Times) S
+1200 /Times-Roman-Acnt F
+32400 65106 M (times as well as dates) S
+1200 /Times-Bold-Acnt F
+26700 63106 M (Author) S
+1200 /Times-Roman-Acnt F
+32400 63106 M (creator of file) S
+1200 /Times-Bold-Acnt F
+26700 61106 M (Protection) S
+1200 /Times-Roman-Acnt F
+32400 61106 M (file protection) S
+1200 /Times-Bold-Acnt F
+26700 59106 M (Verbose) S
+1200 /Times-Roman-Acnt F
+32400 59106 M (same as Type Size Write Read Author) S
+1200 /Times-Bold-Acnt F
+26700 57106 M (Everything) S
+1200 /Times-Roman-Acnt F
+23100 54306 M (Sub-command mode is terminated when you type just ) S
+23100 52506 M (RETURN in response to the `@@' prompt..) S
+1200 /Times-Bold-Acnt F
+19400 49906 M (Delete ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(file-designator) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(\234) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(Deletes all files matching ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(file-designators) S
+1200 /Times-Roman-Acnt F
+(, ) S
+19400 48106 M (which is a list of up to 10 file names \(separated by spaces\), any of ) S
+19400 46306 M (which may contain `*'s to denote multiple files.  The version number ) S
+19400 44506 M (defaults to the lowest existing version; to delete all versions, you must ) S
+19400 42706 M (end each ) S
+1200 /Times-Italic-Acnt F
+(file-designator) S
+1200 /Times-Roman-Acnt F
+( with `!*'. ) S
+19400 40106 M (IFS prints out each file name, followed by `[Confirm]'.  You should ) S
+19400 38306 M (respond with) S
+1200 /Times-Italic-Acnt F
+( `Y') S
+1200 /Times-Roman-Acnt F
+( or ) S
+1200 /Times-Italic-Acnt F
+(<RETURN>) S
+1200 /Times-Roman-Acnt F
+( to delete the file, or with ) S
+1200 /Times-Italic-Acnt F
+(`N') S
+1200 /Times-Roman-Acnt F
+( or ) S
+1200 /Times-Italic-Acnt F
+19400 36506 M (<DEL>) S
+1200 /Times-Roman-Acnt F
+( to leave it alone.) S
+23100 33706 M (If you terminate the last ) S
+1200 /Times-Italic-Acnt F
+(file-designator) S
+1200 /Times-Roman-Acnt F
+( with a comma followed ) S
+23100 31906 M (by ) S
+1200 /Times-Italic-Acnt F
+(<RETURN>) S
+1200 /Times-Roman-Acnt F
+(, IFS enters a sub-command mode \(@@ ) S
+23100 30106 M (prompt\) in which you may request the following additional ) S
+23100 28306 M (actions:) S
+1200 /Times-Bold-Acnt F
+26700 25506 M (Confirm \(all deletes automatically\) ) S
+1200 /Times-Roman-Acnt F
+(\234) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(IFS will not ask ) S
+26700 23706 M (you to confirm deleting each file but will just go ahead ) S
+26700 21906 M (and do it.) S
+1200 /Times-Bold-Acnt F
+26700 19106 M (Keep \(# of versions\) ) S
+1200 /Times-BoldItalic-Acnt F
+(number) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(\234) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(IFS will retain the ) S
+1200 /Times-Italic-Acnt F
+26700 17306 M (number) S
+1200 /Times-Roman-Acnt F
+( most recent versions of each file and delete all ) S
+26700 15506 M (remaining versions.  That is, to delete all but the most ) S
+26700 13706 M (recent version of each file, specify `Keep 1'.) S
+1200 /Times-Bold-Acnt F
+19400 10906 M (Rename ) S
+1200 /Times-BoldItalic-Acnt F
+(existing-filename) S
+1200 /Times-Bold-Acnt F
+( \(to be\) ) S
+1200 /Times-BoldItalic-Acnt F
+(new-filename) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+( \234 Changes the name ) S
+19400 9106 M (of ) S
+1200 /Times-Italic-Acnt F
+(existing-filename) S
+1200 /Times-Roman-Acnt F
+( to be ) S
+1200 /Times-Italic-Acnt F
+(new-filename) S
+1200 /Times-Roman-Acnt F
+(. If you terminate ) S
+1200 /Times-Italic-Acnt F
+(new-filename) S
+1200 /Times-Roman-Acnt F
+( ) S
+grestore savepage restore showpage
+
+%%Page: 5 5
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (5) S
+7200 75600 M (LispCourse #18:  Files and Directories \234 Part 4) S
+19400 71106 M (with ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(ESC) S
+1200 /Times-Roman-Acnt F
+( rather than ) S
+1200 /Times-Italic-Acnt F
+(RETURN) S
+1200 /Times-Roman-Acnt F
+(, the body of ) S
+1200 /Times-Italic-Acnt F
+(old-filename) S
+1200 /Times-Roman-Acnt F
+( \(with ) S
+19400 69306 M (directory and version stripped off\) will be appended to ) S
+1200 /Times-Italic-Acnt F
+(new-filename) S
+1200 /Times-Roman-Acnt F
+(.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+19400 66706 M (Print \(files\) ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(file-designator) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(or ) S
+1200 /Times-Bold-Acnt F
+(Press \(files\) ) S
+1200 /Times-BoldItalic-Acnt F
+(file-designator) S
+1200 /Times-Roman-Acnt F
+( \234 Requests ) S
+19400 64906 M (that all Press files matching ) S
+1200 /Times-Italic-Acnt F
+(file-designator) S
+1200 /Times-Roman-Acnt F
+( be sent to your default ) S
+19400 63106 M (printing server \(`Print' and `Press' are synonyms\). ) S
+19400 60906 M (IFS prints out the name of each file followed by `[Confirm]'; you ) S
+19400 59106 M (should respond with ) S
+1200 /Times-Italic-Acnt F
+(`Y') S
+1200 /Times-Roman-Acnt F
+( or ) S
+1200 /Times-Italic-Acnt F
+(<RETURN>) S
+1200 /Times-Roman-Acnt F
+( to print the file, or with ) S
+1200 /Times-Italic-Acnt F
+(`N') S
+1200 /Times-Roman-Acnt F
+( or ) S
+1200 /Times-Italic-Acnt F
+19400 57306 M (<DEL>) S
+1200 /Times-Roman-Acnt F
+( to skip over it.) S
+23100 54906 M (If you terminate the last ) S
+1200 /Times-Italic-Acnt F
+(file-designator) S
+1200 /Times-Roman-Acnt F
+( with a comma followed ) S
+23100 53106 M (by ) S
+1200 /Times-Italic-Acnt F
+(<RETURN>) S
+1200 /Times-Roman-Acnt F
+(, IFS enters a sub-command mode \(@@ ) S
+23100 51306 M (prompt\) in which you may specify the following parameters:) S
+1200 /Times-Bold-Acnt F
+26700 49106 M (Copies ) S
+1200 /Times-BoldItalic-Acnt F
+(number) S
+1200 /Times-Roman-Acnt F
+( \234 Specifies the number of copies of each ) S
+26700 47306 M (Press document to print.) S
+1200 /Times-Bold-Acnt F
+26700 45106 M (Server ) S
+1200 /Times-BoldItalic-Acnt F
+(server-name) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(\234 Specifies the name of the printing ) S
+26700 43306 M (server to which the Press files are to be transmitted.  ) S
+26700 41506 M (This may be either a registered name or an internetwork ) S
+26700 39706 M (address of the form `) S
+1200 /Times-Italic-Acnt F
+(net) S
+1200 /Times-Roman-Acnt F
+(#) S
+1200 /Times-Italic-Acnt F
+(host) S
+1200 /Times-Roman-Acnt F
+(#' \(don't leave off the ) S
+26700 37906 M (trailing `#'\).) S
+23100 35306 M (In the absence of any sub-commands, IFS will cause one copy ) S
+23100 33506 M (of each Press file to be printed on your default printing server.  ) S
+23100 30906 M (Printing request may be examined and canceled with the ) S
+23100 29106 M (commands ) S
+1200 /Times-Bold-Acnt F
+(Show Printing-requests ) S
+1200 /Times-Roman-Acnt F
+(and) S
+1200 /Times-Bold-Acnt F
+( Cancel) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(printing ) S
+23100 27306 M (requests\)) S
+1200 /Times-Roman-Acnt F
+(, respectively.) S
+23100 24706 M (Note that ) S
+1200 /Times-Italic-Acnt F
+(only) S
+1200 /Times-Roman-Acnt F
+( Press-format files can be printed; IFS checks that ) S
+23100 22906 M (every file is a Press file and will refuse to print any file that is ) S
+23100 21106 M (not.) S
+1200 /Times-Bold-Acnt F
+19400 18306 M (DskStat ) S
+1200 /Times-Roman-Acnt F
+(\234) S
+1200 /Times-Bold-Acnt F
+(  ) S
+1200 /Times-Roman-Acnt F
+(Prints the number of used pages and the maximum allowed ) S
+19400 16506 M (in the connected directory, followed by the number of free pages in the ) S
+19400 14706 M (system.  One IFS page is 1024 words or 2048 characters, which is ) S
+19400 12906 M (equivalent to four Alto pages.) S
+grestore savepage restore showpage
+
+%%Page: 6 6
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (6) S
+7200 75600 M (LispCourse #18:  Files and Directories \234 Part 4) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+19400 71106 M (Systat ) S
+1200 /Times-Roman-Acnt F
+(\234 Shows who is presently using IFS, what service they are ) S
+19400 69306 M (accessing \(FTP, Telnet, CopyDisk, or Mail\), and the name or inter-) S
+19400 67506 M (network address of the machine they are coming from.) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+15700 64106 M (Commands dealing with protections) S
+1200 /Times-Roman-Acnt F
+19400 61306 M (The Chat Executive contains several commands by means of which you ) S
+19400 59506 M (may manipulate protections of files and directories.) S
+1200 /Times-Bold-Acnt F
+19400 56706 M (Change Protection \(of files\) ) S
+1200 /Times-BoldItalic-Acnt F
+(file-designators) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(\234) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(See LispCourse #15, ) S
+19400 54906 M (p.14\)) S
+1200 /Times-Bold-Acnt F
+19400 52106 M (Change Directory-Parameters \(of directory\) ) S
+1200 /Times-BoldItalic-Acnt F
+(directory-name ) S
+1200 /Times-Roman-Acnt F
+(\234) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+19400 50306 M (Changes the information associated with the directory as a whole in the ) S
+19400 48506 M (manner specified by the ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(sub) S
+1200 /Times-Roman-Acnt F
+(-) S
+1200 /Times-Italic-Acnt F
+(commands) S
+1200 /Times-Roman-Acnt F
+(.  Sub-command mode is ) S
+19400 46706 M (entered autromatically.  The directory must be either your own or one ) S
+19400 44906 M (to which you are connected.) S
+23100 42106 M (You may change the default file protection by means of the ) S
+23100 40306 M (Read, Write, and Append sub-commands in the same manner as ) S
+23100 38506 M (in the Change Protection command.  Additionally, you may ) S
+23100 36706 M (change the create and connect access using the sub-commands:) S
+1200 /Times-Bold-Acnt F
+26700 33906 M (Create \(access permitted to\) ) S
+1200 /Times-BoldItalic-Acnt F
+(groups) S
+1200 /Times-Bold-Acnt F
+26700 31106 M (Connect \(access permitted to\) ) S
+1200 /Times-BoldItalic-Acnt F
+(groups) S
+1200 /Times-Roman-Acnt F
+23100 28306 M (The `No' prefix may be applied to these as well as to the others.) S
+23100 25506 M (You may change your default printing server by means of the ) S
+23100 23706 M (sub-command:) S
+1200 /Times-Bold-Acnt F
+26700 20906 M (Printing-Server ) S
+1200 /Times-BoldItalic-Acnt F
+(host-name) S
+1200 /Times-Bold-Acnt F
+19400 18106 M (Show Directory-Parameters \(of directory\) ) S
+1200 /Times-BoldItalic-Acnt F
+(directory-name) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(\234) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(Displays ) S
+19400 16306 M (all information about ) S
+1200 /Times-Italic-Acnt F
+(directory-name) S
+1200 /Times-Roman-Acnt F
+(, and additionally prints some ) S
+19400 14506 M (other parameters, such as the disk limit and the owner of a files-only ) S
+19400 12706 M (directory, that may be changed only by an IFS administrator.) S
+1200 /Times-Bold-Acnt F
+10800 9706 M (The Interlisp CHAT program) S
+grestore savepage restore showpage
+
+%%Page: 7 7
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (7) S
+7200 75600 M (LispCourse #18:  Files and Directories \234 Part 4) S
+14400 71106 M (While CHATing to an IFS \(or any other kind of host\) you can communicate with ) S
+14400 69306 M (the Interlisp CHAT program by clicking the MIDDLE mouse button in the CHAT ) S
+14400 67506 M (window.  This will bring up a menu with the following options:) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 64906 M (Close) S
+1200 /Times-Roman-Acnt F
+( \234 Close this connection.  Once the connection is closed, control is ) S
+18000 63106 M (handed over to the main tty window.  Closes the window.) S
+1200 /Times-Bold-Acnt F
+18000 60506 M (Suspend) S
+1200 /Times-Roman-Acnt F
+( \234  Same as Close, but always leaves the window open.) S
+1200 /Times-Bold-Acnt F
+18000 57906 M (New) S
+1200 /Times-Roman-Acnt F
+( \234  Closes the current connection and prompts for a new host to which ) S
+18000 56106 M (to open a connection in the same window.) S
+1200 /Times-Bold-Acnt F
+18000 53506 M (Freeze) S
+1200 /Times-Roman-Acnt F
+( \234 Hold typeout from this Chat window.  Bugging the window in any ) S
+18000 51706 M (way releases the hold.  This is most useful if you want to switch to ) S
+18000 49906 M (another, overlapping window and there is typeout in this window that ) S
+18000 48106 M (would compete for screen space.) S
+1200 /Times-Bold-Acnt F
+18000 45506 M (Dribble) S
+1200 /Times-Roman-Acnt F
+( \234  Open a typescript file for this Chat connection \(closing any ) S
+18000 43706 M (previous dribble file for the window\).  The user is prompted for a file ) S
+18000 41906 M (name; a name of NIL just closes the old dribble file.) S
+1200 /Times-Bold-Acnt F
+18000 39306 M (Input) S
+1200 /Times-Roman-Acnt F
+( \234 Prompts for a file to take input from.  When the end of the file is ) S
+18000 37506 M (reached, input reverts to T.) S
+1200 /Times-Bold-Acnt F
+18000 34906 M (Clear) S
+1200 /Times-Roman-Acnt F
+( \234 Clears the window and resets the simulated terminal to its default ) S
+18000 33106 M (state.   This is useful if undesired terminal commands have been received ) S
+18000 31306 M (from the remote host that place the simulated terminal into a funny state.) S
+14400 28706 M (The mouse button LEFT, when inside a CHAT window, holds output as long as ) S
+14400 26906 M (the button is down.) S
+14400 24506 M (The following variable control CHATs behavior:) S
+18000 22106 M (CLOSECHATWINDOWFLG \234 If non-NIL, every Chat window is closed ) S
+24000 20306 M (on exit.  If NIL, the initial setting, then the primary Chat ) S
+24000 18506 M (window is not closed.  Default value is ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(????.) S
+1200 /Times-Roman-Acnt F
+18000 16106 M (CHAT.FONT \234 If non-NIL, the font that Chat windows are created with.  If ) S
+24000 14306 M (CHAT.FONT is NIL, Chat windows are created with ) S
+24000 12506 M (\(DEFAULTFONT 'DISPLAY\) ) S
+1000 /Times-Roman-Acnt F
+([To be covered in a later class!]) S
+1200 /Times-Roman-Acnt F
+(.  ) S
+24000 10706 M (Default value is ) S
+1200 /Times-Italic-Acnt F
+(????) S
+1200 /Times-Roman-Acnt F
+(.) S
+grestore savepage restore showpage
+
+%%Page: 8 8
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (8) S
+7200 75600 M (LispCourse #18:  Files and Directories \234 Part 4) S
+18000 71106 M (DEFAULTCHATHOST \234  The host to which CHAT connects when it is ) S
+24000 69306 M (called with no HOST argument. Default value is ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(????) S
+1200 /Times-Roman-Acnt F
+(.) S
+18000 66906 M (CHAT.ALLHOSTS \234 A list of host names, as uppercase litatoms, that the ) S
+24000 65106 M (user desires to Chat to.  Chatting to a host not on the list adds ) S
+24000 63306 M (it to the list.  These names are placed in the menu that the ) S
+24000 61506 M (background Chat command prompts with.  Default value is ) S
+1200 /Times-Italic-Acnt F
+24000 59706 M (????) S
+1200 /Times-Roman-Acnt F
+(.) S
+18000 56706 M (CHAT.DISPLAYTYPE \234 The type of display \(a number\) that Chat should ) S
+24000 54906 M (tell the remote host the user is on.  If Datamedia emulation is ) S
+24000 53106 M (desired, this variable should be set to the number ) S
+24000 51306 M (corresponding to the terminal type Datamedia for the remote ) S
+24000 49506 M (host.  If the remote host does not respond to the terminal type ) S
+24000 47706 M (protocol in Pup Telnet, this variable is irrelevant.  Default ) S
+24000 45906 M (value is 10.) S
+14400 42906 M (CHAT is documented in Section 20.5 of the IRM.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 39157 M (CHATing to an NS File Server) S
+1200 /Times-Roman-Acnt F
+10800 35506 M (You can use CHAT to access an NS file server as well.  The CHAT package works the ) S
+10800 33706 M (same way as in CHATing to an IFS.  However, the Exec running on the NS server is very ) S
+10800 31906 M (different from the IFS Exec.  ) S
+10800 28306 M (See ??? for documentation on the NS Exec.) S
+1400 /Times-Bold-Acnt F
+7200 24557 M (CHATing to an Vax-Unix File Server) S
+1200 /Times-Roman-Acnt F
+10800 20906 M (You can use CHAT to access a Vax-Unix file server.  The CHAT package works the ) S
+10800 19106 M (same way as in CHATing to an IFS.) S
+10800 15506 M (When CHATing to a Vax-Unix file server, you are interacting with a full-scale computer ) S
+10800 13706 M (system equal in complexity to Interlisp.  The Unix shell \(the Unix term for an Exec\) ) S
+10800 11906 M (supports much more extensive repetoire of file manipulation capabilities than does ) S
+10800 10106 M (Interlisp.  Unfortunately, the philosophies are somewhat different, so that it is sometimes ) S
+10800 8306 M (hard to manipulate Interlisp files using Unix programs .) S
+grestore savepage restore showpage
+
+%%Page: 9 9
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (9) S
+7200 75600 M (LispCourse #18:  Files and Directories \234 Part 4) S
+10800 71106 M (See any of a number of Unix books on the market or the Unix programmer's manual for ) S
+10800 69306 M (more information on using Unix. ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 65557 M (The Alto Exec on Dolphin/Dorado Local Disk) S
+1200 /Times-Roman-Acnt F
+10800 61906 M (When you boot a Dolphin or Dorado set up for Lisp, you enter into an Exec called the ) S
+10800 60106 M (Alto Exec.  From this Exec, you type "Lisp" to get inot Lisp.  When you LOGOUT from ) S
+10800 58306 M (Lisp, you are returned to the Alto Exec.) S
+1200 /Times-Roman-Acnt F
+10800 54706 M (The Alto Exec has a few file manipulation capabilities that you can use to manipulate file ) S
+10800 52906 M (on your local disk.  Commands include DELETE, RENAME, FILESTAT.  There are also ) S
+10800 51106 M (separate Alto programs that run under the Alto Exec  called Neptune \(like the ) S
+10800 49306 M (FileBrowser\) and FTP \(analogous COPYFILE\) that can be used to manipulate files.) S
+10800 45706 M (See the ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Alto Users Guide) S
+1200 /Times-Roman-Acnt F
+( for documentation on the Alto Exec, Neptune and FTP.) S
+grestore savepage restore showpage
+
+%%Trailer

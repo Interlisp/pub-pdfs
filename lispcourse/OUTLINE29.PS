@@ -1,0 +1,583 @@
+%!PS-Adobe-2.0%%Title: {DSK}<home>larry>lispcourse>OUTLINE29.PS%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate:  7-Nov-2023 21:40:18%%EndComments/bdef {bind def} bind def
+/ldef {load def} bdef
+/S /show ldef
+/M /moveto ldef
+/DR {transform round exch round exch itransform} bdef
+/L {gsave newpath setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/L1 {gsave newpath 0 setdash setgray setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/F {findfont exch scalefont setfont} bdef
+/CLP {newpath M dup 0 rlineto exch 0 exch rlineto
+  neg 0 rlineto closepath clip newpath} bdef
+/R {gsave setgray newpath M dup 0 rlineto exch 0 exch
+  rlineto neg 0 rlineto closepath eofill grestore} bdef
+/ellipsedict 9 dict def
+ellipsedict /mtrx matrix put
+/ellipse
+ { ellipsedict begin
+  /endangle exch def
+  /startangle exch def
+  /orientation exch def
+  /minorrad exch def
+  /majorrad exch def
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  orientation rotate
+  majorrad minorrad scale
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+ end } bdef
+/concatprocs
+ {/proc2 exch cvlit def
+  /proc1 exch cvlit def
+  /newproc proc1 length proc2 length add array def
+  newproc 0 proc1 putinterval
+  newproc proc1 length proc2 putinterval
+  newproc cvx
+ } bdef
+/resmatrix matrix def
+/findresolution
+ {72 0 resmatrix defaultmatrix dtransform
+  /yres exch def /xres exch def
+  xres dup mul yres dup mul add sqrt
+ } bdef
+/thebitimage
+ {/maskp exch def
+  /bihgt exch def
+  /biwid exch def
+  /byte 1 string def
+  /strbufl biwid 8 div ceiling cvi def
+  /strbuf strbufl string def
+  maskp not{{1 exch sub} currenttransfer concatprocs settransfer} if
+  biwid bihgt
+  maskp { true } { 1 } ifelse
+  [biwid 0 0 bihgt 0 0]
+  {/col 0 def
+   {currentfile byte readhexstring pop 0 get
+    dup 16#B2 eq {pop
+    currentfile byte readhexstring pop 0 get 1 add
+    currentfile byte readhexstring pop pop /nbyte byte 0 get def
+    { strbuf col nbyte put /col col 1 add def} repeat}
+   {dup 16#B3 eq {pop /col col
+    currentfile byte readhexstring pop
+    0 get add 1 add def}
+    {16#B4 eq {currentfile byte readhexstring pop pop} if
+     strbuf col byte 0 get put /col col 1 add def} ifelse
+   } ifelse
+   col strbufl ge { exit } if } loop
+   strbuf }
+  maskp { imagemask } { image } ifelse
+ } bdef
+/setuserscreendict 22 dict def
+setuserscreendict begin
+ /tempctm matrix def
+ /temprot matrix def
+ /tempscale matrix def
+end
+/setuserscreen
+ {setuserscreendict begin
+   /spotfunction exch def
+   /screenangle exch def
+   /cellsize exch def
+   /m tempctm currentmatrix def
+   /rm screenangle temprot rotate def
+   /sm cellsize dup tempscale scale def
+   sm rm m m concatmatrix m concatmatrix pop
+   1 0 m dtransform /y1 exch def /x1 exch def
+   /veclength x1 dup mul y1 dup mul add sqrt def
+   /frequency findresolution veclength div def
+   /newscreenangle y1 x1 atan def
+   m 2 get m 1 get mul m 0 get m 3 get mul sub
+   0 gt { { neg } /spotfunction load concatprocs
+          /spotfunction exch def } if
+   frequency newscreenangle /spotfunction load setscreen
+  end
+ } bdef
+/setpatterndict 18 dict def
+setpatterndict begin
+ /bitison
+  {/ybit exch def /xbit exch def
+   /bytevalue bstring ybit bwidth mul xbit 8 idiv add get def
+   /mask 1 7 xbit 8 mod sub bitshift def
+   bytevalue mask and 0 ne
+  } bdef
+end
+/bitpatternspotfunction
+ {setpatterndict begin
+   /y exch def /x exch def
+   /xindex x 1 add 2 div bpside mul 1 sub cvi def
+   /yindex y 1 add 2 div bpside mul 1 sub cvi def
+   xindex yindex bitison
+    {/onbits onbits 1 add def 1}
+    {/offbits offbits 1 add def 0} ifelse
+  end
+ } bdef
+/setpattern
+ {setpatterndict begin
+   /cellsz exch def
+   /angle exch def
+   /bwidth exch def
+   /bpside exch def
+   /bstring exch def
+   /onbits 0 def /offbits 0 def
+   cellsz angle /bitpatternspotfunction load setuserscreen
+   {} settransfer
+   offbits offbits onbits add div setgray
+  end
+ } bdef
+% - - - - - Fraction-setting code, to support NS fonts better - - - - -
+/fractiondict 20 dict def
+/fractionshow 
+{ fractiondict begin
+/denom exch def 
+/num exch def 
+/regfont currentfont def
+/fractfont currentfont [.65 0 0 .6 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(1) true charpath flattenpath pathbbox 
+/height exch def pop pop pop
+ grestore
+0 .4 height mul rmoveto
+fractfont setfont num show
+0 .4 height mul neg rmoveto regfont setfont (\244) show
+fractfont setfont denom show regfont setfont end } bdef
+/f14 { (1) (4) fractionshow } bdef
+/f12 { (1) (2) fractionshow } bdef
+/f34 { (3) (4) fractionshow } bdef
+/f18 { (1) (8) fractionshow } bdef
+/f38 { (3) (8) fractionshow } bdef
+/f58 { (5) (8) fractionshow } bdef
+/f78 { (7) (8) fractionshow } bdef
+/f13 { (1) (3) fractionshow } bdef
+/f23 { (2) (3) fractionshow } bdef
+/bboxdict 20 dict def
+/bboxchk { bboxdict begin
+/regfont currentfont def
+/chkfont currentfont [1.25 0 0 1.25 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(\161) true charpath flattenpath pathbbox 
+/height exch def pop pop pop 
+ grestore 
+ currentpoint 
+ .2 height mul .3 height mul rmoveto
+chkfont setfont (\063) show
+ moveto
+ regfont setfont
+(\161) show end } bdef
+/rencdict 15 dict def
+/encodefont { rencdict begin
+/newname exch def
+/oldfont exch def
+/newcodes [
+8#001 /Aacute
+8#002 /Acircumflex
+8#003 /Adieresis
+8#004 /Agrave
+8#005 /Aring
+8#006 /Atilde
+8#007 /Ccedilla
+8#010 /Eacute
+8#011 /Ecircumflex
+8#012 /Edieresis
+8#013 /Egrave
+8#014 /Iacute
+8#015 /Icircumflex
+8#016 /Idieresis
+8#017 /Igrave
+8#020 /Ntilde
+8#021 /Oacute
+8#022 /Ocircumflex
+8#023 /Odieresis
+8#024 /Ograve
+8#025 /Otilde
+8#026 /Scaron
+8#027 /Uacute
+8#030 /Ucircumflex
+8#031 /Udieresis
+8#032 /Ugrave
+8#033 /Ydieresis
+8#034 /Zcaron
+8#177 /periodinferior
+8#201 /aacute
+8#202 /acircumflex
+8#203 /adieresis
+8#204 /agrave
+8#205 /aring
+8#206 /atilde
+8#207 /ccedilla
+8#210 /eacute
+8#211 /ecircumflex
+8#212 /edieresis
+8#213 /egrave
+8#214 /iacute
+8#215 /icircumflex
+8#216 /idieresis
+8#217 /igrave
+8#220 /ntilde
+8#221 /oacute
+8#222 /ocircumflex
+8#223 /odieresis
+8#224 /ograve
+8#225 /otilde
+8#226 /scaron
+8#227 /uacute
+8#230 /ucircumflex
+8#231 /udieresis
+8#232 /ugrave
+8#233 /ydieresis
+8#234 /zcaron
+8#235 /Eth
+8#236 /eth
+8#237 /Thorn
+8#240 /thorn
+ ] def
+/olddict oldfont findfont def /newfont olddict maxlength dict def
+olddict { exch dup /FID ne { dup /Encoding eq
+{ exch dup length array copy newfont 3 1 roll put }
+{ exch newfont 3 1 roll put } ifelse }
+ { pop pop } ifelse } forall
+newfont /FontName newname put
+newcodes aload pop
+newcodes length 2 idiv { newfont /Encoding get 3 1 roll put } repeat 
+newname newfont definefont pop end } def
+ /accentdict 10 dict def 
+ /accentor { accentdict begin /scaler exch def /delta exch def 
+/unders exch def /accents exch def /mainch exch def /scrt (X) def
+ /w1 mainch stringwidth pop def 
+ currentpoint mainch show currentpoint 4 2 roll 
+accents { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         w1 w2 sub 2 div delta rmoveto scrt show 
+         /delta delta 150 scaler mul 9 div add def
+        } forall 
+unders { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         ch 46 eq { w1 w2 sub 2 div -175 scaler mul 9 div rmoveto scrt show 0 175 rmoveto }
+           { w1 w2 sub 2 div 0 rmoveto scrt show } ifelse 
+        } forall 
+ pop pop moveto end } def 
+%%EndProlog
+%%BeginSetup
+letter/imagesizefactor 1 def%%EndSetup/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+
+%%Page: 1 1
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+54000 75600 M (F.G.H.          ) S
+54000 73800 M (5/21/85) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (LispCourse #29:  Solutions for Homework #28) S
+1200 /Times-Roman-Acnt F
+7200 67306 M (Sample solution functions attached.) S
+1200 /Times-Bold-Acnt F
+7200 63706 M (Sample Run:) S
+800 /Courier-Acnt F
+7200 62079 M (20_\(LC.CreateDatabase 'TestDB]) S
+/Courier-Oblique /Courier-Oblique-Acnt encodefont
+1000 /Courier-Oblique-Acnt F
+7200 60349 M (NIL) S
+800 /Courier-Acnt F
+7200 58679 M (21_\(LC.AddEntry 'TestDB 'Frank 'G. 'Halasz 331404999 15 04) S
+7200 57079 M (84 11000\)) S
+1000 /Courier-Oblique-Acnt F
+7200 55349 M (\(\(\(Frank G. Halasz\) 331404999 \(15 4 84\) 11000\)\)) S
+800 /Courier-Acnt F
+7200 53679 M (22_\(LC.AddEntry \(QUOTE TestDB\)) S
+10800 52079 M (     \(QUOTE George\)) S
+10800 50479 M (     \(QUOTE B.\)) S
+10800 48879 M (     \(QUOTE Smith\)) S
+10800 47279 M (     100455467 5 6 83 17000\)) S
+7200 45679 M (\(\(\(George B. Smith\) 100455467 \(5 6 83\) 17000\) \(\(Frank G. Halasz\) ) S
+7200 44079 M (331404999 \(15 4 84\) 11000\)\)) S
+7200 42479 M (23_\(LC.AddEntry \(QUOTE TestDB\)) S
+10800 40879 M (     \(QUOTE Ann\)) S
+10800 39279 M (     \(QUOTE Q.\)) S
+10800 37679 M (     \(QUOTE Merrick\)) S
+10800 36079 M (     345223431 14 2 80 29000\)) S
+1000 /Courier-Oblique-Acnt F
+7200 34349 M (\(\(\(Ann Q. Merrick\) 345223431 \(14 2 80\) 29000\) \(\(George B. Smith\) ) S
+7200 32549 M (100455467 \(5 6 83\) 17000\) \(\(Frank G. Halasz\) 331404999 \(15 4 84\) ) S
+7200 30749 M (11000\)\)) S
+800 /Courier-Acnt F
+7200 29079 M (24_\(LC.AddEntry \(QUOTE TestDB\)) S
+10800 27479 M (     \(QUOTE Zoltan\)) S
+10800 25879 M (     \(QUOTE Z.\)) S
+10800 24279 M (     \(QUOTE Zolka\)) S
+10800 22679 M (     995761234 01 1 27 98000\)) S
+1000 /Courier-Oblique-Acnt F
+7200 20949 M (\(\(\(Zoltan Z. Zolka\) 995761234 \(1 1 27\) 98000\) \(\(Ann Q. Merrick\) ) S
+7200 19149 M (345223431 \(14 2 80\) 29000\) \(\(George B. Smith\) 100455467 \(5 6 83\) ) S
+7200 17349 M (17000\) \(\(Frank G. Halasz\) 331404999 \(15 4 84\) 11000\)\)) S
+800 /Courier-Acnt F
+7200 15679 M (25_\(LC.AddEntry \(QUOTE TestDB\)) S
+10800 14079 M (     \(QUOTE Arnie\)) S
+10800 12479 M (     \(QUOTE A.\)) S
+10800 10879 M (     \(QUOTE Aardvark\)) S
+10800 9279 M (     100101000 12 12 85 10000\)) S
+grestore savepage restore showpage
+
+%%Page: 2 2
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (2) S
+7200 75600 M (LispCourse #29:  Solutions for Homework #28) S
+/Courier-Oblique /Courier-Oblique-Acnt encodefont
+1000 /Courier-Oblique-Acnt F
+7200 71349 M (\(\(\(Arnie A. Aardvark\) 100101000 \(12 12 85\) 10000\) \(\(Zoltan Z. ) S
+7200 69549 M (Zolka\) 995761234 \(1 1 27\) 98000\) \(\(Ann Q. Merrick\) 345223431 \(14 2) S
+7200 67749 M ( 80\) 29000\) \(\(George B. Smith\) 100455467 \(5 6 83\) 17000\) \(\(Frank ) S
+7200 65949 M (G. Halasz\) 331404999 \(15 4 84\) 11000\)\)) S
+/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+7200 64279 M (26_\(LC.AddEntry \(QUOTE TestDB\)) S
+10800 62679 M (     \(QUOTE Melinda\)) S
+10800 61079 M (     \(QUOTE F.\)) S
+10800 59479 M (     \(QUOTE Twiddle\)) S
+10800 57879 M (     446891876 25 8 76 34000\)) S
+1000 /Courier-Oblique-Acnt F
+7200 56149 M (\(\(\(Melinda F. Twiddle\) 446891876 \(25 8 76\) 34000\) \(\(Arnie A. ) S
+7200 54349 M (Aardvark\) 100101000 \(12 12 85\) 10000\) \(\(Zoltan Z. Zolka\) 995761234) S
+7200 52549 M ( \(1 1 27\) 98000\) \(\(Ann Q. Merrick\) 345223431 \(14 2 80\) 29000\) \(\() S
+7200 50749 M (George B. Smith\) 100455467 \(5 6 83\) 17000\) \(\(Frank G. Halasz\) ) S
+7200 48949 M (331404999 \(15 4 84\) 11000\)\)) S
+800 /Courier-Acnt F
+7200 47279 M (27_\(LC.SortDatabaseByField 'TestDB 'SS#]) S
+1000 /Courier-Oblique-Acnt F
+7200 45549 M (\(\(\(Arnie A. Aardvark\) 100101000 \(12 12 85\) 10000\) \(\(George B. ) S
+7200 43749 M (Smith\) 100455467 \(5 6 83\) 17000\) \(\(Frank G. Halasz\) 331404999 \(15 ) S
+7200 41949 M (4 84\) 11000\) \(\(Ann Q. Merrick\) 345223431 \(14 2 80\) 29000\) \(\() S
+7200 40149 M (Melinda F. Twiddle\) 446891876 \(25 8 76\) 34000\) \(\(Zoltan Z. Zolka\) ) S
+7200 38349 M (995761234 \(1 1 27\) 98000\)\)) S
+800 /Courier-Acnt F
+7200 35079 M (28_PP IT) S
+1000 /Courier-Oblique-Acnt F
+7200 33349 M (  \(\(\(Arnie A. Aardvark\)) S
+7200 31549 M (    100101000) S
+7200 29749 M (    \(12 12 85\)) S
+7200 27949 M (    10000\)) S
+7200 26149 M (   \(\(George B. Smith\)) S
+7200 24349 M (    100455467) S
+7200 22549 M (    \(5 6 83\)) S
+7200 20749 M (    17000\)) S
+7200 18949 M (   \(\(Frank G. Halasz\)) S
+7200 17149 M (    331404999) S
+7200 15349 M (    \(15 4 84\)) S
+7200 13549 M (    11000\)) S
+7200 11749 M (   \(\(Ann Q. Merrick\)) S
+7200 9949 M (    345223431) S
+grestore savepage restore showpage
+
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (3) S
+7200 75600 M (LispCourse #29:  Solutions for Homework #28) S
+/Courier-Oblique /Courier-Oblique-Acnt encodefont
+1000 /Courier-Oblique-Acnt F
+7200 71349 M (    \(14 2 80\)) S
+7200 69549 M (    29000\)) S
+7200 67749 M (   \(\(Melinda F. Twiddle\)) S
+7200 65949 M (    446891876) S
+7200 64149 M (    \(25 8 76\)) S
+7200 62349 M (    34000\)) S
+7200 60549 M (   \(\(Zoltan Z. Zolka\)) S
+7200 58749 M (    995761234) S
+7200 56949 M (    \(1 1 27\)) S
+7200 55149 M (    98000\)\)) S
+7200 51549 M (\(IT\)) S
+/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+7200 48279 M (29_\(LC.SortDatabaseByField \(QUOTE TestDB\)) S
+18000 46679 M (\(QUOTE Salary]) S
+1000 /Courier-Oblique-Acnt F
+7200 44949 M (\(\(\(Arnie A. Aardvark\) 100101000 \(12 12 85\) 10000\) \(\(Frank G. ) S
+7200 43149 M (Halasz\) 331404999 \(15 4 84\) 11000\) \(\(George B. Smith\) 100455467 \(5) S
+7200 41349 M ( 6 83\) 17000\) \(\(Ann Q. Merrick\) 345223431 \(14 2 80\) 29000\) \(\() S
+7200 39549 M (Melinda F. Twiddle\) 446891876 \(25 8 76\) 34000\) \(\(Zoltan Z. Zolka\) ) S
+7200 37749 M (995761234 \(1 1 27\) 98000\)\)) S
+800 /Courier-Acnt F
+7200 34479 M (30_PP IT) S
+1000 /Courier-Oblique-Acnt F
+7200 31149 M (  \(\(\(Arnie A. Aardvark\)) S
+7200 29349 M (    100101000) S
+7200 27549 M (    \(12 12 85\)) S
+7200 25749 M (    10000\)) S
+7200 23949 M (   \(\(Frank G. Halasz\)) S
+7200 22149 M (    331404999) S
+7200 20349 M (    \(15 4 84\)) S
+7200 18549 M (    11000\)) S
+7200 16749 M (   \(\(George B. Smith\)) S
+7200 14949 M (    100455467) S
+7200 13149 M (    \(5 6 83\)) S
+7200 11349 M (    17000\)) S
+7200 9549 M (   \(\(Ann Q. Merrick\)) S
+grestore savepage restore showpage
+
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (4) S
+7200 75600 M (LispCourse #29:  Solutions for Homework #28) S
+/Courier-Oblique /Courier-Oblique-Acnt encodefont
+1000 /Courier-Oblique-Acnt F
+7200 71349 M (    345223431) S
+7200 69549 M (    \(14 2 80\)) S
+7200 67749 M (    29000\)) S
+7200 65949 M (   \(\(Melinda F. Twiddle\)) S
+7200 64149 M (    446891876) S
+7200 62349 M (    \(25 8 76\)) S
+7200 60549 M (    34000\)) S
+7200 58749 M (   \(\(Zoltan Z. Zolka\)) S
+7200 56949 M (    995761234) S
+7200 55149 M (    \(1 1 27\)) S
+7200 53349 M (    98000\)\)) S
+7200 51549 M (\(IT\)) S
+/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+7200 48279 M (31_\(LC.SortDatabaseByField \(QUOTE TestDB\)) S
+18000 46679 M (\(QUOTE Name]) S
+1000 /Courier-Oblique-Acnt F
+7200 44949 M (\(\(\(Arnie A. Aardvark\) 100101000 \(12 12 85\) 10000\) \(\(Frank G. ) S
+7200 43149 M (Halasz\) 331404999 \(15 4 84\) 11000\) \(\(Ann Q. Merrick\) 345223431 \(14) S
+7200 41349 M ( 2 80\) 29000\) \(\(George B. Smith\) 100455467 \(5 6 83\) 17000\) \(\() S
+7200 39549 M (Melinda F. Twiddle\) 446891876 \(25 8 76\) 34000\) \(\(Zoltan Z. Zolka\) ) S
+7200 37749 M (995761234 \(1 1 27\) 98000\)\)) S
+800 /Courier-Acnt F
+7200 34479 M (32_PP IT) S
+1000 /Courier-Oblique-Acnt F
+7200 31149 M (  \(\(\(Arnie A. Aardvark\)) S
+7200 29349 M (    100101000) S
+7200 27549 M (    \(12 12 85\)) S
+7200 25749 M (    10000\)) S
+7200 23949 M (   \(\(Frank G. Halasz\)) S
+7200 22149 M (    331404999) S
+7200 20349 M (    \(15 4 84\)) S
+7200 18549 M (    11000\)) S
+7200 16749 M (   \(\(Ann Q. Merrick\)) S
+7200 14949 M (    345223431) S
+7200 13149 M (    \(14 2 80\)) S
+7200 11349 M (    29000\)) S
+7200 9549 M (   \(\(George B. Smith\)) S
+grestore savepage restore showpage
+
+%%Page: 5 5
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (5) S
+7200 75600 M (LispCourse #29:  Solutions for Homework #28) S
+/Courier-Oblique /Courier-Oblique-Acnt encodefont
+1000 /Courier-Oblique-Acnt F
+7200 71349 M (    100455467) S
+7200 69549 M (    \(5 6 83\)) S
+7200 67749 M (    17000\)) S
+7200 65949 M (   \(\(Melinda F. Twiddle\)) S
+7200 64149 M (    446891876) S
+7200 62349 M (    \(25 8 76\)) S
+7200 60549 M (    34000\)) S
+7200 58749 M (   \(\(Zoltan Z. Zolka\)) S
+7200 56949 M (    995761234) S
+7200 55149 M (    \(1 1 27\)) S
+7200 53349 M (    98000\)\)) S
+7200 51549 M (\(IT\)) S
+/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+7200 48279 M (33_\(LC.SortDatabaseByField \(QUOTE TestDB\)) S
+18000 46679 M (\(QUOTE StartDate]) S
+1000 /Courier-Oblique-Acnt F
+7200 44949 M (\(\(\(Zoltan Z. Zolka\) 995761234 \(1 1 27\) 98000\) \(\(Melinda F. Twiddle) S
+7200 43149 M (\) 446891876 \(25 8 76\) 34000\) \(\(Ann Q. Merrick\) 345223431 \(14 2 80\)) S
+7200 41349 M ( 29000\) \(\(George B. Smith\) 100455467 \(5 6 83\) 17000\) \(\(Frank G. ) S
+7200 39549 M (Halasz\) 331404999 \(15 4 84\) 11000\) \(\(Arnie A. Aardvark\) 100101000 ) S
+7200 37749 M (\(12 12 85\) 10000\)\)) S
+800 /Courier-Acnt F
+7200 34479 M (34_PP IT) S
+1000 /Courier-Oblique-Acnt F
+7200 31149 M (  \(\(\(Zoltan Z. Zolka\)) S
+7200 29349 M (    995761234) S
+7200 27549 M (    \(1 1 27\)) S
+7200 25749 M (    98000\)) S
+7200 23949 M (   \(\(Melinda F. Twiddle\)) S
+7200 22149 M (    446891876) S
+7200 20349 M (    \(25 8 76\)) S
+7200 18549 M (    34000\)) S
+7200 16749 M (   \(\(Ann Q. Merrick\)) S
+7200 14949 M (    345223431) S
+7200 13149 M (    \(14 2 80\)) S
+7200 11349 M (    29000\)) S
+7200 9549 M (   \(\(George B. Smith\)) S
+grestore savepage restore showpage
+
+%%Page: 6 6
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (6) S
+7200 75600 M (LispCourse #29:  Solutions for Homework #28) S
+/Courier-Oblique /Courier-Oblique-Acnt encodefont
+1000 /Courier-Oblique-Acnt F
+7200 71349 M (    100455467) S
+7200 69549 M (    \(5 6 83\)) S
+7200 67749 M (    17000\)) S
+7200 65949 M (   \(\(Frank G. Halasz\)) S
+7200 64149 M (    331404999) S
+7200 62349 M (    \(15 4 84\)) S
+7200 60549 M (    11000\)) S
+7200 58749 M (   \(\(Arnie A. Aardvark\)) S
+7200 56949 M (    100101000) S
+7200 55149 M (    \(12 12 85\)) S
+7200 53349 M (    10000\)\)) S
+7200 51549 M (\(IT\)) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+7200 49506 M ( ) S
+grestore savepage restore showpage
+
+%%Trailer

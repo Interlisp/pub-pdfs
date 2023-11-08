@@ -1,0 +1,1285 @@
+%!PS-Adobe-2.0%%Title: {DSK}<home>larry>lispcourse>OUTLINE37.PS%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate:  7-Nov-2023 21:40:25%%EndComments/bdef {bind def} bind def
+/ldef {load def} bdef
+/S /show ldef
+/M /moveto ldef
+/DR {transform round exch round exch itransform} bdef
+/L {gsave newpath setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/L1 {gsave newpath 0 setdash setgray setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/F {findfont exch scalefont setfont} bdef
+/CLP {newpath M dup 0 rlineto exch 0 exch rlineto
+  neg 0 rlineto closepath clip newpath} bdef
+/R {gsave setgray newpath M dup 0 rlineto exch 0 exch
+  rlineto neg 0 rlineto closepath eofill grestore} bdef
+/ellipsedict 9 dict def
+ellipsedict /mtrx matrix put
+/ellipse
+ { ellipsedict begin
+  /endangle exch def
+  /startangle exch def
+  /orientation exch def
+  /minorrad exch def
+  /majorrad exch def
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  orientation rotate
+  majorrad minorrad scale
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+ end } bdef
+/concatprocs
+ {/proc2 exch cvlit def
+  /proc1 exch cvlit def
+  /newproc proc1 length proc2 length add array def
+  newproc 0 proc1 putinterval
+  newproc proc1 length proc2 putinterval
+  newproc cvx
+ } bdef
+/resmatrix matrix def
+/findresolution
+ {72 0 resmatrix defaultmatrix dtransform
+  /yres exch def /xres exch def
+  xres dup mul yres dup mul add sqrt
+ } bdef
+/thebitimage
+ {/maskp exch def
+  /bihgt exch def
+  /biwid exch def
+  /byte 1 string def
+  /strbufl biwid 8 div ceiling cvi def
+  /strbuf strbufl string def
+  maskp not{{1 exch sub} currenttransfer concatprocs settransfer} if
+  biwid bihgt
+  maskp { true } { 1 } ifelse
+  [biwid 0 0 bihgt 0 0]
+  {/col 0 def
+   {currentfile byte readhexstring pop 0 get
+    dup 16#B2 eq {pop
+    currentfile byte readhexstring pop 0 get 1 add
+    currentfile byte readhexstring pop pop /nbyte byte 0 get def
+    { strbuf col nbyte put /col col 1 add def} repeat}
+   {dup 16#B3 eq {pop /col col
+    currentfile byte readhexstring pop
+    0 get add 1 add def}
+    {16#B4 eq {currentfile byte readhexstring pop pop} if
+     strbuf col byte 0 get put /col col 1 add def} ifelse
+   } ifelse
+   col strbufl ge { exit } if } loop
+   strbuf }
+  maskp { imagemask } { image } ifelse
+ } bdef
+/setuserscreendict 22 dict def
+setuserscreendict begin
+ /tempctm matrix def
+ /temprot matrix def
+ /tempscale matrix def
+end
+/setuserscreen
+ {setuserscreendict begin
+   /spotfunction exch def
+   /screenangle exch def
+   /cellsize exch def
+   /m tempctm currentmatrix def
+   /rm screenangle temprot rotate def
+   /sm cellsize dup tempscale scale def
+   sm rm m m concatmatrix m concatmatrix pop
+   1 0 m dtransform /y1 exch def /x1 exch def
+   /veclength x1 dup mul y1 dup mul add sqrt def
+   /frequency findresolution veclength div def
+   /newscreenangle y1 x1 atan def
+   m 2 get m 1 get mul m 0 get m 3 get mul sub
+   0 gt { { neg } /spotfunction load concatprocs
+          /spotfunction exch def } if
+   frequency newscreenangle /spotfunction load setscreen
+  end
+ } bdef
+/setpatterndict 18 dict def
+setpatterndict begin
+ /bitison
+  {/ybit exch def /xbit exch def
+   /bytevalue bstring ybit bwidth mul xbit 8 idiv add get def
+   /mask 1 7 xbit 8 mod sub bitshift def
+   bytevalue mask and 0 ne
+  } bdef
+end
+/bitpatternspotfunction
+ {setpatterndict begin
+   /y exch def /x exch def
+   /xindex x 1 add 2 div bpside mul 1 sub cvi def
+   /yindex y 1 add 2 div bpside mul 1 sub cvi def
+   xindex yindex bitison
+    {/onbits onbits 1 add def 1}
+    {/offbits offbits 1 add def 0} ifelse
+  end
+ } bdef
+/setpattern
+ {setpatterndict begin
+   /cellsz exch def
+   /angle exch def
+   /bwidth exch def
+   /bpside exch def
+   /bstring exch def
+   /onbits 0 def /offbits 0 def
+   cellsz angle /bitpatternspotfunction load setuserscreen
+   {} settransfer
+   offbits offbits onbits add div setgray
+  end
+ } bdef
+% - - - - - Fraction-setting code, to support NS fonts better - - - - -
+/fractiondict 20 dict def
+/fractionshow 
+{ fractiondict begin
+/denom exch def 
+/num exch def 
+/regfont currentfont def
+/fractfont currentfont [.65 0 0 .6 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(1) true charpath flattenpath pathbbox 
+/height exch def pop pop pop
+ grestore
+0 .4 height mul rmoveto
+fractfont setfont num show
+0 .4 height mul neg rmoveto regfont setfont (\244) show
+fractfont setfont denom show regfont setfont end } bdef
+/f14 { (1) (4) fractionshow } bdef
+/f12 { (1) (2) fractionshow } bdef
+/f34 { (3) (4) fractionshow } bdef
+/f18 { (1) (8) fractionshow } bdef
+/f38 { (3) (8) fractionshow } bdef
+/f58 { (5) (8) fractionshow } bdef
+/f78 { (7) (8) fractionshow } bdef
+/f13 { (1) (3) fractionshow } bdef
+/f23 { (2) (3) fractionshow } bdef
+/bboxdict 20 dict def
+/bboxchk { bboxdict begin
+/regfont currentfont def
+/chkfont currentfont [1.25 0 0 1.25 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(\161) true charpath flattenpath pathbbox 
+/height exch def pop pop pop 
+ grestore 
+ currentpoint 
+ .2 height mul .3 height mul rmoveto
+chkfont setfont (\063) show
+ moveto
+ regfont setfont
+(\161) show end } bdef
+/rencdict 15 dict def
+/encodefont { rencdict begin
+/newname exch def
+/oldfont exch def
+/newcodes [
+8#001 /Aacute
+8#002 /Acircumflex
+8#003 /Adieresis
+8#004 /Agrave
+8#005 /Aring
+8#006 /Atilde
+8#007 /Ccedilla
+8#010 /Eacute
+8#011 /Ecircumflex
+8#012 /Edieresis
+8#013 /Egrave
+8#014 /Iacute
+8#015 /Icircumflex
+8#016 /Idieresis
+8#017 /Igrave
+8#020 /Ntilde
+8#021 /Oacute
+8#022 /Ocircumflex
+8#023 /Odieresis
+8#024 /Ograve
+8#025 /Otilde
+8#026 /Scaron
+8#027 /Uacute
+8#030 /Ucircumflex
+8#031 /Udieresis
+8#032 /Ugrave
+8#033 /Ydieresis
+8#034 /Zcaron
+8#177 /periodinferior
+8#201 /aacute
+8#202 /acircumflex
+8#203 /adieresis
+8#204 /agrave
+8#205 /aring
+8#206 /atilde
+8#207 /ccedilla
+8#210 /eacute
+8#211 /ecircumflex
+8#212 /edieresis
+8#213 /egrave
+8#214 /iacute
+8#215 /icircumflex
+8#216 /idieresis
+8#217 /igrave
+8#220 /ntilde
+8#221 /oacute
+8#222 /ocircumflex
+8#223 /odieresis
+8#224 /ograve
+8#225 /otilde
+8#226 /scaron
+8#227 /uacute
+8#230 /ucircumflex
+8#231 /udieresis
+8#232 /ugrave
+8#233 /ydieresis
+8#234 /zcaron
+8#235 /Eth
+8#236 /eth
+8#237 /Thorn
+8#240 /thorn
+ ] def
+/olddict oldfont findfont def /newfont olddict maxlength dict def
+olddict { exch dup /FID ne { dup /Encoding eq
+{ exch dup length array copy newfont 3 1 roll put }
+{ exch newfont 3 1 roll put } ifelse }
+ { pop pop } ifelse } forall
+newfont /FontName newname put
+newcodes aload pop
+newcodes length 2 idiv { newfont /Encoding get 3 1 roll put } repeat 
+newname newfont definefont pop end } def
+ /accentdict 10 dict def 
+ /accentor { accentdict begin /scaler exch def /delta exch def 
+/unders exch def /accents exch def /mainch exch def /scrt (X) def
+ /w1 mainch stringwidth pop def 
+ currentpoint mainch show currentpoint 4 2 roll 
+accents { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         w1 w2 sub 2 div delta rmoveto scrt show 
+         /delta delta 150 scaler mul 9 div add def
+        } forall 
+unders { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         ch 46 eq { w1 w2 sub 2 div -175 scaler mul 9 div rmoveto scrt show 0 175 rmoveto }
+           { w1 w2 sub 2 div 0 rmoveto scrt show } ifelse 
+        } forall 
+ pop pop moveto end } def 
+%%EndProlog
+%%BeginSetup
+letter/imagesizefactor 1 def%%EndSetup/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+
+%%Page: 1 1
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+54000 75600 M (F.G.H.          ) S
+54000 73800 M (6/18/85) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (LispCourse #37:  Recursion; Organizing Large Programs) S
+7200 67157 M (Rercursion \233 The ultimate Lisp control structure) S
+1200 /Times-Roman-Acnt F
+10800 64106 M (Recursion is THE control structure in Lisp.) S
+14400 61706 M (Reasons:) S
+18000 59506 M (Recursion is the right way to organize many procedures!) S
+18000 57306 M (The structure of Lisp encourages you to think recursively.) S
+18000 55106 M (The structure of Lisp makes it very convenient to write recursive ) S
+18000 53306 M (functions.) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+10800 50306 M (To review:) S
+1200 /Times-Roman-Acnt F
+(  Recursion a control structure in which the definition of a function includes a ) S
+10800 48506 M (function call to itself.) S
+1200 /Times-Italic-Acnt F
+14400 45906 M (The basic idea:) S
+1200 /Times-Roman-Acnt F
+(  many problems can be solved by combining the solutions to two ) S
+14400 44106 M (or more smaller problems, each of the same nature as the larger problem.) S
+1200 /Times-Italic-Acnt F
+14400 41506 M (For example:) S
+1200 /Times-Roman-Acnt F
+(  to count the number of atoms in a list, you can combine by addition ) S
+14400 39706 M (the number of atoms in the CAR of the list and the number of atoms in the CDR ) S
+14400 37906 M (of the list.) S
+18000 35506 M (This works fine as long as the CAR and CDR are both non-empty lists, ) S
+18000 33706 M (because you can then \(recursively\) apply the same procedure to count their ) S
+18000 31906 M (atoms.) S
+18000 29506 M (But you must have an alternative procedure when the CAR and/or CDR is ) S
+18000 27706 M (a non-list or an empty list because the count atoms in list procedure won't ) S
+18000 25906 M (work in these cases.) S
+10800 22906 M (All recursive functions have the same basic underlying structure:  ) S
+grestore savepage restore showpage
+
+%%Page: 2 2
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (2) S
+7200 75600 M (LispCourse #37:  Recursion; Organizing Large Programs) S
+10800 71106 M (\(DEFINEQ) S
+14400 69106 M (\(RecursiveFunction \(LAMBDA \(Args...\)) S
+18000 67106 M (\(COND) S
+21600 65106 M (\(\() S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Is Args... a terminating case?) S
+1200 /Times-Roman-Acnt F
+(\) \() S
+1200 /Times-Italic-Acnt F
+(Process terminating case) S
+1200 /Times-Roman-Acnt F
+(\)\)) S
+21600 63106 M (\(T \() S
+1200 /Times-Italic-Acnt F
+(Call combining function with args:) S
+1200 /Times-Roman-Acnt F
+25200 61106 M (\() S
+1200 /Times-Italic-Acnt F
+(Call RecursiveFunction using first "part" of Args...) S
+1200 /Times-Roman-Acnt F
+(\)) S
+25200 59106 M (\() S
+1200 /Times-Italic-Acnt F
+(Call RercursiveFunction using second "part" of Args...) S
+1200 /Times-Roman-Acnt F
+(\)) S
+25200 57106 M (...) S
+25200 55106 M (\() S
+1200 /Times-Italic-Acnt F
+(Call RercursiveFunction using last "part" of Args...) S
+1200 /Times-Roman-Acnt F
+(\)\)\)\)\)) S
+10800 52106 M (The CountAtoms procedure from LispCourse #5, page 12 implements the count-atoms-) S
+10800 50306 M (in-a-list procedure outlined in the example above and follows exactly this standard ) S
+10800 48506 M (recursive function format:) S
+10800 46106 M (\(DEFINEQ) S
+10800 44106 M (    \(CountAtoms \(LAMBDA \(List\)) S
+14400 42106 M (\(COND) S
+18000 40106 M (\(\(NULL List\) 0\)) S
+1200 /Times-Italic-Acnt F
+38400 40106 M ([Terminating case]) S
+1200 /Times-Roman-Acnt F
+18000 38106 M (\(\(LITATOM List\) 1\)) S
+1200 /Times-Italic-Acnt F
+38400 38106 M ([Terminating case]) S
+1200 /Times-Roman-Acnt F
+18000 36106 M (\(T \(PLUS) S
+1200 /Times-Italic-Acnt F
+38400 36106 M ([Combining Function]) S
+1200 /Times-Roman-Acnt F
+21600 34106 M (\(CountAtoms \(CAR List\)\)) S
+1200 /Times-Italic-Acnt F
+38400 34106 M ([Recursion: 1st part of List]) S
+1200 /Times-Roman-Acnt F
+21600 32106 M (\(CountAtoms \(CDR List\)\)\)\)\)\)\)) S
+1200 /Times-Italic-Acnt F
+38400 32106 M ([Recursion: 2nd part of List]) S
+1200 /Times-Roman-Acnt F
+10800 28506 M (As another example, consider the function EVAL \(LispCourse #34, page 5\):) S
+14400 26106 M (\(DEFINEQ) S
+14400 24106 M (    \(EVAL  \(LAMBDA \(SExpr\)) S
+18000 22106 M (\(COND) S
+21600 20106 M (\(\(LITATOM SExpr\)) S
+25200 18106 M (\(LookupValue SExpr \)) S
+1200 /Times-Italic-Acnt F
+38400 18106 M ([Terminating case]) S
+1200 /Times-Roman-Acnt F
+21600 16106 M (\(\(NLISTP SExpr\) SExpr\)\)) S
+1200 /Times-Italic-Acnt F
+38400 16106 M ([Terminating case]) S
+1200 /Times-Roman-Acnt F
+21600 14106 M (\(T \(APPLY \(CAR SExpr\)) S
+1200 /Times-Italic-Acnt F
+38400 14106 M ([Combining Function]) S
+1200 /Times-Roman-Acnt F
+25200 12106 M (\(FOR Item in \(CDR SExpr\)) S
+28800 10106 M (DO \(EVAL Item\)\)\)\)\)\)) S
+1200 /Times-Italic-Acnt F
+28800 8306 M ([Recursive call on each part of SExpr]) S
+grestore savepage restore showpage
+
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (3) S
+7200 75600 M (LispCourse #37:  Recursion; Organizing Large Programs) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 71106 M (EFS:) S
+1200 /Times-Roman-Acnt F
+(  Trace EVAL and APPLY during the evaluation of ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(\(CountAtoms '\(\(A B\) D E\)\).) S
+1200 /Times-Roman-Acnt F
+(  ) S
+10800 69306 M (You will see that recursion works in Lisp because each time CountAtoms is APPLYed to ) S
+10800 67506 M (another sub-list, a new stack frame is created and ) S
+1200 /Times-Italic-Acnt F
+(List) S
+1200 /Times-Roman-Acnt F
+( is rebound to the value of that sub-) S
+10800 65706 M (list.) S
+14400 63506 M (Recursion works in Lisp because) S
+18000 61306 M (1\)  the stack is a expandable data structure that holds the results of ) S
+18000 59506 M (incomplete calculations while \(recursive\) sub-calculations are going on) S
+18000 57306 M (2\)  the process of rebinding variables on the stack allows you to apply a ) S
+18000 55506 M (given function to a new set of arguments while the processing of a prior ) S
+18000 53706 M (call to that ) S
+1200 /Times-Bold-Acnt F
+(same) S
+1200 /Times-Roman-Acnt F
+( function is still incomplete) S
+10800 50106 M (Recursion can be ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(indirect) S
+1200 /Times-Roman-Acnt F
+(, e.g., a FunctionA calls FunctionB which in turn calls ) S
+10800 48306 M (FunctionA again.) S
+14400 45906 M (The Lisp evaluator \(LispCourse #34, pages 5 & 6\) is an execellent example:) S
+18000 43306 M (EVAL recursively calls EVAL, but it also calls APPLY.) S
+18000 40706 M (APPLY in turn calls EVAL.) S
+14400 38306 M (So EVAL calls APPLY which calls EVAL.) S
+14400 35906 M (For example on a list:) S
+18000 33506 M (EVAL calls EVAL on each item in the CDR of the list, then calls APPLY ) S
+18000 31706 M (using the CAR and the evaluated arguments.) S
+18000 29306 M (APPLY in turn calls EVAL on each list in the function definition of the ) S
+18000 27506 M (CAR of the original list.) S
+grestore savepage restore showpage
+
+%%Page: 5 5
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 6 6
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (4) S
+7200 75600 M (LispCourse #37:  Recursion; Organizing Large Programs) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 71106 M (Types of Recursion) S
+14400 68106 M (Single Recursion \(and tail recursion\)) S
+1200 /Times-Roman-Acnt F
+18000 65506 M (Singly recursive functions are recursive functions that call themselves ) S
+18000 63706 M (only once during each application of the function.) S
+21600 61106 M (Note the a call to itself may appear several times in the function ) S
+21600 59306 M (defintion \(e.g., in several clauses of a COND statement\), but only ) S
+21600 57506 M (one of these should be evaluated during each call to APPLY.  ) S
+18000 54906 M (Examples:) S
+21600 52306 M (\(DEFINEQ) S
+25200 50306 M (\(MEMBER \(Thing List\)) S
+28800 48306 M (\(* * Is Thing EQUAL to any item in List?\)) S
+28800 46306 M (\(COND) S
+32400 44306 M (\(\(NULL List\) NIL\)) S
+32400 42306 M (\(\(EQUAL Thing \(CAR List\)\) T\)) S
+32400 40306 M (\(T \(MEMBER Thing \(CDR List\)\)\)\)\)\)) S
+21600 37306 M (\(DEFINEQ) S
+25200 35306 M (\(LENGTH \(List\)) S
+28800 33306 M (\(* * Return the number of items in List\)) S
+28800 31306 M (\(COND) S
+32400 29306 M (\(\(NULL List\) 0\)) S
+32400 27306 M (\(T \(ADD1 \(LENGTH \(CDR List\)\)\)\)\)\)\)) S
+21600 24306 M (\(DEFINEQ) S
+25200 22306 M (\(REVERSE \(List\)) S
+28800 20306 M (\(* * Make a copy of List with the items in reverse ) S
+28800 18506 M (order\)) S
+28800 16506 M (\(COND) S
+32400 14506 M (\(\(NULL List\) NIL\)) S
+32400 12506 M (\(T \(APPEND \(REVERSE \(CDR List\)\) ) S
+32400 10706 M (\(CAR List\)\)\)\)\)\)) S
+grestore savepage restore showpage
+
+%%Page: 7 7
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (5) S
+7200 75600 M (LispCourse #37:  Recursion; Organizing Large Programs) S
+18000 71106 M (Note that these three function are all singly recursive, but differ in what ) S
+18000 69306 M (they do to the result returned by the recursive function call.) S
+21600 66906 M (Each call to MEMBER just returns the value of the recursive ) S
+21600 65106 M (function call \(or NIL if List is NULL\).) S
+21600 62706 M (Each call to LENGTH returns 1 plus the result returned by the ) S
+21600 60906 M (recursive function call.) S
+21600 58506 M (Each call to REVERSE returns a computation based on the value ) S
+21600 56706 M (returned by the recursive function call and a computation based on ) S
+21600 54906 M (the value of the main argument.) S
+18000 51506 M (Because of these differences, an all-knowing Lisp evaluator would have to ) S
+18000 49706 M (maintain different amount of state about each of these recursive functions ) S
+18000 47906 M (during evaluation.  In particular,) S
+21600 45306 M (For MEMBER, the evaluator could thow out all information about ) S
+21600 43506 M (a function call \(i.e., its stack frame\) once it made its recursive call.) S
+25200 41106 M (This is because there is no information about the state of ) S
+25200 39306 M (the computation to be maintained once the recursive call is ) S
+25200 37506 M (made.  The value of the highest level call is the value of the ) S
+25200 35706 M (lowest-level function call, with no modifications.) S
+21600 33106 M (For LENGTH and REVERSE, the evaluator needs to maintain ) S
+21600 31306 M (information about each recursive call until the recursion is ) S
+21600 29506 M (complete.) S
+25200 27106 M (This is because when the recursive call is made, the ) S
+25200 25306 M (computation at the current level is incomplete.  In ) S
+25200 23506 M (LENGTH, for example, the recursive computation is being ) S
+25200 21706 M (done in the middle of an ADD1 evaluation.  Information ) S
+25200 19906 M (about the status of ADD1 needs to be maintained until the ) S
+25200 18106 M (recursive call to LENGTH has returned a value.) S
+18000 14706 M (MEMBER is a ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(tail recursive) S
+1200 /Times-Roman-Acnt F
+( function, LENGTH and REVERSE are not.) S
+21600 11906 M (A ) S
+1200 /Times-BoldItalic-Acnt F
+(tail recursive) S
+1200 /Times-Roman-Acnt F
+( function is recursive function whose value ) S
+21600 10106 M (depends only on the value returned by a recursive call or some ) S
+21600 8306 M (value that is computed directly without a recursive call.) S
+grestore savepage restore showpage
+
+%%Page: 8 8
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (6) S
+7200 75600 M (LispCourse #37:  Recursion; Organizing Large Programs) S
+25200 71106 M (Tail recursive function are important because a good Lisp ) S
+25200 69306 M (evaluator can eliminate the unnecessary stack frames ) S
+25200 67506 M (during the computation. making these computations very ) S
+25200 65706 M (efficient. \(See comparison of iteration and recursion ) S
+25200 63906 M (below\).) S
+25200 61506 M (Recursive functions that are not tail recursive need to ) S
+25200 59706 M (maintain their intermediate state on the stack ,and therefore ) S
+25200 57906 M (can be relatively expensive to compute.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 54306 M (Double \(or more\) Recursion) S
+1200 /Times-Roman-Acnt F
+14400 51506 M (Doubly recursive functions are functions that during each application call ) S
+14400 49706 M (themselves two \(or more\) times.) S
+18000 47306 M (CountAtoms \(above\) is a perfect example: for each invocation \(where List ) S
+18000 45506 M (is a LISTP\) it recurses once on its CAR ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(and) S
+1200 /Times-Roman-Acnt F
+( once on its CDR.) S
+18000 43106 M (As a second example, the following function is like MEMBER but rather ) S
+18000 41306 M (than just looking at the top-level elements in a list, it descends into each ) S
+18000 39506 M (sub-list looking for a sub-item that might be EQUAL to its first argument:) S
+21600 37106 M (\(DEFINEQ) S
+25200 35106 M (\(MEMBER*) S
+28800 33106 M (\(LAMBDA \(Thing List\)) S
+32400 31106 M (\(COND) S
+36000 29106 M (\(\(NULL List\) NIL\)) S
+36000 27106 M (\(\(NLISTP List\) \(EQUAL Thing ) S
+36000 25306 M (List\)\)) S
+36000 23306 M (\(T \(OR) S
+39600 21306 M (\(MEMBER* Thing \(CAR ) S
+39600 19506 M (List\)\)) S
+39600 17506 M (\(MEMBER* Thing \(CDR ) S
+39600 15706 M (List\)\)\)\)\)\)\)\)) S
+grestore savepage restore showpage
+
+%%Page: 9 9
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (7) S
+7200 75600 M (LispCourse #37:  Recursion; Organizing Large Programs) S
+14400 71106 M (In general, doubly recursive functions cannot be tail recursive because the ) S
+14400 69306 M (evaluator always needs to maintain state \(i.e., the result of\) about the result of the ) S
+14400 67506 M (first recursive call while evaluating the second recursive call.) S
+1000 /Times-Roman-Acnt F
+18000 65255 M (The exception to this rule is doubly recursive functions that are evaluated for side-effect ) S
+18000 63655 M (only and do not return a useful value.  In this case, computation can be done on the ) S
+18000 62055 M (returned value of a recursive call, so no state has to be maintained.) S
+1200 /Times-Roman-Acnt F
+14400 59306 M (Double recursion is often called tree recursion because it is used to traverse tree ) S
+14400 57506 M (structures.  See Homework for examples.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 53906 M (Iteration versus Recursion) S
+1200 /Times-Roman-Acnt F
+14400 51106 M (Iteration and recursion are in many ways similar control structures.) S
+14400 48306 M (In fact, any iterative procedure can be ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(automatically) S
+1200 /Times-Roman-Acnt F
+( converted into an equivalent ) S
+14400 46506 M (recursive procedure.) S
+18000 43706 M (For example:) S
+21600 40906 M (\(LET \(\(Sum 0\)\)) S
+25200 38906 M (\(FOR Item IN List DO \(SETQ Sum \(PLUS Sum Item\)\)\) ) S
+25200 37106 M (Sum\)) S
+21600 34306 M (can be converted to) S
+21600 31506 M (\(DEFINEQ) S
+25200 29506 M (\(Sum \(LAMBDA \(List\)) S
+28800 27506 M (\(COND) S
+32400 25506 M (\(\(NULL List\) 0\)) S
+32400 23506 M (\(T \(PLUS \(CAR List\) \(Sum \(CDR List\)\)\)\)\)\)\)) S
+1200 /Times-Roman-Acnt F
+14400 20306 M (In contrast, not every recursive procedure can be converted into an equivalent ) S
+14400 18506 M (iterative procedure:) S
+18000 15906 M (CountAtoms, for example, has no iterative equivalent.) S
+1200 /Times-Italic-Acnt F
+18000 13106 M (Tail recursive) S
+1200 /Times-Roman-Acnt F
+( procedures are important, however, because they can ) S
+18000 11306 M (always be rewritten in an equivalent iterative form.) S
+21600 8506 M (For example, MEMBER can be written as:) S
+grestore savepage restore showpage
+
+%%Page: 10 10
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (8) S
+7200 75600 M (LispCourse #37:  Recursion; Organizing Large Programs) S
+25200 71106 M (\(FOR Item IN List WHEN \(EQUAL Thing Item\) DO ) S
+25200 69306 M (\(RETURN T\)\)) S
+18000 66506 M (It is interesting that the Sum function just above is NOT tail recursive, but ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+18000 64706 M (is) S
+1200 /Times-Roman-Acnt F
+( equivalent to an iterative procedure.  The reason is that the Sum ) S
+18000 62906 M (function can be rewritten as the following equivalent tail recursive ) S
+18000 61106 M (procedure, which in turn can be rewritten as an iterative procedure:) S
+21600 58306 M (\(DEFINEQ) S
+25200 56306 M (\(Sum2 \(LAMBDA \(List Total\)) S
+28800 54306 M (\(COND) S
+32400 52306 M (\(\(NULL List\) Total\)) S
+32400 50306 M (\(T  \(Sum2 \(CDR List\) \(PLUS \(CAR List\) ) S
+32400 48506 M (Total\)\)\)\)\)\)) S
+14400 45306 M (The ability to rewrite recursive procedures as iterative procedure is important ) S
+14400 43506 M (because iterative computations are in general much more efficient than recursive ) S
+14400 41706 M (computations.) S
+18000 39306 M (This is because recursive function calls require the evaluator to maintain a ) S
+18000 37506 M (set of stack frames containing information about partially completed ) S
+18000 35706 M (computations.  This stack grows as the recursion gets deeper.) S
+18000 33306 M (In contrast, iterative procedures require only a fixed set of state variables ) S
+18000 31506 M (to be maintained \(e.g., the iterative variable\).  The number of these state ) S
+18000 29706 M (variables does not increase with the number of iterations.) S
+14400 26306 M (It is important to not that while recursive ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(procedures) S
+1200 /Times-Roman-Acnt F
+( cannot always be rewritten ) S
+14400 24506 M (as iterative ) S
+1200 /Times-BoldItalic-Acnt F
+(procedures) S
+1200 /Times-Roman-Acnt F
+(, it is often the case that a given ) S
+1200 /Times-BoldItalic-Acnt F
+(problem) S
+1200 /Times-Roman-Acnt F
+( can be solved ) S
+14400 22706 M (using a recursive procedure ) S
+1200 /Times-Italic-Acnt F
+(or) S
+1200 /Times-Roman-Acnt F
+( an iterative procedure that is not strictly equivalent ) S
+14400 20906 M (to the recursive procedure.) S
+18000 18106 M (For example:) S
+21600 15306 M (The REVERSE function above cannot be written iteratively ) S
+21600 13506 M (because it is not tail recursive.) S
+21600 10706 M (But we can write two slightly different procdures that reverse the ) S
+21600 8906 M (order of a list:) S
+grestore savepage restore showpage
+
+%%Page: 11 11
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (9) S
+7200 75600 M (LispCourse #37:  Recursion; Organizing Large Programs) S
+25200 71106 M (\(DEFINEQ \(ReverseTR \(LAMBDA \(List ResultSoFar\)) S
+28800 69106 M (\(COND ) S
+32400 67106 M (\(\(NULL List\) ResultSoFar\)) S
+32400 65106 M (\(T \(ReverseTR) S
+36000 63106 M (\(CDR List\)) S
+36000 61106 M (\(CONS \(CAR List\) ResultSoFar\)\)\)\)\)\)) S
+25200 58106 M (\(DEFINEQ \(ReverseIt \(LAMBDA \(List\)) S
+28800 56106 M (\(LET \(Result\)) S
+32400 54106 M (\(FOR Item IN List) S
+36000 52106 M (DO \(SETQ Result \(CONS Item ) S
+36000 50306 M (Result\)\)\)) S
+32400 48306 M (Result\)\)\)\)) S
+14400 45106 M (Untimately, the choice between iteration and recursion is one of programming ) S
+14400 43306 M (style and programming ease.) S
+18000 40906 M (Some problems are best thought about recursively.  In this case, it easiest ) S
+18000 39106 M (and clearest to write recursive functions.) S
+18000 36706 M (Other problem are best thought of iteratively.  In this case, iterative ) S
+18000 34906 M (functions are probably best.) S
+18000 32506 M (The only exception is when efficiency considerations are important.  In ) S
+18000 30706 M (this case, iterative solutions, if possible, are probably called for.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 26957 M (Organizing Large Programs by Object and Operation ) S
+1200 /Times-Roman-Acnt F
+10800 23506 M (Many large programming projects have the structure that there are a number of different ) S
+10800 21706 M (types of objects in the world and a number of operations that can be applied to any of ) S
+10800 19906 M (these types of objects.) S
+14400 17306 M (For example, in arithmetic programming the objects are integers, real numbers, ) S
+14400 15506 M (complex numbers, etc.  There are also a few standard operations, addition, ) S
+14400 13706 M (subtraction, multiplication and division.) S
+14400 11106 M (In a text editor, the objects are characters, words, lines, and paragraphs.  The ) S
+14400 9306 M (operations might be insert, delete, replace, transpose, etc.) S
+grestore savepage restore showpage
+
+%%Page: 12 12
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (10) S
+7200 75600 M (LispCourse #37:  Recursion; Organizing Large Programs) S
+10800 71106 M (It is helpful to illustrate the structure of these programming projects using a table of ) S
+10800 69306 M (objects and operations.) S
+14400 65906 M (For example:) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 35200 62300 M
+stroke
+grestore
+35200 48700 35200 62300 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 35200 48700 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 42400 62300 M
+stroke
+grestore
+42400 48700 42400 62300 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 42400 48700 M
+stroke
+grestore
+/Helvetica /Helvetica-Acnt encodefont
+1200 /Helvetica-Acnt F
+36532.0 60630.0 M (Integer) S
+1200 /Helvetica-Acnt F
+44367.0 60630.0 M (Real) S
+1200 /Helvetica-Acnt F
+45964.5 63030.0 M (Objects) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 48800 62300 M
+stroke
+grestore
+48800 48700 48800 62300 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 48800 48700 M
+stroke
+grestore
+1200 /Helvetica-Acnt F
+50433.5 60630.0 M (Complex) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 24800 58300 M
+stroke
+grestore
+56800 58300 24800 58300 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 56800 58300 M
+stroke
+grestore
+1200 /Helvetica-Acnt F
+30066 56630.0 M (Addition) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 24800 55900 M
+stroke
+grestore
+56800 55900 24800 55900 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 56800 55900 M
+stroke
+grestore
+1200 /Helvetica-Acnt F
+16528 53430.0 M (Operations) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 26400 53500 M
+stroke
+grestore
+26400 53500 24800 53500 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 24800 53500 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 26400 53500 M
+stroke
+grestore
+56800 53500 26400 53500 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 56800 53500 M
+stroke
+grestore
+1200 /Helvetica-Acnt F
+28331 54230.0 M (Subtraction) S
+1200 /Helvetica-Acnt F
+30202 49430.0 M (Division) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 24800 51100 M
+stroke
+grestore
+56800 51100 24800 51100 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 56800 51100 M
+stroke
+grestore
+1200 /Helvetica-Acnt F
+27467 51830.0 M (Multiplication) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 24000 48700 M
+stroke
+grestore
+56800 48700 24000 48700 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 56800 48700 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 56800 48700 M
+stroke
+grestore
+56800 62300 56800 48700 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 56800 62300 M
+stroke
+grestore
+1000 /Helvetica-Acnt F
+37504.5 56642.0 M (AddInts) S
+1000 /Helvetica-Acnt F
+43432.5 56642.0 M (AddReals) S
+1000 /Helvetica-Acnt F
+37504.5 54242.0 M (SubInts) S
+1000 /Helvetica-Acnt F
+37983.0 51842.0 M (...) S
+1000 /Helvetica-Acnt F
+45183.0 54242.0 M (...) S
+1000 /Helvetica-Acnt F
+52383.0 56642.0 M (...) S
+1200 /Times-Roman-Acnt F
+10800 43506 M (Each cell of this table defines the need for a function to carry out the designated ) S
+10800 41706 M (operation on the designated type of object.) S
+14400 39306 M (For example, the cell in the first row and first column of the table above indicates ) S
+14400 37506 M (the need for a function to add integers.) S
+14400 35106 M (Similarly, the cell in the first row, second column defines the need for a function ) S
+14400 33306 M (that adds real numbers.) S
+14400 30906 M (And so on.) S
+10800 27906 M (When organizing the program to handle the given objects and operations, you have ) S
+10800 26106 M (several choices:) S
+14400 23706 M (1\)  You can organize your functions by the rows in the table, i.e., by operation.) S
+14400 21306 M (2\)  You can organize your functions by the columns in the table, i.e., by object ) S
+14400 19506 M (type.) S
+14400 17106 M (3\)  You can organize your functions using the whole table.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 13906 M (Organization by Operation) S
+grestore savepage restore showpage
+
+%%Page: 13 13
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (11) S
+7200 75600 M (LispCourse #37:  Recursion; Organizing Large Programs) S
+14400 71106 M (If you organize by operation, you would write a single operation for each ) S
+14400 69306 M (operation.  This function would then determine the type of its arguments and then ) S
+14400 67506 M (call the appropriate function to do the work.) S
+18000 65106 M (For example:) S
+21600 62706 M (The addition function might look like:) S
+25200 60906 M (\(DEFINEQ) S
+25200 59106 M (    \(ADD) S
+28800 57306 M (\(LAMBDA \(N1 N2\)) S
+32400 55506 M (\(COND) S
+36000 53706 M (\(\(AND \(FIXP N1\)\(FIXP N2\)\)) S
+39600 51906 M (\(IntegerAdd N1 N2\)\)) S
+36000 50106 M (\(\(AND \(FLOATP N1\)\(FLOATP ) S
+36000 48306 M (N2\)\)) S
+39600 46506 M (\(RealAdd N1 N2\)\)) S
+36000 44706 M (\(\(AND \(ComplexP N1\)\(ComplexP ) S
+36000 42906 M (N2\)\)) S
+39600 41106 M (\(ComplexAdd N1 N2\)\)) S
+36000 39306 M (\(T \(ERROR "Unknown argument ) S
+36000 37506 M (types or argument types different" ) S
+36000 35706 M (\(LIST N1 N2\)\)\)\)\)\)\)) S
+21600 33306 M (The subtraction. multiplication, and division functions would have ) S
+21600 31506 M (similar structures.) S
+14400 29106 M (Once the generic operations functions were written, you could write all further ) S
+14400 27306 M (functions in terms of the generic operators.) S
+18000 24906 M (For example, the following function would add the items in a list of ) S
+18000 23106 M (integers or a list of reals or a list of complex numbers:  ) S
+21600 20706 M (\(DEFINEQ \(Sum  \(LAMBDA \(List\)) S
+25200 18306 M (\(\(NULL List\) 0\)) S
+25200 15906 M (\(T \(ADD \(CAR List\)\(Sum \(CDR List\)\)\)\)\)\)\)) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 12706 M (Organization by Type of Object) S
+1200 /Times-Roman-Acnt F
+14400 10306 M (Alternatively, you could organize your program by object type.) S
+grestore savepage restore showpage
+
+%%Page: 14 14
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (12) S
+7200 75600 M (LispCourse #37:  Recursion; Organizing Large Programs) S
+14400 71106 M (In this case, you might create a RECORD or DATATYPE for each object type ) S
+14400 69306 M (containing each a function for each operation to be carried out on that object type.) S
+18000 66906 M (For example, the following RECORD would be used for defining the ) S
+18000 65106 M (arithmetic object types:) S
+21600 62706 M (\(RECORD ArithObjectType \(PredicateFn AddFn SubFn MultFn ) S
+21600 60906 M (DivFn\)\)) S
+18000 58506 M (Integers would then be defined by:) S
+21600 56106 M (\(create ArithObjectType) S
+25200 53706 M (PredicateFn _ \(FUNCTION FIXP\)) S
+25200 51306 M (AddFn _ \(FUNCTION IntegerAdd\)) S
+25200 48906 M (SubFn _ \(FUNCTION IntegerSubtraction\)) S
+25200 46506 M (MultFn _ \(FUNCTION IntegerMultiplication\)) S
+25200 44106 M (DivFn _ \(FUNCTION IntegerDivision\)\)) S
+14400 41706 M (You would then maintain a list of all of the arithmetic object types in the system.) S
+14400 39306 M (Once this list was created, you could write a generic ADD function as follows:) S
+18000 36306 M (\(DEFINEQ  \(ADD \(LAMBDA \(N1 N2\)) S
+21600 34306 M ( \(LET \(TypeRecord\)) S
+25200 32306 M (\(FOR Type IN ListOfSystemTypes) S
+28800 30306 M (WHEN \(AND \(APPLY* \(fetch PredicateFn of ) S
+28800 28506 M (Type\) N1\)) S
+36000 26506 M (\(APPLY* \(fetch PredicateFn of ) S
+36000 24706 M (Type\) N2\)\)) S
+32400 22706 M (DO \(RETURN Type\)\)\)) S
+25200 20706 M (\(COND) S
+28800 18706 M (\(TypeRecord) S
+32400 16706 M (\(APPLY* \(fetch AddFn of TypeRecord\) N1 ) S
+32400 14906 M (N2\)\)) S
+28800 12906 M (\(T) S
+32400 10906 M (\(ERROR "Unknown argument types or ) S
+32400 9106 M (argument types different" \(LIST N1 N2\)\)) S
+grestore savepage restore showpage
+
+%%Page: 15 15
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (13) S
+7200 75600 M (LispCourse #37:  Recursion; Organizing Large Programs) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 71106 M (Organization using the table: Data-directed programming) S
+1200 /Times-Roman-Acnt F
+14400 68706 M (Alternatively, you could organize your program by operation and object type.) S
+14400 66306 M (In this case, you would create a table of functions indexed by object type and ) S
+14400 64506 M (operations.) S
+18000 62106 M (For example:) S
+21600 59706 M (\(SETQ Table) S
+25200 57306 M (\(\(Integer Add IntegerAdd\)) S
+25200 54906 M ( \(Integer Subtract IntegerSubtract\)) S
+25200 52506 M ( ...) S
+25200 50106 M ( \(Real Add RealAdd\)) S
+25200 47706 M (...) S
+25200 45306 M ( \(Complex Divide ComplexDivide\)\)\)) S
+14400 42906 M (You could then create a generic function called ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Operate) S
+1200 /Times-Roman-Acnt F
+( that carried out a given ) S
+14400 41106 M (operation) S
+1200 /Times-Italic-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(on a given set of arguments.) S
+1200 /Times-Italic-Acnt F
+18000 38706 M (Operate) S
+1200 /Times-Roman-Acnt F
+( would look like:) S
+21600 36306 M (\(DEFINEQ \(Operate \(LAMBDA \(Operation N1 N2\)) S
+25200 34306 M (\(LET \(TypeN1 TypeN2 Function\)) S
+28800 32306 M (\(* * Get the type of the arguments\)) S
+28800 30306 M (\(SETQ TypeN1 \(GetType N1\)\)) S
+28800 28306 M (\(SETQ TypeN2 \(GetType N2\)\)) S
+28800 26306 M (\(COND) S
+32400 24306 M (\(\(OR) S
+36000 22306 M (\(NEQ TypeN1 TypeN2\)) S
+36000 20306 M (\(NULL TypeN1\)) S
+36000 18306 M (\(NULL TypeN2\)\)) S
+32400 16306 M ( \(ERROR ...\)\)) S
+28800 14306 M (\(* * Lookup the function in the table\)) S
+28800 12306 M (\(SETQ Function \(FOR Item IN Table) S
+39600 10306 M (WHEN \(AND \(EQ \(CAR ) S
+39600 8506 M (Item\) TypeN1\)) S
+grestore savepage restore showpage
+
+%%Page: 16 16
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (14) S
+7200 75600 M (LispCourse #37:  Recursion; Organizing Large Programs) S
+46800 71106 M (\(EQ \(CADR ) S
+46800 69306 M (Item\) ) S
+46800 67506 M (Operation\)\)) S
+39600 65506 M (DO \(RETURN \(CADDR ) S
+39600 63706 M (Item\)\)\)\)) S
+28800 61706 M (\(* * Apply the function\)) S
+28800 59706 M (\(COND) S
+32400 57706 M (\(Function \(APPLY* Function N1 N2\)\)) S
+32400 55706 M (\(T \(ERROR ...\)\)\)\)\)\)\)) S
+18000 52306 M (The Sum function could then be written as:) S
+21600 49906 M (\(DEFINEQ \(Sum  \(LAMBDA \(List\)) S
+25200 47506 M (\(\(NULL List\) 0\)) S
+25200 45106 M (\(T \(Operate 'Add \(CAR List\)\(Sum \(CDR List\)\)\)\)\)\)\)) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 41706 M (Organization by Object Instance: Object-oriented programming) S
+1200 /Times-Roman-Acnt F
+14400 38706 M (All of the preceding organizations looked at the type of an object in order to ) S
+14400 36906 M (determine what functions to use on that object.) S
+14400 33906 M (An alternative method would be to allow each data object to carry around with it ) S
+14400 32106 M (the functions that are necessary to operate on that object.) S
+14400 29106 M (In this case, each data object would be a RECORD or DATATYPE of the ) S
+14400 27306 M (following form:) S
+18000 24906 M (\(RECORD ArithObject \(TypeName Value AddFn SubFn MultFn DivFn\)\)) S
+14400 21906 M (You could then write an ADD function as follows:) S
+18000 19506 M (\(DEFINEQ \(ADD \(LAMBDA \(N1 N2\)) S
+21600 17106 M (\(COND) S
+25200 14706 M (\(\(NEQ \(fetch \(ArithObject TypeName\) of N1\)) S
+28800 12306 M (\(fetch \(ArithObject TypeName\) of N2\)\)) S
+25200 9906 M (  \(ERROR ...\)\)\)) S
+grestore savepage restore showpage
+
+%%Page: 17 17
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (15) S
+7200 75600 M (LispCourse #37:  Recursion; Organizing Large Programs) S
+21600 71106 M (\(APPLY* \(fetch \(ArithObject AddFn\) of N1\)) S
+25200 68706 M (\(fetch \(ArithObject Value\) of N1\)) S
+25200 66306 M (\(fetch \(ArithObject Value\) of N2\)\)\)\)\)) S
+14400 63306 M (You would still need one function indexed by object type, the function that ) S
+14400 61506 M (creates a new object of that type.  This would create a new object with its own ) S
+14400 59706 M (attached functions.  The attached functions could be supplied specially for each ) S
+14400 57906 M (individual object or could be the same for all objects of a given object type.) S
+18000 54906 M (For example, the following might be a function that creates the integer ) S
+18000 53106 M (object:) S
+21600 50106 M (\(DEFINEQ \(MakeInt \(LAMBDA \(Value AddFn SubFn MultFn ) S
+21600 48306 M (DivFn\)) S
+25200 46306 M (\(create ArithObject) S
+28800 44306 M (TypeName _ 'Integer) S
+28800 42306 M (Value _ Value) S
+28800 40306 M (AddFn _ \(OR AddFn) S
+36000 38306 M (\(FUNCTION DefaultIntegerAddFn\)\)) S
+28800 36306 M (SubFn _ \(OR SubFn) S
+36000 34306 M (\(FUNCTION DefaultIntegerSubFn\)\)) S
+28800 32306 M (MultFn _ \(OR MultFn) S
+36000 30306 M (\(FUNCTION ) S
+36000 28506 M (DefaultIntegerMultFn\)\)) S
+28800 26506 M (DivFn _ \(OR DivFn) S
+36000 24506 M (\(FUNCTION ) S
+36000 22706 M (DefaultIntegerDivFn\)\)\)\)\)\)) S
+18000 19706 M (The integer of value 5, with default functions would then be created using ) S
+18000 17906 M (the function call: ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(\(MakeInt 5\)) S
+1200 /Times-Roman-Acnt F
+(.) S
+18000 14906 M (Similarly, an integer of value 7 with a special AddFn would be created ) S
+18000 13106 M (using: ) S
+1200 /Times-Italic-Acnt F
+(\(MakeInt 7 \(FUNCTION MyAddFn\)\)) S
+1200 /Times-Roman-Acnt F
+14400 10106 M (Much of the Interlisp system is programmed in this style.) S
+grestore savepage restore showpage
+
+%%Page: 18 18
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (16) S
+7200 75600 M (LispCourse #37:  Recursion; Organizing Large Programs) S
+18000 71106 M (For example, each window in the system is a DATATYPE of the ) S
+18000 69306 M (following form:) S
+21600 66906 M (\(DATATYPE WINDOW \(... CLOSEFN SHRINKFN MOVEFN ) S
+21600 65106 M (...\)\)) S
+18000 62706 M (Each window in the system has attached to it the functions that specify ) S
+18000 60906 M (how to close it, how to shrink it, how to move it, etc.) S
+21600 58306 M (When the window is created, default functions are placed in these ) S
+21600 56506 M (fields in the WINDOW datatype unless otherwise specified by the ) S
+21600 54706 M (user.) S
+21600 52106 M (The function CLOSEW \(SHRINKW, MOVEW etc\) in Interlisp is ) S
+21600 50306 M (implemented as follows:) S
+25200 48306 M (\(DEFINEQ \(CLOSEW \(LAMBDA \(Window\)) S
+28800 46306 M (\(APPLY* \(fetch \(WINDOW CLOSEFN\) of ) S
+28800 44506 M (Window\) Window\)\)\)\)) S
+21600 41906 M (At any time, the user can change the behavior of a window by ) S
+21600 40106 M (changing its CLOSEFN, MOVEFN, SHRINKFN or whatever.) S
+grestore savepage restore showpage
+
+%%Page: 19 19
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 20 20
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (17) S
+7200 75600 M (LispCourse #37:  Recursion; Organizing Large Programs) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 71106 M (Choosing from among these organizations) S
+1200 /Times-Roman-Acnt F
+14400 68106 M (Choosing among these organizations is largely a matter of programming style and ) S
+14400 66306 M (the type of problem you are dealing with.) S
+18000 63306 M (If the program has a fixed number of objects, but may increase in the ) S
+18000 61506 M (number of operations, then an operation-based organization may be best ) S
+18000 59706 M (since each added operation means adding a single new function.) S
+18000 56706 M (If the program has a fixed number of operations but an increasing number ) S
+18000 54906 M (of object types, then an object type-based organization might be best since ) S
+18000 53106 M (each added object type would involve only a new object-type record or ) S
+18000 51306 M (datatype.) S
+18000 48306 M (If there is a variability in both object types and operations, table-based ) S
+18000 46506 M (data-directed programming might be best.) S
+18000 43506 M (Finally, if there are many specialized individual objects that need to be ) S
+18000 41706 M (treated differently from the rest of the objects of their basic type \(as is the ) S
+18000 39906 M (case for windows\), then an object-oriented organization would be the most ) S
+18000 38106 M (efficient.) S
+1400 /Times-Bold-Acnt F
+7200 34357 M (References) S
+1200 /Times-Roman-Acnt F
+10800 31906 M (Recursion) S
+14400 29506 M (Winston & Horn, Chapter 4) S
+14400 27106 M (Touretzky, Chapter 8) S
+10800 24706 M (Program Organization) S
+14400 22306 M (Abelson and Sussman, Section 2.3) S
+grestore savepage restore showpage
+
+%%Trailer

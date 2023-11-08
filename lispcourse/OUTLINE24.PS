@@ -1,0 +1,993 @@
+%!PS-Adobe-2.0%%Title: {DSK}<home>larry>lispcourse>OUTLINE24.PS%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate:  7-Nov-2023 21:40:14%%EndComments/bdef {bind def} bind def
+/ldef {load def} bdef
+/S /show ldef
+/M /moveto ldef
+/DR {transform round exch round exch itransform} bdef
+/L {gsave newpath setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/L1 {gsave newpath 0 setdash setgray setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/F {findfont exch scalefont setfont} bdef
+/CLP {newpath M dup 0 rlineto exch 0 exch rlineto
+  neg 0 rlineto closepath clip newpath} bdef
+/R {gsave setgray newpath M dup 0 rlineto exch 0 exch
+  rlineto neg 0 rlineto closepath eofill grestore} bdef
+/ellipsedict 9 dict def
+ellipsedict /mtrx matrix put
+/ellipse
+ { ellipsedict begin
+  /endangle exch def
+  /startangle exch def
+  /orientation exch def
+  /minorrad exch def
+  /majorrad exch def
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  orientation rotate
+  majorrad minorrad scale
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+ end } bdef
+/concatprocs
+ {/proc2 exch cvlit def
+  /proc1 exch cvlit def
+  /newproc proc1 length proc2 length add array def
+  newproc 0 proc1 putinterval
+  newproc proc1 length proc2 putinterval
+  newproc cvx
+ } bdef
+/resmatrix matrix def
+/findresolution
+ {72 0 resmatrix defaultmatrix dtransform
+  /yres exch def /xres exch def
+  xres dup mul yres dup mul add sqrt
+ } bdef
+/thebitimage
+ {/maskp exch def
+  /bihgt exch def
+  /biwid exch def
+  /byte 1 string def
+  /strbufl biwid 8 div ceiling cvi def
+  /strbuf strbufl string def
+  maskp not{{1 exch sub} currenttransfer concatprocs settransfer} if
+  biwid bihgt
+  maskp { true } { 1 } ifelse
+  [biwid 0 0 bihgt 0 0]
+  {/col 0 def
+   {currentfile byte readhexstring pop 0 get
+    dup 16#B2 eq {pop
+    currentfile byte readhexstring pop 0 get 1 add
+    currentfile byte readhexstring pop pop /nbyte byte 0 get def
+    { strbuf col nbyte put /col col 1 add def} repeat}
+   {dup 16#B3 eq {pop /col col
+    currentfile byte readhexstring pop
+    0 get add 1 add def}
+    {16#B4 eq {currentfile byte readhexstring pop pop} if
+     strbuf col byte 0 get put /col col 1 add def} ifelse
+   } ifelse
+   col strbufl ge { exit } if } loop
+   strbuf }
+  maskp { imagemask } { image } ifelse
+ } bdef
+/setuserscreendict 22 dict def
+setuserscreendict begin
+ /tempctm matrix def
+ /temprot matrix def
+ /tempscale matrix def
+end
+/setuserscreen
+ {setuserscreendict begin
+   /spotfunction exch def
+   /screenangle exch def
+   /cellsize exch def
+   /m tempctm currentmatrix def
+   /rm screenangle temprot rotate def
+   /sm cellsize dup tempscale scale def
+   sm rm m m concatmatrix m concatmatrix pop
+   1 0 m dtransform /y1 exch def /x1 exch def
+   /veclength x1 dup mul y1 dup mul add sqrt def
+   /frequency findresolution veclength div def
+   /newscreenangle y1 x1 atan def
+   m 2 get m 1 get mul m 0 get m 3 get mul sub
+   0 gt { { neg } /spotfunction load concatprocs
+          /spotfunction exch def } if
+   frequency newscreenangle /spotfunction load setscreen
+  end
+ } bdef
+/setpatterndict 18 dict def
+setpatterndict begin
+ /bitison
+  {/ybit exch def /xbit exch def
+   /bytevalue bstring ybit bwidth mul xbit 8 idiv add get def
+   /mask 1 7 xbit 8 mod sub bitshift def
+   bytevalue mask and 0 ne
+  } bdef
+end
+/bitpatternspotfunction
+ {setpatterndict begin
+   /y exch def /x exch def
+   /xindex x 1 add 2 div bpside mul 1 sub cvi def
+   /yindex y 1 add 2 div bpside mul 1 sub cvi def
+   xindex yindex bitison
+    {/onbits onbits 1 add def 1}
+    {/offbits offbits 1 add def 0} ifelse
+  end
+ } bdef
+/setpattern
+ {setpatterndict begin
+   /cellsz exch def
+   /angle exch def
+   /bwidth exch def
+   /bpside exch def
+   /bstring exch def
+   /onbits 0 def /offbits 0 def
+   cellsz angle /bitpatternspotfunction load setuserscreen
+   {} settransfer
+   offbits offbits onbits add div setgray
+  end
+ } bdef
+% - - - - - Fraction-setting code, to support NS fonts better - - - - -
+/fractiondict 20 dict def
+/fractionshow 
+{ fractiondict begin
+/denom exch def 
+/num exch def 
+/regfont currentfont def
+/fractfont currentfont [.65 0 0 .6 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(1) true charpath flattenpath pathbbox 
+/height exch def pop pop pop
+ grestore
+0 .4 height mul rmoveto
+fractfont setfont num show
+0 .4 height mul neg rmoveto regfont setfont (\244) show
+fractfont setfont denom show regfont setfont end } bdef
+/f14 { (1) (4) fractionshow } bdef
+/f12 { (1) (2) fractionshow } bdef
+/f34 { (3) (4) fractionshow } bdef
+/f18 { (1) (8) fractionshow } bdef
+/f38 { (3) (8) fractionshow } bdef
+/f58 { (5) (8) fractionshow } bdef
+/f78 { (7) (8) fractionshow } bdef
+/f13 { (1) (3) fractionshow } bdef
+/f23 { (2) (3) fractionshow } bdef
+/bboxdict 20 dict def
+/bboxchk { bboxdict begin
+/regfont currentfont def
+/chkfont currentfont [1.25 0 0 1.25 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(\161) true charpath flattenpath pathbbox 
+/height exch def pop pop pop 
+ grestore 
+ currentpoint 
+ .2 height mul .3 height mul rmoveto
+chkfont setfont (\063) show
+ moveto
+ regfont setfont
+(\161) show end } bdef
+/rencdict 15 dict def
+/encodefont { rencdict begin
+/newname exch def
+/oldfont exch def
+/newcodes [
+8#001 /Aacute
+8#002 /Acircumflex
+8#003 /Adieresis
+8#004 /Agrave
+8#005 /Aring
+8#006 /Atilde
+8#007 /Ccedilla
+8#010 /Eacute
+8#011 /Ecircumflex
+8#012 /Edieresis
+8#013 /Egrave
+8#014 /Iacute
+8#015 /Icircumflex
+8#016 /Idieresis
+8#017 /Igrave
+8#020 /Ntilde
+8#021 /Oacute
+8#022 /Ocircumflex
+8#023 /Odieresis
+8#024 /Ograve
+8#025 /Otilde
+8#026 /Scaron
+8#027 /Uacute
+8#030 /Ucircumflex
+8#031 /Udieresis
+8#032 /Ugrave
+8#033 /Ydieresis
+8#034 /Zcaron
+8#177 /periodinferior
+8#201 /aacute
+8#202 /acircumflex
+8#203 /adieresis
+8#204 /agrave
+8#205 /aring
+8#206 /atilde
+8#207 /ccedilla
+8#210 /eacute
+8#211 /ecircumflex
+8#212 /edieresis
+8#213 /egrave
+8#214 /iacute
+8#215 /icircumflex
+8#216 /idieresis
+8#217 /igrave
+8#220 /ntilde
+8#221 /oacute
+8#222 /ocircumflex
+8#223 /odieresis
+8#224 /ograve
+8#225 /otilde
+8#226 /scaron
+8#227 /uacute
+8#230 /ucircumflex
+8#231 /udieresis
+8#232 /ugrave
+8#233 /ydieresis
+8#234 /zcaron
+8#235 /Eth
+8#236 /eth
+8#237 /Thorn
+8#240 /thorn
+ ] def
+/olddict oldfont findfont def /newfont olddict maxlength dict def
+olddict { exch dup /FID ne { dup /Encoding eq
+{ exch dup length array copy newfont 3 1 roll put }
+{ exch newfont 3 1 roll put } ifelse }
+ { pop pop } ifelse } forall
+newfont /FontName newname put
+newcodes aload pop
+newcodes length 2 idiv { newfont /Encoding get 3 1 roll put } repeat 
+newname newfont definefont pop end } def
+ /accentdict 10 dict def 
+ /accentor { accentdict begin /scaler exch def /delta exch def 
+/unders exch def /accents exch def /mainch exch def /scrt (X) def
+ /w1 mainch stringwidth pop def 
+ currentpoint mainch show currentpoint 4 2 roll 
+accents { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         w1 w2 sub 2 div delta rmoveto scrt show 
+         /delta delta 150 scaler mul 9 div add def
+        } forall 
+unders { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         ch 46 eq { w1 w2 sub 2 div -175 scaler mul 9 div rmoveto scrt show 0 175 rmoveto }
+           { w1 w2 sub 2 div 0 rmoveto scrt show } ifelse 
+        } forall 
+ pop pop moveto end } def 
+%%EndProlog
+%%BeginSetup
+letter/imagesizefactor 1 def%%EndSetup/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+
+%%Page: 1 1
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+54000 75600 M (F.G.H.          ) S
+54000 73800 M (5/2/85) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (LispCourse #24:  Data Abstraction) S
+7200 67157 M (Programs as Representations of the Real World) S
+1200 /Times-Roman-Acnt F
+10800 63506 M (Extensionally,  computer programs carry out a sequence of information manipulating ) S
+10800 61706 M (actions on a set of computational objects called data. ) S
+10800 58706 M (Intensionally, computer programs the actions and objects are usually designed to be some ) S
+10800 56906 M (sort of model of some "real world" actions and objects.  In other words, computer ) S
+10800 55106 M (programs are ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(representations) S
+1200 /Times-Roman-Acnt F
+( of real world actions and objects.) S
+10800 52106 M (Data is used to represent real world objects.  Data structures represent the structure of ) S
+10800 50306 M (real world objects.  ) S
+10800 47306 M (In talking about computer programs, we often blur the distinction between data structures ) S
+10800 45506 M (and the real world objects which they represent.) S
+1400 /Times-Bold-Acnt F
+7200 41757 M (Data, Compound Data & Data Structures) S
+1200 /Times-Roman-Acnt F
+10800 38506 M (Atoms are the ) S
+1200 /Times-BoldItalic-Acnt F
+(primitive data) S
+1200 /Times-Roman-Acnt F
+( structures in Lisp.) S
+10800 36106 M (Some objects can be represented by atoms alone; e.g., numbers by NUMBERPs and ) S
+10800 34306 M (English words by LITATOMS.  ) S
+10800 31906 M (However, most objects are more complicated and can only be represented by a ) S
+10800 30106 M (combination of many simpler pieces of data.  In Lisp, this combination is usually ) S
+10800 28306 M (achieved using lists that "glue" together atoms and other lists.  A list is ) S
+1200 /Times-BoldItalic-Acnt F
+(compound data) S
+1200 /Times-Roman-Acnt F
+(.) S
+10800 25306 M (A ) S
+1200 /Times-BoldItalic-Acnt F
+(data structure) S
+1200 /Times-Roman-Acnt F
+( is a "scheme" for using compound data to represent a complex object.) S
+14400 22906 M (Example:) S
+18000 20706 M (A persons name is an object with some structure, i.e., it has a first name, a ) S
+18000 18906 M (middle initial, and a last name.  In Lisp, we might represent this structure ) S
+18000 17106 M (using a list data structure with three elements. where the first element was ) S
+18000 15306 M (an atom representing the first name, tyhe second element an atom ) S
+18000 13506 M (reprersenting the middle initial, and the third element an atom representing ) S
+18000 11706 M (the last name.) S
+grestore savepage restore showpage
+
+%%Page: 2 2
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (2) S
+7200 75600 M (LispCourse #24:  Data Abstraction) S
+10800 71106 M (Compound data is important because it allows us to deal with the many pieces of simpler ) S
+10800 69306 M (data as a single entity, just as we deal with the real world complicated object as a single ) S
+10800 67506 M (entity.) S
+10800 64506 M (Data structures are important because they allow us to take a very simple and straight-) S
+10800 62706 M (forward compounding scheme \(i.e., lists\) and represent very complex objects.  The data ) S
+10800 60906 M (structure provides the "rules" by which to interpret a list structure into representation of a ) S
+10800 59106 M (complex object.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 55357 M (Data Abstraction: Dealing with Compound Data) S
+1200 /Times-Roman-Acnt F
+10800 51706 M (Dealing with compound data and data structures can lead to difficult programming if the ) S
+10800 49906 M (proper rules are not followed.) S
+1200 /Times-Bold-Acnt F
+10800 46306 M (The Need for Data Abstraction) S
+14400 43506 M (Example 1) S
+1200 /Times-Roman-Acnt F
+18000 40706 M (Consider the following programming problem:) S
+21600 38506 M (write a set of functions that fill out tax forms.  There will be one ) S
+21600 36706 M (function for each tax form.  On each tax form, you need to fill in ) S
+21600 34906 M (the person's name at least once and sometimes two or three times .  ) S
+21600 33106 M (The name is passed to you as a list of three items of the form ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(\(First ) S
+21600 31306 M (Middle Last\)) S
+1200 /Times-Roman-Acnt F
+(.) S
+18000 28506 M (How should you handle the placing of names on the tax forms?) S
+18000 25706 M (One solution is the following: every time you need to print the persons ) S
+18000 23906 M (name, print the CAR of the name list, then the CADR of the name list and ) S
+18000 22106 M (then the CADDR of the name list.) S
+18000 19306 M (What happens if for some reason you start getting names in the form ) S
+1200 /Times-Italic-Acnt F
+(\(Last ) S
+18000 17506 M (First Middle\)) S
+1200 /Times-Roman-Acnt F
+(.) S
+21600 15106 M (You would have to go through each function looking for each ) S
+21600 13306 M (place that you print out the person's name and change the ) S
+21600 11506 M (procedure to be CADR of name list followed by CADDR of name ) S
+grestore savepage restore showpage
+
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (3) S
+7200 75600 M (LispCourse #24:  Data Abstraction) S
+21600 71106 M (list followed by CAR of name list.   UGH!!  This could be a god-) S
+21600 69306 M (awful job.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 65706 M (BUT) S
+1200 /Times-Roman-Acnt F
+( - what if you had done the following to begin with: Write three ) S
+18000 63906 M (functions called ) S
+1200 /Times-Bold-Acnt F
+(FirstName) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Bold-Acnt F
+(MiddleName) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Bold-Acnt F
+(LastName) S
+1200 /Times-Roman-Acnt F
+( that take a ) S
+18000 62106 M (name and return the indicated part of the name.  FirstName would simply ) S
+18000 60306 M (take the CAR of the NameList, the MiddleName function the CADR and ) S
+18000 58506 M (the LastName the CADDR.) S
+21600 55706 M (Then every time you want to print the person's name, you would ) S
+21600 53906 M (print) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+( \(FirstName NameList\)) S
+1200 /Times-Roman-Acnt F
+( followed by ) S
+1200 /Times-Italic-Acnt F
+(\(MiddleName NameList\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+21600 52106 M (followed by) S
+1200 /Times-Italic-Acnt F
+( \(LastName NameList\)) S
+1200 /Times-Roman-Acnt F
+(.  Everything would work as in ) S
+21600 50306 M (the initial case above.) S
+18000 47106 M (However, when the name format change can along, you would have to ) S
+18000 45306 M (change only the three functions ) S
+1200 /Times-Bold-Acnt F
+(FirstName) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Bold-Acnt F
+(MiddleName) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Bold-Acnt F
+(LastName) S
+1200 /Times-Roman-Acnt F
+( ) S
+18000 43506 M (to use  CADR, CADDR, and CAR respectively.) S
+21600 40906 M (None of the tax form function would have to change at all!!!!   ) S
+21600 39106 M (Thus the change in name formats would be trivial.) S
+1200 /Times-Bold-Acnt F
+14400 35706 M (Example 2) S
+1200 /Times-Roman-Acnt F
+18000 32906 M (Consider the following programming problem:) S
+21600 30106 M (You are writing the program for filling out Schedule G \(Income ) S
+21600 28306 M (Averaging\).  You have a record of the person's last 4 years' tax ) S
+21600 26506 M (liabilities in the form ) S
+1200 /Times-Italic-Acnt F
+(\(NameList Year-1 Year-2 Year-3 Year-4\).) S
+1200 /Times-Roman-Acnt F
+(  In ) S
+21600 24706 M (your calculations, you need the Year-i tax liability.) S
+18000 21906 M (Solution: you write four functions called ) S
+1200 /Times-Bold-Acnt F
+(Year-1 ) S
+1200 /Times-Roman-Acnt F
+(thru) S
+1200 /Times-Bold-Acnt F
+( Year-4) S
+1200 /Times-Roman-Acnt F
+( that take the ) S
+18000 20106 M (liability list and return the Year-I tax liability.  You implement these ) S
+18000 18306 M (functions by taking the \(CAR \(NTH LiabilityList N\)\) for the correct N in ) S
+18000 16506 M (each case.) S
+18000 13706 M (BUT - what if the liability list format changed a bit to be ) S
+1200 /Times-Italic-Acnt F
+(\(LastName ) S
+18000 11906 M (Firstname) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(Year-1 Year-2 Year-3 Year-4) S
+1200 /Times-Roman-Acnt F
+(\).  Then you would have to go ) S
+18000 10106 M (back and change all four functions.) S
+grestore savepage restore showpage
+
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (4) S
+7200 75600 M (LispCourse #24:  Data Abstraction) S
+18000 71106 M (However, if you had written a function called ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(ListOfLiabilities) S
+1200 /Times-Roman-Acnt F
+( that took ) S
+18000 69306 M (the liability record and returned a list of the four liabilites.  Then you ) S
+18000 67506 M (could have written the ) S
+1200 /Times-Bold-Acnt F
+(Year-I) S
+1200 /Times-Roman-Acnt F
+( functions to use the value returned by ) S
+1200 /Times-Bold-Acnt F
+18000 65706 M (ListOfLiabilities) S
+1200 /Times-Roman-Acnt F
+(. ) S
+18000 62906 M (If you did this, then when the liability list format changed, you would have ) S
+18000 61106 M (had to change only one function, ) S
+1200 /Times-Bold-Acnt F
+(ListOfLiabilities) S
+1200 /Times-Roman-Acnt F
+(, instead of four.) S
+21600 59106 M (Not a big deal, but if there were 100 variables instead of 4 it might ) S
+21600 57306 M (be a big deal.) S
+1200 /Times-Bold-Acnt F
+10800 53906 M (Data Abstraction) S
+1200 /Times-Roman-Acnt F
+14400 51106 M (What do these examples show?  The need for data abstraction to improve program ) S
+14400 49306 M (maintainability and adaptability. ) S
+14400 46306 M (Data abstraction is a programming design methodology in which:) S
+18000 43506 M (1\) You carefully separate functions that ) S
+1200 /Times-Bold-Acnt F
+(USE) S
+1200 /Times-Roman-Acnt F
+( data from functions that ) S
+1200 /Times-Bold-Acnt F
+18000 41706 M (ACCESS) S
+1200 /Times-Roman-Acnt F
+( and manipulate data structures.  Changes to the data structures ) S
+18000 39906 M (will then affect only the data structure functions and not the data using ) S
+18000 38106 M (functions.) S
+18000 35106 M (2\) You carefully separate functions dealing with the various levels of a ) S
+18000 33306 M (compound data structure.  Changes to one level will then effect only the ) S
+18000 31506 M (functions dealing with that level of the compound data and not all other ) S
+18000 29706 M (levels.) S
+grestore savepage restore showpage
+
+%%Page: 5 5
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 6 6
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (5) S
+7200 75600 M (LispCourse #24:  Data Abstraction) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 71106 M (Abstraction Barriers) S
+1200 /Times-Roman-Acnt F
+18000 68106 M (Data abstraction is accomplished by creating ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(abstraction barriers) S
+1200 /Times-Roman-Acnt F
+( between ) S
+18000 66306 M (function that use data and functions that access data AND between the ) S
+18000 64506 M (functions that access various levels of data from a compound structure.) S
+18000 61506 M (An abstraction barrier is a line that separates the functions of a program.  ) S
+18000 59706 M (Functions on one side of the line can make no \(unnecessary\) assumptions ) S
+18000 57906 M (about the data structures used by functions on the other side of the line, ) S
+18000 56106 M (except as described in the well-defined interface between the two sets of ) S
+18000 54306 M (functions.) S
+1200 /Times-Bold-Acnt F
+18000 51306 M (Example) S
+1200 /Times-Roman-Acnt F
+21600 48306 M (In the tax forms/name list example above, an abstraction barrier ) S
+21600 46506 M (was required between the form filling programs and the name list ) S
+21600 44706 M (data structure.) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 22400 32600 M
+stroke
+grestore
+60000 32600 22400 32600 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 60000 32600 M
+stroke
+grestore
+/Helvetica /Helvetica-Acnt encodefont
+1200 /Helvetica-Acnt F
+22400 33330.0 M (Abstraction) S
+1200 /Helvetica-Acnt F
+22400 30930.0 M (Barrier) S
+1200 /Helvetica-Acnt F
+36231.5 40930.0 M (Functions that) S
+36132.5 39730.0 M (fill-in tax forms) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 35200 35000 M
+stroke
+grestore
+35200 30200 35200 35000 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 35200 30200 M
+stroke
+grestore
+35200 30200 34600 31239 100 L
+35800 31239 35200 30200 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 49600 35000 M
+stroke
+grestore
+49600 30200 49600 35000 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 49600 30200 M
+stroke
+grestore
+50200 33961 49600 35000 100 L
+49600 35000 49000 33961 100 L
+1200 /Helvetica-Acnt F
+47966.0 37130.0 M (atoms) S
+45081.5 35930.0 M ( \(=partial names\)) S
+1200 /Helvetica-Acnt F
+33699.5 29130.0 M (name) S
+34467.0 27930.0 M (list) S
+1200 /Helvetica-Acnt F
+37031.5 24730.0 M (Functions that) S
+35364.5 23530.0 M (access the name list) S
+36731.0 22330.0 M (e.g., LastName) S
+1200 /Times-Roman-Acnt F
+21600 15806 M (The form filling programs should not make any assumptions about ) S
+21600 14006 M (the format of the name list \(or even that it is a list instead of an ) S
+21600 12206 M (atom or a string or whatever\).) S
+grestore savepage restore showpage
+
+%%Page: 7 7
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (6) S
+7200 75600 M (LispCourse #24:  Data Abstraction) S
+21600 71106 M (Instead, if they need to access the name list structure, they should ) S
+21600 69306 M (call the functions \(FirstName, LastName, etc\) on the other side of ) S
+21600 67506 M (the abstraction barrier that deal specifically with accessing the ) S
+21600 65706 M (name list structure.) S
+21600 62706 M (There should be a well defined protocol that states that whenever a ) S
+21600 60906 M (data using function \(i.e., one that fills in a tax form\) calls an access ) S
+21600 59106 M (function \(e.g., LastName\), it passes down a name thing and gets ) S
+21600 57306 M (back an atom that represent the first, middle or last name, as ) S
+21600 55506 M (indicated.) S
+25200 52906 M (How this is to be accomplished is entirely up to the access ) S
+25200 51106 M (function.) S
+25200 48506 M (The using function should make no assumptions what-so-) S
+25200 46706 M (ever about the format of the name thing.) S
+25200 44106 M (Similarly, the access functions should make no ) S
+25200 42306 M (assumptions about how the atom they return will be used.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 38506 M (Constructing Access Functions: Constructors, Selectors & Mutators) S
+1200 /Times-Roman-Acnt F
+18000 35506 M (The trick in writing a program with strong abstraction barriers is to write a ) S
+18000 33706 M (good set of access functions for isolating the access to your data structures ) S
+18000 31906 M (from the rest of your program \(and for isolating the access to low levels of ) S
+18000 30106 M (the data structure from functions that deal with higher levels of the data ) S
+18000 28306 M (structure\).) S
+21600 25706 M (These access functions serve as the interface between the rest of ) S
+21600 23906 M (your program and your data structures.  If your program wants ) S
+21600 22106 M (access to the data structures, it has to call one of these access ) S
+21600 20306 M (functions.) S
+25200 17706 M (The access functions take data in an agreed upon form and ) S
+25200 15906 M (do whatever work is necessary to translate it into a form ) S
+25200 14106 M (compatiable with the chosen data structures.) S
+grestore savepage restore showpage
+
+%%Page: 8 8
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (7) S
+7200 75600 M (LispCourse #24:  Data Abstraction) S
+25200 71106 M (They also take data from the data structures and do ) S
+25200 69306 M (whatever work is necessary to translate it into an agreed ) S
+25200 67506 M (upon form to pass back to the rest of the program.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 64106 M (Constructors) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Bold-Acnt F
+(Selectors and Mutators) S
+1200 /Times-Roman-Acnt F
+21600 61106 M (There are basically three kinds of access functions: ) S
+1200 /Times-Bold-Acnt F
+(constructors,) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+21600 59306 M (selectors) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Bold-Acnt F
+(mutators) S
+1200 /Times-Roman-Acnt F
+(.) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+21600 56306 M (Constructors) S
+1200 /Times-Roman-Acnt F
+( take individual pieces of simpler data and build a ) S
+21600 54506 M (data structure from them, returning the data structure.) S
+25200 51906 M (Example:  ) S
+1200 /Times-Bold-Acnt F
+(\(MakeName ) S
+1200 /Times-BoldItalic-Acnt F
+(First) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Middle) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Last) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( takes three ) S
+25200 50106 M (atoms and returns a name data structure) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(.) S
+1200 /Times-BoldItalic-Acnt F
+21600 46906 M (Selectors) S
+1200 /Times-Italic-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(take a compound data structure and return individual ) S
+21600 45106 M (pieces of data from that data structure.) S
+25200 42506 M (Example:  ) S
+1200 /Times-Bold-Acnt F
+(\(FirstName ) S
+1200 /Times-BoldItalic-Acnt F
+(NameList) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( takes a name data ) S
+25200 40706 M (structure as an argument and returns the first name portion ) S
+25200 38906 M (of that name data structure.) S
+1200 /Times-BoldItalic-Acnt F
+21600 35706 M (Mutators) S
+1200 /Times-Italic-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(take a compound data structure and alter individual ) S
+21600 33906 M (pieces of data in that data structure.) S
+25200 31306 M (Example:  ) S
+1200 /Times-Bold-Acnt F
+(\(ChangeFirstName ) S
+1200 /Times-BoldItalic-Acnt F
+(NewFirstName) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( takes a ) S
+25200 29506 M (name data structure as an argument and returns the same ) S
+25200 27706 M (data structure with the first name portionaltered to be ) S
+1200 /Times-Italic-Acnt F
+25200 25906 M (NewFirstName) S
+1200 /Times-Roman-Acnt F
+(.) S
+21600 22306 M (A complete set of access functions for a name data structure might ) S
+21600 20506 M (be the following:) S
+1200 /Times-Italic-Acnt F
+25200 17306 M (Constructor) S
+1200 /Times-Roman-Acnt F
+(: ) S
+1200 /Times-Bold-Acnt F
+(MakeName) S
+1200 /Times-Roman-Acnt F
+( takes three atoms representing ) S
+25200 15506 M (the first, middle and last names and returns a name object.) S
+1200 /Times-Italic-Acnt F
+25200 12306 M (Selectors) S
+1200 /Times-Roman-Acnt F
+(: ) S
+1200 /Times-Bold-Acnt F
+(FirstName) S
+1200 /Times-Roman-Acnt F
+( takes a name object and returns the ) S
+25200 10506 M (first name.  ) S
+1200 /Times-Bold-Acnt F
+(LastName) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Bold-Acnt F
+(MiddleName) S
+1200 /Times-Roman-Acnt F
+( do the ) S
+25200 8706 M (corrsponding thing.) S
+grestore savepage restore showpage
+
+%%Page: 9 9
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (8) S
+7200 75600 M (LispCourse #24:  Data Abstraction) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+25200 71106 M (Mutators) S
+1200 /Times-Roman-Acnt F
+(: ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(ChangeFirstName) S
+1200 /Times-Roman-Acnt F
+( takes a name object and ) S
+25200 69306 M (returns the altered name object.  ) S
+1200 /Times-Bold-Acnt F
+(ChangeLastName) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Bold-Acnt F
+25200 67506 M (ChangeMiddleName) S
+1200 /Times-Roman-Acnt F
+( do the corrsponding thing.) S
+21600 64306 M (In a program with good data abstraction, any function that wanted ) S
+21600 62506 M (to create a new name would have to call ) S
+1200 /Times-Bold-Acnt F
+(MakeName) S
+1200 /Times-Roman-Acnt F
+(.  Any ) S
+21600 60706 M (function that wanted to access part of the full name would have to ) S
+21600 58906 M (call the appropriate selector function.  Any function that wanted to ) S
+21600 57106 M (change part of the name would have to call the appropriate mutator ) S
+21600 55306 M (function.) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+21600 52106 M (Other than these seven functions NO other functions in the ) S
+21600 50306 M (program could make any assumptions about the format of the ) S
+21600 48506 M (name object.) S
+1400 /Times-Bold-Acnt F
+7200 44757 M (Example: Problem from LispCourse #23) S
+1200 /Times-Roman-Acnt F
+10800 41706 M (Attached is a solution to the problem at the end of LispCourse#23 that makes strong use ) S
+10800 39906 M (of data abstraction, both to separate the use functions from the access functions AND to ) S
+10800 38106 M (separate the access functions that deal with different levels of the database data structure.) S
+10800 35106 M (A diagram of the abstraction barriers in this program is the following:) S
+grestore savepage restore showpage
+
+%%Page: 10 10
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (9) S
+7200 75600 M (LispCourse #24:  Data Abstraction) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 13200 66100 M
+stroke
+grestore
+48400 66100 13200 66100 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 48400 66100 M
+stroke
+grestore
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+27860.0 66042.0 M (Database) S
+1000 /Helvetica-Acnt F
+25403.0 59642.0 M (Database Access Functions) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 13200 53300 M
+stroke
+grestore
+48400 53300 13200 53300 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 48400 53300 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 13200 39700 M
+stroke
+grestore
+48400 39700 13200 39700 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 48400 39700 M
+stroke
+grestore
+1000 /Helvetica-Acnt F
+16666.5 39642.0 M (Name) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 23600 39700 M
+stroke
+grestore
+23600 31700 23600 39700 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 23600 31700 M
+stroke
+grestore
+1000 /Helvetica-Acnt F
+26775.5 39642.0 M (Office Number) S
+1000 /Helvetica-Acnt F
+27354.0 53242.0 M (Database Entry) S
+1000 /Helvetica-Acnt F
+15866.5 36342.0 M (Name) S
+15588.5 35342.0 M (Access) S
+15032.5 34342.0 M (Functions) S
+1000 /Helvetica-Acnt F
+28692.5 36842.0 M (Office) S
+28222.0 35842.0 M (Number) S
+28388.5 34842.0 M (Access) S
+27832.5 33842.0 M (Functions) S
+1000 /Helvetica-Acnt F
+24897.0 46842.0 M (Database Entry Access Functions) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 37200 39700 M
+stroke
+grestore
+37200 31700 37200 39700 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 37200 31700 M
+stroke
+grestore
+1000 /Helvetica-Acnt F
+41354.5 36842.0 M (Phone) S
+41022.0 35842.0 M (Number) S
+41188.5 34842.0 M (Access) S
+40632.5 33842.0 M (Functions) S
+1000 /Helvetica-Acnt F
+39437.5 39642.0 M (Phone Number) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 27157 M (References) S
+1200 /Times-Roman-Acnt F
+10800 24706 M (Winston & Horn, Chapter 5, pages 97 thru 100) S
+10800 22506 M (Sussman & Abelson, Chapter 2, pages 71 thru 88 \(and beyond\)) S
+1400 /Times-Bold-Acnt F
+7200 18757 M (Exercises) S
+1200 /Times-Roman-Acnt F
+10800 16306 M (Rewrite your program from LispCourse #23 using good principles of data abstraction.  ) S
+10800 14506 M (Try changing the format of you database entries and seeing how many functions you ) S
+10800 12706 M (have to change to adapt to this format change.) S
+10800 10506 M (Do this ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(before) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(you study in detail the attached example program.) S
+grestore savepage restore showpage
+
+%%Trailer

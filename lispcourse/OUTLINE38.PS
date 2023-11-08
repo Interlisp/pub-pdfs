@@ -1,0 +1,1983 @@
+%!PS-Adobe-2.0%%Title: {DSK}<home>larry>lispcourse>OUTLINE38.PS%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate:  7-Nov-2023 21:40:26%%EndComments/bdef {bind def} bind def
+/ldef {load def} bdef
+/S /show ldef
+/M /moveto ldef
+/DR {transform round exch round exch itransform} bdef
+/L {gsave newpath setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/L1 {gsave newpath 0 setdash setgray setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/F {findfont exch scalefont setfont} bdef
+/CLP {newpath M dup 0 rlineto exch 0 exch rlineto
+  neg 0 rlineto closepath clip newpath} bdef
+/R {gsave setgray newpath M dup 0 rlineto exch 0 exch
+  rlineto neg 0 rlineto closepath eofill grestore} bdef
+/ellipsedict 9 dict def
+ellipsedict /mtrx matrix put
+/ellipse
+ { ellipsedict begin
+  /endangle exch def
+  /startangle exch def
+  /orientation exch def
+  /minorrad exch def
+  /majorrad exch def
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  orientation rotate
+  majorrad minorrad scale
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+ end } bdef
+/concatprocs
+ {/proc2 exch cvlit def
+  /proc1 exch cvlit def
+  /newproc proc1 length proc2 length add array def
+  newproc 0 proc1 putinterval
+  newproc proc1 length proc2 putinterval
+  newproc cvx
+ } bdef
+/resmatrix matrix def
+/findresolution
+ {72 0 resmatrix defaultmatrix dtransform
+  /yres exch def /xres exch def
+  xres dup mul yres dup mul add sqrt
+ } bdef
+/thebitimage
+ {/maskp exch def
+  /bihgt exch def
+  /biwid exch def
+  /byte 1 string def
+  /strbufl biwid 8 div ceiling cvi def
+  /strbuf strbufl string def
+  maskp not{{1 exch sub} currenttransfer concatprocs settransfer} if
+  biwid bihgt
+  maskp { true } { 1 } ifelse
+  [biwid 0 0 bihgt 0 0]
+  {/col 0 def
+   {currentfile byte readhexstring pop 0 get
+    dup 16#B2 eq {pop
+    currentfile byte readhexstring pop 0 get 1 add
+    currentfile byte readhexstring pop pop /nbyte byte 0 get def
+    { strbuf col nbyte put /col col 1 add def} repeat}
+   {dup 16#B3 eq {pop /col col
+    currentfile byte readhexstring pop
+    0 get add 1 add def}
+    {16#B4 eq {currentfile byte readhexstring pop pop} if
+     strbuf col byte 0 get put /col col 1 add def} ifelse
+   } ifelse
+   col strbufl ge { exit } if } loop
+   strbuf }
+  maskp { imagemask } { image } ifelse
+ } bdef
+/setuserscreendict 22 dict def
+setuserscreendict begin
+ /tempctm matrix def
+ /temprot matrix def
+ /tempscale matrix def
+end
+/setuserscreen
+ {setuserscreendict begin
+   /spotfunction exch def
+   /screenangle exch def
+   /cellsize exch def
+   /m tempctm currentmatrix def
+   /rm screenangle temprot rotate def
+   /sm cellsize dup tempscale scale def
+   sm rm m m concatmatrix m concatmatrix pop
+   1 0 m dtransform /y1 exch def /x1 exch def
+   /veclength x1 dup mul y1 dup mul add sqrt def
+   /frequency findresolution veclength div def
+   /newscreenangle y1 x1 atan def
+   m 2 get m 1 get mul m 0 get m 3 get mul sub
+   0 gt { { neg } /spotfunction load concatprocs
+          /spotfunction exch def } if
+   frequency newscreenangle /spotfunction load setscreen
+  end
+ } bdef
+/setpatterndict 18 dict def
+setpatterndict begin
+ /bitison
+  {/ybit exch def /xbit exch def
+   /bytevalue bstring ybit bwidth mul xbit 8 idiv add get def
+   /mask 1 7 xbit 8 mod sub bitshift def
+   bytevalue mask and 0 ne
+  } bdef
+end
+/bitpatternspotfunction
+ {setpatterndict begin
+   /y exch def /x exch def
+   /xindex x 1 add 2 div bpside mul 1 sub cvi def
+   /yindex y 1 add 2 div bpside mul 1 sub cvi def
+   xindex yindex bitison
+    {/onbits onbits 1 add def 1}
+    {/offbits offbits 1 add def 0} ifelse
+  end
+ } bdef
+/setpattern
+ {setpatterndict begin
+   /cellsz exch def
+   /angle exch def
+   /bwidth exch def
+   /bpside exch def
+   /bstring exch def
+   /onbits 0 def /offbits 0 def
+   cellsz angle /bitpatternspotfunction load setuserscreen
+   {} settransfer
+   offbits offbits onbits add div setgray
+  end
+ } bdef
+% - - - - - Fraction-setting code, to support NS fonts better - - - - -
+/fractiondict 20 dict def
+/fractionshow 
+{ fractiondict begin
+/denom exch def 
+/num exch def 
+/regfont currentfont def
+/fractfont currentfont [.65 0 0 .6 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(1) true charpath flattenpath pathbbox 
+/height exch def pop pop pop
+ grestore
+0 .4 height mul rmoveto
+fractfont setfont num show
+0 .4 height mul neg rmoveto regfont setfont (\244) show
+fractfont setfont denom show regfont setfont end } bdef
+/f14 { (1) (4) fractionshow } bdef
+/f12 { (1) (2) fractionshow } bdef
+/f34 { (3) (4) fractionshow } bdef
+/f18 { (1) (8) fractionshow } bdef
+/f38 { (3) (8) fractionshow } bdef
+/f58 { (5) (8) fractionshow } bdef
+/f78 { (7) (8) fractionshow } bdef
+/f13 { (1) (3) fractionshow } bdef
+/f23 { (2) (3) fractionshow } bdef
+/bboxdict 20 dict def
+/bboxchk { bboxdict begin
+/regfont currentfont def
+/chkfont currentfont [1.25 0 0 1.25 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(\161) true charpath flattenpath pathbbox 
+/height exch def pop pop pop 
+ grestore 
+ currentpoint 
+ .2 height mul .3 height mul rmoveto
+chkfont setfont (\063) show
+ moveto
+ regfont setfont
+(\161) show end } bdef
+/rencdict 15 dict def
+/encodefont { rencdict begin
+/newname exch def
+/oldfont exch def
+/newcodes [
+8#001 /Aacute
+8#002 /Acircumflex
+8#003 /Adieresis
+8#004 /Agrave
+8#005 /Aring
+8#006 /Atilde
+8#007 /Ccedilla
+8#010 /Eacute
+8#011 /Ecircumflex
+8#012 /Edieresis
+8#013 /Egrave
+8#014 /Iacute
+8#015 /Icircumflex
+8#016 /Idieresis
+8#017 /Igrave
+8#020 /Ntilde
+8#021 /Oacute
+8#022 /Ocircumflex
+8#023 /Odieresis
+8#024 /Ograve
+8#025 /Otilde
+8#026 /Scaron
+8#027 /Uacute
+8#030 /Ucircumflex
+8#031 /Udieresis
+8#032 /Ugrave
+8#033 /Ydieresis
+8#034 /Zcaron
+8#177 /periodinferior
+8#201 /aacute
+8#202 /acircumflex
+8#203 /adieresis
+8#204 /agrave
+8#205 /aring
+8#206 /atilde
+8#207 /ccedilla
+8#210 /eacute
+8#211 /ecircumflex
+8#212 /edieresis
+8#213 /egrave
+8#214 /iacute
+8#215 /icircumflex
+8#216 /idieresis
+8#217 /igrave
+8#220 /ntilde
+8#221 /oacute
+8#222 /ocircumflex
+8#223 /odieresis
+8#224 /ograve
+8#225 /otilde
+8#226 /scaron
+8#227 /uacute
+8#230 /ucircumflex
+8#231 /udieresis
+8#232 /ugrave
+8#233 /ydieresis
+8#234 /zcaron
+8#235 /Eth
+8#236 /eth
+8#237 /Thorn
+8#240 /thorn
+ ] def
+/olddict oldfont findfont def /newfont olddict maxlength dict def
+olddict { exch dup /FID ne { dup /Encoding eq
+{ exch dup length array copy newfont 3 1 roll put }
+{ exch newfont 3 1 roll put } ifelse }
+ { pop pop } ifelse } forall
+newfont /FontName newname put
+newcodes aload pop
+newcodes length 2 idiv { newfont /Encoding get 3 1 roll put } repeat 
+newname newfont definefont pop end } def
+ /accentdict 10 dict def 
+ /accentor { accentdict begin /scaler exch def /delta exch def 
+/unders exch def /accents exch def /mainch exch def /scrt (X) def
+ /w1 mainch stringwidth pop def 
+ currentpoint mainch show currentpoint 4 2 roll 
+accents { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         w1 w2 sub 2 div delta rmoveto scrt show 
+         /delta delta 150 scaler mul 9 div add def
+        } forall 
+unders { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         ch 46 eq { w1 w2 sub 2 div -175 scaler mul 9 div rmoveto scrt show 0 175 rmoveto }
+           { w1 w2 sub 2 div 0 rmoveto scrt show } ifelse 
+        } forall 
+ pop pop moveto end } def 
+%%EndProlog
+%%BeginSetup
+letter/imagesizefactor 1 def%%EndSetup/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+
+%%Page: 1 1
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+54000 75600 M (F.G.H.          ) S
+54000 73800 M (6/20/85) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (LispCourse #38:  Files; Streams; Input/Output) S
+7200 67157 M (Files) S
+1200 /Times-Bold-Acnt F
+10800 64106 M (Files From the Programmer's Point of View) S
+1200 /Times-Roman-Acnt F
+14400 61306 M (A file is just a data structure that is "outside of Lisp", e.g., on the local disk, on a ) S
+14400 59506 M (file server, on the screen, etc.) S
+18000 57506 M (Because a file is not part of any Lisp virtual memory, it can \(generally\) be ) S
+18000 55706 M (shared with other Lisp virtual memories or with other programming ) S
+18000 53906 M (environments, etc.) S
+14400 50906 M (Sinces files not part of Lisp, there are special protocols for creating and accessing ) S
+14400 49106 M (files that are somewhat different from the way we access standard Lisp data ) S
+14400 47306 M (structures.) S
+14400 44506 M (What kind of data structure a file represents is largely determined by the protocols ) S
+14400 42706 M (we use for accessing that file.) S
+18000 40106 M (At the lowest level, all files are just variable-length one-dimensional ) S
+18000 38306 M (vectors of bytes \(i,.e., 8-bit packets or integers between 0 & 255\).) S
+18000 35706 M (However, with the proper choice of input/output statements in Lisp, a file ) S
+18000 33906 M (can be made to look like any arbitrary data structure, e.g., a list of ) S
+18000 32106 M (SExpressions, a TEdit text, a Sketch, etc.) S
+14400 29306 M (When dealing with files in a Lisp program, you frequently shift between viewing ) S
+14400 27506 M (the file as simply an unstructured vector of bytes and viewing the file as some ) S
+14400 25706 M (higher-level data structure.) S
+1200 /Times-Bold-Acnt F
+10800 22706 M (File Names) S
+1200 /Times-Roman-Acnt F
+14400 19906 M (Every file has a file name.  The file name basically tells Lisp where to find the file ) S
+14400 18106 M (in the outside world.) S
+14400 15306 M (The syntax and use of file names was discussed in LispCourse #15, pages 1 to 15.) S
+14400 12506 M (The following are Interlisp functions that allow the programmer to construct and ) S
+14400 10706 M (decompose file names:) S
+grestore savepage restore showpage
+
+%%Page: 2 2
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (2) S
+7200 75600 M (LispCourse #38:  Files; Streams; Input/Output) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 71106 M (\(FILENAMEFIELD ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(FileName) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(FieldName) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \233 returns the part of ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+18000 69306 M (FileName) S
+1200 /Times-Roman-Acnt F
+( that is specified by ) S
+1200 /Times-Italic-Acnt F
+(FieldName) S
+1200 /Times-Roman-Acnt F
+(.  Allowable ) S
+1200 /Times-Italic-Acnt F
+(FieldName) S
+1200 /Times-Roman-Acnt F
+(s are ) S
+18000 67506 M (HOST, DIRECTORY, NAME, EXTENSION, and VERSION.  \(See ) S
+18000 65706 M (LispCourse #15 for the semantics of these field names.  HOST is the same ) S
+18000 63906 M (as Device\).) S
+21600 61706 M (Example:) S
+21600 59306 M (1_ \(FILENAMEFIELD '{dsk}<halasz>lisp>init.lisp 'NAME\)) S
+1200 /Times-Italic-Acnt F
+21600 57306 M (init) S
+1200 /Times-Roman-Acnt F
+21600 55306 M (2_ \(FILENAMEFIELD '{dsk}<halasz>lisp>init.lisp ) S
+21600 53506 M ('DIRECTORY\)) S
+1200 /Times-Italic-Acnt F
+21600 51506 M (halasz>lisp) S
+1200 /Times-Bold-Acnt F
+18000 48706 M (\(UNPACKFILENAME ) S
+1200 /Times-BoldItalic-Acnt F
+(FileName) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \233 returns ) S
+1200 /Times-Italic-Acnt F
+(FileName) S
+1200 /Times-Roman-Acnt F
+( in prop list format, ) S
+18000 46906 M (where the props are the allowable field names listed under ) S
+18000 45106 M (FILENAMEFIELD.) S
+21600 42906 M (Example:) S
+21600 40506 M (3_ \(UNPACKFILENAME '{dsk}<halasz>lisp>init.lisp;37\)) S
+1200 /Times-Italic-Acnt F
+21600 38506 M (\(HOST dsk DIRECTORY halasz>lisp NAME init EXTENSION lisp ) S
+21600 36706 M (VERSION 37\)) S
+1200 /Times-Bold-Acnt F
+18000 33906 M (\(PACKFILENAME ) S
+1200 /Times-BoldItalic-Acnt F
+(FieldName1 FieldContents1 ... FieldNameN ) S
+18000 32106 M (FieldContentsN) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \233 returns a ) S
+1200 /Times-Italic-Acnt F
+(FileName) S
+1200 /Times-Roman-Acnt F
+( constructed using the information in ) S
+18000 30306 M (the ) S
+1200 /Times-Italic-Acnt F
+(FieldName/FieldContents) S
+1200 /Times-Roman-Acnt F
+( pairs.  The ) S
+1200 /Times-Italic-Acnt F
+(FieldName) S
+1200 /Times-Roman-Acnt F
+(s should be chosen ) S
+18000 28506 M (from among the field names listed under FILENAMEFIELD plus the ) S
+18000 26706 M (atom BODY.) S
+21600 24306 M (If a ) S
+1200 /Times-Italic-Acnt F
+(FieldName) S
+1200 /Times-Roman-Acnt F
+( is specified twice, the first is used.) S
+21600 21906 M (If any ) S
+1200 /Times-Italic-Acnt F
+(FieldName) S
+1200 /Times-Roman-Acnt F
+( is BODY, then the corresponding ) S
+1200 /Times-Italic-Acnt F
+(FieldContents) S
+1200 /Times-Roman-Acnt F
+( ) S
+21600 20106 M (is unpacked \(using UNPACKFILENAME\) and the resulting ) S
+1200 /Times-Italic-Acnt F
+21600 18306 M (FieldName/FieldContents) S
+1200 /Times-Roman-Acnt F
+( pairs are used in place of the ) S
+21600 16506 M (BODY/) S
+1200 /Times-Italic-Acnt F
+(FieldContents) S
+1200 /Times-Roman-Acnt F
+( pair.) S
+21600 14106 M (Also, if ) S
+1200 /Times-Italic-Acnt F
+(FieldName1) S
+1200 /Times-Roman-Acnt F
+( is a list, it is assumed to be a prop list of the ) S
+21600 12306 M (format returned by UNPACKFILENAME, in which case ) S
+21600 10506 M (PACKFILENAME is APPLYed to this list \(ignoreing the ) S
+21600 8706 M (remaining arguments!\).) S
+grestore savepage restore showpage
+
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (3) S
+7200 75600 M (LispCourse #38:  Files; Streams; Input/Output) S
+21600 71106 M (Example:) S
+21600 68706 M (4_ \(PACKFILENAME  '\(HOST dsk DIRECTORY halasz>lisp ) S
+21600 66906 M (NAME init EXTENSION lisp VERSION 37\)\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 64906 M ({dsk}<halasz>lisp>init.lisp;37) S
+1200 /Times-Roman-Acnt F
+21600 62906 M (5_ \(PACKFILENAME 'HOST '{DSK} 'NAME 'FileX\)) S
+1200 /Times-Italic-Acnt F
+21600 60906 M ({DSK}FileX) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 57157 M (Streams) S
+1200 /Times-Roman-Acnt F
+10800 54106 M (In the old days, Interlisp dealt with files directly, i.e., anytime you needed to refer to a ) S
+10800 52306 M (file you used its file name.) S
+10800 49306 M (This convention has been replaced by the concept of ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(streams) S
+1200 /Times-Roman-Acnt F
+( in Interlisp-D.) S
+1200 /Times-BoldItalic-Acnt F
+10800 46306 M (Streams) S
+1200 /Times-Roman-Acnt F
+( are a uniform interface between Interlisp and devices or data structures that exist ) S
+10800 44506 M (in the "outside world" including files, TEdit texts, display screens, etc.) S
+5799 199 25501 36401 0 R
+5799 199 55101 36401 0 R
+199 29399 25701 42001 0 R
+199 29399 25701 36401 0 R
+/Helvetica /Helvetica-Acnt encodefont
+1200 /Helvetica-Acnt F
+35532.0 38965.0 M (Interlisp Programs) S
+5799 199 22301 30801 0 R
+5799 199 58301 30801 0 R
+199 35799 22501 36401 0 R
+199 35799 22501 30801 0 R
+1200 /Helvetica-Acnt F
+35964.0 33365.0 M (Stream Interface) S
+4199 199 22301 26801 0 R
+4199 199 31101 26801 0 R
+199 8599 22501 30801 0 R
+199 8599 22501 26801 0 R
+1200 /Helvetica-Acnt F
+25534.0 28565.0 M (Files) S
+4199 199 33501 26801 0 R
+4199 199 41501 26801 0 R
+199 7799 33701 30801 0 R
+199 7799 33701 26801 0 R
+1200 /Helvetica-Acnt F
+34765.5 28565.0 M (TEdit texts) S
+4199 199 43901 26801 0 R
+4199 199 51901 26801 0 R
+199 7799 44101 30801 0 R
+199 7799 44101 26801 0 R
+1200 /Helvetica-Acnt F
+45867.0 29165.0 M (Display ) S
+45799.5 27965.0 M (Screens) S
+1200 /Helvetica-Acnt F
+54699.0 28430.0 M (...) S
+1200 /Times-Roman-Acnt F
+21600 24706 M ( ) S
+10800 21706 M (In this new scheme, Interlisp programs deal with files through the stream interface.  For ) S
+10800 19906 M (example, you generally refer to files using the stream that represents the file rather than ) S
+10800 18106 M (by the name of the file.) S
+10800 15106 M (A ) S
+1200 /Times-BoldItalic-Acnt F
+(stream) S
+1200 /Times-Roman-Acnt F
+( is a data type.  Each stream instance represents an active interaction with an ) S
+10800 13306 M ("external" device or data structure, e.g. a file.) S
+14400 10906 M (Each instance stores with it all kinds of information about the status of the ) S
+14400 9106 M (interaction and the status of the external device or data structure.) S
+grestore savepage restore showpage
+
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (4) S
+7200 75600 M (LispCourse #38:  Files; Streams; Input/Output) S
+18000 71106 M (For example, a stream for a file stores information about the file's name, ) S
+18000 69306 M (where you are in the file, how long the file is, etc.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 65557 M (Low-level Access to Files Using Streams) S
+1200 /Times-Bold-Acnt F
+10800 62506 M (Opening and Closing) S
+1200 /Times-Roman-Acnt F
+14400 59506 M (Before a file can be accessed, it must be ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(opened) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(.) S
+1200 /Times-Roman-Acnt F
+18000 57106 M (Opening a file, creates a stream for that file and caches in the stream ) S
+18000 55306 M (instance all the necessary information.  It also opens all the necessary ) S
+18000 53506 M (communication pathways if the file is stored on a remote device such as a ) S
+18000 51706 M (file server.) S
+21600 49706 M (Opening a file also notifies the remote device to prevent access to ) S
+21600 47906 M (the file by other users, if thats appropriate.) S
+18000 44906 M (To open a file use:) S
+1200 /Times-Bold-Acnt F
+21600 41906 M (\(OPENSTREAM ) S
+1200 /Times-BoldItalic-Acnt F
+(FileName) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Access) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Recognition) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234  opens a file ) S
+21600 40106 M (and creates a stream for it.  OPENSTREAM returns the stream it ) S
+21600 38306 M (creates.  This stream should be used to refer to the file.) S
+1200 /Times-Italic-Acnt F
+25200 35706 M (FileName) S
+1200 /Times-Roman-Acnt F
+( is a standard Interlisp file name.) S
+1200 /Times-Italic-Acnt F
+25200 33106 M (Access) S
+1200 /Times-Roman-Acnt F
+( is one of INPUT, OUTPUT, APPEND, or BOTH.) S
+28800 30706 M (If ) S
+1200 /Times-Italic-Acnt F
+(Access) S
+1200 /Times-Roman-Acnt F
+( is INPUT, subsequent accesses to this file ) S
+28800 28906 M (is limited to reading ) S
+1200 /Times-Bold-Acnt F
+(from) S
+1200 /Times-Roman-Acnt F
+( the file) S
+28800 26506 M (If ) S
+1200 /Times-Italic-Acnt F
+(Access) S
+1200 /Times-Roman-Acnt F
+( is OUTPUT, subsequent access is limited ) S
+28800 24706 M (to writing ) S
+1200 /Times-Bold-Acnt F
+(to) S
+1200 /Times-Roman-Acnt F
+( the file.  Moreover, if the file already ) S
+28800 22906 M (exists it is erased.) S
+28800 20506 M (If ) S
+1200 /Times-Italic-Acnt F
+(Access) S
+1200 /Times-Roman-Acnt F
+( is APPEND, subsequent access is limited ) S
+28800 18706 M (to writing ) S
+1200 /Times-Bold-Acnt F
+(to) S
+1200 /Times-Roman-Acnt F
+( the file, but the current contents of the ) S
+28800 16906 M (file \(if any\) are not erased.) S
+28800 14506 M (If ) S
+1200 /Times-Italic-Acnt F
+(Access) S
+1200 /Times-Roman-Acnt F
+( is BOTH, both reading and writing will be ) S
+28800 12706 M (allowed.) S
+1200 /Times-Italic-Acnt F
+25200 10106 M (Recognition) S
+1200 /Times-Roman-Acnt F
+( is one of OLD, NEW, or OLD/NEW.) S
+grestore savepage restore showpage
+
+%%Page: 5 5
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (5) S
+7200 75600 M (LispCourse #38:  Files; Streams; Input/Output) S
+28800 71106 M (If ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Recognition) S
+1200 /Times-Roman-Acnt F
+( is OLD, OPENSTREAM will look ) S
+28800 69306 M (for an already existing file of the given file name.) S
+28800 66906 M (If ) S
+1200 /Times-Italic-Acnt F
+(Recognition) S
+1200 /Times-Roman-Acnt F
+( is NEW, OPENSTREAM will create ) S
+28800 65106 M (a new version of the file with the given file name.) S
+28800 62706 M (If ) S
+1200 /Times-Italic-Acnt F
+(Recognition) S
+1200 /Times-Roman-Acnt F
+( is OLD/NEW, OPENSTREAM will ) S
+28800 60906 M (look for an existing file first, but will create a new ) S
+28800 59106 M (file if the old one doesn't exist.) S
+21600 56106 M (Example:) S
+25200 53706 M (6_ \(SETQ FileX \(OPENSTREAM '{DSK}Halasz.Lisp ) S
+25200 51906 M ('INPUT 'OLD\)) S
+1200 /Times-Italic-Acnt F
+25200 49906 M ({STREAM}#54,23123) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 46906 M (\(OPENP ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(FileNameOrStream) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Access) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234  returns the name of the ) S
+21600 45106 M (file specified by ) S
+1200 /Times-Italic-Acnt F
+(FileNameOrStream) S
+1200 /Times-Roman-Acnt F
+(, if that file is open with the ) S
+21600 43306 M (access mode specified by ) S
+1200 /Times-Italic-Acnt F
+(Access) S
+1200 /Times-Roman-Acnt F
+(.  Returns NIL otherwise.) S
+1200 /Times-Italic-Acnt F
+28800 41106 M (FileNameOrStream) S
+1200 /Times-Roman-Acnt F
+( can be a file name or a stream ) S
+28800 39306 M (or NIL.  ) S
+1200 /Times-Italic-Acnt F
+(Access) S
+1200 /Times-Roman-Acnt F
+( is one of the atoms described under ) S
+28800 37506 M (OPENSTREAM or NIL.) S
+25200 35306 M (If ) S
+1200 /Times-Italic-Acnt F
+(Access) S
+1200 /Times-Roman-Acnt F
+( is NIL, then OPENP will return the file name if ) S
+25200 33506 M (the file is open with any access mode.) S
+25200 31306 M (If ) S
+1200 /Times-Italic-Acnt F
+(FileNameOrStream) S
+1200 /Times-Roman-Acnt F
+( is NIL, then OPENP will just return ) S
+25200 29506 M (a list of all open files.) S
+21600 26506 M (Example:) S
+25200 24106 M (7_ \(SETQ FileX \(OPENSTREAM '{DSK}Halasz.Lisp ) S
+25200 22306 M ('INPUT 'OLD\)) S
+1200 /Times-Italic-Acnt F
+25200 20306 M ({STREAM}#54,23123) S
+1200 /Times-Roman-Acnt F
+25200 18306 M (8_ \(OPENP Filex\)) S
+1200 /Times-Italic-Acnt F
+25200 16306 M ({DSK}Halasz.Lisp;23) S
+1200 /Times-Roman-Acnt F
+25200 14306 M (9_ \(OPENP '{DSK}Halasz.Lisp\)) S
+1200 /Times-Italic-Acnt F
+25200 12306 M ({DSK}Halasz.Lisp;23) S
+1200 /Times-Roman-Acnt F
+25200 10306 M (10_ \(OPENP Filex 'OUTPUT\)) S
+1200 /Times-Italic-Acnt F
+25200 8306 M (NIL) S
+grestore savepage restore showpage
+
+%%Page: 6 6
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (6) S
+7200 75600 M (LispCourse #38:  Files; Streams; Input/Output) S
+14400 71106 M (Once you are finished accessing a file, you should ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(close) S
+1200 /Times-Roman-Acnt F
+( the file.) S
+18000 68706 M (Closing the file uncaches the information stored in the stream, deletes the ) S
+18000 66906 M (stream, closes the communication pathways, and frees the file to be used ) S
+18000 65106 M (by other users.) S
+18000 62106 M (To close a file use:) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 59106 M (\(CLOSEF? ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 closes the file specified by ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Stream) S
+1200 /Times-Roman-Acnt F
+(, if that ) S
+21600 57306 M (file is open.  Returns the name of the file that it closed.) S
+1200 /Times-Italic-Acnt F
+25200 54906 M (Stream) S
+1200 /Times-Roman-Acnt F
+( should be a stream on an open file.) S
+21600 52106 M (Example:) S
+25200 49706 M (11_ \(CLOSEF? Filex\)) S
+1200 /Times-Italic-Acnt F
+25200 47706 M ({DSK}Halasz.Lisp;23) S
+1200 /Times-Roman-Acnt F
+25200 45706 M (12_ \(CLOSEF? Filex\)) S
+1200 /Times-Italic-Acnt F
+25200 43706 M (NIL) S
+1200 /Times-Bold-Acnt F
+21600 40706 M (\(CLOSEALL\)) S
+1200 /Times-Roman-Acnt F
+( \234 closes all currently open files.  Returns a list of the ) S
+21600 38906 M (names of the files that were closed.) S
+1200 /Times-Bold-Acnt F
+10800 35906 M (File Pointers) S
+1200 /Times-Roman-Acnt F
+14400 32906 M (Every open file has a ) S
+1200 /Times-BoldItalic-Acnt F
+(file pointer) S
+1200 /Times-Roman-Acnt F
+( associated with it.) S
+18000 30306 M (The file pointer indicates the position in the file at which the next read or ) S
+18000 28506 M (write will take place.) S
+18000 25906 M (After each access to the file, the file pointer is updated to indicate the next ) S
+18000 24106 M (position in the file \(i.e., the next place to start reading or the next place to ) S
+18000 22306 M (write\).) S
+18000 19706 M (Positions are measured in bytes, where the first byte in the file is position ) S
+18000 17906 M (0.  So the file pointer varies between 0 and the one less than the length of ) S
+18000 16106 M (the file.) S
+14400 13106 M (When a file is first opened, the file pointer is set to 0 except if the access mode is ) S
+14400 11306 M (append in which case the file pointer is set to the position of the end of the file.) S
+grestore savepage restore showpage
+
+%%Page: 7 7
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (7) S
+7200 75600 M (LispCourse #38:  Files; Streams; Input/Output) S
+14400 71106 M (At any point you can read the value of the file pointer to figure out where you are ) S
+14400 69306 M (in the file.  ) S
+14400 66306 M (For files that are on devices that support random access \(e.g., local disk, IFS file ) S
+14400 64506 M (servers, floppies but NOT NS file servers\), you can set the file pointer to any ) S
+14400 62706 M (arbitrary location in the file.  The next read or write will then take place at this ) S
+14400 60906 M (location.) S
+14400 57906 M (The following functions read the file pointer:) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 54906 M (\(GETFILEPTR ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \233 Returns the current file pointer for the open file ) S
+18000 53106 M (represented by ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Stream) S
+1200 /Times-Roman-Acnt F
+(, which should be a stream datatype.) S
+1200 /Times-Bold-Acnt F
+18000 50106 M (\(GETEOFPTR ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \233 Returns the file pointer value for the location at ) S
+18000 48306 M (the end of the open file represented by ) S
+1200 /Times-Italic-Acnt F
+(Stream) S
+1200 /Times-Roman-Acnt F
+( \(i.e., the number of bytes in ) S
+18000 46506 M (the file\).) S
+14400 43506 M (The following functions can change the file pointer:) S
+1200 /Times-Bold-Acnt F
+18000 40506 M (\(RANDACCESSP Stream\) ) S
+1200 /Times-Roman-Acnt F
+(\233 Returns the file name of ) S
+1200 /Times-Italic-Acnt F
+(Stream) S
+1200 /Times-Roman-Acnt F
+(, if that file ) S
+18000 38706 M (is random accessable.  NIL otherwise.  ) S
+1200 /Times-Italic-Acnt F
+(Stream) S
+1200 /Times-Roman-Acnt F
+( should represent an open ) S
+18000 36906 M (file.  If RANDACCESSP returns the file name, then SETFILEPTR can be ) S
+18000 35106 M (used on the file.) S
+1200 /Times-Bold-Acnt F
+18000 32106 M (\(SETFILEPTR ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Position) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 Sets the file pointer for the file ) S
+18000 30306 M (represented by ) S
+1200 /Times-Italic-Acnt F
+(Stream) S
+1200 /Times-Roman-Acnt F
+( to be ) S
+1200 /Times-Italic-Acnt F
+(Position) S
+1200 /Times-Roman-Acnt F
+(.  Position is any positive integer.) S
+21600 27906 M (\(SETFILEPTR ) S
+1200 /Times-Italic-Acnt F
+(Stream) S
+1200 /Times-Roman-Acnt F
+( -1\) is a special case meaning to set the file ) S
+21600 26106 M (pointer to the end of the file.) S
+21600 23706 M (SETFILEPTR results in s an error if the file is not ) S
+21600 21906 M (RANDACCESSP.) S
+1200 /Times-Bold-Acnt F
+18000 19306 M (\(FILEPOS ) S
+1200 /Times-BoldItalic-Acnt F
+(Pattern) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Start) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(End) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Skip) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234  analogous to STRPOS \(See ) S
+18000 17506 M (LispCourse #28, page 18\).   Searches through the file referenced by ) S
+1200 /Times-Italic-Acnt F
+18000 15706 M (Stream) S
+1200 /Times-BoldItalic-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(looking for any sequences of characters that matches the ) S
+18000 13906 M (characters in string ) S
+1200 /Times-Italic-Acnt F
+(Pattern) S
+1200 /Times-Roman-Acnt F
+(.  If a match is found, FILEPOS sets the file ) S
+18000 12106 M (pointer to the file position where the match starts and returns this position ) S
+18000 10306 M (as its value.  If no match is found, FILEPOS returns NIL and the file ) S
+18000 8506 M (pointer is unchanged) S
+grestore savepage restore showpage
+
+%%Page: 8 8
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (8) S
+7200 75600 M (LispCourse #38:  Files; Streams; Input/Output) S
+21600 71106 M (If ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Start) S
+1200 /Times-Roman-Acnt F
+( is specified, the search begins at file position ) S
+1200 /Times-Italic-Acnt F
+(Start) S
+1200 /Times-Roman-Acnt F
+(, ) S
+21600 69306 M (otherwise search starts at the current file pointer.) S
+21600 66506 M (If ) S
+1200 /Times-Italic-Acnt F
+(End) S
+1200 /Times-Roman-Acnt F
+( is specified, the search terminates at file position ) S
+1200 /Times-Italic-Acnt F
+(End ) S
+1200 /Times-Roman-Acnt F
+(\(if no ) S
+21600 64706 M (match has been found\), otherwise search ends at the end of the file.) S
+21600 61906 M (If ) S
+1200 /Times-Italic-Acnt F
+(SkipChar) S
+1200 /Times-Roman-Acnt F
+( is specified, any instance of ) S
+1200 /Times-Italic-Acnt F
+(SkipChar) S
+1200 /Times-Roman-Acnt F
+( in the ) S
+1200 /Times-Italic-Acnt F
+(Pattern) S
+1200 /Times-Roman-Acnt F
+( ) S
+21600 60106 M (string will match any character in the file.  \() S
+1200 /Times-Italic-Acnt F
+(SkipChar) S
+1200 /Times-Roman-Acnt F
+( is the ) S
+21600 58306 M (wildcard character\).) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 55306 M (Reading and Writing) S
+1200 /Times-Roman-Acnt F
+14400 52306 M (The following two functions are used to read/write a byte from/to an open file:) S
+1200 /Times-Bold-Acnt F
+18000 49306 M (\(BIN ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 Reads the next byte, i.e., the byte right after the file pointer ) S
+18000 47506 M (and returns it.  The file pointer is updated one byte.  The byte returned is a ) S
+18000 45706 M (number between 0 and 255.) S
+1200 /Times-Bold-Acnt F
+18000 42706 M (\(BOUT ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Byte) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 Write ) S
+1200 /Times-Italic-Acnt F
+(Byte) S
+1200 /Times-Roman-Acnt F
+( at the next position in the file, i.e., the ) S
+18000 40906 M (position right after the file pointer.  The file pointer is updated one byte.  ) S
+1200 /Times-Italic-Acnt F
+18000 39106 M (Byte) S
+1200 /Times-Roman-Acnt F
+( should be a number between 0 and 255.) S
+1200 /Times-Bold-Acnt F
+10800 36106 M (Example) S
+1200 /Times-Roman-Acnt F
+14400 33106 M (The following is an implementation of a COPYBYTES function that copies the ) S
+14400 31306 M (specified bytes from a source file to a destination file:) S
+14400 28706 M (\(DEFINEQ \(COPYBYTES) S
+18000 26706 M (\(LAMBDA \(SourceFile DestFile Start End\)) S
+21600 24706 M (\(LET  \(StopLoc) S
+28800 22706 M (\(SourceStream \(OPENSTREAM SourceFile ) S
+28800 20906 M ('INPUT 'OLD\)\)) S
+28800 18906 M (\(DestStream  \(OPENSTREAM DestFile 'OUTPUT ) S
+28800 17106 M ('NEW\)\)\)) S
+25200 15106 M (\(* * Set up correct start and stop pointers\)) S
+25200 13106 M (\(AND \(NOT Start\)\(SETQ Start 0\)\)) S
+25200 11106 M (\(AND \(NOT End\)\(SETQ End \(GETEOFPTR ) S
+25200 9306 M (SourceStream\)\)\)) S
+grestore savepage restore showpage
+
+%%Page: 9 9
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (9) S
+7200 75600 M (LispCourse #38:  Files; Streams; Input/Output) S
+25200 71106 M (\(COND) S
+28800 69106 M (\(\(NOT \(GREATERP Start End\)\) \(ERROR "Error ) S
+28800 67306 M (Msg"\)) S
+25200 65306 M (\(SETQ StopLoc \(MIN \(GETEOFPTR SourceStream\)End\)\)) S
+25200 63306 M (\(* * Move to start location\)) S
+25200 61306 M (\(COND ) S
+28800 59306 M (\(\(RANDACCESSP SourceStream\)) S
+32400 57306 M (\(SETFILEPTR SourceStream Start\)\)) S
+28800 55306 M (\(T \(FOR Index FROM 0 TO \(SUB1 Start\)) S
+32400 53306 M (DO \(BIN SourceStream\)\)\)\)) S
+25200 51306 M (\(* * Copy bytes until stop location\)) S
+25200 49306 M (\(FOR Index FROM Start TO StopLoc) S
+28800 47306 M (DO \(BOUT DestStream \(BIN SourceStream\)\)\)) S
+25200 45306 M (\(* * Close files and return\)) S
+25200 43306 M (\(LIST \(CLOSEF? SourceStream\) \(CLOSEF? ) S
+25200 41506 M (DestStream\)\)\)\)\)\)) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 37757 M (Higher-level File Input and Output) S
+1200 /Times-Roman-Acnt F
+10800 35306 M (For most applications, accessing files a byte at a time is unnecessarily detailed.) S
+10800 32906 M (Interlisp provides a number of higer-level input/output routines that can read and write ) S
+10800 31106 M (Lisp objects \(i.e., SExpressions\) rather than bytes.) S
+14400 28706 M (These higher-level routines are, of course, simply functions that eventually call ) S
+14400 26906 M (BIN and BOUT to access the file.) S
+14400 24506 M (They just provide an more convenient interface to files for most applications.) S
+1200 /Times-Bold-Acnt F
+10800 21506 M (Higher-level Input Functions) S
+1200 /Times-Roman-Acnt F
+14400 18506 M (The standard input function is READ:) S
+1200 /Times-Bold-Acnt F
+18000 15506 M (\(READ ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \233 reads and returns the next SExpression \(litatom, number, ) S
+18000 13706 M (list, string, etc.\) from the file referenced by ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Stream) S
+1200 /Times-Roman-Acnt F
+(.  ) S
+1200 /Times-Italic-Acnt F
+(Stream) S
+1200 /Times-Roman-Acnt F
+( must ) S
+18000 11906 M (reference an open file.) S
+grestore savepage restore showpage
+
+%%Page: 10 10
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (10) S
+7200 75600 M (LispCourse #38:  Files; Streams; Input/Output) S
+21600 71106 M (READ will start at the current file position and skip over white ) S
+21600 69306 M (space characters \(i.e., space, tab, carriage return\) until the first non-) S
+21600 67506 M (space character.  It will the read in the SExpression that begins at ) S
+21600 65706 M (this character.) S
+21600 63106 M (The interpretation of SExpressions is done using the same rules as ) S
+21600 61306 M (in the Lisp Exec \234 lists are bounded by parentheses, strings are ) S
+21600 59506 M (bounded by double quotes, atoms are bounded by white space or ) S
+21600 57706 M (by the start/end of a list or string, numbers are atoms containing ) S
+21600 55906 M (only digits, etc.) S
+21600 53306 M (At the end of the READ, the file pointer for the file is set just after ) S
+21600 51506 M (the last character of the SExpression.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 48906 M (\(SKREAD ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\) ) S
+1200 /Times-Roman-Acnt F
+(\234 moves the file pointer for the file referenced by ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+18000 47106 M (Stream) S
+1200 /Times-Roman-Acnt F
+( ahead as if a READ had been done, but does not actually read ) S
+18000 45306 M (anything.  SKREAD returns NIL.) S
+21600 42706 M (Used for skipping over things you don't actually want to read.) S
+14400 39706 M (Some more specialized input functions are:) S
+1200 /Times-Bold-Acnt F
+18000 36706 M (\(READC ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\) ) S
+1200 /Times-Roman-Acnt F
+(\234  reads and returns the next character from the file ) S
+18000 34906 M (referenced by ) S
+1200 /Times-Italic-Acnt F
+(Stream) S
+1200 /Times-Roman-Acnt F
+(.  The file pointer is moved ahead by 1.  ) S
+21600 32306 M (READC reads all characters alike, ignoring the special effects of ) S
+21600 30506 M (characters like double quotes and parentheses that would affect ) S
+21600 28706 M (READ.) S
+21600 26106 M (READC is like BIN, except it returns a character \(i.e., a single ) S
+21600 24306 M (character atom\) rather than a byte \(i.e., a number\).) S
+1200 /Times-Bold-Acnt F
+18000 21306 M (\(RATOM ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\) ) S
+1200 /Times-Roman-Acnt F
+(\234  reads and returns one atom from the file referenced ) S
+18000 19506 M (by ) S
+1200 /Times-Italic-Acnt F
+(Stream) S
+1200 /Times-Roman-Acnt F
+(.  ) S
+1200 /Times-Italic-Acnt F
+(Stream) S
+1200 /Times-Roman-Acnt F
+( must reference an open file.  Works like READ, ) S
+18000 17706 M (except that parentheses and double quotes are considered to be single ) S
+18000 15906 M (character atoms.) S
+21600 12906 M (Example: If the next SExpression on the file is \(FOO\), then ) S
+21600 11106 M (RATOM would return the atom %\(.  But if the next SExpression ) S
+21600 9306 M (were ABC, then RATOM would return the atom ABC.) S
+grestore savepage restore showpage
+
+%%Page: 11 11
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (11) S
+7200 75600 M (LispCourse #38:  Files; Streams; Input/Output) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 71106 M (\(RSTRING ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\) ) S
+1200 /Times-Roman-Acnt F
+(\234  reads characters from the file referenced by ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Stream) S
+1200 /Times-Roman-Acnt F
+( ) S
+18000 69306 M (up to but not including the next white space character, parentheses, or ) S
+18000 67506 M (double quote.  Returns the characters read as a string..  ) S
+1200 /Times-Italic-Acnt F
+(Stream) S
+1200 /Times-Roman-Acnt F
+( must ) S
+18000 65706 M (reference an open file.  Sets the file pointer to right after the last character ) S
+18000 63906 M (read.) S
+21600 60906 M (Example: If the next character on the file on the file is a space, ) S
+21600 59106 M (then RSTRING would return the null string "".  But if the next ) S
+21600 57306 M (characters were ABC, then RSTRING would return the string ) S
+21600 55506 M ("ABC".) S
+14400 52506 M (Finally, it is some times desireable to read a whole file in a single shot using the ) S
+14400 50706 M (following function:) S
+1200 /Times-Bold-Acnt F
+18000 47706 M (\(READFILE ) S
+1200 /Times-BoldItalic-Acnt F
+(StreamOrFileName) S
+1200 /Times-Bold-Acnt F
+(\) ) S
+1200 /Times-Roman-Acnt F
+(\234  reads SExpressions from the file ) S
+18000 45906 M (referenced by ) S
+1200 /Times-Italic-Acnt F
+(StreamOrFileName) S
+1200 /Times-Roman-Acnt F
+( up to but not including the first ) S
+18000 44106 M (occurrance of the atom STOP, or until the end of the file is reached if no ) S
+18000 42306 M (STOP is encountered.  Returns a list of the SExpressions read.) S
+1200 /Times-Italic-Acnt F
+21600 39906 M (StreamOrFileName) S
+1200 /Times-Roman-Acnt F
+( will be opened if necessary.) S
+21600 37506 M (READFILE uses READ to do its reading.) S
+1200 /Times-Bold-Acnt F
+10800 34506 M (Higher-level Output Functions) S
+1200 /Times-Roman-Acnt F
+14400 31506 M (Interlisp has a number of functions for printing SExpressions onto files.) S
+14400 28506 M (Note that these functions just print the print name of each lisp object on the file.) S
+18000 26306 M (This is no problem for atoms, lists, numbers, and strings.) S
+18000 23906 M (But, arrays and datatype have print names which are particularly non-) S
+18000 22106 M (informative.  In order to print these kinds of objects, you generally have to ) S
+18000 20306 M (decompose them and print their parts separately using your own functions.) S
+14400 17506 M (When writing outSExpressions on a file, you have a to make a decision as to how ) S
+14400 15706 M (the SExpressions should be written:) S
+21600 13106 M (\264  in a way that can be read back into Lisp using READ) S
+21600 10506 M (\264  in a way that is more human-readable but cannot be read back in ) S
+21600 8706 M (by READ.) S
+grestore savepage restore showpage
+
+%%Page: 12 12
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (12) S
+7200 75600 M (LispCourse #38:  Files; Streams; Input/Output) S
+18000 71106 M (Example:) S
+21600 68706 M (When you print a string you can print the double quotes or not.) S
+21600 66306 M (If you print the double quotes, then READ can recognize the ) S
+21600 64506 M (characters as a string when it is reading the file later.) S
+21600 62106 M (If you don't print the double quotes, then your output may look ) S
+21600 60306 M (nicer, but READ will not be able to recognize the charactres as a ) S
+21600 58506 M (string when it tries to later read the file.) S
+14400 55506 M (Interlisp provides higher-level output functions for both of these modes.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 52506 M (General Printing) S
+1200 /Times-Roman-Acnt F
+18000 49506 M (The basic output functions are:) S
+1200 /Times-Bold-Acnt F
+18000 46506 M (\(PRIN1 ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(SExpression) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 prints SExpression on the open file ) S
+18000 44706 M (referenced by ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Stream) S
+1200 /Times-Roman-Acnt F
+(.  Printing is done in a way that does not necessarily ) S
+18000 42906 M (make it possible to READ the SExpression, e.g., the double quotes are ) S
+18000 41106 M (omitted from strings and spaces inside of atoms are not escaped.) S
+21600 38906 M (Examples:) S
+25200 36706 M (The atom Foo% Bar is printed as Foo Bar) S
+25200 34506 M (The string "ABC" is printed as ABC) S
+25200 32306 M (The list \(A B C\) is printed as \(A B C\)) S
+1200 /Times-Bold-Acnt F
+18000 29306 M (\(PRIN2 ) S
+1200 /Times-BoldItalic-Acnt F
+(SExpression) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 prints SExpression on the open file ) S
+18000 27506 M (referenced by ) S
+1200 /Times-Italic-Acnt F
+(Stream) S
+1200 /Times-Roman-Acnt F
+(.  Printing is done in a way that makes it possible to ) S
+18000 25706 M (READ the SExpression, e.g., the double quotes are printed for strings and ) S
+18000 23906 M (spaces inside of atoms are escaped.) S
+21600 21706 M (Examples:) S
+25200 19506 M (The atom Foo% Bar is printed as Foo% Bar) S
+25200 17306 M (The string "ABC" is printed as "ABC") S
+25200 15106 M (The list \(A B C\) is printed as \(A B C\)) S
+1200 /Times-Bold-Acnt F
+18000 12106 M (\(TERPRI ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 prints a carriage return on the open file referenced by ) S
+1200 /Times-Italic-Acnt F
+18000 10306 M (Stream) S
+1200 /Times-Roman-Acnt F
+(.) S
+grestore savepage restore showpage
+
+%%Page: 13 13
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (13) S
+7200 75600 M (LispCourse #38:  Files; Streams; Input/Output) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 71106 M (\(SPACES ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(N) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 prints ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(N) S
+1200 /Times-Roman-Acnt F
+( spaces on the open file referenced by ) S
+1200 /Times-Italic-Acnt F
+18000 69306 M (Stream) S
+1200 /Times-Roman-Acnt F
+(.) S
+1200 /Times-Bold-Acnt F
+18000 66306 M (\(PRINT ) S
+1200 /Times-BoldItalic-Acnt F
+(SExpression) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 equivalent to \(PRIN2 ) S
+1200 /Times-Italic-Acnt F
+(SExpression) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+18000 64506 M (Stream) S
+1200 /Times-Roman-Acnt F
+(\) followed by a \(TERPRI ) S
+1200 /Times-Italic-Acnt F
+(Stream) S
+1200 /Times-Roman-Acnt F
+(\).) S
+1200 /Times-Bold-Acnt F
+14400 60906 M (Printing Numbers) S
+1200 /Times-Roman-Acnt F
+18000 57906 M (The printing of numbers can be more precisely controlled using the ) S
+18000 56106 M (following function:) S
+1200 /Times-Bold-Acnt F
+18000 53106 M (\(PRINTNUM ) S
+1200 /Times-BoldItalic-Acnt F
+(Format) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Number) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 prints ) S
+1200 /Times-Italic-Acnt F
+(Number) S
+1200 /Times-Roman-Acnt F
+( on the open file ) S
+18000 51306 M (referenced by ) S
+1200 /Times-Italic-Acnt F
+(Stream) S
+1200 /Times-Roman-Acnt F
+( using the format specified by ) S
+1200 /Times-Italic-Acnt F
+(Format) S
+1200 /Times-Roman-Acnt F
+(.) S
+1200 /Times-Italic-Acnt F
+21600 48306 M (Format) S
+1200 /Times-Roman-Acnt F
+( is a list structure with one of the following formats:) S
+1200 /Times-Bold-Acnt F
+25200 45306 M (\(FIX ) S
+1200 /Times-BoldItalic-Acnt F
+(Width) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Base) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Pad0Flg) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(LeftFlushFlg) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+28800 42906 M (Indicates that ) S
+1200 /Times-Italic-Acnt F
+(Number) S
+1200 /Times-Roman-Acnt F
+( is to be printed as a integer.) S
+1200 /Times-Italic-Acnt F
+32400 40506 M (Width) S
+1200 /Times-Roman-Acnt F
+( is the number of character spaces to ) S
+32400 38706 M (reserve for the integer.) S
+1200 /Times-Italic-Acnt F
+32400 36306 M (Base) S
+1200 /Times-Roman-Acnt F
+( is the base in which the integer is to be ) S
+32400 34506 M (printed. \(Defaults to base 10.\)) S
+32400 32106 M (If ) S
+1200 /Times-Italic-Acnt F
+(LeftFlushFlg) S
+1200 /Times-Roman-Acnt F
+( is NIL, then the number is ) S
+32400 30306 M (right justified in the ) S
+1200 /Times-Italic-Acnt F
+(Width) S
+1200 /Times-Roman-Acnt F
+( spaces.  ) S
+32400 28506 M (Otherwise, it is left justified and the unused ) S
+32400 26706 M (spaces to the right are filled with blanks.) S
+32400 24306 M (If ) S
+1200 /Times-Italic-Acnt F
+(Pad0Flg) S
+1200 /Times-Roman-Acnt F
+( is T, then any part of the ) S
+1200 /Times-Italic-Acnt F
+(Width) S
+1200 /Times-Roman-Acnt F
+( ) S
+32400 22506 M (spaces that are to the left of the number are ) S
+32400 20706 M (filled with zeros.) S
+28800 18306 M (Examples:  \(Note: the | characters are for exposition ) S
+28800 16506 M (only!\):) S
+28800 14106 M (\(PRINTNUM '\(FIX 4\) 100\) prints | 100|.) S
+28800 11706 M (\(PRINTNUM '\(FIX 4 NIL T NIL\) 100\) prints ) S
+28800 9906 M (|0100|.) S
+grestore savepage restore showpage
+
+%%Page: 14 14
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (14) S
+7200 75600 M (LispCourse #38:  Files; Streams; Input/Output) S
+28800 71106 M (\(PRINTNUM '\(FIX 4 NIL NIL T\) 100\) prints |100 ) S
+28800 69306 M (|.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+25200 66306 M (\(FLOAT ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Width) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(DecWidth) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(ExpWidth) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Pad0Flg) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+28800 63906 M (Indicates that ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Number) S
+1200 /Times-Roman-Acnt F
+( is to be printed as a real ) S
+28800 62106 M (number.) S
+1200 /Times-Italic-Acnt F
+32400 59706 M (Width) S
+1200 /Times-Roman-Acnt F
+( is the number of character spaces to ) S
+32400 57906 M (reserve for the number.) S
+1200 /Times-Italic-Acnt F
+32400 55506 M (DecWidth) S
+1200 /Times-Roman-Acnt F
+( is the number of digits to appear ) S
+32400 53706 M (to the right of the decimal point.) S
+1200 /Times-Italic-Acnt F
+32400 51306 M (ExpWidth) S
+1200 /Times-Roman-Acnt F
+( is non-NIL, specifies that the ) S
+32400 49506 M (number should be printed in exponent ) S
+32400 47706 M (format \(i.e., scientific notation\) with ) S
+1200 /Times-Italic-Acnt F
+32400 45906 M (ExpWidth) S
+1200 /Times-Roman-Acnt F
+( charactre spaces used for the ) S
+32400 44106 M (exponent part.) S
+1200 /Times-Italic-Acnt F
+32400 41706 M (PadChar) S
+1200 /Times-Roman-Acnt F
+( if non-NIL specifies that the ) S
+32400 39906 M (leading spaces to the left of the number are ) S
+32400 38106 M (to be filled with zeros.) S
+28800 35706 M (Examples:  \(Note: the | characters are for exposition ) S
+28800 33906 M (only!\):) S
+28800 31506 M (\(PRINTNUM '\(FLOAT 4 2\) 4.23\) prints |4.23|.) S
+28800 29106 M (\(PRINTNUM '\(FLOAT 5 2\) 4.23\) prints | 4.23|.) S
+28800 26706 M (\(PRINTNUM '\(FLOAT 5 2 NIL 22\) 4.23\) prints ) S
+28800 24906 M (|04.23|.) S
+28800 22506 M (\(PRINTNUM '\(FLOAT 5 1 NIL 22\) 4.23\) prints ) S
+28800 20706 M (|004.2|.) S
+1200 /Times-Bold-Acnt F
+14400 16906 M (PRINTOUT) S
+1200 /Times-Roman-Acnt F
+18000 14106 M (Finally, any reasonably complex output will involve lots of PRIN1s, ) S
+18000 12306 M (TERPRIs, PRINTNUMs, etc.  in very complex combinations.  The ) S
+18000 10506 M (PRINTOUT CLISP statement provides a simpler \(sometimes\) interface to ) S
+18000 8706 M (all of this.) S
+grestore savepage restore showpage
+
+%%Page: 15 15
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (15) S
+7200 75600 M (LispCourse #38:  Files; Streams; Input/Output) S
+18000 71106 M (PRINTOUT is very complex and we will cover on a small bit of it here.  ) S
+18000 69306 M (See section 6.5 of the IRM for more details.) S
+18000 66506 M (PRINTOUT has the format:) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 63706 M (\(PRINTOUT ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Command1) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Command2) S
+1200 /Times-Bold-Acnt F
+( ...\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+25200 60906 M (Stream) S
+1200 /Times-Roman-Acnt F
+( references an open file.) S
+25200 58106 M (Each ) S
+1200 /Times-Italic-Acnt F
+(CommandI) S
+1200 /Times-Roman-Acnt F
+( is either one of the printing commands ) S
+25200 56306 M (discussed below or an arbitrary Lisp SExpression.) S
+21600 53506 M (PRINTOUT iterates through the ) S
+1200 /Times-Italic-Acnt F
+(CommandIs) S
+1200 /Times-Roman-Acnt F
+(.  If it encounters a ) S
+21600 51706 M (command, it carries out that command.  Otherwise, it prints the ) S
+21600 49906 M (SExpression using PRIN1.) S
+25200 47106 M (Note that numbers are PRINTOUT commands. Therefore ) S
+25200 45306 M (the only way to print numbers is as the result of a ) S
+25200 43506 M (coomand!) S
+21600 40706 M (Some of the commands are:) S
+1200 /Times-Bold-Acnt F
+25200 37906 M (.SP ) S
+1200 /Times-BoldItalic-Acnt F
+(N) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(\234 print ) S
+1200 /Times-Italic-Acnt F
+(N) S
+1200 /Times-Roman-Acnt F
+( spaces) S
+1200 /Times-Bold-Acnt F
+25200 35106 M (T) S
+1200 /Times-Roman-Acnt F
+( \234 print a carriage return) S
+1200 /Times-Bold-Acnt F
+25200 32306 M (.SKIP N) S
+1200 /Times-Roman-Acnt F
+( \234 skip N lines, i.e., print N returns) S
+1200 /Times-Bold-Acnt F
+25200 29506 M (.PAGE) S
+1200 /Times-Roman-Acnt F
+( \234 print a form feed character) S
+1200 /Times-Bold-Acnt F
+25200 26706 M (.FONT ) S
+1200 /Times-BoldItalic-Acnt F
+(FontSpec) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(\234 change the font for printing to the file.  ) S
+1200 /Times-Italic-Acnt F
+25200 24906 M (FontSpec) S
+1200 /Times-Roman-Acnt F
+( is a font list like \(TIMESROMAN 12 BOLD\).) S
+1200 /Times-Bold-Acnt F
+25200 22106 M (.P2 ) S
+1200 /Times-BoldItalic-Acnt F
+(SExpr) S
+1200 /Times-Roman-Acnt F
+( \234 PRIN2s SExpr) S
+1200 /Times-Bold-Acnt F
+25200 19306 M (.FR ) S
+1200 /Times-Roman-Acnt F
+(\233) S
+1200 /Times-BoldItalic-Acnt F
+(N) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(SExpr) S
+1200 /Times-Roman-Acnt F
+( \234 PRIN1s ) S
+1200 /Times-Italic-Acnt F
+(SExpr) S
+1200 /Times-Roman-Acnt F
+( right-flushed in the next ) S
+1200 /Times-Italic-Acnt F
+(N) S
+1200 /Times-Roman-Acnt F
+( ) S
+25200 17506 M (character positions.) S
+1200 /Times-Bold-Acnt F
+25200 14706 M (.CENTER) S
+1200 /Times-Roman-Acnt F
+( \233) S
+1200 /Times-BoldItalic-Acnt F
+(N) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(SExpr) S
+1200 /Times-Roman-Acnt F
+( \234 PRIN1s ) S
+1200 /Times-Italic-Acnt F
+(SExpr) S
+1200 /Times-Roman-Acnt F
+( centered in the next ) S
+1200 /Times-Italic-Acnt F
+(N) S
+1200 /Times-Roman-Acnt F
+( ) S
+25200 12906 M (character positions.) S
+1200 /Times-Bold-Acnt F
+25200 10106 M (.I) S
+1200 /Times-BoldItalic-Acnt F
+(Format) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Number) S
+1200 /Times-Roman-Acnt F
+( \234prints ) S
+1200 /Times-Italic-Acnt F
+(Number) S
+1200 /Times-Roman-Acnt F
+( as an integer using ) S
+1200 /Times-Italic-Acnt F
+25200 8306 M (Format) S
+1200 /Times-Roman-Acnt F
+( as a format spec.  ) S
+1200 /Times-Italic-Acnt F
+(Format) S
+1200 /Times-Roman-Acnt F
+( is like the FIX format in ) S
+grestore savepage restore showpage
+
+%%Page: 16 16
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (16) S
+7200 75600 M (LispCourse #38:  Files; Streams; Input/Output) S
+25200 71106 M (PRINTNUM, except that rather than parts of a list, you  use ) S
+25200 69306 M (atoms separated by periods.) S
+28800 66506 M (Example:  .I5.NIL.T is the same as \(FIX 5 NIL T\) ) S
+28800 64706 M (in PRINTNUM.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+25200 61906 M (.F) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Format) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Number) S
+1200 /Times-Roman-Acnt F
+( \234prints ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Number) S
+1200 /Times-Roman-Acnt F
+( as an real number using ) S
+1200 /Times-Italic-Acnt F
+25200 60106 M (Format) S
+1200 /Times-Roman-Acnt F
+( as a format spec.  ) S
+1200 /Times-Italic-Acnt F
+(Format) S
+1200 /Times-Roman-Acnt F
+( is like the FLOAT ) S
+25200 58306 M (format in PRINTNUM, except that rather than parts of a ) S
+25200 56506 M (list, you use atoms separated by periods.) S
+28800 53706 M (Example:  .F5.2 is the same as \(FLOAT 5 2\) in ) S
+28800 51906 M (PRINTNUM.) S
+1200 /Times-Bold-Acnt F
+25200 49106 M (# ) S
+1200 /Times-BoldItalic-Acnt F
+(SExpr) S
+1200 /Times-Roman-Acnt F
+( \234 evaluates SExpr for side-effect only.  Nothing is ) S
+25200 47306 M (printed except as a result of the evaluation.  USed to tailor ) S
+25200 45506 M (your own PRINTOUT commands.) S
+1200 /Times-Italic-Acnt F
+28800 42706 M (# 'XXX) S
+1200 /Times-Roman-Acnt F
+( will print nothing.) S
+1200 /Times-Italic-Acnt F
+28800 39906 M (# \(PRIN1 'XXX Stream\)) S
+1200 /Times-Roman-Acnt F
+( will print XXX on the file.) S
+18000 37106 M (Eamples:) S
+21600 34306 M (\(PRINTOUT Stream "This is Line 1" T "This is Line 2" T\)) S
+25200 32306 M (prints) S
+1200 /Times-Italic-Acnt F
+28800 30706 M (This is Line 1) S
+28800 28706 M (This is Line 2) S
+1200 /Times-Roman-Acnt F
+21600 25906 M (\(PRINTOUT Stream .I5 445 .SP 6 .F3.2 0.3456 T\)) S
+25200 23906 M (prints) S
+28800 22306 M (|) S
+1200 /Times-Italic-Acnt F
+(  445      .34) S
+1200 /Times-Roman-Acnt F
+(|) S
+1400 /Times-Bold-Acnt F
+7200 18557 M (Miscellaneous Considerations) S
+1200 /Times-Bold-Acnt F
+10800 14906 M (The File T) S
+1200 /Times-Roman-Acnt F
+14400 12106 M (There is one special input file in the system known as T.  T is both an input and ) S
+14400 10306 M (an output file.  On the input end, it is the keyboard.  On the output end, it is the ) S
+14400 8506 M (Lisp Exec window.) S
+grestore savepage restore showpage
+
+%%Page: 17 17
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (17) S
+7200 75600 M (LispCourse #38:  Files; Streams; Input/Output) S
+14400 71106 M (You can use T as the Stream argument to any of the Lisp input/output functions ) S
+14400 69306 M (discussed above.) S
+14400 66506 M (Example:) S
+18000 63706 M (\(PRINT "Hello" T\) prints Hello in the Exec window.) S
+18000 60906 M (\(READ T\) reads the next SExpression the user types in.) S
+14400 57706 M (When reading from T, the functions READ, RATOM,READC, etc. all wait for ) S
+14400 55906 M (the user to type something before returning.  ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 52306 M (Line Buffering When Reading Keyboard Input) S
+1200 /Times-Roman-Acnt F
+14400 49506 M (The file T and all other input that comes from the keyboard is subject to line ) S
+14400 47706 M (buffering, i.e., the user type-in is held in a buffer until a carriage return is typed.) S
+18000 45506 M (Until the return is typed, the user input is not available to be read by a ) S
+18000 43706 M (program.) S
+18000 41506 M (Once the return is typed, the user type-in can be read by a program.) S
+14400 38706 M (Line buffering can be turned off using the function CONTROL:) S
+1200 /Times-Bold-Acnt F
+18000 35906 M (\(CONTROL T\)) S
+1200 /Times-Roman-Acnt F
+( \234 turns the line-buffering off.) S
+1200 /Times-Bold-Acnt F
+18000 33106 M (\(CONTROL NIL\)) S
+1200 /Times-Roman-Acnt F
+( \234 turns the line buffering on.) S
+14400 30306 M (With line-buffering off, input can be read by the program immediately after it is ) S
+14400 28506 M (typed in.) S
+18000 25706 M (Example:  If you want to do something immediately after the user types ) S
+18000 23906 M (the next character, you should turn line buffering off and wait for the ) S
+18000 22106 M (character press using READC or BIN as follows:) S
+21600 19306 M (\(DEFINEQ \(WaitForChar) S
+25200 17306 M (\(LAMBDA NIL) S
+28800 15306 M (\(* * Turn off buffering\)) S
+28800 13306 M (\(CONTROL T\)) S
+28800 11306 M (\(PROG1) S
+32400 9306 M (\(READC T\)\(* * wait for a character press\)) S
+grestore savepage restore showpage
+
+%%Page: 18 18
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (18) S
+7200 75600 M (LispCourse #38:  Files; Streams; Input/Output) S
+32400 71106 M (\(CONTROL NIL\) \(* * Turn on buffering ) S
+32400 69306 M (again\)\)\)\)\)) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 65706 M (Default Input/Output File) S
+1200 /Times-Roman-Acnt F
+14400 62906 M (Almost all of the Lisp input/output functions will accept NIL as their ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Stream) S
+1200 /Times-Roman-Acnt F
+( ) S
+14400 61106 M (argument.  In this case they will use the current default input or output file.) S
+14400 58306 M (Initially, the default input and output is set to T, i.e., the default input file is the ) S
+14400 56506 M (keyboard and the default output file in the Lisp Exec window.) S
+14400 53706 M (The following functions can be used to change the default files:) S
+1200 /Times-Bold-Acnt F
+18000 50906 M (\(INPUT ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 makes the open file referenced by ) S
+1200 /Times-Italic-Acnt F
+(Stream) S
+1200 /Times-Roman-Acnt F
+( be the default ) S
+18000 49106 M (input file.  Returns the old default input file.  If ) S
+1200 /Times-Italic-Acnt F
+(Stream) S
+1200 /Times-Roman-Acnt F
+( is NIL, just returns ) S
+18000 47306 M (the default input file without changing it.) S
+1200 /Times-Bold-Acnt F
+18000 44506 M (\(OUTPUT ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 makes the open file referenced by ) S
+1200 /Times-Italic-Acnt F
+(Stream) S
+1200 /Times-Roman-Acnt F
+( be the ) S
+18000 42706 M (default output file.  Returns the old default output file.  If ) S
+1200 /Times-Italic-Acnt F
+(Stream) S
+1200 /Times-Roman-Acnt F
+( is NIL, ) S
+18000 40906 M (just returns the default output file without changing it.) S
+1400 /Times-Bold-Acnt F
+7200 37957 M (References) S
+1200 /Times-Roman-Acnt F
+10800 35106 M (Input/Output is covered in Chapter 6 and Section 18.16 of the IRM.) S
+10800 32306 M (Beware, however, this documentation is somewhat out of date.  In particular, streams are ) S
+10800 30506 M (not covered.  Instead, files are said to be referenced by full file name, i.e., in the old ) S
+10800 28706 M (manner.) S
+grestore savepage restore showpage
+
+%%Trailer

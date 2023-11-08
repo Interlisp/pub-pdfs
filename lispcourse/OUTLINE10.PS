@@ -1,0 +1,878 @@
+%!PS-Adobe-2.0%%Title: {DSK}<home>larry>lispcourse>OUTLINE10.PS%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate:  7-Nov-2023 21:39:59%%EndComments/bdef {bind def} bind def
+/ldef {load def} bdef
+/S /show ldef
+/M /moveto ldef
+/DR {transform round exch round exch itransform} bdef
+/L {gsave newpath setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/L1 {gsave newpath 0 setdash setgray setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/F {findfont exch scalefont setfont} bdef
+/CLP {newpath M dup 0 rlineto exch 0 exch rlineto
+  neg 0 rlineto closepath clip newpath} bdef
+/R {gsave setgray newpath M dup 0 rlineto exch 0 exch
+  rlineto neg 0 rlineto closepath eofill grestore} bdef
+/ellipsedict 9 dict def
+ellipsedict /mtrx matrix put
+/ellipse
+ { ellipsedict begin
+  /endangle exch def
+  /startangle exch def
+  /orientation exch def
+  /minorrad exch def
+  /majorrad exch def
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  orientation rotate
+  majorrad minorrad scale
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+ end } bdef
+/concatprocs
+ {/proc2 exch cvlit def
+  /proc1 exch cvlit def
+  /newproc proc1 length proc2 length add array def
+  newproc 0 proc1 putinterval
+  newproc proc1 length proc2 putinterval
+  newproc cvx
+ } bdef
+/resmatrix matrix def
+/findresolution
+ {72 0 resmatrix defaultmatrix dtransform
+  /yres exch def /xres exch def
+  xres dup mul yres dup mul add sqrt
+ } bdef
+/thebitimage
+ {/maskp exch def
+  /bihgt exch def
+  /biwid exch def
+  /byte 1 string def
+  /strbufl biwid 8 div ceiling cvi def
+  /strbuf strbufl string def
+  maskp not{{1 exch sub} currenttransfer concatprocs settransfer} if
+  biwid bihgt
+  maskp { true } { 1 } ifelse
+  [biwid 0 0 bihgt 0 0]
+  {/col 0 def
+   {currentfile byte readhexstring pop 0 get
+    dup 16#B2 eq {pop
+    currentfile byte readhexstring pop 0 get 1 add
+    currentfile byte readhexstring pop pop /nbyte byte 0 get def
+    { strbuf col nbyte put /col col 1 add def} repeat}
+   {dup 16#B3 eq {pop /col col
+    currentfile byte readhexstring pop
+    0 get add 1 add def}
+    {16#B4 eq {currentfile byte readhexstring pop pop} if
+     strbuf col byte 0 get put /col col 1 add def} ifelse
+   } ifelse
+   col strbufl ge { exit } if } loop
+   strbuf }
+  maskp { imagemask } { image } ifelse
+ } bdef
+/setuserscreendict 22 dict def
+setuserscreendict begin
+ /tempctm matrix def
+ /temprot matrix def
+ /tempscale matrix def
+end
+/setuserscreen
+ {setuserscreendict begin
+   /spotfunction exch def
+   /screenangle exch def
+   /cellsize exch def
+   /m tempctm currentmatrix def
+   /rm screenangle temprot rotate def
+   /sm cellsize dup tempscale scale def
+   sm rm m m concatmatrix m concatmatrix pop
+   1 0 m dtransform /y1 exch def /x1 exch def
+   /veclength x1 dup mul y1 dup mul add sqrt def
+   /frequency findresolution veclength div def
+   /newscreenangle y1 x1 atan def
+   m 2 get m 1 get mul m 0 get m 3 get mul sub
+   0 gt { { neg } /spotfunction load concatprocs
+          /spotfunction exch def } if
+   frequency newscreenangle /spotfunction load setscreen
+  end
+ } bdef
+/setpatterndict 18 dict def
+setpatterndict begin
+ /bitison
+  {/ybit exch def /xbit exch def
+   /bytevalue bstring ybit bwidth mul xbit 8 idiv add get def
+   /mask 1 7 xbit 8 mod sub bitshift def
+   bytevalue mask and 0 ne
+  } bdef
+end
+/bitpatternspotfunction
+ {setpatterndict begin
+   /y exch def /x exch def
+   /xindex x 1 add 2 div bpside mul 1 sub cvi def
+   /yindex y 1 add 2 div bpside mul 1 sub cvi def
+   xindex yindex bitison
+    {/onbits onbits 1 add def 1}
+    {/offbits offbits 1 add def 0} ifelse
+  end
+ } bdef
+/setpattern
+ {setpatterndict begin
+   /cellsz exch def
+   /angle exch def
+   /bwidth exch def
+   /bpside exch def
+   /bstring exch def
+   /onbits 0 def /offbits 0 def
+   cellsz angle /bitpatternspotfunction load setuserscreen
+   {} settransfer
+   offbits offbits onbits add div setgray
+  end
+ } bdef
+% - - - - - Fraction-setting code, to support NS fonts better - - - - -
+/fractiondict 20 dict def
+/fractionshow 
+{ fractiondict begin
+/denom exch def 
+/num exch def 
+/regfont currentfont def
+/fractfont currentfont [.65 0 0 .6 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(1) true charpath flattenpath pathbbox 
+/height exch def pop pop pop
+ grestore
+0 .4 height mul rmoveto
+fractfont setfont num show
+0 .4 height mul neg rmoveto regfont setfont (\244) show
+fractfont setfont denom show regfont setfont end } bdef
+/f14 { (1) (4) fractionshow } bdef
+/f12 { (1) (2) fractionshow } bdef
+/f34 { (3) (4) fractionshow } bdef
+/f18 { (1) (8) fractionshow } bdef
+/f38 { (3) (8) fractionshow } bdef
+/f58 { (5) (8) fractionshow } bdef
+/f78 { (7) (8) fractionshow } bdef
+/f13 { (1) (3) fractionshow } bdef
+/f23 { (2) (3) fractionshow } bdef
+/bboxdict 20 dict def
+/bboxchk { bboxdict begin
+/regfont currentfont def
+/chkfont currentfont [1.25 0 0 1.25 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(\161) true charpath flattenpath pathbbox 
+/height exch def pop pop pop 
+ grestore 
+ currentpoint 
+ .2 height mul .3 height mul rmoveto
+chkfont setfont (\063) show
+ moveto
+ regfont setfont
+(\161) show end } bdef
+/rencdict 15 dict def
+/encodefont { rencdict begin
+/newname exch def
+/oldfont exch def
+/newcodes [
+8#001 /Aacute
+8#002 /Acircumflex
+8#003 /Adieresis
+8#004 /Agrave
+8#005 /Aring
+8#006 /Atilde
+8#007 /Ccedilla
+8#010 /Eacute
+8#011 /Ecircumflex
+8#012 /Edieresis
+8#013 /Egrave
+8#014 /Iacute
+8#015 /Icircumflex
+8#016 /Idieresis
+8#017 /Igrave
+8#020 /Ntilde
+8#021 /Oacute
+8#022 /Ocircumflex
+8#023 /Odieresis
+8#024 /Ograve
+8#025 /Otilde
+8#026 /Scaron
+8#027 /Uacute
+8#030 /Ucircumflex
+8#031 /Udieresis
+8#032 /Ugrave
+8#033 /Ydieresis
+8#034 /Zcaron
+8#177 /periodinferior
+8#201 /aacute
+8#202 /acircumflex
+8#203 /adieresis
+8#204 /agrave
+8#205 /aring
+8#206 /atilde
+8#207 /ccedilla
+8#210 /eacute
+8#211 /ecircumflex
+8#212 /edieresis
+8#213 /egrave
+8#214 /iacute
+8#215 /icircumflex
+8#216 /idieresis
+8#217 /igrave
+8#220 /ntilde
+8#221 /oacute
+8#222 /ocircumflex
+8#223 /odieresis
+8#224 /ograve
+8#225 /otilde
+8#226 /scaron
+8#227 /uacute
+8#230 /ucircumflex
+8#231 /udieresis
+8#232 /ugrave
+8#233 /ydieresis
+8#234 /zcaron
+8#235 /Eth
+8#236 /eth
+8#237 /Thorn
+8#240 /thorn
+ ] def
+/olddict oldfont findfont def /newfont olddict maxlength dict def
+olddict { exch dup /FID ne { dup /Encoding eq
+{ exch dup length array copy newfont 3 1 roll put }
+{ exch newfont 3 1 roll put } ifelse }
+ { pop pop } ifelse } forall
+newfont /FontName newname put
+newcodes aload pop
+newcodes length 2 idiv { newfont /Encoding get 3 1 roll put } repeat 
+newname newfont definefont pop end } def
+ /accentdict 10 dict def 
+ /accentor { accentdict begin /scaler exch def /delta exch def 
+/unders exch def /accents exch def /mainch exch def /scrt (X) def
+ /w1 mainch stringwidth pop def 
+ currentpoint mainch show currentpoint 4 2 roll 
+accents { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         w1 w2 sub 2 div delta rmoveto scrt show 
+         /delta delta 150 scaler mul 9 div add def
+        } forall 
+unders { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         ch 46 eq { w1 w2 sub 2 div -175 scaler mul 9 div rmoveto scrt show 0 175 rmoveto }
+           { w1 w2 sub 2 div 0 rmoveto scrt show } ifelse 
+        } forall 
+ pop pop moveto end } def 
+%%EndProlog
+%%BeginSetup
+letter/imagesizefactor 1 def%%EndSetup/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+
+%%Page: 1 1
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+54000 75600 M (F.G.H.          ) S
+54000 73800 M (2/21/85) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (LispCourse #10:  Miscellaneous Issues Regarding Type-in) S
+7200 67157 M (READ macros) S
+1200 /Times-Roman-Acnt F
+10800 64306 M (In general, the Lisp reader just takes Lisp expressions from the P.A. and passes them on ) S
+10800 62506 M (to the Lisp evaluator.) S
+10800 59706 M (However, the Lisp reader can be set to give special interpretation to certain characters or ) S
+10800 57906 M (character sequences it reads in.  When it receives a Lisp expression containing one of ) S
+10800 56106 M (these special characters or character sequences, it carries out a prespecified action usually ) S
+10800 54306 M (resulting in some change to the Lisp expression it received. ) S
+10800 51357 M (The character sequences that are special to the Lisp reader together with their associated) S
+1400 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+10800 49506 M (actions are known as ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(READ macros) S
+1200 /Times-Roman-Acnt F
+(.) S
+10800 46706 M (READ macros can be arbitrarily defined by any user.  But doing so requires a fair ) S
+10800 44906 M (understanding of programming.  So we won't discuss it here.) S
+10800 42106 M (However, there are three READ macros that are predefined in the standard Lisp reader.  ) S
+10800 40306 M (The READ macro characters are "'", "|'" and "Ctrl-Y".  When these characters are typed ) S
+10800 38506 M (in a Lisp expression, the reader carries out the following actions:) S
+1200 /Times-Bold-Acnt F
+14400 35706 M (') S
+1200 /Times-Roman-Acnt F
+( \234  places the immediately following \(i.e., with no spaces\) S-expression within a ) S
+14400 33906 M (call to QUOTE. For example,  'A becomes \(QUOTE A\) and '\(A B C\) becomes ) S
+14400 32106 M (\(QUOTE \(A B C\)\).  Note that this only happens if the "'" is preceded by a space ) S
+14400 30306 M (or a parenthesis and followed by an S-expression.  Otherwise, the "'" is not ) S
+14400 28506 M (altered by the reader.) S
+1200 /Times-Bold-Acnt F
+14400 25706 M (|') S
+1200 /Times-Roman-Acnt F
+( \234  places the immediately following \(i.e., with no spaces\) S-expression within a ) S
+14400 23906 M (call to BQUOTE. For example,  |'A becomes \(BQUOTE A\) and |'\(A , B C\) ) S
+14400 22106 M (becomes \(BQUOTE \(A B C\)\).  Note that this only happens if the "|'" is preceded ) S
+14400 20306 M (by a space or a parenthesis and followed by an S-expression.  Otherwise, the "|'" ) S
+14400 18506 M (is not altered by the reader.) S
+18000 15706 M (Note: BQUOTE is like QUOTE except that it allows exceptions.  Any ) S
+18000 13906 M (element in a BQUOTEd list that is preceded by a "," IS evaluated.  The ) S
+18000 12106 M (rest of the elements are not evaluated \(as in QUOTE\).  Example: ) S
+18000 10306 M (\(BQUOTE \(A , B C\)\) would evaluate to \(A 7 C\) when B had a value of 7.  ) S
+grestore savepage restore showpage
+
+%%Page: 2 2
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (2) S
+7200 75600 M (LispCourse #10:  Miscellaneous Issues Regarding Type-in) S
+18000 71106 M (If B had a value of \(A B C\), then \(BQUOTE \(Q , B\)\) would evaluate to \(Q ) S
+18000 69306 M (\(A B C\)\).) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 66506 M (Ctrl-Y) S
+1200 /Times-Roman-Acnt F
+( \234  causes the immediately following S-expression to be evaluated before ) S
+14400 64706 M (the whole expression is passed to the Lisp evaluator.   For example, if NEATO ) S
+14400 62906 M (has the value 7 then the expression ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(\(LIST 2 3 ^YNEATO ^Y\(PLUS44 3\)\)) S
+1200 /Times-Roman-Acnt F
+( will be ) S
+14400 61106 M (changed to ) S
+1200 /Times-Italic-Acnt F
+(\(LIST 2 3 7 47\)) S
+1200 /Times-Roman-Acnt F
+( BEFORE it is passed to the Lisp Evaluator.) S
+18000 58306 M (Note: this functionality is seldom used by mere mortals.) S
+1200 /Times-Bold-Acnt F
+10800 54906 M (Documentation) S
+1200 /Times-Roman-Acnt F
+(:  Read macros are documentated in Section 6.6.3 of the IRM.  But the ) S
+10800 53106 M (documentation is aimed mainly at programmers) S
+1200 /Times-Bold-Acnt F
+10800 49706 M (Final Note:) S
+1200 /Times-Roman-Acnt F
+(  Read macros need seldom be worried about.  You use "'" so often that it ) S
+10800 47906 M (becomes second nature.  "|'" and "Ctrl-Y" are never used by the non-programmer.) S
+10800 45506 M (But some documentation mentions Read macros and every once in a while you'll here a ) S
+10800 43706 M (mentyion in the hall.  Now you know what they are.) S
+1400 /Times-Bold-Acnt F
+7200 39957 M (Redefining the keyboard) S
+1200 /Times-Roman-Acnt F
+10800 37506 M (All of the keys on the Inerlisp-D keyboard are ) S
+1200 /Times-Italic-Acnt F
+(soft) S
+1200 /Times-Roman-Acnt F
+( keys.  The interpretation of each key ) S
+10800 35706 M (on the keyboard is not fixed, but can be changed by the user.) S
+10800 33306 M (For example, the "A" key defaults to producing an "a" when the SHIFT key is up and an ) S
+10800 31506 M ("A" when the SHIFT key is down.) S
+10800 29106 M (While, it is unlikely anyone would want to change the "A" key, users sometimes wish to ) S
+10800 27306 M (change the interpretation of the non-alphanumeric keys such as the blank keys on the ) S
+10800 25506 M (right of the Dolphin/Dorado keyboard or the row of editing keys on the top of the ) S
+10800 23706 M (Dandelion keyboard.) S
+1200 /Times-Bold-Acnt F
+10800 21306 M (KEYACTION) S
+1200 /Times-Roman-Acnt F
+( is the function that can be used to change the interpretation of a key.  ) S
+10800 19506 M (Keyaction takes two arguments: a ) S
+1200 /Times-Italic-Acnt F
+(KeyName) S
+1200 /Times-Roman-Acnt F
+( and an ) S
+1200 /Times-Italic-Acnt F
+(Action) S
+1200 /Times-Roman-Acnt F
+(.  ) S
+1200 /Times-Italic-Acnt F
+14400 17106 M (KeyName ) S
+1200 /Times-Roman-Acnt F
+(is the name of the key whose interpretation is to be changed.  Most ) S
+14400 15306 M (keys are named by the character \(or any of the characters\) that appears on them.  ) S
+14400 13506 M (For example, the "A" key is named "A" or "a", while the "1" key is named "1" or ) S
+14400 11706 M ("!".) S
+grestore savepage restore showpage
+
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (3) S
+7200 75600 M (LispCourse #10:  Miscellaneous Issues Regarding Type-in) S
+18000 71106 M (Special keys are named in the obvious way: For the Dolphin/Dorado they ) S
+18000 69306 M (are: TAB, LF, DEL, BLANK-TOP, BLANK-MIDDLE, BLANK-) S
+18000 67506 M (BOTTOM, SPACE, LSHIFT, RSHIFT, CTRL, ESC.) S
+18000 65106 M (For the Dandelion, the special keys are SKIP, NEXT, UNDO, MOVE, ) S
+18000 63306 M (MARGINS, FIND, LARGER, SMALLER, etc.  ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+14400 59706 M (Action) S
+1200 /Times-Roman-Acnt F
+( is either NIL or the action that should be taken when the key is pushed ) S
+14400 57906 M (down and when it is let up.) S
+18000 55106 M (If ) S
+1200 /Times-Italic-Acnt F
+(Action) S
+1200 /Times-Roman-Acnt F
+( is NIL, then KEYACTION just returns the current interpretation ) S
+18000 53306 M (of the key.) S
+18000 50906 M (Otherwise) S
+1200 /Times-Italic-Acnt F
+(, Action) S
+1200 /Times-Roman-Acnt F
+( is of the form \() S
+1200 /Times-Italic-Acnt F
+(DownAction . UpAction) S
+1200 /Times-Roman-Acnt F
+(\), where ) S
+1200 /Times-Italic-Acnt F
+18000 49106 M (DownAction) S
+1200 /Times-Roman-Acnt F
+( is the specification of what should happen when the key is ) S
+18000 47306 M (pressed down and ) S
+1200 /Times-Italic-Acnt F
+(UpAction) S
+1200 /Times-Roman-Acnt F
+( is a specification of what should happen when ) S
+18000 45506 M (the key is let up.) S
+18000 43106 M (Each action specifications can be one of the following: ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 40106 M (NIL) S
+1200 /Times-Roman-Acnt F
+( \234 specifies that no action should be taken.) S
+21600 37106 M (\() S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Character ShiftedCharacter LockedShifted?) S
+1200 /Times-Roman-Acnt F
+(\) \234 ) S
+1200 /Times-Italic-Acnt F
+(Character) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Italic-Acnt F
+21600 35306 M (ShiftedCharacter ) S
+1200 /Times-Roman-Acnt F
+(are either single characters or ASCII character ) S
+21600 33506 M (codes standing for characters.  ) S
+1200 /Times-Italic-Acnt F
+(Character) S
+1200 /Times-Roman-Acnt F
+( is the code to be ) S
+21600 31706 M (transmitted when the key is pressed or let up without the SHIFT ) S
+21600 29906 M (key down.  ) S
+1200 /Times-Italic-Acnt F
+(ShiftedCharacter) S
+1200 /Times-Roman-Acnt F
+( is the code to be transmitted when the ) S
+21600 28106 M (SHIFT key is down.) S
+1200 /Times-Italic-Acnt F
+25200 25706 M (LockedShifted) S
+1200 /Times-Roman-Acnt F
+( can be either LOCKSHIFT or ) S
+25200 23906 M (NOLOCKSHIFT, indicating whether the ) S
+1200 /Times-Italic-Acnt F
+(Character) S
+1200 /Times-Roman-Acnt F
+( or the ) S
+1200 /Times-Italic-Acnt F
+25200 22106 M (ShiftedCharacter) S
+1200 /Times-Roman-Acnt F
+( is to be transmitted when the LOCK ) S
+25200 20306 M (SHIFT is down.  For example, alphabetic keys are usually ) S
+25200 18506 M (LOCKSHIFT and numeric keys are usually ) S
+25200 16706 M (NOLOCKSHIFT.  When the LOCK SHIFT is down, the ) S
+25200 14906 M ("1" key transmits a "1" and not a "!", but when the SHIFT ) S
+25200 13106 M (is down it transmits a "!".  The "A" key transmits a "A" ) S
+25200 11306 M (when both the SHIFT and the LOCK SHIFT are down.) S
+grestore savepage restore showpage
+
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (4) S
+7200 75600 M (LispCourse #10:  Miscellaneous Issues Regarding Type-in) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 71106 M (LOCKUP, LOCKDOWN, CTRLUP, CTRLDOWN, ) S
+21600 69306 M (METAUP, METADOWN, 1SHIFTUP, 1SHIFTDOWN, ) S
+21600 67506 M (2SHIFTUP, 2SHIFTDOWN) S
+1200 /Times-Roman-Acnt F
+( \234 when one of these is used as an ) S
+21600 65706 M (action specification it changes the internal variables in Lisp that ) S
+21600 63906 M (determine whether characters will be transmitted as Shifted, ) S
+21600 62106 M (Control, Meta, and or LockShifted characters.) S
+25200 59106 M (For example, if a key is specified as having a down action ) S
+25200 57306 M (of LOCKDOWN, the pressing this key will be like pressing ) S
+25200 55506 M (down the LOCK key on most keyboards.  If another key ) S
+25200 53706 M (has a down action of LOCKUP, the ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(pressing) S
+1200 /Times-Roman-Acnt F
+( ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(down) S
+1200 /Times-Roman-Acnt F
+( this key ) S
+25200 51906 M (will be like letting ) S
+1200 /Times-BoldItalic-Acnt F
+(up) S
+1200 /Times-Roman-Acnt F
+( on the LOCK key.) S
+14400 48306 M (Examples:) S
+18000 45306 M (To set the "A" key to its ordinary interpretation:) S
+1200 /Times-Italic-Acnt F
+21600 43306 M (\(KEYACTION 'A '\(\(a A LOCKSHIFT\) . NIL\)\)) S
+1200 /Times-Roman-Acnt F
+18000 40706 M (To set the "1" key to its ordinary interpretation:) S
+1200 /Times-Italic-Acnt F
+21600 38706 M (\(KEYACTION '1 '\(\(49 ! NOLOCKSHIFT\) . NIL\)\)) S
+1200 /Times-Roman-Acnt F
+18000 36106 M (To set the "A" key so that it works when the key is let up rather than when ) S
+18000 34306 M (it is pressed down:) S
+1200 /Times-Italic-Acnt F
+21600 32306 M (\(KEYACTION 'A '\(NIL . \(a A LOCKSHIFT\)\)\)) S
+1200 /Times-Roman-Acnt F
+18000 29706 M (To set the "A" key so that it works BOTH when the key is let up and when ) S
+18000 27906 M (it is pressed down:) S
+1200 /Times-Italic-Acnt F
+21600 25906 M (\(KEYACTION 'A '\(\(a A LOCKSHIFT\) . \(a A LOCKSHIFT\)\)\)) S
+1200 /Times-Roman-Acnt F
+18000 23306 M (To set the "A" key work only when pressed down, but to transmit a "B" ) S
+18000 21506 M (instead of an "A":) S
+1200 /Times-Italic-Acnt F
+21600 19506 M (\(KEYACTION 'A '\(\(b B LOCKSHIFT\) . NIL\)\)) S
+1200 /Times-Roman-Acnt F
+18000 16906 M (On a Dandelion to make the LOCK key be the CTRL key:) S
+1200 /Times-Italic-Acnt F
+21600 14906 M (\(KEYACTION 'LOCK '\(CTRLDOWN . CTRLUP\)\)) S
+1200 /Times-Roman-Acnt F
+18000 12306 M (To make the BS key transmit a BS \(Ctrl-A\) when unshifted and a ) S
+18000 10506 M (BackWord \(Ctrl-W\) when shifted, both to take effect on the down press:) S
+1200 /Times-Italic-Acnt F
+21600 8506 M (\(KEYACTION 'BS '\(\(1 23 NOLOCKSHIFT\) . NIL\)\)) S
+grestore savepage restore showpage
+
+%%Page: 5 5
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (5) S
+7200 75600 M (LispCourse #10:  Miscellaneous Issues Regarding Type-in) S
+14400 71106 M (Documentation:  KEYACTION is documented on page 18.8 of the IRM.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 67706 M (CHARCODE) S
+1200 /Times-Roman-Acnt F
+( is a function that returns the ASCII code of a character.  This is useful in ) S
+10800 65906 M (figuring out the ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Character) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Italic-Acnt F
+(ShiftedCharacter) S
+1200 /Times-Roman-Acnt F
+( arguments in KEYACTION.) S
+14400 63306 M (CHARCODE takes one argument, a character.  Since it is an NLAMBDA ) S
+14400 61506 M (function, this character need not be quoted.  CTRL characters are indicated by a ) S
+14400 59706 M ("^" prefix, as in "^A".  META characters are indicated by a "#" prefix as in "#A" ) S
+14400 57906 M (or "#^A".  Certain special characters have their own names such as CR, LF, ) S
+14400 56106 M (SPACE, ESC, BS, TAB,  and DEL.) S
+14400 53706 M (Examples:) S
+18000 51706 M (\(CHARCODE BS\) returns 8) S
+18000 49706 M (\(CHARCODE A\) returns 65) S
+18000 47706 M (\(CHARCODE a \) returns 97) S
+18000 45706 M (\(CHARCODE ^A\) returns 1) S
+18000 43706 M (\(CHARCODE #A\) returns 193) S
+18000 41706 M (\(CHARCODE #^A\) returns 129.) S
+14400 38906 M (Documentation can be found on page 2.12 of the IRM.) S
+1400 /Times-Bold-Acnt F
+7200 35157 M (The TTY Process) S
+1200 /Times-Roman-Acnt F
+10800 32106 M (At any given time, there are several things going on in your Interlisp-D environment.  For ) S
+10800 30306 M (example, you may be editing a file in a TEdit window while you are copying another file ) S
+10800 28506 M (in your Exec window.  Also the clock window is constantly updating the time and Lafite ) S
+10800 26706 M (is constanttly checking if you have new mail.) S
+10800 24106 M (Roughly speaking, each thing that is going on in your environment at one time is called a ) S
+1200 /Times-Italic-Acnt F
+10800 22306 M (process) S
+1200 /Times-Roman-Acnt F
+(.   The Interlisp-D environment is said to allow ) S
+1200 /Times-Italic-Acnt F
+(multiple processes) S
+1200 /Times-Roman-Acnt F
+(, i.e., many ) S
+10800 20506 M (things going on simultaneously.  ) S
+10800 17906 M (A process usually is associated with one or more windows.  For example, each TEdit is a ) S
+10800 16106 M (process and is associated with a TEdit window.  There are, however, process with several ) S
+10800 14306 M (windows as well as processes without any windows.) S
+10800 11706 M (Understanding multiple processes, how to manage them and how to use them effectively ) S
+10800 9906 M (is the topic for another whole session.) S
+grestore savepage restore showpage
+
+%%Page: 6 6
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (6) S
+7200 75600 M (LispCourse #10:  Miscellaneous Issues Regarding Type-in) S
+10800 71106 M (However, we need to know about one special process called the ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(TTY process) S
+1200 /Times-Roman-Acnt F
+(.) S
+10800 68506 M (At any given time there may be many processes running in your environment, but there is ) S
+10800 66706 M (only one keyboard.  Therefore, there is only one process that can receive input from the ) S
+10800 64906 M (keyboard at any given time.   Interlisp handles this problem by allowing only one process ) S
+10800 63106 M (at a time to "own" the keyboard.) S
+10800 60506 M (The process which "owns" the keyboard at a given moment is known as the ) S
+1200 /Times-BoldItalic-Acnt F
+(TTY process) S
+1200 /Times-Roman-Acnt F
+(.  ) S
+10800 58706 M (When the user types at the keyboard, the typed input gets sent to the TTY process for ) S
+10800 56906 M (processing.  If the TTY process is the Lisp exec, then the input gets evaluated.  If the ) S
+10800 55106 M (TTY process is a TEdit, then the input gets entered into the file being edited. ) S
+10800 52506 M (The TTY process can be moved from process to process in many ways under both user ) S
+10800 50706 M (and program control.  ) S
+10800 48106 M (Clicking with the mouse in a window usually makes the process associated with that ) S
+10800 46306 M (window become the TTY process.  For example, if you have two TEdits running.  If you ) S
+10800 44506 M (click in the first TEdit window, your type in will be dispatched to that TEdit.  However, ) S
+10800 42706 M (if you then click in the second TEdit window subsequent type-in will be dispatched to the ) S
+10800 40906 M (second TEdit.  If you then click in the Exec window, subsequent type-in will go to the ) S
+10800 39106 M (Lisp Exec.) S
+10800 36506 M (A window whose process is the TTY process usually contains a blinking caret that ) S
+10800 34706 M (indicates where the type-in will be put.  Usually, windows that are not associated with the ) S
+10800 32906 M (TTY process have a caret that is not blinking.  Therefore, the blinking caret generally ) S
+10800 31106 M (indicates which window contains the TTY process.) S
+10800 28506 M (The concept of a TTY process should become second nature to you as you use the ) S
+10800 26706 M (Interlisp environment.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 22957 M (Interrupt Characters) S
+1200 /Times-Roman-Acnt F
+10800 19906 M (Some characters, known as ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(interrupt characters,) S
+1200 /Times-Roman-Acnt F
+( bypass the normal Lisp type-in ) S
+10800 18106 M (processing altogether.  Immediately after these characters are typed-in, they are ) S
+10800 16306 M (dispatched to the interrupt mechanism.  The interrupt mechanism then interrupts the ) S
+10800 14506 M (ongpoing Lisp processing.  How processing is interrupted is determined by what specific ) S
+10800 12706 M (interrupt character was typed.) S
+grestore savepage restore showpage
+
+%%Page: 7 7
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (7) S
+7200 75600 M (LispCourse #10:  Miscellaneous Issues Regarding Type-in) S
+10800 71106 M (Interrupt characters generally affect only the current TTY process.  Moreover, which ) S
+10800 69306 M (interrupt characters are activated at a given time is determined by the TTY process at that ) S
+10800 67506 M (time.  Many programs \(e.g., TEdit\) turn off all or certain interrupt characters while they ) S
+10800 65706 M (are the TTY process.  Thus interrupt characters may differ depending on what programs ) S
+10800 63906 M (are running and what programs have the TTY process.) S
+10800 60906 M (There is a default set of interrupt characters that are generally in effect when you are ) S
+10800 59106 M (typing into the Lisp Exec window.  These characters are the following:) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 56506 M (Ctrl-B) S
+1200 /Times-Roman-Acnt F
+( \234 causes the TTY process to go into a break, opening abreak window.) S
+1200 /Times-Bold-Acnt F
+14400 53906 M (Ctrl-C) S
+1200 /Times-Roman-Acnt F
+( \234 causes Lisp to enter RAID or TELERAID, a debugger where no sane ) S
+14400 52106 M (Lisp user wishes to tread.) S
+1200 /Times-Bold-Acnt F
+14400 49506 M (Ctrl-D ) S
+1200 /Times-Roman-Acnt F
+(\234 immediately aborts the current TTY process.) S
+1200 /Times-Bold-Acnt F
+14400 46906 M (Ctrl-E) S
+1200 /Times-Roman-Acnt F
+( \234 causes a soft abort of the TTY process at the next sensible time.  The ) S
+14400 45106 M (abort is soft because the aborted process can abort the abort if it has the ) S
+14400 43306 M (mechanism to handle the situation.) S
+1200 /Times-Bold-Acnt F
+14400 40706 M (Ctrl-H) S
+1200 /Times-Roman-Acnt F
+( \234 Pops up a menu listing all currently running processes.  Selecting a ) S
+14400 38906 M (process from this menu cause that process to go into a break.) S
+1200 /Times-Bold-Acnt F
+14400 36306 M (Ctrl-T) S
+1200 /Times-Roman-Acnt F
+( \234 prints some statistics about the TTY process in the TTY processes ) S
+14400 34506 M (window.) S
+1200 /Times-Bold-Acnt F
+10800 31306 M (INTERRUPTCHAR) S
+1200 /Times-Roman-Acnt F
+( is a function that can be used to alter the interrupt status of a given ) S
+10800 29506 M (character.  INTERRUPTCHAR takes two arguments: ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(CharacterCode) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Italic-Acnt F
+(InterruptType) S
+1200 /Times-Roman-Acnt F
+(.) S
+1200 /Times-Italic-Acnt F
+14400 26906 M (CharacterCode) S
+1200 /Times-Roman-Acnt F
+( is the ASCII code for the character whose interrupot status is ) S
+14400 25106 M (being altered.  The ASCII code can be obtained using CHARCODE.  For ) S
+14400 23306 M (example, Ctrl-C is \(CHARCODE ^C\) is 3.) S
+1200 /Times-Italic-Acnt F
+14400 20706 M (InterruptType) S
+1200 /Times-Roman-Acnt F
+( is an atom stating what the new interrupt status should be.  The ) S
+14400 18906 M (possible values are:) S
+1200 /Times-Bold-Acnt F
+18000 16606 M (NIL) S
+1200 /Times-Roman-Acnt F
+( \234 turn off this character's interrupt status altogether.  The character ) S
+18000 14806 M (will no longer be processed by the interrupt mechanism.) S
+1200 /Times-Bold-Acnt F
+18000 12506 M (RESET) S
+1200 /Times-Roman-Acnt F
+( \234 make this character act like Ctrl-D ordinarly does.) S
+1200 /Times-Bold-Acnt F
+18000 10206 M (ERROR) S
+1200 /Times-Roman-Acnt F
+( \234 make this character act like Ctrl-E ordinarly does.) S
+grestore savepage restore showpage
+
+%%Page: 8 8
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (8) S
+7200 75600 M (LispCourse #10:  Miscellaneous Issues Regarding Type-in) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 71106 M (HELP) S
+1200 /Times-Roman-Acnt F
+( \234 make this character act like Ctrl-H ordinarly does.) S
+1200 /Times-Bold-Acnt F
+18000 68806 M (BREAK) S
+1200 /Times-Roman-Acnt F
+( \234 make this character act like Ctrl-B ordinarly does.) S
+1200 /Times-Bold-Acnt F
+18000 66506 M (RAID) S
+1200 /Times-Roman-Acnt F
+( \234 make this character act like Ctrl-C ordinarly does.) S
+1200 /Times-Bold-Acnt F
+18000 64206 M (CONTROL-T) S
+1200 /Times-Roman-Acnt F
+( \234 make this character act like Ctrl-T ordinarly does.) S
+14400 61606 M (Finally, if ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(InterruptType) S
+1200 /Times-Roman-Acnt F
+( is T, no change is made to the character's interrupt ) S
+14400 59806 M (status, but its current status is returned as the value of the call to ) S
+14400 58006 M (INTERRUPTCHAR.) S
+10800 55006 M (INTERRUPTCHAR is normally used to turn off unpleasant interrupt characters like Ctrl-) S
+10800 53206 M (C or to change the location of interrupts assigned to characters that are often hit by ) S
+10800 51406 M (mistake.  For example, Ctrl-H is BackSpace on many other systems such as the Vax.  I ) S
+10800 49606 M (often hit Ctrl-H by mistake when I meant BackSpace, especially after an extended ) S
+10800 47806 M (session using the Vax.  Therefore, I have the Ctrl-H function moved over to Ctrl-N.) S
+18000 45406 M (For example, my Init file contains the following three calls to ) S
+18000 43606 M (INTERRUPTCHAR:) S
+1200 /Times-Italic-Acnt F
+21600 41206 M (\(INTERRUPTCHAR \(CHARCODE ^C\) NIL\)) S
+1200 /Times-Roman-Acnt F
+( \234 turn off Ctrl-C) S
+1200 /Times-Italic-Acnt F
+21600 38806 M (\(INTERRUPTCHAR \(CHARCODE ^H\) NIL\)) S
+1200 /Times-Roman-Acnt F
+( \234 turn off Ctrl-H) S
+1200 /Times-Italic-Acnt F
+21600 36406 M (\(INTERRUPTCHAR \(CHARCODE ^N\) 'HELP\)) S
+1200 /Times-Roman-Acnt F
+( \234 make Ctrl-N be ) S
+21600 34606 M (old Ctrl-H) S
+1200 /Times-Bold-Acnt F
+10800 31606 M (Documentation:) S
+1200 /Times-Roman-Acnt F
+( interrupt characters and INTERRUPTCHAR are discussed in Sections ) S
+10800 29806 M (9.6, 18.1, and 18.20.6.2 of the IRM.  Most of the documentation is pretty technical.) S
+1200 /Times-Bold-Acnt F
+10800 26806 M (Final Note:) S
+1200 /Times-Roman-Acnt F
+(  Don't fool with interrupt characters.  Turn off the odious ones in your Init ) S
+10800 25006 M (file and then let them be.  Don't turn off Ctrl-D or Ctrl-E as it would then be hard to abort ) S
+10800 23206 M (a program running amok.) S
+1400 /Times-Bold-Acnt F
+7200 19457 M (References) S
+1200 /Times-Roman-Acnt F
+10800 16406 M (See Documentation notes under the various topics above.) S
+1400 /Times-Bold-Acnt F
+7200 12657 M (Exercises) S
+1200 /Times-Roman-Acnt F
+10800 9606 M (Work on old homeworks.) S
+grestore savepage restore showpage
+
+%%Trailer

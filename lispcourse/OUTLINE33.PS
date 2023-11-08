@@ -1,0 +1,1147 @@
+%!PS-Adobe-2.0%%Title: {DSK}<home>larry>lispcourse>OUTLINE33.PS%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate:  7-Nov-2023 21:40:20%%EndComments/bdef {bind def} bind def
+/ldef {load def} bdef
+/S /show ldef
+/M /moveto ldef
+/DR {transform round exch round exch itransform} bdef
+/L {gsave newpath setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/L1 {gsave newpath 0 setdash setgray setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/F {findfont exch scalefont setfont} bdef
+/CLP {newpath M dup 0 rlineto exch 0 exch rlineto
+  neg 0 rlineto closepath clip newpath} bdef
+/R {gsave setgray newpath M dup 0 rlineto exch 0 exch
+  rlineto neg 0 rlineto closepath eofill grestore} bdef
+/ellipsedict 9 dict def
+ellipsedict /mtrx matrix put
+/ellipse
+ { ellipsedict begin
+  /endangle exch def
+  /startangle exch def
+  /orientation exch def
+  /minorrad exch def
+  /majorrad exch def
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  orientation rotate
+  majorrad minorrad scale
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+ end } bdef
+/concatprocs
+ {/proc2 exch cvlit def
+  /proc1 exch cvlit def
+  /newproc proc1 length proc2 length add array def
+  newproc 0 proc1 putinterval
+  newproc proc1 length proc2 putinterval
+  newproc cvx
+ } bdef
+/resmatrix matrix def
+/findresolution
+ {72 0 resmatrix defaultmatrix dtransform
+  /yres exch def /xres exch def
+  xres dup mul yres dup mul add sqrt
+ } bdef
+/thebitimage
+ {/maskp exch def
+  /bihgt exch def
+  /biwid exch def
+  /byte 1 string def
+  /strbufl biwid 8 div ceiling cvi def
+  /strbuf strbufl string def
+  maskp not{{1 exch sub} currenttransfer concatprocs settransfer} if
+  biwid bihgt
+  maskp { true } { 1 } ifelse
+  [biwid 0 0 bihgt 0 0]
+  {/col 0 def
+   {currentfile byte readhexstring pop 0 get
+    dup 16#B2 eq {pop
+    currentfile byte readhexstring pop 0 get 1 add
+    currentfile byte readhexstring pop pop /nbyte byte 0 get def
+    { strbuf col nbyte put /col col 1 add def} repeat}
+   {dup 16#B3 eq {pop /col col
+    currentfile byte readhexstring pop
+    0 get add 1 add def}
+    {16#B4 eq {currentfile byte readhexstring pop pop} if
+     strbuf col byte 0 get put /col col 1 add def} ifelse
+   } ifelse
+   col strbufl ge { exit } if } loop
+   strbuf }
+  maskp { imagemask } { image } ifelse
+ } bdef
+/setuserscreendict 22 dict def
+setuserscreendict begin
+ /tempctm matrix def
+ /temprot matrix def
+ /tempscale matrix def
+end
+/setuserscreen
+ {setuserscreendict begin
+   /spotfunction exch def
+   /screenangle exch def
+   /cellsize exch def
+   /m tempctm currentmatrix def
+   /rm screenangle temprot rotate def
+   /sm cellsize dup tempscale scale def
+   sm rm m m concatmatrix m concatmatrix pop
+   1 0 m dtransform /y1 exch def /x1 exch def
+   /veclength x1 dup mul y1 dup mul add sqrt def
+   /frequency findresolution veclength div def
+   /newscreenangle y1 x1 atan def
+   m 2 get m 1 get mul m 0 get m 3 get mul sub
+   0 gt { { neg } /spotfunction load concatprocs
+          /spotfunction exch def } if
+   frequency newscreenangle /spotfunction load setscreen
+  end
+ } bdef
+/setpatterndict 18 dict def
+setpatterndict begin
+ /bitison
+  {/ybit exch def /xbit exch def
+   /bytevalue bstring ybit bwidth mul xbit 8 idiv add get def
+   /mask 1 7 xbit 8 mod sub bitshift def
+   bytevalue mask and 0 ne
+  } bdef
+end
+/bitpatternspotfunction
+ {setpatterndict begin
+   /y exch def /x exch def
+   /xindex x 1 add 2 div bpside mul 1 sub cvi def
+   /yindex y 1 add 2 div bpside mul 1 sub cvi def
+   xindex yindex bitison
+    {/onbits onbits 1 add def 1}
+    {/offbits offbits 1 add def 0} ifelse
+  end
+ } bdef
+/setpattern
+ {setpatterndict begin
+   /cellsz exch def
+   /angle exch def
+   /bwidth exch def
+   /bpside exch def
+   /bstring exch def
+   /onbits 0 def /offbits 0 def
+   cellsz angle /bitpatternspotfunction load setuserscreen
+   {} settransfer
+   offbits offbits onbits add div setgray
+  end
+ } bdef
+% - - - - - Fraction-setting code, to support NS fonts better - - - - -
+/fractiondict 20 dict def
+/fractionshow 
+{ fractiondict begin
+/denom exch def 
+/num exch def 
+/regfont currentfont def
+/fractfont currentfont [.65 0 0 .6 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(1) true charpath flattenpath pathbbox 
+/height exch def pop pop pop
+ grestore
+0 .4 height mul rmoveto
+fractfont setfont num show
+0 .4 height mul neg rmoveto regfont setfont (\244) show
+fractfont setfont denom show regfont setfont end } bdef
+/f14 { (1) (4) fractionshow } bdef
+/f12 { (1) (2) fractionshow } bdef
+/f34 { (3) (4) fractionshow } bdef
+/f18 { (1) (8) fractionshow } bdef
+/f38 { (3) (8) fractionshow } bdef
+/f58 { (5) (8) fractionshow } bdef
+/f78 { (7) (8) fractionshow } bdef
+/f13 { (1) (3) fractionshow } bdef
+/f23 { (2) (3) fractionshow } bdef
+/bboxdict 20 dict def
+/bboxchk { bboxdict begin
+/regfont currentfont def
+/chkfont currentfont [1.25 0 0 1.25 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(\161) true charpath flattenpath pathbbox 
+/height exch def pop pop pop 
+ grestore 
+ currentpoint 
+ .2 height mul .3 height mul rmoveto
+chkfont setfont (\063) show
+ moveto
+ regfont setfont
+(\161) show end } bdef
+/rencdict 15 dict def
+/encodefont { rencdict begin
+/newname exch def
+/oldfont exch def
+/newcodes [
+8#001 /Aacute
+8#002 /Acircumflex
+8#003 /Adieresis
+8#004 /Agrave
+8#005 /Aring
+8#006 /Atilde
+8#007 /Ccedilla
+8#010 /Eacute
+8#011 /Ecircumflex
+8#012 /Edieresis
+8#013 /Egrave
+8#014 /Iacute
+8#015 /Icircumflex
+8#016 /Idieresis
+8#017 /Igrave
+8#020 /Ntilde
+8#021 /Oacute
+8#022 /Ocircumflex
+8#023 /Odieresis
+8#024 /Ograve
+8#025 /Otilde
+8#026 /Scaron
+8#027 /Uacute
+8#030 /Ucircumflex
+8#031 /Udieresis
+8#032 /Ugrave
+8#033 /Ydieresis
+8#034 /Zcaron
+8#177 /periodinferior
+8#201 /aacute
+8#202 /acircumflex
+8#203 /adieresis
+8#204 /agrave
+8#205 /aring
+8#206 /atilde
+8#207 /ccedilla
+8#210 /eacute
+8#211 /ecircumflex
+8#212 /edieresis
+8#213 /egrave
+8#214 /iacute
+8#215 /icircumflex
+8#216 /idieresis
+8#217 /igrave
+8#220 /ntilde
+8#221 /oacute
+8#222 /ocircumflex
+8#223 /odieresis
+8#224 /ograve
+8#225 /otilde
+8#226 /scaron
+8#227 /uacute
+8#230 /ucircumflex
+8#231 /udieresis
+8#232 /ugrave
+8#233 /ydieresis
+8#234 /zcaron
+8#235 /Eth
+8#236 /eth
+8#237 /Thorn
+8#240 /thorn
+ ] def
+/olddict oldfont findfont def /newfont olddict maxlength dict def
+olddict { exch dup /FID ne { dup /Encoding eq
+{ exch dup length array copy newfont 3 1 roll put }
+{ exch newfont 3 1 roll put } ifelse }
+ { pop pop } ifelse } forall
+newfont /FontName newname put
+newcodes aload pop
+newcodes length 2 idiv { newfont /Encoding get 3 1 roll put } repeat 
+newname newfont definefont pop end } def
+ /accentdict 10 dict def 
+ /accentor { accentdict begin /scaler exch def /delta exch def 
+/unders exch def /accents exch def /mainch exch def /scrt (X) def
+ /w1 mainch stringwidth pop def 
+ currentpoint mainch show currentpoint 4 2 roll 
+accents { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         w1 w2 sub 2 div delta rmoveto scrt show 
+         /delta delta 150 scaler mul 9 div add def
+        } forall 
+unders { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         ch 46 eq { w1 w2 sub 2 div -175 scaler mul 9 div rmoveto scrt show 0 175 rmoveto }
+           { w1 w2 sub 2 div 0 rmoveto scrt show } ifelse 
+        } forall 
+ pop pop moveto end } def 
+%%EndProlog
+%%BeginSetup
+letter/imagesizefactor 1 def%%EndSetup/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+
+%%Page: 1 1
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+54000 75600 M (F.G.H.          ) S
+54000 73800 M (6/4/85) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (LispCourse #33:  Solutions for Homework #32) S
+1200 /Times-Bold-Acnt F
+7200 67306 M (Note) S
+1200 /Times-Roman-Acnt F
+10800 64706 M (This solution differs slightly from the assignment.  Instead of keeping global pointers ) S
+10800 62906 M (called LC.Head and LC.Tail, I created a record called LC.Queue with Head and Tail ) S
+10800 61106 M (fields \(as well as a field to indicate the last operation done on the queue to be used in the ) S
+10800 59306 M (empty and full predicates\).   This scheme allows multiple queues to be created at once, ) S
+10800 57506 M (each with its own head and tail pointers.) S
+1200 /Times-Bold-Acnt F
+7200 53706 M (Solutions to #1 thru 4, and 6 thru 9) S
+1200 /Times-Roman-Acnt F
+10800 51106 M (Attached) S
+grestore savepage restore showpage
+
+%%Page: 2 2
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (2) S
+7200 75600 M (LispCourse #33:  Solutions for Homework #32) S
+grestore savepage restore showpage
+
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (3) S
+7200 75600 M (LispCourse #33:  Solutions for Homework #32) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+7200 71106 M (Solution to #5) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 12800 57700 M
+stroke
+grestore
+18400 57700 12800 57700 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 18400 57700 M
+stroke
+grestore
+18400 57700 17361 57100 200 L
+18400 57700 17361 58300 200 L
+/Helvetica /Helvetica-Acnt encodefont
+1400 /Helvetica-Acnt F
+21527.5 60818.0 M (Head) S
+/Helvetica-Bold /Helvetica-Bold-Acnt encodefont
+1400 /Helvetica-Bold-Acnt F
+16729.0 66818.0 M (Result of \(SETQ Queue \(LC.MakeCircularQueue 10\)\)) S
+1400 /Helvetica-Acnt F
+34472.5 61218.0 M (Tail) S
+1400 /Helvetica-Acnt F
+32808.5 63618.0 M (LC.Queue) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 25600 59700 M
+stroke
+grestore
+25600 55700 25600 59700 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 25600 55700 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 38000 59700 M
+stroke
+grestore
+38000 55700 38000 59700 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 38000 55700 M
+stroke
+grestore
+4199 199 19901 55601 0 R
+4199 199 27901 55601 0 R
+199 7799 20101 59601 0 R
+199 7799 20101 55601 0 R
+4199 199 32301 55601 0 R
+4199 199 40301 55601 0 R
+199 7799 32501 59601 0 R
+199 7799 32501 55601 0 R
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 35200 58100 M
+stroke
+grestore
+35200 58100 23600 51700 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 23600 51700 M
+stroke
+grestore
+24220 52727 23600 51700 200 L
+24800 51677 23600 51700 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 22800 57700 M
+stroke
+grestore
+22800 51700 22800 57700 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 22800 51700 M
+stroke
+grestore
+22800 51700 22200 52739 200 L
+23400 52739 22800 51700 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 26800 57700 M
+stroke
+grestore
+32400 57700 26800 57700 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 32400 57700 M
+stroke
+grestore
+32400 57700 31361 57100 200 L
+32400 57700 31361 58300 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 39600 57700 M
+stroke
+grestore
+44000 57700 39600 57700 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 44000 57700 M
+stroke
+grestore
+44000 57700 42961 57100 200 L
+44000 57700 42961 58300 200 L
+1400 /Helvetica-Acnt F
+19841.5 49218.0 M (--> NIL) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 26000 50100 M
+stroke
+grestore
+39600 50100 26000 50100 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 39600 50100 M
+stroke
+grestore
+39600 50100 38561 49500 200 L
+39600 50100 38561 50700 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 24800 51300 M
+stroke
+grestore
+24800 47300 24800 51300 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 24800 47300 M
+stroke
+grestore
+4199 199 19101 47201 0 R
+4199 199 27101 47201 0 R
+199 7799 19301 51201 0 R
+199 7799 19301 47201 0 R
+4199 199 19101 39201 0 R
+4199 199 27101 39201 0 R
+199 7799 19301 43201 0 R
+199 7799 19301 39201 0 R
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 25600 34500 M
+stroke
+grestore
+25600 34500 22800 39300 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 22800 39300 M
+stroke
+grestore
+23842 38705 22800 39300 200 L
+22805 38100 22800 39300 200 L
+1400 /Helvetica-Acnt F
+19841.5 40818.0 M (--> NIL) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 26000 42500 M
+stroke
+grestore
+26000 42500 23200 47300 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 23200 47300 M
+stroke
+grestore
+24242 46705 23200 47300 200 L
+23205 46100 23200 47300 200 L
+1400 /Helvetica-Acnt F
+7497.5 57218.0 M (Queue) S
+4199 199 19101 31201 0 R
+4199 199 27101 31201 0 R
+199 7799 19301 35201 0 R
+199 7799 19301 31201 0 R
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 24800 35300 M
+stroke
+grestore
+24800 31300 24800 35300 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 24800 31300 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 24800 43300 M
+stroke
+grestore
+24800 39300 24800 43300 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 24800 39300 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 26000 26100 M
+stroke
+grestore
+26000 26100 23200 30900 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 23200 30900 M
+stroke
+grestore
+24242 30305 23200 30900 200 L
+23205 29700 23200 30900 200 L
+1400 /Helvetica-Acnt F
+19441.5 32418.0 M (--> NIL) S
+4199 199 19101 23201 0 R
+4199 199 27101 23201 0 R
+199 7799 19301 27201 0 R
+199 7799 19301 23201 0 R
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 24800 27300 M
+stroke
+grestore
+24800 23300 24800 27300 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 24800 23300 M
+stroke
+grestore
+4199 199 39901 31201 0 R
+4199 199 47901 31201 0 R
+199 7799 40101 35201 0 R
+199 7799 40101 31201 0 R
+4199 199 39901 39201 0 R
+4199 199 47901 39201 0 R
+199 7799 40101 43201 0 R
+199 7799 40101 39201 0 R
+4199 199 39901 47201 0 R
+4199 199 47901 47201 0 R
+199 7799 40101 51201 0 R
+199 7799 40101 47201 0 R
+4199 199 19101 15201 0 R
+4199 199 27101 15201 0 R
+199 7799 19301 19201 0 R
+199 7799 19301 15201 0 R
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 24800 19300 M
+stroke
+grestore
+24800 15300 24800 19300 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 24800 15300 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 26000 18100 M
+stroke
+grestore
+26000 18100 23200 22900 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 23200 22900 M
+stroke
+grestore
+24242 22305 23200 22900 200 L
+23205 21700 23200 22900 200 L
+1400 /Helvetica-Acnt F
+19441.5 24818.0 M (--> NIL) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 46800 18100 M
+stroke
+grestore
+46800 12900 46800 18100 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 46800 12900 M
+stroke
+grestore
+46800 12900 23600 12900 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 23600 12900 M
+stroke
+grestore
+23600 15300 23600 12900 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 23600 15300 M
+stroke
+grestore
+24200 14261 23600 15300 200 L
+23600 15300 23000 14261 200 L
+1400 /Helvetica-Acnt F
+19441.5 16818.0 M (--> NIL) S
+4199 199 39901 15201 0 R
+4199 199 47901 15201 0 R
+199 7799 40101 19201 0 R
+199 7799 40101 15201 0 R
+1400 /Helvetica-Acnt F
+40241.5 16818.0 M (--> NIL) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 46800 26100 M
+stroke
+grestore
+46800 26100 44800 19700 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 44800 19700 M
+stroke
+grestore
+44800 19700 44537 20871 200 L
+45683 20513 44800 19700 200 L
+4199 199 39901 23201 0 R
+4199 199 47901 23201 0 R
+199 7799 40101 27201 0 R
+199 7799 40101 23201 0 R
+1400 /Helvetica-Acnt F
+40241.5 24818.0 M (--> NIL) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 46800 33700 M
+stroke
+grestore
+46800 33700 44800 27300 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 44800 27300 M
+stroke
+grestore
+44800 27300 44537 28471 200 L
+45683 28113 44800 27300 200 L
+1400 /Helvetica-Acnt F
+40241.5 32818.0 M (--> NIL) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 46800 42100 M
+stroke
+grestore
+46800 42100 44800 35700 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 44800 35700 M
+stroke
+grestore
+44800 35700 44537 36871 200 L
+45683 36513 44800 35700 200 L
+1400 /Helvetica-Acnt F
+40241.5 40818.0 M (--> NIL) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 46800 50100 M
+stroke
+grestore
+46800 50100 44800 43700 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 44800 43700 M
+stroke
+grestore
+44800 43700 44537 44871 200 L
+45683 44513 44800 43700 200 L
+1400 /Helvetica-Acnt F
+40241.5 48818.0 M (--> NIL) S
+4199 199 43901 55601 0 R
+4199 199 51901 55601 0 R
+199 7799 44101 59601 0 R
+199 7799 44101 55601 0 R
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 45600 19300 M
+stroke
+grestore
+45600 15300 45600 19300 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 45600 15300 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 45600 27300 M
+stroke
+grestore
+45600 23300 45600 27300 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 45600 23300 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 45600 35300 M
+stroke
+grestore
+45600 31300 45600 35300 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 45600 31300 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 45600 43300 M
+stroke
+grestore
+45600 39300 45600 43300 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 45600 39300 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 45600 51300 M
+stroke
+grestore
+45600 47300 45600 51300 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 45600 47300 M
+stroke
+grestore
+1400 /Helvetica-Acnt F
+44485.5 57218.0 M (--> Add) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 49600 59700 M
+stroke
+grestore
+49600 55700 49600 59700 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 49600 55700 M
+stroke
+grestore
+1400 /Helvetica-Acnt F
+42803.0 60818.0 M (LastOperation) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 50800 57700 M
+stroke
+grestore
+53600 57700 50800 57700 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 53600 57700 M
+stroke
+grestore
+53600 57700 52561 57100 200 L
+53600 57700 52561 58300 200 L
+1400 /Helvetica-Acnt F
+53711.0 57218.0 M (NIL) S
+grestore savepage restore showpage
+
+%%Page: 5 5
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (4) S
+7200 75600 M (LispCourse #33:  Solutions for Homework #32) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+7200 71106 M (Test Run of Exerciser) S
+/Courier /Courier-Acnt encodefont
+1000 /Courier-Acnt F
+7200 69349 M (83_\(LC.ExerciseQueue 100 \(LC.MakeCircularQueue 30\)\)) S
+7200 67549 M (ITERATION # 1) S
+7200 66349 M (Queue is empty!) S
+7200 65149 M (Adding Item: 17) S
+7200 63949 M (ITERATION # 2) S
+7200 62749 M (Head of Queue: 17 :Tail of Queue) S
+7200 61549 M (Adding Item: 71) S
+7200 60349 M (ITERATION # 3) S
+7200 59149 M (Head of Queue: 17 71 :Tail of Queue) S
+7200 57949 M (Adding Item: 9) S
+7200 56749 M (ITERATION # 4) S
+7200 55549 M (Head of Queue: 17 71 9 :Tail of Queue) S
+7200 54349 M (Adding Item: 13) S
+7200 53149 M (ITERATION # 5) S
+7200 51949 M (Head of Queue: 17 71 9 13 :Tail of Queue) S
+7200 50749 M (Adding Item: 5) S
+7200 49549 M (ITERATION # 6) S
+7200 48349 M (Head of Queue: 17 71 9 13 5 :Tail of Queue) S
+7200 47149 M (Removing Item: 17) S
+7200 45949 M (ITERATION # 7) S
+7200 44749 M (Head of Queue: 71 9 13 5 :Tail of Queue) S
+7200 43549 M (Removing Item: 71) S
+7200 42349 M (ITERATION # 8) S
+7200 41149 M (Head of Queue: 9 13 5 :Tail of Queue) S
+7200 39949 M (Removing Item: 9) S
+7200 38749 M (ITERATION # 9) S
+7200 37549 M (Head of Queue: 13 5 :Tail of Queue) S
+7200 36349 M (Adding Item: 46) S
+7200 35149 M (ITERATION # 10) S
+7200 33949 M (Head of Queue: 13 5 46 :Tail of Queue) S
+7200 32749 M (Adding Item: 89) S
+7200 31549 M (ITERATION # 11) S
+7200 30349 M (Head of Queue: 13 5 46 89 :Tail of Queue) S
+7200 29149 M (Adding Item: 63) S
+7200 27949 M (ITERATION # 12) S
+7200 26749 M (Head of Queue: 13 5 46 89 63 :Tail of Queue) S
+7200 25549 M (Adding Item: 43) S
+7200 24349 M (ITERATION # 13) S
+7200 23149 M (Head of Queue: 13 5 46 89 63 43 :Tail of Queue) S
+7200 21949 M (Adding Item: 84) S
+7200 20749 M (ITERATION # 14) S
+7200 19549 M (Head of Queue: 13 5 46 89 63 43 84 :Tail of Queue) S
+7200 18349 M (Removing Item: 13) S
+7200 17149 M (ITERATION # 15) S
+7200 15949 M (Head of Queue: 5 46 89 63 43 84 :Tail of Queue) S
+7200 14749 M (Adding Item: 51) S
+7200 13549 M (ITERATION # 16) S
+7200 12349 M (Head of Queue: 5 46 89 63 43 84 51 :Tail of Queue) S
+7200 11149 M (Adding Item: 43) S
+7200 9949 M (ITERATION # 17) S
+7200 8749 M (Head of Queue: 5 46 89 63 43 84 51 43 :Tail of Queue) S
+grestore savepage restore showpage
+
+%%Page: 6 6
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (5) S
+7200 75600 M (LispCourse #33:  Solutions for Homework #32) S
+/Courier /Courier-Acnt encodefont
+1000 /Courier-Acnt F
+7200 71349 M (Removing Item: 5) S
+7200 70149 M (ITERATION # 18) S
+7200 68949 M (Head of Queue: 46 89 63 43 84 51 43 :Tail of Queue) S
+7200 67749 M (Adding Item: 68) S
+7200 66549 M (ITERATION # 19) S
+7200 65349 M (Head of Queue: 46 89 63 43 84 51 43 68 :Tail of Queue) S
+7200 64149 M (Adding Item: 8) S
+7200 62949 M (ITERATION # 20) S
+7200 61749 M (Head of Queue: 46 89 63 43 84 51 43 68 8 :Tail of Queue) S
+7200 60549 M (Removing Item: 46) S
+7200 59349 M (ITERATION # 21) S
+7200 58149 M (Head of Queue: 89 63 43 84 51 43 68 8 :Tail of Queue) S
+7200 56949 M (Removing Item: 89) S
+7200 55749 M (ITERATION # 22) S
+7200 54549 M (Head of Queue: 63 43 84 51 43 68 8 :Tail of Queue) S
+7200 53349 M (Adding Item: 71) S
+7200 52149 M (ITERATION # 23) S
+7200 50949 M (Head of Queue: 63 43 84 51 43 68 8 71 :Tail of Queue) S
+7200 49749 M (Adding Item: 19) S
+7200 48549 M (ITERATION # 24) S
+7200 47349 M (Head of Queue: 63 43 84 51 43 68 8 71 19 :Tail of Queue) S
+7200 46149 M (Adding Item: 30) S
+7200 44949 M (ITERATION # 25) S
+7200 43749 M (Head of Queue: 63 43 84 51 43 68 8 71 19 30 :Tail of Queue) S
+7200 42549 M (Adding Item: 3) S
+7200 41349 M (ITERATION # 26) S
+7200 40149 M (Head of Queue: 63 43 84 51 43 68 8 71 19 30 3 :Tail of Queue) S
+7200 38949 M (Removing Item: 63) S
+7200 37749 M (ITERATION # 27) S
+7200 36549 M (Head of Queue: 43 84 51 43 68 8 71 19 30 3 :Tail of Queue) S
+7200 35349 M (Adding Item: 97) S
+7200 34149 M (ITERATION # 28) S
+7200 32949 M (Head of Queue: 43 84 51 43 68 8 71 19 30 3 97 :Tail of Queue) S
+7200 31749 M (Adding Item: 69) S
+7200 30549 M (ITERATION # 29) S
+7200 29349 M (Head of Queue: 43 84 51 43 68 8 71 19 30 3 97 69 :Tail of Queue) S
+7200 28149 M (Removing Item: 43) S
+7200 26949 M (ITERATION # 30) S
+7200 25749 M (Head of Queue: 84 51 43 68 8 71 19 30 3 97 69 :Tail of Queue) S
+7200 24549 M (Removing Item: 84) S
+7200 23349 M (ITERATION # 31) S
+7200 22149 M (Head of Queue: 51 43 68 8 71 19 30 3 97 69 :Tail of Queue) S
+7200 20949 M (Adding Item: 4) S
+7200 19749 M (ITERATION # 32) S
+7200 18549 M (Head of Queue: 51 43 68 8 71 19 30 3 97 69 4 :Tail of Queue) S
+7200 17349 M (Adding Item: 41) S
+7200 16149 M (ITERATION # 33) S
+7200 14949 M (Head of Queue: 51 43 68 8 71 19 30 3 97 69 4 41 :Tail of Queue) S
+7200 13749 M (Removing Item: 51) S
+7200 12549 M (ITERATION # 34) S
+7200 11349 M (Head of Queue: 43 68 8 71 19 30 3 97 69 4 41 :Tail of Queue) S
+7200 10149 M (Adding Item: 37) S
+7200 8949 M (ITERATION # 35) S
+7200 7749 M (Head of Queue: 43 68 8 71 19 30 3 97 69 4 41 37 :Tail of Queue) S
+grestore savepage restore showpage
+
+%%Page: 7 7
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (6) S
+7200 75600 M (LispCourse #33:  Solutions for Homework #32) S
+/Courier /Courier-Acnt encodefont
+1000 /Courier-Acnt F
+7200 71349 M (Adding Item: 61) S
+7200 70149 M (ITERATION # 36) S
+7200 68949 M (Head of Queue: 43 68 8 71 19 30 3 97 69 4 41 37 61 :Tail of Queue) S
+7200 67749 M (Adding Item: 90) S
+7200 66549 M (ITERATION # 37) S
+7200 65349 M (Head of Queue: 43 68 8 71 19 30 3 97 69 4 41 37 61 90 :Tail of Queue) S
+7200 64149 M (Removing Item: 43) S
+7200 62949 M (ITERATION # 38) S
+7200 61749 M (Head of Queue: 68 8 71 19 30 3 97 69 4 41 37 61 90 :Tail of Queue) S
+7200 60549 M (Removing Item: 68) S
+7200 59349 M (ITERATION # 39) S
+7200 58149 M (Head of Queue: 8 71 19 30 3 97 69 4 41 37 61 90 :Tail of Queue) S
+7200 56949 M (Adding Item: 16) S
+7200 55749 M (ITERATION # 40) S
+7200 54549 M (Head of Queue: 8 71 19 30 3 97 69 4 41 37 61 90 16 :Tail of Queue) S
+7200 53349 M (Removing Item: 8) S
+7200 52149 M (ITERATION # 41) S
+7200 50949 M (Head of Queue: 71 19 30 3 97 69 4 41 37 61 90 16 :Tail of Queue) S
+7200 49749 M (Adding Item: 21) S
+7200 48549 M (ITERATION # 42) S
+7200 47349 M (Head of Queue: 71 19 30 3 97 69 4 41 37 61 90 16 21 :Tail of Queue) S
+7200 46149 M (Adding Item: 52) S
+7200 44949 M (ITERATION # 43) S
+7200 43749 M (Head of Queue: 71 19 30 3 97 69 4 41 37 61 90 16 21 52 :Tail of Queue) S
+7200 42549 M (Adding Item: 89) S
+7200 41349 M (ITERATION # 44) S
+7200 40149 M (Head of Queue: 71 19 30 3 97 69 4 41 37 61 90 16 21 52 89 :Tail of Queue) S
+7200 38949 M (Adding Item: 18) S
+7200 37749 M (ITERATION # 45) S
+7200 36549 M (Head of Queue: 71 19 30 3 97 69 4 41 37 61 90 16 21 52 89 18 :Tail of Queue) S
+7200 35349 M (Adding Item: 43) S
+7200 34149 M (ITERATION # 46) S
+7200 32949 M (Head of Queue: 71 19 30 3 97 69 4 41 37 61 90 16 21 52 89 18 43 :Tail of Queue) S
+7200 31749 M (Adding Item: 91) S
+7200 30549 M (ITERATION # 47) S
+7200 29349 M (Head of Queue: 71 19 30 3 97 69 4 41 37 61 90 16 21 52 89 18 43 91 ) S
+7200 28149 M (:Tail of Queue) S
+7200 26949 M (Removing Item: 71) S
+7200 25749 M (ITERATION # 48) S
+7200 24549 M (Head of Queue: 19 30 3 97 69 4 41 37 61 90 16 21 52 89 18 43 91 :Tail of Queue) S
+7200 23349 M (Adding Item: 12) S
+7200 22149 M (ITERATION # 49) S
+7200 20949 M (Head of Queue: 19 30 3 97 69 4 41 37 61 90 16 21 52 89 18 43 91 12 ) S
+7200 19749 M (:Tail of Queue) S
+7200 18549 M (Removing Item: 19) S
+7200 17349 M (ITERATION # 50) S
+7200 16149 M (Head of Queue: 30 3 97 69 4 41 37 61 90 16 21 52 89 18 43 91 12 :Tail of Queue) S
+7200 14949 M (Removing Item: 30) S
+7200 13749 M (ITERATION # 51) S
+7200 12549 M (Head of Queue: 3 97 69 4 41 37 61 90 16 21 52 89 18 43 91 12 :Tail of Queue) S
+7200 11349 M (Adding Item: 65) S
+7200 10149 M (ITERATION # 52) S
+7200 8949 M (Head of Queue: 3 97 69 4 41 37 61 90 16 21 52 89 18 43 91 12 65 :Tail of Queue) S
+7200 7749 M (Adding Item: 7) S
+grestore savepage restore showpage
+
+%%Page: 8 8
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (7) S
+7200 75600 M (LispCourse #33:  Solutions for Homework #32) S
+/Courier /Courier-Acnt encodefont
+1000 /Courier-Acnt F
+7200 71349 M (ITERATION # 53) S
+7200 70149 M (Head of Queue: 3 97 69 4 41 37 61 90 16 21 52 89 18 43 91 12 65 7 ) S
+7200 68949 M (:Tail of Queue) S
+7200 67749 M (Removing Item: 3) S
+7200 66549 M (ITERATION # 54) S
+7200 65349 M (Head of Queue: 97 69 4 41 37 61 90 16 21 52 89 18 43 91 12 65 7 :Tail of Queue) S
+7200 64149 M (Adding Item: 39) S
+7200 62949 M (ITERATION # 55) S
+7200 61749 M (Head of Queue: 97 69 4 41 37 61 90 16 21 52 89 18 43 91 12 65 7 39 ) S
+7200 60549 M (:Tail of Queue) S
+7200 59349 M (Adding Item: 1) S
+7200 58149 M (ITERATION # 56) S
+7200 56949 M (Head of Queue: 97 69 4 41 37 61 90 16 21 52 89 18 43 91 12 65 7 39 1 ) S
+7200 55749 M (:Tail of Queue) S
+7200 54549 M (Removing Item: 97) S
+7200 53349 M (ITERATION # 57) S
+7200 52149 M (Head of Queue: 69 4 41 37 61 90 16 21 52 89 18 43 91 12 65 7 39 1 ) S
+7200 50949 M (:Tail of Queue) S
+7200 49749 M (Adding Item: 36) S
+7200 48549 M (ITERATION # 58) S
+7200 47349 M (Head of Queue: 69 4 41 37 61 90 16 21 52 89 18 43 91 12 65 7 39 1 36 ) S
+7200 46149 M (:Tail of Queue) S
+7200 44949 M (Adding Item: 34) S
+7200 43749 M (ITERATION # 59) S
+7200 42549 M (Head of Queue: 69 4 41 37 61 90 16 21 52 89 18 43 91 12 65 7 39 1 36 34 ) S
+7200 41349 M (:Tail of Queue) S
+7200 40149 M (Removing Item: 69) S
+7200 38949 M (ITERATION # 60) S
+7200 37749 M (Head of Queue: 4 41 37 61 90 16 21 52 89 18 43 91 12 65 7 39 1 36 34 ) S
+7200 36549 M (:Tail of Queue) S
+7200 35349 M (Removing Item: 4) S
+7200 34149 M (ITERATION # 61) S
+7200 32949 M (Head of Queue: 41 37 61 90 16 21 52 89 18 43 91 12 65 7 39 1 36 34 ) S
+7200 31749 M (:Tail of Queue) S
+7200 30549 M (Removing Item: 41) S
+7200 29349 M (ITERATION # 62) S
+7200 28149 M (Head of Queue: 37 61 90 16 21 52 89 18 43 91 12 65 7 39 1 36 34 :Tail of Queue) S
+7200 26949 M (Adding Item: 72) S
+7200 25749 M (ITERATION # 63) S
+7200 24549 M (Head of Queue: 37 61 90 16 21 52 89 18 43 91 12 65 7 39 1 36 34 72 ) S
+7200 23349 M (:Tail of Queue) S
+7200 22149 M (Removing Item: 37) S
+7200 20949 M (ITERATION # 64) S
+7200 19749 M (Head of Queue: 61 90 16 21 52 89 18 43 91 12 65 7 39 1 36 34 72 :Tail of Queue) S
+7200 18549 M (Removing Item: 61) S
+7200 17349 M (ITERATION # 65) S
+7200 16149 M (Head of Queue: 90 16 21 52 89 18 43 91 12 65 7 39 1 36 34 72 :Tail of Queue) S
+7200 14949 M (Adding Item: 85) S
+7200 13749 M (ITERATION # 66) S
+7200 12549 M (Head of Queue: 90 16 21 52 89 18 43 91 12 65 7 39 1 36 34 72 85 :Tail of Queue) S
+7200 11349 M (Removing Item: 90) S
+7200 10149 M (ITERATION # 67) S
+7200 8949 M (Head of Queue: 16 21 52 89 18 43 91 12 65 7 39 1 36 34 72 85 :Tail of Queue) S
+7200 7749 M (Adding Item: 53) S
+grestore savepage restore showpage
+
+%%Page: 9 9
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (8) S
+7200 75600 M (LispCourse #33:  Solutions for Homework #32) S
+/Courier /Courier-Acnt encodefont
+1000 /Courier-Acnt F
+7200 71349 M (ITERATION # 68) S
+7200 70149 M (Head of Queue: 16 21 52 89 18 43 91 12 65 7 39 1 36 34 72 85 53 :Tail of Queue) S
+7200 68949 M (Removing Item: 16) S
+7200 67749 M (ITERATION # 69) S
+7200 66549 M (Head of Queue: 21 52 89 18 43 91 12 65 7 39 1 36 34 72 85 53 :Tail of Queue) S
+7200 65349 M (Removing Item: 21) S
+7200 64149 M (ITERATION # 70) S
+7200 62949 M (Head of Queue: 52 89 18 43 91 12 65 7 39 1 36 34 72 85 53 :Tail of Queue) S
+7200 61749 M (Removing Item: 52) S
+7200 60549 M (ITERATION # 71) S
+7200 59349 M (Head of Queue: 89 18 43 91 12 65 7 39 1 36 34 72 85 53 :Tail of Queue) S
+7200 58149 M (Adding Item: 80) S
+7200 56949 M (ITERATION # 72) S
+7200 55749 M (Head of Queue: 89 18 43 91 12 65 7 39 1 36 34 72 85 53 80 :Tail of Queue) S
+7200 54549 M (Adding Item: 97) S
+7200 53349 M (ITERATION # 73) S
+7200 52149 M (Head of Queue: 89 18 43 91 12 65 7 39 1 36 34 72 85 53 80 97 :Tail of Queue) S
+7200 50949 M (Removing Item: 89) S
+7200 49749 M (ITERATION # 74) S
+7200 48549 M (Head of Queue: 18 43 91 12 65 7 39 1 36 34 72 85 53 80 97 :Tail of Queue) S
+7200 47349 M (Removing Item: 18) S
+7200 46149 M (ITERATION # 75) S
+7200 44949 M (Head of Queue: 43 91 12 65 7 39 1 36 34 72 85 53 80 97 :Tail of Queue) S
+7200 43749 M (Removing Item: 43) S
+7200 42549 M (ITERATION # 76) S
+7200 41349 M (Head of Queue: 91 12 65 7 39 1 36 34 72 85 53 80 97 :Tail of Queue) S
+7200 40149 M (Removing Item: 91) S
+7200 38949 M (ITERATION # 77) S
+7200 37749 M (Head of Queue: 12 65 7 39 1 36 34 72 85 53 80 97 :Tail of Queue) S
+7200 36549 M (Adding Item: 36) S
+7200 35349 M (ITERATION # 78) S
+7200 34149 M (Head of Queue: 12 65 7 39 1 36 34 72 85 53 80 97 36 :Tail of Queue) S
+7200 32949 M (Adding Item: 40) S
+7200 31749 M (ITERATION # 79) S
+7200 30549 M (Head of Queue: 12 65 7 39 1 36 34 72 85 53 80 97 36 40 :Tail of Queue) S
+7200 29349 M (Adding Item: 1) S
+7200 28149 M (ITERATION # 80) S
+7200 26949 M (Head of Queue: 12 65 7 39 1 36 34 72 85 53 80 97 36 40 1 :Tail of Queue) S
+7200 25749 M (Removing Item: 12) S
+7200 24549 M (ITERATION # 81) S
+7200 23349 M (Head of Queue: 65 7 39 1 36 34 72 85 53 80 97 36 40 1 :Tail of Queue) S
+7200 22149 M (Adding Item: 28) S
+7200 20949 M (ITERATION # 82) S
+7200 19749 M (Head of Queue: 65 7 39 1 36 34 72 85 53 80 97 36 40 1 28 :Tail of Queue) S
+7200 18549 M (Removing Item: 65) S
+7200 17349 M (ITERATION # 83) S
+7200 16149 M (Head of Queue: 7 39 1 36 34 72 85 53 80 97 36 40 1 28 :Tail of Queue) S
+7200 14949 M (Removing Item: 7) S
+7200 13749 M (ITERATION # 84) S
+7200 12549 M (Head of Queue: 39 1 36 34 72 85 53 80 97 36 40 1 28 :Tail of Queue) S
+7200 11349 M (Adding Item: 85) S
+7200 10149 M (ITERATION # 85) S
+7200 8949 M (Head of Queue: 39 1 36 34 72 85 53 80 97 36 40 1 28 85 :Tail of Queue) S
+7200 7749 M (Adding Item: 22) S
+grestore savepage restore showpage
+
+%%Page: 10 10
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (9) S
+7200 75600 M (LispCourse #33:  Solutions for Homework #32) S
+/Courier /Courier-Acnt encodefont
+1000 /Courier-Acnt F
+7200 71349 M (ITERATION # 86) S
+7200 70149 M (Head of Queue: 39 1 36 34 72 85 53 80 97 36 40 1 28 85 22 :Tail of Queue) S
+7200 68949 M (Removing Item: 39) S
+7200 67749 M (ITERATION # 87) S
+7200 66549 M (Head of Queue: 1 36 34 72 85 53 80 97 36 40 1 28 85 22 :Tail of Queue) S
+7200 65349 M (Removing Item: 1) S
+7200 64149 M (ITERATION # 88) S
+7200 62949 M (Head of Queue: 36 34 72 85 53 80 97 36 40 1 28 85 22 :Tail of Queue) S
+7200 61749 M (Adding Item: 9) S
+7200 60549 M (ITERATION # 89) S
+7200 59349 M (Head of Queue: 36 34 72 85 53 80 97 36 40 1 28 85 22 9 :Tail of Queue) S
+7200 58149 M (Adding Item: 77) S
+7200 56949 M (ITERATION # 90) S
+7200 55749 M (Head of Queue: 36 34 72 85 53 80 97 36 40 1 28 85 22 9 77 :Tail of Queue) S
+7200 54549 M (Adding Item: 50) S
+7200 53349 M (ITERATION # 91) S
+7200 52149 M (Head of Queue: 36 34 72 85 53 80 97 36 40 1 28 85 22 9 77 50 :Tail of Queue) S
+7200 50949 M (Adding Item: 59) S
+7200 49749 M (ITERATION # 92) S
+7200 48549 M (Head of Queue: 36 34 72 85 53 80 97 36 40 1 28 85 22 9 77 50 59 :Tail of Queue) S
+7200 47349 M (Removing Item: 36) S
+7200 46149 M (ITERATION # 93) S
+7200 44949 M (Head of Queue: 34 72 85 53 80 97 36 40 1 28 85 22 9 77 50 59 :Tail of Queue) S
+7200 43749 M (Removing Item: 34) S
+7200 42549 M (ITERATION # 94) S
+7200 41349 M (Head of Queue: 72 85 53 80 97 36 40 1 28 85 22 9 77 50 59 :Tail of Queue) S
+7200 40149 M (Adding Item: 21) S
+7200 38949 M (ITERATION # 95) S
+7200 37749 M (Head of Queue: 72 85 53 80 97 36 40 1 28 85 22 9 77 50 59 21 :Tail of Queue) S
+7200 36549 M (Adding Item: 73) S
+7200 35349 M (ITERATION # 96) S
+7200 34149 M (Head of Queue: 72 85 53 80 97 36 40 1 28 85 22 9 77 50 59 21 73 :Tail of Queue) S
+7200 32949 M (Adding Item: 49) S
+7200 31749 M (ITERATION # 97) S
+7200 30549 M (Head of Queue: 72 85 53 80 97 36 40 1 28 85 22 9 77 50 59 21 73 49 ) S
+7200 29349 M (:Tail of Queue) S
+7200 28149 M (Removing Item: 72) S
+7200 26949 M (ITERATION # 98) S
+7200 25749 M (Head of Queue: 85 53 80 97 36 40 1 28 85 22 9 77 50 59 21 73 49 :Tail of Queue) S
+7200 24549 M (Removing Item: 85) S
+7200 23349 M (ITERATION # 99) S
+7200 22149 M (Head of Queue: 53 80 97 36 40 1 28 85 22 9 77 50 59 21 73 49 :Tail of Queue) S
+7200 20949 M (Adding Item: 64) S
+7200 19749 M (ITERATION # 100) S
+7200 18549 M (Head of Queue: 53 80 97 36 40 1 28 85 22 9 77 50 59 21 73 49 64 :Tail of Queue) S
+7200 17349 M (Adding Item: 83) S
+7200 16149 M (Head of Queue: 53 80 97 36 40 1 28 85 22 9 77 50 59 21 73 49 64 83 ) S
+7200 14949 M (:Tail of Queue) S
+7200 13749 M (NIL) S
+7200 12549 M (84_) S
+grestore savepage restore showpage
+
+%%Trailer

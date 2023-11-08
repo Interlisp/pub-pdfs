@@ -1,0 +1,1312 @@
+%!PS-Adobe-2.0%%Title: {DSK}<home>larry>lispcourse>OUTLINE12.PS%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate:  7-Nov-2023 21:40:00%%EndComments/bdef {bind def} bind def
+/ldef {load def} bdef
+/S /show ldef
+/M /moveto ldef
+/DR {transform round exch round exch itransform} bdef
+/L {gsave newpath setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/L1 {gsave newpath 0 setdash setgray setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/F {findfont exch scalefont setfont} bdef
+/CLP {newpath M dup 0 rlineto exch 0 exch rlineto
+  neg 0 rlineto closepath clip newpath} bdef
+/R {gsave setgray newpath M dup 0 rlineto exch 0 exch
+  rlineto neg 0 rlineto closepath eofill grestore} bdef
+/ellipsedict 9 dict def
+ellipsedict /mtrx matrix put
+/ellipse
+ { ellipsedict begin
+  /endangle exch def
+  /startangle exch def
+  /orientation exch def
+  /minorrad exch def
+  /majorrad exch def
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  orientation rotate
+  majorrad minorrad scale
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+ end } bdef
+/concatprocs
+ {/proc2 exch cvlit def
+  /proc1 exch cvlit def
+  /newproc proc1 length proc2 length add array def
+  newproc 0 proc1 putinterval
+  newproc proc1 length proc2 putinterval
+  newproc cvx
+ } bdef
+/resmatrix matrix def
+/findresolution
+ {72 0 resmatrix defaultmatrix dtransform
+  /yres exch def /xres exch def
+  xres dup mul yres dup mul add sqrt
+ } bdef
+/thebitimage
+ {/maskp exch def
+  /bihgt exch def
+  /biwid exch def
+  /byte 1 string def
+  /strbufl biwid 8 div ceiling cvi def
+  /strbuf strbufl string def
+  maskp not{{1 exch sub} currenttransfer concatprocs settransfer} if
+  biwid bihgt
+  maskp { true } { 1 } ifelse
+  [biwid 0 0 bihgt 0 0]
+  {/col 0 def
+   {currentfile byte readhexstring pop 0 get
+    dup 16#B2 eq {pop
+    currentfile byte readhexstring pop 0 get 1 add
+    currentfile byte readhexstring pop pop /nbyte byte 0 get def
+    { strbuf col nbyte put /col col 1 add def} repeat}
+   {dup 16#B3 eq {pop /col col
+    currentfile byte readhexstring pop
+    0 get add 1 add def}
+    {16#B4 eq {currentfile byte readhexstring pop pop} if
+     strbuf col byte 0 get put /col col 1 add def} ifelse
+   } ifelse
+   col strbufl ge { exit } if } loop
+   strbuf }
+  maskp { imagemask } { image } ifelse
+ } bdef
+/setuserscreendict 22 dict def
+setuserscreendict begin
+ /tempctm matrix def
+ /temprot matrix def
+ /tempscale matrix def
+end
+/setuserscreen
+ {setuserscreendict begin
+   /spotfunction exch def
+   /screenangle exch def
+   /cellsize exch def
+   /m tempctm currentmatrix def
+   /rm screenangle temprot rotate def
+   /sm cellsize dup tempscale scale def
+   sm rm m m concatmatrix m concatmatrix pop
+   1 0 m dtransform /y1 exch def /x1 exch def
+   /veclength x1 dup mul y1 dup mul add sqrt def
+   /frequency findresolution veclength div def
+   /newscreenangle y1 x1 atan def
+   m 2 get m 1 get mul m 0 get m 3 get mul sub
+   0 gt { { neg } /spotfunction load concatprocs
+          /spotfunction exch def } if
+   frequency newscreenangle /spotfunction load setscreen
+  end
+ } bdef
+/setpatterndict 18 dict def
+setpatterndict begin
+ /bitison
+  {/ybit exch def /xbit exch def
+   /bytevalue bstring ybit bwidth mul xbit 8 idiv add get def
+   /mask 1 7 xbit 8 mod sub bitshift def
+   bytevalue mask and 0 ne
+  } bdef
+end
+/bitpatternspotfunction
+ {setpatterndict begin
+   /y exch def /x exch def
+   /xindex x 1 add 2 div bpside mul 1 sub cvi def
+   /yindex y 1 add 2 div bpside mul 1 sub cvi def
+   xindex yindex bitison
+    {/onbits onbits 1 add def 1}
+    {/offbits offbits 1 add def 0} ifelse
+  end
+ } bdef
+/setpattern
+ {setpatterndict begin
+   /cellsz exch def
+   /angle exch def
+   /bwidth exch def
+   /bpside exch def
+   /bstring exch def
+   /onbits 0 def /offbits 0 def
+   cellsz angle /bitpatternspotfunction load setuserscreen
+   {} settransfer
+   offbits offbits onbits add div setgray
+  end
+ } bdef
+% - - - - - Fraction-setting code, to support NS fonts better - - - - -
+/fractiondict 20 dict def
+/fractionshow 
+{ fractiondict begin
+/denom exch def 
+/num exch def 
+/regfont currentfont def
+/fractfont currentfont [.65 0 0 .6 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(1) true charpath flattenpath pathbbox 
+/height exch def pop pop pop
+ grestore
+0 .4 height mul rmoveto
+fractfont setfont num show
+0 .4 height mul neg rmoveto regfont setfont (\244) show
+fractfont setfont denom show regfont setfont end } bdef
+/f14 { (1) (4) fractionshow } bdef
+/f12 { (1) (2) fractionshow } bdef
+/f34 { (3) (4) fractionshow } bdef
+/f18 { (1) (8) fractionshow } bdef
+/f38 { (3) (8) fractionshow } bdef
+/f58 { (5) (8) fractionshow } bdef
+/f78 { (7) (8) fractionshow } bdef
+/f13 { (1) (3) fractionshow } bdef
+/f23 { (2) (3) fractionshow } bdef
+/bboxdict 20 dict def
+/bboxchk { bboxdict begin
+/regfont currentfont def
+/chkfont currentfont [1.25 0 0 1.25 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(\161) true charpath flattenpath pathbbox 
+/height exch def pop pop pop 
+ grestore 
+ currentpoint 
+ .2 height mul .3 height mul rmoveto
+chkfont setfont (\063) show
+ moveto
+ regfont setfont
+(\161) show end } bdef
+/rencdict 15 dict def
+/encodefont { rencdict begin
+/newname exch def
+/oldfont exch def
+/newcodes [
+8#001 /Aacute
+8#002 /Acircumflex
+8#003 /Adieresis
+8#004 /Agrave
+8#005 /Aring
+8#006 /Atilde
+8#007 /Ccedilla
+8#010 /Eacute
+8#011 /Ecircumflex
+8#012 /Edieresis
+8#013 /Egrave
+8#014 /Iacute
+8#015 /Icircumflex
+8#016 /Idieresis
+8#017 /Igrave
+8#020 /Ntilde
+8#021 /Oacute
+8#022 /Ocircumflex
+8#023 /Odieresis
+8#024 /Ograve
+8#025 /Otilde
+8#026 /Scaron
+8#027 /Uacute
+8#030 /Ucircumflex
+8#031 /Udieresis
+8#032 /Ugrave
+8#033 /Ydieresis
+8#034 /Zcaron
+8#177 /periodinferior
+8#201 /aacute
+8#202 /acircumflex
+8#203 /adieresis
+8#204 /agrave
+8#205 /aring
+8#206 /atilde
+8#207 /ccedilla
+8#210 /eacute
+8#211 /ecircumflex
+8#212 /edieresis
+8#213 /egrave
+8#214 /iacute
+8#215 /icircumflex
+8#216 /idieresis
+8#217 /igrave
+8#220 /ntilde
+8#221 /oacute
+8#222 /ocircumflex
+8#223 /odieresis
+8#224 /ograve
+8#225 /otilde
+8#226 /scaron
+8#227 /uacute
+8#230 /ucircumflex
+8#231 /udieresis
+8#232 /ugrave
+8#233 /ydieresis
+8#234 /zcaron
+8#235 /Eth
+8#236 /eth
+8#237 /Thorn
+8#240 /thorn
+ ] def
+/olddict oldfont findfont def /newfont olddict maxlength dict def
+olddict { exch dup /FID ne { dup /Encoding eq
+{ exch dup length array copy newfont 3 1 roll put }
+{ exch newfont 3 1 roll put } ifelse }
+ { pop pop } ifelse } forall
+newfont /FontName newname put
+newcodes aload pop
+newcodes length 2 idiv { newfont /Encoding get 3 1 roll put } repeat 
+newname newfont definefont pop end } def
+ /accentdict 10 dict def 
+ /accentor { accentdict begin /scaler exch def /delta exch def 
+/unders exch def /accents exch def /mainch exch def /scrt (X) def
+ /w1 mainch stringwidth pop def 
+ currentpoint mainch show currentpoint 4 2 roll 
+accents { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         w1 w2 sub 2 div delta rmoveto scrt show 
+         /delta delta 150 scaler mul 9 div add def
+        } forall 
+unders { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         ch 46 eq { w1 w2 sub 2 div -175 scaler mul 9 div rmoveto scrt show 0 175 rmoveto }
+           { w1 w2 sub 2 div 0 rmoveto scrt show } ifelse 
+        } forall 
+ pop pop moveto end } def 
+%%EndProlog
+%%BeginSetup
+letter/imagesizefactor 1 def%%EndSetup/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+
+%%Page: 1 1
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+54000 75600 M (F.G.H.          ) S
+54000 73800 M (3/12/85) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (LispCourse #12:  CLISP) S
+7200 67157 M (CLISP) S
+1200 /Times-Bold-Acnt F
+10800 64306 M (Introduction) S
+1200 /Times-Roman-Acnt F
+14400 61506 M (CLISP \(Conversational LISP\) is a package that implements an alternative syntax ) S
+14400 59706 M (for Interlisp expressions.  CLISP is intended to make Interlisp "easier to read and ) S
+14400 57906 M (write, especially for beginners".) S
+14400 55106 M (An example of CLISP is the expression ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(A_5) S
+1200 /Times-Roman-Acnt F
+(.  According to standard Interlisp, this ) S
+14400 53306 M (is simply an atom whose name is 3 characters long.  However, according to ) S
+14400 51506 M (CLISP it is alternative syntax for) S
+1200 /Times-Italic-Acnt F
+( \(SETQ A 5\)) S
+1200 /Times-Roman-Acnt F
+(.) S
+14400 48706 M (Another example might be: ) S
+1200 /Times-Italic-Acnt F
+(A*5+\(6/2\)) S
+1200 /Times-Roman-Acnt F
+(.) S
+1200 /Times-Italic-Acnt F
+(  ) S
+1200 /Times-Roman-Acnt F
+(According to standard Interlisp, this is ) S
+14400 46906 M (simply an atom whose name is 4 characters long followed by a list containing a ) S
+14400 45106 M (single atom.  However, according to CLISP it is alternative syntax for) S
+1200 /Times-Italic-Acnt F
+( \(\(PLUS ) S
+14400 43306 M (\(TIMES) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(A 5\) \(QUOTIENT 6 2\)\)\)) S
+1200 /Times-Roman-Acnt F
+(.) S
+14400 40506 M (CLISP is part of DWIM.  It works as follows:) S
+18000 37906 M (Expressions that the Lisp interpreter cannot intepret due to u.b.a ) S
+18000 36106 M (\(unabound atom\) or u.d.f. \(undefined function\) errors are passed to ) S
+18000 34306 M (DWIM.) S
+18000 31706 M (DWIM checks to see if the "error" is in fact a legal CLISP expression.  If ) S
+18000 29906 M (so, it translates the CLISP to standard Lisp and returns the standard ) S
+18000 28106 M (expression to the evaluator.) S
+18000 25506 M (Otherwise, DWIM tries to automatically correct the error.  DWIM knows ) S
+18000 23706 M (about CLISP as well as standard Lisp.  Therefore, it will try to "correct" ) S
+18000 21906 M (expression that it thinks are CLISP expressions with typos.  The ) S
+18000 20106 M ("automatic correction" of CLISP works just like the "automatic ) S
+18000 18306 M (correction" of standard Lisp described last time.) S
+18000 15706 M (If the expression isn't CLISP and can't be corrected, it is passed to the ) S
+18000 13906 M (error handler.) S
+14400 11306 M (For example,  when the user types ) S
+1200 /Times-Italic-Acnt F
+("A_5") S
+1200 /Times-Roman-Acnt F
+(, a u.b.a error occurs because A_5 is an ) S
+14400 9506 M (atom with no value.  The expression "A_5" is passed to DWIM/CLISP which ) S
+grestore savepage restore showpage
+
+%%Page: 2 2
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (2) S
+7200 75600 M (LispCourse #12:  CLISP) S
+14400 71106 M (recognizes it as a CLISP expression.  CLISP translates the expression into ) S
+14400 69306 M ("\(SETQ A 5\)" which is then evaluated.  ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(The result is the same as if \(SETQ A 5\) ) S
+14400 67506 M (had been typed in.) S
+1200 /Times-Roman-Acnt F
+14400 64506 M (Note this all is a bit wacky!!!  From the user's point of view, CLISP expressions ) S
+14400 62706 M (are simply Lisp expressions written in an alternative syntax.  They are in no way ) S
+14400 60906 M ("errors".   From the system's point of view a legal CLISP expression is an error ) S
+14400 59106 M (that is "corrected" by the CLISP translator in DWIM.  ) S
+14400 56106 M (CLISP has four basic components:) S
+18000 53506 M (1.  ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(CLISP character operators \(including infix operators\):) S
+1200 /Times-Roman-Acnt F
+(   CLISP ) S
+18000 51706 M (provides an alternative syntax based on a series of special characters.  For ) S
+18000 49906 M (example, CLISP provides infix arithmetic expressions such as ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+("A+B") S
+1200 /Times-Roman-Acnt F
+(, ) S
+18000 48106 M (where the ) S
+1200 /Times-Italic-Acnt F
+("+") S
+1200 /Times-Roman-Acnt F
+( is a CLISP character operator.  CLISP uses the ) S
+1200 /Times-Italic-Acnt F
+("+") S
+1200 /Times-Roman-Acnt F
+( as a ) S
+18000 46306 M (clue to translate this expression into ) S
+1200 /Times-Italic-Acnt F
+(\(PLUS A B\).) S
+1200 /Times-Roman-Acnt F
+18000 43706 M (2.  ) S
+1200 /Times-Bold-Acnt F
+(IF-THEN-ELSE statements:) S
+1200 /Times-Roman-Acnt F
+(  CLISP provides a "more intuitive" ) S
+18000 41906 M (syntax for the COND statement that is similar to the IF-THEN-ELSE ) S
+18000 40106 M (statements in PASCAL and FORTRAN.  CLISP just translates these ) S
+18000 38306 M (statements into their equivalent COND forms.) S
+18000 35706 M (3.  ) S
+1200 /Times-Bold-Acnt F
+(Iterative statements:) S
+1200 /Times-Roman-Acnt F
+(  The FOR and WHILE loops discussed in ) S
+18000 33906 M (Session #5 are implemented in CLISP.  CLISP translates these iterative ) S
+18000 32106 M (statements into a series of standard Lisp statements that carry out the ) S
+18000 30306 M (iteration.) S
+18000 27706 M (4. ) S
+1200 /Times-Bold-Acnt F
+(Record Package:) S
+1200 /Times-Roman-Acnt F
+(  The Record Package is a package that implements ) S
+18000 25906 M (various data structures in addition to lists.  We will cover the Record ) S
+18000 24106 M (Package in detail in the programming section of this course.) S
+14400 21106 M (We will not discuss the Record Package until much later in the course.) S
+14400 18506 M (We have already covered the Iterative statements \(i.e., FOR and WHILE ) S
+14400 16706 M (statements\) in detail.  The fact that they are CLISP rather than standard Lisp has ) S
+14400 14906 M (little effect on the user.  In most interactions with the system, the user will see ) S
+14400 13106 M (only FOR or WHILE statements and not their translations into standard Lisp.  ) S
+14400 11306 M (Exceptions to this rule do exist, however.  So you should remember that FOR and ) S
+14400 9506 M (WHILE loops are in fact CLISP and not standard Lisp expressions.) S
+grestore savepage restore showpage
+
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (3) S
+7200 75600 M (LispCourse #12:  CLISP) S
+14400 71106 M (The CLISP character operators and the IF-THEN-ELSE statements are discussed ) S
+14400 69306 M (in detail below.   The fact that these are CLISP rather than standard Lisp is very ) S
+14400 67506 M (evident to the user.) S
+18000 64906 M (During the translation from CLISP to Lisp, the Lisp expression actually ) S
+18000 63106 M (replaces the CLISP statement.  All future accesses to the expression return ) S
+18000 61306 M (the translation \(i.e., Lisp\) rather than the original \(i.e., CLISP\).  For ) S
+18000 59506 M (example, the typed-in expression ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(A_5) S
+1200 /Times-Roman-Acnt F
+( is replaced by the Lisp expression ) S
+1200 /Times-Italic-Acnt F
+18000 57706 M (\(SETQ A 5\)) S
+1200 /Times-Roman-Acnt F
+(.  ) S
+1200 /Times-Italic-Acnt F
+(A_5) S
+1200 /Times-Roman-Acnt F
+( is forgotten.  In particular, the entry on the history list is ) S
+1200 /Times-Italic-Acnt F
+18000 55906 M (\(SETQ A 5\)) S
+1200 /Times-Roman-Acnt F
+( and NOT ) S
+1200 /Times-Italic-Acnt F
+(A_5) S
+1200 /Times-Roman-Acnt F
+(.  ) S
+1200 /Times-Italic-Acnt F
+("FIX SETQ" ) S
+1200 /Times-Roman-Acnt F
+( will work but ) S
+1200 /Times-Italic-Acnt F
+("FIX A_5" ) S
+1200 /Times-Roman-Acnt F
+(will ) S
+18000 54106 M (not.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 50506 M (CLISP Character Operators) S
+1200 /Times-Roman-Acnt F
+14400 47506 M (CLISP interprets several characters as operators to be applied to the surrounding ) S
+14400 45706 M (S-expressions.  Most of the CLISP operators are ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(infix) S
+1200 /Times-Roman-Acnt F
+( operators such as the "+" in ) S
+1200 /Times-Italic-Acnt F
+14400 43906 M (A+B) S
+1200 /Times-Roman-Acnt F
+(.  There are some ) S
+1200 /Times-BoldItalic-Acnt F
+(prefix) S
+1200 /Times-Roman-Acnt F
+( operators such as the "~" in the expression ) S
+1200 /Times-Italic-Acnt F
+14400 42106 M (~\(NUMBERP X\)) S
+1200 /Times-Roman-Acnt F
+(.) S
+14400 39106 M (In a CLISP expression, an operator can be surrounded by spaces or it can be in the ) S
+14400 37306 M (middle of an atom.  To CLISP, ) S
+1200 /Times-Italic-Acnt F
+("A+B" ) S
+1200 /Times-Roman-Acnt F
+(is equivalent to ) S
+1200 /Times-Italic-Acnt F
+("A + B".) S
+1200 /Times-Roman-Acnt F
+14400 34306 M (CLISP uses these operators as the basis for translating CLISP expressions into the ) S
+14400 32506 M (appropriate Lisp function calls.) S
+1200 /Times-Bold-Acnt F
+14400 29506 M (Arithmetic Operators:) S
+18000 26906 M (+, -, *, /, ^) S
+1200 /Times-Roman-Acnt F
+(  \234 ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(these are the CLISP infix arithmetic operators.  They are ) S
+18000 25106 M (translated into the appropriate calls to PLUS, DIFFERENCE, TIMES, ) S
+18000 23306 M (QUOTIENT, and EXPT.  ) S
+18000 20706 M (Examples:) S
+21600 18506 M (4/2 translates to \(QUOTIENT 4 2\)) S
+21600 16306 M (\(4+5\)*3 translates to \(TIMES \(PLUS 4 5\) 3\)) S
+21600 14106 M (\(A+\(SETQ A 5\)\)*\(SETQ A 7\)\) translates to) S
+28800 12306 M (\(TIMES \(PLUS A \(SETQ A 5\)\) \(SETQ A 7\)\)) S
+grestore savepage restore showpage
+
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (4) S
+7200 75600 M (LispCourse #12:  CLISP) S
+18000 71106 M (Parentheses can be used to insure that the operators are interpreted in the ) S
+18000 69306 M (correct order.  For example: ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(5*4+6 ) S
+1200 /Times-Roman-Acnt F
+(can be either ) S
+1200 /Times-Italic-Acnt F
+(\(5*4\)+6) S
+1200 /Times-Roman-Acnt F
+( versus ) S
+1200 /Times-Italic-Acnt F
+(5*\(4+6\)) S
+1200 /Times-Roman-Acnt F
+(.) S
+18000 66706 M (In the absence of parentheses, normal rules of precedence are used.  Thus, ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 64906 M (^) S
+1200 /Times-Roman-Acnt F
+( is higher than ) S
+1200 /Times-Bold-Acnt F
+(*) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Bold-Acnt F
+(/) S
+1200 /Times-Roman-Acnt F
+( which in turn are higher than ) S
+1200 /Times-Bold-Acnt F
+(\233) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Bold-Acnt F
+(+.  ) S
+1200 /Times-Roman-Acnt F
+(Within a ) S
+18000 63106 M (precedence level, precedence is given to the leftmost operator.) S
+18000 60706 M (Examples:) S
+1200 /Times-Italic-Acnt F
+21600 58506 M (4*2+5) S
+1200 /Times-Roman-Acnt F
+( translates to ) S
+1200 /Times-Italic-Acnt F
+(\(PLUS \(TIMES 4 2\) 5\)) S
+1200 /Times-Roman-Acnt F
+25200 56706 M ([rather than to \(TIMES 4 \(PLUS 2 5\)\)]) S
+1200 /Times-Italic-Acnt F
+21600 54506 M (4+2-3) S
+1200 /Times-Roman-Acnt F
+( translates to ) S
+1200 /Times-Italic-Acnt F
+(\(DIFFERENCE \(PLUS 4 2\) 3\)) S
+1200 /Times-Roman-Acnt F
+25200 52706 M ([rather than to \(PLUS 4 \(DIFFERENCE 2 3\)\)]) S
+1200 /Times-Italic-Acnt F
+21600 50506 M (4*x^2) S
+1200 /Times-Roman-Acnt F
+( translates to ) S
+1200 /Times-Italic-Acnt F
+(\(TIMES 4 \(EXPT X 2\)\)) S
+1200 /Times-Roman-Acnt F
+25200 48706 M ([rather than to \(EXPT \(TIMES 4 X\) 2\)]) S
+1200 /Times-Bold-Acnt F
+18000 45506 M (\233 \(i.e., unary minus\)  ) S
+1200 /Times-Roman-Acnt F
+(\234  the minus sign can also be used as a prefix unary ) S
+18000 43706 M (minus to indicate arithmetic negation.  Since the minus sign is both a ) S
+18000 41906 M (binary \(infix\) and a unary \(prefix\) operator the following rule is in effect:  ) S
+18000 40106 M (the minus sign is interpreted as a binary minus except when it is the first ) S
+18000 38306 M (item in a list or it follows another operator.  Examples:  ) S
+1200 /Times-Italic-Acnt F
+(\233A, \(\233A\), \(B*\233A\).) S
+1200 /Times-Bold-Acnt F
+14400 34706 M (Logical Operators:) S
+18000 31906 M (=, GT, LT, GE, LE  ) S
+1200 /Times-Roman-Acnt F
+(\234  are infix operators for EQUAL, GREATERP, ) S
+18000 30106 M (LESSP, "Greater than or equal to", and "Less than or equal to".  These are ) S
+18000 28306 M (translated to a call to the appropriate predicate or predicate composition.) S
+18000 25506 M (Examples: ) S
+1200 /Times-Italic-Acnt F
+21600 23306 M (A GT B) S
+1200 /Times-Roman-Acnt F
+( translates to ) S
+1200 /Times-Italic-Acnt F
+(\(GREATERP A B\)) S
+1200 /Times-Italic-Acnt F
+21600 21106 M (A=B ) S
+1200 /Times-Roman-Acnt F
+(translates to ) S
+1200 /Times-Italic-Acnt F
+(\(EQUAL A B\)) S
+1200 /Times-Italic-Acnt F
+21600 18906 M (A LE B) S
+1200 /Times-Roman-Acnt F
+( translates to ) S
+1200 /Times-Italic-Acnt F
+(\(OR \(EQUAL A B\) \(LESSP A B\)\)) S
+1200 /Times-Italic-Acnt F
+18000 15906 M (Note) S
+1200 /Times-Roman-Acnt F
+( that except for the =, all of these operators must be surrounded by ) S
+18000 14106 M (spaces.  For example, ) S
+1200 /Times-Italic-Acnt F
+(A GT B) S
+1200 /Times-Roman-Acnt F
+( cannot be written ) S
+1200 /Times-Italic-Acnt F
+(AGTB) S
+1200 /Times-Roman-Acnt F
+(.  However, ) S
+1200 /Times-Italic-Acnt F
+(A = B) S
+1200 /Times-Roman-Acnt F
+( ) S
+18000 12306 M (can be written ) S
+1200 /Times-Italic-Acnt F
+(A=B) S
+1200 /Times-Roman-Acnt F
+(.) S
+grestore savepage restore showpage
+
+%%Page: 5 5
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (5) S
+7200 75600 M (LispCourse #12:  CLISP) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 71106 M (AND, OR, MEMBER, EQUAL  ) S
+1200 /Times-Roman-Acnt F
+(\234  are infix operators standing for the ) S
+18000 69306 M (Lisp functions of the same name.   They are translated accordingly.) S
+18000 66506 M (Examples: ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 64306 M (A EQUAL B) S
+1200 /Times-Roman-Acnt F
+( translates to ) S
+1200 /Times-Italic-Acnt F
+(\(EQUAL A B\)) S
+1200 /Times-Italic-Acnt F
+21600 62106 M (A OR B ) S
+1200 /Times-Roman-Acnt F
+(translates to ) S
+1200 /Times-Italic-Acnt F
+(\(OR A B\)) S
+21600 59906 M (A MEMBER B ) S
+1200 /Times-Roman-Acnt F
+(translates to ) S
+1200 /Times-Italic-Acnt F
+(\(MEMBER A B\)) S
+1200 /Times-Bold-Acnt F
+18000 56506 M (~ \(unary\) ) S
+1200 /Times-Roman-Acnt F
+(\234  is prefix operator meaning NOT \(or NULL\).) S
+18000 53706 M (Examples: ) S
+1200 /Times-Italic-Acnt F
+21600 51506 M (~\(MEMBER A '\(1 2 3\)\)) S
+1200 /Times-Roman-Acnt F
+( translates to) S
+1200 /Times-Italic-Acnt F
+25200 49706 M (\(NULL \(MEMBER A '\(1 2 3\)\)\)) S
+1200 /Times-Roman-Acnt F
+21600 47506 M (~) S
+1200 /Times-Italic-Acnt F
+(\(A OR B\) ) S
+1200 /Times-Roman-Acnt F
+(translates to) S
+1200 /Times-Italic-Acnt F
+( \(NULL \(OR A B\)\)) S
+1200 /Times-Bold-Acnt F
+18000 43906 M (Note:  ) S
+1200 /Times-Roman-Acnt F
+(Parentheses can be used to insure proper interpretation of logical ) S
+18000 42106 M (combinations:  ) S
+1200 /Times-Italic-Acnt F
+(A OR B AND C EQUAL D) S
+1200 /Times-Roman-Acnt F
+( can be written as ) S
+1200 /Times-Italic-Acnt F
+(\(A OR B\) ) S
+18000 40306 M (AND \(C EQUAL D\)) S
+1200 /Times-Roman-Acnt F
+( or as ) S
+1200 /Times-Italic-Acnt F
+(\(A OR \(B AND \(C EQUAL D\)\)\)) S
+1200 /Times-Roman-Acnt F
+18000 37506 M (In the absence of parentheses, the precedence rules for the logical ) S
+18000 35706 M (operators are as follows:) S
+25200 33906 M (=) S
+25200 32106 M (LT, GT, LE, GE, EQUAL, MEMBER) S
+25200 30306 M (AND) S
+25200 28506 M (OR.) S
+18000 25706 M (Otherwise, precedence goes from left to right.) S
+18000 23306 M (All of the logical operators have a lower precedence than the arithmetic ) S
+18000 21506 M (operators.) S
+18000 19106 M (Examples:) S
+1200 /Times-Italic-Acnt F
+21600 16906 M (A=B OR C=D) S
+1200 /Times-Roman-Acnt F
+( translates to ) S
+1200 /Times-Italic-Acnt F
+(\(OR \(EQUAL A B\)\(EQUAL C D\)\)) S
+21600 14506 M (A EQUAL B + C ) S
+1200 /Times-Roman-Acnt F
+(translates to ) S
+1200 /Times-Italic-Acnt F
+(\(EQUAL A \(PLUS B C\)\)) S
+21600 12106 M (A AND B OR C) S
+1200 /Times-Roman-Acnt F
+( translates to ) S
+1200 /Times-Italic-Acnt F
+(\(OR \(AND A B\) C\)) S
+1200 /Times-Bold-Acnt F
+14400 8506 M (Other Operators:) S
+grestore savepage restore showpage
+
+%%Page: 6 6
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (6) S
+7200 75600 M (LispCourse #12:  CLISP) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 71106 M (:  ) S
+1200 /Times-Roman-Acnt F
+(\234  is an infix operator that extracts elements from a list.  ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(X:N ) S
+1200 /Times-Roman-Acnt F
+(stands for ) S
+18000 69306 M (the Nth element of the list X.  For example, ) S
+1200 /Times-Italic-Acnt F
+(X:2) S
+1200 /Times-Roman-Acnt F
+( stands for ) S
+1200 /Times-Italic-Acnt F
+(\(CADR X\)) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+18000 67506 M (while ) S
+1200 /Times-Italic-Acnt F
+(X:4) S
+1200 /Times-Roman-Acnt F
+( stands for ) S
+1200 /Times-Italic-Acnt F
+(\(CAR \(CDDDR X\)\)) S
+1200 /Times-Roman-Acnt F
+(.) S
+21600 65106 M (The : operator has a higher precedence than any of the arithmetic ) S
+21600 63306 M (or logical operators.) S
+21600 60906 M (A negative N indicates the Nth element from the end of the list.  ) S
+21600 59106 M (For example ) S
+1200 /Times-Italic-Acnt F
+(X:-1) S
+1200 /Times-Roman-Acnt F
+( stands for the last element in the list.) S
+21600 56706 M (The : operator can be composed as in ) S
+1200 /Times-Italic-Acnt F
+(X:2:3) S
+1200 /Times-Roman-Acnt F
+( which stands for ) S
+1200 /Times-Italic-Acnt F
+(the ) S
+21600 54906 M (third element of the second element of X) S
+1200 /Times-Roman-Acnt F
+( or ) S
+1200 /Times-Italic-Acnt F
+(\(CADDR \(CADR X\)\)) S
+1200 /Times-Roman-Acnt F
+(.) S
+1200 /Times-Bold-Acnt F
+18000 52106 M (::  ) S
+1200 /Times-Roman-Acnt F
+(\234  is an infix operator that) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(extracts tails of lists.  For example:  ) S
+1200 /Times-Italic-Acnt F
+(X::1) S
+1200 /Times-Roman-Acnt F
+( is the ) S
+1200 /Times-Italic-Acnt F
+18000 50306 M (\(CDR X\)) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Italic-Acnt F
+(X::3) S
+1200 /Times-Roman-Acnt F
+( is the ) S
+1200 /Times-Italic-Acnt F
+(\(CDDDR X\)) S
+1200 /Times-Roman-Acnt F
+(, and ) S
+1200 /Times-Italic-Acnt F
+(X::-1) S
+1200 /Times-Roman-Acnt F
+( is the ) S
+1200 /Times-Italic-Acnt F
+(\(LAST X\)) S
+1200 /Times-Roman-Acnt F
+(.) S
+1200 /Times-Bold-Acnt F
+18000 47506 M (_  ) S
+1200 /Times-Roman-Acnt F
+(\234  is an infix operator that indicates assignment.  For our purposes, ) S
+18000 45706 M (assignment means SETQ.  For example, ) S
+1200 /Times-Italic-Acnt F
+(X_Y ) S
+1200 /Times-Roman-Acnt F
+(translates to ) S
+1200 /Times-Italic-Acnt F
+(\(SETQ X Y\)) S
+1200 /Times-Roman-Acnt F
+(.  ) S
+21600 42906 M ([Note:  The _ operator can also be used in conjunction with the : ) S
+21600 41106 M (operator to alter the composition of a list.  For example, X:2_5 ) S
+21600 39306 M (means replace the second element of X with 5.  However, we have ) S
+21600 37506 M (not yet covered how to say this in straight Lisp!].) S
+1200 /Times-Bold-Acnt F
+18000 34706 M (<, >  ) S
+1200 /Times-Roman-Acnt F
+(\234  are special operators in CLISP used to construct lists.  A balanced ) S
+18000 32906 M (pair of angle brackets indicates that a list is to be constructed containing ) S
+18000 31106 M (everything between the "<" and the ">".  For example, ) S
+1200 /Times-Italic-Acnt F
+(<A B C>) S
+1200 /Times-Roman-Acnt F
+( translates ) S
+18000 29306 M (to ) S
+1200 /Times-Italic-Acnt F
+(\(LIST A B C\)) S
+1200 /Times-Roman-Acnt F
+(, while ) S
+1200 /Times-Italic-Acnt F
+(<1 2 3 <4 5 6>>) S
+1200 /Times-Roman-Acnt F
+( translates to ) S
+1200 /Times-Italic-Acnt F
+(\(LIST 1 2 3 \(LIST 4 ) S
+18000 27506 M (5 6\)\)) S
+1200 /Times-Roman-Acnt F
+(.) S
+1200 /Times-Bold-Acnt F
+10800 23906 M (IF-THEN-ELSE expressions) S
+1200 /Times-Roman-Acnt F
+14400 20906 M (CLISP provides an IF-THEN-ELSE statement similar to that found in PASCAL ) S
+14400 19106 M (and FORTRAN.) S
+14400 16106 M (The form of the IF-THEN-ELSE expression is:) S
+1200 /Times-Bold-Acnt F
+14400 14106 M (\(IF) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(A) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(THEN) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(B) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(ELSEIF) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(C) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(THEN) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(D) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(ELSEIF ) S
+1200 /Times-Italic-Acnt F
+(E) S
+1200 /Times-Bold-Acnt F
+( THEN ) S
+1200 /Times-Italic-Acnt F
+(F) S
+1200 /Times-Bold-Acnt F
+(  ... ELSE) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(G) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+14400 11306 M (This expression is directly translated into:) S
+1200 /Times-Bold-Acnt F
+18000 8706 M (\(COND) S
+grestore savepage restore showpage
+
+%%Page: 7 7
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (7) S
+7200 75600 M (LispCourse #12:  CLISP) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 71106 M (\(A B\)) S
+21600 69506 M (\(C D\)) S
+21600 67906 M (\(E F\)) S
+21600 66306 M (...) S
+21600 64706 M (\(T G\)\)) S
+1200 /Times-Roman-Acnt F
+14400 62106 M (In "English":) S
+18000 59906 M (If A is non-NIL, then evaluate B and exit) S
+18000 57906 M (Otherwise, if C is non-NIL, then evaluate D) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(and exit) S
+18000 55906 M (Otherwise, if E is non-NIL, then evaluate F and exit) S
+1200 /Times-Bold-Acnt F
+18000 53906 M (...) S
+1200 /Times-Roman-Acnt F
+18000 51906 M (Otherwise, evaluate G and exit.) S
+14400 49106 M (The IF, THEN, ELSEIF and ELSE keywords have the lowest precedence of any ) S
+14400 47506 M (of the CLISP character operators.  ) S
+18000 44706 M (Example:) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 42506 M (\(IF A = B + C THEN C + D ELSE E - F\)) S
+1200 /Times-Roman-Acnt F
+21600 40306 M (translates to) S
+1200 /Times-Italic-Acnt F
+21600 38306 M (\(COND) S
+25200 36306 M (\(\(EQUAL A \(PLUS B C\)\) \(PLUS C D\)\)) S
+25200 34306 M (\(T \(DIFFERENCE E F\)\)\)) S
+1200 /Times-Bold-Acnt F
+10800 30906 M (Using CLISP - Advantage and Disadvantages) S
+1200 /Times-Roman-Acnt F
+14400 27906 M (The advantage of CLISP is that it allows you to type-in complex expressions ) S
+14400 26106 M (using a syntax that is more concise and supposedly more intuitive than the ) S
+14400 24306 M (standard Lisp syntax.) S
+14400 21306 M (The following examples make the case:) S
+1200 /Times-Italic-Acnt F
+18000 19106 M (A^2+B^2+C^2) S
+1200 /Times-Roman-Acnt F
+( ) S
+21600 17106 M (instead of ) S
+1200 /Times-Italic-Acnt F
+(\(PLUS \(EXPT A 2\)\(EXPT B 2\)\(EXPT C 2\)\)) S
+1200 /Times-Roman-Acnt F
+18000 13906 M (\(IF A^2+B^2+C^2=C+D-E*2 THEN A_C+E ELSE C_X:2\)) S
+21600 11706 M (instead of) S
+21600 9506 M (\(COND) S
+grestore savepage restore showpage
+
+%%Page: 8 8
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (8) S
+7200 75600 M (LispCourse #12:  CLISP) S
+25200 71106 M (\(\(EQ) S
+28800 69306 M (\(IPLUS \(EXPT A 2\) \(EXPT B 2\) \(EXPT C 2\)\)) S
+28800 67506 M (\(IDIFFERENCE \(IPLUS C D\) \(ITIMES E 2\)\)\)) S
+28800 65706 M (\(SETQ A \(IPLUS C E\)\)\)) S
+25200 63906 M (\(T \(SETQ C \(CADR X\)\)\)\)) S
+14400 60306 M (The ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(disadvantages) S
+1200 /Times-Roman-Acnt F
+( of CLISP are many!  First CLISP is another whole set of rules ) S
+14400 58506 M (for the user to learn.  The rules are inconsistent with the rules of Lisp.  For ) S
+14400 56706 M (example, CLISP violates the notion that every Lisp expression starts with the ) S
+14400 54906 M (name of a function to be applied to the arguments which follow.  Thus, CLISP has ) S
+14400 53106 M (opted for a syntax that is locally optimized \(or assumed to be optimized\) for ) S
+14400 51306 M (certain special cases at the expense of consistency across the system as a whole.  ) S
+14400 49506 M (It is not at all clear that this was a good trade-off to make!!) S
+14400 45906 M (CLISP is not well integrated into the Interlisp environment.) S
+14400 42306 M (When CLISP expressions are translated into Lisp, the Lisp expressions replace ) S
+14400 40506 M (the CLISP expressions.  Thus if you look at an entry on the history list or if you ) S
+14400 38706 M (DEdit a function, the CLISP you typed-in will be gone and a very different ) S
+14400 36906 M (expression will be in its place.  This can be very, very confusing!) S
+18000 34506 M (Example:) S
+21600 32706 M (65_ \(COND \(T NIL\)\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 30906 M (NIL) S
+1200 /Times-Roman-Acnt F
+21600 29106 M (66_X_\(IF ~\(LISTP X\) THEN A_C+D ELSE X:3\)) S
+1200 /Times-Italic-Acnt F
+21600 27306 M (3) S
+1200 /Times-Roman-Acnt F
+21600 25506 M (67_REDO IF) S
+1200 /Times-Italic-Acnt F
+21600 23706 M (IF  ?) S
+1200 /Times-Roman-Acnt F
+21600 21906 M (68_REDO COND) S
+1200 /Times-Italic-Acnt F
+21600 20106 M (8) S
+1200 /Times-Roman-Acnt F
+21600 17706 M (...) S
+21600 15306 M (72_\(DEFINEQ \(TEST \(LAMBDA \(X\) \(IF ~\(LISTP X\) THEN ) S
+21600 13506 M (A_C+D ELSE X:3\) \)\)\)) S
+1200 /Times-Italic-Acnt F
+21600 11106 M (\(TEST\)) S
+1200 /Times-Roman-Acnt F
+21600 8706 M (73_PP TEST) S
+grestore savepage restore showpage
+
+%%Page: 9 9
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (9) S
+7200 75600 M (LispCourse #12:  CLISP) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 71106 M (\(TEST) S
+21600 68706 M (  \(LAMBDA \(X\)  **COMMENT**  ) S
+21600 66306 M (    \(IF ~\(LISTP X\)) S
+21600 63906 M (        THEN A_C+D) S
+21600 61506 M (      ELSE X:3\)\)\)) S
+21600 59106 M (\(TEST\)) S
+1200 /Times-Roman-Acnt F
+21600 56706 M (74_\(TEST 1\)) S
+1200 /Times-Italic-Acnt F
+21600 54306 M (8) S
+1200 /Times-Roman-Acnt F
+21600 51906 M (75_PP TEST) S
+1200 /Times-Italic-Acnt F
+21600 49506 M (\(TEST) S
+21600 47106 M (  \(LAMBDA \(X\)  **COMMENT**  ) S
+21600 44706 M (    \(COND) S
+21600 42306 M (      \(\(NLISTP X\)) S
+21600 39906 M (        \(SETQ A \(IPLUS C D\)\)\)) S
+21600 37506 M (      \(T \(CADDR X\)\)\)\)\)) S
+21600 35106 M (\(TEST\)) S
+1200 /Times-Roman-Acnt F
+14400 31506 M (A second example of problems with CLISP arises when DWIM error "correction" ) S
+14400 29706 M (interacts with CLISP.  The following is a simple example of a DWIM/CLISP ) S
+14400 27906 M (interaction that is not at all intuitive:) S
+18000 25106 M (86_ \(SETQ PATIENT-RECORD 99\)) S
+1200 /Times-Italic-Acnt F
+18000 23106 M (99) S
+1200 /Times-Roman-Acnt F
+18000 21106 M (87_\(SETQ PATIENT 7\)) S
+1200 /Times-Italic-Acnt F
+18000 19106 M (7) S
+1200 /Times-Roman-Acnt F
+18000 17106 M (88_\(SETQ RECORD 2\)) S
+1200 /Times-Italic-Acnt F
+18000 15106 M (2) S
+1200 /Times-Roman-Acnt F
+18000 13106 M (89_PATENT-RECORD) S
+1200 /Times-Italic-Acnt F
+18000 11106 M (=PATIENT) S
+18000 9106 M (5) S
+grestore savepage restore showpage
+
+%%Page: 10 10
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (10) S
+7200 75600 M (LispCourse #12:  CLISP) S
+18000 71106 M ([Why should DWIM correct this to \(DIFFERENCE PATIENT RECORD\) ) S
+18000 69306 M (rather than to the atom PATIENT-RECORD ????]) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 65706 M (Moral) S
+1200 /Times-Roman-Acnt F
+(:  CLISP is nice, but watch out for all its traps.  CLISP can be very handy ) S
+14400 63906 M (when typing complex expressions.  But its utility is limited by the fact that it is ) S
+14400 62106 M (just a coating of syntactic sugar) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(spread on top of Interlisp that is bothinconsistent ) S
+14400 60306 M (with the rest of Interlisp languageAND not well integrated into the eInterlisp ) S
+14400 58506 M (environment.) S
+1200 /Times-Bold-Acnt F
+10800 54906 M (DWIMIFY and CLISPIFY) S
+14400 51306 M (DWIMIFY) S
+1200 /Times-Roman-Acnt F
+( is a function that applies DWIM to an expression returning the ) S
+14400 49506 M (expression with all of the "errors" corrected.  This forces the translation of CLISP ) S
+14400 47706 M (expressions as well as other DWIM corrections.) S
+18000 45106 M (DWIMIFY takes one argument which is either the name of a function or ) S
+18000 43306 M (an expression.  DWIMIFY runs DWIM on the function or expression, ) S
+18000 41506 M (making all the necessary changes and returns the translated/corrected ) S
+18000 39706 M (expression.) S
+18000 37106 M (Example:) S
+21600 35106 M (99_\(DWIMIFY '\(IF A=B THEN C+D ELSE E+F\)\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 33106 M (E+F TREAT AS CLISP ?  yyes) S
+21600 31106 M (\(COND) S
+21600 29106 M (  \(\(EQ A B\)) S
+21600 27106 M (    \(IPLUS C D\)\)) S
+21600 25106 M (  \(T \(IPLUS E F\)\)\)) S
+21600 23106 M (\(COND \(\(EQ A B\) \(IPLUS C D\)\) \(T \(IPLUS E F\)\)\)) S
+1200 /Times-Bold-Acnt F
+14400 19506 M (CLISPIFY) S
+1200 /Times-Roman-Acnt F
+( is a function that takes a standard Lisp expression and translates it ) S
+14400 17706 M (into CLISP using as many CLISP operators as possible.  CLISPIFY is a sort of ) S
+14400 15906 M (inverse to DWIMIFY.) S
+18000 13306 M (CLISPIFY takes one argument which is either the name of a function or ) S
+18000 11506 M (an expression.  CLISPIFY translates the function or expression to CLISP ) S
+grestore savepage restore showpage
+
+%%Page: 11 11
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (11) S
+7200 75600 M (LispCourse #12:  CLISP) S
+18000 71106 M (and returns the translation.  If X is a function name, the function is ) S
+18000 69306 M (redefined to the be the CLISPIFYed translation.) S
+18000 66706 M (Example:) S
+21600 64706 M (4_\(CLISPIFY) S
+28800 62706 M (\(QUOTE) S
+32400 60706 M (\(COND \(\(LISTP X\) \(SETQ A 5\)\)) S
+36000 58706 M (\(T \(SETQ B 6\)\)\)\)\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 56706 M (\(if \(LISTP X\) then A_5 else B_6\)) S
+1200 /Times-Roman-Acnt F
+14400 53106 M (DWIMIFY and CLISPIFY are available in DEdit as subcommands of the ) S
+14400 51306 M (EDITCOM command.  Select the expression you want DWIMIFYed or ) S
+14400 49506 M (CLISPIFYed then click on EDITCOM in the DEdit menu with the missle mouse ) S
+14400 47706 M (button.  Choose DW \(DWIMIFY\) or CL \(CLISPIFY\) from the submenu that ) S
+14400 45906 M (appears.  The selected expression will be replaced by its DWIMIFYed or ) S
+14400 44106 M (CLISPIFYed equivalent.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 40506 M (Tailoring CLISP) S
+1200 /Times-Roman-Acnt F
+14400 36906 M (There are several parameters and functions that alter the behavior of CLISP.  ) S
+14400 35106 M (Some of the more interesting ones are the following:) S
+1200 /Times-Bold-Acnt F
+14400 31506 M (CLISPFLG) S
+1200 /Times-Roman-Acnt F
+( \234  If NIL all CLISP infix and prefix operators are disabled but IF-) S
+14400 29706 M (THEN-ELSE and Iterative expressios remain in force.  If the value is TYPE-IN, ) S
+14400 27906 M (then CLISP is in effect only on user type-in and not on the body of defined ) S
+14400 26106 M (functions.  If the value is T, CLISP is in effect on all evaluated expressions.  ) S
+14400 24306 M (Initial value is T.) S
+1200 /Times-Bold-Acnt F
+14400 20706 M (\(CLDISABLE X\)) S
+1200 /Times-Roman-Acnt F
+( \234 disables the CLISP operator X.  For example, \(CLDISABLE ) S
+14400 18906 M ('-\) disables the - CLISP character operator while \(CLDISABLE 'IF\) disables IF ) S
+14400 17106 M (expressions.) S
+1200 /Times-Bold-Acnt F
+14400 13506 M (CLISPIFTRANFLG) S
+1200 /Times-Roman-Acnt F
+( \234 If T, the original IF statements are left alone during CLISP ) S
+14400 11706 M (translation to Lisp.  If NIL, the original CLSIP is replaced by the Lisp ) S
+14400 9906 M (translations.  Initially, NIL.) S
+grestore savepage restore showpage
+
+%%Page: 12 12
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (12) S
+7200 75600 M (LispCourse #12:  CLISP) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 71106 M (CLISPIFYPRETTYFLG) S
+1200 /Times-Roman-Acnt F
+( \234  If ALL, causes PP and MAKEFILE to CLISPIFY ) S
+14400 69306 M (functions before printing them.  If a list, causes all functions on the list to be ) S
+14400 67506 M (CLISPIFYed before printing.  If NIL, nothing is CLISPIFYed before printing, ) S
+14400 65706 M (i.e., functions are printed as is.) S
+grestore savepage restore showpage
+
+%%Page: 13 13
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 14 14
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (13) S
+7200 75600 M (LispCourse #12:  CLISP) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 71106 M (CLISP Documentation) S
+1200 /Times-Roman-Acnt F
+14400 68506 M (CLISP is documented in Chapter 16 of the IRM.  Sections 16.1 thru 16.8 contain ) S
+14400 66706 M (material of general interest.  Section 16.9 is for hackers only.  Description of ) S
+14400 64906 M (tailoring parameters and functions appears mostly in Sections 16.6 thru 16.8.) S
+14400 62306 M (IF-THEN-ELSE and Iterative expressions are covered in Chapter 4 of the IRM.) S
+14400 59706 M (The Record Package is covered in Chapter 3.) S
+grestore savepage restore showpage
+
+%%Trailer

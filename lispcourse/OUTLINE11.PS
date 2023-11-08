@@ -1,0 +1,959 @@
+%!PS-Adobe-2.0%%Title: {DSK}<home>larry>lispcourse>OUTLINE11.PS%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate:  7-Nov-2023 21:39:59%%EndComments/bdef {bind def} bind def
+/ldef {load def} bdef
+/S /show ldef
+/M /moveto ldef
+/DR {transform round exch round exch itransform} bdef
+/L {gsave newpath setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/L1 {gsave newpath 0 setdash setgray setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/F {findfont exch scalefont setfont} bdef
+/CLP {newpath M dup 0 rlineto exch 0 exch rlineto
+  neg 0 rlineto closepath clip newpath} bdef
+/R {gsave setgray newpath M dup 0 rlineto exch 0 exch
+  rlineto neg 0 rlineto closepath eofill grestore} bdef
+/ellipsedict 9 dict def
+ellipsedict /mtrx matrix put
+/ellipse
+ { ellipsedict begin
+  /endangle exch def
+  /startangle exch def
+  /orientation exch def
+  /minorrad exch def
+  /majorrad exch def
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  orientation rotate
+  majorrad minorrad scale
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+ end } bdef
+/concatprocs
+ {/proc2 exch cvlit def
+  /proc1 exch cvlit def
+  /newproc proc1 length proc2 length add array def
+  newproc 0 proc1 putinterval
+  newproc proc1 length proc2 putinterval
+  newproc cvx
+ } bdef
+/resmatrix matrix def
+/findresolution
+ {72 0 resmatrix defaultmatrix dtransform
+  /yres exch def /xres exch def
+  xres dup mul yres dup mul add sqrt
+ } bdef
+/thebitimage
+ {/maskp exch def
+  /bihgt exch def
+  /biwid exch def
+  /byte 1 string def
+  /strbufl biwid 8 div ceiling cvi def
+  /strbuf strbufl string def
+  maskp not{{1 exch sub} currenttransfer concatprocs settransfer} if
+  biwid bihgt
+  maskp { true } { 1 } ifelse
+  [biwid 0 0 bihgt 0 0]
+  {/col 0 def
+   {currentfile byte readhexstring pop 0 get
+    dup 16#B2 eq {pop
+    currentfile byte readhexstring pop 0 get 1 add
+    currentfile byte readhexstring pop pop /nbyte byte 0 get def
+    { strbuf col nbyte put /col col 1 add def} repeat}
+   {dup 16#B3 eq {pop /col col
+    currentfile byte readhexstring pop
+    0 get add 1 add def}
+    {16#B4 eq {currentfile byte readhexstring pop pop} if
+     strbuf col byte 0 get put /col col 1 add def} ifelse
+   } ifelse
+   col strbufl ge { exit } if } loop
+   strbuf }
+  maskp { imagemask } { image } ifelse
+ } bdef
+/setuserscreendict 22 dict def
+setuserscreendict begin
+ /tempctm matrix def
+ /temprot matrix def
+ /tempscale matrix def
+end
+/setuserscreen
+ {setuserscreendict begin
+   /spotfunction exch def
+   /screenangle exch def
+   /cellsize exch def
+   /m tempctm currentmatrix def
+   /rm screenangle temprot rotate def
+   /sm cellsize dup tempscale scale def
+   sm rm m m concatmatrix m concatmatrix pop
+   1 0 m dtransform /y1 exch def /x1 exch def
+   /veclength x1 dup mul y1 dup mul add sqrt def
+   /frequency findresolution veclength div def
+   /newscreenangle y1 x1 atan def
+   m 2 get m 1 get mul m 0 get m 3 get mul sub
+   0 gt { { neg } /spotfunction load concatprocs
+          /spotfunction exch def } if
+   frequency newscreenangle /spotfunction load setscreen
+  end
+ } bdef
+/setpatterndict 18 dict def
+setpatterndict begin
+ /bitison
+  {/ybit exch def /xbit exch def
+   /bytevalue bstring ybit bwidth mul xbit 8 idiv add get def
+   /mask 1 7 xbit 8 mod sub bitshift def
+   bytevalue mask and 0 ne
+  } bdef
+end
+/bitpatternspotfunction
+ {setpatterndict begin
+   /y exch def /x exch def
+   /xindex x 1 add 2 div bpside mul 1 sub cvi def
+   /yindex y 1 add 2 div bpside mul 1 sub cvi def
+   xindex yindex bitison
+    {/onbits onbits 1 add def 1}
+    {/offbits offbits 1 add def 0} ifelse
+  end
+ } bdef
+/setpattern
+ {setpatterndict begin
+   /cellsz exch def
+   /angle exch def
+   /bwidth exch def
+   /bpside exch def
+   /bstring exch def
+   /onbits 0 def /offbits 0 def
+   cellsz angle /bitpatternspotfunction load setuserscreen
+   {} settransfer
+   offbits offbits onbits add div setgray
+  end
+ } bdef
+% - - - - - Fraction-setting code, to support NS fonts better - - - - -
+/fractiondict 20 dict def
+/fractionshow 
+{ fractiondict begin
+/denom exch def 
+/num exch def 
+/regfont currentfont def
+/fractfont currentfont [.65 0 0 .6 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(1) true charpath flattenpath pathbbox 
+/height exch def pop pop pop
+ grestore
+0 .4 height mul rmoveto
+fractfont setfont num show
+0 .4 height mul neg rmoveto regfont setfont (\244) show
+fractfont setfont denom show regfont setfont end } bdef
+/f14 { (1) (4) fractionshow } bdef
+/f12 { (1) (2) fractionshow } bdef
+/f34 { (3) (4) fractionshow } bdef
+/f18 { (1) (8) fractionshow } bdef
+/f38 { (3) (8) fractionshow } bdef
+/f58 { (5) (8) fractionshow } bdef
+/f78 { (7) (8) fractionshow } bdef
+/f13 { (1) (3) fractionshow } bdef
+/f23 { (2) (3) fractionshow } bdef
+/bboxdict 20 dict def
+/bboxchk { bboxdict begin
+/regfont currentfont def
+/chkfont currentfont [1.25 0 0 1.25 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(\161) true charpath flattenpath pathbbox 
+/height exch def pop pop pop 
+ grestore 
+ currentpoint 
+ .2 height mul .3 height mul rmoveto
+chkfont setfont (\063) show
+ moveto
+ regfont setfont
+(\161) show end } bdef
+/rencdict 15 dict def
+/encodefont { rencdict begin
+/newname exch def
+/oldfont exch def
+/newcodes [
+8#001 /Aacute
+8#002 /Acircumflex
+8#003 /Adieresis
+8#004 /Agrave
+8#005 /Aring
+8#006 /Atilde
+8#007 /Ccedilla
+8#010 /Eacute
+8#011 /Ecircumflex
+8#012 /Edieresis
+8#013 /Egrave
+8#014 /Iacute
+8#015 /Icircumflex
+8#016 /Idieresis
+8#017 /Igrave
+8#020 /Ntilde
+8#021 /Oacute
+8#022 /Ocircumflex
+8#023 /Odieresis
+8#024 /Ograve
+8#025 /Otilde
+8#026 /Scaron
+8#027 /Uacute
+8#030 /Ucircumflex
+8#031 /Udieresis
+8#032 /Ugrave
+8#033 /Ydieresis
+8#034 /Zcaron
+8#177 /periodinferior
+8#201 /aacute
+8#202 /acircumflex
+8#203 /adieresis
+8#204 /agrave
+8#205 /aring
+8#206 /atilde
+8#207 /ccedilla
+8#210 /eacute
+8#211 /ecircumflex
+8#212 /edieresis
+8#213 /egrave
+8#214 /iacute
+8#215 /icircumflex
+8#216 /idieresis
+8#217 /igrave
+8#220 /ntilde
+8#221 /oacute
+8#222 /ocircumflex
+8#223 /odieresis
+8#224 /ograve
+8#225 /otilde
+8#226 /scaron
+8#227 /uacute
+8#230 /ucircumflex
+8#231 /udieresis
+8#232 /ugrave
+8#233 /ydieresis
+8#234 /zcaron
+8#235 /Eth
+8#236 /eth
+8#237 /Thorn
+8#240 /thorn
+ ] def
+/olddict oldfont findfont def /newfont olddict maxlength dict def
+olddict { exch dup /FID ne { dup /Encoding eq
+{ exch dup length array copy newfont 3 1 roll put }
+{ exch newfont 3 1 roll put } ifelse }
+ { pop pop } ifelse } forall
+newfont /FontName newname put
+newcodes aload pop
+newcodes length 2 idiv { newfont /Encoding get 3 1 roll put } repeat 
+newname newfont definefont pop end } def
+ /accentdict 10 dict def 
+ /accentor { accentdict begin /scaler exch def /delta exch def 
+/unders exch def /accents exch def /mainch exch def /scrt (X) def
+ /w1 mainch stringwidth pop def 
+ currentpoint mainch show currentpoint 4 2 roll 
+accents { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         w1 w2 sub 2 div delta rmoveto scrt show 
+         /delta delta 150 scaler mul 9 div add def
+        } forall 
+unders { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         ch 46 eq { w1 w2 sub 2 div -175 scaler mul 9 div rmoveto scrt show 0 175 rmoveto }
+           { w1 w2 sub 2 div 0 rmoveto scrt show } ifelse 
+        } forall 
+ pop pop moveto end } def 
+%%EndProlog
+%%BeginSetup
+letter/imagesizefactor 1 def%%EndSetup/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+
+%%Page: 1 1
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+54000 75600 M (F.G.H.          ) S
+54000 73800 M (2/28/85) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (LispCourse #11:  Error Processing & DWIM) S
+7200 67157 M (Completions and Corrections  ) S
+1200 /Times-Roman-Acnt F
+10800 64106 M (1.  KEYACTION and the "A") S
+14400 61506 M (I very stupidly used the "A" key in many of my examples of KEYACTION last ) S
+14400 59706 M (time.   Don't try out my examples on the "A" key.  Use the "B" key.  The reason ) S
+14400 57906 M (is that if you alter the "A" to produce, say, a "C", then you can never type in ) S
+14400 56106 M ("KEYACTION" to change the "A" key back since "KEYACTION" will come out ) S
+14400 54306 M ("KEYCCTION".  Beware!) S
+10800 51306 M (2.  The variable ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(IT) S
+1200 /Times-Roman-Acnt F
+( in the P.A.) S
+14400 49506 M (The P.A. maintains a variable called ) S
+1200 /Times-Italic-Acnt F
+(IT) S
+1200 /Times-Roman-Acnt F
+( that is always bound to the value of the ) S
+14400 47706 M (last expression.  You can use IT in the current expression to refer to the value ) S
+14400 45906 M (returned by the last expression.) S
+14400 44106 M (For example:) S
+18000 42306 M (1_ \(CAR '\(\(A B C\)\(D E F\)\)) S
+1200 /Times-Italic-Acnt F
+18000 40506 M (\(A B C\)) S
+1200 /Times-Roman-Acnt F
+18000 38706 M (2_ IT) S
+1200 /Times-Italic-Acnt F
+18000 36906 M (\(A B C\)) S
+1200 /Times-Roman-Acnt F
+18000 35106 M (3_ \(CDR IT\)) S
+1200 /Times-Italic-Acnt F
+18000 33306 M (\(B C\)) S
+1200 /Times-Roman-Acnt F
+18000 31506 M (4_ \(CDR IT\)) S
+1200 /Times-Italic-Acnt F
+18000 29706 M (\(C\)) S
+1200 /Times-Roman-Acnt F
+14400 27106 M (A more realistic example:) S
+18000 25306 M (5_ \(COPYFILE '{DSK}ABC  '{DSK}NEW\)) S
+1200 /Times-Italic-Acnt F
+18000 23506 M ({DSK}NEW;1) S
+1200 /Times-Roman-Acnt F
+18000 21706 M (6_  \(TEDIT IT\)) S
+18000 19906 M ({PROCESS}#) S
+1200 /Times-Italic-Acnt F
+(1,1232) S
+1200 /Times-Roman-Acnt F
+10800 16906 M (3.  The % quote in the Lisp READER) S
+14400 14306 M (The Lisp READER uses special characters to delimit atoms and lists.  In ) S
+14400 12506 M (particular, the "\(" and "\)" characters delimit lists and spaces delimit atoms.  ) S
+14400 10706 M (Ordinarily ) S
+1200 /Times-Italic-Acnt F
+(\(ABC\)) S
+1200 /Times-Roman-Acnt F
+( would be considered an list containing one atom.  ) S
+1200 /Times-Italic-Acnt F
+(\(ABC DEF\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+14400 8906 M (would be a list containing two atoms.) S
+grestore savepage restore showpage
+
+%%Page: 2 2
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (2) S
+7200 75600 M (LispCourse #11:  Error Processing & DWIM) S
+14400 71106 M (A "%" preceding any special character can be used to surpress the special ) S
+14400 69306 M (interpretation of that character.  When preceded by a "%", special characters are ) S
+14400 67506 M (considered ordinary characters.) S
+14400 64906 M (For example, ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(%\(ABC%\)) S
+1200 /Times-Roman-Acnt F
+( would be considered a single atom and not a list because ) S
+14400 63106 M (the special meaning of the "\)" and "\(" characters are supressed by the preceding ) S
+14400 61306 M ("%".) S
+14400 58706 M (Similarly, ) S
+1200 /Times-Italic-Acnt F
+(\(ABC% DEF\)) S
+1200 /Times-Roman-Acnt F
+( is a list containing a SINGLE atom because the "%" ) S
+14400 56906 M (surpresses the delimiting function of the space between "ABC" and "DEF".) S
+14400 54306 M (The "%" should be thought of as a QUOTE that works on characters rather than ) S
+14400 52506 M (Lisp S-expressions. ) S
+14400 49906 M (Since "%" is itself a special character, it has to be quoted if you want to use it in ) S
+14400 48106 M (an atom.  For example, ) S
+1200 /Times-Italic-Acnt F
+(\(A %% B\)) S
+1200 /Times-Roman-Acnt F
+( is a list containing three atoms, the middle of ) S
+14400 46306 M (which is the atom %.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 42557 M (An Overview of Error Processing) S
+1200 /Times-Roman-Acnt F
+10800 39506 M (The diagram in the Appendix illustrates what happens when an error occurs in the Lisp ) S
+10800 37706 M (evaluator.) S
+10800 35106 M (Errors occur when the Evaluator tries to evaluate an expression containing an unbound ) S
+10800 33306 M (atom \(i.e., an atom with no value\), an undefined function \(i.e., a form whose CAR is not ) S
+10800 31506 M (the name of a function\),  an illegal argument to a functions, etc.) S
+10800 29106 M (The major steps in the processing of errors are the following:) S
+1200 /Times-Bold-Acnt F
+14400 26706 M (DWIM \(and CLISP\) ) S
+1200 /Times-Roman-Acnt F
+(\234 unbound atom and undefined function errors are passed to ) S
+14400 24906 M (DWIM, which attempts to automatically "correct" the error.  DWIM assumes that ) S
+14400 23106 M (the error is either a CLISP expression or a typo.) S
+18000 20706 M (CLISP is a special syntax for Lisp that is "easier to use" \(e.g., CLISP ) S
+18000 18906 M (allows infix notation\).  If the "error" was actually a CLISP expression, ) S
+18000 17106 M (then DWIM translates the expression into standard Lisp and returns the ) S
+18000 15306 M (translated expression to the Evaluator.  \(Note: CLISP is not an error, just a ) S
+18000 13506 M (special syntax that is implemented using the error mechanism.  A very ) S
+18000 11706 M (poor piece of systems design!!!!\)) S
+grestore savepage restore showpage
+
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (3) S
+7200 75600 M (LispCourse #11:  Error Processing & DWIM) S
+18000 71106 M (If the error appears to be a typo, DWIM "corrects" it and returns the ) S
+18000 69306 M (corrected expression to the Lisp evaluator.) S
+18000 66906 M (If it appears that the error is neither a typo nor a CLISP expression, then ) S
+18000 65106 M (DWIM just passes on to the Error Mechanism.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 62106 M (Error Mechanism ) S
+1200 /Times-Roman-Acnt F
+(\234 ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(u.b.a. ) S
+1200 /Times-Roman-Acnt F
+(and ) S
+1200 /Times-Italic-Acnt F
+(u.d.f.) S
+1200 /Times-Roman-Acnt F
+( errors not corrected by DWIM and all other ) S
+14400 60306 M (errors are passed to the Error mechanism.) S
+18000 57906 M (Each error is assigned an error number that identifies what kind of error it ) S
+18000 56106 M (is.  There are about 50 such error numbers.) S
+18000 53706 M (The Error Mechanism, then determines whether to enter a Break.  This ) S
+18000 51906 M (determination depends on a number of factors including how many ) S
+18000 50106 M (function have already been called and how long the computation has been ) S
+18000 48306 M (going on.) S
+18000 45906 M (If the error mechanism decides not to enter a Break, it prints an error ) S
+18000 44106 M (message on the TTY window and then aborts the evaluation.) S
+1200 /Times-Bold-Acnt F
+14400 41106 M (Breaks ) S
+1200 /Times-Roman-Acnt F
+(\234 when appropriate, the Error Mechanism passes control to the Break ) S
+14400 39306 M (Handler.) S
+18000 36306 M (The Break Handler enters a "break", usually by opening a Break Window.) S
+18000 33906 M (The Break Handler prints an error message and then passes control to the ) S
+18000 32106 M (Break Exec.) S
+18000 29706 M (In the Break Exec, the user can evaluate any expression just as in the Lisp ) S
+18000 27906 M (Exec.  Special commands for inspecting the state of the evaluation causing ) S
+18000 26106 M (the error are also available.) S
+18000 23706 M (To end the Break, the user can either repair the error and then return to the ) S
+18000 21906 M (Lisp evaluator OR abort the evaluation in progress and return to the Lisp ) S
+18000 20106 M (Exec.) S
+1400 /Times-Bold-Acnt F
+7200 16357 M (DWIM \(Automatic Error Correction\)) S
+1200 /Times-Bold-Acnt F
+10800 13306 M (Introduction) S
+1200 /Times-Roman-Acnt F
+14400 10706 M (DWIM stands for "Do What I Mean".) S
+grestore savepage restore showpage
+
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (4) S
+7200 75600 M (LispCourse #11:  Error Processing & DWIM) S
+14400 71106 M (DWIM contains two major components:  an automatic typo corrector and a ) S
+14400 69306 M (special set of Lisp-like syntax called CLISP.  CLISP will be talked about in a later ) S
+14400 67506 M (section.  Only the automatic error corrector will be described here.) S
+14400 64906 M (The DWIM error correction is a valiant attempt at making a user interface that is ) S
+14400 63106 M (robust to simple user errors.  It looks at an u.b.a. or a u.d.f. AND at the current ) S
+14400 61306 M (context and tries to figure out what the user actually meant.) S
+14400 58706 M (DWIM embodies an implicit model of the user and the types of errors he is likely ) S
+14400 56906 M (to make.  DWIM also embodies lots of assumptions about the way the Interlisp ) S
+14400 55106 M (system works.  Unfortunately, neither DWIM's model of the user nor DWIM's ) S
+14400 53306 M (assumptions about the Interlisp environment are very good.) S
+14400 50706 M (You can't turn DWIM off.  Too much of the system has been made dependent on ) S
+14400 48906 M (DWIM.   So you have to learn to deal with DWIM and its idiosyncracies.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 45906 M (Spelling Correction) S
+14400 43306 M (Basic idea:) S
+1200 /Times-Roman-Acnt F
+14400 40706 M (The major function of the DWIM error corrector is spelling correction.  When ) S
+14400 38906 M (given a u.b.a or u.d.f. error, DWIM compares the incorrect atom \(i.e., the ) S
+14400 37106 M (unbound atom or the CAR of the u.d.f. form\) against a list of atoms that it knows ) S
+14400 35306 M (about.  If one of the atoms on the list is "close" to the error atom, DWIM replaces ) S
+14400 33506 M (the error atom by the "correct" atom.) S
+14400 30906 M (DWIM uses a number of heuritics to determine the "closeness" of two atoms   ) S
+14400 29106 M (Basically, closeness decreases with the number of letters that are different ) S
+14400 27306 M (between the two atoms.  It increases as a function of the number of letters in the ) S
+14400 25506 M (longer atom.  ) S
+18000 23506 M (Examples:) S
+21600 21506 M (1.  "CONX" is closer to "COND" than to "CORE") S
+21600 19506 M (2.  "PRETTYPRNT " is closer to "PRETTYPRINT") S
+25200 17506 M (than "EQX" is to EQP") S
+14400 14706 M (DWIM ignores single transpositions \(e.g., SD for DS\) and doubled letters \(e.g., ) S
+14400 12906 M (SS for S\).  DWIM considers "CONS" and "CONNS" to be maximally close \(i.e., ) S
+14400 11106 M (identical\) because they differ only by a doubled letter.   Also "CONS" and ) S
+14400 9306 M (CNOS" are maximally close since they differ by a transposition.) S
+grestore savepage restore showpage
+
+%%Page: 5 5
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (5) S
+7200 75600 M (LispCourse #11:  Error Processing & DWIM) S
+14400 71106 M (DWIM's spelling corrector works as follows:  ) S
+18000 68706 M (It compares the error atom to each atom on its lists of atoms and if it can it ) S
+18000 66906 M (chooses one.) S
+18000 64506 M (The choice rules are:) S
+21600 62306 M (If one matches with maximum closeness, then it chooses that atom.  ) S
+21600 60506 M (For example, if the error atom is CONSS and CONS is on the ) S
+21600 58706 M (known atoms list.) S
+21600 56506 M (At the end of the list, if DWIM will choose the ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(one) S
+1200 /Times-Roman-Acnt F
+( atom that had ) S
+21600 54706 M (the maximum closeness measure, providing its closeness measure ) S
+21600 52906 M (is over some threshhold.) S
+21600 50706 M (If there is no ) S
+1200 /Times-Bold-Acnt F
+(unique) S
+1200 /Times-Roman-Acnt F
+( atom with a maximum closeness measure, ) S
+21600 48906 M (DWIM won't choose any atom on the list.  This can happen if ) S
+21600 47106 M (there are no close atoms are if the maximum closeness is shared by ) S
+21600 45306 M (two or more atoms on the list.) S
+1200 /Times-Bold-Acnt F
+14400 42706 M (Lists of known atoms:) S
+1200 /Times-Roman-Acnt F
+14400 40106 M (DWIM uses different lists of known atoms for different kinds of errors.  ) S
+14400 38306 M (Basically, it keeps a list of known function names for undefined function errors ) S
+14400 36506 M (and it keeps a list of known variables for unbound atom errors.  ) S
+14400 33906 M (These lists are automatically maintained by DWIM and by the Programmer's ) S
+14400 32106 M (Assistant.) S
+14400 29506 M (Some atoms are permenantly on these spelling lists. Others are temporary.  ) S
+14400 26906 M (The temporary atoms are placed on the list when they are used in an expression in ) S
+14400 25106 M (which uses one of DEFINEQ,  SETQ, COND, DF, ....) S
+14400 22506 M (If a temporary atom gets used to correct an error, then it becomes permanent.  ) S
+14400 20706 M (Otherwise, it falls off the list after 30 or so new temporary atoms are added to the ) S
+14400 18906 M (list.) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+14400 16306 M (Basically, the list of known atoms corresponds to the last 30 or so atoms or ) S
+14400 14506 M (function names that you referred to.) S
+1200 /Times-Roman-Acnt F
+14400 11906 M (Note that these rules hold basically for user type-in.) S
+grestore savepage restore showpage
+
+%%Page: 6 6
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (6) S
+7200 75600 M (LispCourse #11:  Error Processing & DWIM) S
+14400 71106 M (DWIM also operates on errors occurring within a function.  However, if an error ) S
+14400 69306 M (occurs within a function, DWIM acts slightly differently.  In particular, it uses the ) S
+14400 67506 M (other atoms within the function definition to determine how to spelling correct an ) S
+14400 65706 M (unbound atom.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 62706 M (Other DWIM corrections) S
+1200 /Times-Roman-Acnt F
+14400 60106 M (DWIM makes a few other corrections besides simple spelling corrections.  These ) S
+14400 58306 M (corrections include the following:) S
+1200 /Times-Bold-Acnt F
+14400 55506 M (' followed by a space and an S-expression) S
+1200 /Times-Roman-Acnt F
+( \234) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(This would reuslt in an u.b.a. error ) S
+14400 53706 M (on the '.  DWIM will "correct" this expression to eliminate the space after the '.  ) S
+14400 51906 M (For example:  \(CONS 'A ' \(A B C\)\) would be corrected to \(CONS 'A '\(A B C\)\) ) S
+14400 50106 M (by DWIM.  Similarly, \(LIST ' A ' B\) would be corrected to \(LIST 'A 'B\).) S
+1200 /Times-Bold-Acnt F
+14400 47306 M (Misplaced T clause in COND expression) S
+1200 /Times-Roman-Acnt F
+( \234  DWIM will attempt to correct ) S
+14400 45506 M (various misplacements of a T clause in a COND expression.  It uses various ) S
+14400 43706 M (heuristics to do so.  For example:) S
+18000 41506 M (\(COND \(\(NUMBERP 'A\) 'X\)\(\(T 'Y\)\)\) would get corrected to) S
+21600 39306 M (\(COND \(\(NUMBERP 'A\) 'X\)\(T 'Y\)\)) S
+18000 36906 M (\(COND \(\(NUMBERP 'A\) 'X\)\)\(T 'Y\) would get corrected to) S
+21600 34706 M (\(COND \(\(NUMBERP 'A\) 'X\)\(T 'Y\)\)) S
+1200 /Times-Bold-Acnt F
+14400 31906 M (And other fairly esoteric stuff ....) S
+1200 /Times-Roman-Acnt F
+( \234  See the DWIM documentation for all the ) S
+14400 29906 M (Bells and whistles.  ) S
+1200 /Times-Bold-Acnt F
+10800 26506 M (The DWIM user interface) S
+1200 /Times-Roman-Acnt F
+14400 23906 M (DWIM is called automatically when an appropriate error occurs in the Lisp ) S
+14400 22106 M (evaluator.   However, DWIM sometimes interacts with the user.) S
+14400 19506 M (In particular, DWIM has two modes: ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(CAUTIOUS) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-BoldItalic-Acnt F
+(TRUSTING) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(.  ) S
+1200 /Times-Roman-Acnt F
+18000 16906 M (In ) S
+1200 /Times-Bold-Acnt F
+(TRUSTING) S
+1200 /Times-Roman-Acnt F
+( mode, DWIM makes most corrections without asking the ) S
+18000 15106 M (user's permission.  It simply prints a record of the corrections it is making ) S
+18000 13306 M (in the TTY window.) S
+18000 10906 M (Example:) S
+21600 8706 M (5_ \(COSN 4 \(LIST 5\)\)) S
+grestore savepage restore showpage
+
+%%Page: 7 7
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (7) S
+7200 75600 M (LispCourse #11:  Error Processing & DWIM) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 71106 M (=CONS) S
+21600 69106 M (\(4 5\)) S
+1200 /Times-Roman-Acnt F
+21600 66506 M (The "=CONS' line is a message from DWIM saying that it did a ) S
+21600 64706 M (spelling correction that resulted in an atom being corrected to ) S
+21600 62906 M (CONS.) S
+21600 60106 M (6_ \(DEFINEQ \(JUNK \(LAMBDA NIL \(ITIMSE 4 3\)\)\)\)) S
+1200 /Times-Italic-Acnt F
+21600 58106 M (\(JUNK\)) S
+1200 /Times-Roman-Acnt F
+21600 56106 M (7_ \(JUNK\)) S
+1200 /Times-Italic-Acnt F
+21600 54106 M (ITIMSE {in JUNK} -> ITIMES) S
+21600 52106 M (12) S
+1200 /Times-Roman-Acnt F
+21600 49306 M (The "ITIMSE {in JUNK} -> ITIMES" line is a message from ) S
+21600 47506 M (DWIM saying that while executing JUNK it changed "ITIMSE" to ) S
+21600 45706 M ("ITIMES") S
+18000 42506 M (In ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(CAUTIOUS) S
+1200 /Times-Roman-Acnt F
+( mode, DWIM makes asks the user's permission before ) S
+18000 40706 M (making most corrections.) S
+21600 38306 M (DWIM will print out the correction message followed by a "?".) S
+25200 35906 M (If the users types "Y", then DWIM will make the ) S
+25200 34106 M (correction.) S
+25200 31706 M (If the user types "N", then DWIM will not mnake the ) S
+25200 29906 M (correction and return to the Error Mechanism.) S
+25200 27506 M (If the user types a space or <RETURN>, then DWIM will ) S
+25200 25706 M (just wait until the user types a "Y" or "N".) S
+25200 23306 M (If the user types nothing, DWIM will wait 10 seconds and ) S
+25200 21506 M (then assume a default answer.  The default anser may be ) S
+25200 19706 M ("Y" or "N" depending on the type of correction being done.) S
+21600 17306 M (Example:) S
+25200 14906 M (6_ \(DEFINEQ \(JUNK \(LAMBDA NIL \(ITIMSE 4 3\)\)\)\)) S
+1200 /Times-Italic-Acnt F
+25200 12906 M (\(JUNK\)) S
+1200 /Times-Roman-Acnt F
+25200 10906 M (7_ \(JUNK\)) S
+1200 /Times-Italic-Acnt F
+25200 8906 M (ITIMSE {in JUNK} -> ) S
+grestore savepage restore showpage
+
+%%Page: 8 8
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (8) S
+7200 75600 M (LispCourse #11:  Error Processing & DWIM) S
+25200 71106 M (At this point DWIM waits for an answer of Y or N or for ) S
+25200 69306 M (10 seconds.  In this case, the default answer after 10 ) S
+25200 67506 M (seconds would be "Y".) S
+1200 /Times-Roman-Acnt F
+14400 64106 M (When processing type-in DWIM is always in TRUSTING mode.  The assumption ) S
+14400 62306 M (is that you can always undo what DWIM has done.) S
+14400 59706 M (When processing a function, DWIM can be in either CAUTIOUS or TRUSTING ) S
+14400 57906 M (mode.  The default is TRUSTING.) S
+14400 55306 M (To change DWIM modes, use the function ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(DWIM) S
+1200 /Times-Roman-Acnt F
+(.  ) S
+1200 /Times-Bold-Acnt F
+(DWIM) S
+1200 /Times-Roman-Acnt F
+( takes one argument, ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+14400 53506 M (Mode) S
+1200 /Times-Roman-Acnt F
+(.) S
+18000 51506 M (If ) S
+1200 /Times-Italic-Acnt F
+(Mode ) S
+1200 /Times-Roman-Acnt F
+(is the atom C, then DWIM is set to CAUTIOUS mode.) S
+18000 49506 M (If ) S
+1200 /Times-Italic-Acnt F
+(Mode) S
+1200 /Times-Roman-Acnt F
+( is the atom T, then DWIM is set to TRUSTING mode.) S
+18000 47506 M (If ) S
+1200 /Times-Italic-Acnt F
+(Mode) S
+1200 /Times-Roman-Acnt F
+( is NIL, then DWIM is turned off.  ) S
+1200 /Times-Italic-Acnt F
+14400 44906 M (Beware: Lots of stuff will stop working when DWIM is turned off.  It is probably a ) S
+14400 43106 M (very bad idea to turn DWIM off, since you can never tell what depends on DWIM ) S
+14400 41306 M (to work correctly!!!) S
+1200 /Times-Bold-Acnt F
+10800 38106 M (Some DWIM parameters) S
+14400 35706 M (DWIMWAIT) S
+1200 /Times-Roman-Acnt F
+( \234 the number of seconds DWIM will wait for a response from the ) S
+14400 33906 M (user before assuming the default answer.  Initially, 10 seconds.) S
+1200 /Times-Bold-Acnt F
+14400 31506 M (FIXSPELLDEFAULT) S
+1200 /Times-Roman-Acnt F
+( \234) S
+1200 /Times-Bold-Acnt F
+(  ) S
+1200 /Times-Roman-Acnt F
+(the default answer thatr DWIM uses after DWIMWAIT ) S
+14400 29706 M (seconds is up during a spelling correction in CAUTIOUS mode.  Initially, y.) S
+1200 /Times-Bold-Acnt F
+14400 27306 M (FIXSPELLREL ) S
+1200 /Times-Roman-Acnt F
+(\234  the minimum closeness measure needed to accept a known ) S
+14400 25506 M (atom as a correction for an error atom.  If 100, then only maximum matches will ) S
+14400 23706 M (be accepted.  Note that maximum matches include atoms that differ by single ) S
+14400 21906 M (transpositions and doublings.  Initially set to 70.) S
+1200 /Times-Bold-Acnt F
+14400 19506 M (ADDSPELLFLG) S
+1200 /Times-Roman-Acnt F
+( \234 If NIL, suppresses the addition of items to the known atoms ) S
+14400 17706 M (lists.  If T, enables the additions.  Initially, T.) S
+1200 /Times-Bold-Acnt F
+14400 15306 M (NOSPELLFLG ) S
+1200 /Times-Roman-Acnt F
+(\234 If T suppresses ) S
+1200 /Times-Italic-Acnt F
+(all) S
+1200 /Times-Roman-Acnt F
+( spelling correction in DWIM.  If other non-) S
+14400 13506 M (NIL value, suppresses spelling corrections in functions but not in type-in.  If NIL, ) S
+14400 11706 M (spelling correction is done.  Initially, NIL.) S
+grestore savepage restore showpage
+
+%%Page: 9 9
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (9) S
+7200 75600 M (LispCourse #11:  Error Processing & DWIM) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 71106 M (RUNONFLG) S
+1200 /Times-Roman-Acnt F
+( \234 If T, DWIM tries to correct run-on typos. E.g., \(IPLUS 8A\) might ) S
+14400 69306 M (be corrected to \(IPLUS 8 A\).  If NIL, no run-on correction is done.  Initially, NIL ) S
+14400 67506 M (because) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(run-on corrections are not very good.) S
+1200 /Times-Bold-Acnt F
+14400 65106 M (SPELLINGS1, SPELLINGS2, SPELLINGS3, USERWORDS) S
+1200 /Times-Roman-Acnt F
+( \234 these are the ) S
+14400 63306 M (lists of known atoms that DWIM and the P.A. maintain.  You probably can't do ) S
+14400 61506 M (much except look at these.) S
+1200 /Times-Bold-Acnt F
+14400 59106 M (#SPELLINGS1, #SPELLINGS2, #SPELLINGS3, #USERWORDS) S
+1200 /Times-Roman-Acnt F
+( \234 these ) S
+14400 57306 M (parameters have integer values that determine the length of the known atoms lists.  ) S
+14400 55506 M (If you want to increase the "history" of known atoms, increase the values of the ) S
+14400 53706 M (parameters.) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+( Initially, 20.) S
+grestore savepage restore showpage
+
+%%Page: 10 10
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 11 11
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (10) S
+7200 75600 M (LispCourse #11:  Error Processing & DWIM) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 71106 M (DWIM Documentation) S
+1200 /Times-Roman-Acnt F
+14400 68106 M (DWIM is documented in Chapter 15 of the IRM.   The chapter appears to be ) S
+14400 66306 M (significantly out-of-date!.  It is very detailed and is probably hard to understand ) S
+14400 64506 M (for the average user.) S
+14400 61506 M (The introduction to Chapter 15 and Section 15.1 are good overall descriptions.) S
+14400 58506 M (Sections 15.4 and 15.6 are more detailed descriptions that may be of interest to ) S
+14400 56706 M (the non-programmer.) S
+1200 /Times-Bold-Acnt F
+10800 53706 M (Caution is the bottom line with DWIM) S
+1200 /Times-Roman-Acnt F
+14400 50706 M (DWIM doesn't work very well as a user interface.  It is very non-intuitive and ) S
+14400 48906 M (causes most users many problems than it solves.  Tread with caution when ) S
+14400 47106 M (interacting with DWIM.) S
+14400 44106 M (Examples: [This is a transcript of a short session with DWIM]) S
+18000 42106 M (6_ \(CNOS 4 5\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+18000 40106 M (UNDEFINED CAR OF FORM) S
+18000 38106 M (CNOS) S
+1200 /Times-Roman-Acnt F
+18000 36106 M (7_ \(CONS 4 5\)) S
+1200 /Times-Italic-Acnt F
+18000 34106 M (\(4 . 5\)) S
+1200 /Times-Roman-Acnt F
+18000 32106 M (8_ \(CNOS 4 5\)) S
+1200 /Times-Italic-Acnt F
+18000 30106 M (=CONS) S
+18000 28106 M (\(4 . 5\)) S
+1200 /Times-Roman-Acnt F
+18000 26106 M (9_ \(CONNS 4 5\)) S
+1200 /Times-Italic-Acnt F
+18000 24106 M (=CONN) S
+18000 22106 M ({PHYLUM}<4>) S
+1200 /Times-Roman-Acnt F
+18000 20106 M (10_ UNDO) S
+1200 /Times-Italic-Acnt F
+18000 18106 M (CONN undone.) S
+1200 /Times-Roman-Acnt F
+18000 16106 M (11_ \(COSN 4 5\)) S
+1200 /Times-Italic-Acnt F
+18000 14106 M (=CONS) S
+18000 12106 M (\(4 . 5\)) S
+1200 /Times-Roman-Acnt F
+18000 10106 M (12_ \(CON 4 5\)) S
+grestore savepage restore showpage
+
+%%Page: 12 12
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (11) S
+7200 75600 M (LispCourse #11:  Error Processing & DWIM) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+18000 71106 M (=CONN) S
+18000 69106 M ({PHYLUM}<4>) S
+1200 /Times-Roman-Acnt F
+18000 67106 M (13_ \(CONDD \(T 'X\)\)) S
+1200 /Times-Italic-Acnt F
+18000 65106 M (=CONN) S
+18000 63106 M (ILLEGAL ARG) S
+18000 61106 M (\(T \(QUOTE X\)\)) S
+1200 /Times-Roman-Acnt F
+18000 59106 M (14_ \(COND \(T 'X\)\)) S
+1200 /Times-Italic-Acnt F
+18000 57106 M (X) S
+1200 /Times-Roman-Acnt F
+18000 55106 M (15_ \(CONDD \(T 'X\)\)) S
+1200 /Times-Italic-Acnt F
+18000 53106 M (=CONN) S
+18000 51106 M (ILLEGAL ARG) S
+18000 49106 M (\(T \(QUOTE X\)\)) S
+1200 /Times-Roman-Acnt F
+18000 47106 M (16_ \(CODN \(T 'X\)\)) S
+1200 /Times-Italic-Acnt F
+18000 45106 M (=COND) S
+18000 43106 M (X) S
+1200 /Times-Roman-Acnt F
+18000 41106 M (17_ \(CONX 4 5\)) S
+1200 /Times-Italic-Acnt F
+18000 39106 M (=CONN) S
+18000 37106 M ({PHYLUM}<4>) S
+grestore savepage restore showpage
+
+%%Trailer

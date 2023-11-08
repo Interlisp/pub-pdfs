@@ -1,0 +1,2728 @@
+%!PS-Adobe-2.0%%Title: {DSK}<home>larry>lispcourse>OUTLINE26.PS%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate:  7-Nov-2023 21:40:16%%EndComments/bdef {bind def} bind def
+/ldef {load def} bdef
+/S /show ldef
+/M /moveto ldef
+/DR {transform round exch round exch itransform} bdef
+/L {gsave newpath setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/L1 {gsave newpath 0 setdash setgray setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/F {findfont exch scalefont setfont} bdef
+/CLP {newpath M dup 0 rlineto exch 0 exch rlineto
+  neg 0 rlineto closepath clip newpath} bdef
+/R {gsave setgray newpath M dup 0 rlineto exch 0 exch
+  rlineto neg 0 rlineto closepath eofill grestore} bdef
+/ellipsedict 9 dict def
+ellipsedict /mtrx matrix put
+/ellipse
+ { ellipsedict begin
+  /endangle exch def
+  /startangle exch def
+  /orientation exch def
+  /minorrad exch def
+  /majorrad exch def
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  orientation rotate
+  majorrad minorrad scale
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+ end } bdef
+/concatprocs
+ {/proc2 exch cvlit def
+  /proc1 exch cvlit def
+  /newproc proc1 length proc2 length add array def
+  newproc 0 proc1 putinterval
+  newproc proc1 length proc2 putinterval
+  newproc cvx
+ } bdef
+/resmatrix matrix def
+/findresolution
+ {72 0 resmatrix defaultmatrix dtransform
+  /yres exch def /xres exch def
+  xres dup mul yres dup mul add sqrt
+ } bdef
+/thebitimage
+ {/maskp exch def
+  /bihgt exch def
+  /biwid exch def
+  /byte 1 string def
+  /strbufl biwid 8 div ceiling cvi def
+  /strbuf strbufl string def
+  maskp not{{1 exch sub} currenttransfer concatprocs settransfer} if
+  biwid bihgt
+  maskp { true } { 1 } ifelse
+  [biwid 0 0 bihgt 0 0]
+  {/col 0 def
+   {currentfile byte readhexstring pop 0 get
+    dup 16#B2 eq {pop
+    currentfile byte readhexstring pop 0 get 1 add
+    currentfile byte readhexstring pop pop /nbyte byte 0 get def
+    { strbuf col nbyte put /col col 1 add def} repeat}
+   {dup 16#B3 eq {pop /col col
+    currentfile byte readhexstring pop
+    0 get add 1 add def}
+    {16#B4 eq {currentfile byte readhexstring pop pop} if
+     strbuf col byte 0 get put /col col 1 add def} ifelse
+   } ifelse
+   col strbufl ge { exit } if } loop
+   strbuf }
+  maskp { imagemask } { image } ifelse
+ } bdef
+/setuserscreendict 22 dict def
+setuserscreendict begin
+ /tempctm matrix def
+ /temprot matrix def
+ /tempscale matrix def
+end
+/setuserscreen
+ {setuserscreendict begin
+   /spotfunction exch def
+   /screenangle exch def
+   /cellsize exch def
+   /m tempctm currentmatrix def
+   /rm screenangle temprot rotate def
+   /sm cellsize dup tempscale scale def
+   sm rm m m concatmatrix m concatmatrix pop
+   1 0 m dtransform /y1 exch def /x1 exch def
+   /veclength x1 dup mul y1 dup mul add sqrt def
+   /frequency findresolution veclength div def
+   /newscreenangle y1 x1 atan def
+   m 2 get m 1 get mul m 0 get m 3 get mul sub
+   0 gt { { neg } /spotfunction load concatprocs
+          /spotfunction exch def } if
+   frequency newscreenangle /spotfunction load setscreen
+  end
+ } bdef
+/setpatterndict 18 dict def
+setpatterndict begin
+ /bitison
+  {/ybit exch def /xbit exch def
+   /bytevalue bstring ybit bwidth mul xbit 8 idiv add get def
+   /mask 1 7 xbit 8 mod sub bitshift def
+   bytevalue mask and 0 ne
+  } bdef
+end
+/bitpatternspotfunction
+ {setpatterndict begin
+   /y exch def /x exch def
+   /xindex x 1 add 2 div bpside mul 1 sub cvi def
+   /yindex y 1 add 2 div bpside mul 1 sub cvi def
+   xindex yindex bitison
+    {/onbits onbits 1 add def 1}
+    {/offbits offbits 1 add def 0} ifelse
+  end
+ } bdef
+/setpattern
+ {setpatterndict begin
+   /cellsz exch def
+   /angle exch def
+   /bwidth exch def
+   /bpside exch def
+   /bstring exch def
+   /onbits 0 def /offbits 0 def
+   cellsz angle /bitpatternspotfunction load setuserscreen
+   {} settransfer
+   offbits offbits onbits add div setgray
+  end
+ } bdef
+% - - - - - Fraction-setting code, to support NS fonts better - - - - -
+/fractiondict 20 dict def
+/fractionshow 
+{ fractiondict begin
+/denom exch def 
+/num exch def 
+/regfont currentfont def
+/fractfont currentfont [.65 0 0 .6 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(1) true charpath flattenpath pathbbox 
+/height exch def pop pop pop
+ grestore
+0 .4 height mul rmoveto
+fractfont setfont num show
+0 .4 height mul neg rmoveto regfont setfont (\244) show
+fractfont setfont denom show regfont setfont end } bdef
+/f14 { (1) (4) fractionshow } bdef
+/f12 { (1) (2) fractionshow } bdef
+/f34 { (3) (4) fractionshow } bdef
+/f18 { (1) (8) fractionshow } bdef
+/f38 { (3) (8) fractionshow } bdef
+/f58 { (5) (8) fractionshow } bdef
+/f78 { (7) (8) fractionshow } bdef
+/f13 { (1) (3) fractionshow } bdef
+/f23 { (2) (3) fractionshow } bdef
+/bboxdict 20 dict def
+/bboxchk { bboxdict begin
+/regfont currentfont def
+/chkfont currentfont [1.25 0 0 1.25 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(\161) true charpath flattenpath pathbbox 
+/height exch def pop pop pop 
+ grestore 
+ currentpoint 
+ .2 height mul .3 height mul rmoveto
+chkfont setfont (\063) show
+ moveto
+ regfont setfont
+(\161) show end } bdef
+/rencdict 15 dict def
+/encodefont { rencdict begin
+/newname exch def
+/oldfont exch def
+/newcodes [
+8#001 /Aacute
+8#002 /Acircumflex
+8#003 /Adieresis
+8#004 /Agrave
+8#005 /Aring
+8#006 /Atilde
+8#007 /Ccedilla
+8#010 /Eacute
+8#011 /Ecircumflex
+8#012 /Edieresis
+8#013 /Egrave
+8#014 /Iacute
+8#015 /Icircumflex
+8#016 /Idieresis
+8#017 /Igrave
+8#020 /Ntilde
+8#021 /Oacute
+8#022 /Ocircumflex
+8#023 /Odieresis
+8#024 /Ograve
+8#025 /Otilde
+8#026 /Scaron
+8#027 /Uacute
+8#030 /Ucircumflex
+8#031 /Udieresis
+8#032 /Ugrave
+8#033 /Ydieresis
+8#034 /Zcaron
+8#177 /periodinferior
+8#201 /aacute
+8#202 /acircumflex
+8#203 /adieresis
+8#204 /agrave
+8#205 /aring
+8#206 /atilde
+8#207 /ccedilla
+8#210 /eacute
+8#211 /ecircumflex
+8#212 /edieresis
+8#213 /egrave
+8#214 /iacute
+8#215 /icircumflex
+8#216 /idieresis
+8#217 /igrave
+8#220 /ntilde
+8#221 /oacute
+8#222 /ocircumflex
+8#223 /odieresis
+8#224 /ograve
+8#225 /otilde
+8#226 /scaron
+8#227 /uacute
+8#230 /ucircumflex
+8#231 /udieresis
+8#232 /ugrave
+8#233 /ydieresis
+8#234 /zcaron
+8#235 /Eth
+8#236 /eth
+8#237 /Thorn
+8#240 /thorn
+ ] def
+/olddict oldfont findfont def /newfont olddict maxlength dict def
+olddict { exch dup /FID ne { dup /Encoding eq
+{ exch dup length array copy newfont 3 1 roll put }
+{ exch newfont 3 1 roll put } ifelse }
+ { pop pop } ifelse } forall
+newfont /FontName newname put
+newcodes aload pop
+newcodes length 2 idiv { newfont /Encoding get 3 1 roll put } repeat 
+newname newfont definefont pop end } def
+ /accentdict 10 dict def 
+ /accentor { accentdict begin /scaler exch def /delta exch def 
+/unders exch def /accents exch def /mainch exch def /scrt (X) def
+ /w1 mainch stringwidth pop def 
+ currentpoint mainch show currentpoint 4 2 roll 
+accents { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         w1 w2 sub 2 div delta rmoveto scrt show 
+         /delta delta 150 scaler mul 9 div add def
+        } forall 
+unders { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         ch 46 eq { w1 w2 sub 2 div -175 scaler mul 9 div rmoveto scrt show 0 175 rmoveto }
+           { w1 w2 sub 2 div 0 rmoveto scrt show } ifelse 
+        } forall 
+ pop pop moveto end } def 
+%%EndProlog
+%%BeginSetup
+letter/imagesizefactor 1 def%%EndSetup/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+
+%%Page: 1 1
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+54000 75600 M (F.G.H.          ) S
+54000 73800 M (5/9/85) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (LispCourse #26:  Reprise; Continuation of Record Package from #25) S
+7200 67157 M (Reprise:  Sample Programming Exercise) S
+1200 /Times-Bold-Acnt F
+10800 64706 M (The Problem) S
+1200 /Times-Roman-Acnt F
+14400 61706 M (Consider an existing database containing the membership roster for the ACM.) S
+18000 58906 M (The database is a list of entries.) S
+21600 56106 M (Each entry corresponds to a person and contains the person's ) S
+21600 54306 M (name, a list of dates relevant to that person's membership, a list of ) S
+21600 52506 M (special interest groups\(SIGs\) that person belongs to, and an atom ) S
+21600 50706 M (indicating whether the person's membership status.) S
+25200 47906 M (The person's name is a list of three atoms corresponding to ) S
+25200 46106 M (the persons first, middle, and last names in that order.) S
+25200 43306 M (The date list contains two dates, the date of the person ) S
+25200 41506 M (joined ACM and the date of the last renewal.) S
+28800 38706 M (Each date is a list of three numbers: day, month, ) S
+28800 36906 M (and year.) S
+25200 34106 M (The list of SIGs consists of any number \(including 0\) of ) S
+25200 32306 M (atoms like SIGOA and SIGART.) S
+25200 29506 M (The membership status is one of the following atoms: ) S
+25200 27706 M (Member, Associate, or Student.) S
+14400 24506 M (Example Database:) S
+18000 21906 M (\(\(\(JoAnn A Jones\)\(\(23 10 75\)\(01 10 84\)\)\(SIGCHI SIGART SIGED\) ) S
+18000 20106 M (Member\)) S
+18000 18106 M ( \(\(Bill B Smith\)\(\(12 03 82\)\(01 04 85\)\)\(SIGOA\) Associate\)) S
+18000 16106 M ( \(\(Jill Jane Jerzy\)\(\(15 09 80\)\(14 09 84\)\) NIL Student\)\)) S
+grestore savepage restore showpage
+
+%%Page: 2 2
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (2) S
+7200 75600 M (LispCourse #26:  Reprise; Continuation of #25) S
+14400 71106 M (Write functions to:) S
+18000 68706 M (1.  Add a new person entry to this database.) S
+18000 66306 M (2.  Return a list of all SIGCHI members in the ACM.) S
+18000 63906 M (3.  Given a last name, update that person's membership status to Member.) S
+18000 61506 M (4.  Given a last name and a date, update that person's last renewal date.) S
+14400 58306 M (You can assume that the database is the value of the atom ACM.Members.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 54906 M (Step 1:  Describe the database) S
+1200 /Times-Roman-Acnt F
+14400 52106 M (\(RECORD ACMEntry \(Name Dates SIGs Status\)\)) S
+14400 49306 M (\(RECORD Name \(First Middle Last\)\)) S
+14400 46506 M (\(RECORD ACMDates \(JoinDate RenewalDate\)\)) S
+14400 43706 M (\(RECORD Date \(Day Month Year\)\)) S
+14400 40506 M (Note:  The whole database and the SIGs list are variable length and therefore ) S
+14400 38706 M (cannot be described as RECORDs.  In fact, they are likely to be the kind of data ) S
+14400 36906 M (structures that you search looking for something rather than the kind of data ) S
+14400 35106 M (structures you want to get a particular part \(i.e., field\) of.) S
+grestore savepage restore showpage
+
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (3) S
+7200 75600 M (LispCourse #26:  Reprise; Continuation of #25) S
+/Helvetica /Helvetica-Acnt encodefont
+1200 /Helvetica-Acnt F
+8632.5 59630.0 M (Database) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 15200 59700 M
+stroke
+grestore
+18400 59700 15200 59700 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 18400 59700 M
+stroke
+grestore
+1200 /Helvetica-Acnt F
+20298.5 59630.0 M (List of ACMEntry) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 31200 59700 M
+stroke
+grestore
+35200 68500 31200 59700 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 35200 68500 M
+stroke
+grestore
+1200 /Helvetica-Acnt F
+36000.0 68430.0 M (Name) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 40000 68500 M
+stroke
+grestore
+42400 70900 40000 68500 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 42400 70900 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 40000 68500 M
+stroke
+grestore
+42400 68500 40000 68500 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 42400 68500 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 40000 68500 M
+stroke
+grestore
+43200 66100 40000 68500 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 43200 66100 M
+stroke
+grestore
+1200 /Helvetica-Acnt F
+43666.0 66030.0 M (Last) S
+1200 /Helvetica-Acnt F
+43833.5 68430.0 M (Middle) S
+1200 /Helvetica-Acnt F
+43633.5 70830.0 M (First) S
+1200 /Helvetica-Acnt F
+53600 65230.0 M (Day) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 50400 62900 M
+stroke
+grestore
+53600 65300 50400 62900 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 53600 65300 M
+stroke
+grestore
+1200 /Helvetica-Acnt F
+53600 63630.0 M (Month) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 50400 62900 M
+stroke
+grestore
+53600 63700 50400 62900 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 53600 63700 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 44000 62900 M
+stroke
+grestore
+44000 62900 43200 61300 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 43200 61300 M
+stroke
+grestore
+1200 /Helvetica-Acnt F
+44833.0 62830.0 M (JoinDate) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 51200 62900 M
+stroke
+grestore
+53600 62100 51200 62900 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 53600 62100 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 31200 59700 M
+stroke
+grestore
+34400 61300 31200 59700 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 34400 61300 M
+stroke
+grestore
+1200 /Helvetica-Acnt F
+36300.0 61230.0 M (ACMDates) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 43200 61300 M
+stroke
+grestore
+44000 58900 43200 61300 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 44000 58900 M
+stroke
+grestore
+1200 /Helvetica-Acnt F
+53600 62030.0 M (Year) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 31200 59700 M
+stroke
+grestore
+35200 53300 31200 59700 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 35200 53300 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 31200 59700 M
+stroke
+grestore
+35200 48500 31200 59700 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 35200 48500 M
+stroke
+grestore
+1200 /Helvetica-Acnt F
+55200 57230.0 M (Month) S
+1200 /Helvetica-Acnt F
+45200.0 58830.0 M (RenewalDate) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 53600 58900 M
+stroke
+grestore
+55200 57300 53600 58900 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 55200 57300 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 53600 58900 M
+stroke
+grestore
+55200 55700 53600 58900 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 55200 55700 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 53600 58900 M
+stroke
+grestore
+54400 58900 53600 58900 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 54400 58900 M
+stroke
+grestore
+1200 /Helvetica-Acnt F
+55200 58830.0 M (Day) S
+1200 /Helvetica-Acnt F
+36264.5 53230.0 M (SIGs) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 40000 53300 M
+stroke
+grestore
+44800 53300 40000 53300 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 44800 53300 M
+stroke
+grestore
+1200 /Helvetica-Acnt F
+46131.5 53230.0 M (List of Atoms) S
+1200 /Helvetica-Acnt F
+55200 55630.0 M (Year) S
+1200 /Helvetica-Acnt F
+36699.0 48430.0 M (Status) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 40800 48500 M
+stroke
+grestore
+44000 48500 40800 48500 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 44000 48500 M
+stroke
+grestore
+1200 /Helvetica-Acnt F
+53230.0 49030.0 M (One of:) S
+47597.0 47830.0 M (\(Member Associate Stud) S
+3600 46630.0 M (ent\)) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 42106 M (Step 2:  Write the constructors, selectors, and mutators for the data structures) S
+1200 /Times-Roman-Acnt F
+14400 38906 M (A.  Start with the lowest level structures \(i.e., the one that consist of atoms\)) S
+14400 35706 M (i.  Names: Deal with the Name RECORD) S
+14400 32706 M (\(DEFINEQ) S
+18000 30906 M (\(ACM.CreateName) S
+21600 29106 M (\(LAMBDA \(First Middle Last\)) S
+25200 27306 M (\(CREATE Name First _ First Middle _ Middle last _ ) S
+25200 25506 M (Last\)\)\)) S
+18000 23706 M (\(ACM.FirstName) S
+21600 21906 M (\(LAMBDA \(OldName NewFirst\)) S
+25200 20106 M (\(COND) S
+28800 18306 M (\(NewFirst \(replace \(Name First\) of OldName with ) S
+28800 16506 M (NewFirst\)\)) S
+28800 14706 M (\(T \(fetch \(Name First\) of OldName\)\)\)\)\)) S
+18000 12906 M (\(ACM.MiddleName) S
+21600 11106 M (\(LAMBDA \(OldName NewMiddle\)) S
+25200 9306 M (\(COND) S
+grestore savepage restore showpage
+
+%%Page: 5 5
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (4) S
+7200 75600 M (LispCourse #26:  Reprise; Continuation of #25) S
+28800 71106 M (\(NewMiddle \(replace \(Name Middle\) of OldName ) S
+28800 69306 M (with NewMiddle\)\)) S
+28800 67506 M (\(T \(fetch \(Name Middle\) of OldName\)\)\)\)\)) S
+18000 65706 M (\(ACM.LastName) S
+21600 63906 M (\(LAMBDA \(OldName NewLast\)) S
+25200 62106 M (\(COND) S
+28800 60306 M (\(NewLast \(replace \(Name Last\) of OldName with ) S
+28800 58506 M (NewLast\)\)) S
+28800 56706 M (\(T \(fetch \(Name Last\) of OldName\)\)\)\)\)\)\)) S
+14400 53506 M (ii.  Dates: Deal with the Date RECORD) S
+14400 50506 M (\(DEFINEQ) S
+18000 48706 M (\(ACM.CreateDate) S
+21600 46906 M (\(LAMBDA \(Day Month Year\)) S
+25200 45106 M (\(CREATE Date Day _ Day Month _ Month Year _ Year\)\)\)) S
+18000 43306 M (\(ACM.Day) S
+21600 41506 M (\(LAMBDA \(OldDate NewDay\)) S
+25200 39706 M (\(COND) S
+28800 37906 M (\(NewDay \(replace \(Date Day\) of OldDate with ) S
+28800 36106 M (NewDay\)\)) S
+28800 34306 M (\(T \(fetch \(Date Day\) of OldDate\)\)\)\)\)) S
+18000 32506 M (\(ACM.Month) S
+21600 30706 M (\(LAMBDA \(OldDate NewMonth\)) S
+25200 28906 M (\(COND) S
+28800 27106 M (\(NewMonth \(replace \(Date Month\) of OldDate with ) S
+28800 25306 M (NewMonth\)\)) S
+28800 23506 M (\(T \(fetch \(Date Month\) of OldDate\)\)\)\)\)) S
+18000 21706 M (\(ACM.Year) S
+21600 19906 M (\(LAMBDA \(OldDate NewYear\)) S
+25200 18106 M (\(COND) S
+28800 16306 M (\(NewYear \(replace \(Date Year\) of OldDate with ) S
+28800 14506 M (NewYear\)\)) S
+28800 12706 M (\(T \(fetch \(Date Year\) of OldDate\)\)\)\)\)\)\)) S
+14400 9506 M (B.  Continue with next level structures: the ones that use Names and Dates) S
+grestore savepage restore showpage
+
+%%Page: 6 6
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (5) S
+7200 75600 M (LispCourse #26:  Reprise; Continuation of #25) S
+14400 71106 M (i.  ACMDates) S
+14400 68106 M (\(DEFINEQ) S
+18000 66306 M (\(ACM.CreateACMDateList) S
+21600 64506 M (\(LAMBDA \(JoinDate RenewalDate\)) S
+25200 62706 M (\(CREATE ACMDates JoinDate _ JoinDate RenewalDate _ ) S
+25200 60906 M (RenewalDate\)\)\)) S
+18000 59106 M (\(ACM.JoinDate) S
+21600 57306 M (\(LAMBDA \(DatesList NewJoinDate\)) S
+25200 55506 M (\(COND) S
+28800 53706 M (\(NewJoinDate \(replace \(ACMDates JoinDate\) of ) S
+28800 51906 M (DatesList with NewJoinDate\)\)) S
+28800 50106 M (\(T \(fetch \(ACMDates JoinDate\) of DatesList\)\)\)\)\)) S
+18000 48306 M (\(ACM.RenewalDate) S
+21600 46506 M (\(LAMBDA \(DatesList NewRenewalDate\)) S
+25200 44706 M (\(COND) S
+28800 42906 M (\(NewRenewalDate \(replace \(ACMDates ) S
+28800 41106 M (RenewalDate\) of DatesList with ) S
+28800 39306 M (NewRenewalDate\)\)) S
+28800 37506 M (\(T \(fetch \(ACMDates RenewalDate\) of ) S
+28800 35706 M (DatesList\)\)\)\)\)\)) S
+14400 32506 M (C.  Highest level record structure: the ACMEntry) S
+14400 29506 M (\(DEFINEQ) S
+18000 27706 M (\(ACM.CreateACMEntry) S
+21600 25906 M (\(LAMBDA \(Name Dates SIGs Status\)) S
+21600 24106 M (\(CREATE ACMEntry Name _ Name Dates _ Dates SIGs _ SIGs ) S
+21600 22306 M (Status _ Status\)\)\)) S
+18000 20506 M (\(ACM.Name) S
+21600 18706 M (\(LAMBDA \(Entry NewName\)) S
+25200 16906 M (\(COND) S
+28800 15106 M (\(NewName \(replace \(ACMEntry Name\) of Entry ) S
+28800 13306 M (with NewName\)\)) S
+28800 11506 M (\(T \(fetch \(ACMEntry Name\) of Entry\)\)\)\)\)) S
+18000 9706 M (\(ACM.DatesList) S
+grestore savepage restore showpage
+
+%%Page: 7 7
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (6) S
+7200 75600 M (LispCourse #26:  Reprise; Continuation of #25) S
+21600 71106 M (\(LAMBDA \(Entry NewDatesList\)) S
+25200 69306 M (\(COND) S
+28800 67506 M (\(NewDatesList \(replace \(ACMEntry Dates\) of ) S
+28800 65706 M (Entry with NewDatesList\)\)) S
+28800 63906 M (\(T \(fetch \(ACMEntry Dates\) of Entry\)\)\)\)\)) S
+18000 62106 M (\(ACM.SIGs) S
+21600 60306 M (\(LAMBDA \(Entry NewSIGs\)) S
+25200 58506 M (\(COND) S
+28800 56706 M (\(NewSIGs \(replace \(ACMEntry SIGs\) of Entry with ) S
+28800 54906 M (NewSIGs\)\)) S
+25200 53106 M (\(T \(fetch \(ACMEntry SIGs\) of Entry\)\)\)\)\)\)) S
+18000 51306 M (\(ACM.Status) S
+21600 49506 M (\(LAMBDA \(Entry NewStatus\)) S
+25200 47706 M (\(COND) S
+28800 45906 M (\(NewStatus \(replace \(ACMEntry Status\) of Entry ) S
+28800 44106 M (with NewStatus\)\)) S
+25200 42306 M (\(T \(fetch \(ACMEntry Status\) of Entry\)\)\)\)\)\)) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 38906 M (Step 3:  Write the functions that do the work as required.) S
+1200 /Times-Roman-Acnt F
+14400 35706 M (1.  Add a new person entry to this database.) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+14400 32706 M (Plan:  Create an entry record for he new person and CONS it onto the existing ) S
+14400 30906 M (datatbase list.) S
+1200 /Times-Roman-Acnt F
+14400 27906 M (\(DEFINEQ) S
+18000 26106 M (\(ACM.AddPerson) S
+21600 24306 M (\(LAMBDA \(First Middle Last JoinDate RenewalDate SIGs Status\)) S
+25200 22506 M (\(SETQ ACM.Members) S
+28800 20706 M (\(CONS) S
+32400 18906 M (\(ACM.CreateACMEntry) S
+36000 17106 M (\(ACM.CreateName First Middle ) S
+36000 15306 M (Last\)) S
+36000 13506 M (\(ACM.CreateACMDatesList ) S
+36000 11706 M (JoinDate) S
+39600 9906 M (RenewalDate\)) S
+grestore savepage restore showpage
+
+%%Page: 8 8
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (7) S
+7200 75600 M (LispCourse #26:  Reprise; Continuation of #25) S
+36000 71106 M (SIGs Status\)) S
+32400 69306 M (ACM.Members\)\)\)\)\)) S
+14400 66906 M (2.  Return a list of all SIGCHI members in the ACM.) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+14400 63906 M (Plan:  Iterate through list of entries.  For each entry that is a member of SIGCHI, ) S
+14400 62106 M (add it to a list of the SIGCHI members \(which is the value of the atom ) S
+14400 60306 M (SIGCHI.Members\).) S
+1200 /Times-Roman-Acnt F
+14400 57706 M (\(DEFINEQ) S
+18000 55906 M (\(ACM.SIGCHIMembers) S
+21600 54106 M (\(LAMBDA NIL) S
+25200 52306 M (\(SETQ SIGCHI.Members NIL\)) S
+25200 50506 M (\(FOR Entry in ACM.Members DO) S
+28800 48706 M (\(COND) S
+32400 46906 M (\( \(MEMBER 'SIGCHI \(ACM.SIGS Entry\)\)) S
+36000 45106 M (\(SETQ SIGCHI.Members) S
+43200 43306 M (\(CONS Entry ) S
+43200 41506 M (SIGCHI.Members\)\)\)\)) S
+25200 39706 M (SIGCHI.Members\)\)\)) S
+grestore savepage restore showpage
+
+%%Page: 9 9
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 10 10
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (8) S
+7200 75600 M (LispCourse #26:  Reprise; Continuation of #25) S
+14400 71106 M (3.  Given a last name, update that person's membership status to Member.) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+14400 68106 M (Plan:  Iterate through list of entries.  For the entry that matches on last name, ) S
+14400 66306 M (change the Status field.) S
+1200 /Times-Roman-Acnt F
+14400 63706 M (\(DEFINEQ) S
+18000 61906 M (\(ACM.ChangeStatusToMember) S
+21600 60106 M (\(LAMBDA \(LastName\)) S
+25200 58306 M (\(FOR Entry in ACM.Members DO) S
+28800 56506 M (\(COND) S
+32400 54706 M (\( \(EQUAL LastName) S
+36000 52906 M (\(ACM.LatName \(ACM.Name ) S
+36000 51106 M (Entry\)\)\)) S
+32400 49306 M (  \(ACM.Status Entry 'Member\)\)\)\)\)\)\)) S
+14400 45106 M (4.  Given a last name and a date, update that person's last renewal date.) S
+1200 /Times-Italic-Acnt F
+14400 42106 M (Plan:  Iterate through list of entries.  For the entry that matches on last name, ) S
+14400 40306 M (change the renewal date.) S
+1200 /Times-Roman-Acnt F
+14400 37706 M (\(DEFINEQ) S
+18000 35906 M (\(ACM.ChangeRenewalDate) S
+21600 34106 M (\(LAMBDA \(LastName NewRenewalDate\)) S
+25200 32306 M (\(FOR Entry in ACM.Members DO) S
+28800 30506 M (\(COND) S
+32400 28706 M (\( \(EQUAL LastName) S
+36000 26906 M (\(ACM.LatName \(ACM.Name ) S
+36000 25106 M (Entry\)\)\)) S
+32400 23306 M (  \(ACM.RenewalDate) S
+36000 21506 M (\(ACM.DatesList Entry\)) S
+36000 19706 M (NewRenewalDate\)\)\)\)\)\)\)) S
+grestore savepage restore showpage
+
+%%Page: 11 11
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 12 12
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (9) S
+7200 75600 M (LispCourse #26:  Reprise; Continuation of #25) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 71106 M (Step 4:  Save your work on a file and list it.) S
+1200 /Times-Roman-Acnt F
+14400 67906 M (Decide to call the file ACMLIST.) S
+14400 64706 M (Set up the COMS list for MAKEFILE) S
+18000 61506 M (\(SETQ ACMLISTCOMS \(QUOTE  \() S
+21600 59306 M (\(RECORDS ACMEntry Name ACMDates Date\)) S
+21600 57106 M (\(VARS ACM.Members\)) S
+21600 54906 M (\(* * Constructors, Selectors, and Mutators\)) S
+21600 52706 M (\(FNS ACM.CreateName ACM.FirstName ACM.MiddleName ) S
+21600 50906 M (ACM.LastName\)) S
+21600 48706 M (\(FNS ACM.CreateDate ACM.Day ACM.Month ACM.Year\)) S
+21600 46506 M (\(FNS ACM.CreateACMDateList ACM.JoinDate ) S
+21600 44706 M (ACM.RenewalDate\)) S
+21600 42506 M (\(FNS ACM.CreateACMEntry ACM.Name ACM.DatesList ) S
+21600 40706 M (ACM.SIGs ACM.Status\)) S
+21600 38506 M (\(* * Work-doing functions\)) S
+21600 36306 M (\(FNS ACM.AddPerson ACM.SIGCHIMembers ) S
+21600 34506 M (ACM.ChangeStatusToMember ACM.ChangeRenewalDate\)) S
+18000 32306 M (\)\)\)) S
+14400 29506 M (Do the MAKEFILE) S
+18000 27306 M (\(MAKEFILE '{PHYLUM}<HALASZ>LISPCOURSE>ACMLIST\)) S
+14400 24706 M (Do the LISTFILES) S
+18000 22506 M (\(LISTFILES {PHYLUM}<HALASZ>LISPCOURSE>ACMLIST\)) S
+1200 /Times-Bold-Acnt F
+10800 18906 M (Step 5:  Test, Debug, and redo the MAKEFILE.) S
+1200 /Times-Roman-Acnt F
+14400 15306 M (EFS.) S
+grestore savepage restore showpage
+
+%%Page: 13 13
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 14 14
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (10) S
+7200 75600 M (LispCourse #26:  Reprise; Continuation of #25) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (Continuation from #25:  Editing Record/Datatype Declarations and Instances) S
+1200 /Times-Bold-Acnt F
+10800 67306 M (Examining and Editing Record/Datatype Declarations: RECLOOK and EDITREC) S
+1200 /Times-Roman-Acnt F
+14400 64506 M (To see the declaration for record or datatype named ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(RecordName) S
+1200 /Times-Roman-Acnt F
+(, use ) S
+1200 /Times-Bold-Acnt F
+14400 62706 M (\(RECLOOK  ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(RecordName) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+(.) S
+1200 /Times-Roman-Acnt F
+18000 60506 M (61_ \(RECORD ACMDate \(Month Day Year\) Month _ 01 Day _ 01 Year ) S
+18000 58706 M (_ 00\)) S
+1200 /Times-Italic-Acnt F
+18000 56506 M (ACMDate) S
+1200 /Times-Roman-Acnt F
+18000 54306 M (62_ \(RECLOOK 'ACMDate\)) S
+1200 /Times-Italic-Acnt F
+18000 52106 M (\(RECORD ACMDate \(Month Day Year\) Month _ 01 Day _ 01 Year _ 00\)) S
+1200 /Times-Roman-Acnt F
+18000 49906 M (63_ \(DATATYPE ACMDate \(Month Day Year\)\)) S
+1200 /Times-Italic-Acnt F
+18000 47706 M (\(record ACMDate redeclared\)) S
+18000 45506 M (ACMDate) S
+1200 /Times-Roman-Acnt F
+18000 43306 M (64_ \(RECLOOK 'ACMDate\)) S
+1200 /Times-Italic-Acnt F
+18000 41106 M (\(DATATYPE ACMDate \(Month Day Year\)\)) S
+1200 /Times-Roman-Acnt F
+14400 37506 M (To edit \(i.e., change\) the declaration for record or datatype named ) S
+1200 /Times-Italic-Acnt F
+(RecordName) S
+1200 /Times-Roman-Acnt F
+(, ) S
+14400 35706 M (use ) S
+1200 /Times-Bold-Acnt F
+(\(EDITREC  ) S
+1200 /Times-BoldItalic-Acnt F
+(RecordName) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+(.  [EDITREC is an NLAMBDA function]) S
+18000 33106 M (This will pop you into a DEdit on the record/datatype declaration.  If you ) S
+18000 31306 M (exit DEdit with ) S
+1200 /Times-BoldItalic-Acnt F
+(OK) S
+1200 /Times-Roman-Acnt F
+(, the record/datatype will be redeclared.  If you exit ) S
+18000 29506 M (with ) S
+1200 /Times-BoldItalic-Acnt F
+(Stop) S
+1200 /Times-Roman-Acnt F
+(, no change in the declaration will happen.) S
+1200 /Times-Bold-Acnt F
+18000 26906 M (\(EDITREC ACMDate\)) S
+grestore savepage restore showpage
+
+%%Page: 15 15
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (11) S
+7200 75600 M (LispCourse #26:  Reprise; Continuation of #25) S
+/bitbltsave save def 18000 49499 translate 41900 22500 scale 419 225 true thebitimage
+B2331100
+B2334440
+B334
+B2331100
+B334
+B2334440
+B334
+B22A1113B206FFF100
+B334
+B22A4447B206003440
+B334
+B22A1113B3063100
+B334
+B22A444700001FC89180003440
+B32D10051200B302
+B22A1113B30202B3023100
+B334
+B22A444700001F85B3023440
+B32D10089780B302
+B22A1113B302000200003100
+B32D1FC012B303
+B22A4447B203001000003440
+B32FB202003440
+B22A1113B3063100
+B334
+B22A444700007F083A80003440
+B32D400844B303
+B22A1113B302146480003100
+B32F1CB303
+B22A444700007E224480003440
+B32D402238B303
+B22A1113B302000080003100
+B32D7FB305
+B22A4447B206003440
+B334
+B22A1113B3063100
+B334
+B22A44470007E20E1D42003440
+B32C0412112244B302
+B22A1113B302103268003100
+B32E1F0E50B302
+B22A44470007E3512248003440
+B32C0412CE1C44B302
+B22A1113000410000040003100
+B32C07E0B305
+B22A4447B206003440
+B334
+B22A1113B3063100
+B334
+B22A44470FE3A463C3C4443440
+B32B080464842424B302
+B22A1113080424880424443100
+B334
+B22A44470FC464880426643440
+B32B0803A5E803C5983440
+B22A1113080020842000003100
+B32B0FE02483C0B303
+B22A4447000004B203003440
+B32DB204003440
+B22A1113B3063100
+B334
+B22A444700003F8E9180003440
+B32D20119200B302
+B22A1113B30210B3023100
+B334
+B22A444700003F11B3023440
+B32D200E9780B302
+B22A1113B302008200003100
+B32D3F8092B303
+B22A4447B203001000003440
+B32FB202003440
+B22A1113B30280B3023100
+B334
+B22A4447008238B88484603440
+B32D44C48484803440
+B22A1113008240B20284803100
+B32CFC7CB305
+B22A4447008244C4D4C4803440
+B32D38B8B4B4B9E03440
+B22A11130082B20300803100
+B32CFC000004B303
+B22A4447B203000400003440
+B32FB202003440
+B22A1113B3030100003100
+B334
+B22A44470003E0887570003440
+B32C0410888988B302
+B22A111300001154C908003100
+B32D215439B303
+B22A44470003C2228988003440
+B32C0402227170B302
+B22A1113000410B203003100
+B32C03E0B305
+B22A4447B206003440
+B334
+B22A1113B3063100
+B334
+B22A4447000040484740003440
+B32F48C0B302
+B22A1113B30440003100
+B334
+B22A444700007C4C48C0003440
+B32D404B8740B302
+B22A1113B302000040003100
+B32D7E40B304
+B22A4447B2020040B202003440
+B32EB203003440
+17B22AFFB3063100
+B334
+46B229000F0001F108E8F0003440
+B32C0209091908B302
+16B32E0908003100
+B334
+46B32D891908003440
+B32E70E8F0B302
+16B32C08000800003100
+B334
+46B32BB205003440
+B334
+16B32B0108B3033100
+B32C0204B305
+46B32D0F0E8C003440
+B32C0402109190B302
+16B32E9090003100
+B334
+46B3313440
+B32C02040F10BCB302
+16B32D000010003100
+B32C0108B305
+46B32BB205003440
+B334
+16B32D108000003100
+B32E2040B303
+46B3313440
+B32E4020B303
+16B3313100
+B334
+46B3313440
+B32E2040B303
+16B3313100
+B32E1080B303
+46B32DB203003440
+B334
+16B3313100
+B334
+46B32B1F04446710803440
+B32C2084448890B302
+16B32B008AA48810803100
+B32C010AB305
+46B32B1E11148898803440
+B32C201115E717003440
+16B32C80008010003100
+B32C1F0004B304
+46B32B000004B202003440
+B32EB203003440
+16B32C02B3033100
+B334
+46B32A0208E2E23A70E03440
+B32C0913124489103440
+16B32C02126481003100
+B32B03F1F2121C81F03100
+46B32A020913124489103440
+B32C08E2E23870E03440
+16B32C0002B202003100
+B32B03F0B306
+46B32AB206003440
+B334
+16B3313100
+B334
+46B32B0F8388E19C003440
+B32C0844491222B302
+16B32C24090220003100
+B32D27C9F23EB302
+46B32C24491222003440
+B32D2388E79CB302
+16B32C40080200003100
+B32C0F80B305
+46B32BB205003440
+B334
+16B3313100
+B31103B30B4080B313
+46B3100080B30A2040B30B3F0E21E20E003440
+B307223888622000003E00F0F0B3023E0020E1E4B30238B30D2091221211B302
+16B3062A448892200200080089114002000800211224000400441020B30C90221210003100
+B30A822004B30504B303022400080064B30E9F22121FB302
+46B30B0F80080088F2200F80B302F1E4001F0054B30D3F11221351003440
+B309C883200400B3021220040008005110264008B30F208E79E2CEB302
+16B3063638B1E2C00200280088E2200200280050E1C58004004CB30E8020B202003100
+B308000082B20200180088B20300180088B20400442040B30B3F0038B304
+46B30622000002B3020800F0B30308B30638B30DB205003440
+B307B216004080B313
+16B31DB20B00B3073100
+160408B30C08B306C0B30310B316
+460810B30C10B30620B30308B30F82433880003440
+B30289F1C3889E00447113C3C30E001088E22188803C3C2000838790B3114444B303
+1610208902244891004489522444910020A9122248802244500084489004B30F7C444080003100
+B3029102244911007CB30310B30408B30508B31144447CB303
+461020A102044A110044815223C41FB3073C880087C7B311284444D0003440
+B302F1E2044F1100288152204411B30213220C8022048801444099B311FF38B0B302
+1610208902244891002889B4B2238F0E0020D8E2C78B0022388801438716B3101044B202003100
+160810B3082004000010D8000208002200000220000008B31074B304
+460810F1F1C38F1E00107113C0B202001088000008003CB316B204003440
+460408B20C0008B20B0010B316
+16B22900B3073100
+B334
+47B231FFF440
+B30AFEB308EAB214AAAFB304FDB302
+17B331F100
+B314F5B214555FB308
+47C07C01E1773FE1F7FE1DF687BFB20287BC3DFBB317E00F0BB9F07D0F8440
+47DF9DFFDE777FDEF7FDEEEE7BBFB2027BBBDDFBFFEAB214AAAFEFFEF3BBCF9CF77440
+17DFDDFFBF777FBF77FBFF5EFDBEFF7B7BB7EDB319FDFBBBDFDDFB7100
+17DFEDB307BEB302FBFBB303F5B214555FB303BFEDFBF100
+47B307F80FB302038787B3218440
+47DFEC03B304FBEF5EFD9EFB7F7FB303EAB214AAAFE01DB3047440
+17DFEDFFDE777FDEF7FDDEEE7BAB777B7BBBDCF7B317EFFEF3BBBFECF77100
+B303E1763FE1E1FE3DF687B4B38F8787BC3D0FFFF5B214555FEFFF0BB1BFED0F8100
+47DFDDFFFF7F7FFFF7B20BFFB318FBFBDFDFFFF440
+47DF9DFFFF77B30ABFB302EAB214AAAFB302BBCF9FB302
+17C07C01FF77FFFFF9B322E00FFBBFF07FFFF100
+17B213FFF5B214555FB206FFF100
+47B313B21DFFF440
+B2334440
+B2331100
+B334
+
+bitbltsave restore
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 41806 M (Examining and Editing Record/Datatype Instances: The Inspector) S
+1200 /Times-Roman-Acnt F
+14400 38806 M (To examine or change the value of a field in a record/datatype instance, use the ) S
+14400 37006 M (Inspector.  The Inspector is called as follows:) S
+1200 /Times-Bold-Acnt F
+18000 34606 M (\(INSPECT ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Instance) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+14400 31606 M (If ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Instance) S
+1200 /Times-Roman-Acnt F
+( is a ) S
+1200 /Times-Italic-Acnt F
+(record) S
+1200 /Times-Roman-Acnt F
+(, then a menu will be displayed with the following choices: ) S
+1200 /Times-Italic-Acnt F
+14400 29806 M (DisplayEdit) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Italic-Acnt F
+(TtyEdit) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Italic-Acnt F
+(Inspect) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Italic-Acnt F
+(AsRecord) S
+1200 /Times-Roman-Acnt F
+(.) S
+18000 26806 M (Choose:  ) S
+1200 /Times-Italic-Acnt F
+(AsRecord) S
+1200 /Times-Roman-Acnt F
+18000 23806 M (This will bring up a menu of all the RECORD types in the system.  ) S
+18000 22006 M (Choose the appropriate record type from this menu \(e.g., choose ) S
+18000 20206 M (ACMDate if the record is an ASCMDate\).) S
+18000 17206 M (Finally, his brings up an Inspect window \(after prompting for a location\) ) S
+18000 15406 M (displaying the fields and values of the fields for the given ) S
+1200 /Times-Italic-Acnt F
+(Instance) S
+1200 /Times-Roman-Acnt F
+( of the ) S
+18000 13606 M (chosen record type.) S
+grestore savepage restore showpage
+
+%%Page: 16 16
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (12) S
+7200 75600 M (LispCourse #26:  Reprise; Continuation of #25) S
+14400 71106 M (If ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Instance) S
+1200 /Times-Roman-Acnt F
+( is a ) S
+1200 /Times-Italic-Acnt F
+(datatype) S
+1200 /Times-Roman-Acnt F
+(, then an Inspect window will be displayed immediately ) S
+14400 69306 M (\(after prompting for a location\) showing the fields and values of the fields for the ) S
+14400 67506 M (given ) S
+1200 /Times-Italic-Acnt F
+(Instance) S
+1200 /Times-Roman-Acnt F
+(.) S
+14400 64506 M (An Inspect window looks as follows:) S
+14400 61306 M (75_ \(RECORD ACMDate \(Month Day Year\) Month _ 01 Day _ 01 Year _ 00\)) S
+1200 /Times-Italic-Acnt F
+14400 59106 M (ACMDate) S
+1200 /Times-Roman-Acnt F
+14400 57106 M (76_ \(SETQ Test \(CREATE ACMDate Month _ March Year _ 85 Day _ 25\)\)) S
+1200 /Times-Italic-Acnt F
+14400 55106 M (\(March 25 1985\)) S
+1200 /Times-Roman-Acnt F
+14400 53106 M (77_ \(INSPECT Test\)) S
+1200 /Times-Italic-Acnt F
+14400 51106 M ({WINDOW}#33,123456) S
+/bitbltsave save def 22250 40099 translate 23900 7900 scale 239 79 true thebitimage
+B21D88
+B21D22
+B31D
+B21D88
+B31D
+B21D22
+B31D
+B21D88
+B31D
+B21D22
+B31D
+889FB218FFC88888
+B31D
+2238B21800E22222
+B31D
+8898B318C88888
+B31D
+2238B318E22222
+223822388862200447901C44B311
+88982A4488922005489022B30FC88888
+B30482B30320B312
+2238B30547B311E22222
+B303C883200540992264B311
+88983638B1E2C006C7161C58B30EC88888
+B3020000820006C0000040B311
+223822000002000440B311E22222
+2238B21800B302
+8898B318C88888
+B303C0B318
+2238000020B315E22222
+22383C3CB30207C7B314
+88982244500000040880B310C88888
+B3060200B314
+2238223C8800000108B311E22222
+B30204B302008FB21100B302
+88982238B3020448B311C88888
+B302B20300B316
+22383CB303038F80B310E22222
+2238B21800B302
+8898B318C88888
+B31D
+2238B318E22222
+223808387900000387B314
+88980844890000044880B310C88888
+B30240B30340B314
+2238087C79B30248B311E22222
+22381444099000038FB21100B302
+889814387160000448B311C88888
+889822B20300B316
+2238B304038F80B310E22222
+2238B21800B302
+8898B318C88888
+889FB218FFB302
+223FEFB30AF7B303EFB304FAAAE22222
+223FDFB30AFBB30E
+889FBFB30AFDB309FD55C88888
+889FBDE7B84BF877EFE03C7FE0F8FDFFFBBF70E87E1F0F3C3DB304
+223F7DE7B79BF7B7EFEFFBBFDF777EB3026F67BDEEF77BDDFAAAE22222
+B302DBB7DBEFF7EFF7F7DFDF6FBEB3036FDBFDFF77EDB304
+889F7DDBB8B303FBFFDFDF7FB3037FB305FD55C88888
+B302BDBF1BB302FCFFDFEEFFB30370EFD80DB307
+223F7DBDB7D9EFB7EFFF77DFE0EFB3036FEFDBEDF777ECFAAAE22222
+B3027EBBDAB7B4B3DFFFB4B3BFEEE77EFFFB9EEF67BDDEF77BDD5AB303
+889FBD7EBC3B38743FEFB4B47FDF68FDFFFBA1F0E87E3F0E3C3D9D55C88888
+889FBCFF3FFFFFF7FFEFBBFFDF77B302B205FF7FFFFDB303
+223FDCB305F77BFFEEF7FBB309FAAAE22222
+223FEDFFBFB303F8F81FF1F037B307FFB305
+889FB216FFFD55C88888
+B318FFFFB302
+B21D22
+B31D
+B21D88
+B31D
+B21D22
+B31D
+B21D88
+B31D
+B21D22
+B31D
+
+bitbltsave restore
+1200 /Times-Roman-Acnt F
+14400 37406 M (The Inspect window has two columns:) S
+18000 34606 M (The Left-hand column lists the ) S
+1200 /Times-Italic-Acnt F
+(field names) S
+1200 /Times-Roman-Acnt F
+( of the ACMDate record type.) S
+18000 31806 M (The Right-hand column lists the corresponding ) S
+1200 /Times-Italic-Acnt F
+(values) S
+1200 /Times-Roman-Acnt F
+( of these fields in ) S
+18000 30006 M (the instance being inspected.) S
+14400 27006 M (You can select any item in the Inspect window by pointing to it an clicking the ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 25206 M (LEFT) S
+1200 /Times-Roman-Acnt F
+( mouse button.  The selected item will be inverted.) S
+/bitbltsave save def 22850 15699 translate 22700 7400 scale 227 74 true thebitimage
+B21B2220
+B21B8880
+B31C
+B21B2220
+B31C
+B21B8880
+B31C
+B21B2220
+B31C
+889FB218FFC880
+B31C
+2238B21800E220
+B31C
+8898B318C880
+B31C
+2238B318E220
+223822388862200447901C44B310
+88982A4488922005489022B30FC880
+B30482B30320B311
+2238B30547B311E220
+B303C883200540992264B310
+88983638B1E2C006C7161C58B30EC880
+B3020000820006C0000040B310
+223822000002000440B311E220
+2238B21800E220
+88987FFFFCB315C880
+B3033CB317
+22387FFFDCB315E220
+223843C3B30207C7B313
+88985DBBAC0000040880B310C880
+B3060200B313
+22385DC37400000108B311E220
+B302FBB302008FB21100E220
+88985DC7B3020448B311C880
+B302FFFCB317
+223843B303038F80B310E220
+22387FB303B21300E220
+8898B21800C880
+B31C
+2238B318E220
+223808387900000387B313
+88980844890000044880B310C880
+B30240B30340B313
+2238087C79B30248B311E220
+22381444099000038FB21100E220
+889814387160000448B311C880
+889822B20300B315
+2238B304038F80B310E220
+2238B21800E220
+8898B318C880
+889FB218FFC880
+223FEFB30AF7B303EFB304FAAAE220
+223FDFB30AFBB30D
+889FBFB30AFDB309FD55C880
+889FBDE7B84BF877EFE03C7FE0F8FDFFFBBF70E87E1F0F3C3DB303
+223F7DE7B79BF7B7EFEFFBBFDF777EB3026F67BDEEF77BDDFAAAE220
+B302DBB7DBEFF7EFF7F7DFDF6FBEB3036FDBFDFF77EDB303
+889F7DDBB8B303FBFFDFDF7FB3037FB305FD55C880
+B302BDBF1BB302FCFFDFEEFFB30370EFD80DB306
+223F7DBDB7D9EFB7EFFF77DFE0EFB3036FEFDBEDF777ECFAAAE220
+B3027EBBDAB7B4B3DFFFB4B3BFEEE77EFFFB9EEF67BDDEF77BDD5AB302
+889FBD7EBC3B38743FEFB4B47FDF68FDFFFBA1F0E87E3F0E3C3D9D55C880
+889FBCFF3FFFFFF7FFEFBBFFDF77B302B205FF7FFFFDB302
+223FDCB305F77BFFEEF7FBB309FAAAE220
+223FEDFFBFB303F8F81FF1F037B307FFB304
+889FB216FFFD55C880
+B318FFFFC880
+B21B2220
+B31C
+B21B8880
+B31C
+B21B2220
+B31C
+B21B8880
+
+bitbltsave restore
+14400 13006 M (You can ) S
+1200 /Times-Italic-Acnt F
+(act) S
+1200 /Times-Roman-Acnt F
+( on the selected item by clicking the ) S
+1200 /Times-Bold-Acnt F
+(MIDDLE) S
+1200 /Times-Roman-Acnt F
+( mouse button ) S
+14400 11206 M (anywhere inside the Inspect window.  The action taken depends on whether the ) S
+14400 9406 M (selected items is a field \(left column\) or a value \(right column\).) S
+grestore savepage restore showpage
+
+%%Page: 17 17
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (13) S
+7200 75600 M (LispCourse #26:  Reprise; Continuation of #25) S
+18000 71106 M (If the selected item is a ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(field) S
+1200 /Times-Roman-Acnt F
+(:  You can change the ) S
+1200 /Times-BoldItalic-Acnt F
+(value) S
+1200 /Times-Roman-Acnt F
+( for that field as ) S
+18000 69306 M (follows:) S
+21600 66906 M (Clicking the ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(MIDDLE) S
+1200 /Times-Roman-Acnt F
+( button will bring up a menu of one item: ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 65106 M (Set) S
+1200 /Times-Roman-Acnt F
+21600 62706 M (Choose this item.  \(selecting off the menu aborts the interchange\)) S
+21600 60306 M (This will bring up a small prompt box above the Inspect window.) S
+/bitbltsave save def 26350 46499 translate 22900 12300 scale 229 123 true thebitimage
+B21B4440
+B21B1110
+B31C
+B21B4440
+B31C
+B21B1110
+B31C
+B21B4440
+B31C
+B21B1110
+B31C
+B21B4440
+B31C
+13B218FFF91110
+B31C
+47B218001C4440
+B31C
+13B318191110
+B31C
+47B3181C4440
+470447110C440088F2038880B310
+13054891124400A9120448B30E191110
+B30310B30408B311
+47B305A8F2B3101C4440
+B30299106400A813244CB311
+1306C7163C5800D8E2C38BB20E00191110
+1306C000104000D8000008B311
+4704400000400088B3111C4440
+47B21800B302
+130FFFFF80B314191110
+B302E7B318
+470FFFFBB3151C4440
+4708787BB302F8E0B313
+130BB775B3028110B310191110
+B30640B314
+470BB86EB30221B3111C4440
+470BBFB30311E0B313
+130BB8EEB30289B21100191110
+130BBFFFB318
+47087FB30371F0B3101C4440
+470FFFB303B21200B302
+13B21800191110
+B31C
+47B3181C4440
+4701070F20000070E0B313
+13010891B3028910B310191110
+B30211B30288B314
+47010F8FB30289B3111C4440
+4702888132000071E0B313
+1302870E2C000089B21100191110
+130440B20300B315
+47B30571F0B3101C4440
+47B21800B302
+13B318191110
+13B218FFF91110
+47FDB30AFEB303FDB305555C4440
+47FBB30AFF7FB30D
+13F7B30BBFB309AAB91110
+13F7BCF7097F0EFDFC078FFC1F1FBFFF77EE1D0FC3E1E787BFB303
+47EFBCF6F37EF6FDFDFF77FBEEEFDFFF77EDECF7BDDEEF7BBF555C4440
+47EFBB76FB7DFEFDFEFEFBFBEDF7B303EDFB7FBFEEFDB304
+13EFBB771BB302FF7FFBFBEFB303EFB306AAB91110
+13EFB7B7E3B3039FFBFDDFB303EE1DFB01B307
+47EFB7B6FB3DF6FDFFEEFBFC1DB303EDFDFB7DBEEEFD9F555C4440
+47EFAFD77B56F67BFFF677FDDCEFDFFF73DDECF7BBDEEF7BABB303
+13F7AFD787670E87FDF68FFBED1FBFFF743E1D0FC7E1C787B4B3AAB91110
+13F79FE7FFFFFEFFFDF77FFBEEFFBFFF7FB204FFEFFFFFB303
+47FBB305FEEF7FFDDEFF7FB309555C4440
+47FDBFF7B303FF1F03FE3E06FFB306B202FFB303
+13B217FFAAB91110
+B318FFF91110
+47B318FC4440
+B31C
+13B21800191110
+B31C
+47B3181C4440
+B31C
+13B318191110
+1310B31A
+4708B3171C4440
+4704B31A
+1302B317191110
+B31C
+4704B3171C4440
+4708B31A
+1310B317191110
+13B21800B302
+47B3181C4440
+B31C
+13B318191110
+131F0844F8D1E1870D08B312
+471008448132224893B3101C4440
+4710147C8112220811B21000B302
+131014448111E20F91B310191110
+131E14288110220893B313
+471022288111C7870DB3101C4440
+B3038000020001B313
+131F221080B20200B311191110
+13B21800B302
+47B3181C4440
+B30504B315
+13B318191110
+1304223800E225880E1C3810E220080E1E3400A04081002C38B303
+47042244011146481122441112200811224CB3043244001C4440
+B3024001008448100408B3031022440150B3022240B303
+1304227C01F084481F1830B3031F1EB3067C00191110
+130432440111464C9122441113200C91024C0110B3023244B303
+47042C3800E2258B0E1C3870E2C00B0E1C340111C081002C38001C4440
+470420B20D0004B2020081002000B303
+131FB30810B3074387B303191110
+13B21800B302
+47B3181C4440
+B31C
+13B218FFF91110
+B31C
+B21B4440
+B31C
+B21B1110
+B31C
+B21B4440
+B31C
+B21B1110
+B31C
+
+bitbltsave restore
+25200 44406 M (Type an S-expression that will evaluate to the new value ) S
+25200 42606 M (you wish the field to have.  This expression will be ) S
+25200 40806 M (evaluated and the value of the selected field will be set to ) S
+25200 39006 M (the result.) S
+/bitbltsave save def 28300 25199 translate 22600 12300 scale 226 123 true thebitimage
+B21B2200
+B31C
+B21B8880
+B31C
+B21B2200
+B31C
+B21B8880
+B31C
+B21B2200
+B31C
+B21B8880
+B31C
+227FB218FF2200
+B31C
+88E0B21700038880
+B31C
+2260B3182200
+B31C
+88E0B3188880
+88E088E2218880111E407110B310
+2260A91222488015224089B30F2200
+B30408B30381B311
+88E0B3051EB3118880
+B30213220C801502648990B310
+2260D8E2C78B001B1C587160B30E2200
+B302000208001B000001B20E00B302
+88E0880000080011B3128880
+88E0B21700B302
+2261FFFFF000003FFFB3112200
+B302FCB318
+88E1FFFF70B3158880
+88E10F0FB30220E3B313
+226176EEB000002FDDB3112200
+B30637FDB313
+88E1770DD000003BDDB3118880
+B302EDB3023DC3B313
+2261771DB3022EDFB3112200
+B302FFF0B317
+88E10FB30331C1B3118880
+88E1FFB3033FFFB313
+2260B21700032200
+B31C
+88E0B3188880
+88E020E1E400000E1CB313
+226021122400001122B3112200
+B30202B30302B313
+88E021F1E4B30222B3118880
+88E051102640000E3CB313
+226050E1C580001120B3112200
+226088B20300B315
+88E0B3040E3EB3118880
+88E0B21700B302
+2260B3182200
+227FB218FF2200
+88FFBFB30ADFB303BFB304EAAB8880
+88FF7FB30AEFB30D
+227EB20BFFF7B309F5572200
+227EF79EE12FE1DFBF80F1FF83E3F7FFEEFDC3A1F87C3CF0F7B303
+88FDF79EDE6FDEDFBFBFEEFF7DDDFBB302BD9EF7BBDDEF77EAAB8880
+B3026EDF6FBFDFBFDFDF7F7DBEB304BF6FF7FDDFB7B303
+227DF76EE3B303EFFF7F7DFEB303FDB305F5572200
+227DF6F6FCB303F3FF7FBBB304C3BF6037B306
+88FDF6F6DF67BEDFBFFDDF7F83BEB303BFBF6FB7DDDFB4B3EAAB8880
+88FDF5FAEF6ADECF7FFECEFFBB9DB3027BBD9EF77BDDEF756AB302
+227EF5FAF0ECE1D0FFBED1FF7DA3F7FFEE87C3A1F8FC38F0F675572200
+227EF3FCB202FFDFFFBEEFFF7DDFF7FFEFB204FFFDFFFFF5B302
+88FF73B305DDEFFFBBDFEFB309EAAB8880
+88FFB7FEB304E3E07FC7C0DFB306B202FFB303
+227FB216FFF5572200
+B318FFFF2200
+88B219FF8880
+B31C
+2260B21700032200
+B31C
+88E0B3188880
+B30201B318
+22600002B3162200
+22620002103E387003E7C008B310
+88E1000410204488008400B30F8880
+88E080B305820004B310
+226040041E2044100081B3102200
+B3031120446000808002B310
+88E080B30388028440B30F8880
+88E10002B30301844001B310
+226200021E2044700083801FB30E2200
+22600001B21500B302
+88E0B21700038880
+B31C
+2260B3182200
+2263E1089F1A3C30E1A1B312
+88E20108902644491261B3108880
+88E2028F902244410220B312
+2262028890223C41F2B3112200
+2263C285102204411260B312
+88E20445102238F0E1A0B3108880
+B3040000400020B312
+2263E442B30200B3122200
+2260B21700B302
+88E0B3188880
+B30680B314
+2260B3182200
+22608447001C44B101C387021C440101C3C680140810200587B303
+88E08448802228C902244882224401022449B304064880038880
+B3030020108902008102B3030448802AB302044800B302
+2260844F803E108903E306B30303E3C8B3054F80032200
+22608648802228C9922448822264019220498022B3020648B303
+88E08587001C44B161C3870E1C580161C3868022381020058700038880
+88E084B20E0080000010200400B303
+2263E4B30702B3070870E0B3032200
+2260B21700B302
+88E0B3188880
+B31C
+227FB218FF2200
+B31C
+B21B8880
+B31C
+B21B2200
+B31C
+B21B8880
+B31C
+B21B2200
+B31C
+B21B8880
+
+bitbltsave restore
+/bitbltsave save def 28300 15799 translate 22600 8200 scale 226 82 true thebitimage
+B21B4440
+B21B1100
+B31C
+B21B4440
+B31C
+B21B1100
+B31C
+B21B4440
+B31C
+B21B1100
+B31C
+B21B4440
+B31C
+113FB218FF9100
+B31C
+4470B2170001C440
+B31C
+1130B3189100
+B31C
+4470B318C440
+4470447110C440088F203888B310
+113054891124400A912044B30F9100
+B30404B30340B311
+4470B3058FB311C440
+B3039106400A813244C8B310
+11306C7163C5800D8E2C38B0B30E9100
+B302000104000D80000080B310
+4470440000040008B312C440
+4470B21700B302
+1130FFFFF8B3159100
+B302FE78B317
+4470FFFFB8B315C440
+44708787B3020F8EB313
+1130BB775800000211B3119100
+B30701B313
+4470BB86E8B3020FB311C440
+B302F6B30311B313
+1130BB8EB3020AB3129100
+B302FFF8000006B314
+447087B303020EB311C440
+4470FFB303B21200B302
+1130B21700019100
+B31C
+4470B318C440
+44701070F20000070EB313
+113010891200000891B3119100
+B30281B30381B313
+447010F8F2B30291B311C440
+44702888132000071EB313
+11302870E2C0000890B3119100
+113044B20300B315
+4470B304071FB311C440
+4470B21700B302
+1130B3189100
+113FB218FF9100
+447FDFB30AEFB303DFB304F555C440
+447FBFB30AF7B30D
+113F7FB30AFBB309FAAB9100
+113F7BCF7097F0EFDFC078FFC1F1FBFFF77EE1D0FC3E1E787BB303
+447EFBCF6F37EF6FDFDFF77FBEEEFDB302DECF7BDDEEF7BBF555C440
+B302B76FB7DFEFDFEFEFBFBEDF7DB303DFB7FBFEEFDBB303
+113EFBB771B303F7FFBFBEFFB303FEB305FAAB9100
+B3027B7E37B302F9FFBFDDB304E1DFB01BB306
+447EFB7B6FB4B3DF6FDFFEEFBFC1DFB303DFDFB7DBEEEFD9F555C440
+447EFAFD77B56F67BFFF677FDDCEFDFFF73DDECF7BBDEEF7BAB5B302
+113F7AFD787670E87FDF68FFBED1FBFFF743E1D0FC7E1C787B3AAB9100
+113F79FE7FFFFFEFFFDF77FFBEEFB302B204FFFEFFFFFAB302
+447FB9B305EEF7FFDDEFF7B309F555C440
+447FDBFFB304F1F03FE3E06FB306B202FFB303
+113FB216FFFAAB9100
+B318FFFF9100
+B21B4440
+B31C
+B21B1100
+B31C
+B21B4440
+B31C
+B21B1100
+B31C
+B21B4440
+B31C
+B21B1100
+
+bitbltsave restore
+18000 12506 M (If the selected item is a ) S
+1200 /Times-BoldItalic-Acnt F
+(value) S
+1200 /Times-Roman-Acnt F
+(:  \(INSPECT value\) will be evaluated.  This ) S
+18000 10706 M (is useful for Inspecting embedded record structures.) S
+grestore savepage restore showpage
+
+%%Page: 18 18
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (14) S
+7200 75600 M (LispCourse #26:  Reprise; Continuation of #25) S
+21600 71106 M (Example:  Inspecting an ACMEntry instance) S
+/bitbltsave save def 26750 59699 translate 22100 9700 scale 221 97 true thebitimage
+B21B88
+B21A2220
+B31B
+B21B88
+B31B
+B21A2220
+B31B
+B21B88
+B31B
+B21A2220
+B31B
+B21B88
+B31B
+B21A2220
+B31B
+B21B88
+88BFB217FFC888
+223FB317E220
+2230B21700E220
+88B0B317C888
+B31B
+2230B30502B30A02B304E220
+B30704B30A01B306
+88B0447951C0B3021C3889122008801C3888E1C1B304C888
+88B04C8952200000082244B304224489122080B305
+2230B302B20200B302F912200FB3030040B304E220
+2230547953E0B30202448912200880024489F180B306
+88B054095220B30451932005000244C91220B304C888
+88B06471B1C0B303385162C0B30238B0E1C0B306
+223064B20400040200500000B302B2020001B20400E220
+223044B3050E0020000002000EB30A
+88B0B2050002B20A0002B304C888
+B307B21100C888
+2230B3050204B306200020B305E220
+B3070408B306100040B307
+88B0787861C380B3027C7003E380081C100043E00F8E003810C888
+88B04488922440000810408800844008220800808002110044B302
+22304488820080B30220080086400402B304190044F8E220
+B3027883E300B30210080085400422B30415004490E220
+88B04408822440B3020870B302023CB3063890C888
+B30271E1C380B30244080284C00220080082800A13004450C888
+2230440080B20200040844880184400120100041800611B302E220
+223078B20400040838700083801F3E10004080020E003830E220
+88B0B205000204B20600200020B20500C888
+B307B21100C888
+2230B30502B310E220
+B30704B312
+88B03870E1C0B3021C3870E223800E1C38891080070E1C7CF0C888
+88B044211220000008221089122100110844B3020884224088C888
+223044211040B30BF920B305E220
+223008217180B3020410B902210002085C89408001042EB303
+88B030210220B30218108103E1000C084051E0800604207888C888
+88B0442111C0B30222108912210011084451108008842240B302
+2230442110B2020004B310E220
+22303870E0B3031C3870E223800E1C3821E3E0070E1C7CF0E220
+88B0B2050002B21000C888
+B307B21100C888
+2230B317E220
+B31B
+88B03830F0C34700111C54B0E2B30CC888
+88B044491124C880152254C912B30E
+22304441110441001520548902B30CE220
+22300840F1044600153E5489F2B30E
+88B0304011044880152254C91320B30BC888
+88B044F0E3C447001B1C6CB0E2C0B30D
+2230444001B202001B000080B20D00E220
+223038B2040011B312
+88B0B21700C888
+B31B
+2230B317E220
+223FB217FFE220
+88BFDF7FB30D7FFDF7B304C888
+88BFBEB20EFFBFFBEFB306
+223F7DB30EDFF7DFB304E220
+B302F07C3BFEBF6FDFBFEFE0F87BF78787DFF7DE03C7FFDF8FE220
+88BEFBEFBBDDFDB302B202DF77BBF77B7BEFEFBEFFBBFFDF77C888
+B303B7EDB3066FDBF6FFB302BF7F7DFFDEFBC888
+223EFBFFB7EE03B302E03FFFB303FBB302BFB303E220
+B305FBB302EFBFB3030387B302CFFDB304
+88BEB302EF77B302F77FB303FB7FB302F7C3B302C888
+B303BBDF779EE7BFB30277B9EF777BB302FBFBB304
+223F7DFFBC3FAFA1E87FFAFFFF787A1F8F87DFF7DEFB7DFC1EFBE220
+B303BFFFAFB202FFB3027FB203FFB304FF9EB302
+88BFBEB302DFB302FDB306BFFBEF77BBFFDF77C888
+88BFDF7FB30D7FFDF78FC7FFDF8FC888
+223FB217FFE220
+B31B
+B21B88
+B31B
+B21A2220
+B31B
+B21B88
+B31B
+B21A2220
+B31B
+B21B88
+B31B
+
+bitbltsave restore
+25200 57406 M (Selecting the ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(value) S
+1200 /Times-Roman-Acnt F
+( of the Name field using the LEFT ) S
+25200 55606 M (button) S
+/bitbltsave save def 27300 44699 translate 21000 9200 scale 210 92 true thebitimage
+B2198880
+B2192200
+B31A
+B2198880
+B31A
+B2192200
+B31A
+B2198880
+B31A
+B2192200
+B31A
+B2198880
+B31A
+B2192200
+22B218FF00
+88B31880
+88C0B216000380
+22B31800
+B307B20CFF80B304
+88B306F7B30AF7B30480
+B307EFB30AFBB305
+22C111E547B3038F1DDBB77FDDFF8F1DDC78B30500
+22C1322548800000DF76EDB30476EDDBB77DB305
+88B303B20200DF76EC1BB77FC1B303FEFDB30480
+88C151E54F80B302F6EDDBB77FDDFFF6EDD839B306
+22C1502548B304EEB9B4B37FEBFFF6ECDBB77DB30400
+22C191C6C7B20200DFF71EBA74FFEBFFF71D3C78FDB305
+88C190B20400EFF7FEBFFFB303B202FFFBB30480
+88C110B305C7FF7FFFFFF7FFC7B309
+22C0B20500F7B20AFFF7B30400
+B307B210000300
+88B3060810B306800080B30580
+B3071020B3064001B205000380
+22C1E1E1870EB30221F1C00F8E00207040010F803E3800E04300
+22C112224891000020410220021100208820020200084401104300
+88B3020802B3024080200219001008B304640113E380
+88C111E20F8CB30340200215001088B3045401124380
+22C110220891B30321C0B30208F0B30500E24300
+22C111C7870EB3024110200A1300088020020A00284C01114300
+88C11002B20300102112200611000480400106001844B30280
+88C1E0B204001020E1C0020E007CF840010200083800E0C380
+22C0B205000810B20600800080B204000300
+B307B210000300
+88B30608B31080
+B30710B311
+22C0E1C387B30370E1C3888E003870E22442001C3871F3C300
+22C110844880000020884224488400442112B302221089022300
+88B30241B20200B30813E482B30580
+88C02085C6B3031042E40884000821722502000410B9B302
+22C0C0840880B3026042040F8400302101478200181081E22300
+22C1108447B2020020884224488400442111444200221089022300
+88B30240B30210B31080
+88C0E1C380B30370E1C3888E003870E0878F801C3871F3C380
+22C0B2050008B20F000300
+B307B210000300
+88B31880
+B31A
+22C0E0C3C30D1C00447152C388B30C00
+22C11124449322005489532448B30D
+88C11104441104005481522408B30C80
+88C02103C411180054F95227C8B30D
+22C0C10044112200548953244C80B30B00
+22C113C38F111C006C71B4B2C38BB20B000300
+88C1110004B202006C0002B20D000380
+88C0E0B2040044B311
+22C0B216000300
+B31A
+88B31880
+88B218FF80
+22FF7DB30DFDFFF7DFB30400
+22FEFBB30DFEFFEFBFB305
+88FDF7B30DFF7FDF7FB30480
+B302C1F0EFFAFDBF7EFFBF83E1EFDE1E1F7FDF780F1FFF7E3F80
+22FBEFBEEF77F6FDBFB2027F7DDEEFDDEDEFBFBEFBFEEFFF7DDF00
+B303DFB7B306BF6FDBFDB302FDFDF7FF7BEF00
+88FBEFFEDFB80EB30280FFFDB302FFB302FEB30480
+B304BBEEB302BEB303D80E1FBFBEFF3FB304
+22B303BDDEB302DDB303DBEDFFB302DF0FB30200
+B303EF7DDE7B9EFFB302DEE7BDDDEFB302EFEFB303
+88FDF7FEF0FEBE87A1FFEBFFFDE1E87E3E1F7FDF7BEDF7F07BEF80
+B303FFFEBFB202FFB302B204FFB304FEB302
+22FEFBFEFFFF7FB302F7B305FEFFEFBDDEEFFF7DDF00
+22FF7DB30DFDFFF7DE3F1FFF7E3F00
+88B218FF80
+B31A
+B2192200
+B31A
+B2198880
+B31A
+B2192200
+B31A
+B2198880
+
+bitbltsave restore
+25200 42406 M (Clicking the MIDDLE button to INSPECT the name value.) S
+/bitbltsave save def 24400 26899 translate 26800 13800 scale 268 138 true thebitimage
+B2202220
+B321
+B2208880
+B321
+B2202220
+B321
+B2208880
+B321
+B2202220
+B321
+B2208880
+B321
+B2202220
+B3143FB20AFFA0
+B21488BFB30A80
+B314B0B209000180
+B2142230B30AA0
+B321
+B21488B0B30A80
+B321
+B2142230401101C180000E1C448911A0
+B317022240001122B303
+B21488B04011004200B3027C891180
+B31701820000012244B302
+B214223078119222B30328C991A0
+B315407161C78000011C28B161A0
+B21488B0400000020000010028000180
+B3157C10B20300070010B302
+B2142230B2090001A0
+B321
+B21488B0B30A80
+B321
+B21422304410D1A0870011B303A0
+B315541132608880B305
+B21488B05411122088001FB30380
+B3198F8011B304
+B21422305411326088800AB303A0
+B3156C70D1A08700B305
+B21488B06C00102080B30580
+B31544101023800004B304
+B2142230B2090001A0
+B321
+B21488B0B30A80
+B321
+B21422307C78E0C000000E1C4470E1A0
+B3154089112000001122448911A0
+B21488B0408821B20200B302802180
+B31678C1B302012244F8C180
+B2142230400911B304648911A0
+B31670E3C0B3021C5870E1A0
+B21488B0400001B2020001B202000180
+B317B2030007B304
+B2142230B2090001A0
+B321
+B21488B0B30A80
+B314BFB20AFF80
+B214223FDFB309A0
+B315BFB30A
+B21488BF7FB30980
+B3157C1F0EFFAFDBF7EFFBF83E00
+B214223EFBEEF77F6FDBB203F7DDA0
+222FB212FFFEFBEDFBB306DBA0
+888FB313FFEDFB80EFDBF7F80FFFDB80
+888CB212003EB302BEB302FBEFB302
+222CB316DDB302FDDFFFDBA0
+B3070FB20BFFFEFFEEF7DDE7B9EFB302DDA0
+888CB3067FB30A7F7FEF0FEBE87A1FFEBFFFDE00
+B3070EB20BFFBF7FEFFFEBB202FFB302DF80
+222C111E5470B302F8F1DDBB77FDDFF8F1DDC78FBFBFEFFFF7B302FF7FFFDFA0
+222C1322548800000DF76EB304F76EDDBB77FFDFB30A
+888CB30280B304C1BB77FC1FB302BFEFB20BFF80
+888C151E54F8B302FF6EDDBB77FDDFFF6EDD839FB30C
+222C15025488B304EB9B37FEBFFF6ECDBB77D8B2030032B2052220
+222C191C6C70B30371EBA74FB30271D3C78FB30C
+888C19B204000EFF7FEBFFFFB3027FB202FFB8B30338B2058880
+888C11B305FC7FF7B202FF7FFCB310
+222CB205000F7FB20AFF78B30332B2052220
+B307B21100B307
+888CB30681B306080008B30538B2058880
+B3070102B306040010B30D
+222C1E1E1870E0B3021F1C00F8E00207B302F803E3800E0432B2052220
+222C1122248910000204102200211002088200202000844011B308
+888C1122208020B30208020021900100B3048640113E38B2058880
+B3021E20F8C0B30204B302500108B30485401124B307
+222C1102208910B302021CB302008F02B3050E2432B2052220
+B3021C7870E0B302110200A1300088B302A00284C01114B307
+888C110020B2020001021122006110004804001060018440111438B2058880
+888C1EB2040001020E1C0020E007CF840010200083800E0CB307
+222CB2060081B20600080008B2050032B2052220
+B308B21000B307
+888CB30680B30F38B2058880
+B30701B21000B307
+222C0E1C3870B302070E1C3888E003870E22442001C3871F3C32B2052220
+222C11084488000002088422448840044211B3020221089022B307
+888CB30210B30B3E48B30538B2058880
+888C02085C60B30201042E40884000821722502000410BB309
+222C0C084088B30206042040F8400302101478200181081E2232B2052220
+222C11084470B30208842244884004421114442002210890B308
+888CB302B2020001B31038B2058880
+888C0E1C38B303070E1C3888E003870E0878F801C3871F3CB307
+222CB2060080B20F0032B2052220
+B308B21000B307
+888CB31738B2058880
+B321
+222C0E0C3C30D1C00447152C3880B30B32B2052220
+222C1112444932200548953244B314
+888C1110444110400548152240B30C38B2058880
+888C02103C411180054F95227CB314
+222C0C10044112200548953244C8B30B32B2052220
+222C113C38F111C006C71B2C38B0B313
+888C11100040000006C00020B20D0038B2058880
+888C0EB204000440B317
+222CB2170032B2052220
+B321
+888CB31738B2058880
+888FB217FFF8B306
+222FF7DFB30DDFFF7DB304F2B2052220
+222FEFBFB30DEFFEFBB30C
+888FDF7FB30DF7FDF7B304F8B2058880
+B3027C1F0EFFAFDBF7EFFBF83E1EFDE1E1B30280F1FFF7E3B307
+222FBEFBEEF77F6FDBB203F7DDEEFDDEDEFBFBEFBFEEFFF7DDF2B2052220
+B303EDFBB306DBF6FDBFB303DFDF7FF7BEB307
+888FBEFFEDFB80EFDBF7F80FFFB303FEB302EFB303F8B2058880
+B305BEB302FBEFB30380E1B302F3FFB30A
+222FB303DDB302FDDFB303BEDFB302FDF0FFF7BEF2B2052220
+B303EEF7DDE7B9EFB302DDEE7BDDDEB302FEFEB30A
+888FDF7FEF0FEBE87A1FFEBFFFDE1E87E3E1F7FDF7BEDF7F07BEF8B2058880
+B304FFEBB202FFB302DFB203FFB305E7B308
+222FEFBFEFFFF7B302FF7FB305EFFEFBDDEEFFF7DDF2B2052220
+222FF7DFB30DDFFF7DE3F1FFF7E3B307
+888FB217FFF8B2058880
+B321
+B2202220
+B321
+B2208880
+B321
+B2202220
+B321
+
+bitbltsave restore
+28800 24606 M (Note:  the interaction sequence to bring up the ) S
+28800 22806 M (second inspector is the same as for the first ) S
+28800 21006 M (inspector, i.e., I had to specify ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(AsRecord) S
+1200 /Times-Roman-Acnt F
+( and choose ) S
+28800 19206 M (the ) S
+1200 /Times-Italic-Acnt F
+(Name) S
+1200 /Times-Roman-Acnt F
+( record type from the menu of all record ) S
+28800 17406 M (types.) S
+14400 14406 M (To get rid of an Inspect window \234 just close it using the RIGHT button menu.) S
+1200 /Times-Bold-Acnt F
+14400 10806 M (Using the Inspector) S
+grestore savepage restore showpage
+
+%%Page: 19 19
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (15) S
+7200 75600 M (LispCourse #26:  Reprise; Continuation of #25) S
+18000 71106 M (The inspector is very useful to examine your data structures in an ) S
+18000 69306 M (interpretable way while you are debugging.) S
+18000 66506 M (For example:) S
+18000 63706 M (Consider the RECORD definitions given in the ACM problem above.) S
+18000 60906 M (Consider the sample database:) S
+18000 58106 M (     \(SETQ ACM.Members  ) S
+21600 56306 M ('\(\(\(Jones JoAnn A \) Member \(\(23 10 75\)\(01 10 84\)\)\(SIGCHI ) S
+21600 54506 M (SIGART\)\)) S
+21600 52506 M ( \(\(Smith Bill B \) Associate \(\(12 03 82\)\(01 04 85\)\)\(SIGOA\)\)) S
+21600 50506 M ( \(\(Jerzy Jill Jane \) Student \(\(15 09 80\)\(14 09 84\)\) NIL\)\)\)) S
+18000 47706 M (None of our functions we defined above would work on this sample ) S
+18000 45906 M (database.  Why?  A quick inspect shows why.) S
+21600 43106 M (1.  Inspect the first entry:  \(INSPECT \(CAR ACM.Members\)\)) S
+/bitbltsave save def 28400 32099 translate 18800 9100 scale 188 91 true thebitimage
+B2162220
+B317
+B2168880
+B317
+B2162220
+B317
+B2168880
+B317
+B2162220
+B317
+B2168880
+B317
+B2162220
+222FB214FF20
+888FB31480
+888CB213000380
+222CB31420
+B317
+888CB30680B30A800380
+B30701B20B00400380
+222C111E5470B302070E22387001C38891220088400320
+222C132254880000020891224488022448B303200320
+888CB30280B305401002244FB302F8200380
+888C151E54F8B3020091227C60002448B30288B302
+222C15025488B30432448800244519320050200320
+222C191C6C70B3038E2C3870002385162CB304
+888C19B20400010080B203002005B2020050400380
+888C11B30503B304E002B30220B302
+222CB2060080B20A00800320
+B308B20C000320
+888CB31480
+B317
+222C1E1E1870E0000447152C3880B30820
+222C1122248910000548953244B30A
+888C1122208020B302152240B30980
+B3021E20F8C000054F95227CB30A
+222C1102208910000548953244C8B30820
+B3021C7870E00006C71B2C38B0B309
+888C110020B2020006C00020B209000380
+888C1EB204000440B30D
+222CB213000320
+B317
+888CB30681B306080008B30280
+B3070102B306040010B303
+222C0E1C3870B3031F1C00F8E00207B302F803E320
+222C11084488000002041022002110020882002020008320
+888CB30210B30308020021900100B30580
+888C02085C60B30304B302500108B306
+222C0C084088B303021CB302008F02B30420
+222C11084470B303110200A1300088B302A0028320
+888CB302B2020001021122006110004804001060018380
+888C0E1C38B3040E1C0020E007CF84001020008380
+222CB2060081B2060008000800000320
+B308B20C000320
+888CB30680B30A800380
+B30701B20B00400380
+222C0E0C3C30D1C001070E1C3888E003870E224420400320
+222C11124449322002088422448840044211B302200320
+888C111044411040B3093E48B30280
+888C02103C4111800201042E4088400082172250B303
+222C0C10044112200206042040F8400302101478B30220
+222C113C38F111C0020884224488400442111444B303
+888C11100040000001B30B400380
+888C0EB2040001070E1C3888E003870E0878F8B302
+222CB2060080B20A00800320
+B308B20C000320
+888CB31480
+888FB214FF80
+222FF7DFB30DDFB30320
+222FEFBFB30DEFB304
+888FDF7FB30DF7B30380
+B3027C1F0F7EF0F0FF83E1DFF5FB7EFDFF77FBCF787780
+222FBEFBEEF77EEF6F7F7DDEEFEDFB7EFEFEFBFBCF77B720
+B303EDFB7EDFEF7F7DBF6FB306B76FF720
+888FBEFFB303FF7FFDBF701DFB7EFF01B30480
+B306C070FFFDBF77DDB3027DFBFB7B603780
+222FB304DF6FB3027BBDB302BBB3026FB720
+B303EEF73DEEEF7FFDDEFBBCF73DB302FAFD777320
+888FDF7FEF0F43F1F0FFFDE1FD7D0F43FFD7F7FAFD78F480
+B304B204FFFDFFFD7FB202FFD7F7F9FE7FFF80
+222FEFBFB307FEB203FFEFEFB30320
+222FF7DFB30DDFFBFFB302
+888FB214FF80
+B317
+B2162220
+B317
+B2168880
+B317
+B2162220
+B317
+B2168880
+
+bitbltsave restore
+25200 29606 M (Notice that the fields and values don't quite match up; e.g., ) S
+25200 27806 M (Status field is a list.) S
+21600 25006 M (2. Notice that Name doesn't look quite right.  So Inspect it.) S
+/bitbltsave save def 28150 14199 translate 19300 8900 scale 193 89 true thebitimage
+B2172200
+B2178880
+B318
+B2172200
+B318
+B2178880
+B318
+B2172200
+222FB214FF2200
+888FB3148880
+888CB21300038880
+222CB3142200
+B3070FB20BFFF8B302
+888CB3067FB30A78038880
+B3070EB20BFFB8B302
+222C111E5470B302F8F1DDC78FFE3C776EDDFF77B8032200
+222C1322548800000DF76EDDBB77FDDBB7B303D8B302
+888CB30280B305BFEFFDDBB0B30207D8038880
+888C151E54F8B302FF6EDD839FFFDBB7B30277B303
+222C15025488B304CDBB77FFDBBAE6CDFFAFD8032200
+222C191C6C70B30371D3C78FFFDC7AE9D3B305
+888C19B204000EFF7FB203FFDFFAB202FFAFB8038880
+888C11B305FCB3041FFDB302DFB303
+222CB205000F7FB20AFF78032200
+B307B20D00B302
+888CB3148880
+B318
+222C1E1E1870E0000447152C3880B3082200
+222C1122248910000548953244B30B
+888C1122208020B302152240B3098880
+B3021E20F8C000054F95227CB30B
+222C1102208910000548953244C8B3082200
+B3021C7870E00006C71B2C38B0B30A
+888C110020B2020006C00020B20900038880
+888C1EB204000440B30E
+222CB21300032200
+B318
+888CB30681B306080008B3028880
+B3070102B306040010B304
+222C0E1C3870B3031F1C00F8E00207B302F803E32200
+222C1108448800000204102200211002088200202000832200
+888CB30210B30308020021900100B3058880
+888C02085C60B30304B302500108B307
+222C0C084088B303021CB302008F02B3042200
+222C11084470B303110200A1300088B302A002B302
+888CB302B202000102112200611000480400106001838880
+888C0E1C38B3040E1C0020E007CF8400102000B302
+222CB2060081B206000800080000032200
+B308B20C00B302
+888CB30680B30A80038880
+B30701B20B0040B302
+222C0E0C3C30D1C001070E1C3888E003870E22442040032200
+222C11124449322002088422448840044211B30220B302
+888C111044411040B3093E48B3028880
+888C02103C4111800201042E4088400082172250B304
+222C0C10044112200206042040F8400302101478B3022200
+222C113C38F111C0020884224488400442111444B304
+888C11100040000001B30B40038880
+888C0EB2040001070E1C3888E003870E0878F8B303
+222CB2060080B20A0080032200
+B308B20C00B302
+888CB3148880
+888FB214FF8880
+222FF7DFB30DDFB3032200
+222FEFBFB30DEFB305
+888FDF7FB30DF7B3038880
+B3027C1F0F7EF0F0FF83E1DFF5FB7EFDFF77FBCF78778880
+222FBEFBEEF77EEF6F7F7DDEEFEDFB7EFEFEFBFBCF77B72200
+B303EDFB7EDFEF7F7DBF6FB306B76FF72200
+888FBEFFB303FF7FFDBF701DFB7EFF01B3048880
+B306C070FFFDBF77DDB3027DFBFB7B60378880
+222FB304DF6FB3027BBDB302BBB3026FB72200
+B303EEF73DEEEF7FFDDEFBBCF73DB302FAFD77732200
+888FDF7FEF0F43F1F0FFFDE1FD7D0F43FFD7F7FAFD78F48880
+B304B204FFFDFFFD7FB202FFD7F7F9FE7FFF8880
+222FEFBFB307FEB203FFEFEFB3032200
+222FF7DFB30DDFFBFFB303
+888FB214FF8880
+B318
+B2172200
+B318
+B2178880
+B318
+B2172200
+B318
+B2178880
+B318
+B2172200
+B318
+
+bitbltsave restore
+grestore savepage restore showpage
+
+%%Page: 20 20
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (16) S
+7200 75600 M (LispCourse #26:  Reprise; Continuation of #25) S
+/bitbltsave save def 25250 56899 translate 25100 15100 scale 251 151 true thebitimage
+B21E8880
+B31F
+B21E2220
+B31F
+B21E8880
+B31F
+B21E2220
+B31F
+B21E8880
+B3119FB20AFFC880
+B211223FB30AE220
+B31138B20A00E220
+B2118898B30AC880
+B31F
+B2112238B30AE220
+B31F
+B2118898200880E0C000070E223870C880
+B314811120000891224488C880
+B21122382008802100B3034010E220
+B315C1B2020091227C60E220
+B21188983C08C911B303324488C880
+B3122038B0E3C000008E2C3870C880
+B211223820000001B2020080B20200E220
+B3123E08B2030003B305
+B2118898B20A00C880
+B31F
+B2112238B30AE220
+B31F
+B2118898220868D04380070E224488C880
+B3122A08993044400891B304
+B21122382A088910440008913E4488E220
+B31647C0009122B303
+B21188982A089930444000911464C8C880
+B312363868D04380008E1458B0C880
+B21122383600081040000080140000E220
+B31222080811C000038008B303
+B2118898B20A00C880
+B31F
+B2112238B30AE220
+B31F
+B21188983E3C706000000880B302C880
+B31220448890B308
+B21122382044108000000FB303E220
+B3133C60B30208B305
+B2118898200488B30205B20300C880
+B3133871E0B308
+B211223820000080B306E220
+B315B2020002B305
+B2118898B20A00C880
+B31F
+B2112238B30AE220
+B3113FB20AFFE220
+B211889FEFB309C880
+B312DFB30B
+B211223FBFB309E220
+B312BE0F87BF78787FC1F0EFFAE220
+B211889F7DF77BBF77B7BFBEEF77F6C880
+B313F6FDBF6FF7BFBEDFB7B302
+B211223F7FB303FFBFFEDFB80EE220
+B31660387FFEDFBBEEE220
+B211889FB3036FB7FFFEDFBDDEC880
+B313F77B9EF777BFFEEF7DDE4880
+B211223FBFF787A1F8F87FFEF0FEBEA220
+B314B204FFFEFFFEBFE220
+B211889FDFB307FF7FC880
+B312EFB30B
+B211223FB20AFFE220
+B302B21AFFE220
+B20288B314F8B2058880
+B302C0B2130038B306
+B20222B31432B2052220
+B309B20CFF80B307
+B20288B306F7B30AF78038B2058880
+B309EFB30AFBB308
+B20222C111E547B3038F1DDC78FFE3C776EDDFF77B8032B2052220
+B303322548800000DF76EDDBB77FDDBBB3037DB308
+B20288B303B20200B303FEFFDDBB06EDDFF07D8038B2058880
+B30351E54F80B302F6EDD839FFFDBB76EDDFF7B309
+B20222C1502548B304ECDBB77FFDBBAE6CDFFAFD8032B2052220
+B30391C6C7B20200DFF71D3C78FFFDC7AE9D3FB30A
+B20288C190B20400EFF7B203FFFDFFAFFFFFFAFB8038B2058880
+B30310B305C7B303F1FFDFFFFFFDB309
+B20222C0B20500F7B20AFFF78032B2052220
+B309B20D00B307
+B20288B31438B2058880
+B31F
+B20222C1E1E1870E0000447152C388B30832B2052220
+B3031222489100005489532448B310
+B20288B3020802B30281522408B30838B2058880
+B30311E20F8CB302F95227C8B310
+B20222C110220891B3028953244C80B30732B2052220
+B30311C7870E00006C71B4B2C38BB20800B307
+B20288C11002B203006C0002B20A0038B2058880
+B303E0B2040044B314
+B20222C0B2130032B2052220
+B31F
+B20288B3060810B306800080000038B2058880
+B3091020B3064001B20200B307
+B20222C0E1C387B30321F1C00F8E00207040010F803E32B2052220
+B302C11084488000002041022002110020882002020008B307
+B20288B30241B20200204080200219001008B30438B2058880
+B302C02085C6B30440200215001088B30C
+B20222C0C0840880B30321C0B30208F0B30432B2052220
+B302C1108447B20200204110200A1300088020020A0028B307
+B20288B30240B302102112200611000480400106001838B2058880
+B302C0E1C380B30320E1C0020E007CF84001020008B307
+B20222C0B205000810B20600800080000032B2052220
+B309B20D00B307
+B20288B30608B30A080038B2058880
+B30910B30A04B308
+B20222C0E0C3C30D1C001070E1C3888E003870E22442040032B2052220
+B302C111244493220020884224488400442112244202B308
+B20288C11104441104B30913E482020038B2058880
+B302C02103C4111800201042E40884000821722502B309
+B20222C0C10044112200206042040F84003021014782020032B2052220
+B302C113C38F111C00208842244884004421114442B309
+B20288C1110004B2020010B30A040038B2058880
+B302C0E0B204001070E1C3888E003870E0878F84B308
+B20222C0B2050008B20A00080032B2052220
+B309B20D00B307
+B20288B31438B2058880
+B302B214FFF8B306
+B20222FF7DB30DFDB303F2B2052220
+B302FEFBB30DFEB30B
+B20288FDF7B30DFF7FB302F8B2058880
+B304C1F0F7EF0F0FF83E1DFF5FB7EFDFF77FBCF78778B306
+B20222FBEFBEEF77EEF6F7F7DDEEFEDFB7B202EFBFBCF77B72B2052220
+B305DFB7EDFEF7F7DBF6B306BB76FFB307
+B20288FBEFFEB302FFF7FFDBF701B302F01FB30378B2058880
+B307EC070FB3027DB302F7DFBFB7B603B307
+B20222B304EDF6FFB302BBB302FBBFB302FB72B2052220
+B305EF73DEEEF7FFDDEFBBCF73DFB302AFD77732B306
+B20288FDF7FEF0F43F1F0FFFDE1FD7D0F43FFD7F7FAFD78F48B2058880
+B305B205FFDFFFD7B202FFB3029FE7FFF8B306
+B20222FEFBB308EFB302FEFEFFB302F2B2052220
+B302FF7DB30DFDFFBFF7B308
+B20288B214FFF8B2058880
+B31F
+B21E2220
+B31F
+B21E8880
+B31F
+B21E2220
+B31F
+B21E8880
+B31F
+B21E2220
+B31F
+B21E8880
+B31F
+B21E2220
+
+bitbltsave restore
+25200 54406 M (Notice that the fields and values don't quite match up in the ) S
+25200 52606 M (name either; e.g., Last name field is a middle initial.) S
+18000 49406 M (Bottom line:  Either the sample database is in error or our RECORD ) S
+18000 47606 M (declarations are in error.  In this case, its the former.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 43857 M (References) S
+1200 /Times-Roman-Acnt F
+10800 41406 M (The Inspector is described in Section 20.4 of the IRM.) S
+10800 39006 M (EDITREC and RECLOOK are in Section 3.7 of the IRM.) S
+1400 /Times-Bold-Acnt F
+7200 35257 M (Exercise) S
+1200 /Times-Roman-Acnt F
+10800 32406 M (For the following exercise, it might be handy to know about the following embellishment ) S
+10800 30606 M (of the FOR loop:) S
+1200 /Times-Bold-Acnt F
+14400 27806 M (\(FOR ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Variable) S
+1200 /Times-Bold-Acnt F
+( IN ) S
+1200 /Times-BoldItalic-Acnt F
+(List) S
+1200 /Times-Bold-Acnt F
+( WHEN ) S
+1200 /Times-BoldItalic-Acnt F
+(Predicate) S
+1200 /Times-Bold-Acnt F
+( DO ) S
+1200 /Times-BoldItalic-Acnt F
+(S-Exprs) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+10800 25006 M (Instead of executing the ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(S-Exprs) S
+1200 /Times-Roman-Acnt F
+( following the DO on every iteration, this FOR loop ) S
+10800 23206 M (evaluates the ) S
+1200 /Times-Italic-Acnt F
+(Predicate) S
+1200 /Times-Roman-Acnt F
+( following the WHEN on every iteration.  If ) S
+1200 /Times-Italic-Acnt F
+(Predicate ) S
+1200 /Times-Roman-Acnt F
+(evaluates ) S
+10800 21406 M (to a non-NIL value, then the ) S
+1200 /Times-Italic-Acnt F
+(S-exprs) S
+1200 /Times-Roman-Acnt F
+( following DO are evaluated.  If ) S
+1200 /Times-Italic-Acnt F
+(Predicate ) S
+1200 /Times-Roman-Acnt F
+(evaluates ) S
+10800 19606 M (to NIL, then the FOR loop skips the ) S
+1200 /Times-Italic-Acnt F
+(S-exprs ) S
+1200 /Times-Roman-Acnt F
+(after the DO on this iteration.) S
+14400 17406 M (Note that the WHEN clause works with COLLECT as well as DO.) S
+14400 15206 M (Examples:) S
+18000 13006 M (76_\(FOR A IN '\(\(T 1\)\(NIL 2\)\(T 3\)\(NIL 4\)\)) S
+25200 11206 M (WHEN \(CAR A\) COLLECT \(CADR A\)\)) S
+1200 /Times-Italic-Acnt F
+18000 9406 M (\(1 3\)) S
+grestore savepage restore showpage
+
+%%Page: 21 21
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (17) S
+7200 75600 M (LispCourse #26:  Reprise; Continuation of #25) S
+18000 71106 M (77_\(FOR A IN '\(\(T 1\)\(NIL 2\)\(T 3\)\(NIL 4\)\)) S
+25200 69306 M (WHEN \(NULL \(CAR A\)\) COLLECT \(CDR A\)\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+18000 67506 M (\(\(2\) \(4\)\)) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+10800 63957 M (Exercise from Touretzky, p. 179.  \(See following few pages\)) S
+grestore savepage restore showpage
+
+%%Trailer

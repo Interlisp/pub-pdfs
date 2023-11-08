@@ -1,0 +1,1262 @@
+%!PS-Adobe-2.0%%Title: {DSK}<home>larry>lispcourse>OUTLINE21.PS%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate:  7-Nov-2023 21:40:11%%EndComments/bdef {bind def} bind def
+/ldef {load def} bdef
+/S /show ldef
+/M /moveto ldef
+/DR {transform round exch round exch itransform} bdef
+/L {gsave newpath setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/L1 {gsave newpath 0 setdash setgray setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/F {findfont exch scalefont setfont} bdef
+/CLP {newpath M dup 0 rlineto exch 0 exch rlineto
+  neg 0 rlineto closepath clip newpath} bdef
+/R {gsave setgray newpath M dup 0 rlineto exch 0 exch
+  rlineto neg 0 rlineto closepath eofill grestore} bdef
+/ellipsedict 9 dict def
+ellipsedict /mtrx matrix put
+/ellipse
+ { ellipsedict begin
+  /endangle exch def
+  /startangle exch def
+  /orientation exch def
+  /minorrad exch def
+  /majorrad exch def
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  orientation rotate
+  majorrad minorrad scale
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+ end } bdef
+/concatprocs
+ {/proc2 exch cvlit def
+  /proc1 exch cvlit def
+  /newproc proc1 length proc2 length add array def
+  newproc 0 proc1 putinterval
+  newproc proc1 length proc2 putinterval
+  newproc cvx
+ } bdef
+/resmatrix matrix def
+/findresolution
+ {72 0 resmatrix defaultmatrix dtransform
+  /yres exch def /xres exch def
+  xres dup mul yres dup mul add sqrt
+ } bdef
+/thebitimage
+ {/maskp exch def
+  /bihgt exch def
+  /biwid exch def
+  /byte 1 string def
+  /strbufl biwid 8 div ceiling cvi def
+  /strbuf strbufl string def
+  maskp not{{1 exch sub} currenttransfer concatprocs settransfer} if
+  biwid bihgt
+  maskp { true } { 1 } ifelse
+  [biwid 0 0 bihgt 0 0]
+  {/col 0 def
+   {currentfile byte readhexstring pop 0 get
+    dup 16#B2 eq {pop
+    currentfile byte readhexstring pop 0 get 1 add
+    currentfile byte readhexstring pop pop /nbyte byte 0 get def
+    { strbuf col nbyte put /col col 1 add def} repeat}
+   {dup 16#B3 eq {pop /col col
+    currentfile byte readhexstring pop
+    0 get add 1 add def}
+    {16#B4 eq {currentfile byte readhexstring pop pop} if
+     strbuf col byte 0 get put /col col 1 add def} ifelse
+   } ifelse
+   col strbufl ge { exit } if } loop
+   strbuf }
+  maskp { imagemask } { image } ifelse
+ } bdef
+/setuserscreendict 22 dict def
+setuserscreendict begin
+ /tempctm matrix def
+ /temprot matrix def
+ /tempscale matrix def
+end
+/setuserscreen
+ {setuserscreendict begin
+   /spotfunction exch def
+   /screenangle exch def
+   /cellsize exch def
+   /m tempctm currentmatrix def
+   /rm screenangle temprot rotate def
+   /sm cellsize dup tempscale scale def
+   sm rm m m concatmatrix m concatmatrix pop
+   1 0 m dtransform /y1 exch def /x1 exch def
+   /veclength x1 dup mul y1 dup mul add sqrt def
+   /frequency findresolution veclength div def
+   /newscreenangle y1 x1 atan def
+   m 2 get m 1 get mul m 0 get m 3 get mul sub
+   0 gt { { neg } /spotfunction load concatprocs
+          /spotfunction exch def } if
+   frequency newscreenangle /spotfunction load setscreen
+  end
+ } bdef
+/setpatterndict 18 dict def
+setpatterndict begin
+ /bitison
+  {/ybit exch def /xbit exch def
+   /bytevalue bstring ybit bwidth mul xbit 8 idiv add get def
+   /mask 1 7 xbit 8 mod sub bitshift def
+   bytevalue mask and 0 ne
+  } bdef
+end
+/bitpatternspotfunction
+ {setpatterndict begin
+   /y exch def /x exch def
+   /xindex x 1 add 2 div bpside mul 1 sub cvi def
+   /yindex y 1 add 2 div bpside mul 1 sub cvi def
+   xindex yindex bitison
+    {/onbits onbits 1 add def 1}
+    {/offbits offbits 1 add def 0} ifelse
+  end
+ } bdef
+/setpattern
+ {setpatterndict begin
+   /cellsz exch def
+   /angle exch def
+   /bwidth exch def
+   /bpside exch def
+   /bstring exch def
+   /onbits 0 def /offbits 0 def
+   cellsz angle /bitpatternspotfunction load setuserscreen
+   {} settransfer
+   offbits offbits onbits add div setgray
+  end
+ } bdef
+% - - - - - Fraction-setting code, to support NS fonts better - - - - -
+/fractiondict 20 dict def
+/fractionshow 
+{ fractiondict begin
+/denom exch def 
+/num exch def 
+/regfont currentfont def
+/fractfont currentfont [.65 0 0 .6 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(1) true charpath flattenpath pathbbox 
+/height exch def pop pop pop
+ grestore
+0 .4 height mul rmoveto
+fractfont setfont num show
+0 .4 height mul neg rmoveto regfont setfont (\244) show
+fractfont setfont denom show regfont setfont end } bdef
+/f14 { (1) (4) fractionshow } bdef
+/f12 { (1) (2) fractionshow } bdef
+/f34 { (3) (4) fractionshow } bdef
+/f18 { (1) (8) fractionshow } bdef
+/f38 { (3) (8) fractionshow } bdef
+/f58 { (5) (8) fractionshow } bdef
+/f78 { (7) (8) fractionshow } bdef
+/f13 { (1) (3) fractionshow } bdef
+/f23 { (2) (3) fractionshow } bdef
+/bboxdict 20 dict def
+/bboxchk { bboxdict begin
+/regfont currentfont def
+/chkfont currentfont [1.25 0 0 1.25 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(\161) true charpath flattenpath pathbbox 
+/height exch def pop pop pop 
+ grestore 
+ currentpoint 
+ .2 height mul .3 height mul rmoveto
+chkfont setfont (\063) show
+ moveto
+ regfont setfont
+(\161) show end } bdef
+/rencdict 15 dict def
+/encodefont { rencdict begin
+/newname exch def
+/oldfont exch def
+/newcodes [
+8#001 /Aacute
+8#002 /Acircumflex
+8#003 /Adieresis
+8#004 /Agrave
+8#005 /Aring
+8#006 /Atilde
+8#007 /Ccedilla
+8#010 /Eacute
+8#011 /Ecircumflex
+8#012 /Edieresis
+8#013 /Egrave
+8#014 /Iacute
+8#015 /Icircumflex
+8#016 /Idieresis
+8#017 /Igrave
+8#020 /Ntilde
+8#021 /Oacute
+8#022 /Ocircumflex
+8#023 /Odieresis
+8#024 /Ograve
+8#025 /Otilde
+8#026 /Scaron
+8#027 /Uacute
+8#030 /Ucircumflex
+8#031 /Udieresis
+8#032 /Ugrave
+8#033 /Ydieresis
+8#034 /Zcaron
+8#177 /periodinferior
+8#201 /aacute
+8#202 /acircumflex
+8#203 /adieresis
+8#204 /agrave
+8#205 /aring
+8#206 /atilde
+8#207 /ccedilla
+8#210 /eacute
+8#211 /ecircumflex
+8#212 /edieresis
+8#213 /egrave
+8#214 /iacute
+8#215 /icircumflex
+8#216 /idieresis
+8#217 /igrave
+8#220 /ntilde
+8#221 /oacute
+8#222 /ocircumflex
+8#223 /odieresis
+8#224 /ograve
+8#225 /otilde
+8#226 /scaron
+8#227 /uacute
+8#230 /ucircumflex
+8#231 /udieresis
+8#232 /ugrave
+8#233 /ydieresis
+8#234 /zcaron
+8#235 /Eth
+8#236 /eth
+8#237 /Thorn
+8#240 /thorn
+ ] def
+/olddict oldfont findfont def /newfont olddict maxlength dict def
+olddict { exch dup /FID ne { dup /Encoding eq
+{ exch dup length array copy newfont 3 1 roll put }
+{ exch newfont 3 1 roll put } ifelse }
+ { pop pop } ifelse } forall
+newfont /FontName newname put
+newcodes aload pop
+newcodes length 2 idiv { newfont /Encoding get 3 1 roll put } repeat 
+newname newfont definefont pop end } def
+ /accentdict 10 dict def 
+ /accentor { accentdict begin /scaler exch def /delta exch def 
+/unders exch def /accents exch def /mainch exch def /scrt (X) def
+ /w1 mainch stringwidth pop def 
+ currentpoint mainch show currentpoint 4 2 roll 
+accents { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         w1 w2 sub 2 div delta rmoveto scrt show 
+         /delta delta 150 scaler mul 9 div add def
+        } forall 
+unders { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         ch 46 eq { w1 w2 sub 2 div -175 scaler mul 9 div rmoveto scrt show 0 175 rmoveto }
+           { w1 w2 sub 2 div 0 rmoveto scrt show } ifelse 
+        } forall 
+ pop pop moveto end } def 
+%%EndProlog
+%%BeginSetup
+letter/imagesizefactor 1 def%%EndSetup/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+
+%%Page: 1 1
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+54000 75600 M (F.G.H.          ) S
+54000 73800 M (4/23/85) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (LispCourse #21:  Fonts) S
+7200 67157 M (Fonts \234 Characterized by Family, Size, Face, Rotation, and Device) S
+1200 /Times-Roman-Acnt F
+10800 64706 M (A ) S
+1200 /Times-Bold-Acnt F
+(font) S
+1200 /Times-Roman-Acnt F
+( is a description of how alphanumeric characters should look when displayed on ) S
+10800 62906 M (the screen or on printed hardcopy. ) S
+10800 60506 M (Every font has five basic characteristics, ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(family) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Italic-Acnt F
+(size) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Italic-Acnt F
+(face) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Italic-Acnt F
+(rotation) S
+1200 /Times-Roman-Acnt F
+(, and ) S
+1200 /Times-Italic-Acnt F
+(device) S
+1200 /Times-Roman-Acnt F
+(:) S
+1200 /Times-Bold-Acnt F
+14400 57506 M (Family) S
+1200 /Times-Roman-Acnt F
+( \234 the "style" of the font, e.g., TimesRoman, Gacha, Helvetica, Modern, etc.) S
+18000 55106 M (In the Interlisp-D \(and most Xerox products\), style characteristics like ) S
+18000 53306 M (sans-serif and proportional spacing are not independent characteristics of a ) S
+18000 51506 M (font.  Each font family simply has a particular set of style characteristics.  ) S
+18000 49706 M (For example, Helvetica is sanserif, proportionally spaced; TimesRoman is ) S
+18000 47906 M (serif, proportionally spaced; Gacha is sanserif, fixed space; etc.) S
+18000 45506 M (In Interlisp-D, family is specified by a single atom, e.g., GACHA, ) S
+18000 43706 M (TIMESROMAN, or TERMINAL.) S
+1200 /Times-Bold-Acnt F
+14400 40706 M (Size) S
+1200 /Times-Roman-Acnt F
+( \234 the size of the characters measured in points \(72 points to an inch\).) S
+18000 38306 M (Size actually measures the distance from the top of the tallest character to ) S
+18000 36506 M (the bottom of the lowest character \(e.g. the distance between the top of the ) S
+18000 34706 M (L and the bottom of the g\).) S
+18000 32306 M (In Interlisp-D, size is specified by an integer.) S
+1200 /Times-Bold-Acnt F
+14400 29306 M (Face) S
+1200 /Times-Roman-Acnt F
+( \234 the weight, slant, and spacing of the characters.  Bold, Italic, and BoldItalic ) S
+14400 27506 M (are the typical examples of font faces.  In general, a font face has three ) S
+14400 25706 M (parameters:) S
+1200 /Times-Bold-Acnt F
+21600 23306 M (Weight) S
+1200 /Times-Roman-Acnt F
+( \234 measure the thickness of the characters. Possible values in ) S
+21600 21506 M (Interlisp-D are BOLD, MEDIUM or LIGHT.) S
+1200 /Times-Bold-Acnt F
+21600 19106 M (Slope) S
+1200 /Times-Roman-Acnt F
+( \234 indicates the slant of the characters.  Possible values in ) S
+21600 17306 M (Interlisp-D are ITALIC and REGULAR.) S
+1200 /Times-Bold-Acnt F
+21600 14906 M (Expansion) S
+1200 /Times-Roman-Acnt F
+( \234 measures the spacing between characters.  Possible ) S
+21600 13106 M (values in Interlisp-D are REGULAR, COMPRESSED, and ) S
+21600 11306 M (EXPANDED.) S
+grestore savepage restore showpage
+
+%%Page: 2 2
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (2) S
+7200 75600 M (LispCourse #21:  Fonts) S
+18000 71106 M (In Interlisp-D, a font's face is generally specified by a list of three atoms ) S
+18000 69306 M (where the three atoms corrspond to the weight, slope, and expansion ) S
+18000 67506 M (parameters, respectively.) S
+18000 65106 M (Three character atoms using the first letter of each feild in the list are also ) S
+18000 63306 M (allowed.  For example, MIC can be used in place of \(MEDIUM ITALIC ) S
+18000 61506 M (COMPRESSED\).) S
+18000 59106 M (A few special atoms also exist for the common faces.  These atoms are:) S
+21600 56706 M (STANDARD = \(MEDIUM REGULAR REGULAR\) = MRR) S
+21600 54306 M (ITALIC = \(MEDIUM ITALIC REGULAR\) = MIR) S
+21600 51906 M (BOLD = \(BOLD REGULAR REGULAR\) = BRR) S
+21600 49506 M (BOLDITALIC = \(BOLD ITALIC REGULAR\) = BIR) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 46506 M (Rotation) S
+1200 /Times-Roman-Acnt F
+( \234 a number between 0 and 360 that indicates the degree to which the ) S
+14400 44706 M (characters are rotated \(clockwise?\) from upright.) S
+18000 42306 M (Font rotations are generally 0 degrees, except in special applications.) S
+18000 39906 M (Many devices \(see below\) allow only 0 and 90 degree rotations, where 0 is ) S
+18000 38106 M (the portrait mode orientation \(as on this page\) and 90 is the landscape ) S
+18000 36306 M (mode orientation.  Other devices support a full range of font rotations ) S
+18000 34506 M (from 0 to 360.) S
+1200 /Times-Bold-Acnt F
+14400 31506 M (Device) S
+1200 /Times-Roman-Acnt F
+( \234 specifies the device on which the font is to be displayed or printed.  ) S
+18000 28506 M (In Interlisp-D, the standard devices are DISPLAY, PRESS, and ) S
+18000 26706 M (INTERPRESS, refering to the D-machine display, Press printers, and ) S
+18000 24906 M (Interpress printers respectively.   Other device an be added to the system ) S
+18000 23106 M (by loading various packages.) S
+10800 19706 M (In Interlisp-D, a font is specified by a list of five items, its ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(family) S
+1200 /Times-Roman-Acnt F
+(, its ) S
+1200 /Times-Italic-Acnt F
+(size) S
+1200 /Times-Roman-Acnt F
+(, its ) S
+1200 /Times-Italic-Acnt F
+(face) S
+1200 /Times-Roman-Acnt F
+(, its ) S
+1200 /Times-Italic-Acnt F
+10800 17906 M (rotation) S
+1200 /Times-Roman-Acnt F
+(, and its ) S
+1200 /Times-Italic-Acnt F
+(device) S
+1200 /Times-Roman-Acnt F
+(.) S
+14400 15306 M (There are no defaults for the family and size parameters.  If absent, ) S
+1200 /Times-Italic-Acnt F
+(face) S
+1200 /Times-Roman-Acnt F
+( defaults ) S
+14400 13506 M (to STANDARD;  ) S
+1200 /Times-Italic-Acnt F
+(rotation) S
+1200 /Times-Roman-Acnt F
+( defaults to 0; and ) S
+1200 /Times-Italic-Acnt F
+(device) S
+1200 /Times-Roman-Acnt F
+( defaults to DISPLAY.) S
+14400 11106 M (Examples:) S
+18000 9106 M (\(TIMESROMAN 12 BOLD 0 PRESS\)) S
+grestore savepage restore showpage
+
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (3) S
+7200 75600 M (LispCourse #21:  Fonts) S
+18000 71106 M (\(MODERN 10 \(MEDIUM MEDIUM REGULAR\)\)) S
+18000 69106 M (\(HELVETICAD 24 STANDARD 90 INTERPRESS\)) S
+18000 67106 M (\(TIMESROMAND 36 MRR NIL DISPLAY\)) S
+10800 63706 M (Not all combinations of family, size, face, rotation and device exist as actual fonts.  For ) S
+10800 61906 M (example, GACHA does not exist for size bigger than 12 points.) S
+14400 59306 M (Moreover, the Modern, Terminal, and Classic dynasty of font families \(the ) S
+14400 57506 M (Interpress fonts from the NS world\) does not generally exist for Press devices.  ) S
+14400 55706 M (Similarly, the Helvetica, Gacha, and TimesRoman dynasty of font families \(the ) S
+14400 53906 M (Press fonts from the PUP world\) does not generally exist for Interpress devices.) S
+10800 50506 M (Each font as characterized by family, size, face, rotation and device contains all the ) S
+10800 48706 M (information necessary for displaying and/or printing some set of alphanumeric characters \233 ) S
+10800 46906 M (usually the alphabet, the digits, plus most of the common special characters like period, ) S
+10800 45106 M (colon, semi-colon, etc.) S
+14400 42706 M (Note: Not all fonts, however, contain all characters.  For example, the LOGO font ) S
+14400 40906 M (has information describing only the characters X, E, R, & O.   ) S
+14400 38506 M (Fonts differ widely on how many of the special characters they handle.  Some ) S
+14400 36706 M (fonts have all of them, other have only a few of the most common.  There are font ) S
+14400 34906 M (dictionaries on ???.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 31157 M (Describing Fonts to Interlisp-D \234 font lists & font descriptors) S
+1200 /Times-Roman-Acnt F
+10800 28106 M (When specifying a font to Interlisp-D, you can use one of two descriptions: a ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(font list) S
+1200 /Times-Roman-Acnt F
+( or ) S
+10800 26306 M (a ) S
+1200 /Times-BoldItalic-Acnt F
+(font descriptor) S
+1200 /Times-Roman-Acnt F
+(.) S
+10800 23306 M (A ) S
+1200 /Times-BoldItalic-Acnt F
+(font list) S
+1200 /Times-Roman-Acnt F
+( is the list of 5 elements described above, i.e., \(Family Size Face Rotation ) S
+10800 21506 M (Device\).) S
+10800 18506 M (A ) S
+1200 /Times-BoldItalic-Acnt F
+(font descriptor) S
+1200 /Times-Roman-Acnt F
+( is an Interlisp object that specifies a font.  To create a font descriptor, ) S
+10800 16706 M (use the function call  ) S
+1200 /Times-Bold-Acnt F
+(\(FONTCREATE ) S
+1200 /Times-BoldItalic-Acnt F
+(Family) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Size) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Face) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Rotation) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Device) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+(, where ) S
+10800 14906 M (Family, Size, Face, Rotation, and Device are as decribed above.  This will return a font ) S
+10800 13106 M (descriptor object which you can use to specify a font.) S
+10800 10106 M (All Interlisp functions eventually use font descriptors.  If you specify a font list to a ) S
+10800 8306 M (function, it will create the font descriptor for you.) S
+grestore savepage restore showpage
+
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (4) S
+7200 75600 M (LispCourse #21:  Fonts) S
+10800 71106 M (The difference is one of time:  FONTCREATE immediately goes out to the file server ) S
+10800 69306 M (containing the font information, finds the correct font information, and loads it into ) S
+10800 67506 M (virtual memory.  This takes time, sometimes a lot of time.) S
+14400 64906 M (If you want control over when to spend this time, then you call FONTCREATE ) S
+14400 63106 M (yourself and use font descriptors.) S
+14400 60506 M (If you don't want control over the time, then use font lists.  The first time any ) S
+14400 58706 M (function needs to use each font, there will be long delay while FONTCREATE ) S
+14400 56906 M (goes and fetches the font information.) S
+14400 54306 M (I always use FONTCREATE in my INIT file for all my default fonts.  Therefore, ) S
+14400 52506 M (I spend the font finding time altogether at the beginning \(i.e., whenever I load my ) S
+14400 50706 M (system\).) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 46957 M (Fontclasses \234 the "same" font for different devices) S
+1200 /Times-Roman-Acnt F
+10800 43906 M (Because not all devices support the same fonts, Interlisp-D has an entity) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(called a ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+10800 41957 M (fontclass) S
+1400 /Times-Roman-Acnt F
+(.  ) S
+1200 /Times-Roman-Acnt F
+(A fontclass) S
+1400 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(contains a list of font-device pairs describing what should be ) S
+10800 39957 M (considered to be the "same" font on the different devices.) S
+1400 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+10800 37106 M (The list is of the format ) S
+1200 /Times-Bold-Acnt F
+(\() S
+1200 /Times-BoldItalic-Acnt F
+(DisplayFont) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(PressFont) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(InterpressFont) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(OtherFontPair1) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+10800 35306 M (OtherFontPair2) S
+1200 /Times-Bold-Acnt F
+( ...\)) S
+1200 /Times-Roman-Acnt F
+(.  ) S
+1200 /Times-Italic-Acnt F
+(DisplayFont) S
+1200 /Times-Roman-Acnt F
+( is a font specification for a font with device ) S
+10800 33506 M (DISPLAY.  ) S
+1200 /Times-Italic-Acnt F
+(PressFont) S
+1200 /Times-Roman-Acnt F
+( is a font specification for a font with device PRESS.  ) S
+1200 /Times-Italic-Acnt F
+10800 31706 M (InterpressFont) S
+1200 /Times-Roman-Acnt F
+( is a font specification for a font with device INTERPRESS.  Each ) S
+1200 /Times-Italic-Acnt F
+10800 29906 M (OtherFontPairi) S
+1200 /Times-Roman-Acnt F
+( is a list of two items: a device name and a font specification for that ) S
+10800 28106 M (device.  ) S
+10800 25306 M (Examples of fontclass lists:) S
+14400 23306 M (\(\(TIMESROMAN 12\)) S
+14400 21306 M (  \(TIMESROMAN 10 STANDARD NIL PRESS\)) S
+14400 19306 M (  \(CLASSIC 10 STANDARD NIL INTERPRESS\)) S
+14400 17306 M (  \(IRIS \(ROMAN 10 STANDARD 0 IRIS\)\)\)) S
+10800 13557 M (To create a fontclass, use the function call ) S
+1200 /Times-Bold-Acnt F
+(\(FONTCLASS ) S
+1200 /Times-BoldItalic-Acnt F
+(Name) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(FontClassList) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1400 /Times-Roman-Acnt F
+(. ) S
+1200 /Times-Italic-Acnt F
+(Name ) S
+1200 /Times-Roman-Acnt F
+10800 11706 M (is an arbitrary \(and optional\) atom that names the fontclass.  ) S
+1200 /Times-Italic-Acnt F
+(FontClassList) S
+1200 /Times-Roman-Acnt F
+( is a fontclass ) S
+10800 9906 M (list as described above.  The function will return an Interlisp object called a fontclass.) S
+grestore savepage restore showpage
+
+%%Page: 5 5
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (5) S
+7200 75600 M (LispCourse #21:  Fonts) S
+10800 71106 M (Almost any function in Interlisp-D that accepts a font list or a font descriptor as an ) S
+10800 69306 M (argument will accept a fontclass object instead.  It will then extract from the fontclass the ) S
+10800 67506 M (appropriate font description for the device it is working with.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 63757 M (Fontdirectories \234 Telling Interlisp where to find font information) S
+1200 /Times-Bold-Acnt F
+10800 60706 M (Font Information Files) S
+1200 /Times-Roman-Acnt F
+14400 57706 M (Before Interlisp can use a font, it has to load in all of the information about that ) S
+14400 55906 M (font \(e.g., the bit maps of the characters, the width and height of each character, ) S
+14400 54106 M (etc.\).  This loading is done by the FONTCREATE function, either when called by ) S
+14400 52306 M (the user or automatically as described above.) S
+14400 49506 M (Once the font information for a given font has been loaded in, it stays in virtual ) S
+14400 47706 M (memory and is used each time the font is used.) S
+14400 44906 M (The exact information necessary for Interlisp to use a font differs between ) S
+14400 43106 M (devices.  In particular, for the DISPLAY device Interlisp needs an exact rendition ) S
+14400 41306 M (\(i.e., a bit map\) of the character it displays on the screen.  For PRESS and ) S
+14400 39506 M (INTERPRESS devices, Interlisp needs only the exact size \(width, height\) or each ) S
+14400 37706 M (character.  The exact rendition of the character is stored ONLY on the printer ) S
+14400 35906 M (itself.) S
+18000 33306 M (This leads to a problem sometimes.  It can happen that PRESS or ) S
+18000 31506 M (INTERPRESS font information is available to Interlisp, but the printer on ) S
+18000 29706 M (which you print your file does not have the required font.  In this case, the ) S
+18000 27906 M (printer will usually try to substitute a similar font that it does have ) S
+18000 26106 M (information for.  If the printer can't do the substitution, then it prints an ) S
+18000 24306 M (error message on the header page.  ) S
+1000 /Times-Roman-Acnt F
+(Note:  this happens after the file has left ) S
+18000 22655 M (Interlisp and been sent to the printer.  Interlisp cannot detect error like this.) S
+1200 /Times-Roman-Acnt F
+21600 20506 M (For example, if you send a file with TimesRoman 16 to Quake, it ) S
+21600 18706 M (prints it as TimesRoman 17 with an appropriate warning on the ) S
+21600 16906 M (header page.) S
+14400 13306 M (Font information for the ) S
+1200 /Times-Bold-Acnt F
+(DISPLAY) S
+1200 /Times-Roman-Acnt F
+( device is stored in files located on file servers ) S
+14400 11506 M (or on the local disk.  One font is stored per file.  The name of the file is used to ) S
+grestore savepage restore showpage
+
+%%Page: 6 6
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (6) S
+7200 75600 M (LispCourse #21:  Fonts) S
+14400 71106 M (indicate the font contained in the file.  The file name extension is one of ) S
+14400 69306 M (.DISPLAYFONT, .STRIKE, or .AC.) S
+18000 67106 M (For example,  TimesRoman10.strike contains information about the ) S
+18000 65306 M (TimesRoman 10 font for displays.) S
+14400 62506 M (Font information for the ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(PRESS) S
+1200 /Times-Roman-Acnt F
+( device is all stored on one giant file call ) S
+14400 60706 M (FONTS.WIDTHS stored on a file server or on your local disk.) S
+14400 57906 M (Font information for the ) S
+1200 /Times-Bold-Acnt F
+(INTERPRESS) S
+1200 /Times-Roman-Acnt F
+( device is stored in files located on file ) S
+14400 56106 M (servers or on the local disk.  The name of the file is used to indicate the font ) S
+14400 54306 M (contained in the file.  The extension is always .WD.) S
+18000 52106 M (For example, CLASSIC10-C100.WD is a file containing information ) S
+18000 50306 M (about the Classic 10 font for Interpress printers.) S
+1200 /Times-Bold-Acnt F
+10800 46706 M (Font Directories) S
+1200 /Times-Roman-Acnt F
+14400 43906 M (Various fonts are located on various directories on various file servers.  So ) S
+14400 42106 M (Interlisp is designed to search through all known font directories until it finds the ) S
+14400 40306 M (font it is looking for.  \(This is what usually takes the time during a ) S
+14400 38506 M (FONTCREATE\).  If it can't find the font, an error occurs.) S
+14400 34906 M (There are several global variables that specify what directories/files Interlisp ) S
+14400 33106 M (should know about when looking for font information.  These variables are:) S
+1200 /Times-Bold-Acnt F
+18000 30306 M (DISPLAYFONTDIRECTORIES) S
+1200 /Times-Roman-Acnt F
+( \234 a list of the directories Interlisp ) S
+18000 28506 M (should search in \(in order\) when looking for the files containing font ) S
+18000 26706 M (information for the DISPLAY device.) S
+21600 24506 M (Default in ISL is  ) S
+/Courier /Courier-Acnt encodefont
+1200 /Courier-Acnt F
+(\({ERIS}<LISP>FONTS> ) S
+21600 22706 M ({PHYLUM}<STARFONTS>SCREEN>LFONTS> ) S
+21600 20906 M ({PHYLUM}<ALTOFONTS> ) S
+21600 19106 M ({PHYLUM}<ALTOFONTS>ORIGINAL> ) S
+21600 17306 M ({INDIGO}<ALTOFONTS> ) S
+21600 15506 M ({INDIGO}<ALTOFONTS>ORIGINAL> {DSK}\)) S
+1200 /Times-Bold-Acnt F
+18000 11793 M (DISPLAYFONTEXTENSIONS) S
+1200 /Times-Roman-Acnt F
+( \234 a list of file name extension Interlisp ) S
+18000 9993 M (should use to look for font information for the DISPLAY device.) S
+grestore savepage restore showpage
+
+%%Page: 7 7
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (7) S
+7200 75600 M (LispCourse #21:  Fonts) S
+21600 71106 M (Default is \(DISPLAYFONT STRIKE AC\).  When looking for ) S
+21600 69306 M (information on TimesRoman 10 Interlisp will look for ) S
+21600 67506 M (TimesRoman10.displayfont, TimesRoman10.strike, or ) S
+21600 65706 M (TimesRoman10.ac.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 62106 M (PRESSFONTWIDTHSFILES) S
+1200 /Times-Roman-Acnt F
+( \234 list of FONTS.WIDTHS files Interlisp ) S
+18000 60306 M (should search in \(in order\) when looking for the font information for the ) S
+18000 58506 M (PRESS device.) S
+21600 56306 M (Default in ISL is ) S
+/Courier /Courier-Acnt encodefont
+1200 /Courier-Acnt F
+(\({ERIS}<LISP>FONTS>FONTS.WIDTHS ) S
+21600 54506 M ({PHYLUM}<ALTOFONTS>FONTS.WIDTHS ) S
+21600 52706 M ({INDIGO}<FONTS>FONTS.WIDTHS ) S
+21600 50906 M ({DSK}FONTS.WIDTHS\)) S
+1200 /Times-Bold-Acnt F
+18000 47193 M (INTERPRESSFONTDIRECTORIES) S
+1200 /Times-Roman-Acnt F
+( \234 a list of the directories Interlisp ) S
+18000 45393 M (should search in \(in order\) when looking for files containing the font ) S
+18000 43593 M (information for the INTERPRESS device.) S
+21600 41393 M (Default in ISL is) S
+1200 /Courier-Acnt F
+( \({ERIS}<LISP>FONTS> ) S
+21600 39593 M ({PHYLUM}<STARFONTS>FORMATTER>WIDTHS>\)) S
+1200 /Times-Roman-Acnt F
+14400 35880 M (These variables are usually set in the site INIT file.  You may want to set them to ) S
+14400 34080 M (include additional directories.  For example, you may create your own display ) S
+14400 32280 M (fonts \(see below\) and store them in your personal font directory.) S
+14400 28680 M (You may also want to move some frequently used font files to your local disk so ) S
+14400 26880 M (that you don't have to wait on the file server all the time.  In this case, you should ) S
+14400 25080 M (make sure that these gloabl variables are set to include the partition/directory on ) S
+14400 23280 M (your local disk that contains the fonts.  For example, I keep fonts on partition 4 of ) S
+14400 21480 M (my Dorado disk.  My INIT filehas the following clause) S
+1200 /Courier-Acnt F
+( \(ADDVARS  ) S
+14400 19680 M (\(DISPLAYFONTDIRECTORIES {DSK4}\) ) S
+14400 17880 M (\(INTERPRESSFONTDIRECTORIES {DSK4}\) ) S
+14400 15967 M (\(PRESSFONTWIDTHSFILES {DSK4}\)\)) S
+1200 /Times-Roman-Acnt F
+(.) S
+1200 /Times-Bold-Acnt F
+10800 12254 M (Available Fonts) S
+grestore savepage restore showpage
+
+%%Page: 8 8
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (8) S
+7200 75600 M (LispCourse #21:  Fonts) S
+14400 71106 M (You can find out what fonts are already loaded into your virtual memory and/or ) S
+14400 69306 M (what fonts are available to be loaded into your virtual memory given the current ) S
+14400 67506 M (settings of the font directoires/files global variables.  To do so use the function ) S
+14400 65706 M (call) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+( \(FONTSAVAILABLE ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Family) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Size) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Face) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Rotation) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Device) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(FilesTooFlg) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+(.  ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+14400 63906 M (Family) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Italic-Acnt F
+(Size) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Italic-Acnt F
+(Face) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Italic-Acnt F
+(Rotation) S
+1200 /Times-Roman-Acnt F
+(, and ) S
+1200 /Times-Italic-Acnt F
+(Device) S
+1200 /Times-Roman-Acnt F
+( are as specified above, except that any ) S
+14400 62106 M (or all can be the wildcard atom * indicating all values of the field \(e.g., all sizes or ) S
+14400 60306 M (all rotations\).) S
+14400 57506 M (FONTSAVAILABLE returns a list of font lists for all of the fonts already in ) S
+14400 55706 M (virtual memory that match the ) S
+1200 /Times-Italic-Acnt F
+(Family) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Italic-Acnt F
+(Size) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Italic-Acnt F
+(Face) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Italic-Acnt F
+(Rotation) S
+1200 /Times-Roman-Acnt F
+(, and ) S
+1200 /Times-Italic-Acnt F
+(Device) S
+1200 /Times-Roman-Acnt F
+( specified.  ) S
+14400 52906 M (If ) S
+1200 /Times-Italic-Acnt F
+(FilesTooFlg) S
+1200 /Times-Roman-Acnt F
+( is non-NIL, then the list returned will include all fonts that ) S
+14400 51106 M (COULD be loaded into virtual memory given the current global variable settings.) S
+14400 48306 M (Examples:) S
+18000 46306 M (50_\(FONTSAVAILABLE 'GACHA '* NIL 0 'DISPLAY NIL\)) S
+1200 /Times-Italic-Acnt F
+18000 44506 M (\(\(GACHA 8 \(MEDIUM REGULAR REGULAR\) 0 DISPLAY\)) S
+18000 42706 M ( \(GACHA 12 \(MEDIUM REGULAR REGULAR\) 0) S
+18000 40906 M ( DISPLAY\)) S
+18000 39106 M (\(GACHA 10 \(MEDIUM REGULAR REGULAR\) 0 DISPLAY\)\)) S
+1400 /Times-Bold-Acnt F
+7200 35557 M (Default Fonts) S
+1200 /Times-Roman-Acnt F
+10800 32506 M (When a particular Interlisp application prints something on the screen or on a printer, it ) S
+10800 30706 M (has to make a choice of what font to use.  If there is no way for the user to specify which ) S
+10800 28906 M (font to use \(e.g., as in DEdit\) or if the user hasn't specified a specific font \(e.g., as in ) S
+10800 27106 M (TEdit\),  Interlisp will use some sort of default font.) S
+10800 24306 M (Often you want to change this default font.  For example, you might want to change the ) S
+10800 22506 M (font used in DEdit windows.  Or, you might want to change the font that TEdit starts-up ) S
+10800 20706 M (using.) S
+10800 17906 M (Unfortunately, the status of default fonts in the system is very, very sad.  There are ) S
+10800 16106 M (several different mechanisms in use for setting default fonts.  Different packages use ) S
+10800 14306 M (different combinations of these mechanisms. ) S
+10800 11506 M (Worse yet, some packages use the same mechanism and same global variables to set ) S
+10800 9706 M (default fonts.  When this happens changing a default font for one package \(e.g., DEdit\) ) S
+grestore savepage restore showpage
+
+%%Page: 9 9
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (9) S
+7200 75600 M (LispCourse #21:  Fonts) S
+10800 71106 M (automatically changes the font for some other unrelated package \(e.g., TEdit\), and vice ) S
+10800 69306 M (versa.) S
+10800 66506 M (Even in this chaos,  there is some order.  There are three basic ways of specifying default ) S
+10800 64706 M (fonts.  ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 61106 M (FONTPROFILE ) S
+1200 /Times-Roman-Acnt F
+(\233) S
+1200 /Times-Bold-Acnt F
+( beginnings of a central mechanism for fonts) S
+1200 /Times-Roman-Acnt F
+14400 57506 M (There is a global variable called FONTPROFILE.  Its value is a list.  Each item ) S
+14400 55706 M (on the list is of the form \() S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Name) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(Number) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(FontClassList) S
+1200 /Times-Roman-Acnt F
+(\) or of the form \() S
+1200 /Times-Italic-Acnt F
+(Name) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+14400 53906 M (OldName) S
+1200 /Times-Roman-Acnt F
+(\).  Each item defines a font named ) S
+1200 /Times-Italic-Acnt F
+(Name. ) S
+1200 /Times-Roman-Acnt F
+( In the first format, ) S
+1200 /Times-Italic-Acnt F
+(Name) S
+1200 /Times-Roman-Acnt F
+( is ) S
+14400 52106 M (defined by the font class specified by ) S
+1200 /Times-Italic-Acnt F
+(FontClassList) S
+1200 /Times-Roman-Acnt F
+(.  The ) S
+1200 /Times-Italic-Acnt F
+(Number) S
+1200 /Times-Roman-Acnt F
+( represents the ) S
+14400 50306 M (font number for purposes of printing out Lisp code in the LISTFILES package.  In ) S
+14400 48506 M (the second format, ) S
+1200 /Times-Italic-Acnt F
+(Name) S
+1200 /Times-Roman-Acnt F
+( is simply defined to be the same as the font previously ) S
+14400 46706 M (called ) S
+1200 /Times-Italic-Acnt F
+(OldName) S
+1200 /Times-Roman-Acnt F
+(.) S
+14400 43106 M (The standard FONTPROFILE list looks like:) S
+/Courier /Courier-Acnt encodefont
+1000 /Courier-Acnt F
+18000 40549 M (\(\(DEFAULTFONT 1 \(GACHA 10\) \(GACHA 8\) \(TERMINAL 8\)\)) S
+18000 38749 M (\(BOLDFONT 2 \(HELVETICA 10 BRR\) \(HELVETICA 8 BRR\) \(MODERN 8 ) S
+18000 37149 M (BRR\)\)) S
+18000 35349 M (\(LITTLEFONT 3 \(HELVETICA 8\) \(HELVETICA 6 MIR\) \(MODERN 8 ) S
+18000 33749 M (MIR\)\)) S
+18000 31949 M (\(BIGFONT 4 \(HELVETICA 12 BRR\) \(HELVETICA 10 BRR\) \(MODERN 10 ) S
+18000 30349 M (BRR\)\)) S
+18000 28549 M (\(USERFONT BOLDFONT\)) S
+18000 26749 M (\(COMMENTFONT LITTLEFONT\)) S
+18000 24949 M (\(LAMBDAFONT BIGFONT\)) S
+18000 23149 M (\(SYSTEMFONT\)) S
+18000 21349 M (\(CLISPFONT BOLDFONT\)) S
+18000 19549 M (\(CHANGEFONT\)) S
+18000 17749 M (\(PRETTYCOMFONT BOLDFONT\)) S
+18000 15949 M (\(FONT1 DEFAULTFONT\)) S
+18000 14149 M (\(FONT2 BOLDFONT\)) S
+18000 12349 M (\(FONT3 LITTLEFONT\)) S
+18000 10549 M (\(FONT4 BIGFONT\)) S
+grestore savepage restore showpage
+
+%%Page: 10 10
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (10) S
+7200 75600 M (LispCourse #21:  Fonts) S
+/Courier /Courier-Acnt encodefont
+1000 /Courier-Acnt F
+18000 71349 M (\(FONT5 5 \(HELVETICA 10 BIR\) \(HELVETICA 8 BIR\) \(MODERN 8 ) S
+18000 69749 M (BIR\)\)) S
+18000 67949 M (\(FONT6 6 \(HELVETICA 10 BRR\) \(HELVETICA 8 BRR\) \(MODERN 8 ) S
+18000 66349 M (BRR\)\)) S
+18000 64549 M (\(FONT7 7 \(GACHA 12\) \(GACHA 12\) \(TERMINAL 12\)\)\)) S
+1200 /Times-Roman-Acnt F
+14400 61506 M (Various packages use the named fonts to print things out.  For example, when ) S
+14400 59706 M (printing comments in Lisp code, Interlisp uses the font called COMMENTFONT ) S
+14400 57906 M (to print out comments.  It uses the font called LAMBDAFONT to print out the ) S
+14400 56106 M (name of functions. And so on.) S
+14400 53306 M (In fact, most of the entries on FONTPROFILE are concerned with printing out ) S
+14400 51506 M (Lisp code.) S
+14400 48706 M (HOWEVER, the DEFAULTFONT entry is used for a number of other packages, ) S
+14400 46906 M (in fact way, way to many packages.  Changing the DEFAULTFONT entry on ) S
+14400 45106 M (FONTPROFILE will affect the following default fonts:) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 42306 M (DEdit) S
+1200 /Times-Roman-Acnt F
+( \233 the font used to print things out in the DEdit window) S
+1200 /Times-Bold-Acnt F
+18000 39506 M (TEdit) S
+1200 /Times-Roman-Acnt F
+( \233 the font that TEdit starts up in and uses if you don't specify ) S
+18000 37706 M (another font) S
+1200 /Times-Bold-Acnt F
+18000 34906 M (Exec) S
+1200 /Times-Roman-Acnt F
+( \233 the font the Lisp Exec and the Break Exec use to print in their Exec ) S
+18000 33106 M (windows.  Note: changing DEFAULTFONT does not immediately change ) S
+18000 31306 M (the font being used in the top level Exec window.  To do this, you should ) S
+18000 29506 M (type ) S
+1200 /Times-Bold-Acnt F
+(\(DSPFONT DEFAULTFONT TOPW\)) S
+1200 /Times-Roman-Acnt F
+( into the Exec window after ) S
+18000 27706 M (changing the FONTPROFILE.  The Exec window will then change fonts ) S
+18000 25906 M (immediately to the DEFAULTFONT.) S
+1200 /Times-Bold-Acnt F
+18000 23106 M (???) S
+1200 /Times-Roman-Acnt F
+( \233 DEFAULTFONT is probably used by many other package I don't ) S
+18000 21306 M (know about.) S
+14400 18506 M (Note the problem.  Since all of these packages use DEFAULTFONT, you cannot ) S
+14400 16706 M (change them independently; changing one changes them all.) S
+1200 /Times-Bold-Acnt F
+14400 13906 M (Changing the FONTPROFILE) S
+1200 /Times-Roman-Acnt F
+14400 11106 M (To change the FONTPROFILE, you have to do two things:) S
+grestore savepage restore showpage
+
+%%Page: 11 11
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (11) S
+7200 75600 M (LispCourse #21:  Fonts) S
+18000 71106 M (1\)  Edit the FONTPROFILE list using DEdit; i.e., execute ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(\(DV ) S
+18000 69306 M (FONTPROFILE\)) S
+1200 /Times-Roman-Acnt F
+(.  Change any entry \(most probably the ) S
+18000 67506 M (DEFAULTFONT entry\) to the desired font.) S
+18000 65106 M (2\) Execute the function call ) S
+1200 /Times-Bold-Acnt F
+(\(FONTPROFILE FONTPROFILE\)) S
+1200 /Times-Roman-Acnt F
+(.  This ) S
+18000 63306 M (will install your changes in the system.) S
+14400 60306 M (Most often you want to change your DEFAULTFONT for all time.  In this case, ) S
+14400 58506 M (you have to put an entry into yout INIT file.  The procedure for doing this is the ) S
+14400 56706 M (following:) S
+18000 53906 M (1\)  Edit the FONTPROFILE list using DEdit; i.e., execute ) S
+1200 /Times-Bold-Acnt F
+(\(DV ) S
+18000 52106 M (FONTPROFILE\)) S
+1200 /Times-Roman-Acnt F
+(.  Change any entry \(most probably the ) S
+18000 50306 M (DEFAULTFONT entry\) to the desired font.) S
+18000 47506 M (2\) Edit your INIT COMS list using DEdit; i.e., call ) S
+1200 /Times-Bold-Acnt F
+(\(DC INIT\)) S
+1200 /Times-Roman-Acnt F
+(.  Place the ) S
+18000 45706 M (following two clauses into your INITCOMS:) S
+1200 /Times-Bold-Acnt F
+25200 43306 M (\(VARS FONTPROFILE\)) S
+25200 41106 M (\(P \(FONTPROFILE FONTPROFILE\)\)) S
+1200 /Times-Roman-Acnt F
+21600 38506 M (This will save the edited FONTPROFILE list and cause it to be ) S
+21600 36706 M (installed whenever your INIT file is loaded.) S
+18000 33906 M (3\) Save your new INIT file by doing a \(MAKEFILE 'INIT\) after ) S
+18000 32106 M (connecting to your home or lisp directory. ) S
+1200 /Times-Bold-Acnt F
+14400 29306 M (The Future) S
+1200 /Times-Roman-Acnt F
+14400 26506 M (In the future, I hope that all fonts will go through this FONTPROFILE and that ) S
+14400 24706 M (there will be separate entries for each package \(e.g., a TEDITDEFAULTFONT ) S
+14400 22906 M (entry, a DEDITFONT entry and so on.\).  But, ...) S
+1200 /Times-Bold-Acnt F
+10800 19306 M (Per package global variables ) S
+1200 /Times-Roman-Acnt F
+(\233) S
+1200 /Times-Bold-Acnt F
+( the decentralized mechanism for fonts) S
+1200 /Times-Roman-Acnt F
+14400 16506 M (Many packages maintain their own set of global variables that they use to ) S
+14400 14706 M (determine their default fonts.  To change the default font for these packages, you ) S
+14400 12906 M (have to set the appropriate global variables for the package to the desired font ) S
+14400 11106 M (description \(i.e., font list, font descriptor, or font class\).) S
+grestore savepage restore showpage
+
+%%Page: 12 12
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (12) S
+7200 75600 M (LispCourse #21:  Fonts) S
+18000 71106 M (Example: Lafite has 7 global variables that determine the font to use for ) S
+18000 69306 M (various windows and tasks in Lafite.  The variables are:) S
+18000 66306 M (LAFITEEDITORFONT, LAFITEMENUFONT, LAFITETITLEFONT, ) S
+18000 64506 M (LAFITEDISPLAYFONT, LAFITEHARDCOPYFONT, ) S
+18000 62706 M (LAFITEBROWSERFONT, and LAFITEENDOFMESSAGEFONT) S
+18000 59706 M (If you want to change, for example, the font in which LAFITE displays it ) S
+18000 57906 M (message on the screen you have to set the variable ) S
+18000 56106 M (LAFITEDISPLAYFONT to a new font descriptor.  ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 54106 M (\(SETQ LAFITEDISPLAYFONT \(FONTCREATE 'Helvetica 10 ) S
+18000 52306 M ('BOLD\)\)) S
+1200 /Times-Roman-Acnt F
+14400 48906 M (You may want to put these changes in your INIT file to make them permanent.  ) S
+14400 47106 M (For example, in my INIT file I have several clauses of the form:) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+18000 44906 M (\(VARS \(LAFITEDISPLAYFONT \(FONTCREATE 'Helvetica 10 'BOLD\)\)\)) S
+1200 /Times-Roman-Acnt F
+14400 41506 M (To determine the global variables to set to change the default font for a package, ) S
+14400 39706 M (you have to look in the parameters/variables section of the documentation for that ) S
+14400 37906 M (package.  There is no global directory for font related global variables!!!!.) S
+1200 /Times-Bold-Acnt F
+10800 34306 M (Window title font) S
+1200 /Times-Roman-Acnt F
+14400 31506 M (Setting the default font for window title bars has its own mechanism.) S
+14400 29106 M (To change the title bar font, use the funtion call:) S
+1200 /Times-Bold-Acnt F
+18000 26706 M (\(DSPFONT ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(FontDescription) S
+1200 /Times-Bold-Acnt F
+( WindowTitleDisplayStream\),) S
+1200 /Times-Roman-Acnt F
+( where ) S
+1200 /Times-Italic-Acnt F
+18000 24906 M (FontDescription) S
+1200 /Times-Roman-Acnt F
+( is a description of the desired font for the window title ) S
+18000 23106 M (bars.) S
+14400 20706 M (Example, in my INIT file I have the following clause:) S
+1200 /Times-Italic-Acnt F
+18000 18306 M (\(P \(DSPFONT \(FONTCREATE 'HELVETICA 14 'BOLD\)) S
+18000 16506 M (      WindowTitleDisplayStream\)\)) S
+1400 /Times-Bold-Acnt F
+7200 12757 M (Designing your own screen fonts) S
+grestore savepage restore showpage
+
+%%Page: 13 13
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (13) S
+7200 75600 M (LispCourse #21:  Fonts) S
+10800 71106 M (You can design your own screen fonts \(put not printer fonts\) using the LispUser package ) S
+10800 69306 M (EDITFONT.  See the documentation on EDITFONT for further details.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 65557 M (References) S
+1200 /Times-Roman-Acnt F
+10800 62506 M (What is documented about fonts is described in Section 19.8 of the IRM.) S
+10800 59506 M (FONTPROFILE is documented in Section 6.8.5 of the IRM.) S
+10800 56506 M (Fontclasses are documented in the Harmony Release Notes.) S
+10800 53506 M (Also, see the parameters/variables sections for all the Lisp packages like CHAT and ) S
+10800 51706 M (LAFITE.) S
+grestore savepage restore showpage
+
+%%Trailer

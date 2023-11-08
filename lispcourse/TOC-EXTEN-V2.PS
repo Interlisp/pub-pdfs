@@ -1,0 +1,2696 @@
+%!PS-Adobe-2.0%%Title: {DSK}<home>larry>lispcourse>TOC-EXTEN-V2.PS%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate:  7-Nov-2023 21:40:33%%EndComments/bdef {bind def} bind def
+/ldef {load def} bdef
+/S /show ldef
+/M /moveto ldef
+/DR {transform round exch round exch itransform} bdef
+/L {gsave newpath setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/L1 {gsave newpath 0 setdash setgray setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/F {findfont exch scalefont setfont} bdef
+/CLP {newpath M dup 0 rlineto exch 0 exch rlineto
+  neg 0 rlineto closepath clip newpath} bdef
+/R {gsave setgray newpath M dup 0 rlineto exch 0 exch
+  rlineto neg 0 rlineto closepath eofill grestore} bdef
+/ellipsedict 9 dict def
+ellipsedict /mtrx matrix put
+/ellipse
+ { ellipsedict begin
+  /endangle exch def
+  /startangle exch def
+  /orientation exch def
+  /minorrad exch def
+  /majorrad exch def
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  orientation rotate
+  majorrad minorrad scale
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+ end } bdef
+/concatprocs
+ {/proc2 exch cvlit def
+  /proc1 exch cvlit def
+  /newproc proc1 length proc2 length add array def
+  newproc 0 proc1 putinterval
+  newproc proc1 length proc2 putinterval
+  newproc cvx
+ } bdef
+/resmatrix matrix def
+/findresolution
+ {72 0 resmatrix defaultmatrix dtransform
+  /yres exch def /xres exch def
+  xres dup mul yres dup mul add sqrt
+ } bdef
+/thebitimage
+ {/maskp exch def
+  /bihgt exch def
+  /biwid exch def
+  /byte 1 string def
+  /strbufl biwid 8 div ceiling cvi def
+  /strbuf strbufl string def
+  maskp not{{1 exch sub} currenttransfer concatprocs settransfer} if
+  biwid bihgt
+  maskp { true } { 1 } ifelse
+  [biwid 0 0 bihgt 0 0]
+  {/col 0 def
+   {currentfile byte readhexstring pop 0 get
+    dup 16#B2 eq {pop
+    currentfile byte readhexstring pop 0 get 1 add
+    currentfile byte readhexstring pop pop /nbyte byte 0 get def
+    { strbuf col nbyte put /col col 1 add def} repeat}
+   {dup 16#B3 eq {pop /col col
+    currentfile byte readhexstring pop
+    0 get add 1 add def}
+    {16#B4 eq {currentfile byte readhexstring pop pop} if
+     strbuf col byte 0 get put /col col 1 add def} ifelse
+   } ifelse
+   col strbufl ge { exit } if } loop
+   strbuf }
+  maskp { imagemask } { image } ifelse
+ } bdef
+/setuserscreendict 22 dict def
+setuserscreendict begin
+ /tempctm matrix def
+ /temprot matrix def
+ /tempscale matrix def
+end
+/setuserscreen
+ {setuserscreendict begin
+   /spotfunction exch def
+   /screenangle exch def
+   /cellsize exch def
+   /m tempctm currentmatrix def
+   /rm screenangle temprot rotate def
+   /sm cellsize dup tempscale scale def
+   sm rm m m concatmatrix m concatmatrix pop
+   1 0 m dtransform /y1 exch def /x1 exch def
+   /veclength x1 dup mul y1 dup mul add sqrt def
+   /frequency findresolution veclength div def
+   /newscreenangle y1 x1 atan def
+   m 2 get m 1 get mul m 0 get m 3 get mul sub
+   0 gt { { neg } /spotfunction load concatprocs
+          /spotfunction exch def } if
+   frequency newscreenangle /spotfunction load setscreen
+  end
+ } bdef
+/setpatterndict 18 dict def
+setpatterndict begin
+ /bitison
+  {/ybit exch def /xbit exch def
+   /bytevalue bstring ybit bwidth mul xbit 8 idiv add get def
+   /mask 1 7 xbit 8 mod sub bitshift def
+   bytevalue mask and 0 ne
+  } bdef
+end
+/bitpatternspotfunction
+ {setpatterndict begin
+   /y exch def /x exch def
+   /xindex x 1 add 2 div bpside mul 1 sub cvi def
+   /yindex y 1 add 2 div bpside mul 1 sub cvi def
+   xindex yindex bitison
+    {/onbits onbits 1 add def 1}
+    {/offbits offbits 1 add def 0} ifelse
+  end
+ } bdef
+/setpattern
+ {setpatterndict begin
+   /cellsz exch def
+   /angle exch def
+   /bwidth exch def
+   /bpside exch def
+   /bstring exch def
+   /onbits 0 def /offbits 0 def
+   cellsz angle /bitpatternspotfunction load setuserscreen
+   {} settransfer
+   offbits offbits onbits add div setgray
+  end
+ } bdef
+% - - - - - Fraction-setting code, to support NS fonts better - - - - -
+/fractiondict 20 dict def
+/fractionshow 
+{ fractiondict begin
+/denom exch def 
+/num exch def 
+/regfont currentfont def
+/fractfont currentfont [.65 0 0 .6 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(1) true charpath flattenpath pathbbox 
+/height exch def pop pop pop
+ grestore
+0 .4 height mul rmoveto
+fractfont setfont num show
+0 .4 height mul neg rmoveto regfont setfont (\244) show
+fractfont setfont denom show regfont setfont end } bdef
+/f14 { (1) (4) fractionshow } bdef
+/f12 { (1) (2) fractionshow } bdef
+/f34 { (3) (4) fractionshow } bdef
+/f18 { (1) (8) fractionshow } bdef
+/f38 { (3) (8) fractionshow } bdef
+/f58 { (5) (8) fractionshow } bdef
+/f78 { (7) (8) fractionshow } bdef
+/f13 { (1) (3) fractionshow } bdef
+/f23 { (2) (3) fractionshow } bdef
+/bboxdict 20 dict def
+/bboxchk { bboxdict begin
+/regfont currentfont def
+/chkfont currentfont [1.25 0 0 1.25 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(\161) true charpath flattenpath pathbbox 
+/height exch def pop pop pop 
+ grestore 
+ currentpoint 
+ .2 height mul .3 height mul rmoveto
+chkfont setfont (\063) show
+ moveto
+ regfont setfont
+(\161) show end } bdef
+/rencdict 15 dict def
+/encodefont { rencdict begin
+/newname exch def
+/oldfont exch def
+/newcodes [
+8#001 /Aacute
+8#002 /Acircumflex
+8#003 /Adieresis
+8#004 /Agrave
+8#005 /Aring
+8#006 /Atilde
+8#007 /Ccedilla
+8#010 /Eacute
+8#011 /Ecircumflex
+8#012 /Edieresis
+8#013 /Egrave
+8#014 /Iacute
+8#015 /Icircumflex
+8#016 /Idieresis
+8#017 /Igrave
+8#020 /Ntilde
+8#021 /Oacute
+8#022 /Ocircumflex
+8#023 /Odieresis
+8#024 /Ograve
+8#025 /Otilde
+8#026 /Scaron
+8#027 /Uacute
+8#030 /Ucircumflex
+8#031 /Udieresis
+8#032 /Ugrave
+8#033 /Ydieresis
+8#034 /Zcaron
+8#177 /periodinferior
+8#201 /aacute
+8#202 /acircumflex
+8#203 /adieresis
+8#204 /agrave
+8#205 /aring
+8#206 /atilde
+8#207 /ccedilla
+8#210 /eacute
+8#211 /ecircumflex
+8#212 /edieresis
+8#213 /egrave
+8#214 /iacute
+8#215 /icircumflex
+8#216 /idieresis
+8#217 /igrave
+8#220 /ntilde
+8#221 /oacute
+8#222 /ocircumflex
+8#223 /odieresis
+8#224 /ograve
+8#225 /otilde
+8#226 /scaron
+8#227 /uacute
+8#230 /ucircumflex
+8#231 /udieresis
+8#232 /ugrave
+8#233 /ydieresis
+8#234 /zcaron
+8#235 /Eth
+8#236 /eth
+8#237 /Thorn
+8#240 /thorn
+ ] def
+/olddict oldfont findfont def /newfont olddict maxlength dict def
+olddict { exch dup /FID ne { dup /Encoding eq
+{ exch dup length array copy newfont 3 1 roll put }
+{ exch newfont 3 1 roll put } ifelse }
+ { pop pop } ifelse } forall
+newfont /FontName newname put
+newcodes aload pop
+newcodes length 2 idiv { newfont /Encoding get 3 1 roll put } repeat 
+newname newfont definefont pop end } def
+ /accentdict 10 dict def 
+ /accentor { accentdict begin /scaler exch def /delta exch def 
+/unders exch def /accents exch def /mainch exch def /scrt (X) def
+ /w1 mainch stringwidth pop def 
+ currentpoint mainch show currentpoint 4 2 roll 
+accents { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         w1 w2 sub 2 div delta rmoveto scrt show 
+         /delta delta 150 scaler mul 9 div add def
+        } forall 
+unders { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         ch 46 eq { w1 w2 sub 2 div -175 scaler mul 9 div rmoveto scrt show 0 175 rmoveto }
+           { w1 w2 sub 2 div 0 rmoveto scrt show } ifelse 
+        } forall 
+ pop pop moveto end } def 
+%%EndProlog
+%%BeginSetup
+letter/imagesizefactor 1 def%%EndSetup/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+
+%%Page: 1 1
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1000 /Times-Roman-Acnt F
+7200 71255 M (Filed on:  {QV}<LISPCOURSE>TOC-EXTEN-V2) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 66157 M (LispCourse #23:  What is Programming; Basic Lisp Revisited) S
+7200 62357 M (What is Programming? \(pp. 1-5\)) S
+1200 /Times-Bold-Acnt F
+10800 59906 M (Procedures and Data: The Semantics of Programming \(pp. 1-3\)) S
+10800 57506 M (Procedure versus Process:  Running a Program \(pp. 3-4\)) S
+10800 55106 M (Correctness, Efficiency, Maintainability, & Adaptability Quickly and with Minimal ) S
+10800 53306 M (Effort: The Pragmatics of Programming \(pp. 4-5\)) S
+18000 51206 M (Correct) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+18000 49106 M (Efficient) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+18000 47006 M (Maintainable) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+18000 44906 M (Adaptable) S
+1200 /Times-Roman-Acnt F
+( ) S
+1400 /Times-Bold-Acnt F
+7200 42357 M (Reviewing the Basics of Lisp Programming \(p.  5-19\)) S
+1200 /Times-Bold-Acnt F
+10800 39906 M (The READ-EVAL-PRINT Loop \(p. 5\)) S
+10800 37506 M (Basic Syntactic Building Blocks: Atoms and Lists \(pp. 5-7\)) S
+10800 35106 M (Forms and the Lisp Interpreter \(p. 7\)) S
+14400 33006 M (Special Forms & QUOTE \(p. 8\)) S
+18000 30906 M (QUOTE) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 8\)) S
+1200 /Times-Bold-Acnt F
+18000 28806 M (QUOTE is used to prevent evaluation where it is not required.) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 8\)) S
+1200 /Times-Bold-Acnt F
+14400 26706 M (EVAL \(pp. 8-9\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+10800 23106 M (Lisp Control Structures \(pp. 9-13\)) S
+14400 21006 M (COND \(pp. 9-10\)) S
+14400 18906 M (Iterative control structures: The FOR Loop and its cousins \(p. 10\)) S
+18000 16806 M (The FOR Loop \(pp. 11-12\)) S
+21600 14706 M (\(FOR ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(variable) S
+1200 /Times-Bold-Acnt F
+( IN ) S
+1200 /Times-BoldItalic-Acnt F
+(list) S
+1200 /Times-Bold-Acnt F
+( DO ) S
+1200 /Times-BoldItalic-Acnt F
+(operation) S
+1200 /Times-Bold-Acnt F
+(\)) S
+18000 11706 M (Alternative FOR loops \(pp. 12-13\)) S
+21600 9606 M (DO versus COLLECT) S
+grestore savepage restore showpage
+
+%%Page: 2 2
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+7200 75600 M (2) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 71106 M ("IN ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(list) S
+1200 /Times-Bold-Acnt F
+(" versus "FROM ) S
+1200 /Times-BoldItalic-Acnt F
+(n) S
+1200 /Times-Bold-Acnt F
+( TO ) S
+1200 /Times-BoldItalic-Acnt F
+(m) S
+1200 /Times-Bold-Acnt F
+( BY ) S
+1200 /Times-BoldItalic-Acnt F
+(k) S
+1200 /Times-Bold-Acnt F
+(") S
+18000 68106 M (WHILE and UNTIL loops:  Alternatives to FOR \(p. 13\)) S
+21600 66006 M (\(WHILE ) S
+1200 /Times-BoldItalic-Acnt F
+(predicate) S
+1200 /Times-Bold-Acnt F
+( {DO, COLLECT} ) S
+1200 /Times-BoldItalic-Acnt F
+(operations) S
+1200 /Times-Bold-Acnt F
+(\)) S
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+21600 63906 M (UNTIL) S
+1200 /Times-Bold-Acnt F
+14400 61806 M (Defining and Applying Functions \(pp. 13-16\)) S
+18000 59006 M (Defining functions \(pp. 14-15\)) S
+25200 56606 M (\(DEFINEQ ) S
+1200 /Times-BoldItalic-Acnt F
+(Defn1) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Defn2) S
+1200 /Times-Bold-Acnt F
+( ...\)) S
+28800 54206 M (\() S
+1200 /Times-BoldItalic-Acnt F
+(FunctionName) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(FunctionDefn) S
+1200 /Times-Bold-Acnt F
+(\).) S
+1200 /Times-Bold-Acnt F
+36000 52206 M (\(LAMBDA ) S
+1200 /Times-BoldItalic-Acnt F
+(ParameterList) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+36000 50406 M (FunctionBody) S
+1200 /Times-Bold-Acnt F
+(\)) S
+18000 48306 M (Applying functions \(pp. 15-16\)) S
+21600 46206 M (APPLY) S
+18000 44106 M (Lisp Interpreter: A combination of EVAL and APPLY \(p. 16\)) S
+18000 42006 M (Lists: the primary Lisp data strucuture \(p. 17\) ) S
+18000 39906 M (List Maniupulation Functions \(pp. 17-18\)) S
+18000 37806 M (List Formats \(p. 18-19\) ) S
+21600 35706 M (ASSOC) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(list) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+25200 33306 M (ASSOC) S
+1200 /Times-Bold-Acnt F
+21600 31206 M (Prop) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(list) S
+1200 /Times-Bold-Acnt F
+25200 28806 M (LISTGET) S
+1200 /Times-Bold-Acnt F
+25200 26406 M (LISTPUT) S
+1400 /Times-Bold-Acnt F
+7200 23857 M (Exercise: Learning Data Abstraction \(pp. 19-20\)) S
+7200 21857 M (References \(p. 20\)) S
+1400 /Times-Bold-Acnt F
+7200 18257 M (LispCourse #24:  Data Abstraction) S
+7200 14457 M (Programs as Representations of the Real World \(p. 1\)) S
+7200 10657 M (Data, Compound Data & Data Structures \(pp.  1-2\)) S
+grestore savepage restore showpage
+
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+53444 75600 M (3) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (Data Abstraction: Dealing with Compound Data \(pp.  2-8\)) S
+1200 /Times-Bold-Acnt F
+10800 67306 M (The Need for Data Abstraction \(pp. 2-4\)) S
+10800 63906 M (Data Abstraction \(p. 4\)) S
+14400 60106 M (Abstraction Barriers \(pp. 5-6\)) S
+14400 56306 M (Constructing Access Functions: Constructors, Selectors & Mutators \(pp. 6-7\)) S
+18000 52906 M (Constructors) S
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Bold-Acnt F
+(Selectors and Mutators \(pp. 7-8\)) S
+1200 /Times-Roman-Acnt F
+(  ) S
+1400 /Times-Bold-Acnt F
+7200 49157 M (Example: Problem from LispCourse #23 \(pp. 8-9\)) S
+7200 44957 M (References \(p. 9\)) S
+7200 41157 M (Exercises \(p. 9\)) S
+7200 34757 M (LispCourse #25:  The Record Package; The Inspector) S
+7200 30957 M (Records:  Data Abstraction in Interlisp \(pp. 1-16\)) S
+1200 /Times-Bold-Acnt F
+10800 28506 M (Records: Basic Stuff \(pp. 1-2\)) S
+14400 26106 M (Record Declarations \(pp. 2-3\)) S
+21600 24006 M (\(RECORD ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(RecordName) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Fields) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(ExtraStuff1 ExtraStuff2 ...) S
+1200 /Times-Bold-Acnt F
+(\)) S
+14400 21606 M (Constructing Record Instances: The CREATE statement  \(pp. 3-4\)) S
+21600 19506 M (\(CREATE ) S
+1200 /Times-BoldItalic-Acnt F
+(RecordName Assignment1 Assignment2 ...) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-BoldItalic-Acnt F
+25200 17106 M (FieldName ) S
+1200 /Times-Bold-Acnt F
+(_) S
+1200 /Times-BoldItalic-Acnt F
+( Form) S
+1200 /Times-Bold-Acnt F
+14400 14706 M (Selecting Fields in a Record: The fetch statement  \(pp. 5-6\)) S
+1200 /Times-BoldItalic-Acnt F
+21600 12606 M (fetch) S
+1200 /Times-Bold-Acnt F
+21600 10506 M (\(fetch \() S
+1200 /Times-BoldItalic-Acnt F
+(RecordName) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(FieldName) S
+1200 /Times-Bold-Acnt F
+(\) of ) S
+1200 /Times-BoldItalic-Acnt F
+(Form) S
+1200 /Times-Bold-Acnt F
+(\)) S
+grestore savepage restore showpage
+
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+7200 75600 M (4) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 71106 M (Mutating Fields in a Record: The replace statement \(pp. 6-7\)) S
+21600 69006 M (\(replace \() S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(RecordName) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(FieldName) S
+1200 /Times-Bold-Acnt F
+(\) of ) S
+1200 /Times-BoldItalic-Acnt F
+(Form1) S
+1200 /Times-Bold-Acnt F
+( with ) S
+1200 /Times-BoldItalic-Acnt F
+(Form2) S
+1200 /Times-Bold-Acnt F
+(\)) S
+10800 66606 M (Records as Data Abstraction \(pp. 7-8\)) S
+10800 64206 M (Hierarchical Data Structures  \(pp. 8-10\)) S
+10800 61806 M (Records constructed from different list structures \(pp. 12-13\)) S
+18000 59706 M (TYPERECORD \(p. 12\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+18000 57606 M (ASSOCRECORD) S
+1200 /Times-Italic-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 12\)) S
+1200 /Times-Bold-Acnt F
+18000 55506 M (PROPRECORD \(p. 13\)) S
+1200 /Times-Bold-Acnt F
+10800 53106 M (Determining the record type of an object:  The TYPE? statement \(pp. 13-16\)) S
+18000 51006 M (\(TYPE? ) S
+1200 /Times-BoldItalic-Acnt F
+(Form) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 14\)) S
+18000 48906 M (\(TYPE? ) S
+1200 /Times-BoldItalic-Acnt F
+(RecordName) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Form) S
+1200 /Times-Bold-Acnt F
+(\) \(pp. 14-16\)) S
+1400 /Times-Bold-Acnt F
+7200 46357 M (DATATYPES: Defining New Objects in the Interlisp System \(pp. 16-19\)) S
+1200 /Times-BoldItalic-Acnt F
+18000 44206 M (\(DATATYPE Name \(First Middle Last\)\)) S
+1200 /Times-Bold-Acnt F
+10800 41806 M (System DATATYPEs \(p. 18-19\)) S
+1400 /Times-Bold-Acnt F
+7200 39257 M (Editing record declarations and record instance: EditRec and The Inspector ) S
+7200 37257 M (\(p. 19\)) S
+7200 34657 M (References  \(p. 19\)) S
+7200 32057 M (Exercises  \(p. 19\)) S
+7200 26857 M (LispCourse #26:  Reprise; Continuation of Record Package from #25) S
+7200 23057 M (Reprise:  Sample Programming Exercise \(pp 1-9\)) S
+1200 /Times-Bold-Acnt F
+10800 20606 M (The Problem \(pp. 1-2\)) S
+10800 18206 M (Step 1:  Describe the database \(pp. 2-3\)) S
+10800 15806 M (Step 2:  Write the constructors, selectors, and mutators for the data structures \(pp. ) S
+10800 14006 M (3-6\)) S
+10800 11606 M (Step 3:  Write the functions that do the work as required. \(pp. 6-9\)) S
+10800 9206 M (Step 4:  Save your work on a file and list it.  \(p. 9\)) S
+grestore savepage restore showpage
+
+%%Page: 5 5
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+53444 75600 M (5) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 71106 M (Step 5:  Test, Debug, and redo the MAKEFILE. \(p. 9\)) S
+1400 /Times-Bold-Acnt F
+7200 68557 M (Continuation from #25:  Editing Record/Datatype Declarations and Instances  ) S
+7200 66557 M (\(pp. 10-16\)) S
+1200 /Times-Bold-Acnt F
+10800 64106 M (Examining and Editing Record/Datatype Declarations: RECLOOK and EDITREC ) S
+10800 62306 M (\(pp. 10-11\)) S
+14400 60206 M (\(RECLOOK  ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(RecordName) S
+1200 /Times-Bold-Acnt F
+(\)) S
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+(.) S
+1200 /Times-Bold-Acnt F
+14400 58106 M (\(EDITREC  ) S
+1200 /Times-BoldItalic-Acnt F
+(RecordName) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Bold-Acnt F
+10800 55706 M (Examining and Editing Record/Datatype Instances: The Inspector \(pp. 11-15\)) S
+14400 53606 M (\(INSPECT ) S
+1200 /Times-BoldItalic-Acnt F
+(Instance) S
+1200 /Times-Bold-Acnt F
+(\)) S
+10800 51206 M (Using the Inspector \(pp. 15-16\)) S
+1400 /Times-Bold-Acnt F
+7200 48657 M (References  \(p. 16\)) S
+7200 46057 M (Exercise  \(p. 16\)) S
+1200 /Times-Bold-Acnt F
+14400 43906 M (\(FOR ) S
+1200 /Times-BoldItalic-Acnt F
+(Variable) S
+1200 /Times-Bold-Acnt F
+( IN ) S
+1200 /Times-BoldItalic-Acnt F
+(List) S
+1200 /Times-Bold-Acnt F
+( WHEN ) S
+1200 /Times-BoldItalic-Acnt F
+(Predicate) S
+1200 /Times-Bold-Acnt F
+( DO ) S
+1200 /Times-BoldItalic-Acnt F
+(S-Exprs) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1400 /Times-Bold-Acnt F
+7200 38957 M (LispCourse #27:  Homework from #26; Completion of #25 & #26) S
+1400 /Times-Bold-Acnt F
+7200 33557 M (LispCourse #28:  Type Checking; Strings; Arrays) S
+7200 29757 M (Type Checking in Interlisp \(pp. 1-8\)) S
+1200 /Times-Bold-Acnt F
+10800 27306 M (The Concept of Type Checking \(pp 1-3\)) S
+10800 24906 M (Adding type checking to your Interlisp functions \(p. 4\)) S
+10800 22506 M (Type Checking Technique \(pp. 4-6\)) S
+10800 20106 M (Type checking predicates \(p. 7\) ) S
+18000 18006 M (LITATOM) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Bold-Acnt F
+(NUMBERP) S
+1200 /Times-Roman-Acnt F
+(, and ) S
+1200 /Times-Bold-Acnt F
+(LISTP) S
+1200 /Times-Bold-Acnt F
+18000 15906 M (TYPE?) S
+1400 /Times-Bold-Acnt F
+7200 13357 M (Overview of the Types of Data in Interlisp \(pp. 8-9\)) S
+7200 10757 M (Print Names \(pp. 9-10\)) S
+grestore savepage restore showpage
+
+%%Page: 6 6
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+7200 75600 M (6) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (Arrays  \(pp. 10-11\)) S
+10800 68357 M (Array manipulation functions \(pp. 11-13\)) S
+1200 /Times-Bold-Acnt F
+14400 65906 M (Creating arrays \(p. 11\)) S
+18000 63806 M (\(ARRAY ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Size) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Bold-Acnt F
+14400 61406 M (Array predicate \(pp. 11-12\)) S
+18000 59306 M (\(ARRAYP ) S
+1200 /Times-BoldItalic-Acnt F
+(Arg) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Bold-Acnt F
+14400 56906 M (Accessing the entries of an array \(pp. 12-13\)) S
+18000 54806 M (\(SETA ) S
+1200 /Times-BoldItalic-Acnt F
+(Array N) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Value) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Bold-Acnt F
+18000 52706 M (\(ELT ) S
+1200 /Times-BoldItalic-Acnt F
+(Array N) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Bold-Acnt F
+14400 50306 M (Finding out the size of an array \(p. 13\)) S
+18000 48206 M (\(ARRAYSIZE ) S
+1200 /Times-BoldItalic-Acnt F
+(Array) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1400 /Times-Bold-Acnt F
+10800 45657 M (Using arrays \(pp. 13-14\)) S
+7200 43057 M (Strings \(pp. 15-21\)) S
+10800 40457 M (String manipulation functions \(pp. 15-19\)) S
+1200 /Times-Bold-Acnt F
+14400 38006 M (String predicate \(pp. 15-16\)) S
+18000 35906 M (\(STRINGP ) S
+1200 /Times-BoldItalic-Acnt F
+(Arg) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Bold-Acnt F
+14400 33506 M (Creating strings \(pp. 16-17\)) S
+18000 31406 M (\(MKSTRING ) S
+1200 /Times-BoldItalic-Acnt F
+(Arg) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Bold-Acnt F
+18000 29306 M (\(ALLOCSTRING ) S
+1200 /Times-BoldItalic-Acnt F
+(N Character) S
+1200 /Times-Bold-Acnt F
+14400 26906 M (Comparing strings \(p. 17\)) S
+18000 24806 M (\(STREQUAL ) S
+1200 /Times-BoldItalic-Acnt F
+(Str1 Str2) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Bold-Acnt F
+14400 22406 M (Concatenating strings \(pp. 17-18\)) S
+18000 20306 M (\(CONCAT ) S
+1200 /Times-BoldItalic-Acnt F
+(Str1 Str2 ...) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Bold-Acnt F
+14400 17906 M (Decomposing strings \(p. 18\)) S
+18000 15806 M (\(SUBSTRING ) S
+1200 /Times-BoldItalic-Acnt F
+(Str Start End) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Bold-Acnt F
+14400 13406 M (Searching strings \(p. 18-19\)) S
+18000 11306 M (\(STRPOS ) S
+1200 /Times-BoldItalic-Acnt F
+(Pattern String Start SkipChar) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1400 /Times-Bold-Acnt F
+10800 8757 M (Using Strings \(pp. 19-21\)) S
+grestore savepage restore showpage
+
+%%Page: 7 7
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+53444 75600 M (7) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (References \(p. 21\)) S
+7200 65757 M (LispCourse #29:  Solutions for Homework #28) S
+7200 60557 M (LispCourse #30:  Conceptual Models for Atoms, Lists ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1400 /Times-BoldItalic-Acnt F
+(et al.) S
+1400 /Times-Bold-Acnt F
+7200 56757 M (Introduction \(pp. 1-2\)) S
+7200 54157 M (Everything in Lisp is a ) S
+1400 /Times-BoldItalic-Acnt F
+(Pointer) S
+1400 /Times-Bold-Acnt F
+( \(p. 2\)) S
+7200 51557 M (Representing Atoms \(pp. 3-4\)) S
+7200 48957 M (Representing Lists \(pp. 4-20\)) S
+1200 /Times-Bold-Acnt F
+10800 46506 M (The CONS cell \(pp. 4-5\) ) S
+10800 44106 M (Lists are built from CONS cells \(pp. 5-8\)) S
+10800 41706 M (CAR and CDR revisited \(p. 9\)) S
+18000 39606 M (CAR) S
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+18000 37506 M (CDR) S
+1200 /Times-Bold-Acnt F
+10800 35106 M (CONSing onto a list and LIST revisited \(pp. 9-11\)) S
+10800 32706 M (APPEND revisited \(pp. 11-12\)) S
+10800 30306 M (The COPY function \(pp. 12-13\)) S
+10800 27906 M (RPLACA, RPLACD, and NCONC -- The destructive functions \(pp. 14-17\)) S
+14400 25806 M (\(RPLACA) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(X Y) S
+1200 /Times-Bold-Acnt F
+(\)  \(pp. 14-15\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+14400 23706 M (\(RPLACD) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(X Y) S
+1200 /Times-Bold-Acnt F
+(\)  \(pp. 15-16\)) S
+1200 /Times-Bold-Acnt F
+14400 21606 M (\(NCONC) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(X1 X2 X3 ...) S
+1200 /Times-Bold-Acnt F
+(\)  \(p. 17\)) S
+1200 /Times-Bold-Acnt F
+10800 19206 M (Some dangers in using the destructive functions \(pp. 18-20\)) S
+1400 /Times-Bold-Acnt F
+7200 16657 M (Representing Datatypes and Arrays \(pp. 21 -22\)) S
+7200 14057 M (Representing Strings  \(pp. 22-25\)) S
+1200 /Times-BoldItalic-Acnt F
+10800 11606 M (string pointer) S
+1200 /Times-Roman-Acnt F
+( and a ) S
+1200 /Times-BoldItalic-Acnt F
+(character vector) S
+1200 /Times-Roman-Acnt F
+(.) S
+1200 /Times-Bold-Acnt F
+14400 9506 M (GNC  \(pp. 23-24\)) S
+grestore savepage restore showpage
+
+%%Page: 8 8
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+7200 75600 M (8) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 71106 M (GLC  \(pp. 24-25\)) S
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+(   ) S
+1200 /Times-Bold-Acnt F
+14400 69006 M (\(RPLSTRING ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(String1) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(N) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(String2) S
+1200 /Times-Bold-Acnt F
+(\)  \(pp. 25-26\) ) S
+1400 /Times-Bold-Acnt F
+7200 66457 M (Sameness and Equality in Lisp: EQ versus EQUAL \(pp.  27-30\)) S
+1200 /Times-Bold-Acnt F
+14400 64306 M (EQ \(p. 28\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+14400 62206 M (EQUAL \(p. 29\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1400 /Times-Bold-Acnt F
+7200 59657 M (References \(p. 30\)) S
+7200 57057 M (Exercises \(attachment\)) S
+7200 51857 M (LispCourse #31:  Solutions for Homework #30, Problems 2 and 3) S
+7200 46657 M (LispCourse #32:  Homework on circular queues) S
+7200 42857 M (Exercise) S
+1200 /Times-Bold-Acnt F
+10800 40406 M (Overall problem  \(p. 1\)) S
+10800 38006 M (Defintions \(p. 1\)) S
+10800 35606 M (Subproblems \(p. 2-3\)) S
+1400 /Times-Bold-Acnt F
+7200 30457 M (LispCourse #33:  Solutions for Homework #32) S
+7200 25257 M (LispCourse #34:  Variable Binding and the Interlisp Stack) S
+7200 21457 M (Variable Reference Inside Functions:  Bound and Free Variables \(pp. 1-4\)) S
+7200 18857 M (Review:  Evaluating S-expressions using EVAL and APPLY  \(pp. 4-8\)) S
+1200 /Times-Bold-Acnt F
+10800 16706 M (EVAL \(p. 5\)) S
+10800 14606 M (APPLY \(p. 6\)) S
+10800 12506 M (EXAMPLE \(from LispCourse #3, page 6\)  \(pp. 7-8\)) S
+10800 10406 M (Missing Pieces  \(p. 8\)) S
+grestore savepage restore showpage
+
+%%Page: 9 9
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+53444 75600 M (9) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (The Lisp Stack, Variable Binding, Variable Lookup, and Related Topics \(pp. ) S
+1200 /Times-Bold-Acnt F
+10800 68806 M (The Lisp Stack \(pp. 8-10\)) S
+10800 66706 M (Variable Binding  \(pp. 10-11\)) S
+10800 64606 M (Looking up the Value of a Variable \(pp. 11-13\)) S
+10800 62506 M (Setting the Value of a Variable \(pp. 13-16\)) S
+10800 60406 M (Function Definition Lookup \(pp. 16-17\)) S
+1400 /Times-Bold-Acnt F
+7200 57857 M (Variable Reference in Practice:  LET and PROG are used to bind variables ) S
+1200 /Times-Bold-Acnt F
+14400 55706 M (Avoid Free Variables!  \(pp. 17-19\)) S
+14400 53606 M (The LET Special Form  \(pp. 19-23\)) S
+14400 51506 M (The PROG Special Form \(pp. 23-25\)) S
+14400 49406 M (FOR and WHILE are implemented using PROG \(pp. 25-27\)) S
+1400 /Times-Bold-Acnt F
+7200 46857 M (Global Variables:  Free variables used as system or package parameters \(pp. ) S
+7200 44857 M (28-29\)) S
+7200 42257 M (References  \(pp. 29-30\)) S
+7200 39657 M (Exercise \(pp. 30-31\)) S
+7200 34457 M (LispCourse #35:  Solutions to Homework #34) S
+7200 31857 M (Apologies \(pp. 1-2\)) S
+7200 29257 M (Solutions \(attachment\)) S
+7200 26657 M (Sample Runs \(attachment\)) S
+7200 21457 M (LispCourse #36:  More on Variable Binding;) S
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+( ) S
+1400 /Times-Bold-Acnt F
+(Control Structures in Lisp) S
+7200 17657 M (NLAMBDA Functions  \(pp. 1-3\)) S
+7200 15057 M (Spread and NoSpread Functions \(pp.  3-8\)) S
+1200 /Times-Bold-Acnt F
+10800 12906 M (NLAMBDA nospread functions \(p. 4\)) S
+10800 10806 M (LAMBDA nospread functions \(p. 5-6\)) S
+10800 8706 M (What are nospread functions good for? \(pp. 6-7\)) S
+grestore savepage restore showpage
+
+%%Page: 10 10
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+7200 75600 M (10) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 71106 M (Summary of 4 function types \(pp. 7-8\)) S
+1400 /Times-Bold-Acnt F
+7200 68557 M (Functions as Arguments in Function Calls \(pp.  8-10\)) S
+1200 /Times-Bold-Acnt F
+10800 66406 M (FUNCTION \(p. 10\)) S
+1200 /Times-Bold-Acnt F
+10800 64306 M (A more realistic example \(p. 10\)) S
+1400 /Times-Bold-Acnt F
+7200 61757 M (Control Structures in Lisp \(pp. 11-) S
+10800 59457 M (Procedural  Abstraction \(pp. 11-12\)) S
+10800 57157 M (Interlisp Control Structures \(pp. 12-) S
+1200 /Times-Bold-Acnt F
+14400 54706 M (Review:  Control Structures Already Covered \(pp. 13-) S
+21600 52606 M (Sequential evaluation \(p. 13\)) S
+21600 50506 M (Embedding \(pp. 13-14\)) S
+21600 48406 M (COND \(pp. 14-15\)) S
+21600 46306 M (AND, OR \(pp. 16-18\)) S
+21600 44206 M (Iteration: FOR, WHILE, and UNTIL \(pp. 18-19\)) S
+21600 42106 M (LET \(p. 20\)) S
+21600 40006 M (PROG with RETURN  \(pp. 20-21\)) S
+21600 37906 M (PROG with GO \(p. 22\)) S
+14400 35506 M (Other Control Structures) S
+18000 33406 M (SELECTQ \(p. 22-24\)) S
+21600 31306 M (EFS \(p. 25\)) S
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+18000 29206 M (PROG1, PROG2, PROGN \(pp.25-27\)) S
+18000 27106 M (Simple Repetition: RPT and RPTQ \(27-28\)) S
+18000 25006 M (Mapping functions: MAP, MAPC, MAPLIST, MAPCAR \(pp. 28-30\)) S
+21600 22906 M (\(MAPC ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(List WorkFn NextFn) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 29\)) S
+1200 /Times-Bold-Acnt F
+21600 20806 M (\(MAPCAR ) S
+1200 /Times-BoldItalic-Acnt F
+(List WorkFn NextFn) S
+1200 /Times-Bold-Acnt F
+(\) \(pp. 29-30\)) S
+1400 /Times-Bold-Acnt F
+7200 18257 M (Recursion -- The ultimate control structure in Lisp  \(p. 30\)) S
+7200 15657 M (References \(pp. 30-31\)) S
+7200 10457 M (LispCourse #37:  Recursion; Organizing Large Programs) S
+grestore savepage restore showpage
+
+%%Page: 11 11
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+52888 75600 M (11) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (Rercursion \233 The ultimate Lisp control structure \(pp. 1-3\)) S
+1200 /Times-Bold-Acnt F
+10800 67906 M (Types of Recursion \(pp. 4-7\)) S
+14400 64906 M (Single Recursion \(and tail recursion\) \(pp. 4-6\)) S
+14400 61906 M (Double \(or more\) Recursion \(pp. 6-7\)) S
+10800 58306 M (Iteration versus Recursion \(pp. 7-10\)) S
+1400 /Times-Bold-Acnt F
+7200 54557 M (Organizing Large Programs by Object and Operation \(pp. 7-18\) ) S
+1200 /Times-Bold-Acnt F
+10800 51306 M (Organization by Operation \(pp. 11-12\)) S
+10800 48106 M (Organization by Type of Object \(pp. 12-14\)) S
+10800 44906 M (Organization using the table: Data-directed programming \(pp. 14-15\)) S
+10800 41506 M (Organization by Object Instance: Object-oriented programming \(pp. 15-18\)) S
+10800 38106 M (Choosing from among these organizations \(p. 18\)) S
+1400 /Times-Bold-Acnt F
+7200 34357 M (References \() S
+1200 /Times-Bold-Acnt F
+(p. 18\)) S
+1400 /Times-Bold-Acnt F
+7200 27957 M (LispCourse #38:  Files; Streams; Input/Output) S
+7200 24157 M (Files \(pp. 1-3\)) S
+1200 /Times-Bold-Acnt F
+10800 21706 M (Files From the Programmer's Point of View \(p. 1\)) S
+10800 19306 M (File Names \(pp. 1-3\)) S
+18000 17206 M (\(FILENAMEFIELD ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(FileName) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(FieldName) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 2\)) S
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+18000 15106 M (\(UNPACKFILENAME ) S
+1200 /Times-BoldItalic-Acnt F
+(FileName) S
+1200 /Times-Bold-Acnt F
+(\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 2\)) S
+1200 /Times-Bold-Acnt F
+18000 13006 M (\(PACKFILENAME ) S
+1200 /Times-BoldItalic-Acnt F
+(FieldName1 FieldContents1 ... FieldNameN ) S
+18000 11206 M (FieldContentsN) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 2\)) S
+1400 /Times-Bold-Acnt F
+7200 8657 M (Streams \(pp. 3-4\)) S
+grestore savepage restore showpage
+
+%%Page: 12 12
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+7200 75600 M (12) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (Low-level Access to Files Using Streams  \(p. 4-10\)) S
+1200 /Times-Bold-Acnt F
+10800 68506 M (Opening and Closing \(pp. 4-7\)) S
+18000 66406 M (\(OPENSTREAM ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(FileName) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Access) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Recognition) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 4\)) S
+1200 /Times-Bold-Acnt F
+18000 64306 M (\(OPENP ) S
+1200 /Times-BoldItalic-Acnt F
+(FileNameOrStream) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Access) S
+1200 /Times-Bold-Acnt F
+(\) \(pp. 5-6-) S
+1200 /Times-Bold-Acnt F
+18000 62206 M (\(CLOSEF? ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\) \(pp. 6-7\)) S
+1200 /Times-Bold-Acnt F
+18000 60106 M (\(CLOSEALL\) \(p. 7\)) S
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+10800 57706 M (File Pointers \(pp. 7-9\)) S
+18000 55606 M (\(GETFILEPTR ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 7\)) S
+1200 /Times-Bold-Acnt F
+18000 53506 M (\(GETEOFPTR ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 8\)) S
+1200 /Times-Bold-Acnt F
+18000 51406 M (\(RANDACCESSP Stream\) \(p. 8\)) S
+18000 49306 M (\(SETFILEPTR ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Position) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 8\)) S
+1200 /Times-Bold-Acnt F
+18000 47206 M (\(FILEPOS ) S
+1200 /Times-BoldItalic-Acnt F
+(Pattern) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Start) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(End) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Skip) S
+1200 /Times-Bold-Acnt F
+(\)  \(p. 8\)) S
+1200 /Times-Bold-Acnt F
+10800 44806 M (Reading and Writing  \(pp. 9-10\)) S
+18000 42706 M (\(BIN ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 9\)) S
+1200 /Times-Bold-Acnt F
+18000 40606 M (\(BOUT ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Byte) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 9\)) S
+1200 /Times-Bold-Acnt F
+10800 38206 M (Example \(pp. 9-10\)) S
+1400 /Times-Bold-Acnt F
+7200 35057 M (Higher-level File Input and Output \(pp. 10-18\)) S
+1200 /Times-Bold-Acnt F
+10800 32606 M (Higher-level Input Functions \(p. 10\)) S
+18000 30506 M (\(READ ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\)  \(pp. 10-11\)) S
+18000 28406 M (\(SKREAD ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\) \(p) S
+1200 /Times-Roman-Acnt F
+(. ) S
+1200 /Times-Bold-Acnt F
+(11\)) S
+1200 /Times-Bold-Acnt F
+18000 26306 M (\(READC ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\) \(p) S
+1200 /Times-Roman-Acnt F
+(. ) S
+1200 /Times-Bold-Acnt F
+(11\)) S
+1200 /Times-Roman-Acnt F
+(  ) S
+1200 /Times-Bold-Acnt F
+18000 24206 M (\(RATOM ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\) \(pp. 11-12\)) S
+18000 22106 M (\(RSTRING ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\) \(pp. 12\)) S
+18000 20006 M (\(READFILE ) S
+1200 /Times-BoldItalic-Acnt F
+(StreamOrFileName) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 12\)) S
+1200 /Times-Bold-Acnt F
+10800 17606 M (Higher-level Output Functions \(pp. 11-18\)) S
+14400 15506 M (General Printing) S
+18000 13406 M (\(PRIN1 ) S
+1200 /Times-BoldItalic-Acnt F
+(SExpression) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\) \(pp. 13-14\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+18000 11306 M (\(PRIN2 ) S
+1200 /Times-BoldItalic-Acnt F
+(SExpression) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 14\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+18000 9206 M (\(TERPRI ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 14\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+grestore savepage restore showpage
+
+%%Page: 13 13
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+52888 75600 M (13) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 71106 M (\(SPACES ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(N) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 14\)) S
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+18000 69006 M (\(PRINT ) S
+1200 /Times-BoldItalic-Acnt F
+(SExpression) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 14\)) S
+1200 /Times-Bold-Acnt F
+14400 66906 M (Printing Numbers \(pp. 14-16\)) S
+18000 64806 M (\(PRINTNUM ) S
+1200 /Times-BoldItalic-Acnt F
+(Format) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Number) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\) \(pp. 14-16\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+25200 62557 M (\(FIX ) S
+1200 /Times-BoldItalic-Acnt F
+(Width) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Base) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Pad0Flg) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(LeftFlushFlg) S
+1200 /Times-Bold-Acnt F
+(\) \(pp. 14-15) S
+1400 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Bold-Acnt F
+25200 60406 M (\(FLOAT ) S
+1200 /Times-BoldItalic-Acnt F
+(Width) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(DecWidth) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(ExpWidth) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Pad0Flg) S
+1200 /Times-Bold-Acnt F
+(\) \(pp. 15-) S
+25200 58606 M (16\)) S
+14400 56506 M (PRINTOUT \(pp. 16-18\)) S
+21600 54406 M (\(PRINTOUT ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Command1) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Command2) S
+1200 /Times-Bold-Acnt F
+( ...\) \(pp. 16-18\)) S
+1400 /Times-Bold-Acnt F
+7200 51857 M (Miscellaneous Considerations \(pp. 18-20\)) S
+1200 /Times-Bold-Acnt F
+10800 49406 M (The File T \(pp. 18-19\)) S
+10800 47006 M (Line Buffering When Reading Keyboard Input \(p. 19\)) S
+18000 44906 M (\(CONTROL T\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+( \(p. 19\)) S
+1200 /Times-Bold-Acnt F
+18000 42806 M (\(CONTROL NIL\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 19\)) S
+1200 /Times-Bold-Acnt F
+10800 40406 M (Default Input/Output File \(p. 20\)) S
+18000 38306 M (\(INPUT ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 20\)) S
+1200 /Times-Bold-Acnt F
+18000 36206 M (\(OUTPUT ) S
+1200 /Times-BoldItalic-Acnt F
+(Stream) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 20\)) S
+1400 /Times-Bold-Acnt F
+7200 33657 M (References  ) S
+1200 /Times-Bold-Acnt F
+(\(p. 20\)) S
+1400 /Times-Bold-Acnt F
+7200 28457 M (LispCourse #39:  Solutions to Homework #38) S
+1200 /Times-Roman-Acnt F
+7200 24806 M (Solution functions are attached. \(16 pages\) ) S
+1200 /Times-Bold-Acnt F
+7200 21206 M (Notes on Problem C \(pp. 1-2\)) S
+1400 /Times-Bold-Acnt F
+7200 16057 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+7200 12257 M (Introduction \(pp. 1-3\)) S
+1200 /Times-BoldItalic-Acnt F
+10800 10106 M (bitmap ) S
+1200 /Times-Bold-Acnt F
+(\(p. 1\)) S
+grestore savepage restore showpage
+
+%%Page: 14 14
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+7200 75600 M (14) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+10800 71106 M (Display streams) S
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+(  ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(\(p. 1\)) S
+1200 /Times-BoldItalic-Acnt F
+10800 69006 M (Windows) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 1\)) S
+1400 /Times-Bold-Acnt F
+7200 65057 M (Coordinate Systems, Positions, & Regions \(pp. 3-5\)) S
+1200 /Times-Bold-Acnt F
+10800 62906 M (Coordinate Systems for Specifying Locations in Bitmaps, et al. \(pp. 3-4\)) S
+10800 60806 M (Positions and Regions \(pp. 4-5\)) S
+1200 /Times-BoldItalic-Acnt F
+14400 58706 M (POSITION) S
+1200 /Times-Bold-Acnt F
+(    \(create POSITION XCOORD _ ) S
+1200 /Times-BoldItalic-Acnt F
+(X) S
+1200 /Times-Bold-Acnt F
+( YCOORD _ ) S
+1200 /Times-BoldItalic-Acnt F
+(Y) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 4\)) S
+1200 /Times-BoldItalic-Acnt F
+14400 56606 M (REGION) S
+1200 /Times-Roman-Acnt F
+(    ) S
+1200 /Times-Bold-Acnt F
+(\(CREATEREGION ) S
+1200 /Times-BoldItalic-Acnt F
+(Left) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Bottom) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Width) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Height) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 4\)) S
+18000 54506 M (\(INSIDEP ) S
+1200 /Times-BoldItalic-Acnt F
+(Region) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Position) S
+1200 /Times-Bold-Acnt F
+(\)  \(p. 4\)) S
+18000 52406 M (\(INTERSECTREGIONS ) S
+1200 /Times-BoldItalic-Acnt F
+(Region1) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Region2 ...) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(RegionN) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 5\)) S
+1200 /Times-Bold-Acnt F
+18000 50306 M (\(UNIONREGIONS ) S
+1200 /Times-BoldItalic-Acnt F
+(Region1) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Region2 ...) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(RegionN) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+( \(p. 5\)) S
+1400 /Times-Bold-Acnt F
+7200 46357 M (BITMAPs \(pp. 5-12\)) S
+1200 /Times-Bold-Acnt F
+10800 43906 M (Introduction \(p. 5\)) S
+10800 41506 M (Creating Bitmaps \(p. 6\)) S
+18000 39406 M (\(BITMAPCREATE ) S
+1200 /Times-BoldItalic-Acnt F
+(Width) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Height) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Bold-Acnt F
+10800 37006 M (BITBLT \(pp. 6-10\)) S
+18000 34906 M (\(BITBLT ) S
+1200 /Times-BoldItalic-Acnt F
+(SourceBitMap) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(SourceLeft) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(SourceBottom) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(DestBitMap) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+18000 33106 M (DestLeft) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(DestBottom) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Width) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Height) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(SourceType) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Operation) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Texture) S
+1200 /Times-Bold-Acnt F
+(\) \(pp. ) S
+18000 31306 M (6-7\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+18000 29206 M (Examples  \(pp. 8-10\)) S
+10800 26806 M (Miscellaneous Bitmap Functions \(p. 10\)) S
+18000 24706 M (\(BITMAPBIT ) S
+1200 /Times-BoldItalic-Acnt F
+(BitMap) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(X) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Y) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(NewValue) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Bold-Acnt F
+18000 22606 M (\(BITMAPCOPY ) S
+1200 /Times-BoldItalic-Acnt F
+(BitMap) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Bold-Acnt F
+18000 20506 M (\(BITMAPHEIGHT ) S
+1200 /Times-BoldItalic-Acnt F
+(BitMap) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Bold-Acnt F
+18000 18406 M (\(BITMAPWIDTH ) S
+1200 /Times-BoldItalic-Acnt F
+(BitMap) S
+1200 /Times-Bold-Acnt F
+(\) ) S
+1200 /Times-Bold-Acnt F
+18000 16306 M (\(SCREENBITMAP\)) S
+1200 /Times-Bold-Acnt F
+18000 14206 M (\(CURSORBITMAP\)) S
+1200 /Times-Bold-Acnt F
+10800 11806 M (Hand Editing Bitmaps \(pp. 11-12\)) S
+14400 9406 M (\(EDITBM ) S
+1200 /Times-BoldItalic-Acnt F
+(BitMap) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(pp. 11-12\)) S
+grestore savepage restore showpage
+
+%%Page: 15 15
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+52888 75600 M (15) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (Display Streams \(pp. 12-18\)) S
+1200 /Times-Bold-Acnt F
+10800 68506 M (Display Stream Properties \(& creating a display stream\) \(pp. 12-14\)) S
+21600 66406 M (Destination \(p. 12\)) S
+1200 /Times-Bold-Acnt F
+21600 64306 M (XOffset, YOffset) S
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 12\)) S
+1200 /Times-Bold-Acnt F
+21600 62206 M (ClippingRegion) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 13\)) S
+1200 /Times-Bold-Acnt F
+21600 60106 M (XPosition, YPosition) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 13\)) S
+1200 /Times-Bold-Acnt F
+21600 58006 M (Texture) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 13\)) S
+1200 /Times-Bold-Acnt F
+21600 55906 M (Font) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 13\)) S
+1200 /Times-Bold-Acnt F
+21600 53806 M (Operation) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 13\)) S
+1200 /Times-Bold-Acnt F
+21600 51706 M (\(DSPCREATE ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Destination) S
+1200 /Times-Bold-Acnt F
+(\) \(pp. 13-14\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+10800 49306 M (Moving the Current Position in the Display Stream \(pp. 14-15\)) S
+18000 47206 M (\(MOVETO ) S
+1200 /Times-BoldItalic-Acnt F
+(X) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Y) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(DisplayStream) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Bold-Acnt F
+18000 45106 M (\(RELMOVETO ) S
+1200 /Times-BoldItalic-Acnt F
+(DeltaX) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(DeltaY) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(DisplayStream) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Bold-Acnt F
+10800 42706 M (Printing and Drawing on Display Streams \(pp. 15-18\)) S
+18000 40606 M (\(DRAWTO ) S
+1200 /Times-BoldItalic-Acnt F
+(X) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Y) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Width) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Operation) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(DisplayStream) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 15\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+18000 38506 M (\(RELDRAWTO ) S
+1200 /Times-BoldItalic-Acnt F
+(DeltaX) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(DeltaY) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Width) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Operation) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(DisplayStream) S
+1200 /Times-Bold-Acnt F
+(\) \(p. ) S
+18000 36706 M (15\)) S
+1200 /Times-Bold-Acnt F
+18000 34606 M (\(DRAWBETWEEN ) S
+1200 /Times-BoldItalic-Acnt F
+(Position1 Position2) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Width) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Operation) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+18000 32806 M (DisplayStream) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 15-16\)) S
+1200 /Times-Bold-Acnt F
+18000 30706 M (\(DRAWCURVE ) S
+1200 /Times-BoldItalic-Acnt F
+(Knots) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(ClosedFlg) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Brush) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Dashing) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(DisplayStream) S
+1200 /Times-Bold-Acnt F
+(\) \(pp. ) S
+18000 28906 M (16-17\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+18000 26806 M (\(DRAWCIRCLE ) S
+1200 /Times-BoldItalic-Acnt F
+(X Y) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Radius) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Brush) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Dashing) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(DisplayStream) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 18\)) S
+1200 /Times-Bold-Acnt F
+18000 24706 M (\(DRAWELLISPSE ) S
+1200 /Times-BoldItalic-Acnt F
+(X Y) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(MinorRadius) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(MajorRadius Orientation Brush) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+18000 22906 M (Dashing) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(DisplayStream) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 18\)) S
+1400 /Times-Bold-Acnt F
+7200 19757 M (Windows & the Window Package \(pp. 18-36\)) S
+1200 /Times-Bold-Acnt F
+10800 17306 M (Space Management: The Window Stack \(pp. 18-20\)) S
+10800 14906 M (Windows \(pp. 20-21\)) S
+14400 12506 M (Open and Closed Windows \(p. 20\)) S
+21600 10406 M (\(OPENW ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+(\) ) S
+1200 /Times-Bold-Acnt F
+21600 8306 M (\(CLOSEW ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+(\)) S
+grestore savepage restore showpage
+
+%%Page: 16 16
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+7200 75600 M (16) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 71106 M (\(OPENWP ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Bold-Acnt F
+14400 68706 M (Creating Windows \(pp. 20-21\)) S
+18000 66606 M (\(CREATEW ) S
+1200 /Times-BoldItalic-Acnt F
+(Region) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Title) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Border) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(NoOpenFlg) S
+1200 /Times-Bold-Acnt F
+(\) \(pp. 20-21\)) S
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+18000 64506 M (\(WINDOWP ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 21\)) S
+1200 /Times-Roman-Acnt F
+(    ) S
+1200 /Times-Bold-Acnt F
+14400 62106 M (Windows and Display Streams  \(pp. 21-22\)) S
+21600 59906 M (\(WINDOWPROP ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+( 'DSP\) \(pp. 21-22\)) S
+1200 /Times-Bold-Acnt F
+14400 57506 M (Printing and Drawing in Windows \(p. 22\)) S
+14400 55106 M (Doing Things to Windows \(pp. 22-23\)) S
+18000 53006 M (\(MOVEW ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Position) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 22\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+18000 50906 M (\(SHAPEW Window NewRegion\) \(p. 22\)) S
+1200 /Times-Bold-Acnt F
+18000 48806 M (\(TOTOPW ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 23\)) S
+1200 /Times-Roman-Acnt F
+(  ) S
+1200 /Times-Bold-Acnt F
+18000 46706 M (\(BURYW ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 23\)) S
+18000 44606 M (\(CLEARW ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 23\)) S
+1200 /Times-Bold-Acnt F
+18000 42506 M (\(REDISPLAYW ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 23\)) S
+1200 /Times-Bold-Acnt F
+18000 40406 M (\(SHRINKW ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 23\)) S
+1200 /Times-Bold-Acnt F
+18000 38306 M (\(EXPANDW ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 23\)) S
+1200 /Times-Bold-Acnt F
+14400 35906 M (Tailoring Windows to Special Applications: Window Properties \(pp. 24-28\)) S
+18000 33506 M (Looks Properties  \(pp. 24-25\)) S
+21600 31406 M (TITLE \(p. 24\)) S
+1200 /Times-Roman-Acnt F
+(    ) S
+1200 /Times-Bold-Acnt F
+21600 29306 M (BORDER) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 24\)) S
+1200 /Times-Bold-Acnt F
+21600 27206 M (WINDOWTITLESHADE \(p. 24-25\)) S
+1200 /Times-Bold-Acnt F
+18000 24806 M (Read-only Properties \(p. 25\)) S
+21600 22706 M (DSP \(p. 25\)) S
+21600 20606 M (HEIGHT, WIDTH) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 25\)) S
+1200 /Times-Bold-Acnt F
+21600 18506 M (REGION) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 25\)) S
+1200 /Times-Bold-Acnt F
+18000 16106 M (Processes Property \(p. 25\)) S
+21600 14006 M (PROCESS) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+18000 11606 M (Functions to Be Invoked by Operations on the Window \(pp. 25-26\)) S
+21600 9506 M (CLOSEFN \(p. 25\)) S
+grestore savepage restore showpage
+
+%%Page: 17 17
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+52888 75600 M (17) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 71106 M (OPENFN \(p. 26\)) S
+1200 /Times-Bold-Acnt F
+21600 69006 M (TOTOPFN) S
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 26\)) S
+1200 /Times-Bold-Acnt F
+21600 66906 M (MOVEFN) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 26\)) S
+1200 /Times-Bold-Acnt F
+21600 64806 M (AFTERMOVEFN) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 26\)) S
+1200 /Times-Bold-Acnt F
+21600 62706 M (REPAINTFN \(p. 26\)) S
+1200 /Times-Bold-Acnt F
+18000 60306 M (Functions to Be Invoked by Mouse Events in the Window \(pp. 27-28\)) S
+21600 58206 M (BUTTONEVENTFN) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 27\) ) S
+1200 /Times-Bold-Acnt F
+21600 56106 M (RIGHTBUTTONFN) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 27\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+21600 54006 M (WINDOWENTRYFN) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 27-28\)) S
+1200 /Times-Bold-Acnt F
+21600 51906 M (CURSORINFN, CURSOROUTFN, CURSORMOVEDFN \(p. ) S
+21600 50106 M (28\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+18000 47706 M (Properties that Support Icons and Shrinking \(p. 28\)) S
+21600 45606 M (SHRINKFN) S
+1200 /Times-Bold-Acnt F
+21600 43506 M (ICONFN) S
+1200 /Times-Bold-Acnt F
+21600 41406 M (EXPANDFN) S
+1200 /Times-Bold-Acnt F
+14400 39006 M (Manipulating a Window's Properties: WINDOWPROP, et al. \(pp. 28-30\)) S
+21600 36906 M (\(WINDOWPROP ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Property) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(NewValue) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 29\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+21600 34806 M (\(WINDOWADDPROP ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Property) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(ValueToBeAdded) S
+1200 /Times-Bold-Acnt F
+(\) \(p. ) S
+21600 33006 M (29\)) S
+1200 /Times-Bold-Acnt F
+21600 30906 M (\(WINDOWDELPROP ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Property) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(ValueToBeRemoved) S
+1200 /Times-Bold-Acnt F
+(\) ) S
+21600 29106 M (\(p. 30\)) S
+1200 /Times-Bold-Acnt F
+14400 26706 M (Making Scrollable Windows \(pp. 30-36\) ) S
+18000 24606 M (The SCROLLFN Property \(pp. 30-31\)) S
+18000 22506 M (SCROLLBYREPAINTFN \(pp. 31-36\)) S
+1400 /Times-Bold-Acnt F
+7200 19357 M (Menus \(pp. 36-45\)) S
+1200 /Times-Bold-Acnt F
+10800 16906 M (Creating the menu data structure \(pp. 36-39\)) S
+1200 /Times-BoldItalic-Acnt F
+14400 14506 M (MENU) S
+1200 /Times-Bold-Acnt F
+18000 12106 M (Fields that describe the menu's behavior \(pp. 36-38\)) S
+21600 10006 M (ITEMS \(pp. 36-37\)) S
+1200 /Times-Roman-Acnt F
+(  ) S
+grestore savepage restore showpage
+
+%%Page: 18 18
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+7200 75600 M (18) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 71106 M (WHENSELECTEDFN \(p. 37\)) S
+1200 /Times-Bold-Acnt F
+21600 69006 M (WHENHELDFN) S
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 37\)) S
+1200 /Times-Bold-Acnt F
+21600 66906 M (WHENUNHELDFN) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 38\)) S
+1200 /Times-Bold-Acnt F
+18000 64506 M (Fields that describe the menu's looks \(p. 38\)) S
+21600 62406 M (TITLE \(p. 38\)) S
+21600 60306 M (MENUFONT) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 38\)) S
+1200 /Times-Bold-Acnt F
+21600 58206 M (MENUROWS ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(or) S
+1200 /Times-Bold-Acnt F
+( MENUCOLUMNS) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 38\)) S
+1200 /Times-Bold-Acnt F
+21600 56106 M (ITEMHEIGHT) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Bold-Acnt F
+(ITEMWIDTH) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 38\)) S
+1200 /Times-Bold-Acnt F
+21600 54006 M (CENTERFLG) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 38\)) S
+1200 /Times-Bold-Acnt F
+21600 51906 M (MENUBORDERSIZE) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 38\)) S
+1200 /Times-Bold-Acnt F
+21600 49806 M (MENUOUTLINESIZE) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 39\)) S
+1200 /Times-Bold-Acnt F
+18000 47406 M (Fields that describe the menu's positioning \(p. 39\)) S
+21600 45306 M (MENUPOSITION) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+21600 43206 M (MENUOFFSET) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+10800 40806 M (Bringing up a menu on the screen: Pop-up and Fixed Menus \(pp. 39-42\)) S
+18000 38706 M (\(MENU ) S
+1200 /Times-BoldItalic-Acnt F
+(Menu) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Position) S
+1200 /Times-Bold-Acnt F
+(\) \(pp. 40-41\)) S
+1200 /Times-Roman-Acnt F
+(  ) S
+1200 /Times-Bold-Acnt F
+18000 36606 M (\(ADDMENU ) S
+1200 /Times-BoldItalic-Acnt F
+(Menu) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Position) S
+1200 /Times-Bold-Acnt F
+(\) \(pp. 41-42\)) S
+1200 /Times-Bold-Acnt F
+18000 34506 M (\(DELETEMENU ) S
+1200 /Times-BoldItalic-Acnt F
+(Menu) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(CloseFlg Window) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 42\)) S
+1200 /Times-Roman-Acnt F
+(  ) S
+1200 /Times-Bold-Acnt F
+10800 32106 M (Hierarchical Menus \(pp. 42-44\)) S
+10800 29706 M (Menu Example \(pp. 44-45\)) S
+1400 /Times-Bold-Acnt F
+7200 26557 M (Using the Mouse \(pp. 45-50\)) S
+1200 /Times-Bold-Acnt F
+10800 24106 M (Writing BUTTONEVENTFNs, CURSORxxxFNs, and WHENSELECTEDFNs \(pp. ) S
+10800 22306 M (45-47\)) S
+10800 19906 M (Getting Information about the Mouse and the Cursor \(pp. 47-50\)) S
+14400 17506 M (Position of the Cursor \(pp. 47-48\)) S
+18000 15406 M (\(CURSORPOSITION ) S
+1200 /Times-BoldItalic-Acnt F
+(NewPosition) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 47\)) S
+1200 /Times-Bold-Acnt F
+18000 13306 M (\(LASTMOUSEX ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+(\), \(LASTMOUSEY ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 48\)) S
+1200 /Times-Bold-Acnt F
+18000 11206 M (LASTMOUSEX, LASTMOUSEY \(p. 48\)) S
+1200 /Times-Bold-Acnt F
+18000 9106 M (\(GETMOUSESTATE\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 48\)) S
+grestore savepage restore showpage
+
+%%Page: 19 19
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+52888 75600 M (19) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 71106 M (State of the Mouse Buttons \(pp. 48-49\)) S
+18000 69006 M (\(MOUSESTATE ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(ButtonSpec) S
+1200 /Times-Bold-Acnt F
+(\) \(pp. 48-49) S
+1200 /Times-Bold-Acnt F
+18000 66906 M (\(LASTMOUSESTATE ) S
+1200 /Times-BoldItalic-Acnt F
+(ButtonSpec) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 49\)) S
+1200 /Times-Bold-Acnt F
+18000 64806 M (\(UNTILMOUSESTATE ) S
+1200 /Times-BoldItalic-Acnt F
+(ButtonSpec) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Interval) S
+1200 /Times-Bold-Acnt F
+(\)) S
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 49\)) S
+1200 /Times-Bold-Acnt F
+10800 62406 M (Example of Using the Mouse \(pp. 49-50\)) S
+1400 /Times-Bold-Acnt F
+7200 59257 M (References \(p. 50\)) S
+7200 52857 M (LispCourse #41:  The Compiler and MASTERSCOPE) S
+7200 49657 M (The Interlisp Compiler) S
+1200 /Times-Bold-Acnt F
+10800 47206 M (What is the Interlisp Compiler? \(pp. 1-3\)) S
+10800 44806 M (An example of what the compiler does \(pp. 3-5\)) S
+10800 42406 M (Using the compiler \(pp. 5-8\)) S
+14400 40006 M (Compiler Questions \(pp. 5-8\)) S
+21600 37906 M (Listing? \(p. 5\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+21600 35806 M (REDFINE?) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 6\)) S
+1200 /Times-Bold-Acnt F
+21600 33706 M (SAVE EXPRS?) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 6\)) S
+1200 /Times-Bold-Acnt F
+21600 31606 M (OUTPUT FILE? \(p. 7\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+14400 29206 M (Functions that invoke the compiler \(p. 8-10\)) S
+21600 27106 M (\(COMPILE ) S
+1200 /Times-BoldItalic-Acnt F
+(Functions) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 8\)) S
+1200 /Times-Roman-Acnt F
+(  ) S
+1200 /Times-Bold-Acnt F
+21600 25006 M (\(TCOMPL ) S
+1200 /Times-BoldItalic-Acnt F
+(Files) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 8\)) S
+1200 /Times-Bold-Acnt F
+21600 22906 M (\(RECOMPILE ) S
+1200 /Times-BoldItalic-Acnt F
+(File) S
+1200 /Times-Bold-Acnt F
+(\) \(pp. 8-9\)) S
+1200 /Times-Bold-Acnt F
+14400 20506 M (Example \(pp. 9-10\)) S
+10800 18106 M (Special Considerations when Writing Code to be Compiled \(p. 10\)) S
+14400 15706 M (GLOBALVARS \(pp. 11-12\) ) S
+14400 13306 M (Macros \(pp. 12-16\)) S
+18000 10906 M (Using Macros \(pp. 13-14\)) S
+18000 8506 M (Defining macros and macro expansion \(pp. 14-16\)) S
+grestore savepage restore showpage
+
+%%Page: 20 20
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+7200 75600 M (20) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+25200 71106 M (\() S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(List) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(SExpression) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 14\)) S
+1200 /Times-Bold-Acnt F
+25200 68706 M (\() S
+1200 /Times-BoldItalic-Acnt F
+(LitAtom) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(SExpression) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 14\)) S
+1200 /Times-Bold-Acnt F
+25200 66306 M (\(LAMBDA) S
+1200 /Times-BoldItalic-Acnt F
+( ParamList FunctionDefinition) S
+1200 /Times-Bold-Acnt F
+(\) \(pp. 15-16\)) S
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+(  ) S
+1200 /Times-Bold-Acnt F
+18000 63906 M (The bottom line on Interlisp macros \(p. 16\)) S
+1400 /Times-Bold-Acnt F
+7200 60757 M (MASTERSCOPE \(pp. 16-19\)) S
+1200 /Times-Bold-Acnt F
+14400 58606 M (\(. ANALYZE ALL ON ) S
+1200 /Times-BoldItalic-Acnt F
+(File) S
+1200 /Times-Bold-Acnt F
+(\) \(pp. 16-17\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+14400 56506 M (\(. SHOW PATHS FROM ) S
+1200 /Times-BoldItalic-Acnt F
+(Function) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 17\)) S
+1200 /Times-Bold-Acnt F
+14400 54406 M (\(. SHOW PATHS TO ) S
+1200 /Times-BoldItalic-Acnt F
+(Function) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 17\)) S
+1200 /Times-Bold-Acnt F
+14400 52306 M (\(. WHO CALLS ) S
+1200 /Times-BoldItalic-Acnt F
+(Function) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(\(p. 17\)) S
+1200 /Times-Bold-Acnt F
+14400 50206 M (\(. WHO USES ) S
+1200 /Times-BoldItalic-Acnt F
+(Variable) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 18\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+14400 48106 M (\(. WHO USES AS A RECORD) S
+1200 /Times-BoldItalic-Acnt F
+( RecordName) S
+1200 /Times-Bold-Acnt F
+(\) \(p. 18\)) S
+1200 /Times-Bold-Acnt F
+14400 46006 M (\(. EDIT WHERE ANY CALLS ) S
+1200 /Times-BoldItalic-Acnt F
+(Function) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( or ) S
+1200 /Times-Bold-Acnt F
+(\(. EDIT WHERE ANY USES ) S
+1200 /Times-BoldItalic-Acnt F
+14400 44206 M (Variable) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( or ) S
+1200 /Times-Bold-Acnt F
+(\(. EDIT WHERE ANY USES) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(AS A RECORD ) S
+1200 /Times-BoldItalic-Acnt F
+(RecordName) S
+1200 /Times-Roman-Acnt F
+(  ) S
+1200 /Times-Bold-Acnt F
+(\(p. ) S
+14400 42406 M (18\)) S
+1400 /Times-Bold-Acnt F
+7200 39257 M (References \(p. 19\)) S
+grestore savepage restore showpage
+
+%%Trailer

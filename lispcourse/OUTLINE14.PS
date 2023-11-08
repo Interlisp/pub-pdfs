@@ -1,0 +1,2637 @@
+%!PS-Adobe-2.0%%Title: {DSK}<home>larry>lispcourse>OUTLINE14.PS%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate:  7-Nov-2023 21:40:02%%EndComments/bdef {bind def} bind def
+/ldef {load def} bdef
+/S /show ldef
+/M /moveto ldef
+/DR {transform round exch round exch itransform} bdef
+/L {gsave newpath setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/L1 {gsave newpath 0 setdash setgray setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/F {findfont exch scalefont setfont} bdef
+/CLP {newpath M dup 0 rlineto exch 0 exch rlineto
+  neg 0 rlineto closepath clip newpath} bdef
+/R {gsave setgray newpath M dup 0 rlineto exch 0 exch
+  rlineto neg 0 rlineto closepath eofill grestore} bdef
+/ellipsedict 9 dict def
+ellipsedict /mtrx matrix put
+/ellipse
+ { ellipsedict begin
+  /endangle exch def
+  /startangle exch def
+  /orientation exch def
+  /minorrad exch def
+  /majorrad exch def
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  orientation rotate
+  majorrad minorrad scale
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+ end } bdef
+/concatprocs
+ {/proc2 exch cvlit def
+  /proc1 exch cvlit def
+  /newproc proc1 length proc2 length add array def
+  newproc 0 proc1 putinterval
+  newproc proc1 length proc2 putinterval
+  newproc cvx
+ } bdef
+/resmatrix matrix def
+/findresolution
+ {72 0 resmatrix defaultmatrix dtransform
+  /yres exch def /xres exch def
+  xres dup mul yres dup mul add sqrt
+ } bdef
+/thebitimage
+ {/maskp exch def
+  /bihgt exch def
+  /biwid exch def
+  /byte 1 string def
+  /strbufl biwid 8 div ceiling cvi def
+  /strbuf strbufl string def
+  maskp not{{1 exch sub} currenttransfer concatprocs settransfer} if
+  biwid bihgt
+  maskp { true } { 1 } ifelse
+  [biwid 0 0 bihgt 0 0]
+  {/col 0 def
+   {currentfile byte readhexstring pop 0 get
+    dup 16#B2 eq {pop
+    currentfile byte readhexstring pop 0 get 1 add
+    currentfile byte readhexstring pop pop /nbyte byte 0 get def
+    { strbuf col nbyte put /col col 1 add def} repeat}
+   {dup 16#B3 eq {pop /col col
+    currentfile byte readhexstring pop
+    0 get add 1 add def}
+    {16#B4 eq {currentfile byte readhexstring pop pop} if
+     strbuf col byte 0 get put /col col 1 add def} ifelse
+   } ifelse
+   col strbufl ge { exit } if } loop
+   strbuf }
+  maskp { imagemask } { image } ifelse
+ } bdef
+/setuserscreendict 22 dict def
+setuserscreendict begin
+ /tempctm matrix def
+ /temprot matrix def
+ /tempscale matrix def
+end
+/setuserscreen
+ {setuserscreendict begin
+   /spotfunction exch def
+   /screenangle exch def
+   /cellsize exch def
+   /m tempctm currentmatrix def
+   /rm screenangle temprot rotate def
+   /sm cellsize dup tempscale scale def
+   sm rm m m concatmatrix m concatmatrix pop
+   1 0 m dtransform /y1 exch def /x1 exch def
+   /veclength x1 dup mul y1 dup mul add sqrt def
+   /frequency findresolution veclength div def
+   /newscreenangle y1 x1 atan def
+   m 2 get m 1 get mul m 0 get m 3 get mul sub
+   0 gt { { neg } /spotfunction load concatprocs
+          /spotfunction exch def } if
+   frequency newscreenangle /spotfunction load setscreen
+  end
+ } bdef
+/setpatterndict 18 dict def
+setpatterndict begin
+ /bitison
+  {/ybit exch def /xbit exch def
+   /bytevalue bstring ybit bwidth mul xbit 8 idiv add get def
+   /mask 1 7 xbit 8 mod sub bitshift def
+   bytevalue mask and 0 ne
+  } bdef
+end
+/bitpatternspotfunction
+ {setpatterndict begin
+   /y exch def /x exch def
+   /xindex x 1 add 2 div bpside mul 1 sub cvi def
+   /yindex y 1 add 2 div bpside mul 1 sub cvi def
+   xindex yindex bitison
+    {/onbits onbits 1 add def 1}
+    {/offbits offbits 1 add def 0} ifelse
+  end
+ } bdef
+/setpattern
+ {setpatterndict begin
+   /cellsz exch def
+   /angle exch def
+   /bwidth exch def
+   /bpside exch def
+   /bstring exch def
+   /onbits 0 def /offbits 0 def
+   cellsz angle /bitpatternspotfunction load setuserscreen
+   {} settransfer
+   offbits offbits onbits add div setgray
+  end
+ } bdef
+% - - - - - Fraction-setting code, to support NS fonts better - - - - -
+/fractiondict 20 dict def
+/fractionshow 
+{ fractiondict begin
+/denom exch def 
+/num exch def 
+/regfont currentfont def
+/fractfont currentfont [.65 0 0 .6 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(1) true charpath flattenpath pathbbox 
+/height exch def pop pop pop
+ grestore
+0 .4 height mul rmoveto
+fractfont setfont num show
+0 .4 height mul neg rmoveto regfont setfont (\244) show
+fractfont setfont denom show regfont setfont end } bdef
+/f14 { (1) (4) fractionshow } bdef
+/f12 { (1) (2) fractionshow } bdef
+/f34 { (3) (4) fractionshow } bdef
+/f18 { (1) (8) fractionshow } bdef
+/f38 { (3) (8) fractionshow } bdef
+/f58 { (5) (8) fractionshow } bdef
+/f78 { (7) (8) fractionshow } bdef
+/f13 { (1) (3) fractionshow } bdef
+/f23 { (2) (3) fractionshow } bdef
+/bboxdict 20 dict def
+/bboxchk { bboxdict begin
+/regfont currentfont def
+/chkfont currentfont [1.25 0 0 1.25 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(\161) true charpath flattenpath pathbbox 
+/height exch def pop pop pop 
+ grestore 
+ currentpoint 
+ .2 height mul .3 height mul rmoveto
+chkfont setfont (\063) show
+ moveto
+ regfont setfont
+(\161) show end } bdef
+/rencdict 15 dict def
+/encodefont { rencdict begin
+/newname exch def
+/oldfont exch def
+/newcodes [
+8#001 /Aacute
+8#002 /Acircumflex
+8#003 /Adieresis
+8#004 /Agrave
+8#005 /Aring
+8#006 /Atilde
+8#007 /Ccedilla
+8#010 /Eacute
+8#011 /Ecircumflex
+8#012 /Edieresis
+8#013 /Egrave
+8#014 /Iacute
+8#015 /Icircumflex
+8#016 /Idieresis
+8#017 /Igrave
+8#020 /Ntilde
+8#021 /Oacute
+8#022 /Ocircumflex
+8#023 /Odieresis
+8#024 /Ograve
+8#025 /Otilde
+8#026 /Scaron
+8#027 /Uacute
+8#030 /Ucircumflex
+8#031 /Udieresis
+8#032 /Ugrave
+8#033 /Ydieresis
+8#034 /Zcaron
+8#177 /periodinferior
+8#201 /aacute
+8#202 /acircumflex
+8#203 /adieresis
+8#204 /agrave
+8#205 /aring
+8#206 /atilde
+8#207 /ccedilla
+8#210 /eacute
+8#211 /ecircumflex
+8#212 /edieresis
+8#213 /egrave
+8#214 /iacute
+8#215 /icircumflex
+8#216 /idieresis
+8#217 /igrave
+8#220 /ntilde
+8#221 /oacute
+8#222 /ocircumflex
+8#223 /odieresis
+8#224 /ograve
+8#225 /otilde
+8#226 /scaron
+8#227 /uacute
+8#230 /ucircumflex
+8#231 /udieresis
+8#232 /ugrave
+8#233 /ydieresis
+8#234 /zcaron
+8#235 /Eth
+8#236 /eth
+8#237 /Thorn
+8#240 /thorn
+ ] def
+/olddict oldfont findfont def /newfont olddict maxlength dict def
+olddict { exch dup /FID ne { dup /Encoding eq
+{ exch dup length array copy newfont 3 1 roll put }
+{ exch newfont 3 1 roll put } ifelse }
+ { pop pop } ifelse } forall
+newfont /FontName newname put
+newcodes aload pop
+newcodes length 2 idiv { newfont /Encoding get 3 1 roll put } repeat 
+newname newfont definefont pop end } def
+ /accentdict 10 dict def 
+ /accentor { accentdict begin /scaler exch def /delta exch def 
+/unders exch def /accents exch def /mainch exch def /scrt (X) def
+ /w1 mainch stringwidth pop def 
+ currentpoint mainch show currentpoint 4 2 roll 
+accents { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         w1 w2 sub 2 div delta rmoveto scrt show 
+         /delta delta 150 scaler mul 9 div add def
+        } forall 
+unders { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         ch 46 eq { w1 w2 sub 2 div -175 scaler mul 9 div rmoveto scrt show 0 175 rmoveto }
+           { w1 w2 sub 2 div 0 rmoveto scrt show } ifelse 
+        } forall 
+ pop pop moveto end } def 
+%%EndProlog
+%%BeginSetup
+letter/imagesizefactor 1 def%%EndSetup/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+
+%%Page: 1 1
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+54000 75600 M (F.G.H.          ) S
+54000 73800 M (3/19/85) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (LispCourse #14:  Multiple Processes and the Process Status Window) S
+7200 67157 M (Processes and Multiple Processes) S
+1200 /Times-Roman-Acnt F
+10800 64706 M (Consider how you start up a DEdit:) S
+14400 62306 M (You type "\(DF FOO\)" in the Lisp Exec window.  This opens a DEdit window ) S
+14400 60506 M (separate from the Exec window.  You can then carry out your editing actions in ) S
+14400 58706 M (this DEdit window.) S
+14400 56306 M (But note: as long as the DEdit window is active, the Exec window is inactive.  If ) S
+14400 54506 M (you try to type into the Exec window, the input goes into the DEdit input buffer.) S
+14400 52106 M (Only after you exit the DEdit, does a value \(i.e., the name of the edited object\) get ) S
+14400 50306 M (returned in the Exec window.) S
+14400 47906 M (After the value is returned, the Exec window becomes active again and the DEdit ) S
+14400 46106 M (window \(if its still on the screen\) becomes inactive.) S
+14400 43706 M (Conclusion: the Exec and DEdit use seprate windows but can not run ) S
+14400 41906 M (simultaneously.  They must "take turns".) S
+10800 38906 M (Contrast this behavior with that of TEdit:) S
+14400 36506 M (You type "\(TEDIT 'FOO\)" in the Lisp Exec window.  This opens a TEdit window ) S
+14400 34706 M (separate from the Exec window.  You can then carry out your editing actions in ) S
+14400 32906 M (this TEdit window.) S
+14400 30506 M (But note:  TEdit reads in the file FOO \(which make take some time if the file ) S
+14400 28706 M (server is slow\) and then  immediately returns a value \(usually  a "nonsense" ) S
+14400 26906 M (value!\).) S
+14400 24506 M (The Exec window remains active.  After the value is returned, you can switch ) S
+14400 22706 M (back and forth between the Exec and TEdit windows, simultaneously doing edits ) S
+14400 20906 M (in the TEdit window while starting another TEdit, COPYFILE, doing a DEdit, ) S
+14400 19106 M (etc. in the Exec window.) S
+14400 16706 M (Conclusion: the Exec and the TEdit use separate windows and can be run ) S
+14400 14906 M (simultaneously.) S
+10800 11906 M (In technical terms, TEdit runs in a separate process from the Exec while DEdit runs in the ) S
+10800 10106 M (same process as the Exec.) S
+grestore savepage restore showpage
+
+%%Page: 2 2
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (2) S
+7200 75600 M (LispCourse #14:  Multiple Processes and the Process Status Window) S
+10800 71106 M (A ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(process) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(in computer jargon is a sequence of activities or tasks that must be carried out ) S
+10800 69306 M (one after another.) S
+10800 66706 M (Interlisp-D supports ) S
+1200 /Times-BoldItalic-Acnt F
+(multiple processes) S
+1200 /Times-Roman-Acnt F
+( -- that is you can be carrying out several ) S
+10800 64906 M (sequences of activities simultaneously.) S
+14400 62706 M (Within each of these processes or activity sequences, the activities are carried out ) S
+14400 60906 M (in a strict sequential order.) S
+14400 58706 M (Across processes, several such activity sequences can be going on ) S
+14400 56906 M (simultaneously. ) S
+10800 53906 M (For complicated reasons, DEdit has been designed to run in the same activity sequence ) S
+10800 52106 M (\(i.e., process\) as the Exec.  When DEdit starts, the Exec goes into suspension until DEdit ) S
+10800 50306 M (is finished.) S
+14400 47906 M (Diagramatically:) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+16000 45014.0 M ({Process}#6,61400) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 16000 44200 M
+stroke
+grestore
+55200 44200 16000 44200 400 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 55200 44200 M
+stroke
+grestore
+56000 44200 55200 44200 400 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 56000 44200 M
+stroke
+grestore
+56000 44200 54961 43600 400 L
+56000 44200 54961 44800 400 L
+1200 /Times-Bold-Acnt F
+14400 41814.0 M (...) S
+1200 /Times-Bold-Acnt F
+18400 41814.0 M (Exec) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 26400 44200 M
+stroke
+grestore
+26400 42600 26400 44200 400 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 26400 42600 M
+stroke
+grestore
+1200 /Times-Bold-Acnt F
+32800 41814.0 M (DEdit) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 44000 42600 M
+stroke
+grestore
+44000 44200 44000 42600 400 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 44000 44200 M
+stroke
+grestore
+1200 /Times-Bold-Acnt F
+48000 41814.0 M (Exec) S
+1200 /Times-Bold-Acnt F
+54400 41814.0 M (...) S
+1200 /Times-Roman-Acnt F
+10800 36606 M (TEdit has been designed to run in a separate activity sequence \(i.e., process\) than the ) S
+10800 34806 M (Exec.  When TEdit starts, it starts up a new process.  The Exec process then proceeds ) S
+10800 33006 M (simultaneously with the Exec process.) S
+14400 30606 M (Diagramatically:) S
+1200 /Times-Bold-Acnt F
+16000 27714.0 M ({Process}#6,61400) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 16000 26900 M
+stroke
+grestore
+55200 26900 16000 26900 400 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 55200 26900 M
+stroke
+grestore
+56000 26900 55200 26900 400 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 56000 26900 M
+stroke
+grestore
+56000 26900 54961 26300 400 L
+56000 26900 54961 27500 400 L
+1200 /Times-Bold-Acnt F
+14400 24514.0 M (...) S
+1200 /Times-Bold-Acnt F
+18400 24514.0 M (Exec) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 26400 26900 M
+stroke
+grestore
+26400 25300 26400 26900 400 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 26400 25300 M
+stroke
+grestore
+1200 /Times-Bold-Acnt F
+27200 24514.0 M (TEdit) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 28800 23700 M
+stroke
+grestore
+28800 21300 28800 23700 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 28800 21300 M
+stroke
+grestore
+28800 19700 28800 21300 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 28800 19700 M
+stroke
+grestore
+30400 19700 28800 19700 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 30400 19700 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 32000 25300 M
+stroke
+grestore
+32000 26900 32000 25300 400 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 32000 26900 M
+stroke
+grestore
+1200 /Times-Bold-Acnt F
+34400 24514.0 M (Exec) S
+1200 /Times-Bold-Acnt F
+30400 20514.0 M ({Process}#6,61457) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 30400 19700 M
+stroke
+grestore
+53600 19700 30400 19700 400 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 53600 19700 M
+stroke
+grestore
+1200 /Times-Bold-Acnt F
+40000 17314.0 M (TEdit) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 53600 21300 M
+stroke
+grestore
+53600 18100 53600 21300 400 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 53600 18100 M
+stroke
+grestore
+1200 /Times-Bold-Acnt F
+54400 24514.0 M (...) S
+1200 /Times-Roman-Acnt F
+14400 12706 M (Or if you start up two TEdits:) S
+grestore savepage restore showpage
+
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (3) S
+7200 75600 M (LispCourse #14:  Multiple Processes and the Process Status Window) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+16000 70614.0 M ({Process}#6,61400) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 16000 69800 M
+stroke
+grestore
+55200 69800 16000 69800 400 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 55200 69800 M
+stroke
+grestore
+56000 69800 55200 69800 400 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 56000 69800 M
+stroke
+grestore
+56000 69800 54961 69200 400 L
+56000 69800 54961 70400 400 L
+1200 /Times-Bold-Acnt F
+14400 67414.0 M (...) S
+1200 /Times-Bold-Acnt F
+18400 67414.0 M (Exec) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 26400 69800 M
+stroke
+grestore
+26400 68200 26400 69800 400 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 26400 68200 M
+stroke
+grestore
+1200 /Times-Bold-Acnt F
+27200 67414.0 M (TEdit) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 28800 66600 M
+stroke
+grestore
+28800 56200 28800 66600 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 28800 56200 M
+stroke
+grestore
+28800 54600 28800 56200 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 28800 54600 M
+stroke
+grestore
+30400 54600 28800 54600 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 30400 54600 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 32000 68200 M
+stroke
+grestore
+32000 69800 32000 68200 400 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 32000 69800 M
+stroke
+grestore
+1200 /Times-Bold-Acnt F
+32800 67414.0 M (Exec) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 37600 69800 M
+stroke
+grestore
+37600 68200 37600 69800 400 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 37600 68200 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 43200 68200 M
+stroke
+grestore
+43200 69800 43200 68200 400 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 43200 69800 M
+stroke
+grestore
+1200 /Times-Bold-Acnt F
+38400 67414.0 M (TEdit) S
+1200 /Times-Bold-Acnt F
+48800 67414.0 M (Exec) S
+1200 /Times-Bold-Acnt F
+54400 67414.0 M (...) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 40000 66600 M
+stroke
+grestore
+40000 64200 40000 66600 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 40000 64200 M
+stroke
+grestore
+40000 62600 40000 64200 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 40000 62600 M
+stroke
+grestore
+41600 62600 40000 62600 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 41600 62600 M
+stroke
+grestore
+1200 /Times-Bold-Acnt F
+41600 63414.0 M ({Process}#6,61457) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 41600 62600 M
+stroke
+grestore
+58400 62600 41600 62600 400 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 58400 62600 M
+stroke
+grestore
+58400 62600 57361 62000 400 L
+58400 62600 57361 63200 400 L
+1200 /Times-Bold-Acnt F
+46400 60214.0 M (TEdit) S
+1200 /Times-Bold-Acnt F
+50400 60214.0 M (#2) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 53600 56200 M
+stroke
+grestore
+53600 53000 53600 56200 400 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 53600 53000 M
+stroke
+grestore
+1200 /Times-Bold-Acnt F
+30400 55414.0 M ({Process}#6,61457) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 30400 54600 M
+stroke
+grestore
+53600 54600 30400 54600 400 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 400 setlinewidth 53600 54600 M
+stroke
+grestore
+1200 /Times-Bold-Acnt F
+40000 52214.0 M (TEdit) S
+1200 /Times-Roman-Acnt F
+10800 47006 M (The process of starting a new process from an old one is \(sometimes\) called) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+( ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(forking a ) S
+10800 45206 M (process) S
+1200 /Times-Roman-Acnt F
+(.) S
+1400 /Times-Bold-Acnt F
+7200 41457 M (Processes Scheduling:  Time-sharing and all that) S
+1200 /Times-Bold-Acnt F
+10800 38406 M (Time-sharing) S
+1200 /Times-Roman-Acnt F
+14400 36006 M (Interlisp-D supports multiple processes in the sense that it \(sometimes\) appears ) S
+14400 34206 M (that you can do multiple activities at once.) S
+14400 31806 M (But, your D-machine can only do ONE thing at a time.) S
+14400 29406 M (What actually happens is that Interlisp runs a little bit of one process, then a little ) S
+14400 27606 M (bit of another process, then a little bit of a third process, and so on until the first ) S
+14400 25806 M (process gets its turn again.  ) S
+14400 23406 M (It all works because most of the time in any one process is spent ) S
+1200 /Times-Italic-Acnt F
+(waiting) S
+1200 /Times-Roman-Acnt F
+(:  waiting ) S
+14400 21606 M (for the user to type the next character, waiting for the file server to respond, ) S
+14400 19806 M (waiting for the disk to position to the right page, etc.) S
+14400 17406 M (While the first process is waiting, the rest of the processes can run.  While the rest ) S
+14400 15606 M (of the processes are waiting, the first process can run.) S
+14400 13206 M (This nifty little trick is called ) S
+1200 /Times-BoldItalic-Acnt F
+(time-sharing) S
+1200 /Times-Roman-Acnt F
+(.) S
+1200 /Times-Bold-Acnt F
+10800 10806 M (The Scheduler) S
+grestore savepage restore showpage
+
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (4) S
+7200 75600 M (LispCourse #14:  Multiple Processes and the Process Status Window) S
+14400 71106 M (There is a part of Interlisp called the ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(scheduler) S
+1200 /Times-Roman-Acnt F
+( that determines which process gets ) S
+14400 69306 M (its turn to run next.) S
+14400 66906 M (The scheduler works as follows:) S
+18000 64506 M (It runs through each process in the system giving each process control ) S
+18000 62706 M (\(i.e., permission to run\) in turn.  When a process gets control, it runs until ) S
+18000 60906 M (it gives up that control.  When a process gives up control, the control is ) S
+18000 59106 M (passed to the next process in line.) S
+14400 56706 M (This is called a ) S
+1200 /Times-BoldItalic-Acnt F
+(cooperative scheduler) S
+1200 /Times-Roman-Acnt F
+( because each process has to take the effort ) S
+14400 54906 M (to give up control when it is waiting for something or when it feels like it has ) S
+14400 53106 M (hogged-up too much time.  The act of giving up control is called ) S
+1200 /Times-BoldItalic-Acnt F
+(blocking.) S
+1000 /Times-Roman-Acnt F
+18000 50855 M (There are systems with ) S
+1000 /Times-BoldItalic-Acnt F
+(preemptive schedulers) S
+1000 /Times-Roman-Acnt F
+( that force processes to give up control at ) S
+18000 49255 M (regular intervals, so that every process gets a little bit each and every second.  Proceses ) S
+18000 47655 M (need not worry about blocking.) S
+1200 /Times-Roman-Acnt F
+14400 44706 M (One feature of a cooperative scheduler is that some processes don't play by the ) S
+14400 42906 M (rules:  they hog as much time as they like without blocking.  When this happens, ) S
+14400 41106 M (other processes don't get their turns to run.) S
+14400 38106 M (For example, try starting up a TEdit.  Then go back to the Exec window and start ) S
+14400 36306 M (a LISTFILES on a fairly large Lisp file.  Go back a starting editing in TEdit.  At ) S
+14400 34506 M (some point TEdit will just stop working for about 2 to 3 minutes.  This is because ) S
+14400 32706 M (LISTFILES goes into a part where it doesn't block for along period of time - it ) S
+14400 30906 M (gets control and just hangs on to it until its work is finished, not allowing the ) S
+14400 29106 M (TEdit and the other processes to have their turn to run.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 26106 M (E.F.S. -- An Experiment:) S
+1200 /Times-Roman-Acnt F
+18000 23706 M (Try the following:) S
+21600 21506 M (Start a TEdit.) S
+21600 19306 M (Back in the Exec window, type "\(FOR I FROM 1 do ) S
+21600 17506 M (\(PROMPTPRINT I\)\)") S
+21600 15306 M (Try to use TEdit.) S
+21600 13106 M (To kill the FOR: point in the Exec window, then type Ctrl-E.) S
+18000 10106 M (Now try the following:  \(Note: \(BLOCK\) causes a process to block!!\)) S
+grestore savepage restore showpage
+
+%%Page: 5 5
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (5) S
+7200 75600 M (LispCourse #14:  Multiple Processes and the Process Status Window) S
+21600 71106 M (Start a TEdit.) S
+21600 68906 M (Back in the Exec window, type "\(FOR I FROM 1 do ) S
+21600 67106 M (\(PROMPTPRINT I\) \(BLOCK\)\)") S
+21600 64906 M (Try to use TEdit.) S
+21600 62706 M (To kill the FOR: point in the Exec window, then type Ctrl-E.) S
+14400 59706 M (Cautionary Note:  control hogging processes are just one reason for delays in ) S
+14400 57906 M (Interlisp.  Slow file servers are another.  Don't automatically assume that if a ) S
+14400 56106 M (process is slow, there is another process hogging the run time!) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 52357 M (Job Control:   Starting, Killing, Restarting, Suspending,  &  Waking  ) S
+7200 50357 M (Processes) S
+1200 /Times-Roman-Acnt F
+10800 47306 M (You can do a variety of things to help you manage the processes running in your ) S
+10800 45506 M (environment.  The most important of these are the following:) S
+1200 /Times-Bold-Acnt F
+10800 42506 M (Starting a process \(& Process Names\)) S
+1200 /Times-Roman-Acnt F
+14400 39906 M (Most processes are started by programs forking a process to carry out a task.) S
+18000 37306 M (Examples:) S
+21600 34706 M (1.  The function TEDIT opens a TEdit window and starts a TEdit ) S
+21600 32906 M (process in that window.) S
+21600 30306 M (2.  The function call \(LAFITE 'ON\) starts a process that runs in ) S
+21600 28506 M (the Lafite Status window and checks your mail every now and ) S
+21600 26706 M (then.) S
+21600 24106 M (3.  The function CROCK starts a process that updates a clock on ) S
+21600 22306 M (the screen once a minute.) S
+14400 19306 M (You can also start a process by yourself from the Exec.  The function ) S
+14400 17506 M (ADD.PROCESS forks a new process.  ADD.PROCESS takes as its first argument ) S
+14400 15706 M (the form to be evaluated in the new process.  ) S
+18000 13106 M (Example:) S
+21600 10506 M (10_ \( ADD.PROCESS '\(COPYFILE 'A 'B\)\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 8506 M ({PROCESS}#3,65600) S
+grestore savepage restore showpage
+
+%%Page: 6 6
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (6) S
+7200 75600 M (LispCourse #14:  Multiple Processes and the Process Status Window) S
+21600 71106 M (11_) S
+21600 68306 M (Normally, COPYFILE runs as part of the Exec process, i.e., it ) S
+21600 66506 M (doesn't automatically fork a process to do its work.  Using ) S
+21600 64706 M (ADD.PROCESS will start a new process and do a COPYFILE ) S
+21600 62906 M (within) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(that process.  The COPYFILE will just run until its done.  ) S
+21600 61106 M (While its running, you can progress with whatever you want in the ) S
+21600 59306 M (Exec, including starting another COPYFILE.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 56506 M (Process Names:) S
+1200 /Times-Roman-Acnt F
+(  Every process has a name.  The name is usually the CAR of the ) S
+14400 54706 M (form in the call to ADD.PROCESS.  Thus the process created in the example ) S
+14400 52906 M (above would have the name ) S
+1200 /Times-Italic-Acnt F
+(COPYFILE.  ) S
+1200 /Times-Roman-Acnt F
+(If there is already a process with that ) S
+14400 51106 M (name, a number is tacked onto the end of the name.  For example, ) S
+1200 /Times-Italic-Acnt F
+(COPYFILE#2.) S
+1200 /Times-Roman-Acnt F
+14400 48306 M (You can also give the process a name using \(ADD.PROCESS ) S
+1200 /Times-Italic-Acnt F
+(Form ) S
+1200 /Times-Roman-Acnt F
+('NAME ) S
+1200 /Times-Italic-Acnt F
+14400 46506 M (ProcessName) S
+1200 /Times-Roman-Acnt F
+(\).  For example, ) S
+1200 /Times-Italic-Acnt F
+(\(ADD.PROCESS '\(COPYFILE 'A 'B\) 'NAME ) S
+14400 44706 M ('AtoB\)) S
+1200 /Times-Roman-Acnt F
+( would start a process named "AtoB".) S
+1200 /Times-Bold-Acnt F
+10800 41506 M (Killing a process) S
+1200 /Times-Roman-Acnt F
+14400 38906 M (Most processes just evaluate a single function call as in the COPYFILE example ) S
+14400 37106 M (above.  These processes normally just run until the evaluation is completed.  Then ) S
+14400 35306 M (they just disappear.) S
+14400 32706 M (Sometimes a process takes to long, gets hung up, or goes into a break.  In this ) S
+14400 30906 M (case, you may want to ) S
+1200 /Times-Bold-Acnt F
+(kill ) S
+1200 /Times-Roman-Acnt F
+(the process, i.e., stop the evaluation in progress and ) S
+14400 29106 M (force the process to disappear.) S
+14400 26506 M (Example:) S
+18000 23906 M (You start a LISTFILES to print a file.  This starts a process to send the ) S
+18000 22106 M (files to the printer.  But the printer is down.  The process will just sit there ) S
+18000 20306 M (printing in the PromptWindow ) S
+1200 /Times-Italic-Acnt F
+(Quake not responding) S
+1200 /Times-Roman-Acnt F
+(.  This can drive you ) S
+18000 18506 M (crazy.  So you kill the process started by LISTFILES and redo the ) S
+18000 16706 M (LISTFILES when you know the printer is up again.) S
+14400 13706 M (Killing is usually done using the Process Status window \(described below\).  But ) S
+14400 11906 M (can also be done by calling DEL.PROCESS from the Exec with the process name ) S
+14400 10106 M (as an argument.  E.g., ) S
+1200 /Times-Italic-Acnt F
+(\(DEL.PROCESS 'COPYFILE\)) S
+grestore savepage restore showpage
+
+%%Page: 7 7
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (7) S
+7200 75600 M (LispCourse #14:  Multiple Processes and the Process Status Window) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 71106 M (Restarting a process) S
+1200 /Times-Roman-Acnt F
+14400 67906 M (Some processes can be restarted from the beginning at any time before they ) S
+14400 66106 M (finish.  Restarting a process is just like killing it and then redoing the ) S
+14400 64306 M (ADD.PROCESS that started the process to begin with.) S
+14400 61706 M (Example:) S
+18000 59306 M (You start a HARDCOPY in your TEdit window that never seems to finish ) S
+18000 57506 M (because the file servers are slow and TEdit can't find the right fonts or ) S
+18000 55706 M (some such nonsense.  You just want to kill the HARDCOPY command ) S
+18000 53906 M (and get on with your editing.  Solution: Restart the TEdit process.) S
+18000 51506 M (Note that yopu could kill the TEdit process.  But then you'd have to go ) S
+18000 49706 M (through the trouble of restarting TEdit in order to get back to editing.  ) S
+18000 47906 M (Moreover, if you hadn't Put your edits, restarting TEdit may loose your ) S
+18000 46106 M (edits.  Therefore, restarting is much safer.) S
+14400 43106 M (Restarting is usually done using the Process Status window \(described below\).  ) S
+14400 41306 M (But can also be done by calling RESTART.PROCESS from the Exec with the ) S
+14400 39506 M (process name as an argument.  E.g., ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(\(RESTART.PROCESS 'TEdit#4\)) S
+grestore savepage restore showpage
+
+%%Page: 8 8
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (8) S
+7200 75600 M (LispCourse #14:  Multiple Processes and the Process Status Window) S
+grestore savepage restore showpage
+
+%%Page: 9 9
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 10 10
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (9) S
+7200 75600 M (LispCourse #14:  Multiple Processes and the Process Status Window) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 71106 M (Suspending a process) S
+1200 /Times-Roman-Acnt F
+14400 67906 M (Suspending a process stops a running process, but doesn't make it disppear.  It ) S
+14400 66106 M (stays around and inactive until it is either awoken \(i.e., unsuspended\) or killed.) S
+14400 62906 M (Suspending a process is usually done by programs.  But it can be useful in other ) S
+14400 61106 M (ways.) S
+14400 57906 M (Example:) S
+18000 54706 M (You try to print something out with a LISTFILES.  But the printer is down ) S
+18000 52906 M (and the LISTFILES keeps printing ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Quake not responding ) S
+1200 /Times-Roman-Acnt F
+(in the Prompt ) S
+18000 51106 M (window) S
+1200 /Times-Italic-Acnt F
+(.  ) S
+1200 /Times-Roman-Acnt F
+(You can stop this annoying printout) S
+1200 /Times-Italic-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(by suspending the ) S
+18000 49306 M (LISTFILES process until you know the printer is back up.) S
+14400 46306 M (Suspending is usually done using the Process Status window \(described below\).  ) S
+14400 44506 M (But can also be done by calling SUSPEND.PROCESS from the Exec with the ) S
+14400 42706 M (process name as an argument.  E.g., ) S
+1200 /Times-Italic-Acnt F
+(\(SUSPEND.PROCESS '\\FILELISTING\)) S
+1200 /Times-Roman-Acnt F
+(.) S
+1200 /Times-Bold-Acnt F
+10800 39506 M (Waking a process) S
+1200 /Times-Roman-Acnt F
+14400 36306 M (A suspended process can be started at the exact point at which it was suspended ) S
+14400 34506 M (by ) S
+1200 /Times-Bold-Acnt F
+(waking) S
+1200 /Times-Roman-Acnt F
+( it.) S
+1200 /Times-Bold-Acnt F
+14400 31306 M (Note) S
+1200 /Times-Roman-Acnt F
+( that waking a process is a little like restarting a process.  BUT a suspended ) S
+14400 29506 M (process must be ) S
+1200 /Times-Italic-Acnt F
+(woken) S
+1200 /Times-Roman-Acnt F
+(, it cannot be ) S
+1200 /Times-Italic-Acnt F
+(restarted) S
+1200 /Times-Roman-Acnt F
+(.  Restarting a suspended process, ) S
+14400 27706 M (restarts the process from the beginning but does not unsuspend it.  Therefore, ) S
+14400 25906 M (doing a restart followed by a wake is basically the same as doing a wake followed ) S
+14400 24106 M (by a restart.  The wake unsuspends, the restart makes things start from the ) S
+14400 22306 M (beginning again.) S
+14400 19106 M (Example:) S
+18000 16706 M (The printer is now fixed and you want your LISTFILES to pick up where ) S
+18000 14906 M (it left off.  You just wake the process you suspended earlier.) S
+14400 11906 M (Waking a process requires that you return a value from the suspension.  For ) S
+14400 10106 M (processes suspended by the user, tis value is usually NIL.) S
+grestore savepage restore showpage
+
+%%Page: 11 11
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (10) S
+7200 75600 M (LispCourse #14:  Multiple Processes and the Process Status Window) S
+14400 71106 M (Waking is usually done using the Process Status window \(described below\).  But ) S
+14400 69306 M (can also be done by calling WAKE.PROCESS from the Exec with the process ) S
+14400 67506 M (name as an argument.  E.g., ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(\(WAKE.PROCESS '\\FILELISTING\)) S
+1200 /Times-Roman-Acnt F
+(.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 63757 M (Processes and Breaks) S
+1200 /Times-Roman-Acnt F
+10800 60906 M (Every process has its own, separate stack.) S
+10800 58306 M (When an error occurs and a break is entered, the break occurs ) S
+1200 /Times-Italic-Acnt F
+(within the process ) S
+1200 /Times-Roman-Acnt F
+(causing ) S
+10800 56506 M (the error.  The Break Exec that is started is run in that process and the stack that you can ) S
+10800 54706 M (examine using the Break Exec is the stack of that process.) S
+10800 52106 M (Thus you can have as many Break Execs running as there are processes to break.) S
+10800 49506 M (Example:) S
+14400 46906 M (Your TEdit breaks due to some wierd error.  This causes a break in the TEdit ) S
+14400 45106 M (process, but will not effect any other running process.  For example, if you have a ) S
+14400 43306 M (COPYFILE going at the same time.  The COPYFILE will progress as usual since ) S
+14400 41506 M (the break has no effect on its process.  If the COPYFILE then has an error, it will ) S
+14400 39706 M (enter its own, independent Break window.) S
+10800 37106 M (You can force a process to enter a break at any time from the Process Status window ) S
+10800 35306 M (\(described below\).  You cannot do this \(easily\) from the Exec.) S
+10800 32706 M (You can also just observe the stack of a running process from the Process Status window.  ) S
+10800 30906 M (You cannot do this \(easily\) from the Exec.) S
+1400 /Times-Bold-Acnt F
+7200 27157 M (The Standard Processes) S
+1200 /Times-Roman-Acnt F
+10800 23906 M (Most of the time there will be 5 to 10 processes running in your system.  Most of these ) S
+10800 22106 M (processes are special system processes that handle things like the Ethernet, the mouse, the ) S
+10800 20306 M (Lisp exec, file servers and so on.) S
+10800 17706 M (Below is a list of the processes currently running on my system:) S
+grestore savepage restore showpage
+
+%%Page: 12 12
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (11) S
+7200 75600 M (LispCourse #14:  Multiple Processes and the Process Status Window) S
+/bitbltsave save def 26050 54199 translate 12700 17800 scale 127 178 true thebitimage
+B30F
+B20EFFFE
+B20F00
+B30F
+B30F
+B30F
+03B20DFFC0
+02B20D0040
+B30F
+B30F
+B30203C447111C4470E22780B302
+B30202244891224489126440B302
+B30327C8922248B306
+B3032448122E508912A4B303
+B30203C2881C2078B306
+B302024288942244891324B303
+B30592B308
+B302038107111C7871122780B302
+B302B20B0040
+B30F
+B30F
+B30F
+02000841C44F91084088E1C7C70E0040
+B30240854811084089122408910040
+020010B30212004091B305
+B305140078A1120401020040
+02002040854F1E0044F11207860C0040
+B30386C811004489122408910040
+020040B30C
+020041F1C44F9E0078F0E1C7C70E0040
+02B20D0040
+B30F
+B30F
+B30F
+020480E20388843E7C70E087C89F2240
+02048112044884204021108409902240
+0208B3024FB3072440
+0208F113C5C8B3022020840A902840
+021089122405043C4020C0878A9E3C40
+B304450420402110840C902240
+0220B30D
+0220F113C3821F3E4070E3E7C89F3C40
+02B20D0040
+B30F
+B30F
+B30F
+0200488E1C4421F3E387043E44F91040
+0200499122442102010884204C811040
+02008991227CB3072040
+02008A822E44B30201042054814040
+02010A8C202821E20106043C54F1E040
+02010C91222821020108842064811040
+0202B30D
+0202088E1C10F9F203871F3E44F9E040
+02B20D0040
+B30F
+B30F
+B30F
+B3051F227C70B305
+B30510224088B305
+B30614B307
+B306084080B305
+B3051E0878B306
+B30510144088B305
+B30622B307
+B3051F227C70B305
+B305B2080040
+B30F
+B30F
+B30F
+B302011C44F0A22107113E44B302
+B303225488A221089120B303
+B30202025488A3E1B30248B302
+B30589522108112050B302
+B302041C54F15141081F3C78B302
+B303026C91B302912044B302
+B30208226C9111B307
+B3031C44E11087C7113E78B302
+B302B20B0040
+B30F
+B30F
+B30F
+B302102210F8E2250F9F2240B302
+B3058112A50810B304
+B307AFC8103EB303
+B3021EB303A2881022B303
+B302113E28B3031E1478B302
+B3032228811367E8101440B302
+B3044481136148B305
+B3021EB3021221481F087CB302
+B302B20B0040
+B30F
+B30F
+B30F
+020007111C38884204470E3E38700040
+020008912244B30248912044880040
+B30292224490020488B305
+B3021422409003C508902008100040
+B3021E2240E0022788903C30600040
+B302912244A0022448912044880040
+B30590B308
+0200071E1C388803C7870E3E38700040
+02B20D0040
+B30F
+B30F
+B30F
+0207C8901C10F912238F8A2210711040
+020408900810815221080A2210891040
+02040FB30353E1080A3EB303
+020408B303522108152210811040
+0204051E0810F151410815141081F040
+B30210081081B1B304891040
+B30911B304
+0204021F1C7CF910838811087C711040
+02B20D0040
+B30F
+B30F
+B30F
+B30588E1C38F80B304
+B305A9122448B2040040
+B30F
+B3072088B305
+B307230FB305
+B305D9122448B305
+B30F
+B30588E2238F80B304
+B305B2080040
+B30F
+02B20D4440
+02B20D0040
+03B2041131F1B193B2041140
+02B204002102608480B2030040
+02B20444654664C4B2044440
+02B2040021022084B2040040
+03B2041131F37195B2041140
+02B204002101A38FB2040040
+02B20444654464B2054440
+02B20400F9F02080B2040040
+03B20D1140
+02B20D0040
+B30F
+B30F
+B30410F8D0418A1FB304
+B3058130424A10B304
+B30610421F88B304
+B3080504B304
+B305F130420502B304
+B30580D1C78FD1B304
+B30610020291B304
+B3047CF81040028EB304
+B304B2090040
+B30F
+B30F
+B30F
+B30410F8D0418A0EB304
+B3058130424A11B304
+B30610421F81B304
+B3080501B304
+B305F13042050EB304
+B30580D1C78FC1B304
+B30610020291B304
+B3047CF81040028EB304
+B304B2090040
+B30F
+B30F
+B30F
+B3033E4470E287CF9120B303
+B30320442112840811B304
+B304482117E4081FB304
+B304502021440811B304
+B3033C7820C1440F0A3CB303
+B30320442113F4080A20B303
+B30610A4B306
+B3033E7870E0A40F843EB303
+B303B20A0040
+03B20DFFC0
+B20F00
+B30F
+
+bitbltsave restore
+10800 51306 M (The processes that I was directly responsible for were the three TEdit processes, the ) S
+10800 49506 M (CROCK.PROCESS that is running my clock, and the LAFITEMAILWATCH process ) S
+10800 47706 M (that is checking my mail every now and again.  ) S
+10800 45106 M (The rest are all system processes carrying out some sort of system monitoring task.  In ) S
+10800 43306 M (general, I don't worry much about these system processes.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 39557 M (The TTY Process) S
+1200 /Times-Roman-Acnt F
+10800 36306 M (There may be many processes running that require input from a keyboard.  However, ) S
+10800 34506 M (there is only one keyboard.  In order to determine where the type-in from that keyboard ) S
+10800 32706 M (goes, there is a notion called the ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(TTY process) S
+1200 /Times-Roman-Acnt F
+(.) S
+10800 30106 M (The TTY process is a special designation given to only one process at a time.  The ) S
+10800 28306 M (process with this designation is the one that receives the keyboard input.  The rest of the ) S
+10800 26506 M (processes requiring keyboard input have to wait until they become the TTY process ) S
+10800 24706 M (before getting any type-in.) S
+10800 22106 M (For example, when you have multiple TEdits running, all but the one you are currently ) S
+10800 20306 M (typing into are just sitting there waiting to become the TTY process.) S
+10800 17706 M (If the process that is the TTY process has a window \(as is almost always the case\), then ) S
+10800 15906 M (that window contains a blinking caret indicating where the typed input will appear.  ) S
+10800 14106 M (When the process looses the TTY process designation, then the caret may remain, but it ) S
+10800 12306 M (no longer blinks.  Thus, the blinking caret almost always designates the window whose ) S
+10800 10506 M (process is the TTY process.) S
+grestore savepage restore showpage
+
+%%Page: 13 13
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (12) S
+7200 75600 M (LispCourse #14:  Multiple Processes and the Process Status Window) S
+10800 71106 M (If a process has a window, you can usually make that process be the TTY process by ) S
+10800 69306 M (clicking a left or middle mouse button in its window.  Basically, you point into the ) S
+10800 67506 M (window you want to type into, then you type into that window.  ) S
+10800 64906 M (You can also move the TTY process around using the Process Status window as ) S
+10800 63106 M (described below.) S
+10800 60506 M (Finally, many programs move the TTY process around.  For example, when you start a ) S
+10800 58706 M (new TEdit, it grabs the TTY process for itself.  When a TEdit quits, it gives the TTY ) S
+10800 56906 M (process to the Lisp Exec.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 53157 M (The Process Status Window) S
+1200 /Times-Roman-Acnt F
+10800 49906 M (The Process Status window provides an easy-to-use mouse/window-based interface to ) S
+10800 48106 M (process management.) S
+10800 44906 M (To open a PSW, select the PSW command from the background menu OR use the ) S
+10800 43106 M (function call \(PROCESS.STATUS.WINDOW\) in the exec.  Either way, you'll be asked ) S
+10800 41306 M (to place the window on the screen.) S
+10800 38106 M (The window will look like the following:) S
+/bitbltsave save def 21000 11899 translate 22800 23900 scale 228 239 true thebitimage
+B21B2220
+B21B8880
+B31C
+B21B2220
+B31C
+B21B8880
+B31C
+B21B2220
+B31C
+B21B8880
+8889B218FF8880
+2223B318A220
+222380B2160001A220
+8889B3188880
+88899FB216FFF98880
+222390B2160009A220
+B30740B313
+8889900003F02020B30201F8827F20904001F0F87C407F209F098880
+B30302082020B20200010482402090800209048240402190898880
+2223B3045040B3051F1100000904024040229049A220
+B30CFC40111A00001104047C4024B303
+8889900003F02088B303F8827E0A140001E10478427EB3028880
+B3030208B3050482400A120002010480424028B303
+2223B3032104B306041100020904824240309089A220
+B30303F1FDB304F8FC7F04108001F1047C7C7F209F09A220
+888990B21600098880
+B31C
+2223B318A220
+B31C
+8889900007E04040B3030120900780B30208420904FE00098880
+B3030410B30621900840B3050880B303
+2223B304A0B30422901020B30214A1F110B302A220
+B30740B30324B30711A0B304
+8889900007E0411150B3049FB305A0A140FC00098880
+B30304104110E0B3032890B3042310A12080B303
+2223B303420950B30330900840B3044110B302A220
+B30307E3FA0840B303209F8780B30508FEB303
+888990B21600098880
+B31C
+2223B318A220
+B31C
+8889B302FC0808B303104FC7C000000104FE3E04209041098880
+B30482B30688242040B3028041B306
+2223B30414B3031108241080B30301041F104109A220
+B30B1A082411F80001F8800204111F81B302
+8889B302FC0822B303140FC41080000104FC3C040A1041098880
+B30482B3051208241040B3028040B306
+2223B30441B3031108242000B303410404B302A220
+B304FC7FB304108FC7C0B302F8FE3E3F841F8FE9A220
+8889B302B21400098880
+B31C
+2223B318A220
+B30F10B30B
+8889B30207E040B3030421043CB30301044FCFC000098880
+B3040410B30742B203000108480800B303
+2223B3090A51048110B30310B304A220
+B314A0B306
+8889B30207E0B306FC8108B30340B3048880
+B3040410B3041189048124B30320B306
+2223B30C42B30410B304A220
+B30407E3F8B3063C18B30308B306
+8889B302B21400098880
+B31C
+22239FB216FFF9A220
+222380B2160001A220
+8889B3188880
+B31C
+2223B318A220
+B30603B20DFFC0B305
+8889B30402B20D0040B3038880
+B31C
+2223B318A220
+B30903C447111C4470E22780B308
+8889B30702244891224489126440B3068880
+B30A27C8922248B30C
+2223B3082448122E508912A4B307A220
+B30903C2881C2078B30C
+8889B307024288942244891324B3078880
+B30C92B30E
+2223B307038107111C7871122780B306A220
+B309B20B00B306
+8889B3188880
+B31C
+2223B318A220
+B3080841C44F91084088E1C7C70EB307
+8889B3074085481108408912240891B3058880
+B30810B30212004091B30B
+2223B30A140078A112040102B305A220
+B3082040854F1E0044F11207860CB307
+8889B30886C81100448912240891B3058880
+B30840B312
+2223B30641F1C44F9E0078F0E1C7C70EB305A220
+B308B20C00B306
+8889B3188880
+B31C
+2223B318A220
+B3070480E20388843E7C70E087C89F22B306
+8889B306811204488420402110840990B3058880
+B30708B3024FB30724B306
+2223B306F113C5C8B3022020840A9028B304A220
+B3071089122405043C4020C0878A9E3CB306
+8889B309450420402110840C9022B3048880
+B30720B313
+2223B306F113C3821F3E4070E3E7C89F3CB304A220
+B307B20D00B306
+8889B3188880
+B31C
+2223B318A220
+B308488E1C4421F3E387043E44F910B306
+8889B306499122442102010884204C81B3058880
+B3088991227CB30720B306
+2223B3068A822E44B302010420548140B304A220
+B307010A8C202821E20106043C54F1E0B306
+8889B3060C912228210201088420648110B3048880
+B30702B313
+2223B306088E1C10F9F203871F3E44F9E0B304A220
+B307B20D00B306
+8889B3188880
+B31C
+2223B318A220
+B30C1F227C70B30B
+8889B30A10224088B3098880
+B30D14B30D
+2223B30B084080B309A220
+B30C1E0878B30C
+8889B30A10144088B3098880
+B30D22B30D
+2223B30A1F227C70B309A220
+B30CB20800B306
+8889B3188880
+B31C
+2223B318A220
+B309011C44F0A22107113E44B308
+8889B308225488A221089120B3078880
+B30902025488A3E1B30248B308
+2223B30A89522108112050B306A220
+B309041C54F15141081F3C78B308
+8889B308026C91B302912044B3068880
+B30908226C9111B30D
+2223B3081C44E11087C7113E78B306A220
+B309B20B00B306
+8889B3188880
+B31C
+2223B318A220
+B309102210F8E2250F9F2240B308
+8889B30A8112A50810B3088880
+B30EAFC8103EB309
+2223B3071EB303A2881022B307A220
+B309113E28B3031E1478B308
+8889B3082228811367E8101440B3068880
+B30B4481136148B30B
+2223B3071EB3021221481F087CB306A220
+B309B20B00B306
+8889B3188880
+B31C
+2223B318A220
+B30807111C38884204470E3E3870B307
+8889B30608912244B3024891204488B3058880
+B30992224490020488B30B
+2223B3071422409003C50890200810B305A220
+B3091E2240E0022788903C3060B307
+8889B307912244A002244891204488B3058880
+B30C90B30E
+2223B306071E1C388803C7870E3E3870B305A220
+B308B20C00B306
+8889B3188880
+B31C
+2223B318A220
+B30707C8901C10F912238F8A22107110B306
+8889B3050408900810815221080A221089B3058880
+B3080FB30353E1080A3EB309
+2223B30608B30352210815221081B305A220
+B308051E0810F151410815141081F0B306
+8889B30710081081B1B3048910B3048880
+B31011B30A
+2223B306021F1C7CF910838811087C71B305A220
+B307B20D00B306
+8889B3188880
+B31C
+2223B318A220
+B30B10F8D0418A1FB30A
+8889B30A8130424A10B3088880
+B30D10421F88B30A
+2223B30D0504B308A220
+B30CF130420502B30A
+8889B30A80D1C78FD1B3088880
+B30D10020291B30A
+2223B3097CF81040028EB308A220
+B30BB20900B306
+8889B3188880
+B31C
+2223B318A220
+B30C88E1C38F80B30A
+8889B30AA9122448B20400B3048880
+B31C
+2223B30C2088B309A220
+B30E230FB30B
+8889B30AD9122448B3098880
+B31C
+2223B30A88E2238F80B308A220
+B30CB20800B306
+8889B3188880
+B31C
+2223B318A220
+B30C21F1A083B30B
+8889B30B02608480B3088880
+B30E2084B20400B306
+2223B318A220
+B30DE260B30C
+8889B30B01A38FB3098880
+B30D002004B30B
+2223B30AF9F02080B309A220
+B30CB20800B306
+8889B3188880
+B31C
+2223B318A220
+B30A3E4470E287CF9120B309
+8889B30820442112840811B3088880
+B30B482117E4081FB30A
+2223B309502021440811B308A220
+B30A3C7820C1440F0A3CB309
+8889B30820442113F4080A20B3078880
+B30D10A4B30C
+2223B3083E7870E0A40F843EB307A220
+B30AB20A00B306
+8889B30403B20DFFC0B3038880
+B306B21200B302
+2223B318A220
+2223B218FFA220
+8889B3188880
+B21B8880
+B21B2220
+B31C
+B21B8880
+B31C
+B21B2220
+B31C
+B21B8880
+B31C
+
+bitbltsave restore
+grestore savepage restore showpage
+
+%%Page: 14 14
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (13) S
+7200 75600 M (LispCourse #14:  Multiple Processes and the Process Status Window) S
+10800 71106 M (The upper box in this window contains a list of the names of all the processes currently in ) S
+10800 69306 M (the system, both running and suspended.) S
+14400 66906 M (You can ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(select) S
+1200 /Times-Roman-Acnt F
+( any one of these processes by clicking over the process name.  ) S
+14400 65106 M (This will shade this process name.) S
+/bitbltsave save def 23450 39499 translate 21500 24100 scale 215 241 true thebitimage
+B2191110
+B31A
+B21A44
+B31A
+B2191110
+B31A
+B21A44
+B31A
+B2191110
+B31A
+B21A44
+B31A
+B2191110
+13B218FF10
+47B31844
+47B217000344
+13B31810
+133FB216FFF310
+4720B216001344
+B30680B312
+13200007E04040B30203F104FE41208003E1F0F880FE413E1310
+B30204104040B202000209048041210004120904808043211310
+47B304A080B3053E2200001208B30245209344
+B30BF88022340000220808F88049B302
+13200007E04110B30203F104FC14280003C208F084FCB30210
+B3020410B3040209048014240004020900848051B302
+47B3034208B30608220004120904848061211344
+B30207E3FAB30303F1F8FE08210003E208F8F8FE413E1344
+1320B216001310
+B31A
+47B31844
+B31A
+1320000FC08080B3030241200FB30310841209FC001310
+B3020820B30643201080B3051100B302
+47B3038140B30445202040B3022943E221B30244
+B30680B30349B306422341B303
+1320000FC08222A0B3043EB305414281F8001310
+B30208208221C0B3035120B3044621424100B302
+47B3038412A0B30361201080B303208221B30244
+B3020FC7F41080B303413F0FB20300B30211FCB302
+1320B216001310
+B31A
+47B31844
+B31A
+13200001F81010B303209F8F8000000209FC7C084120821310
+B30304B3052110484080B3020082B305
+47B30428B3032210482100B30302083EB30244
+B30A34104823F00003F1000408223F021344
+13B302F81044B303281F882100000209F878081420821310
+B30304B3052410482080B3020080B305
+47B30482B3032210484000B303820808B30244
+B303F8FEB304211F8F80000003F1FC7C7F083F1FD344
+1320B216001310
+B31A
+47B31844
+B30E20B30A
+13B3020FC080B30308420878B30302089F9F80001310
+B3030820B30784B203000210901000B302
+47B30914A2090220B30320B30444
+B3120340B305
+13B3020FC0B305A3F90210B3020280B30410
+B3030820B3042312090248B30340B305
+47B30B0884B30420B30444
+B3030FC7F0B3067830B30310B305
+13B302B214001310
+B31A
+473FB216FFF344
+47B217000344
+13B31810
+B31A
+47B31844
+B30507B20DFF80B304
+13B30404B20D00B30410
+B31A
+47B31844
+B30807888E223888E1C44FB308
+13B3070448912244891224C880B30610
+B3094F91244491B30B
+47B3084890245CA1122548B30744
+B3080785103840F1B30B
+13B3070485112844891226B30810
+B30B24B30D
+47B30707020E2238F0E2244FB20200B30444
+B308B20B00B305
+13B31810
+B31A
+47B31844
+B3071083889F22108111C38F8E1CB306
+13B307810A90B3021224481122B30510
+B30720B30224008122B30A
+47B30A2800F14224080204B30544
+B30740810A9E3C0089E2240F0C18B306
+13B3080D902200891224481122B30510
+B30780B311
+47B30683E3889F3C00F1E1C38F8E1CB30544
+B307B20C00B305
+13B31810
+B31A
+47B31844
+B3060901C40711087CF8E1C10F913E44B305
+13B306022408910840804221081320B30510
+B30611B3029FB30748B305
+47B306E2278B91B302404108152050B30444
+B306211224480A08788041810F153C78B305
+13B3098A084080422108192044B30410
+B30641B312
+47B306E22787043E7C80E1C7CF913E78B30444
+B306B20D00B305
+13B31810
+B31A
+47B31844
+B307911C388843E7C70E087C89F220B305
+13B306932244884204021108409902B30510
+B30601132244F8B30740B305
+47B30615045C88B302020840A90280B30444
+B306021518405043C4020C0878A9E3C0B305
+13B30619224450420402110840C90220B30410
+B30604B312
+47B306111C3821F3E4070E3E7C89F3C0B30444
+B306B20D00B305
+13B31810
+B31A
+47B31844
+B30B3E44F8E0B30A
+13B30A20448110B30910
+B30C28B30C
+47B30B1081B20500B30444
+B30B3C10F1B30B
+13B30A20288110B30910
+B30C44B30C
+47B30A3E44F8E0B30944
+B30BB20800B305
+13B31810
+B31A
+47B31844
+B308023889E144420E227C88B307
+13B30844A9114442112240B30710
+B3080404A91147C2B30290B307
+47B30A12A442102240A0B30644
+B3080838A9E2A282103E78F0B307
+13B30804D922A28211224088B30610
+B3081044D92222B30C
+47B3083889C2210F8E227CF0B30644
+B308B20B00B305
+13B31810
+B31A
+47B31844
+B308204421F1C44A1F3E4480B307
+13B30A02254A1020B30810
+B30D5F90207CB308
+47B3073CB30345102044B30744
+B308227C51B3033C28F0B307
+13B30844510226CFD0202880B30610
+B30A890226C290B30A
+47B3073CB3022442903E10F8B30644
+B308B20B00B305
+13B31810
+B31A
+47B31844
+B3070E2238711084088E1C7C70E0B306
+13B30611224489B3029122408910B30510
+B30824448920040911B30A
+47B3061028448120078A1120401020B30544
+B3083C4481C0044F11207860C0B306
+13B306112244894004489122408910B30510
+B30B20B30D
+47B3060E3C387110078F0E1C7C70E0B30544
+B307B20C00B305
+13B31810
+B31A
+47B31844
+B3060F91203821F224471F144420E220B305
+13B305081120102102A4421014442112B30510
+B3071FB303A7C210147CB308
+47B30611B303A442102A442102B30544
+B3070A3C1021E2A282102A282103E0B305
+13B3072010210362B3041220B30410
+B30F22B309
+47B306043E38F9F22107102210F8E2B30544
+B306B20D00B305
+13B31810
+B31A
+47B31844
+B30A21F1A083143EB309
+13B30A0260849420B30810
+B30C20843F10B309
+47B30D0A08B30844
+B30BE260840A04B309
+13B30A01A38F1FA2B30810
+B30B0020040522B309
+47B309F9F02080051CB30844
+B30AB20900B305
+13B31810
+B31A
+47B31844
+B30A0111C3871FB30A
+13B30A52244890B30910
+B31A
+47B30C4110B30944
+B30D461EB30A
+13B30AB4B2244890B30910
+B31A
+47B30A11C4471FB30944
+B30AB20900B305
+13B305B20D44B30410
+B306B20D00B305
+47B30405B20D11B30444
+B30504B2040043E34106B20400B305
+13B305B204444644C54DB20444B30410
+B306B2040042044108B20400B305
+47B30405B2041153155119B20411B30444
+B30504B2040043C4C108B20400B305
+13B305B204444647475EB20444B30410
+B306B2040042004008B20400B305
+47B30405B20411F3F151B20511B30444
+B30504B20D00B305
+13B31810
+B31A
+47B31844
+B3097C88E1C50F9F2240B308
+13B308408842250810B30910
+B30A90422FC8103EB309
+47B309A04042881022B30844
+B30978F04182881E1478B308
+13B30840884227E8101440B30710
+B30C2148B30B
+47B3087CF0E1C1481F087CB30744
+B309B20A00B305
+13B30407B20DFFB30410
+B305B212000310
+47B31844
+47B218FF44
+13B31810
+B2191110
+B21A44
+B31A
+B2191110
+B31A
+B21A44
+B31A
+B2191110
+
+bitbltsave restore
+10800 36606 M (The lower box is a menu of commands that you can apply to the selected process.) S
+1200 /Times-Roman-Acnt F
+10800 33406 M (The commands are: \(starting from the right column\)) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 30206 M (KILL) S
+1200 /Times-Roman-Acnt F
+( \234 kills the selected process) S
+1200 /Times-Bold-Acnt F
+14400 27006 M (RESTART) S
+1200 /Times-Roman-Acnt F
+( \234 restarts the selected process) S
+1200 /Times-Bold-Acnt F
+14400 23806 M (WAKE) S
+1200 /Times-Roman-Acnt F
+( \234 wakes the selected process if its suspended.  You will be given a menu ) S
+14400 22006 M (of values that can be returned.  Choosing NIL from this menu will generally ) S
+14400 20206 M (work.) S
+1200 /Times-Bold-Acnt F
+14400 17006 M (SUSPEND) S
+1200 /Times-Roman-Acnt F
+( \234 suspends the selected process) S
+1200 /Times-Bold-Acnt F
+14400 13806 M (WHO?) S
+1200 /Times-Roman-Acnt F
+( \234 moves the selection to the process that has the TTY process.) S
+18000 11406 M (This is very handy for telling multiple processes running the same ) S
+18000 9606 M (program apart.  For example, if there are 4 TEdits running, there will be ) S
+grestore savepage restore showpage
+
+%%Page: 15 15
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (14) S
+7200 75600 M (LispCourse #14:  Multiple Processes and the Process Status Window) S
+18000 71106 M (processes named TEdit, TEdit#2, TEdit#3, and TEdit#4.  To find out ) S
+18000 69306 M (which TEdit you want to operate on you can bug inside that TEdit's ) S
+18000 67506 M (window.  This will pass the TTY process to that TEdit.  The choose the ) S
+18000 65706 M (WHO? command in the PSW.  This will select the TEdit corresponding to ) S
+18000 63906 M (the window you clicked in.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 60706 M (KBD_) S
+1200 /Times-Roman-Acnt F
+( \234 gives the TTY process to the selected process.) S
+18000 58306 M (Example: If TEdit has the TTY process, then selecting the EXEC process ) S
+18000 56506 M (and using the KBD_ command will move the TTY Process \(i.e., the ) S
+18000 54706 M (blinking cursor\) to the Exec window.) S
+1200 /Times-Bold-Acnt F
+14400 51506 M (INFO) S
+1200 /Times-Roman-Acnt F
+( \234 returns any information the selected process wants to give.  I have never ) S
+14400 49706 M (seen a process that wanted to give any information, but ...) S
+1200 /Times-Bold-Acnt F
+14400 46506 M (BREAK) S
+1200 /Times-Roman-Acnt F
+( \234 forces the selected process into a break, thus opening a break window, ) S
+14400 44706 M (starting a break exec, etc.) S
+18000 41506 M (This is handy to examine the state of a computation that has run amok:   ) S
+18000 39706 M (Break the process and then muck around the stack using the Break Exec.) S
+1200 /Times-Bold-Acnt F
+14400 36506 M (BT \(BTV, ...\)) S
+1200 /Times-Roman-Acnt F
+(  \234 prints a backtrace of the stack of the selected process in an ) S
+14400 34706 M (attached window just above \(below\) the PSW.  BT prints standard backtrace with ) S
+14400 32906 M (just the names of the functions called.  BTV and the rest print backtraces with ) S
+14400 31106 M (some more information about each frame.) S
+grestore savepage restore showpage
+
+%%Page: 16 16
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (15) S
+7200 75600 M (LispCourse #14:  Multiple Processes and the Process Status Window) S
+/bitbltsave save def 23300 38799 translate 21800 33200 scale 218 332 true thebitimage
+B21A4440
+B31B
+B21A1100
+B31B
+B21A4440
+B31B
+B21A1100
+B31B
+B21A4440
+B31B
+117FB217FFD100
+B31B
+4460B21700C440
+B31B
+11B318D100
+B31B
+44B318C440
+B31B
+11B318D100
+B31B
+44B318C440
+B31B
+11B318D100
+B31B
+44B318C440
+B31B
+11B318D100
+B31B
+44B318C440
+B31B
+11B318D100
+1161B319
+44B318C440
+B31B
+11B318D100
+B31B
+44B318C440
+4467C0B318
+1160B21700D100
+B31B
+446080B316C440
+4460A318F9109319E63180B310
+11612319411094A5094A40B30ED100
+11612BFA4010A4A1010AB311
+44622AAC701CE4A1C633B30FC440
+44623EAC401294A10842C0B310
+116436AAB302A5094A40B30ED100
+11642249781CE319E63180B310
+4460B21700C440
+B31B
+11B318D100
+1167A526499E20B314
+446425294A50B313C440
+4464294950B316
+116739C9719CB313D100
+116425294A10B315
+44B30350B313C440
+4467B9C6719EF8B314
+1160B21700D100
+B31B
+446080B316C440
+4460BC48FA0C9440B313
+116120E8C212B313D100
+B302AFC212A5B314
+446239B54392E5B312C440
+446221B5421297C0B313
+11642115421296B312D100
+11643D1243CCE440B313
+4460B21700C440
+B31B
+116080B316D100
+116089EE389EB315
+446109091090B313C440
+B30488B315
+116209C91084B313D100
+B302091082B315
+4464B30292B313C440
+44643FEE3BECB315
+1160B21700D100
+B31B
+446080B316C440
+446089EE3888632318CB88F319B30E
+11610909108894A318DA4884A5B30CD100
+B3048084AB5FDA40B310
+446209C9B303557AB302C0B30BC440
+B30209B302BFF5B30320B30D
+1164B30394B7B56AB30FD100
+11643FEE3BE06323124B808319C0B30D
+4460B21700C440
+B31B
+11B318D100
+11671CC8B98CB315
+446489289252B313C440
+4464882A9042B315
+116488CA918CB313D100
+1164890F9210B315
+4464892D9252B313C440
+44671CC8B98CB315
+1160B21700D100
+B31B
+44B318C440
+447FB217FFC440
+11B311FAB205AAD100
+B31B
+44B311F5B20555C440
+447DFFBF87E1B202F0FF43E13877ECDF84E1F0B308
+11B3027BDEEF6F6F7F3DDE77B7DDDF79DEEF7AB205AAD100
+B302BEFDBFDFEF6F7F7EDF6FF3BDDF7DBFDFFAB307
+44B305FF7F7F7EE36FF57DDF8DBFDFF5B20555C440
+447C07B302C070F0FF7EFC6FF6FDDFF1BFC075B307
+117DFB9EFDBEDF6FEFFF7EDF6FB77DCF7DBEDF7AB205AAD100
+117DFDAB7BDEEEEF6F7F3DEF77B7BDD5BDDEEEFAB307
+447DFDB4B387E1F1F0F0FF43F0F877D8D9C3E1F1F5B20555C440
+B302B206FF7FFFFFF7FDB203FFB308
+117DFBB30FFAB205AAD100
+117C07B30AB204FFB308
+447FB210FFF5B20555E440
+B312B206FFE440
+1160B217007100
+B31B
+4467B216FFFE6440
+4464B21600026440
+11B30510B3117100
+B303FC0808B3037E209FC82410007C3E1F101FC827C27100
+44B302820808B203004120900824200082412090100864226440
+B3051410B30507C44000024100B302A4126440
+11B30A3F10044680000441011F100924127100
+B303FC0822B3037E209F8285000078411E109F89B303
+44B30282B3054120900284800080412010900A24126440
+B30541B3060104400082412090900C24226440
+11B302FC7FB3047E3F1FC10420007C41B2021FC827C27100
+B303B21400027100
+44B3186440
+B31B
+11B3187100
+B30201F81010B304482401E0B302021082413F80B302
+44B30204B307640210B305422000026440
+B30528B305A40408B30205287C44B304
+11B30510B3034924B3064468B3027100
+B303F8104454B30427C4B30528503FB303
+44B30204104438B3034A2404B30308C428482000026440
+B3058254B3034C240210B3041044B304
+11B302F8FE8210B3034827E1E0B305423F80027100
+B302B21500B302
+44B3186440
+B31B
+11B3187100
+B3033F0202B3030413F1F0B302413F8F81082410427100
+44B3022082B30522090810B302201041B3036440
+B30505B30442090420B303004107C4B303
+11B309068209047E00007E2000810447E0427100
+B3033F020880B3020503F104200000413F0F01028410B302
+44B3022082B3040482090410B3022010B3046440
+B3051040B303420908B20200B302410104B303
+11B3023F1FD0B30423F1F0B3027E3F8F8FE107E3FA7100
+B303B21400027100
+44B3186440
+B31B
+11B30D04B3097100
+B30301F810B3030108410FB3044113F3F0B303
+44B30304B3071080B3034212020000026440
+B30A0294412044B30344B306
+11B31268B3047100
+B304F8B3067F2042B30350B306
+44B30304B3040462412049B30348B3046440
+B30D1089B30344B306
+11B303F8FEB3060F06B30342B3047100
+B303B21400B302
+44B3186440
+4467B216FFFE6440
+1160B217007100
+B31B
+44B3186440
+B31B
+11B305B20DFFF0B3037100
+B30680B20C0010B305
+44B3186440
+B31B
+11B308F111C447111C3889E0B3067100
+B309891224489122449910B308
+44B309F2248892B30A6440
+B30A12048B942244A9B309
+11B308F0A207081EB30A7100
+B30990A22508912244C9B309
+44B30A2488B30B6440
+B309E041C4471E1C4489E0B308
+11B308B20A00B3047100
+B31B
+44B3186440
+B31B
+11B30602107113E44210223871F1C380B3047100
+B309215204B3024489022440B306
+44B30604B303801024B3096440
+B30B05001E284481004080B306
+11B30608102153C780113C4481E18300B3047100
+B30AB4B2044011224489022440B306
+44B30610B3106440
+B3087C7113E7801E3C3871F1C380B306
+11B306B20C00B3047100
+B31B
+44B3186440
+B31B
+11B30581203880E2210F9F1C3821F227C890B3037100
+B308448112210810084421026408B306
+44B30582B30213E1B3060910B3036440
+B3073C44F17221B302082102A40AB306
+11B3058422448901410F10083021E2A78FB3047100
+B30A1141081008442103240890B305
+44B30588B3116440
+B3073C44F0E087CF901C38F9F227CF10B305
+11B30580B20C00B3047100
+B31B
+44B3186440
+B31B
+11B30612238711087CF8E1C10F913E44B3047100
+B3086448910840804221081320B307
+44B3062264489FB30748B3046440
+B308A08B91B302404108152050B306
+11B30642A3080A08788041810F153C78B3047100
+B3074324488A084080422108192044B306
+44B30683B3106440
+B307822387043E7C80E1C7CF913E78B306
+11B306B20C00B3047100
+B31B
+44B3186440
+B31B
+11B30A07C89F1CB3097100
+B30B04089022B30B
+44B30B0510B30A6440
+B30C021020B30B
+11B30A07821EB30A7100
+B30B04051022B30B
+44B30B0890B30A6440
+B30B07C89F1CB30B
+11B30AB20800B3047100
+B31B
+44B3186440
+B31B
+11B30847113C288841C44F91B3067100
+B309489522288842244811B308
+44B30880B302F8B30212B3066440
+B30C548842044814B308
+11B3070107153C54504207CF1EB3067100
+B309009B24B302244811B308
+44B30702089B2444B30B6440
+B3090711384421F1C44F9EB308
+11B307B20B00B3047100
+B31B
+44B3186440
+B31B
+11B3070408843E388943E7C890B3067100
+B30B2044A9420408B309
+44B30CABF2040FB3076440
+B3080788B302A8A20408B309
+11B307044F8AB30307851EB3067100
+B30948B302D9FA040510B308
+44B309912044D852B3096440
+B3080788B302885207C21FB308
+11B307B20B00B3047100
+B31B
+44B3186440
+B31B
+11B30601C4470E22108111C38F8E1CB3057100
+B30702244891B3021224481122B307
+44B308889124008122B3096440
+B3080508902400F14224080204B307
+11B307078890380089E2240F0C18B3057100
+B3082448912800891224481122B307
+44B30A24B30C6440
+B30701C7870E2200F1E1C38F8E1CB307
+11B306B20C00B3047100
+B31B
+44B3186440
+B31B
+11B30581F22407043E4488E3E288841C44B3047100
+B307022402042054884202888422B307
+44B30603E4B303F842028FB3076440
+B3070224B303884205488420B307
+11B306014782043C545042054504207CB3047100
+B308440204206CB3042244B306
+44B30E04B3086440
+B3070087C71F3E4420E204421F1CB307
+11B30580B20C00B3047100
+B31B
+44B3186440
+B31B
+11B309043E34106287C0B3077100
+B30B204C109284B20300B306
+44B30B441087E2B3086440
+B30E8141B30A
+11B30A3C4C10814080B3077100
+B30B203471E3F440B309
+44B30B040080A4B3086440
+B30A1F3E041000A380B309
+11B309B20900B3047100
+B31B
+44B3186440
+B31B
+11B30A223870E3E0B3087100
+B30B2A448912B20400B306
+44B3186440
+B30D8822B30B
+11B30DC3C0B3087100
+B30B36448912B20400B306
+44B3186440
+B30B223888E3E0B30A
+11B30AB20800B3047100
+B306B20D8890B305
+44B30580B20C0010B3036440
+B306A2B20C2230B305
+11B30580B20300087C6820C0B2030010B3037100
+B306B20588C898A9A8B2038890B305
+44B30580B2030008408821B2040010B3036440
+B306A2B203222A62AA23B2042230B305
+11B30580B2030008789821B2040010B3037100
+B306B20588C8E8EBC8B2038890B305
+44B30580B2030008400801B2040010B3036440
+B306A2B203223E7E2AB2052230B305
+11B30580B20C0010B3037100
+B306B20DFFF0B305
+44B305B212006440
+B31B
+117FB217FFF100
+B31B
+B21A4440
+B31B
+B21A1100
+B31B
+B21A4440
+B31B
+B21A1100
+B31B
+
+bitbltsave restore
+18000 35906 M (This is a handy way to find out if a process is progressing or if its stuck at ) S
+18000 34106 M (some point:  click BT many times in succession.  If the stack is constantly ) S
+18000 32306 M (changing, then things are progressing.  If the stack is unchanging with ) S
+18000 30506 M (AWAIT.EVENT or some such function at the top,  then the process is ) S
+18000 28706 M (probably stuck waiting for a file server to respond or some other external ) S
+18000 26906 M (event to occur.  ) S
+10800 23306 M (Whenever a process starts or finishes, the PSW gets shaded over.  This indicates that the ) S
+10800 21506 M (information is no longer current. ) S
+grestore savepage restore showpage
+
+%%Page: 17 17
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (16) S
+7200 75600 M (LispCourse #14:  Multiple Processes and the Process Status Window) S
+/bitbltsave save def 21700 49599 translate 21400 22400 scale 214 224 true thebitimage
+B2191110
+B31A
+B21A44
+B31A
+B2191110
+B31A
+B21A44
+B31A
+B2191110
+B31A
+47B217FFFE44
+B31A
+16B217000710
+B31A
+465DB216DDC644
+4640B216002644
+16B30401B3112710
+B3020FC08081B30207E209FC82410007C3E1F101FC827C2710
+4662222A02A2A2B2022226302B22A060222A06302B2322A4600644
+46400008208141B20200041209007C44000024100901008A412644
+16B30913F10044680000441011F10092412710
+B3020FC08221B30207E209F8285000078411E109F8B303
+4662222A02A003B2022226302B220A6A222A2630232B2280630644
+46400008208411B2020004120900104400082412090900C2422644
+1640000FC7F4B30307E3F1FC10420007C411F1F1FC827C2710
+B302B215002710
+4662B216220644
+4640B216002644
+16B3172710
+B3021F8101B3040482401EB30321082413F8B302
+466222326323B2042226A46203B20322032A060022220644
+46400010410280B20300048A404080B202005287C44200002644
+16B30481B30492B30684468200002710
+B3021F81044540B3047CB305828503F0B302
+46622232632661A2B2022226806262A2B20222AE60A6A022220644
+4640001041082540B2020004C24021B203008C41044200002644
+1640001F8FE821B2030004827E1EB30623F8002710
+B302B215002710
+4662B216220644
+4640B216002644
+16B3172710
+B30203F02020B303413F1FB3020413F8F8108241042710
+466222202A0202B203226002B4B2A322222630232632A063260644
+46400002082050B2030044209042000004120004107C41042644
+16B30968209047E00007E2000810447E042710
+B30203F02088B303503F104200000413F0F0102841B302
+466222202A02AAB203226A02B4B263222226302322320A63260644
+46400002082104B2030044209080000004120104101041042644
+16400003F1FDB304423F1FB2020007E3F8F8FE107E3FA710
+B302B215002710
+4662B216220644
+4640B216002644
+16B30D40B3082710
+B3031F81B304108410F0B30304113F3FB303
+466222223263B2042232A6332AB203222603020222220644
+464000001041B204002944120440B202000441202000002644
+16B3110681B3032710
+B3031F81B30547F20420B3020501B305
+466222223263B2042264063026B4B2B2022226A3020222220644
+464000001041B204004624110890B202000441202000002644
+16B3021F8FE0B30510F060B30321B3032710
+B303B214002710
+4662B216220644
+467FB216FFE644
+16B217000710
+B31A
+46B217222644
+46B217000644
+16B3040FB20DFFB3030710
+B30508B20C0001B305
+46B204222AB20C2223B203222644
+46B2040008B20C0001B203000644
+16B3070F111C447111C3889EB3060710
+B308089122448912244991B308
+46B204222A22222ABD006AAB00066BB4B3222223B203222644
+46B2040008000008912048B942244A91000001B203000644
+16B3070F0A207081E2B3090710
+B308090A22508912244CB309
+46B204222A22222B28006AAB30066EB4B3222223B203222644
+46B204000800000E041C4471E1C4489E000001B203000644
+16B307B20A00B3040710
+B31A
+46B204222AB20C2223B203222644
+46B2040008B20C0001B203000644
+16B3062107113E44210223871F1C38B3040710
+B308021520B3022448902244B306
+46B204222A22632037026A2320666AB4B2006623B203222644
+46B204000800410215205001E2844810040801B203000644
+16B3068102153C780113C4481E1830B3040710
+B3091B204401122448902244B306
+46B204222A2323203902662330066AB4B2006623B203222644
+46B20400080107C7113E7801E3C3871F1C3801B203000644
+16B305B20C00B3040710
+B31A
+46B204222AB20C2223B203222644
+46B2040008B20C0001B203000644
+16B3051203880E2210F9F1C3821F227C89B3030710
+B307044811221081008442102640B306
+46B204222A00266A331C32A322A660320462B4B3B203222644
+46B204000823C44F17221081008082102A40A1B203000644
+16B305422448901410F10083021E2A78F1B3030710
+B3099114108100844210324089B305
+46B204222AA0066AB4B33632A322A660321062ABB203222644
+46B204000883C44F0E087CF901C38F9F227CF1B203000644
+16B305B20C0001B3030710
+B31A
+46B204222AB20C2223B203222644
+46B2040008B20C0001B203000644
+16B305012238711087CF8E1C10F913E441B3030710
+B307264489108408042210813204B306
+46B204222A200466ABD2A62A260032A31026A3B203222644
+46B2040008022A08B910840804041081520501B203000644
+16B305042A3080A08788041810F153C781B3030710
+B307324488A0840804221081920441B305
+46B204222A2A1066AA82A62A260032A3B02663B203222644
+46B20400080822387043E7C80E1C7CF913E781B203000644
+16B305B20C0001B3030710
+B31A
+46B204222AB20C2223B203222644
+46B2040008B20C0001B203000644
+16B30A7C89F1C0B3080710
+B30B40890220B30A
+46B204222AB2042262732002B2032223B203222644
+46B2040008B20400402102B2040001B203000644
+16B30A7821E2B3090710
+B30B40510220B30A
+46B204222AB2042262AB2002B2032223B203222644
+46B2040008B204007C89F1C0B2030001B203000644
+16B30AB20700B3040710
+B31A
+46B204222AB20C2223B203222644
+46B2040008B20C0001B203000644
+16B307047113C288841C44F910B3050710
+B3098952228884224481B308
+46B204222A22222A2B7000ADA60066A3022223B203222644
+46B20400080000080952254884204481400001B203000644
+16B307107153C54504207CF1E0B3050710
+B30909B4B245450422448110B307
+46B204222A222202AB906667260066A3322223B203222644
+46B2040008000020711384421F1C44F9E00001B203000644
+16B307B20A00B3040710
+B31A
+46B204222AB20C2223B203222644
+46B2040008B20C0001B203000644
+16B307408843E388943E7C89B3060710
+B30A42044A942040B309
+46B204222A222262AA6026689D0262DB222223B203222644
+46B20400080000788842044A8A204089000001B203000644
+16B30744F8A2B3037851E0B3050710
+B30988A2044D9FA0405100B307
+46B204222A222266AB30266FA7026273222223B203222644
+46B20400080000788912044885207C21F00001B203000644
+16B307B20A00B3040710
+B31A
+46B204222AB20C2223B203222644
+46B2040008B20C0001B203000644
+16B3061C4470E22108111C38F8E1C0B3040710
+B30722448912B3022244811220B306
+46B204222A22006AAB30622A300066A3300223B203222644
+46B20400080020508902400F14224080204001B203000644
+16B30778890380089E2240F0C180B3040710
+B307224489128008912244811220B306
+46B204222A220066AB30622AB4B30066A3300223B203222644
+46B2040008001C7870E2200F1E1C38F8E1C001B203000644
+16B306B20B00B3040710
+B31A
+46B204222AB20C2223B203222644
+46B2040008B20C0001B203000644
+16B3051F22407043E4488E3E288841C441B3030710
+B30610224020420548842028884224B306
+46B204222A321C620260276DA6020ADA600663B203222644
+46B20400081022402042054884205488420441B203000644
+16B30614782043C545042054504207C1B3030710
+B30840204206C5B3042441B305
+46B204222A323662026024E726026672600663B203222644
+46B204000810087C71F3E4420E204421F1C441B203000644
+16B305B20C0001B3030710
+B31A
+46B204222AB20C2223B203222644
+46B2040008B20C0001B203000644
+16B30943E34106287CB3070710
+B30A4204C1092840B309
+46B204222AB203226026632A5C02B2022223B203222644
+46B2040008B20300420441081410B2020001B203000644
+16B30943C4C1081408B3070710
+B30A4203471E3F44B309
+46B204222AB203226022622A2866B2022223B203222644
+46B2040008B2020001F3E041000A38B2020001B203000644
+16B308B20900B3040710
+B31A
+46B204222AB20C2223B203222644
+46B2040008B20C0001B203000644
+16B3090223870E3EB3080710
+B30BA4489120B30A
+46B204222AB2032220866AB4B302B2032223B203222644
+46B2040008B2030002A4488220B2030001B203000644
+16B30C8C3CB3080710
+B30A0364489120B30A
+46B204222AB2032221466AB4B302B2032223B203222644
+46B2040008B203000223888E3EB2030001B203000644
+16B309B20800B3040710
+B31A
+46B204222BB20D33B203222644
+46B2040008B20C0001B203000644
+16B3040CB20444C7C6C64CB2034445B3030710
+B30508B2040084098212B2030001B305
+46B204222BB20433B73BB1B20533B203222644
+46B2040008B2040084088210B2030001B203000644
+16B3040CB20444C7CDC654B2034445B3030710
+B30508B2040084068E3CB2030001B305
+46B204222BB20433B733B4B3B20533B203222644
+46B2040008B2030003E7C082B2040001B203000644
+16B3040CB20C4445B3030710
+B3050FB20DFFB305
+46B304B212000644
+B31A
+17B218FF10
+B31A
+B21A44
+B31A
+B2191110
+B31A
+B21A44
+B31A
+
+bitbltsave restore
+10800 46306 M (To update the information, just click the left or middle mouse buttons anywhere in the ) S
+10800 44506 M (PSW.  This will redisplay the PSW with the current information.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 40757 M (Multiple Exec Processes) S
+1200 /Times-Roman-Acnt F
+10800 37706 M (In default mode, Interlisp has only one Exec process.  There are, however, a number of ) S
+10800 35906 M (Lisp Users packages that allow for multiple Exec windows and multiple Exec processes ) S
+10800 34106 M (to run simultaneously.) S
+10800 31106 M (One such package is called EXEC.) S
+10800 28506 M (Load {eris}<LispUsers>Exec.DCOM.  This will add a  "EXEC" choice to the ) S
+10800 26706 M (background menu. ) S
+10800 24106 M (Choosing EXEC from the background menu will prompt you for a region and then open a ) S
+10800 22306 M (new Exec window in that region running an independent Exec process.  You can use this ) S
+10800 20506 M (new Exec simyultaneously with and in exactly the same manner as the original Exec ) S
+10800 18706 M (process.) S
+10800 16106 M (For example, you can run a long COPYFILE in the original Exec window.  While its ) S
+10800 14306 M (running, you can carry out your normal tasks \(e.g., starting TEdits, doing DIRs, etc.\) ) S
+10800 12506 M (using the second Exec.) S
+10800 9906 M (You can open as many Exec windows and start as many Exec processes as you like.) S
+grestore savepage restore showpage
+
+%%Page: 18 18
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (17) S
+7200 75600 M (LispCourse #14:  Multiple Processes and the Process Status Window) S
+10800 71106 M (To terminate a given Exec, evaluate the function call ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(\(EXEC.QUIT\)) S
+1200 /Times-Roman-Acnt F
+( in its Exec window.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 68506 M (Note) S
+1200 /Times-Roman-Acnt F
+(:  There is one way in which the multiple Execs are not independent: they share a ) S
+10800 66706 M (common history list.  Each event in every Exec updates the event number in all running ) S
+10800 64906 M (Execs.  From any Exec window you can redo or undo events originally carried out in any ) S
+10800 63106 M (other Exec window.) S
+10800 60506 M (This shared history list can sometimes be a great help.  But it can also be problematic if ) S
+10800 58706 M (you forget the shared nature of the list.  In particular, nevent numbers printed in the Exec ) S
+10800 56906 M (windows are not always up-to-date because they may change constantly due to events in ) S
+10800 55106 M (other Exec windows.  You very often tend to undo or redo the wrong event number ) S
+10800 53306 M (because you rely on incorrect information printed in the Exec window and don't check ) S
+10800 51506 M (the history list for the correct event number. ) S
+1400 /Times-Bold-Acnt F
+7200 47757 M (The Mouse Process and \(SPAWN.MOUSE\)) S
+1200 /Times-Roman-Acnt F
+10800 44706 M (The process that sits in the background and watches your mouse movements and mouse ) S
+10800 42906 M (button clicks is called the ) S
+1200 /Times-Italic-Acnt F
+(MOUSE process) S
+1200 /Times-Roman-Acnt F
+(.) S
+10800 40306 M (When you click inside a menu or a window, the mouse process is responsible for getting ) S
+10800 38506 M (a decision about what to do from the menu or window, and then evaluating the correct ) S
+10800 36706 M (functions necessary to do it.  Thus much work in Interlisp gets done within the mouse ) S
+10800 34906 M (process as button presses lead to the evaluation of various functions.) S
+10800 32306 M (For example, when you choose TEDIT from the background menu, the MOUSE process ) S
+10800 30506 M (evaluates the function call ) S
+1200 /Times-Italic-Acnt F
+(\(TEDIT\)) S
+1200 /Times-Roman-Acnt F
+( just as if you had typed it into an Exec window.) S
+10800 27906 M (In general, you shouldn't have to worry to much about the mouse process unless you are ) S
+10800 26106 M (programming.) S
+10800 23506 M (Sometimes, however, something goes wrong and the mouse process gets stuck.  For ) S
+10800 21706 M (example, a break can occur in a function being evaluated in the mouse process.  Or a ) S
+10800 19906 M (function can go into an infinite loop when being evaluated in the mouse process.) S
+10800 17306 M (When this happens, you can't use your mouse for anything.  You can often, however, still ) S
+10800 15506 M (type in to an Exec or a Break Exec.) S
+10800 12906 M (When this happens, the function call \(SPAWN.MOUSE\) comes in very handy.  ) S
+10800 11106 M (SPAWN.MOUSE will start up a new mouse process, replacing the old.) S
+grestore savepage restore showpage
+
+%%Page: 19 19
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (18) S
+7200 75600 M (LispCourse #14:  Multiple Processes and the Process Status Window) S
+10800 71106 M (The old function keeps going and finishes whatever it was doing when SPAWN.MOUSE ) S
+10800 69306 M (was called, except that it is renamed OLDMOUSE.) S
+10800 66706 M (The new mouse process takes over control of the mouse and hence all of the mouse ) S
+10800 64906 M (functions are restored.) S
+10800 62306 M (Example:) S
+14400 59706 M (You choose an item from a Lafite Browser menu.  This immediately causes a ) S
+14400 57906 M (break.  However, in the Break window you discover that the mouse doesn't work ) S
+14400 56106 M (at all.  In fact, no where on the screen does the mouse have any effect.  ) S
+14400 53506 M (If the flashing cursor is in the Break window or in a Exec window, then you could ) S
+14400 51706 M (type ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(\(SPAWN.MOUSE\)) S
+1200 /Times-Roman-Acnt F
+(.  This would free up the mouse by starting a new ) S
+14400 49906 M (MOUSE process.  The break in the Lafite menu command would remain ) S
+14400 48106 M (unaffected, although its process would be renamed from MOUSE to ) S
+14400 46306 M (OLDMOUSE.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 42557 M (References) S
+1200 /Times-Roman-Acnt F
+10800 40106 M (Processes are documented in Section 18.20 of the IRM.) S
+14400 37706 M (Subsections 18.20.1, 18.20.2, & 18.20.5 are generally relevant for non-) S
+14400 35906 M (programming users.) S
+14400 33506 M (Subsection 18.20.6 covers the TTY process.) S
+14400 31106 M (Subsection 18.20.7 covers the MOUSE process and SPAWN.MOUSE.  ) S
+14400 28706 M (Subsection 18.20.8 covers the Process Status window.) S
+grestore savepage restore showpage
+
+%%Trailer

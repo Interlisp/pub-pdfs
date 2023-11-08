@@ -1,0 +1,1518 @@
+%!PS-Adobe-2.0%%Title: {DSK}<home>larry>lispcourse>OUTLINE15.PS%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate:  7-Nov-2023 21:40:03%%EndComments/bdef {bind def} bind def
+/ldef {load def} bdef
+/S /show ldef
+/M /moveto ldef
+/DR {transform round exch round exch itransform} bdef
+/L {gsave newpath setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/L1 {gsave newpath 0 setdash setgray setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/F {findfont exch scalefont setfont} bdef
+/CLP {newpath M dup 0 rlineto exch 0 exch rlineto
+  neg 0 rlineto closepath clip newpath} bdef
+/R {gsave setgray newpath M dup 0 rlineto exch 0 exch
+  rlineto neg 0 rlineto closepath eofill grestore} bdef
+/ellipsedict 9 dict def
+ellipsedict /mtrx matrix put
+/ellipse
+ { ellipsedict begin
+  /endangle exch def
+  /startangle exch def
+  /orientation exch def
+  /minorrad exch def
+  /majorrad exch def
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  orientation rotate
+  majorrad minorrad scale
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+ end } bdef
+/concatprocs
+ {/proc2 exch cvlit def
+  /proc1 exch cvlit def
+  /newproc proc1 length proc2 length add array def
+  newproc 0 proc1 putinterval
+  newproc proc1 length proc2 putinterval
+  newproc cvx
+ } bdef
+/resmatrix matrix def
+/findresolution
+ {72 0 resmatrix defaultmatrix dtransform
+  /yres exch def /xres exch def
+  xres dup mul yres dup mul add sqrt
+ } bdef
+/thebitimage
+ {/maskp exch def
+  /bihgt exch def
+  /biwid exch def
+  /byte 1 string def
+  /strbufl biwid 8 div ceiling cvi def
+  /strbuf strbufl string def
+  maskp not{{1 exch sub} currenttransfer concatprocs settransfer} if
+  biwid bihgt
+  maskp { true } { 1 } ifelse
+  [biwid 0 0 bihgt 0 0]
+  {/col 0 def
+   {currentfile byte readhexstring pop 0 get
+    dup 16#B2 eq {pop
+    currentfile byte readhexstring pop 0 get 1 add
+    currentfile byte readhexstring pop pop /nbyte byte 0 get def
+    { strbuf col nbyte put /col col 1 add def} repeat}
+   {dup 16#B3 eq {pop /col col
+    currentfile byte readhexstring pop
+    0 get add 1 add def}
+    {16#B4 eq {currentfile byte readhexstring pop pop} if
+     strbuf col byte 0 get put /col col 1 add def} ifelse
+   } ifelse
+   col strbufl ge { exit } if } loop
+   strbuf }
+  maskp { imagemask } { image } ifelse
+ } bdef
+/setuserscreendict 22 dict def
+setuserscreendict begin
+ /tempctm matrix def
+ /temprot matrix def
+ /tempscale matrix def
+end
+/setuserscreen
+ {setuserscreendict begin
+   /spotfunction exch def
+   /screenangle exch def
+   /cellsize exch def
+   /m tempctm currentmatrix def
+   /rm screenangle temprot rotate def
+   /sm cellsize dup tempscale scale def
+   sm rm m m concatmatrix m concatmatrix pop
+   1 0 m dtransform /y1 exch def /x1 exch def
+   /veclength x1 dup mul y1 dup mul add sqrt def
+   /frequency findresolution veclength div def
+   /newscreenangle y1 x1 atan def
+   m 2 get m 1 get mul m 0 get m 3 get mul sub
+   0 gt { { neg } /spotfunction load concatprocs
+          /spotfunction exch def } if
+   frequency newscreenangle /spotfunction load setscreen
+  end
+ } bdef
+/setpatterndict 18 dict def
+setpatterndict begin
+ /bitison
+  {/ybit exch def /xbit exch def
+   /bytevalue bstring ybit bwidth mul xbit 8 idiv add get def
+   /mask 1 7 xbit 8 mod sub bitshift def
+   bytevalue mask and 0 ne
+  } bdef
+end
+/bitpatternspotfunction
+ {setpatterndict begin
+   /y exch def /x exch def
+   /xindex x 1 add 2 div bpside mul 1 sub cvi def
+   /yindex y 1 add 2 div bpside mul 1 sub cvi def
+   xindex yindex bitison
+    {/onbits onbits 1 add def 1}
+    {/offbits offbits 1 add def 0} ifelse
+  end
+ } bdef
+/setpattern
+ {setpatterndict begin
+   /cellsz exch def
+   /angle exch def
+   /bwidth exch def
+   /bpside exch def
+   /bstring exch def
+   /onbits 0 def /offbits 0 def
+   cellsz angle /bitpatternspotfunction load setuserscreen
+   {} settransfer
+   offbits offbits onbits add div setgray
+  end
+ } bdef
+% - - - - - Fraction-setting code, to support NS fonts better - - - - -
+/fractiondict 20 dict def
+/fractionshow 
+{ fractiondict begin
+/denom exch def 
+/num exch def 
+/regfont currentfont def
+/fractfont currentfont [.65 0 0 .6 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(1) true charpath flattenpath pathbbox 
+/height exch def pop pop pop
+ grestore
+0 .4 height mul rmoveto
+fractfont setfont num show
+0 .4 height mul neg rmoveto regfont setfont (\244) show
+fractfont setfont denom show regfont setfont end } bdef
+/f14 { (1) (4) fractionshow } bdef
+/f12 { (1) (2) fractionshow } bdef
+/f34 { (3) (4) fractionshow } bdef
+/f18 { (1) (8) fractionshow } bdef
+/f38 { (3) (8) fractionshow } bdef
+/f58 { (5) (8) fractionshow } bdef
+/f78 { (7) (8) fractionshow } bdef
+/f13 { (1) (3) fractionshow } bdef
+/f23 { (2) (3) fractionshow } bdef
+/bboxdict 20 dict def
+/bboxchk { bboxdict begin
+/regfont currentfont def
+/chkfont currentfont [1.25 0 0 1.25 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(\161) true charpath flattenpath pathbbox 
+/height exch def pop pop pop 
+ grestore 
+ currentpoint 
+ .2 height mul .3 height mul rmoveto
+chkfont setfont (\063) show
+ moveto
+ regfont setfont
+(\161) show end } bdef
+/rencdict 15 dict def
+/encodefont { rencdict begin
+/newname exch def
+/oldfont exch def
+/newcodes [
+8#001 /Aacute
+8#002 /Acircumflex
+8#003 /Adieresis
+8#004 /Agrave
+8#005 /Aring
+8#006 /Atilde
+8#007 /Ccedilla
+8#010 /Eacute
+8#011 /Ecircumflex
+8#012 /Edieresis
+8#013 /Egrave
+8#014 /Iacute
+8#015 /Icircumflex
+8#016 /Idieresis
+8#017 /Igrave
+8#020 /Ntilde
+8#021 /Oacute
+8#022 /Ocircumflex
+8#023 /Odieresis
+8#024 /Ograve
+8#025 /Otilde
+8#026 /Scaron
+8#027 /Uacute
+8#030 /Ucircumflex
+8#031 /Udieresis
+8#032 /Ugrave
+8#033 /Ydieresis
+8#034 /Zcaron
+8#177 /periodinferior
+8#201 /aacute
+8#202 /acircumflex
+8#203 /adieresis
+8#204 /agrave
+8#205 /aring
+8#206 /atilde
+8#207 /ccedilla
+8#210 /eacute
+8#211 /ecircumflex
+8#212 /edieresis
+8#213 /egrave
+8#214 /iacute
+8#215 /icircumflex
+8#216 /idieresis
+8#217 /igrave
+8#220 /ntilde
+8#221 /oacute
+8#222 /ocircumflex
+8#223 /odieresis
+8#224 /ograve
+8#225 /otilde
+8#226 /scaron
+8#227 /uacute
+8#230 /ucircumflex
+8#231 /udieresis
+8#232 /ugrave
+8#233 /ydieresis
+8#234 /zcaron
+8#235 /Eth
+8#236 /eth
+8#237 /Thorn
+8#240 /thorn
+ ] def
+/olddict oldfont findfont def /newfont olddict maxlength dict def
+olddict { exch dup /FID ne { dup /Encoding eq
+{ exch dup length array copy newfont 3 1 roll put }
+{ exch newfont 3 1 roll put } ifelse }
+ { pop pop } ifelse } forall
+newfont /FontName newname put
+newcodes aload pop
+newcodes length 2 idiv { newfont /Encoding get 3 1 roll put } repeat 
+newname newfont definefont pop end } def
+ /accentdict 10 dict def 
+ /accentor { accentdict begin /scaler exch def /delta exch def 
+/unders exch def /accents exch def /mainch exch def /scrt (X) def
+ /w1 mainch stringwidth pop def 
+ currentpoint mainch show currentpoint 4 2 roll 
+accents { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         w1 w2 sub 2 div delta rmoveto scrt show 
+         /delta delta 150 scaler mul 9 div add def
+        } forall 
+unders { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         ch 46 eq { w1 w2 sub 2 div -175 scaler mul 9 div rmoveto scrt show 0 175 rmoveto }
+           { w1 w2 sub 2 div 0 rmoveto scrt show } ifelse 
+        } forall 
+ pop pop moveto end } def 
+%%EndProlog
+%%BeginSetup
+letter/imagesizefactor 1 def%%EndSetup/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+
+%%Page: 1 1
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+54000 75600 M (F.G.H.          ) S
+54000 73800 M (3/21/85) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (LispCourse #15:  Files and Directories \234 Part 1) S
+7200 67157 M (Basic Concepts) S
+10800 63957 M (What is a file?) S
+1200 /Times-Roman-Acnt F
+14400 61306 M (A file is a "place" where you keep information.) S
+14400 58906 M (A file is the basic unit of permanent external storage in Interlisp.) S
+14400 56506 M (A file is a bunch of information or data that should be manipulated in one chunk.) S
+14400 54106 M (A file is the basic organizational construct for storing data in Interlisp.) S
+14400 51706 M (???) S
+1400 /Times-Bold-Acnt F
+10800 49157 M (File Names) S
+1200 /Times-Roman-Acnt F
+14400 46506 M (Every file has a name.  In general, file names have two parts: a ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(name ) S
+1200 /Times-Roman-Acnt F
+( and an ) S
+1200 /Times-Italic-Acnt F
+14400 44706 M (extension.  ) S
+1200 /Times-Roman-Acnt F
+(Both the name and the extension are litatoms with no spaces or other ) S
+14400 42906 M (unusual characters such as Tabs, ":", ".", ","etc.) S
+14400 40306 M (In the file name, the name and the extension are seprated by a period \("."\).  For ) S
+14400 38506 M (example, ) S
+1200 /Times-Italic-Acnt F
+(FILE.EXT) S
+1200 /Times-Roman-Acnt F
+( is a file name. So is ) S
+1200 /Times-Italic-Acnt F
+(NewData3-3-85.TED) S
+1200 /Times-Roman-Acnt F
+(.  In this latter ) S
+14400 36706 M (example, ) S
+1200 /Times-Italic-Acnt F
+(NewData3-3-85) S
+1200 /Times-Roman-Acnt F
+( is the name part and ) S
+1200 /Times-Italic-Acnt F
+(TED) S
+1200 /Times-Roman-Acnt F
+( is the extension part.) S
+14400 34106 M (The extension part is optional.  ) S
+1200 /Times-Italic-Acnt F
+(XYZZY) S
+1200 /Times-Roman-Acnt F
+( is a perfectly good file name.) S
+14400 31506 M (The name part of the file name is usually used to indicate what the file contains.  ) S
+14400 29706 M (The extension part is usually indicative of the flavor of the file.  \(See discussion ) S
+14400 27906 M (of flavors below.\)) S
+14400 25306 M (Note that Interlisp is NOT case sensitive with respect to file names.  The file ) S
+14400 23506 M (FOO.BAR and the file Foo.Bar are the SAME file according to Interlisp.  ) S
+1400 /Times-Bold-Acnt F
+10800 20357 M (Flavors of files) S
+1200 /Times-Roman-Acnt F
+14400 17706 M (From one point of view, all files are alike:  they are an ordered stream of bits \(1s ) S
+14400 15906 M (and 0s\) that must be stored somewhere for later retrieval.) S
+14400 13306 M (From another point of view, there are many different ) S
+1200 /Times-Italic-Acnt F
+(flavors) S
+1200 /Times-Roman-Acnt F
+( of files.) S
+18000 10706 M (The pattern of 1s and 0s in a file is really a code) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(that stands for some ) S
+18000 8906 M (meaningful data or information.) S
+grestore savepage restore showpage
+
+%%Page: 2 2
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (2) S
+7200 75600 M (LispCourse #15:  Files and Directories \234 Part 1) S
+18000 71106 M (In order to extract the meaningful information in a file, we need to know ) S
+18000 69306 M (how to interpret the format of the bits in that file.) S
+18000 66706 M (Flavors of files arise because different files contain different kinds of ) S
+18000 64906 M (meaningful information and represent that information using differrent ) S
+18000 63106 M (codes and patterns of bits.) S
+18000 60506 M (Examples:) S
+21600 58506 M (TEdit files contain formatted text.) S
+21600 56506 M (Bravo files also contain formatted text) S
+25200 54706 M (\(but using a different "code" than TEdit files\)) S
+21600 52906 M (Lafite mail files contain a sequence of mail messages) S
+21600 50906 M (DCOM files contain compiled Lisp programs) S
+21600 48906 M (SYSOUT files contain Interlisp virtual memories) S
+18000 46306 M (Each of these types of file contains a different kind of information and/or ) S
+18000 44506 M (represents information using a different code.) S
+14400 41506 M (You alternate between these two viewpoints when dealing with files in Interlisp, ) S
+14400 39706 M (depending on whether you are dealing with the ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(file) S
+1200 /Times-Roman-Acnt F
+( itself  or with the ) S
+1200 /Times-Italic-Acnt F
+(information ) S
+14400 37906 M (in the file.) S
+1200 /Times-Roman-Acnt F
+18000 35306 M (A function like COPYFILE deals with the ) S
+1200 /Times-Italic-Acnt F
+(file itself) S
+1200 /Times-Roman-Acnt F
+( and therefore treats a ) S
+18000 33506 M (file like a  stream of bits to be copied from one location to another.  Thus ) S
+18000 31706 M (COPYFILE is very general and can operate on files of any flavor.) S
+18000 28906 M (Functions like TEdit, LOAD, and LAFITE make use of the ) S
+1200 /Times-Italic-Acnt F
+(information ) S
+18000 27106 M (within a file) S
+1200 /Times-Roman-Acnt F
+( and therefore work only with files of certain flavors.  They ) S
+18000 25306 M (will totally misinterpret files of the wrong flavor.  Or worse, they often ) S
+18000 23506 M (crash when processing files of the wrong flavor.) S
+14400 20306 M (The flavor of a file is \(in Interlisp\) ) S
+1200 /Times-Italic-Acnt F
+(intensionally) S
+1200 /Times-Roman-Acnt F
+( defined.  There is no way \(other ) S
+14400 18506 M (than naming conventions\) to specifically declare a file to be of a particular flavor.) S
+18000 15906 M (The system itself treats all files as bit streams.  This bit stream will be ) S
+18000 14106 M (interpreted as meaningful information or as garbage depending on what ) S
+18000 12306 M (function you use to access it.) S
+grestore savepage restore showpage
+
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (3) S
+7200 75600 M (LispCourse #15:  Files and Directories \234 Part 1) S
+18000 71106 M (For example, you can access a DCOM file using TEdit, but it will appears ) S
+18000 69306 M (as \(mostly\) garbage in the TEdit window.  Similarly, you can read in a ) S
+18000 67506 M (TEdit file using LOAD, but in all probablilty the LOAD will bomb in a ) S
+18000 65706 M (very short time.) S
+18000 63106 M (Its up to each user to use TEdit on files that are meant to be TEdit files and ) S
+18000 61306 M (to use LOAD on files that are meant to be Lisp files.) S
+18000 58706 M (The system provides only minimal help in helping you with this task!!  ) S
+18000 56906 M (The most you can expect is that a function will detect and informa you ) S
+18000 55106 M (that you have asked it to work on a fuile it can't interpret.) S
+14400 51906 M (To overcome the lack of the distinction between flavors of files, the ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(convention) S
+1200 /Times-Roman-Acnt F
+( ) S
+14400 50106 M (has been established that the extension of each file name \(see discussion of file ) S
+14400 48306 M (names below\) gives some indication of the file's flavor.) S
+18000 45906 M (Examples:) S
+21600 43506 M (TEdit files end in .TED or .TEDIT) S
+21600 41306 M (DCOM files end in .DCOM) S
+21600 39106 M (SYSOUT files end in .SYSOUT) S
+21600 36906 M (Lafite files end in .MAIL) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+10800 33557 M (Devices) S
+1200 /Times-Roman-Acnt F
+14400 30906 M (The stream of bits that makes up a file has to be stored on some ) S
+1200 /Times-Italic-Acnt F
+("physical") S
+1200 /Times-Roman-Acnt F
+( device ) S
+14400 29106 M (such as a floppy, a disk, a file server, etc.) S
+14400 26506 M (Interlisp supports file storage on many different kinds of devices.) S
+14400 23906 M (Interlisp also tries to make file storage on all of the different devices behave as ) S
+14400 22106 M (similarly as possible.) S
+18000 19706 M (But different devices have different characteristics, both hardware and ) S
+18000 17906 M (software, and Interlisp cannot always cover up these differences. ) S
+18000 15506 M (So.  How you use files in Interlisp depends a little bit on what device the ) S
+18000 13706 M (file is stored on.  ) S
+18000 11306 M (Moreover, as you move a file from device to device, its characteristics ) S
+18000 9506 M (may change slightly.) S
+grestore savepage restore showpage
+
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (4) S
+7200 75600 M (LispCourse #15:  Files and Directories \234 Part 1) S
+18000 71106 M (I will try to point out these device-dependencies as we go along.) S
+14400 68106 M (The devices supported by Interlisp-D are the following:) S
+18000 65706 M (Local Disk) S
+1200 /Times-Roman-Acnt F
+21600 63306 M (DLion local disk \234 1 or more logical volumes used for Lisp files) S
+21600 60906 M (Dolphin local disk \234 2 Alto partitions) S
+21600 58506 M (Dorado local disk \234 5 or 19 Alto partitions) S
+18000 55906 M (File Servers) S
+1200 /Times-Roman-Acnt F
+21600 53506 M (IFS \234 e.g., Phylum, Eris, etc.) S
+21600 51106 M (NS \234 e.g., LispFiles:, StarFiles:) S
+21600 48706 M (Vax \(Unix\) \234 e.g., PARC-CSLI, PARC-VAXC) S
+18000 46106 M (Floppy Disks \(Dlion only\)) S
+18000 43506 M (Core Devices \(simulated devices in the Lisp virtual  memory\)) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 40506 M (Device Names) S
+1200 /Times-Roman-Acnt F
+(:) S
+18000 38106 M (All devices have a name.  When used to refer to a file, the name of the ) S
+18000 36306 M (device is enclosed in curly-brackets.  The device name conventions are as ) S
+18000 34506 M (follows:) S
+18000 32106 M (Local Disk) S
+1200 /Times-Roman-Acnt F
+21600 29706 M (DLion local disk \234 {DSK}) S
+21600 27306 M (Dolphin local disk \234 {DSK}, {DSK1}, {DSK2}) S
+21600 24906 M (Dorado local disk \234 {DSK}, {DSK) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(i) S
+1200 /Times-Roman-Acnt F
+(}) S
+18000 22306 M (File Servers) S
+1200 /Times-Roman-Acnt F
+21600 19906 M (IFS \234 the name of the server, e.g., {Phylum}, {Eris}, etc.) S
+21600 17506 M (NS \234 the NS network adderess of the server or its abbreviation as in ) S
+21600 15706 M ({LispFiles:PARC:Xerox} or {LispFiles:} for short.  Note the ) S
+21600 13906 M (abbreviated name always ends in a ":".) S
+21600 11506 M (Vax \(Unix\) \234 the name of the machine, e.g., {PARC-CSLI}, ) S
+21600 9706 M ({PARC-VAXC}) S
+grestore savepage restore showpage
+
+%%Page: 5 5
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (5) S
+7200 75600 M (LispCourse #15:  Files and Directories \234 Part 1) S
+18000 71106 M (Floppy Disks \234 {FLOPPY}) S
+18000 68506 M (Core Devices \234 more than one core device can be created using the function ) S
+18000 66706 M (COREDEVICE. The name of the core device is set by this function.  See ) S
+18000 64906 M (p. 18.13 of the IRM.  The device {CORE} is already created in every ) S
+18000 63106 M (system.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+10800 59757 M (Directories) S
+1200 /Times-Roman-Acnt F
+14400 57106 M (Different devices organize the files they contain in different ways.) S
+14400 54506 M (Some devices use a ) S
+1200 /Times-Bold-Acnt F
+(flat ) S
+1200 /Times-Roman-Acnt F
+(organization, i.e., the files are just stored on the device ) S
+14400 52706 M (one after the other.  On some devices the files are ordered \(e.g., alphabetically\).  ) S
+14400 50906 M (On some devices the files are randomly ordered.) S
+18000 48306 M (Example:) S
+21600 46306 M (   {DSK}) S
+21600 44906 M (ACCOUNTANT.RUN;1 ) S
+21600 43506 M (ALTOD0MC.EB;1 ) S
+21600 42106 M (ALTOD1MC.EB;1 ) S
+21600 40706 M (CHAT.RUN;1 ) S
+21600 39306 M (Com.cm;1 ) S
+21600 37906 M (DiskDescriptor.;1 ) S
+21600 36506 M (DoradoLisp.MB;1 ) S
+21600 35106 M (DORADOLISPMC.EB;1 ) S
+21600 33706 M (Dumper.boot;1 ) S
+21600 32306 M (EMPRESS.RUN;1 ) S
+21600 30906 M (Executive.Run;1 ) S
+21600 29506 M (Fonts.Widths;1 ) S
+21600 28106 M (FOOTNOTES.TEDIT;2 ) S
+21600 26706 M (FOOTNOTES.TEDIT;1 ) S
+21600 25306 M (Ftp.log;1 ) S
+21600 23906 M (Ftp.Run;1 ) S
+21600 22506 M (INIT.LISP;1 ) S
+21600 21106 M (LISP.RUN;1 ) S
+21600 19706 M (LISP.SYMS;1 ) S
+21600 18306 M (LISP.VIRTUALMEM;1 ) S
+21600 16906 M (Rem.Cm;1 ) S
+21600 15506 M (Swat.;1 ) S
+21600 14106 M (Swatee.;1 ) S
+21600 12706 M (Sys.Boot;1 ) S
+21600 11306 M (SYS.ERRORS;1 ) S
+21600 9906 M (SysDir.;1 ) S
+21600 8506 M (SysFont.Al;1 ) S
+grestore savepage restore showpage
+
+%%Page: 6 6
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (6) S
+7200 75600 M (LispCourse #15:  Files and Directories \234 Part 1) S
+21600 71106 M (User.Cm;1 ) S
+14400 66506 M (However, most devices use ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(directories ) S
+1200 /Times-Roman-Acnt F
+(and) S
+1200 /Times-Bold-Acnt F
+( subdirectories) S
+1200 /Times-Roman-Acnt F
+( to organize the files ) S
+14400 64706 M (they contain into logical groupings:) S
+18000 62106 M (Basically a ) S
+1200 /Times-Bold-Acnt F
+(directory ) S
+1200 /Times-Roman-Acnt F
+(is just a ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(list ) S
+1200 /Times-Roman-Acnt F
+(of 1 or more files that are stored ) S
+18000 60306 M (together in the same logical "place" on the device.) S
+18000 57706 M (A ) S
+1200 /Times-Bold-Acnt F
+(subdirectory) S
+1200 /Times-Roman-Acnt F
+( is a ) S
+1200 /Times-Italic-Acnt F
+(list) S
+1200 /Times-Roman-Acnt F
+( of 1 or more files from a single directory that are ) S
+18000 55906 M (stored together in the same logical "place" within that ) S
+1200 /Times-Italic-Acnt F
+(directory.) S
+1200 /Times-Roman-Acnt F
+14400 53306 M (Every directory and sub-directory has a name, which is usually a short atom.) S
+14400 50706 M (Directories and subdirectories organize the files on a device into a tree structure.  ) S
+14400 48906 M (The device is divided into a set of directories.  Each directory is sub-divided into ) S
+14400 47106 M (zero or more sub-directories.  Each sub-directory is in turn divided into zero or ) S
+14400 45306 M (more sub-sub-directories.  Files can be placed in any directory or sub-directory in ) S
+14400 43506 M (this tree structure.) S
+grestore savepage restore showpage
+
+%%Page: 7 7
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 8 8
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (7) S
+7200 75600 M (LispCourse #15:  Files and Directories \234 Part 1) S
+18000 71106 M (Diagramatically:) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 24400 59300 M
+stroke
+grestore
+24400 66500 24400 59300 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 24400 66500 M
+stroke
+grestore
+23600 67314.0 M (...) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 22800 36900 M
+stroke
+grestore
+24400 36900 22800 36900 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 24400 36900 M
+stroke
+grestore
+24400 59300 24400 36900 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 24400 59300 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 24400 59300 M
+stroke
+grestore
+27600 59300 24400 59300 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 27600 59300 M
+stroke
+grestore
+28400 59314.0 M (Halasz) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 32400 59300 M
+stroke
+grestore
+36400 57700 32400 59300 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 36400 57700 M
+stroke
+grestore
+36400 57700 32400 59300 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 32400 59300 M
+stroke
+grestore
+36400 50500 32400 59300 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 36400 50500 M
+stroke
+grestore
+36400 50500 32400 59300 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 32400 59300 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 36400 44900 M
+stroke
+grestore
+36400 44900 32400 59300 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 32400 59300 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 36400 40100 M
+stroke
+grestore
+36400 40100 32400 59300 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 32400 59300 M
+stroke
+grestore
+37200 66514.0 M (Diss) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 32400 59300 M
+stroke
+grestore
+37200 66500 32400 59300 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 37200 66500 M
+stroke
+grestore
+36400 57714.0 M (Admin) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 40400 57700 M
+stroke
+grestore
+46000 60100 40400 57700 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 46000 60100 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 40400 57700 M
+stroke
+grestore
+46000 56900 40400 57700 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 46000 56900 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 40400 66500 M
+stroke
+grestore
+46000 66500 40400 66500 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 46000 66500 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 40400 66500 M
+stroke
+grestore
+46000 64100 40400 66500 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 46000 64100 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 40400 66500 M
+stroke
+grestore
+46000 68900 40400 66500 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 46000 68900 M
+stroke
+grestore
+46800 49714.0 M (Lisp.Mail) S
+36400 50514.0 M (Lafite) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 40400 50500 M
+stroke
+grestore
+46000 49700 40400 50500 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 46000 49700 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 40400 50500 M
+stroke
+grestore
+46000 52100 40400 50500 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 46000 52100 M
+stroke
+grestore
+46800 52114.0 M (Active.MAIL) S
+46800 56914.0 M (PAs) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 50000 56900 M
+stroke
+grestore
+52400 57700 50000 56900 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 52400 57700 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 50000 56900 M
+stroke
+grestore
+52400 56100 50000 56900 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 52400 56100 M
+stroke
+grestore
+46800 60114.0 M (XSIS.Letter) S
+46800 64114.0 M (Chapter3.TED) S
+46800 66514.0 M (Chapter2.TED) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 24400 21700 M
+stroke
+grestore
+24400 36900 24400 21700 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 24400 36900 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 34800 34500 M
+stroke
+grestore
+39600 36900 34800 34500 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 39600 36900 M
+stroke
+grestore
+39600 36900 34800 34500 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 34800 34500 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 39600 36900 M
+stroke
+grestore
+42000 36100 39600 36900 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 42000 36100 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 42000 36100 M
+stroke
+grestore
+43600 36900 42000 36100 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 43600 36900 M
+stroke
+grestore
+45200 37700 43600 36900 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 45200 37700 M
+stroke
+grestore
+46000 37714.0 M (...) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 39600 36900 M
+stroke
+grestore
+41200 38500 39600 36900 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 41200 38500 M
+stroke
+grestore
+42000 38514.0 M (...) S
+36400 40114.0 M (SIGCHI83.SKETCH) S
+36400 44914.0 M (APATalk.TED) S
+53200 55314.0 M (PA1984.TED) S
+53200 57714.0 M (PA1983.TED) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 31600 21700 M
+stroke
+grestore
+34800 24900 31600 21700 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 34800 24900 M
+stroke
+grestore
+35600 24914.0 M (...) S
+42800 28914.0 M (...) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 39600 30500 M
+stroke
+grestore
+42000 28900 39600 30500 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 42000 28900 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 39600 30500 M
+stroke
+grestore
+42000 31300 39600 30500 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 42000 31300 M
+stroke
+grestore
+42800 31314.0 M (...) S
+40400 33714.0 M (...) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 24400 34500 M
+stroke
+grestore
+27600 34500 24400 34500 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 27600 34500 M
+stroke
+grestore
+27600 34500 27600 34500 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 27600 34500 M
+stroke
+grestore
+28400 34514.0 M (NoteCards) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 34800 34500 M
+stroke
+grestore
+39600 33700 34800 34500 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 39600 33700 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 34800 34500 M
+stroke
+grestore
+39600 30500 34800 34500 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 39600 30500 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 24400 21700 M
+stroke
+grestore
+24400 19300 24400 21700 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 24400 19300 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 24400 21700 M
+stroke
+grestore
+27600 21700 24400 21700 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 27600 21700 M
+stroke
+grestore
+28400 21714.0 M (ARI) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 31600 21700 M
+stroke
+grestore
+36400 19300 31600 21700 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 36400 19300 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 31600 21700 M
+stroke
+grestore
+36400 21700 31600 21700 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 36400 21700 M
+stroke
+grestore
+37200 21714.0 M (...) S
+23600 18514.0 M (...) S
+37200 19314.0 M (...) S
+18000 36914.0 M (Phylum) S
+grestore savepage restore showpage
+
+%%Page: 9 9
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 10 10
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (8) S
+7200 75600 M (LispCourse #15:  Files and Directories \234 Part 1) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 71106 M (Path Names) S
+1200 /Times-Roman-Acnt F
+18000 68506 M (The directory or sub-directory that a file is located in can be uniquely ) S
+18000 66706 M (specified by a path that starts at the top-level directory and includes each ) S
+18000 64906 M (sub-directory in turn until the file is reached in the tree structure.) S
+18000 62506 M (When refering to this path name, the directory name is enclosed in angle ) S
+18000 60706 M (brackets, while each sub-directory is terminated by an end angle bracket.) S
+18000 58306 M (Examples:) S
+21600 56106 M (PA1984.TED is in <Halasz>Admin>PAs>) S
+21600 53906 M (APA.Talk is in <Halasz>) S
+21600 51706 M (Lisp.mail is in <Halasz>Lafite>) S
+1200 /Times-Bold-Acnt F
+14400 48106 M (Creating Directories/Sub-directories:) S
+1200 /Times-Roman-Acnt F
+18000 45106 M (On some devices directories and sub-directories have to be explicitly ) S
+18000 43306 M (created before any files can be entered into them.  The method for creating  ) S
+18000 41506 M (directories and sub-directories differs between devices.  On some devices, ) S
+18000 39706 M (e.g., IFSs, it requires an administrator with special priveleges to create a ) S
+18000 37906 M (new directory.) S
+21600 35506 M (Directories that are created explicitly remain even if they have no ) S
+21600 33706 M (files in them, e.g., after the last file in the directory/sub-directory ) S
+21600 31906 M (has been deleted.) S
+18000 29106 M (On devices that don't require directories and/or sub-directories to be ) S
+18000 27306 M (explicitly created, you can create directories and/or sub-directories simply ) S
+18000 25506 M (by creating a file that has the new directory/sub-directory as part of its ) S
+18000 23706 M (name.  The directory and/or sub-directory will be created when the file is ) S
+18000 21906 M (created.) S
+21600 19506 M (Directories/sub-directories that are created implicitly by naming a ) S
+21600 17706 M (file disappear after the last file with the directory/sub-directory in ) S
+21600 15906 M (its name is deleted.) S
+18000 12506 M (The various devices and their directory types are as follows:) S
+21600 9506 M (Local Disk) S
+grestore savepage restore showpage
+
+%%Page: 11 11
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (9) S
+7200 75600 M (LispCourse #15:  Files and Directories \234 Part 1) S
+25200 71106 M (DLion \234  directories are logical volumes on disk created ) S
+25200 69306 M (during intial disk partitioning; sub-directories are created ) S
+25200 67506 M (implictly by naming.) S
+25200 64506 M (Dolphin/Dorado \234 each Alto parition is a separate device ) S
+25200 62706 M (\(named DSK1 thru DSK) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(n) S
+1200 /Times-Roman-Acnt F
+(\).  No directories are supported ) S
+25200 60906 M (within these devices, i.e., each device has a FLAT ) S
+25200 59106 M (structure.) S
+21600 56106 M (File Servers) S
+25200 53106 M (IFS \234 directories are created explicitly by an IFS ) S
+25200 51306 M (adminstrator, subdirectories are created implicitly by ) S
+25200 49506 M (naming.) S
+25200 46506 M (NS \234 directories \(called file drawers\) are created explicitly ) S
+25200 44706 M (by an administrator, sub-directories are created explicitly ) S
+25200 42906 M (by naming.  Note, however, deleting the last file from a ) S
+25200 41106 M (sub-directory DOES NOT delete the sub-directory.) S
+25200 38106 M (Vax \(Unix\) \234 directories are created explicitly by an ) S
+25200 36306 M (administrator, sub-directories are created explicitly by the ) S
+25200 34506 M (user.  To create a sub-directory, you must log into the Vax ) S
+25200 32706 M (and use the Unix mkdir command.) S
+21600 29506 M (Floppy Disks \234 support either a flat file structure or a hierarchical ) S
+21600 27706 M (\(directory/sub-directory\) file structure or both.  Both directories ) S
+21600 25906 M (and sub-directories are created implicitly by naming. ) S
+21600 23306 M (Core Devices  \234  support either a flat file structure or a hierarchical ) S
+21600 21506 M (\(directory/sub-directory\) file structure or both.  Both directories ) S
+21600 19706 M (and sub-directories are created implicitly by naming.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+10800 16357 M (Versions) S
+1200 /Times-Roman-Acnt F
+14400 13706 M (Interlisp supports file ) S
+1200 /Times-Bold-Acnt F
+(versions.) S
+1200 /Times-Roman-Acnt F
+(  That is, Interlisp allows two files with the same ) S
+14400 11906 M (name to be on the same device in the same directory/sub-directory.) S
+grestore savepage restore showpage
+
+%%Page: 12 12
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (10) S
+7200 75600 M (LispCourse #15:  Files and Directories \234 Part 1) S
+14400 71106 M (When this happens, the files are considered to be different ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(versions) S
+1200 /Times-Roman-Acnt F
+( of the same ) S
+14400 69306 M (file.) S
+1200 /Times-Roman-Acnt F
+14400 66706 M (Every file has a ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(version number) S
+1200 /Times-Roman-Acnt F
+(.  When a file of a given name in a given ) S
+14400 64906 M (device/directory is first created, it is given a version number of 1.  When a new ) S
+14400 62957 M (version is created, it is assigned a version number one higher than th) S
+1400 /Times-Roman-Acnt F
+(e ) S
+1200 /Times-Roman-Acnt F
+(highest ) S
+14400 61106 M (version already in existence.) S
+14400 58506 M (In Interlisp, the version number is specified after the file name, preceded by a ) S
+14400 56706 M (semi-colon.  For example, ) S
+1200 /Times-Italic-Acnt F
+(TESTFILE.TED;3 ) S
+1200 /Times-Roman-Acnt F
+(and) S
+1200 /Times-Italic-Acnt F
+( TESTFILE.TED;4 ) S
+1200 /Times-Roman-Acnt F
+(are two ) S
+14400 54906 M (versions of the same file.  ) S
+1200 /Times-Italic-Acnt F
+(NewFile;6 ) S
+1200 /Times-Roman-Acnt F
+(and ) S
+1200 /Times-Italic-Acnt F
+(NewFile;8) S
+1200 /Times-Roman-Acnt F
+( are two versions of another ) S
+14400 53106 M (file.) S
+14400 50506 M (Different versions of the "same" file are actually totally separate files and could ) S
+14400 48706 M (be treated as such.  Version1 of a file could be a TEdit file and version 2 a DCOM ) S
+14400 46906 M (file.) S
+14400 44706 M (However, this would violate the ) S
+1200 /Times-Italic-Acnt F
+(intent) S
+1200 /Times-Roman-Acnt F
+( of versioning.  Different versions of a file ) S
+14400 42906 M (are supposed to be different versions \(e.g., updates\) of the "same" information.  ) S
+14400 41106 M (Lots of little things in Interlisp support this notion.  ) S
+18000 38906 M (Examples:) S
+21600 36706 M (When you name a file without a version number, Interlisp always ) S
+21600 34906 M (thinks you mean the latest version of the file.  To get to an earlier ) S
+21600 33106 M (version of a file, you have to specify the exact version number.  ) S
+1000 /Times-Roman-Acnt F
+21600 31455 M (\(Execption is in deleteing a file, where Interlisp always assumnes you mean the ) S
+21600 29855 M (lowest version number unless otherwise specified.\)) S
+1200 /Times-Roman-Acnt F
+21600 27306 M (When you PUT a file, TEdit just writes a new version of the file.  ) S
+21600 25506 M (The old \(unedited\) version still exists.) S
+21600 22906 M (When you do a MAKEFILE, the system just writes a new version ) S
+21600 21106 M (of the file.  The old \(i.e., previous\) version still exists and can still ) S
+21600 19306 M (be LOADed by specifiying its version number in the LOAD ) S
+21600 17506 M (command.) S
+1400 /Times-Bold-Acnt F
+10800 14157 M (Full File Names) S
+1200 /Times-Roman-Acnt F
+14400 11506 M (A file is uniquely specified by a full file name containing the name of the device ) S
+14400 9706 M (its on, its path name, its file name and its version.) S
+grestore savepage restore showpage
+
+%%Page: 13 13
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (11) S
+7200 75600 M (LispCourse #15:  Files and Directories \234 Part 1) S
+14400 71106 M (For example, ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+({phylum}<halasz>lisp>init.lisp;4) S
+1200 /Times-Roman-Acnt F
+( is a full file name.  ) S
+1200 /Times-Italic-Acnt F
+14400 69306 M ({DSK}FOO.TED;3) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Italic-Acnt F
+({FLOPPY}<FOO>BAZ;55) S
+1200 /Times-Roman-Acnt F
+( are also full file names.) S
+14400 66706 M (Ultimately ALL file references in Interlisp MUST specify a full file name.  If this ) S
+14400 64906 M (wasn't the case, there would be ambiguity as to which file was being referenced.) S
+14400 62306 M (However, Interlisp allows elliptical references to files that allow you to use much ) S
+14400 60506 M (less than the full file name when refering to a file.) S
+18000 58106 M (For example, if a version number is not specified, Interlisp assumes you ) S
+18000 56306 M (mean the highest version number.) S
+18000 53906 M (Also, Interlisp will use your connected directory \(see the CONN command ) S
+18000 52106 M (below\) if you don't specify a device and directory.) S
+21600 49706 M (Thus, the name ) S
+1200 /Times-Italic-Acnt F
+(FOO.BAR) S
+1200 /Times-Roman-Acnt F
+( may be an allowable abbreviation of ) S
+1200 /Times-Italic-Acnt F
+21600 47906 M ({phylum}<halasz>lisp>foo.bar;5) S
+1200 /Times-Roman-Acnt F
+( if you are connected to ) S
+21600 46106 M ({phylum}<halasz>lisp> and 5 is the highest version of FOO.BAR ) S
+21600 44306 M (in {phylum}<halasz>lisp>.) S
+18000 41906 M (Note: it almost NEVER hurst to specify the full file name of a file if you ) S
+18000 40106 M (know it.) S
+14400 36906 M (Reminder Note: Interlisp is not case-sensitive with regard to file names.) S
+grestore savepage restore showpage
+
+%%Page: 14 14
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 15 15
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (12) S
+7200 75600 M (LispCourse #15:  Files and Directories \234 Part 1) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+10800 70957 M (File Attributes) S
+1200 /Times-Roman-Acnt F
+14400 68306 M (In addition to their name, all files have some attributes.  The attributes attached to ) S
+14400 66506 M (a file depend somewhat on the device the file is on.  However, in general a file ) S
+14400 64706 M (has the following attributes:) S
+1200 /Times-Bold-Acnt F
+18000 62106 M (SIZE) S
+1200 /Times-Roman-Acnt F
+( \234 the size of the file in disk pages \(512 bytes each\)) S
+1200 /Times-Bold-Acnt F
+18000 59506 M (LENGTH) S
+1200 /Times-Roman-Acnt F
+( \234 the length of the file in bytes \(~ 512 times its size\).) S
+1200 /Times-Bold-Acnt F
+18000 56906 M (AUTHOR) S
+1200 /Times-Roman-Acnt F
+( \234 login name of person who created this file) S
+1200 /Times-Bold-Acnt F
+18000 54306 M (CREATIONDATE) S
+1200 /Times-Roman-Acnt F
+( \234 the date and time of the creation of the file.) S
+1200 /Times-Bold-Acnt F
+18000 51706 M (READDATE) S
+1200 /Times-Roman-Acnt F
+( \234 the date and time when this file was last read.) S
+1200 /Times-Bold-Acnt F
+18000 49106 M (WRITEDATE) S
+1200 /Times-Roman-Acnt F
+( \234 the date and time when this file was last written to.) S
+1200 /Times-Bold-Acnt F
+18000 46506 M (TYPE) S
+1200 /Times-Roman-Acnt F
+( \234 text or binary \(to help along some older computers and file servers ) S
+18000 44706 M (for which this was an important distinction\)) S
+1200 /Times-Bold-Acnt F
+18000 42106 M (BYTESIZE) S
+1200 /Times-Roman-Acnt F
+( \234 in Interlisp-D always 8, but some older computers and file ) S
+18000 40306 M (servers allow other sizes.) S
+14400 37706 M (The attributes of a file can be seen using the FILEBROWSER or the DIR ) S
+14400 35906 M (command.  Both of these are described below.) S
+14400 33306 M (You can also access the attributes of a file one at a time using the function ) S
+14400 31506 M (GETFILEINFO which has two arguments: the \(full\) file name and the name of ) S
+14400 29706 M (the attribute you want to see.) S
+18000 27506 M (Example:) S
+21600 25306 M (10_ \(GETFILEINFO '<halasz>lisp>init 'SIZE\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 23506 M (15) S
+1200 /Times-Roman-Acnt F
+21600 21706 M (11_) S
+14400 19106 M (In general, you do not change the attributes of a file directly.  The attributes ) S
+14400 17306 M (change as you work with the file, e.g., as you add information to the file, its size ) S
+14400 15506 M (increases.) S
+grestore savepage restore showpage
+
+%%Page: 16 16
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 17 17
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (13) S
+7200 75600 M (LispCourse #15:  Files and Directories \234 Part 1) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+10800 70957 M (File Protection) S
+1200 /Times-Roman-Acnt F
+14400 68306 M (Some devices allow an additional set of attributes for a file: ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(the protection code) S
+1200 /Times-Roman-Acnt F
+(.  ) S
+14400 66506 M (The protection code of a file determines who can read or write the file.) S
+14400 63906 M (Protection schemes vary from device to device.  ) S
+14400 61306 M (On the Local Disk, Floppy and Core devices there are no protection codes for ) S
+14400 59506 M (files.  Basically, anyone can read or write onto any file on these devices.) S
+18000 56906 M (There is some protection for Dolphin/Dorado local disks since whole Alto ) S
+18000 55106 M (partitions are passworded.  You cannot read from or write to any file on an ) S
+18000 53306 M (Alto partition \(i.e., on {DSK) S
+1200 /Times-Italic-Acnt F
+(i) S
+1200 /Times-Roman-Acnt F
+(} for any ) S
+1200 /Times-Italic-Acnt F
+(i) S
+1200 /Times-Roman-Acnt F
+(\) unless you can supply the ) S
+18000 51506 M (password for that partition.  However, once you give the correct password, ) S
+18000 49706 M (all the files on that partitin can be accessed at will.) S
+14400 47106 M (On the IFS file servers, a file has three separate protections:) S
+18000 44906 M ( a ) S
+1200 /Times-Italic-Acnt F
+(read ) S
+1200 /Times-Roman-Acnt F
+(protection \234 who can read from this file) S
+18000 42706 M (a ) S
+1200 /Times-Italic-Acnt F
+(write) S
+1200 /Times-Roman-Acnt F
+( protection \234who can write on this file) S
+18000 40506 M (an ) S
+1200 /Times-Italic-Acnt F
+(append) S
+1200 /Times-Roman-Acnt F
+( protection \234  who can append something to the end of this file) S
+14400 37906 M (Each of these is a list of people or distribution lists who have the permission carry ) S
+14400 36106 M (out the specified action.  The list is either a person's grapevine name \(e.g., ) S
+14400 34306 M (Halasz.pa\), a grapevine distribution list \(e.g., USR^.pa\), the atom ) S
+1200 /Times-Italic-Acnt F
+(owner) S
+1200 /Times-Roman-Acnt F
+( ) S
+14400 32506 M (\(indicating the AUTHOR of the file\), or the atom ) S
+1200 /Times-Italic-Acnt F
+(USRegistries^.Internet ) S
+1200 /Times-Roman-Acnt F
+14400 30706 M (\(basically indicating anyone with access to the Xerox network\).) S
+14400 27706 M (For example, ) S
+1200 /Times-Italic-Acnt F
+({phylum}<halasz>lisp>init) S
+1200 /Times-Roman-Acnt F
+( has the protection:) S
+1200 /Times-Italic-Acnt F
+20730 24906 M (R: USRegistries^.Internet Owner; W: Owner; A: Owner) S
+1200 /Times-Roman-Acnt F
+18000 22106 M (This means that any one in the Xerox world can read this file but only I ) S
+18000 20306 M (\(as owner of the file\) can write or append to it.) S
+14400 17706 M (But, ) S
+1200 /Times-Italic-Acnt F
+({ERIS}<LispCore>next>full.sysout) S
+1200 /Times-Roman-Acnt F
+( has the protection:) S
+1200 /Times-Italic-Acnt F
+16574 15106 M (R: Lispcore^.pa LispCoreAccess^.pa Owner; W: Lispcore^.pa Owner; A: ) S
+29313 13306 M (Lispcore^.pa Owner) S
+grestore savepage restore showpage
+
+%%Page: 18 18
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (14) S
+7200 75600 M (LispCourse #15:  Files and Directories \234 Part 1) S
+18000 71106 M (This means that any one on the distribution lists called Lispcore^.pa and ) S
+18000 69306 M (LispCoreAccess^.pa can read this file but only people on Lispcore^.pa ) S
+18000 67506 M (\(and its owner whoever it may be\) can write or append to it.) S
+14400 64706 M (To list or change the protection of a file on an IFS, you have to CHAT to the IFS.) S
+18000 61906 M (To see the protection codes of a file type:) S
+25200 59106 M (List ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(FileName,) S
+1200 /Times-Roman-Acnt F
+(<RETURN>) S
+21600 56306 M (The IFS will respond with a @@ prompt.) S
+21600 53506 M (Type:) S
+25200 50706 M (Protection<RETURN><RETURN>) S
+21600 47906 M (This will list the file with its protection codes as above.) S
+18000 44306 M (To change the protection codes type:) S
+25200 41506 M (Change Protection ) S
+1200 /Times-Italic-Acnt F
+(FileName) S
+1200 /Times-Roman-Acnt F
+(<RETURN>) S
+21600 38706 M (The IFS will respond with the @@ prompt.) S
+21600 35906 M (Type:) S
+25200 33106 M (Write ) S
+1200 /Times-Italic-Acnt F
+(PersonOrDistList) S
+1200 /Times-Roman-Acnt F
+(<RETURN><RETURN>) S
+21600 30306 M (This will add the designated person/group to the WRITE ) S
+21600 28506 M (permission list of the file.  Use ) S
+1200 /Times-Italic-Acnt F
+(Read) S
+1200 /Times-Roman-Acnt F
+( or ) S
+1200 /Times-Italic-Acnt F
+(Append) S
+1200 /Times-Roman-Acnt F
+( instead of ) S
+1200 /Times-Italic-Acnt F
+(Write) S
+1200 /Times-Roman-Acnt F
+( to ) S
+21600 26706 M (change the Read and Append protections.  If the Read, Write, or ) S
+21600 24906 M (Append is preceded by a ) S
+1200 /Times-Italic-Acnt F
+(No) S
+1200 /Times-Roman-Acnt F
+(, then the designated group/person is ) S
+21600 23106 M (remioved from the permission list.  \(E.g., ) S
+1200 /Times-Italic-Acnt F
+(No Read LispCore^.pa) S
+1200 /Times-Roman-Acnt F
+(\).) S
+14400 20306 M (The Vax and NS file servers have similar, but different protection schemes.  See ) S
+14400 18506 M (you file server administartor for information on the relevant protection schemes ) S
+14400 16706 M (and how to use them.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 12957 M (References) S
+grestore savepage restore showpage
+
+%%Page: 19 19
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (15) S
+7200 75600 M (LispCourse #15:  Files and Directories \234 Part 1) S
+10800 71106 M (Files are covered in Chapter 6 and Sections 18.16 and 18.17 of the IRM.  User relevant ) S
+10800 69306 M (material is scattered throughout these sections, so you'll just have to skim for what you're ) S
+10800 67506 M (interested in.) S
+10800 65106 M (The file protection scheme for the IFS is covered in the "How to use the IFS" memo on ) S
+10800 63306 M ({indigo}<ifs>howtouse.bravo \(or .press\).) S
+grestore savepage restore showpage
+
+%%Trailer

@@ -1,0 +1,1695 @@
+%!PS-Adobe-2.0%%Title: {DSK}<home>larry>lispcourse>OUTLINE19.PS%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate:  7-Nov-2023 21:40:09%%EndComments/bdef {bind def} bind def
+/ldef {load def} bdef
+/S /show ldef
+/M /moveto ldef
+/DR {transform round exch round exch itransform} bdef
+/L {gsave newpath setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/L1 {gsave newpath 0 setdash setgray setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/F {findfont exch scalefont setfont} bdef
+/CLP {newpath M dup 0 rlineto exch 0 exch rlineto
+  neg 0 rlineto closepath clip newpath} bdef
+/R {gsave setgray newpath M dup 0 rlineto exch 0 exch
+  rlineto neg 0 rlineto closepath eofill grestore} bdef
+/ellipsedict 9 dict def
+ellipsedict /mtrx matrix put
+/ellipse
+ { ellipsedict begin
+  /endangle exch def
+  /startangle exch def
+  /orientation exch def
+  /minorrad exch def
+  /majorrad exch def
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  orientation rotate
+  majorrad minorrad scale
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+ end } bdef
+/concatprocs
+ {/proc2 exch cvlit def
+  /proc1 exch cvlit def
+  /newproc proc1 length proc2 length add array def
+  newproc 0 proc1 putinterval
+  newproc proc1 length proc2 putinterval
+  newproc cvx
+ } bdef
+/resmatrix matrix def
+/findresolution
+ {72 0 resmatrix defaultmatrix dtransform
+  /yres exch def /xres exch def
+  xres dup mul yres dup mul add sqrt
+ } bdef
+/thebitimage
+ {/maskp exch def
+  /bihgt exch def
+  /biwid exch def
+  /byte 1 string def
+  /strbufl biwid 8 div ceiling cvi def
+  /strbuf strbufl string def
+  maskp not{{1 exch sub} currenttransfer concatprocs settransfer} if
+  biwid bihgt
+  maskp { true } { 1 } ifelse
+  [biwid 0 0 bihgt 0 0]
+  {/col 0 def
+   {currentfile byte readhexstring pop 0 get
+    dup 16#B2 eq {pop
+    currentfile byte readhexstring pop 0 get 1 add
+    currentfile byte readhexstring pop pop /nbyte byte 0 get def
+    { strbuf col nbyte put /col col 1 add def} repeat}
+   {dup 16#B3 eq {pop /col col
+    currentfile byte readhexstring pop
+    0 get add 1 add def}
+    {16#B4 eq {currentfile byte readhexstring pop pop} if
+     strbuf col byte 0 get put /col col 1 add def} ifelse
+   } ifelse
+   col strbufl ge { exit } if } loop
+   strbuf }
+  maskp { imagemask } { image } ifelse
+ } bdef
+/setuserscreendict 22 dict def
+setuserscreendict begin
+ /tempctm matrix def
+ /temprot matrix def
+ /tempscale matrix def
+end
+/setuserscreen
+ {setuserscreendict begin
+   /spotfunction exch def
+   /screenangle exch def
+   /cellsize exch def
+   /m tempctm currentmatrix def
+   /rm screenangle temprot rotate def
+   /sm cellsize dup tempscale scale def
+   sm rm m m concatmatrix m concatmatrix pop
+   1 0 m dtransform /y1 exch def /x1 exch def
+   /veclength x1 dup mul y1 dup mul add sqrt def
+   /frequency findresolution veclength div def
+   /newscreenangle y1 x1 atan def
+   m 2 get m 1 get mul m 0 get m 3 get mul sub
+   0 gt { { neg } /spotfunction load concatprocs
+          /spotfunction exch def } if
+   frequency newscreenangle /spotfunction load setscreen
+  end
+ } bdef
+/setpatterndict 18 dict def
+setpatterndict begin
+ /bitison
+  {/ybit exch def /xbit exch def
+   /bytevalue bstring ybit bwidth mul xbit 8 idiv add get def
+   /mask 1 7 xbit 8 mod sub bitshift def
+   bytevalue mask and 0 ne
+  } bdef
+end
+/bitpatternspotfunction
+ {setpatterndict begin
+   /y exch def /x exch def
+   /xindex x 1 add 2 div bpside mul 1 sub cvi def
+   /yindex y 1 add 2 div bpside mul 1 sub cvi def
+   xindex yindex bitison
+    {/onbits onbits 1 add def 1}
+    {/offbits offbits 1 add def 0} ifelse
+  end
+ } bdef
+/setpattern
+ {setpatterndict begin
+   /cellsz exch def
+   /angle exch def
+   /bwidth exch def
+   /bpside exch def
+   /bstring exch def
+   /onbits 0 def /offbits 0 def
+   cellsz angle /bitpatternspotfunction load setuserscreen
+   {} settransfer
+   offbits offbits onbits add div setgray
+  end
+ } bdef
+% - - - - - Fraction-setting code, to support NS fonts better - - - - -
+/fractiondict 20 dict def
+/fractionshow 
+{ fractiondict begin
+/denom exch def 
+/num exch def 
+/regfont currentfont def
+/fractfont currentfont [.65 0 0 .6 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(1) true charpath flattenpath pathbbox 
+/height exch def pop pop pop
+ grestore
+0 .4 height mul rmoveto
+fractfont setfont num show
+0 .4 height mul neg rmoveto regfont setfont (\244) show
+fractfont setfont denom show regfont setfont end } bdef
+/f14 { (1) (4) fractionshow } bdef
+/f12 { (1) (2) fractionshow } bdef
+/f34 { (3) (4) fractionshow } bdef
+/f18 { (1) (8) fractionshow } bdef
+/f38 { (3) (8) fractionshow } bdef
+/f58 { (5) (8) fractionshow } bdef
+/f78 { (7) (8) fractionshow } bdef
+/f13 { (1) (3) fractionshow } bdef
+/f23 { (2) (3) fractionshow } bdef
+/bboxdict 20 dict def
+/bboxchk { bboxdict begin
+/regfont currentfont def
+/chkfont currentfont [1.25 0 0 1.25 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(\161) true charpath flattenpath pathbbox 
+/height exch def pop pop pop 
+ grestore 
+ currentpoint 
+ .2 height mul .3 height mul rmoveto
+chkfont setfont (\063) show
+ moveto
+ regfont setfont
+(\161) show end } bdef
+/rencdict 15 dict def
+/encodefont { rencdict begin
+/newname exch def
+/oldfont exch def
+/newcodes [
+8#001 /Aacute
+8#002 /Acircumflex
+8#003 /Adieresis
+8#004 /Agrave
+8#005 /Aring
+8#006 /Atilde
+8#007 /Ccedilla
+8#010 /Eacute
+8#011 /Ecircumflex
+8#012 /Edieresis
+8#013 /Egrave
+8#014 /Iacute
+8#015 /Icircumflex
+8#016 /Idieresis
+8#017 /Igrave
+8#020 /Ntilde
+8#021 /Oacute
+8#022 /Ocircumflex
+8#023 /Odieresis
+8#024 /Ograve
+8#025 /Otilde
+8#026 /Scaron
+8#027 /Uacute
+8#030 /Ucircumflex
+8#031 /Udieresis
+8#032 /Ugrave
+8#033 /Ydieresis
+8#034 /Zcaron
+8#177 /periodinferior
+8#201 /aacute
+8#202 /acircumflex
+8#203 /adieresis
+8#204 /agrave
+8#205 /aring
+8#206 /atilde
+8#207 /ccedilla
+8#210 /eacute
+8#211 /ecircumflex
+8#212 /edieresis
+8#213 /egrave
+8#214 /iacute
+8#215 /icircumflex
+8#216 /idieresis
+8#217 /igrave
+8#220 /ntilde
+8#221 /oacute
+8#222 /ocircumflex
+8#223 /odieresis
+8#224 /ograve
+8#225 /otilde
+8#226 /scaron
+8#227 /uacute
+8#230 /ucircumflex
+8#231 /udieresis
+8#232 /ugrave
+8#233 /ydieresis
+8#234 /zcaron
+8#235 /Eth
+8#236 /eth
+8#237 /Thorn
+8#240 /thorn
+ ] def
+/olddict oldfont findfont def /newfont olddict maxlength dict def
+olddict { exch dup /FID ne { dup /Encoding eq
+{ exch dup length array copy newfont 3 1 roll put }
+{ exch newfont 3 1 roll put } ifelse }
+ { pop pop } ifelse } forall
+newfont /FontName newname put
+newcodes aload pop
+newcodes length 2 idiv { newfont /Encoding get 3 1 roll put } repeat 
+newname newfont definefont pop end } def
+ /accentdict 10 dict def 
+ /accentor { accentdict begin /scaler exch def /delta exch def 
+/unders exch def /accents exch def /mainch exch def /scrt (X) def
+ /w1 mainch stringwidth pop def 
+ currentpoint mainch show currentpoint 4 2 roll 
+accents { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         w1 w2 sub 2 div delta rmoveto scrt show 
+         /delta delta 150 scaler mul 9 div add def
+        } forall 
+unders { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         ch 46 eq { w1 w2 sub 2 div -175 scaler mul 9 div rmoveto scrt show 0 175 rmoveto }
+           { w1 w2 sub 2 div 0 rmoveto scrt show } ifelse 
+        } forall 
+ pop pop moveto end } def 
+%%EndProlog
+%%BeginSetup
+letter/imagesizefactor 1 def%%EndSetup/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+
+%%Page: 1 1
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+54000 75600 M (F.G.H.          ) S
+54000 73800 M (4/4/85) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (LispCourse #19:  Living in the Network World) S
+7200 67157 M (Basic Concepts) S
+1200 /Times-Bold-Acnt F
+10800 64706 M (Advantages of Networks) S
+1200 /Times-Roman-Acnt F
+14400 62106 M (Interlisp-D runs perfectly well in a stand-alone, single machine world.) S
+14400 59706 M (But, the full power of Interlisp-D comes when your D-machine is attached to a ) S
+14400 57906 M (network and can communicate to the other machines on the network.) S
+14400 55506 M (Networked machines have two basic advantages:) S
+18000 53106 M (1\) ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Communication) S
+1200 /Times-Roman-Acnt F
+( \234 you can communicate with other users on other ) S
+18000 51306 M (machines on the network.  Examples: electronic mail and sharing ) S
+18000 49506 M (information by storing a common file on a file server.) S
+18000 47106 M (2\) ) S
+1200 /Times-Italic-Acnt F
+(Sharing of expensive resources) S
+1200 /Times-Roman-Acnt F
+( \234 many machines can share expensive ) S
+18000 45306 M (resources such as printers, disk drives, etc.  Without a network, every ) S
+18000 43506 M (machine would need its own printer, its own large disk, its own tape drive, ) S
+18000 41706 M (etc.) S
+1200 /Times-Bold-Acnt F
+10800 39306 M (Basic Network Concepts ) S
+1200 /Times-Roman-Acnt F
+(\234) S
+1200 /Times-Bold-Acnt F
+(  Servers and Clients on a Local Network) S
+1200 /Times-Roman-Acnt F
+14400 36906 M (Xerox's brand of network is called an Ethernet.  At the level of this discussion, ) S
+14400 35106 M (the Ethernet is pretty much like most of the Local-area networks one can buy to ) S
+14400 33306 M (connect together groups of computers.) S
+14400 30906 M (The Ethernet is simply a coaxial \(i.e., cable television\) cable.  Two or machines ) S
+14400 29106 M (can "tap" onto this cable with a special piece of hardware called a ) S
+1200 /Times-Italic-Acnt F
+(transceiver) S
+1200 /Times-Roman-Acnt F
+(.  ) S
+14400 27306 M (The various computers on the Ethernet can communicate to each other by sending ) S
+14400 25506 M (messages over this cable.) S
+grestore savepage restore showpage
+
+%%Page: 2 2
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (2) S
+7200 75600 M (LispCourse #19:  Living in the Network World) S
+7919 239 12601 60921 0 R
+7919 239 24121 60921 0 R
+239 11279 12841 68601 0 R
+239 11279 12841 60921 0 R
+7919 239 26041 60921 0 R
+7919 239 37561 60921 0 R
+239 11279 26281 68601 0 R
+239 11279 26281 60921 0 R
+/Helvetica /Helvetica-Acnt encodefont
+1400 /Helvetica-Acnt F
+14651.5 66198.0 M (Interlisp-D) S
+15195.5 64798.0 M (Machine) S
+1400 /Helvetica-Acnt F
+44154.0 64798.0 M (Alto) S
+1400 /Helvetica-Acnt F
+28731.5 65558.0 M (Interlisp-D) S
+29275.5 64158.0 M (Machine) S
+7919 239 39481 60921 0 R
+7919 239 51001 60921 0 R
+239 11279 39721 68601 0 R
+239 11279 39721 60921 0 R
+
+gsave newpath  1 setlinecap 1 setlinejoin 160 setlinewidth 14640 61040 M
+stroke
+grestore
+14640 59760 14640 61040 160 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 160 setlinewidth 14640 59760 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 160 setlinewidth 28080 61040 M
+stroke
+grestore
+28080 59760 28080 61040 160 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 160 setlinewidth 28080 59760 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 160 setlinewidth 41520 61040 M
+stroke
+grestore
+41520 59760 41520 61040 160 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 160 setlinewidth 41520 59760 M
+stroke
+grestore
+1519 239 13241 58361 0 R
+1519 239 16441 58361 0 R
+239 2959 13481 59641 0 R
+239 2959 13481 58361 0 R
+1519 239 26681 58361 0 R
+1519 239 29881 58361 0 R
+239 2959 26921 59641 0 R
+239 2959 26921 58361 0 R
+1519 239 40121 58361 0 R
+1519 239 43321 58361 0 R
+239 2959 40361 59641 0 R
+239 2959 40361 58361 0 R
+
+gsave newpath  1 setlinecap 1 setlinejoin 80 setlinewidth 44720 59120 M
+stroke
+grestore
+46640 59120 44720 59120 80 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 80 setlinewidth 46640 59120 M
+stroke
+grestore
+48560 59120 46640 59120 80 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 80 setlinewidth 48560 59120 M
+stroke
+grestore
+45551 59600 44720 59120 80 L
+45551 58640 44720 59120 80 L
+1200 /Helvetica-Acnt F
+47986.5 59050.0 M (Transceiver) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 160 setlinewidth 14640 58480 M
+stroke
+grestore
+14640 56560 14640 58480 160 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 160 setlinewidth 14640 56560 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 160 setlinewidth 28080 58480 M
+stroke
+grestore
+28080 56560 28080 58480 160 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 160 setlinewidth 28080 56560 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 160 setlinewidth 41520 58480 M
+stroke
+grestore
+41520 56560 41520 58480 160 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 160 setlinewidth 41520 56560 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 160 setlinewidth 20400 56560 M
+stroke
+grestore
+20400 54640 20400 56560 160 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 160 setlinewidth 20400 54640 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 160 setlinewidth 33840 56560 M
+stroke
+grestore
+33840 54640 33840 56560 160 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 160 setlinewidth 33840 54640 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 160 setlinewidth 48560 56560 M
+stroke
+grestore
+48560 54640 48560 56560 160 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 160 setlinewidth 48560 54640 M
+stroke
+grestore
+1519 239 19001 53241 0 R
+1519 239 22201 53241 0 R
+239 2959 19241 54521 0 R
+239 2959 19241 53241 0 R
+1519 239 32441 53241 0 R
+1519 239 35641 53241 0 R
+239 2959 32681 54521 0 R
+239 2959 32681 53241 0 R
+
+gsave newpath  1 setlinecap 1 setlinejoin 160 setlinewidth 20400 53360 M
+stroke
+grestore
+20400 52080 20400 53360 160 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 160 setlinewidth 20400 52080 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 160 setlinewidth 33840 53360 M
+stroke
+grestore
+33840 52080 33840 53360 160 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 160 setlinewidth 33840 52080 M
+stroke
+grestore
+7919 239 12601 44281 0 R
+7919 239 24121 44281 0 R
+239 11279 12841 51961 0 R
+239 11279 12841 44281 0 R
+7919 239 26041 44281 0 R
+7919 239 37561 44281 0 R
+239 11279 26281 51961 0 R
+239 11279 26281 44281 0 R
+1400 /Helvetica-Acnt F
+29997.0 48158.0 M (Mail) S
+1400 /Helvetica-Acnt F
+16712.5 48798.0 M (File) S
+1400 /Helvetica-Acnt F
+28050.0 49438.0 M (Grapevine) S
+1519 239 47161 53241 0 R
+1519 239 50361 53241 0 R
+239 2959 47401 54521 0 R
+239 2959 47401 53241 0 R
+
+gsave newpath  1 setlinecap 1 setlinejoin 160 setlinewidth 48560 53360 M
+stroke
+grestore
+48560 52080 48560 53360 160 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 160 setlinewidth 48560 52080 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 80 setlinewidth 54320 54640 M
+stroke
+grestore
+54320 55920 54320 54640 80 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 80 setlinewidth 54320 55920 M
+stroke
+grestore
+54320 56560 54320 55920 80 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 80 setlinewidth 54320 56560 M
+stroke
+grestore
+54800 55729 54320 56560 80 L
+54320 56560 53840 55729 80 L
+7919 239 40121 44281 0 R
+7919 239 51641 44281 0 R
+239 11279 40361 51961 0 R
+239 11279 40361 44281 0 R
+1200 /Helvetica-Acnt F
+52052.0 53850.0 M (Ethernet) S
+52753.5 52650.0 M (Cable) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 240 setlinewidth 12080 56560 M
+stroke
+grestore
+54960 56560 12080 56560 240 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 240 setlinewidth 54960 56560 M
+stroke
+grestore
+1400 /Helvetica-Acnt F
+15779.0 46878.0 M (Server) S
+1400 /Helvetica-Acnt F
+29219.0 46878.0 M (Server) S
+1400 /Helvetica-Acnt F
+43493.5 49558.0 M (Dover) S
+43299.0 48158.0 M (Printer) S
+1200 /Times-Roman-Acnt F
+14400 37426 M (In principle, any two machines on this network can communicate with each other.  ) S
+14400 35626 M (For example, the two Interlisp-D machines could communicate with each other ) S
+14400 33826 M (directly.) S
+14400 31026 M (In pactice, machines on an Ethernet are usually separated into two classes: ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 29226 M (servers) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Bold-Acnt F
+(clients) S
+1200 /Times-Roman-Acnt F
+(.) S
+1200 /Times-Bold-Acnt F
+18000 26426 M (Servers) S
+1200 /Times-Roman-Acnt F
+( \234 machines that exists to perform one or more specialized services ) S
+18000 24626 M (such as storing files, printing documents, processing mail, etc.  These ) S
+18000 22826 M (machines sit on the network and wait for a client machine to request some ) S
+18000 21026 M (service.  Once the request arrives, they perform the service.) S
+1200 /Times-Bold-Acnt F
+18000 18226 M (Clients) S
+1200 /Times-Roman-Acnt F
+( \234 the ordinary user machines.  Programs \(e.g., Interlisp-D\) that the ) S
+18000 16426 M (user runs on these machines occasionally need some specialized service ) S
+18000 14626 M (\(e.g., a file printed, a file stored, mail sent or retrieved\) that they request ) S
+18000 12826 M (from a server somewhere on the network.) S
+14400 10026 M (Most communication on a network takes place between clients and servers.  ) S
+grestore savepage restore showpage
+
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (3) S
+7200 75600 M (LispCourse #19:  Living in the Network World) S
+14400 71106 M (Communication between servers and servers also take places as different servers ) S
+14400 69306 M (need to coordinate their services.  For example, when I send mail to you, my mail ) S
+14400 67506 M (server communicates with your mail server in the process of transfering the mail.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 64706 M (Some typical servers:) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+18000 61906 M (Boot Servers) S
+1200 /Times-Roman-Acnt F
+( \234 provide programs necessary to boot machines over the ) S
+18000 60106 M (network.  For example, provide Othello during 3-boot of the DLion or ) S
+18000 58306 M (provide the NetExec while net-booting a Dorado/Dolphin.) S
+1200 /Times-Italic-Acnt F
+18000 55506 M (Name Servers) S
+1200 /Times-Roman-Acnt F
+( \234 provide translations from names to locations on the ) S
+18000 53706 M (network.  For example, tells Interlisp-D that PHYLUM is located on ) S
+18000 51906 M (network number 6, and is machine number 255 on that network.) S
+1200 /Times-Italic-Acnt F
+18000 49106 M (Authentication Servers) S
+1200 /Times-Roman-Acnt F
+( \234 provide name and password checking.  When a ) S
+18000 47306 M (user wants to log into any machine on the network, that machine okays the ) S
+18000 45506 M (user's name and password with an authentication server.) S
+1200 /Times-Italic-Acnt F
+18000 42706 M (File Servers) S
+1200 /Times-Roman-Acnt F
+( \234 provide space to store files.) S
+1200 /Times-Italic-Acnt F
+18000 39906 M (Mail Servers) S
+1200 /Times-Roman-Acnt F
+( \234 provide electronic mail delivery, distribution lists, etc.) S
+1200 /Times-Italic-Acnt F
+18000 37106 M (Print Servers) S
+1200 /Times-Roman-Acnt F
+( \234 computer attached to a printer; queues and prints ) S
+18000 35306 M (documents.) S
+1200 /Times-Italic-Acnt F
+18000 32506 M (Specialized Servers) S
+1200 /Times-Roman-Acnt F
+( \234 e.g., dictionary server, dial-in servers, tape servers, ) S
+18000 30706 M (etc.) S
+1200 /Times-Bold-Acnt F
+14400 27906 M (NOTE:) S
+1200 /Times-Roman-Acnt F
+( A server is a program, i.e., a piece of software.  On any given machine, ) S
+14400 26106 M (there may be several servers \(i.e., programs\) running at once.  The servers are ) S
+14400 24306 M (logically separate, though physically dependent.  For example, it is standard to ) S
+14400 22506 M (run the Boot server and the Name server on the same machine on a network.) S
+14400 19706 M (Moreover, on PUP networks \(see below\), the same Grapevine "server" \(read, ) S
+14400 17906 M (machine\) provides both mail and authentication service.) S
+1200 /Times-Bold-Acnt F
+10800 14506 M (The Internet:  Connecting Together Many Local Networks) S
+1200 /Times-Roman-Acnt F
+14400 11906 M (A single local network can handle only a limited number of machines that are ) S
+14400 10106 M (located within a relatively small distance of each other.) S
+grestore savepage restore showpage
+
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (4) S
+7200 75600 M (LispCourse #19:  Living in the Network World) S
+14400 71106 M (Typically, local Ethernets are connected together to form a larger "network of ) S
+14400 69306 M (networks" called an ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(internet) S
+1200 /Times-Roman-Acnt F
+(, as in ) S
+1200 /Times-Italic-Acnt F
+("The Xerox Internet") S
+1200 /Times-Roman-Acnt F
+(.) S
+14400 66706 M (Local networks are connected together using ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(gateways) S
+1200 /Times-Roman-Acnt F
+(.) S
+5099 299 7851 54751 0 R
+5099 299 16651 54751 0 R
+299 8499 8151 59551 0 R
+299 8499 8151 54751 0 R
+/Helvetica /Helvetica-Acnt encodefont
+1200 /Helvetica-Acnt F
+9266.5 57030.0 M (Interlisp-D) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 16800 57300 M
+stroke
+grestore
+20000 57300 16800 57300 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 20000 57300 M
+stroke
+grestore
+6699 299 26251 45151 0 R
+6699 299 36651 45151 0 R
+299 10099 26551 51551 0 R
+299 10099 26551 45151 0 R
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 47200 57300 M
+stroke
+grestore
+47200 57300 43200 57300 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 43200 57300 M
+stroke
+grestore
+5099 299 47051 54751 0 R
+5099 299 55851 54751 0 R
+299 8499 47351 59551 0 R
+299 8499 47351 54751 0 R
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 20000 48500 M
+stroke
+grestore
+26400 48500 20000 48500 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 26400 48500 M
+stroke
+grestore
+1200 /Helvetica-Acnt F
+28198.5 48430.0 M (GATEWAY) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 36800 48500 M
+stroke
+grestore
+43200 48500 36800 48500 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 43200 48500 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 47200 46100 M
+stroke
+grestore
+47200 46100 43200 46100 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 43200 46100 M
+stroke
+grestore
+5099 299 7851 35551 0 R
+5099 299 16651 35551 0 R
+299 8499 8151 40351 0 R
+299 8499 8151 35551 0 R
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 16800 38100 M
+stroke
+grestore
+20000 38100 16800 38100 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 20000 38100 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 47200 38100 M
+stroke
+grestore
+47200 38100 43200 38100 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 43200 38100 M
+stroke
+grestore
+1200 /Helvetica-Acnt F
+9266.5 37830.0 M (Interlisp-D) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 20000 64500 M
+stroke
+grestore
+20000 30100 20000 64500 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 20000 30100 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 43200 64500 M
+stroke
+grestore
+43200 30100 43200 64500 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 43200 30100 M
+stroke
+grestore
+1200 /Helvetica-Acnt F
+17698.0 29030.0 M (Ethernet #1) S
+1200 /Helvetica-Acnt F
+40098.0 29030.0 M (Ethernet #2) S
+1200 /Helvetica-Acnt F
+50266.5 57030.0 M (IFS) S
+5099 299 47051 45151 0 R
+5099 299 55851 45151 0 R
+299 8499 47351 49951 0 R
+299 8499 47351 45151 0 R
+1200 /Helvetica-Acnt F
+48466.5 47430.0 M (Interlisp-D) S
+1200 /Helvetica-Acnt F
+49433.0 37230.0 M (Printer) S
+5099 299 47051 35551 0 R
+5099 299 55851 35551 0 R
+299 8499 47351 40351 0 R
+299 8499 47351 35551 0 R
+1200 /Times-Roman-Acnt F
+14400 22906 M (A ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(gateway) S
+1200 /Times-Roman-Acnt F
+( is a computer that is connected to two or more networks.  If a machine ) S
+14400 21106 M (on one network wants to send a message to a machine on another network, it ) S
+14400 19306 M (sends the message to a gateway on its network.  The gateway takes the message ) S
+14400 17506 M (off of the network of the originating machine and puts it on the network of the ) S
+14400 15706 M (destination machine.) S
+14400 13106 M (In short a gateway transfers message from one local network to another local ) S
+14400 11306 M (network.  If your machine is on one network and your file server is on another ) S
+grestore savepage restore showpage
+
+%%Page: 5 5
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (5) S
+7200 75600 M (LispCourse #19:  Living in the Network World) S
+14400 71106 M (network, when the gateway goes down you are effectively cut off from your file ) S
+14400 69306 M (server.) S
+14400 66706 M (The Xerox Internet consists of many, many \(100??\) local Ethernets connected ) S
+14400 64906 M (together by gateways.   There are maps of this network on ????.) S
+14400 62306 M (In the Xerox Internet not all of the Ethernets can talk directly through a single ) S
+14400 60506 M (getway to all of the other Ethernet.  A message may have to pass through several ) S
+14400 58706 M (networks and several gateways to get from one machine to another.  For example, ) S
+14400 56906 M (to get from an Interlisp-D machine on Ethernet#1 to a Printer on Ethernet#3, the ) S
+14400 55106 M (message would have to pass from Ethernet#1 through Gateway#1, Ethernet#2, ) S
+14400 53306 M (and Gateway#2 to Ethernet#3.) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 12800 50800 M
+stroke
+grestore
+12800 16400 12800 50800 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 12800 16400 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 28000 50800 M
+stroke
+grestore
+28000 16400 28000 50800 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 28000 16400 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 43200 50800 M
+stroke
+grestore
+43200 16400 43200 50800 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 43200 16400 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 58400 50800 M
+stroke
+grestore
+58400 16400 58400 50800 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 58400 16400 M
+stroke
+grestore
+/Helvetica /Helvetica-Acnt encodefont
+1200 /Helvetica-Acnt F
+15666.5 43330.0 M (Interlisp-D) S
+1200 /Helvetica-Acnt F
+32666.5 43330.0 M (IFS) S
+1200 /Helvetica-Acnt F
+47633.5 43330.0 M (Altio) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 12800 43600 M
+stroke
+grestore
+14400 43600 12800 43600 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 14400 43600 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 29600 43600 M
+stroke
+grestore
+29600 43600 28000 43600 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 28000 43600 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 44800 43600 M
+stroke
+grestore
+44800 43600 43200 43600 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 43200 43600 M
+stroke
+grestore
+5099 299 14251 41051 0 R
+5099 299 23051 41051 0 R
+299 8499 14551 45851 0 R
+299 8499 14551 41051 0 R
+5099 299 29451 41051 0 R
+5099 299 38251 41051 0 R
+299 8499 29751 45851 0 R
+299 8499 29751 41051 0 R
+5099 299 44651 41051 0 R
+5099 299 53451 41051 0 R
+299 8499 44951 45851 0 R
+299 8499 44951 41051 0 R
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 12800 34000 M
+stroke
+grestore
+16000 34000 12800 34000 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 16000 34000 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 24800 35600 M
+stroke
+grestore
+28000 35600 24800 35600 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 28000 35600 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 28000 32400 M
+stroke
+grestore
+31200 32400 28000 32400 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 31200 32400 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 40000 35600 M
+stroke
+grestore
+43200 35600 40000 35600 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 43200 35600 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 43200 32400 M
+stroke
+grestore
+46400 32400 43200 32400 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 46400 32400 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 55200 34000 M
+stroke
+grestore
+58400 34000 55200 34000 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 58400 34000 M
+stroke
+grestore
+5099 299 15851 31451 0 R
+5099 299 24651 31451 0 R
+299 8499 16151 36251 0 R
+299 8499 16151 31451 0 R
+5099 299 31051 31451 0 R
+5099 299 39851 31451 0 R
+299 8499 31351 36251 0 R
+299 8499 31351 31451 0 R
+5099 299 46251 31451 0 R
+5099 299 55051 31451 0 R
+299 8499 46551 36251 0 R
+299 8499 46551 31451 0 R
+1200 /Helvetica-Acnt F
+17464.0 34330.0 M (Gateway ) S
+19333.0 33130.0 M (#1) S
+1200 /Helvetica-Acnt F
+32664.0 34330.0 M (Gateway ) S
+34533.0 33130.0 M (#2) S
+1200 /Helvetica-Acnt F
+47864.0 34330.0 M (Gateway ) S
+49733.0 33130.0 M (#3) S
+5099 299 29451 21851 0 R
+5099 299 38251 21851 0 R
+299 8499 29751 26651 0 R
+299 8499 29751 21851 0 R
+5099 299 44651 21851 0 R
+5099 299 53451 21851 0 R
+299 8499 44951 26651 0 R
+299 8499 44951 21851 0 R
+5099 299 14251 22651 0 R
+5099 299 23051 22651 0 R
+299 8499 14551 27451 0 R
+299 8499 14551 22651 0 R
+1200 /Helvetica-Acnt F
+15666.5 24930.0 M (Interlisp-D) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 29600 24400 M
+stroke
+grestore
+29600 24400 28000 24400 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 28000 24400 M
+stroke
+grestore
+1200 /Helvetica-Acnt F
+30866.5 24330.0 M (Interlisp-D) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 44800 24400 M
+stroke
+grestore
+44800 24400 43200 24400 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 43200 24400 M
+stroke
+grestore
+1200 /Helvetica-Acnt F
+47033.0 24330.0 M (Printer) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 12800 25200 M
+stroke
+grestore
+14400 25200 12800 25200 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 14400 25200 M
+stroke
+grestore
+1200 /Helvetica-Acnt F
+10498.0 15330.0 M (Ethernet #1) S
+1200 /Helvetica-Acnt F
+24898.0 15330.0 M (Ethernet #2) S
+1200 /Helvetica-Acnt F
+40098.0 15330.0 M (Ethernet #3) S
+1200 /Helvetica-Acnt F
+52898.0 15330.0 M (Ethernet #4) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 58400 24400 M
+stroke
+grestore
+60800 24400 58400 24400 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 60800 24400 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 58400 44400 M
+stroke
+grestore
+60800 44400 58400 44400 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 60800 44400 M
+stroke
+grestore
+1200 /Times-Roman-Acnt F
+7200 11806 M (  ) S
+grestore savepage restore showpage
+
+%%Page: 6 6
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (6) S
+7200 75600 M (LispCourse #19:  Living in the Network World) S
+14400 71106 M (Gateways also do ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(routing) S
+1200 /Times-Roman-Acnt F
+(, i.e. they help figure out what sequence of Ethernets ) S
+14400 69306 M (and Gateways will get a message from its source to its destination.) S
+18000 67106 M (In particular, the source machine sends the message to a gateway on its ) S
+18000 65306 M (network.  This first gateway transfers the message to a second network ) S
+18000 63506 M (and sends the message on to some other gateway on the second network ) S
+18000 61706 M (that is also connected to a network that is closer to the destination.  This ) S
+18000 59906 M (gateway passes the message on to an even closer gateway.  This process ) S
+18000 58106 M (repeats until the message reaches its destination.) S
+18000 55906 M (The point is that no gateway needs to "know" the entire route for the ) S
+18000 54106 M (message.  Each gateway only needs to know what networks are likely to ) S
+18000 52306 M (be "closer" to the destination machine than the gateway that gave it the ) S
+18000 50506 M (message.) S
+14400 47906 M (You don't need to know much about gateways.  Internetwork transfer and routing ) S
+14400 46106 M (is all done for you \(the Interlisp-D user\) automatically.) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+14400 43506 M (But) S
+1200 /Times-Roman-Acnt F
+(: gateways do go down sometimes and sometimes they get overworked and ) S
+14400 41706 M (slow down.  In this case, message traffic on the Internet can slow down or stop ) S
+14400 39906 M (altogether for some machines.) S
+14400 37306 M (Example:) S
+21600 35306 M (The ISL Dorados are on Ethernet #6.) S
+21600 33306 M (Phylum is also on Ethernet #6.) S
+21600 31306 M (The ISL Dlions are on Ethernet #204.) S
+21600 29306 M (NewWing is a gateway between Ethernets #6 and #204.) S
+18000 26906 M (If NewWing goes down or slows down, then the Dorados will be able to ) S
+18000 25106 M (get at Phylum with no problem, but the DLion will have problems because ) S
+18000 23306 M (their message are not being transfered from net #204 to net #6.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 20306 M (Note:) S
+1200 /Times-Roman-Acnt F
+(  In general the machines that run gateways are the same machines that run ) S
+14400 18506 M (the Name server and the Boot server on the Ethernet, althouh all three are ) S
+14400 16706 M (logically seprate services that could be run on three different machines.) S
+1200 /Times-Bold-Acnt F
+10800 13306 M (Physical Ethernets ) S
+1200 /Times-Roman-Acnt F
+(\234) S
+1200 /Times-Bold-Acnt F
+( 3Mb Experimental versus 10Mb Product ) S
+grestore savepage restore showpage
+
+%%Page: 7 7
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (7) S
+7200 75600 M (LispCourse #19:  Living in the Network World) S
+14400 71106 M (There are two different kinds of physical Ethernets: the 3Mb Experimental ) S
+14400 69306 M (Ethernet and the 10Mb Product Ethernet.  The two are distinguished by the ) S
+14400 67506 M (transceiver hardware and the type of coaxial cable used.  They also transmit at ) S
+14400 65706 M (different speeds - 3 million bits per second versus 10 million bits per second.) S
+14400 62306 M (Most machines have the hardware to support either the 3Mb Ethernet or the 10Mb ) S
+14400 60506 M (Ethernet, but not both.  ) S
+14400 57906 M (In general DLions and all product equipment uses the 10Mb Product Ethernet.  ) S
+14400 56106 M (The Altos \(including all IFSs and many mail servers\), Dolphins, and Dorados use ) S
+14400 54306 M (the 3Mb Experimental Ethernet \(i.e., the original PARC invention\).) S
+14400 51706 M (There are NO logical or functional differences between the two Ethernets.  In the ) S
+14400 49906 M (Xerox Internet, 3Mb and 10Mb Ethernets are mixed together.  There are gateways ) S
+14400 48106 M (containing both 3Mb and 10Mb Ethernet hardware that transfer messages ) S
+14400 46306 M (between 3Mb networks and 10Mb networks.) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+14400 43706 M (The bottom line: ) S
+1200 /Times-Roman-Acnt F
+( if you have both a Dorado and a Dlion, they can't be on the ) S
+14400 41906 M (same network.  You'll need two separate Ethernets running through your office, ) S
+14400 40106 M (one 10 and one 3.  The two machines can speak to each other, but only through a ) S
+14400 38306 M (gateway that connects 3 and 10 Mb networks. ) S
+1000 /Times-Roman-Acnt F
+( \(Special note: you can actually but ) S
+14400 36655 M (Dorados with 10Mb hardware, but we don't have any in ISL.\)) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 33306 M (Communicating on an Ethernet ) S
+1200 /Times-Roman-Acnt F
+(\234) S
+1200 /Times-Bold-Acnt F
+( Packets and Protocols \(PUP versus NS\)) S
+14400 29906 M (Packets) S
+1200 /Times-Roman-Acnt F
+18000 27306 M (The Ethernet is a packet network:  each message between two machines is ) S
+18000 25506 M (broken down into short ) S
+1200 /Times-Bold-Acnt F
+(packets) S
+1200 /Times-Roman-Acnt F
+( of information.  These packets are then ) S
+18000 23706 M (sent out over the Ethernet one after the other until the entire message has ) S
+18000 21906 M (been transmitted.) S
+18000 19106 M (The transmission of a packet between two machines is actually a ) S
+18000 17306 M ("conversation" between two the two machines.  The source machine sends ) S
+18000 15506 M (out a packet.  The source machine then waits before sending out the next ) S
+18000 13706 M (packet until it recieves some sort of acknowledgement.  If the destination ) S
+18000 11906 M (machine receives the packet correctly, then it sends an "okay" ) S
+18000 10106 M (acknowledgment packet to the source machine.  If it receives the packet ) S
+18000 8306 M (with some sort of error, it sends back an error acknowledgment packet.   If ) S
+grestore savepage restore showpage
+
+%%Page: 8 8
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (8) S
+7200 75600 M (LispCourse #19:  Living in the Network World) S
+18000 71106 M (the source receives an error acknowledgment , it resends the packet, ) S
+18000 69306 M (otherwise it goes on to the next packet.) S
+18000 66506 M ( Several "conversations" can be going on at once on an Ethernet.  While ) S
+18000 64706 M (one computer is preparing the next packet to be sent, another computer ) S
+18000 62906 M (can be actually sending its packet on the cable.  Thus, the various ) S
+18000 61106 M (machines on an Ethernet share \(technically, ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(multiplex) S
+1200 /Times-Roman-Acnt F
+(\) the available time ) S
+18000 59306 M (on the Ethernet.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 55906 M (Protocols \(PUP versus NS \(versus TCP/IP\)\)) S
+1200 /Times-Roman-Acnt F
+18000 53106 M (For two machines to carry on a conversation over a network, they must ) S
+18000 51306 M (see eye-to-eye on a few matters.  In particular, they must agree on the ) S
+18000 49506 M (format of each packet and they must agree on the exact meaning of each ) S
+18000 47706 M (of the message transmitted.) S
+18000 44906 M (There are standards, called ) S
+1200 /Times-Bold-Acnt F
+(protocols) S
+1200 /Times-Roman-Acnt F
+(, that specify these two things.) S
+1200 /Times-Bold-Acnt F
+18000 42106 M (Level One Protocols) S
+1200 /Times-Roman-Acnt F
+21600 39706 M (The standards for the format of each packet are called ) S
+1200 /Times-Bold-Acnt F
+(level-one ) S
+21600 37906 M (protocols) S
+1200 /Times-Roman-Acnt F
+(.) S
+21600 35306 M (There are ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(three) S
+1200 /Times-Roman-Acnt F
+( different level-one protocols in use within Xerox:) S
+25200 33506 M (the PUP protocol \234 the original PARC protocol) S
+25200 31706 M (the NS protocol \234 the product protocol) S
+25200 29906 M (the TCP/IP protocol \234 the Arpanet and university-favorite ) S
+25200 28106 M (protocol) S
+21600 25306 M (Each of these protocols specifies a slightly different format for ) S
+21600 23506 M (each packet of information sent across the network.  The major ) S
+21600 21706 M (difference is in how you specify the network and machine ) S
+21600 19906 M (numbers.) S
+21600 17106 M (Most systems can speak \(and understand\) only one of the ) S
+21600 15306 M (protocols.  For example, Star and the NS file servers speak only ) S
+21600 13506 M (NS.  Cedar, the IFSs and the Grapevine speak only PUP protocols.   ) S
+21600 11706 M (Only the Vax speaks TCP/IP.) S
+grestore savepage restore showpage
+
+%%Page: 9 9
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (9) S
+7200 75600 M (LispCourse #19:  Living in the Network World) S
+21600 71106 M (This means that a Star cannot speak to an IFS or to a Grapevine ) S
+21600 69306 M (mail server because the two cannot agree on the format of the ) S
+21600 67506 M (Ethernet packets.) S
+21600 64706 M (Interlisp-D, however, can speak all three level-one protocols ) S
+21600 62906 M (\(TCP/IP will be available in Intermezzo\).  Therefore, Interlisp-D ) S
+21600 61106 M (can exchange packets with Star and the NS file servers AND with ) S
+21600 59306 M (the IFSs and Grapevine mail servers AND with the Vaxes running ) S
+21600 57506 M (TCP/IP.) S
+1000 /Times-Roman-Acnt F
+25200 54855 M ([Note: Some gateways handle only NS packets.  I have been stuck in ) S
+25200 53255 M (the situation where there are two machines that both speak PUP and ) S
+25200 51655 M (were physically connected together by a sequence of gatewayst.  But ) S
+25200 50055 M (the two machines could not communicate because one of the gateways ) S
+25200 48455 M (connecting the two machines could not handle PUP packets.  Ugh!!!]) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 45706 M (Higher Level Protocols) S
+1200 /Times-Roman-Acnt F
+21600 43306 M (Agreeing on a packet format is not enough.  To communicate, two ) S
+21600 41506 M (machines must agree on the set of possible messages and the exact ) S
+21600 39706 M (meaning of these messages.) S
+25200 37306 M (For example, if one machine wants to ship a file to another ) S
+25200 35506 M (machine, the two machines must agree on the exact set of ) S
+25200 33706 M (messages to exchange in order to get this done: how to ) S
+25200 31906 M (specify the file name on the destination machine, how to ) S
+25200 30106 M (encode the data in the file, how to signal errors in the ) S
+25200 28306 M (received packets, how to notify the destination machine ) S
+25200 26506 M (that the file transmission is complete, and so on. ) S
+21600 24106 M (The standards for the exchange of these "task-oriented" messages ) S
+21600 22306 M (are known as ) S
+1200 /Times-Bold-Acnt F
+(higher-level protocols) S
+1200 /Times-Roman-Acnt F
+(. ) S
+21600 19906 M (There are a multitude of higher level protocols:) S
+25200 17706 M (file transfer protocols) S
+25200 15506 M (mail protocols) S
+25200 13306 M (telnet \(CHAT\) protocols) S
+25200 11106 M (leaf \(page level file access\) protocols) S
+28800 8906 M (and many, many more) S
+grestore savepage restore showpage
+
+%%Page: 10 10
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (10) S
+7200 75600 M (LispCourse #19:  Living in the Network World) S
+21600 71106 M (Each of these protocols specifies the set of messages that need to ) S
+21600 69306 M (be interchanged between two machines to carry out some specific ) S
+21600 67506 M (task like transferring a file, delivering mail, opening a CHAT ) S
+21600 65706 M (connection, etc.) S
+21600 62706 M (Example:) S
+25200 59706 M (An file transfer protocol might have the following ) S
+25200 57906 M (messages:) S
+28800 55706 M (Here's the file name to call the file: ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Name) S
+1200 /Times-Roman-Acnt F
+28800 53506 M (Here's the next 100 bytes of the file: ) S
+1200 /Times-Italic-Acnt F
+(Data) S
+1200 /Times-Roman-Acnt F
+28800 51306 M (Here's bytes N thru M of the file: ) S
+1200 /Times-Italic-Acnt F
+(Data) S
+1200 /Times-Roman-Acnt F
+28800 49106 M (File transmission is done.) S
+28800 46906 M (Bytes N thru M received okay \(in error\).) S
+28800 44706 M (File name not allowed.) S
+28800 42106 M (...) S
+21600 39106 M (The bottom line: if two machines speak the same task-oriented ) S
+21600 37306 M (protocol, they can effectively communicate in carryoing out a task, ) S
+21600 35506 M (e.g., in transfering a file.  If they don't speak the same task-) S
+21600 33706 M (oriented protocol, therte is no way they could communicate well ) S
+21600 31906 M (enough to carry out the task.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 28906 M (The PUP World versus the NS World) S
+1200 /Times-Roman-Acnt F
+25200 25906 M (In principle, the same higher-level protocol could be ) S
+25200 24106 M (carried out using either NS or PUP level-one packets.) S
+25200 21106 M (In practice, the PUP-based higher-level protocols are ) S
+25200 19306 M (entirely different from the NS-based higher level protocols.  ) S
+25200 17506 M (Basically, when PUP was redesigned into NS, all of the ) S
+25200 15706 M (PUP-based higher-level protocols were totally redesigned ) S
+25200 13906 M (as well.) S
+28800 10906 M (For example, the file transfer protocol for PUP-) S
+28800 9106 M (based file servers \(i.e., FTP protocol\) is entirely ) S
+grestore savepage restore showpage
+
+%%Page: 11 11
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (11) S
+7200 75600 M (LispCourse #19:  Living in the Network World) S
+28800 71106 M (different from the file transfer protocol for NS file ) S
+28800 69306 M (servers \(the NS filing protocol\).) S
+25200 66306 M (Star can't speak to an IFS because it can't produce PUP ) S
+25200 64506 M (packets AND it doesn't support the FTP protocol.) S
+25200 61506 M (Interlisp-D exists in both worlds \(in fact in three worlds ) S
+25200 59706 M (because there are also TCP/IP higher level protocols\).  ) S
+25200 57906 M (From Interlisp-D you can access both IFSs \(using the FTP ) S
+25200 56106 M (protocol\) and the NS file servers \(using the NS filing ) S
+25200 54306 M (protocol\).) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 50557 M (The PUP World) S
+1200 /Times-Bold-Acnt F
+10800 48106 M (Addresses) S
+1200 /Times-Roman-Acnt F
+14400 45706 M (In the PUP world, every machine is uniquely identified \(i.e., addressed\) by an 8-) S
+14400 43906 M (bit \(0 to 255\) network number and an 8-bit machine number.  The complete ) S
+14400 42106 M (address of the machine is the network number and the machine number, each ) S
+14400 40306 M (followed by a "#". ) S
+18000 37906 M (Examples:) S
+21600 35706 M (Phylum's address is ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(6#225#) S
+1200 /Times-Roman-Acnt F
+21600 33506 M (My Dorado is ) S
+1200 /Times-Italic-Acnt F
+(6#60#) S
+1200 /Times-Roman-Acnt F
+21600 31306 M (The pool DLion in ISL is ) S
+1200 /Times-Italic-Acnt F
+(204#36#) S
+1200 /Times-Roman-Acnt F
+21600 29106 M (QUAKE is ) S
+1200 /Times-Italic-Acnt F
+(6#357#) S
+1200 /Times-Roman-Acnt F
+21600 26906 M (EXPRESSO is ) S
+1200 /Times-Italic-Acnt F
+(64#154#) S
+1200 /Times-Roman-Acnt F
+14400 24706 M (Certain programs require you to specify a destination machine by its PUP ) S
+14400 22906 M (address; TeleRaid, for example.) S
+14400 20706 M (Interlisp-D also allows you to specify a PUP address in place of a device name for ) S
+14400 18906 M (any device reference.  For example, instead of ) S
+1200 /Times-Italic-Acnt F
+(\(CHAT 'PHYLUM\)) S
+1200 /Times-Roman-Acnt F
+(, you can use ) S
+1200 /Times-Italic-Acnt F
+14400 17106 M (\(CHAT '6#225#\)) S
+1200 /Times-Roman-Acnt F
+(.   Instead of ) S
+1200 /Times-Italic-Acnt F
+(DIR {PHYLUM}<HALASZ>) S
+1200 /Times-Roman-Acnt F
+(, you can use ) S
+1200 /Times-Italic-Acnt F
+(DIR ) S
+14400 15306 M ({6#225#}<halasz>) S
+1200 /Times-Roman-Acnt F
+(.) S
+1200 /Times-Italic-Acnt F
+(  ) S
+1200 /Times-Roman-Acnt F
+(These addresses can come in handy when the name server is ) S
+14400 13506 M (down.) S
+1200 /Times-Bold-Acnt F
+10800 11106 M (Name Service) S
+grestore savepage restore showpage
+
+%%Page: 12 12
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (12) S
+7200 75600 M (LispCourse #19:  Living in the Network World) S
+14400 71106 M (Most machines in the PUP world are given a litatom for a name; this is true of all  ) S
+14400 69306 M (servers and most client machines.   Thus the name of my machine is Halasz, the ) S
+14400 67506 M (name of machine 6#225 is Phylum, etc. ) S
+1000 /Times-Roman-Acnt F
+( Note: some DLions in ISL do not have name ) S
+14400 65855 M (because they ran out of space in the name tables.) S
+1200 /Times-Roman-Acnt F
+14400 63506 M (The name servers running on the PUP-gateways keep a table that translates these ) S
+14400 61706 M (names into PUP addresses.  Whenever you refer to a machine by name [as in ) S
+14400 59906 M (\(CHAT 'PHLYUM\)], Interlisp-D consults the name server for the address ) S
+14400 58106 M (corresponding to that name.) S
+14400 55706 M (In order to get to a  to a particular type of server in the PUP-world, you have to ) S
+14400 53906 M (know the name or PUP address of the particular machine or the machine running ) S
+14400 52106 M (the server.) S
+14400 49706 M (The PUP name servers cannot answer interesting questions like ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+("What machines ) S
+14400 47906 M (are on net 36" or  "What IFSs do you know about?".) S
+1200 /Times-Roman-Acnt F
+14400 45506 M (In Interlisp:) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 43106 M (\(ETHERHOSTNAME ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(PupAddress) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 returns the name of the machine ) S
+18000 41306 M (whose address is ) S
+1200 /Times-Italic-Acnt F
+(PupAddress) S
+1200 /Times-Roman-Acnt F
+(.  \(ETHERHOSTNAME '6#225#\)) S
+1200 /Times-Italic-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(returns) S
+1200 /Times-Italic-Acnt F
+( ) S
+18000 39506 M (Phylum.) S
+1200 /Times-Bold-Acnt F
+18000 36506 M (\(PORTSTRING \(ETHERHOSTNUMBER ) S
+1200 /Times-BoldItalic-Acnt F
+(Name) S
+1200 /Times-Bold-Acnt F
+(\)\)) S
+1200 /Times-Roman-Acnt F
+( \234 returns the Pup ) S
+18000 34706 M (address of the machine specified by ) S
+1200 /Times-Italic-Acnt F
+(Name) S
+1200 /Times-Roman-Acnt F
+(.  \(PORTSTRING ) S
+18000 32906 M (\(ETHERHOSTNUMBER 'Halasz\)\) returns ) S
+1200 /Times-Italic-Acnt F
+(6#60#) S
+1200 /Times-Roman-Acnt F
+(.) S
+1200 /Times-Bold-Acnt F
+10800 29506 M (Authenication Service) S
+1200 /Times-Roman-Acnt F
+14400 27106 M (In the PUP world, users are registered using the Grapevine mail system. ) S
+14400 24706 M (All users are registered on a Grapevine mail server in their location \(called a ) S
+1200 /Times-Italic-Acnt F
+14400 22906 M (registry) S
+1200 /Times-Roman-Acnt F
+(\).  A user's Grapevine name is usually his last name followed by the ) S
+14400 21106 M (registry where he works.  For example, my Grapevine name is ) S
+1200 /Times-Italic-Acnt F
+(Halasz.pa) S
+1200 /Times-Roman-Acnt F
+( since ) S
+1200 /Times-Italic-Acnt F
+14400 19306 M (.pa) S
+1200 /Times-Roman-Acnt F
+( is the Palo Alto registry.  Other registries are: ) S
+18000 17506 M (.wbst  \234 Webster, N.Y.) S
+18000 15706 M (.pasa \234 Pasadena) S
+18000 13906 M (.es \234 El Segundo) S
+18000 12106 M (.sthq \234 Stamford Headquarters) S
+18000 9906 M (.henr \234 Henrietta, N.Y. ) S
+grestore savepage restore showpage
+
+%%Page: 13 13
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (13) S
+7200 75600 M (LispCourse #19:  Living in the Network World) S
+18000 71106 M (.dlos \234 Dallas) S
+18000 68906 M (???) S
+14400 66506 M (When a user logs onto any machine on the network, that machine asks the nearest ) S
+14400 64706 M (Grapevine server to authenticate the user and her password.) S
+14400 62306 M (Because all Grapevine mail servers are in constant communication, you can log ) S
+14400 60506 M (into a machine anywhere on the Xerox Internet.  That machine will query the ) S
+14400 58706 M (Grapevine server nearest to it, which in turn will query your Grapevine server ) S
+14400 56906 M (here at PARC.  If you typed in the right password,  the PARC Grapevine will say ) S
+14400 55106 M (okay to the remote Grapevine server which will say okay to the machine you are ) S
+14400 53306 M (logging in to.) S
+14400 50906 M (The Grapevine is a very limited database of all of the users on the Xerox PUP-) S
+14400 49106 M (based Internet.  The Grapevine system maintains a list of all the user's on the ) S
+14400 47306 M (Xerox Internet.  However, it keeps only the user's name and no other interesting ) S
+14400 45506 M (information such as office number or phone number or position in the company.) S
+14400 43106 M (Moreover, you can't even access the list of users in any very interesting way.  For ) S
+14400 41306 M (example, you can't ask "what users are there in Palo Alto whose last name is ) S
+14400 39506 M (Jackson?" or even "Who works at PARC?".) S
+14400 37106 M (\(This contrasts with the NS world, where more interesting queries are possible\).) S
+grestore savepage restore showpage
+
+%%Page: 14 14
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 15 15
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (14) S
+7200 75600 M (LispCourse #19:  Living in the Network World) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 71106 M (Mail Service) S
+1200 /Times-Roman-Acnt F
+14400 68706 M (Mail in the PUP world is also handled by the Grapevine system.   The recepient of ) S
+14400 66906 M (a mail message is specified by his or her Grapevine user name \(e.g., Halasz.pa\).) S
+14400 64506 M (When you send mail in Interlisp-D, Lafite sends the mail to the nearest Grapevine ) S
+14400 62706 M (server which then distributes the mail to the Grapevine servers of each of the ) S
+14400 60906 M (recipients of the mail.  The Grapevine system does the work of figuring out the ) S
+14400 59106 M (relevant Grapevine server for each of the recepients.) S
+14400 56706 M (When you retrieve mail, Lafite queries the Grapevine servers for your registry to ) S
+14400 54906 M (see if there is any mail waiting for you.  If so, it copies the mail from the ) S
+14400 53106 M (Grapevine server to your Lafite mailbox.) S
+14400 50706 M (In addition to delivering and storing mail, the Grapevine provides for the ) S
+14400 48906 M (maintenance of a set of distribution lists.  Each distribution list consists of a name  ) S
+14400 47106 M (ending in an "^" \(e.g., LispUsers^\), a registry \(as in LispUsers^.pa\), and a list of ) S
+14400 45306 M (members of that list.  Sending mail addressed to a distribution list will cause the ) S
+14400 43506 M (mail to be sent to all of the members of the distribution list.) S
+14400 41106 M (You can log into the Grapevine and alter various aspects of distribution lists.  For ) S
+14400 39306 M (example, you can add or removbe yourself from a distribution list, see who is on a ) S
+14400 37506 M (distribution list, etc.) S
+14400 35106 M (To do this from Interlisp, LOAD the library package ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+14400 33306 M ({eris}<lisp>harmony>library>maintain.dcom) S
+1200 /Times-Roman-Acnt F
+(.  When the LOAD is finished, the ) S
+14400 31506 M (function call ) S
+1200 /Times-Italic-Acnt F
+(\(MAINTAIN\) ) S
+1200 /Times-Roman-Acnt F
+(will log you into the Grapevine and start up a ) S
+14400 29706 M (Grapevine "exec" in your TTY window.  ) S
+14400 27306 M (From the Grapevine "exec" you can execute a number of commands to query or ) S
+14400 25506 M (change distribution lists.  ) S
+18000 23106 M (Example:) S
+14400 20706 M (When you are finished with your interaction with Grapevine, type "Quit" to the ) S
+14400 18906 M (exec.  This will return you to the Lisp Exec in the TTY window.) S
+14400 16506 M (For full documentation of the Grapevine "exec", see the document ) S
+1200 /Times-Italic-Acnt F
+14400 14706 M ({indigo}<laurel>maintain.press) S
+1200 /Times-Roman-Acnt F
+(.) S
+1200 /Times-Bold-Acnt F
+10800 11306 M (File Service, Print Service) S
+1200 /Times-Roman-Acnt F
+14400 8906 M (In the PUP-world, file service is provided by the oft-discussed IFSs.) S
+grestore savepage restore showpage
+
+%%Page: 16 16
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (15) S
+7200 75600 M (LispCourse #19:  Living in the Network World) S
+14400 71106 M (In the PUP-world, print service is provided by the Dover printers such as Quake ) S
+14400 69306 M (and Expresso and the full-press printers such as Jedi and RockNRoll.) S
+14400 66906 M (Before a file can be printed, it must be translated into a format that the printer can ) S
+14400 65106 M (understand.  Printers in the PUP-world print PRESS format files, in contrast the ) S
+14400 63306 M (NS-wporld printers which print InterPress format files.  While these file formats ) S
+14400 61506 M (have nothing to do with PUP and NS in principle, in practice Press versus ) S
+14400 59706 M (Interpress follows the PUP versus NS distinction.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 55957 M (Still to Come on Networks) S
+1200 /Times-Roman-Acnt F
+10800 53306 M (The NS World) S
+10800 50706 M (Cross-overs between PUP and NS worlds) S
+grestore savepage restore showpage
+
+%%Trailer

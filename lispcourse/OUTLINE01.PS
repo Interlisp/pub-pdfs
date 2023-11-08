@@ -1,0 +1,458 @@
+%!PS-Adobe-2.0%%Title: {DSK}<home>larry>lispcourse>OUTLINE01.PS%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate:  7-Nov-2023 21:39:56%%EndComments/bdef {bind def} bind def
+/ldef {load def} bdef
+/S /show ldef
+/M /moveto ldef
+/DR {transform round exch round exch itransform} bdef
+/L {gsave newpath setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/L1 {gsave newpath 0 setdash setgray setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/F {findfont exch scalefont setfont} bdef
+/CLP {newpath M dup 0 rlineto exch 0 exch rlineto
+  neg 0 rlineto closepath clip newpath} bdef
+/R {gsave setgray newpath M dup 0 rlineto exch 0 exch
+  rlineto neg 0 rlineto closepath eofill grestore} bdef
+/ellipsedict 9 dict def
+ellipsedict /mtrx matrix put
+/ellipse
+ { ellipsedict begin
+  /endangle exch def
+  /startangle exch def
+  /orientation exch def
+  /minorrad exch def
+  /majorrad exch def
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  orientation rotate
+  majorrad minorrad scale
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+ end } bdef
+/concatprocs
+ {/proc2 exch cvlit def
+  /proc1 exch cvlit def
+  /newproc proc1 length proc2 length add array def
+  newproc 0 proc1 putinterval
+  newproc proc1 length proc2 putinterval
+  newproc cvx
+ } bdef
+/resmatrix matrix def
+/findresolution
+ {72 0 resmatrix defaultmatrix dtransform
+  /yres exch def /xres exch def
+  xres dup mul yres dup mul add sqrt
+ } bdef
+/thebitimage
+ {/maskp exch def
+  /bihgt exch def
+  /biwid exch def
+  /byte 1 string def
+  /strbufl biwid 8 div ceiling cvi def
+  /strbuf strbufl string def
+  maskp not{{1 exch sub} currenttransfer concatprocs settransfer} if
+  biwid bihgt
+  maskp { true } { 1 } ifelse
+  [biwid 0 0 bihgt 0 0]
+  {/col 0 def
+   {currentfile byte readhexstring pop 0 get
+    dup 16#B2 eq {pop
+    currentfile byte readhexstring pop 0 get 1 add
+    currentfile byte readhexstring pop pop /nbyte byte 0 get def
+    { strbuf col nbyte put /col col 1 add def} repeat}
+   {dup 16#B3 eq {pop /col col
+    currentfile byte readhexstring pop
+    0 get add 1 add def}
+    {16#B4 eq {currentfile byte readhexstring pop pop} if
+     strbuf col byte 0 get put /col col 1 add def} ifelse
+   } ifelse
+   col strbufl ge { exit } if } loop
+   strbuf }
+  maskp { imagemask } { image } ifelse
+ } bdef
+/setuserscreendict 22 dict def
+setuserscreendict begin
+ /tempctm matrix def
+ /temprot matrix def
+ /tempscale matrix def
+end
+/setuserscreen
+ {setuserscreendict begin
+   /spotfunction exch def
+   /screenangle exch def
+   /cellsize exch def
+   /m tempctm currentmatrix def
+   /rm screenangle temprot rotate def
+   /sm cellsize dup tempscale scale def
+   sm rm m m concatmatrix m concatmatrix pop
+   1 0 m dtransform /y1 exch def /x1 exch def
+   /veclength x1 dup mul y1 dup mul add sqrt def
+   /frequency findresolution veclength div def
+   /newscreenangle y1 x1 atan def
+   m 2 get m 1 get mul m 0 get m 3 get mul sub
+   0 gt { { neg } /spotfunction load concatprocs
+          /spotfunction exch def } if
+   frequency newscreenangle /spotfunction load setscreen
+  end
+ } bdef
+/setpatterndict 18 dict def
+setpatterndict begin
+ /bitison
+  {/ybit exch def /xbit exch def
+   /bytevalue bstring ybit bwidth mul xbit 8 idiv add get def
+   /mask 1 7 xbit 8 mod sub bitshift def
+   bytevalue mask and 0 ne
+  } bdef
+end
+/bitpatternspotfunction
+ {setpatterndict begin
+   /y exch def /x exch def
+   /xindex x 1 add 2 div bpside mul 1 sub cvi def
+   /yindex y 1 add 2 div bpside mul 1 sub cvi def
+   xindex yindex bitison
+    {/onbits onbits 1 add def 1}
+    {/offbits offbits 1 add def 0} ifelse
+  end
+ } bdef
+/setpattern
+ {setpatterndict begin
+   /cellsz exch def
+   /angle exch def
+   /bwidth exch def
+   /bpside exch def
+   /bstring exch def
+   /onbits 0 def /offbits 0 def
+   cellsz angle /bitpatternspotfunction load setuserscreen
+   {} settransfer
+   offbits offbits onbits add div setgray
+  end
+ } bdef
+% - - - - - Fraction-setting code, to support NS fonts better - - - - -
+/fractiondict 20 dict def
+/fractionshow 
+{ fractiondict begin
+/denom exch def 
+/num exch def 
+/regfont currentfont def
+/fractfont currentfont [.65 0 0 .6 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(1) true charpath flattenpath pathbbox 
+/height exch def pop pop pop
+ grestore
+0 .4 height mul rmoveto
+fractfont setfont num show
+0 .4 height mul neg rmoveto regfont setfont (\244) show
+fractfont setfont denom show regfont setfont end } bdef
+/f14 { (1) (4) fractionshow } bdef
+/f12 { (1) (2) fractionshow } bdef
+/f34 { (3) (4) fractionshow } bdef
+/f18 { (1) (8) fractionshow } bdef
+/f38 { (3) (8) fractionshow } bdef
+/f58 { (5) (8) fractionshow } bdef
+/f78 { (7) (8) fractionshow } bdef
+/f13 { (1) (3) fractionshow } bdef
+/f23 { (2) (3) fractionshow } bdef
+/bboxdict 20 dict def
+/bboxchk { bboxdict begin
+/regfont currentfont def
+/chkfont currentfont [1.25 0 0 1.25 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(\161) true charpath flattenpath pathbbox 
+/height exch def pop pop pop 
+ grestore 
+ currentpoint 
+ .2 height mul .3 height mul rmoveto
+chkfont setfont (\063) show
+ moveto
+ regfont setfont
+(\161) show end } bdef
+/rencdict 15 dict def
+/encodefont { rencdict begin
+/newname exch def
+/oldfont exch def
+/newcodes [
+8#001 /Aacute
+8#002 /Acircumflex
+8#003 /Adieresis
+8#004 /Agrave
+8#005 /Aring
+8#006 /Atilde
+8#007 /Ccedilla
+8#010 /Eacute
+8#011 /Ecircumflex
+8#012 /Edieresis
+8#013 /Egrave
+8#014 /Iacute
+8#015 /Icircumflex
+8#016 /Idieresis
+8#017 /Igrave
+8#020 /Ntilde
+8#021 /Oacute
+8#022 /Ocircumflex
+8#023 /Odieresis
+8#024 /Ograve
+8#025 /Otilde
+8#026 /Scaron
+8#027 /Uacute
+8#030 /Ucircumflex
+8#031 /Udieresis
+8#032 /Ugrave
+8#033 /Ydieresis
+8#034 /Zcaron
+8#177 /periodinferior
+8#201 /aacute
+8#202 /acircumflex
+8#203 /adieresis
+8#204 /agrave
+8#205 /aring
+8#206 /atilde
+8#207 /ccedilla
+8#210 /eacute
+8#211 /ecircumflex
+8#212 /edieresis
+8#213 /egrave
+8#214 /iacute
+8#215 /icircumflex
+8#216 /idieresis
+8#217 /igrave
+8#220 /ntilde
+8#221 /oacute
+8#222 /ocircumflex
+8#223 /odieresis
+8#224 /ograve
+8#225 /otilde
+8#226 /scaron
+8#227 /uacute
+8#230 /ucircumflex
+8#231 /udieresis
+8#232 /ugrave
+8#233 /ydieresis
+8#234 /zcaron
+8#235 /Eth
+8#236 /eth
+8#237 /Thorn
+8#240 /thorn
+ ] def
+/olddict oldfont findfont def /newfont olddict maxlength dict def
+olddict { exch dup /FID ne { dup /Encoding eq
+{ exch dup length array copy newfont 3 1 roll put }
+{ exch newfont 3 1 roll put } ifelse }
+ { pop pop } ifelse } forall
+newfont /FontName newname put
+newcodes aload pop
+newcodes length 2 idiv { newfont /Encoding get 3 1 roll put } repeat 
+newname newfont definefont pop end } def
+ /accentdict 10 dict def 
+ /accentor { accentdict begin /scaler exch def /delta exch def 
+/unders exch def /accents exch def /mainch exch def /scrt (X) def
+ /w1 mainch stringwidth pop def 
+ currentpoint mainch show currentpoint 4 2 roll 
+accents { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         w1 w2 sub 2 div delta rmoveto scrt show 
+         /delta delta 150 scaler mul 9 div add def
+        } forall 
+unders { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         ch 46 eq { w1 w2 sub 2 div -175 scaler mul 9 div rmoveto scrt show 0 175 rmoveto }
+           { w1 w2 sub 2 div 0 rmoveto scrt show } ifelse 
+        } forall 
+ pop pop moveto end } def 
+%%EndProlog
+%%BeginSetup
+letter/imagesizefactor 1 def%%EndSetup/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+
+%%Page: 1 1
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+54000 75600 M (F.G.H.          ) S
+54000 73800 M (1/22/85) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (LispCourse #1:  Getting InterLisp-D Up and Running) S
+7200 67157 M (Topic 0:  Bravery) S
+7200 64557 M (Topic 1:  Getting InterLisp-D Up and Running) S
+1200 /Times-Bold-Acnt F
+10800 62106 M (A.  InterLisp-D is a comprehensive environment) S
+10800 59706 M (B.  Basic differences between Dolphins, Dorados, & Dandelions) S
+1200 /Times-Roman-Acnt F
+14400 57906 M (Alto Exec versus Installation Utilities) S
+14400 56106 M (File Systems \234 Partitions \(2 vs 5 vs 19\) versus Logical Volumes) S
+1200 /Times-Bold-Acnt F
+10800 53706 M (C.  Background Concepts) S
+1200 /Times-Roman-Acnt F
+14400 51906 M (Memory \234 core versus disk versus file-server) S
+14400 50106 M (Virtual Memory \234 pageing\(swapping\)) S
+14400 48306 M (Lisp system contained in a virtual image) S
+14400 46506 M (Vmems and Sysouts) S
+1200 /Times-Bold-Acnt F
+10800 44106 M (D.  Basic Procedure & Concepts ) S
+1200 /Times-Roman-Acnt F
+14400 42306 M (Set up local disk ) S
+18000 40506 M (Vmem file) S
+18000 38906 M (Frequency: Once) S
+14400 37306 M (Retrieve necessary Lisp files) S
+18000 35506 M (Support files: microcode, run files, etc.) S
+18000 33906 M (Lisp.Sysout \(full.sysout; *.sysout\)) S
+18000 32306 M (Frequency: New releases) S
+14400 30706 M (Start up Lisp) S
+18000 28906 M (Clean Lisp \(create new virtual image from sysout\)) S
+18000 27306 M (Restarting Lisp \(use old virtual image\)) S
+18000 25706 M (Frequency: As necessary) S
+14400 24106 M (Leaving Lisp) S
+18000 22306 M ("\(LOGOUT\)") S
+18000 20706 M ("\(LOGOUT T\)") S
+18000 19106 M (Frequency: As necessary) S
+1200 /Times-Bold-Acnt F
+10800 16906 M (E.  Procedures \234 Prefatory Remarks) S
+1200 /Times-Roman-Acnt F
+14400 15106 M (Why are the getting started procedures such a mess?) S
+18000 13306 M (Square pegs in round holes, insufficient resources, etc.) S
+14400 11506 M (Assumption:  You know how to boot the machines.) S
+1200 /Times-Bold-Acnt F
+10800 9106 M (F.  Procedures \234 Dolphins and Dorados \(Alto-based\)) S
+grestore savepage restore showpage
+
+%%Page: 2 2
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (2) S
+7200 75600 M (LispCourse #1:  Getting InterLisp-D Up and Running) S
+14400 71106 M (Local disk configuration \234 Files on a partition) S
+14400 69306 M (Set up local disk \234 NewUserDisk.cm) S
+18000 67506 M (Needs to be a blank partition \234 Use NewOs in NetExec to erase ) S
+18000 65706 M (Retrieve NewUserDisk.cm using FTP) S
+21600 63906 M (\(currently on {eris}<lisp>harmony>cm>newuserdisk.cis\)) S
+18000 62106 M ("@NewUserDisk") S
+14400 60306 M (Retrieve necessary Lisp files) S
+18000 58506 M (Not necessary first time after NewUserDisk.cm) S
+18000 56706 M (Thereafter for new releases use: UpdateLisp.cm) S
+21600 54906 M (Retrieve UpdateLisp.cm using FTP) S
+25200 53306 M (\(currently on {eris}<lisp>harmony>cm>updatelisp.cis\)) S
+21600 51706 M ("@UpdateLisp") S
+14400 50106 M (Start up Lisp) S
+18000 48306 M (Clean Lisp) S
+21600 46506 M ("Lisp <sysout file name>") S
+21600 44906 M ( Examples:) S
+25200 43306 M ("Lisp {eris}<lisp>harmony>basics>full.sysout") S
+25200 41706 M ("Lisp {dsk2}lisp.sysout") S
+18000 40106 M (Restarting Lisp) S
+21600 38306 M ("Lisp") S
+21600 36706 M (Error msg: "Inconsistent Vmem") S
+14400 35106 M (Leaving Lisp) S
+18000 33306 M ("\(LOGOUT\)" or "\(LOGOUT T\)" leaves you in Alto Exec) S
+18000 31506 M ("Quit" and power-off machine) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 29106 M (G.  Procedures \234 Dandelions) S
+1200 /Times-Roman-Acnt F
+14400 27306 M (Note:  There are several different utilities for setting up and running Lisp on a ) S
+18000 25506 M (Dandelion!!!!!  The one described here is the most commonly used at ) S
+18000 23706 M (PARC.) S
+14400 21906 M (Local disk configuration \234 Logical volumes, Vmem = Logical Volume) S
+14400 20106 M (Utilities:  Othello and Hello) S
+14400 17706 M (Set up local disk & Retrieve necessary Lisp files) S
+18000 15906 M (3-Boot the DLion to load Othello from the net) S
+18000 14106 M ("login") S
+18000 12306 M (Partition the disk into logical volumes & retrieve files) S
+21600 10506 M ("@[eris]<lisp>harmony>cm>Partition43Lisp.othello") S
+grestore savepage restore showpage
+
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (3) S
+7200 75600 M (LispCourse #1:  Getting InterLisp-D Up and Running) S
+25200 71106 M (<Note: Alternative partitionings are available on ) S
+25200 69306 M ([eris]<lisp>harmony>cm> for Star users or 10/29 Mbyte ) S
+25200 67506 M (disks.>) S
+14400 65706 M (Start up Lisp) S
+18000 63906 M (Clean Lisp) S
+21600 62306 M (1-Boot the DLion to load Hello from the local disk) S
+21600 60506 M ("login") S
+21600 58706 M ("@[eris]<lisp>harmony>cm>InstallLisp.hello") S
+25200 56906 M (\(or InstallFull.hello\)) S
+21600 55106 M (When Lisp comes up, you will be asked for the name of the init ) S
+25200 53306 M (file.  At PARC: "{eris}<lisp>harmony>basics>init.cis") S
+25200 51506 M ([Details on init files will come in later class.]) S
+21600 49706 M (If this is the first startup after the disk has been partitioned, the ) S
+25200 47906 M (LispFiles volume must be initialized by typing:) S
+25200 46106 M ("DFSCREATEDIRECTORY[LispFiles]") S
+18000 44306 M (Restarting Lisp) S
+21600 42706 M (0-Boot the DLion \(goes directly into Lisp\)) S
+21600 40906 M (Flashing 217 in MP indicates "Inconsistent VMem") S
+14400 39106 M (Leaving Lisp) S
+18000 37306 M ("\(LOGOUT\)" or "\(LOGOUT T\)" returns you to Hello) S
+18000 35506 M (Turn off machine or get new lisp.) S
+14400 33106 M (Alternative:  Keeping clean sysouts on spare logical volumes) S
+18000 31306 M (To install the sysout on the logical volume:) S
+21600 29506 M (1-Boot the DLion to load Hello from the local disk) S
+21600 27906 M ("login") S
+21600 26306 M ("open eris") S
+21600 24706 M ("lisp") S
+25200 23106 M ("<logical volume name>", e.g., "Lisp2") S
+18000 21506 M (To start up Lisp using this sysout on another logical volume:) S
+21600 19706 M (1-Boot the DLion to load Hello from the local disk) S
+21600 17906 M ("Copy") S
+25200 16106 M ("<source logical volume>", e.g. "Lisp2") S
+25200 14306 M ("<destination logical volume>", e.g., "Lisp") S
+21600 12506 M ("Boot") S
+25200 10706 M ("<destination logical volume>", e.g., "Lisp") S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 8306 M (H.  Interacting with InterLisp-D \234 the top level tty window) S
+grestore savepage restore showpage
+
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (4) S
+7200 75600 M (LispCourse #1:  Getting InterLisp-D Up and Running) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 71106 M (I.  REFERENCES) S
+1200 /Times-Roman-Acnt F
+14400 68706 M ({eris}<lisp>harmony>doc>GettingStarted.tedit \(.press & .ip\)) S
+14400 66306 M ({eris}<lisp>harmony>doc>hello.tedit \(.press\)) S
+14400 63906 M (Mesa Users Guide \(Chapters 35, 2, & 3\) [about Othello]) S
+14400 61506 M (Xerox 1108 User's Guide [this contains an alternative procedure for using ) S
+14400 59706 M (Dandelions]) S
+14400 57306 M (Mesa Users Guide \(Chapters 35, 2, & 3\) [about Othello]) S
+14400 54906 M (Alto User's Handbook) S
+1200 /Times-Bold-Acnt F
+10800 47706 M ( ) S
+grestore savepage restore showpage
+
+%%Trailer

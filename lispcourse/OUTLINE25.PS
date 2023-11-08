@@ -1,0 +1,1917 @@
+%!PS-Adobe-2.0%%Title: {DSK}<home>larry>lispcourse>OUTLINE25.PS%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate:  7-Nov-2023 21:40:15%%EndComments/bdef {bind def} bind def
+/ldef {load def} bdef
+/S /show ldef
+/M /moveto ldef
+/DR {transform round exch round exch itransform} bdef
+/L {gsave newpath setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/L1 {gsave newpath 0 setdash setgray setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/F {findfont exch scalefont setfont} bdef
+/CLP {newpath M dup 0 rlineto exch 0 exch rlineto
+  neg 0 rlineto closepath clip newpath} bdef
+/R {gsave setgray newpath M dup 0 rlineto exch 0 exch
+  rlineto neg 0 rlineto closepath eofill grestore} bdef
+/ellipsedict 9 dict def
+ellipsedict /mtrx matrix put
+/ellipse
+ { ellipsedict begin
+  /endangle exch def
+  /startangle exch def
+  /orientation exch def
+  /minorrad exch def
+  /majorrad exch def
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  orientation rotate
+  majorrad minorrad scale
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+ end } bdef
+/concatprocs
+ {/proc2 exch cvlit def
+  /proc1 exch cvlit def
+  /newproc proc1 length proc2 length add array def
+  newproc 0 proc1 putinterval
+  newproc proc1 length proc2 putinterval
+  newproc cvx
+ } bdef
+/resmatrix matrix def
+/findresolution
+ {72 0 resmatrix defaultmatrix dtransform
+  /yres exch def /xres exch def
+  xres dup mul yres dup mul add sqrt
+ } bdef
+/thebitimage
+ {/maskp exch def
+  /bihgt exch def
+  /biwid exch def
+  /byte 1 string def
+  /strbufl biwid 8 div ceiling cvi def
+  /strbuf strbufl string def
+  maskp not{{1 exch sub} currenttransfer concatprocs settransfer} if
+  biwid bihgt
+  maskp { true } { 1 } ifelse
+  [biwid 0 0 bihgt 0 0]
+  {/col 0 def
+   {currentfile byte readhexstring pop 0 get
+    dup 16#B2 eq {pop
+    currentfile byte readhexstring pop 0 get 1 add
+    currentfile byte readhexstring pop pop /nbyte byte 0 get def
+    { strbuf col nbyte put /col col 1 add def} repeat}
+   {dup 16#B3 eq {pop /col col
+    currentfile byte readhexstring pop
+    0 get add 1 add def}
+    {16#B4 eq {currentfile byte readhexstring pop pop} if
+     strbuf col byte 0 get put /col col 1 add def} ifelse
+   } ifelse
+   col strbufl ge { exit } if } loop
+   strbuf }
+  maskp { imagemask } { image } ifelse
+ } bdef
+/setuserscreendict 22 dict def
+setuserscreendict begin
+ /tempctm matrix def
+ /temprot matrix def
+ /tempscale matrix def
+end
+/setuserscreen
+ {setuserscreendict begin
+   /spotfunction exch def
+   /screenangle exch def
+   /cellsize exch def
+   /m tempctm currentmatrix def
+   /rm screenangle temprot rotate def
+   /sm cellsize dup tempscale scale def
+   sm rm m m concatmatrix m concatmatrix pop
+   1 0 m dtransform /y1 exch def /x1 exch def
+   /veclength x1 dup mul y1 dup mul add sqrt def
+   /frequency findresolution veclength div def
+   /newscreenangle y1 x1 atan def
+   m 2 get m 1 get mul m 0 get m 3 get mul sub
+   0 gt { { neg } /spotfunction load concatprocs
+          /spotfunction exch def } if
+   frequency newscreenangle /spotfunction load setscreen
+  end
+ } bdef
+/setpatterndict 18 dict def
+setpatterndict begin
+ /bitison
+  {/ybit exch def /xbit exch def
+   /bytevalue bstring ybit bwidth mul xbit 8 idiv add get def
+   /mask 1 7 xbit 8 mod sub bitshift def
+   bytevalue mask and 0 ne
+  } bdef
+end
+/bitpatternspotfunction
+ {setpatterndict begin
+   /y exch def /x exch def
+   /xindex x 1 add 2 div bpside mul 1 sub cvi def
+   /yindex y 1 add 2 div bpside mul 1 sub cvi def
+   xindex yindex bitison
+    {/onbits onbits 1 add def 1}
+    {/offbits offbits 1 add def 0} ifelse
+  end
+ } bdef
+/setpattern
+ {setpatterndict begin
+   /cellsz exch def
+   /angle exch def
+   /bwidth exch def
+   /bpside exch def
+   /bstring exch def
+   /onbits 0 def /offbits 0 def
+   cellsz angle /bitpatternspotfunction load setuserscreen
+   {} settransfer
+   offbits offbits onbits add div setgray
+  end
+ } bdef
+% - - - - - Fraction-setting code, to support NS fonts better - - - - -
+/fractiondict 20 dict def
+/fractionshow 
+{ fractiondict begin
+/denom exch def 
+/num exch def 
+/regfont currentfont def
+/fractfont currentfont [.65 0 0 .6 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(1) true charpath flattenpath pathbbox 
+/height exch def pop pop pop
+ grestore
+0 .4 height mul rmoveto
+fractfont setfont num show
+0 .4 height mul neg rmoveto regfont setfont (\244) show
+fractfont setfont denom show regfont setfont end } bdef
+/f14 { (1) (4) fractionshow } bdef
+/f12 { (1) (2) fractionshow } bdef
+/f34 { (3) (4) fractionshow } bdef
+/f18 { (1) (8) fractionshow } bdef
+/f38 { (3) (8) fractionshow } bdef
+/f58 { (5) (8) fractionshow } bdef
+/f78 { (7) (8) fractionshow } bdef
+/f13 { (1) (3) fractionshow } bdef
+/f23 { (2) (3) fractionshow } bdef
+/bboxdict 20 dict def
+/bboxchk { bboxdict begin
+/regfont currentfont def
+/chkfont currentfont [1.25 0 0 1.25 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(\161) true charpath flattenpath pathbbox 
+/height exch def pop pop pop 
+ grestore 
+ currentpoint 
+ .2 height mul .3 height mul rmoveto
+chkfont setfont (\063) show
+ moveto
+ regfont setfont
+(\161) show end } bdef
+/rencdict 15 dict def
+/encodefont { rencdict begin
+/newname exch def
+/oldfont exch def
+/newcodes [
+8#001 /Aacute
+8#002 /Acircumflex
+8#003 /Adieresis
+8#004 /Agrave
+8#005 /Aring
+8#006 /Atilde
+8#007 /Ccedilla
+8#010 /Eacute
+8#011 /Ecircumflex
+8#012 /Edieresis
+8#013 /Egrave
+8#014 /Iacute
+8#015 /Icircumflex
+8#016 /Idieresis
+8#017 /Igrave
+8#020 /Ntilde
+8#021 /Oacute
+8#022 /Ocircumflex
+8#023 /Odieresis
+8#024 /Ograve
+8#025 /Otilde
+8#026 /Scaron
+8#027 /Uacute
+8#030 /Ucircumflex
+8#031 /Udieresis
+8#032 /Ugrave
+8#033 /Ydieresis
+8#034 /Zcaron
+8#177 /periodinferior
+8#201 /aacute
+8#202 /acircumflex
+8#203 /adieresis
+8#204 /agrave
+8#205 /aring
+8#206 /atilde
+8#207 /ccedilla
+8#210 /eacute
+8#211 /ecircumflex
+8#212 /edieresis
+8#213 /egrave
+8#214 /iacute
+8#215 /icircumflex
+8#216 /idieresis
+8#217 /igrave
+8#220 /ntilde
+8#221 /oacute
+8#222 /ocircumflex
+8#223 /odieresis
+8#224 /ograve
+8#225 /otilde
+8#226 /scaron
+8#227 /uacute
+8#230 /ucircumflex
+8#231 /udieresis
+8#232 /ugrave
+8#233 /ydieresis
+8#234 /zcaron
+8#235 /Eth
+8#236 /eth
+8#237 /Thorn
+8#240 /thorn
+ ] def
+/olddict oldfont findfont def /newfont olddict maxlength dict def
+olddict { exch dup /FID ne { dup /Encoding eq
+{ exch dup length array copy newfont 3 1 roll put }
+{ exch newfont 3 1 roll put } ifelse }
+ { pop pop } ifelse } forall
+newfont /FontName newname put
+newcodes aload pop
+newcodes length 2 idiv { newfont /Encoding get 3 1 roll put } repeat 
+newname newfont definefont pop end } def
+ /accentdict 10 dict def 
+ /accentor { accentdict begin /scaler exch def /delta exch def 
+/unders exch def /accents exch def /mainch exch def /scrt (X) def
+ /w1 mainch stringwidth pop def 
+ currentpoint mainch show currentpoint 4 2 roll 
+accents { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         w1 w2 sub 2 div delta rmoveto scrt show 
+         /delta delta 150 scaler mul 9 div add def
+        } forall 
+unders { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         ch 46 eq { w1 w2 sub 2 div -175 scaler mul 9 div rmoveto scrt show 0 175 rmoveto }
+           { w1 w2 sub 2 div 0 rmoveto scrt show } ifelse 
+        } forall 
+ pop pop moveto end } def 
+%%EndProlog
+%%BeginSetup
+letter/imagesizefactor 1 def%%EndSetup/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+
+%%Page: 1 1
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+54000 75600 M (F.G.H.          ) S
+54000 73800 M (5/7/85) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (LispCourse #25:  The Record Package; The Inspector) S
+7200 67157 M (Records:  Data Abstraction in Interlisp) S
+1200 /Times-Roman-Acnt F
+10800 64306 M (There is a package in Interlisp called the Record Package that makes data abstraction ) S
+10800 62506 M (syntactically easy.  The Record Package provides a simple syntax that supports writing ) S
+10800 60706 M (constructors, selectors, and mutators.) S
+10800 57906 M (The Record Package is part of CLISP \234 statements written in the Record Package syntax ) S
+10800 56106 M (are translated by the Lisp interpreter \(or compiler\) into standard Lisp and then executed.) S
+14400 53706 M (All of the syntax described here is just a "pretty" way of stating in CLISP what ) S
+14400 51906 M (you could do directly, but less clearly,  with CARs, CDRs, GETPROPs, ASSOCs, ) S
+14400 50106 M (etc. in straight Interlisp.) S
+10800 47306 M (The Record Package actually includes an interface to two related functionalities in ) S
+10800 45506 M (Interlisp \233 records and datatypes.  We will discuss records first and datatypes a bit later.) S
+1200 /Times-Bold-Acnt F
+10800 42106 M (Records: Basic Stuff) S
+1200 /Times-Roman-Acnt F
+14400 39306 M (A ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(record) S
+1200 /Times-Roman-Acnt F
+( is basically a description of a list structure.  The description names the ) S
+14400 37506 M (whole structure \(i.e., the record\) ) S
+1200 /Times-Bold-Acnt F
+(and) S
+1200 /Times-Roman-Acnt F
+( names each of the parts of the structure.) S
+18000 35306 M (In the terminology of the Record Package, each part of the overall record ) S
+18000 33506 M (is called a ) S
+1200 /Times-BoldItalic-Acnt F
+(field) S
+1200 /Times-Roman-Acnt F
+( of the record.) S
+14400 30706 M (Once you have described a record structure, you can create instances of the record ) S
+14400 28906 M (and can access any field of these instances ) S
+1200 /Times-BoldItalic-Acnt F
+(by name) S
+1200 /Times-Roman-Acnt F
+( using the special Record ) S
+14400 27106 M (Package syntax.) S
+18000 24906 M (Example:) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 22906 M (\(fetch \(Message Header\) of NextMessage\)) S
+1200 /Times-Roman-Acnt F
+( is a statement that ) S
+21600 21106 M (retrieves the Header part of a Message record that is the value of ) S
+21600 19306 M (the atom NextMessage.) S
+1200 /Times-Bold-Acnt F
+14400 16506 M (Important note:) S
+1200 /Times-Roman-Acnt F
+(  the word ) S
+1200 /Times-Italic-Acnt F
+(record) S
+1200 /Times-Roman-Acnt F
+( is used to denote both the ) S
+1200 /Times-Italic-Acnt F
+(description) S
+1200 /Times-Roman-Acnt F
+( of the ) S
+14400 14706 M (list structure and the actual lists that are ) S
+1200 /Times-Italic-Acnt F
+(instances) S
+1200 /Times-Roman-Acnt F
+( of the structure described.  ) S
+14400 12906 M (Which of these is intended should be clear from the context.) S
+1200 /Times-Bold-Acnt F
+14400 9306 M (Record Declarations) S
+grestore savepage restore showpage
+
+%%Page: 2 2
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (2) S
+7200 75600 M (LispCourse #25:  The Record Package; The Inspector) S
+18000 71106 M (Before a record can be used it must be declared.  ) S
+18000 68306 M (A ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(record declaration) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(statement) S
+1200 /Times-Roman-Acnt F
+( names the record and describes all of the ) S
+18000 66506 M (fields in the record.  It has the form:) S
+1200 /Times-Bold-Acnt F
+21600 63706 M (\(RECORD ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(RecordName) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Fields) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(ExtraStuff1 ExtraStuff2 ...) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+25200 60906 M (RECORD is a keyword indicating that this is a record ) S
+25200 59106 M (declaration.) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+25200 56306 M (RecordName) S
+1200 /Times-Roman-Acnt F
+( is the name of the record.  RecordNames ) S
+25200 54506 M (must be unique in the whole system \(among both records ) S
+25200 52706 M (and datatypes\).) S
+1200 /Times-Italic-Acnt F
+25200 49906 M (Fields) S
+1200 /Times-Roman-Acnt F
+( is a list of the parts \(i.e., fields\) of the record.  Each ) S
+25200 48106 M (element in the list is a non-NIL litatom that serves as the ) S
+25200 46306 M (name of the field.) S
+1000 /Times-Roman-Acnt F
+28800 44255 M (The list can also contain NILs, which stand for unnamed \(and ) S
+28800 42655 M (therefore unaccessible\) fields.  Finally, the list can contain ) S
+28800 41055 M (integers, which stand for the specified number of unnamed ) S
+28800 39455 M (fields.) S
+1200 /Times-Roman-Acnt F
+25200 36506 M (The ) S
+1200 /Times-Italic-Acnt F
+(ExtraStuffI) S
+1200 /Times-Roman-Acnt F
+( staements are optional.  If present, each) S
+1200 /Times-Italic-Acnt F
+( ) S
+25200 34706 M (ExtraStuffI) S
+1200 /Times-Roman-Acnt F
+( can be any of several kinds of information.) S
+28800 32506 M (Most importantly, the ) S
+1200 /Times-Italic-Acnt F
+(ExtraStuffI) S
+1200 /Times-Roman-Acnt F
+( can be an ) S
+28800 30706 M (assignment statement of the form:) S
+1200 /Times-BoldItalic-Acnt F
+32400 28306 M (FieldName ) S
+1200 /Times-Bold-Acnt F
+(_) S
+1200 /Times-BoldItalic-Acnt F
+( Form) S
+1200 /Times-Italic-Acnt F
+32400 25906 M (FieldName) S
+1200 /Times-Roman-Acnt F
+( is one of the named fields from ) S
+32400 24106 M (the ) S
+1200 /Times-Italic-Acnt F
+(Fields) S
+1200 /Times-Roman-Acnt F
+( list.) S
+1200 /Times-Italic-Acnt F
+32400 21706 M (Form) S
+1200 /Times-Roman-Acnt F
+( is any Lisp form.) S
+28800 19506 M (This assignment statement specifies the default ) S
+28800 17706 M (value for the field named ) S
+1200 /Times-Italic-Acnt F
+(FieldName) S
+1200 /Times-Roman-Acnt F
+( in the record.  ) S
+28800 15906 M (When you create an instance of the record, if ) S
+1200 /Times-Italic-Acnt F
+28800 14106 M (FieldName) S
+1200 /Times-Roman-Acnt F
+( is not explicitly given a value in the ) S
+28800 12306 M (CREATE statement, then the value returned by ) S
+28800 10506 M (evaluating ) S
+1200 /Times-Italic-Acnt F
+(Form) S
+1200 /Times-Roman-Acnt F
+( will be used to fill-in the field.) S
+grestore savepage restore showpage
+
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (3) S
+7200 75600 M (LispCourse #25:  The Record Package; The Inspector) S
+21600 71106 M (Examples:) S
+25200 68306 M (\(RECORD PersonsName \(First Middle Last\)) S
+28800 66506 M (First _ 'John Middle _ 'Dunce Last _ 'Doe\)) S
+25200 63706 M (\(RECORD DatabaseEntry \(Name OfficeNumber ) S
+25200 61906 M (PhoneNumber\)\)) S
+18000 58506 M (Note:  A record declaration statement is NOT an executable statement \233 ) S
+18000 56706 M (i.e., it doesn't evaluate to anything.  It just serves to describe the record to ) S
+18000 54906 M (CLISP, which will use this information to translate the executable ) S
+18000 53106 M (statements that access instances of this record.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 49506 M (Constructing Record Instances: The CREATE statement.) S
+1200 /Times-Roman-Acnt F
+18000 46706 M (Once a record has been declared, you can construct instances of the record ) S
+18000 44906 M (using the CREATE statement.) S
+18000 42106 M (The CREATE statement has the following format:) S
+1200 /Times-Bold-Acnt F
+21600 39706 M (\(CREATE ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(RecordName Assignment1 Assignment2 ...) S
+1200 /Times-Bold-Acnt F
+(\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 37306 M (RecordName) S
+1200 /Times-Roman-Acnt F
+( is the name of the record you want to create an ) S
+21600 35506 M (instance of.) S
+21600 33106 M (The ) S
+1200 /Times-Italic-Acnt F
+(AssignmentI) S
+1200 /Times-Roman-Acnt F
+( statements are optional.  If present, each ) S
+1200 /Times-Italic-Acnt F
+21600 31306 M (AssignmentI) S
+1200 /Times-Roman-Acnt F
+( is a statement that specifies the value to be given to a ) S
+21600 29506 M (particular field of the record when it is created.  This statement ) S
+21600 27706 M (should have the format:) S
+1200 /Times-BoldItalic-Acnt F
+25200 25306 M (FieldName ) S
+1200 /Times-Bold-Acnt F
+(_) S
+1200 /Times-BoldItalic-Acnt F
+( Form) S
+1200 /Times-Italic-Acnt F
+25200 22906 M (FieldName) S
+1200 /Times-Roman-Acnt F
+( is the name of one of the fields of ) S
+1200 /Times-Italic-Acnt F
+(RecordName) S
+1200 /Times-BoldItalic-Acnt F
+(.) S
+1200 /Times-Italic-Acnt F
+25200 20506 M (Form) S
+1200 /Times-Roman-Acnt F
+( is any Interlisp form, the value of which will be ) S
+25200 18706 M (placed in the field ) S
+1200 /Times-Italic-Acnt F
+(FieldName) S
+1200 /Times-Roman-Acnt F
+( when the record is created.) S
+1200 /Times-Roman-Acnt F
+18000 15506 M (When the CREATE statement is evaluated, it returns a list that is an ) S
+18000 13706 M (instance of the specified record.   The value of each field in the record is ) S
+18000 11906 M (determined as follows:) S
+grestore savepage restore showpage
+
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (4) S
+7200 75600 M (LispCourse #25:  The Record Package; The Inspector) S
+21600 71106 M (If there was an assignment statement for that field in the CREATE ) S
+21600 69306 M (statement, then the value of the form in that assignment statement ) S
+21600 67506 M (is used.) S
+21600 64906 M (Otherwise, if there was default assignment statement for that field ) S
+21600 63106 M (in the record declaration for the record, then the value of the form ) S
+21600 61306 M (in that assignment statement is used.) S
+21600 58706 M (Otherwise, the field is set to NIL.) S
+18000 55506 M (Examples:) S
+21600 53306 M (30_\(RECORD PersonsName \(First Middle Last\)) S
+21600 51306 M (First _ 'John Last _ 'Doe\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 49306 M (PersonsName) S
+1200 /Times-Roman-Acnt F
+21600 47306 M (31_\(CREATE PersonsName\)) S
+1200 /Times-Italic-Acnt F
+21600 45306 M (\(John NIL Doe\)) S
+1200 /Times-Roman-Acnt F
+21600 43306 M (32_\(CREATE PersonsName First _ 'Sam\)) S
+1200 /Times-Italic-Acnt F
+21600 41306 M (\(Sam NIL Doe\)) S
+1200 /Times-Roman-Acnt F
+21600 39306 M (33_\(CREATE PersonsName First _ 'Sam Last _ 'Smith) S
+21600 37706 M (Middle _ \(CAR \(LIST 'A. 'B.\)\)\)) S
+1200 /Times-Italic-Acnt F
+21600 35706 M (\(Sam A. Smith\)) S
+grestore savepage restore showpage
+
+%%Page: 5 5
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 6 6
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (5) S
+7200 75600 M (LispCourse #25:  The Record Package; The Inspector) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 71106 M (Selecting Fields in a Record: The fetch statement) S
+1200 /Times-Roman-Acnt F
+18000 68306 M (Given a record \(instance\), you can select any of its fields using the ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(fetch) S
+1200 /Times-Roman-Acnt F
+( ) S
+18000 66506 M (statement.) S
+18000 63706 M (The ) S
+1200 /Times-BoldItalic-Acnt F
+(fetch) S
+1200 /Times-Roman-Acnt F
+( has the following format:) S
+1200 /Times-Bold-Acnt F
+21600 61306 M (\(fetch \() S
+1200 /Times-BoldItalic-Acnt F
+(RecordName) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(FieldName) S
+1200 /Times-Bold-Acnt F
+(\) of ) S
+1200 /Times-BoldItalic-Acnt F
+(Form) S
+1200 /Times-Bold-Acnt F
+(\)) S
+25200 58906 M (fetch) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Bold-Acnt F
+(of) S
+1200 /Times-Roman-Acnt F
+( are keywords.) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+25200 56506 M (RecordName) S
+1200 /Times-Roman-Acnt F
+( is the name of the record \(description\) being ) S
+25200 54706 M (used.) S
+1200 /Times-Italic-Acnt F
+25200 52306 M (FieldName) S
+1200 /Times-Roman-Acnt F
+( is the name of the field to be selected from the ) S
+25200 50506 M (record instance of type ) S
+1200 /Times-Italic-Acnt F
+(RecordName) S
+1200 /Times-Roman-Acnt F
+(.) S
+1200 /Times-Italic-Acnt F
+25200 48106 M (Form) S
+1200 /Times-Roman-Acnt F
+( is an Interlisp form that evaluates to a record of type ) S
+1200 /Times-Italic-Acnt F
+25200 46306 M (RecordName) S
+1200 /Times-Roman-Acnt F
+(.) S
+18000 43506 M (When the ) S
+1200 /Times-BoldItalic-Acnt F
+(fetch) S
+1200 /Times-Roman-Acnt F
+( statement is evaluated, it will return the value of the ) S
+18000 41706 M (named field from the record that is the value of the given form.) S
+18000 38506 M (Examples:) S
+21600 36306 M (33_\(SETQ Person \(CREATE PersonsName First _ 'Sam Last _ ) S
+21600 34706 M ('Smith) S
+21600 33106 M (Middle _  'A\)\)) S
+1200 /Times-Italic-Acnt F
+21600 31106 M (\(Sam A. Smith\)) S
+1200 /Times-Roman-Acnt F
+21600 29106 M (34_Person) S
+1200 /Times-Italic-Acnt F
+21600 27106 M (\(Sam A. Smith\)) S
+1200 /Times-Roman-Acnt F
+21600 25106 M (35_ \(fetch \(PersonsName Last\) of Person\)) S
+1200 /Times-Italic-Acnt F
+21600 23106 M (Smith) S
+1200 /Times-Roman-Acnt F
+21600 21106 M (36_ \(fetch \(PersonsName First\) of Person\)) S
+1200 /Times-Italic-Acnt F
+21600 19106 M (Sam) S
+1200 /Times-Roman-Acnt F
+21600 17106 M (37_ \(fetch \(PersonsName First\) of \(CREATE PersonsName\)\)) S
+1200 /Times-Italic-Acnt F
+21600 15106 M (John) S
+1200 /Times-Roman-Acnt F
+18000 12106 M (Note: if the ) S
+1200 /Times-Italic-Acnt F
+(FieldName) S
+1200 /Times-Roman-Acnt F
+( is unambiguous, ) S
+1200 /Times-BoldItalic-Acnt F
+(FieldName) S
+1200 /Times-Roman-Acnt F
+( can be used in place ) S
+18000 10306 M (of ) S
+1200 /Times-Bold-Acnt F
+(\() S
+1200 /Times-BoldItalic-Acnt F
+(RecordName) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(FieldName) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+(.  ) S
+1200 /Times-Italic-Acnt F
+(FieldName ) S
+1200 /Times-Roman-Acnt F
+(is unambiguous if there is only ) S
+18000 8506 M (one record ) S
+1200 /Times-Italic-Acnt F
+(in the entire system) S
+1200 /Times-Roman-Acnt F
+( having a  field with that name.  ) S
+grestore savepage restore showpage
+
+%%Page: 7 7
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (6) S
+7200 75600 M (LispCourse #25:  The Record Package; The Inspector) S
+21600 71106 M (Opinion: Using ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(FieldName) S
+1200 /Times-Roman-Acnt F
+( instead of ) S
+1200 /Times-Italic-Acnt F
+(\(RecordName FieldName\)) S
+1200 /Times-Roman-Acnt F
+( is ) S
+21600 69306 M (just lousy programming style because it can lead to lots of trouble ) S
+21600 67506 M (when you \(or more likely someone else\) adds a second record to ) S
+21600 65706 M (the system that just happens to use ) S
+1200 /Times-Italic-Acnt F
+(FieldName) S
+1200 /Times-Roman-Acnt F
+(.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 62106 M (Mutating Fields in a Record: The replace statement) S
+1200 /Times-Roman-Acnt F
+18000 59306 M (Given a record \(instance\), you can mutate \(i.e., change\) any of its fields ) S
+18000 57506 M (using the ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(replace) S
+1200 /Times-Roman-Acnt F
+( statement.) S
+18000 54706 M (The ) S
+1200 /Times-BoldItalic-Acnt F
+(replace) S
+1200 /Times-Roman-Acnt F
+( has the following format:) S
+1200 /Times-Bold-Acnt F
+21600 52306 M (\(replace \() S
+1200 /Times-BoldItalic-Acnt F
+(RecordName) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(FieldName) S
+1200 /Times-Bold-Acnt F
+(\) of ) S
+1200 /Times-BoldItalic-Acnt F
+(Form1) S
+1200 /Times-Bold-Acnt F
+( with ) S
+1200 /Times-BoldItalic-Acnt F
+(Form2) S
+1200 /Times-Bold-Acnt F
+(\)) S
+25200 49906 M (replace, of,) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Bold-Acnt F
+(with) S
+1200 /Times-Roman-Acnt F
+( are keywords.) S
+1200 /Times-Italic-Acnt F
+25200 47506 M (RecordName) S
+1200 /Times-Roman-Acnt F
+( is the name of the record \(description\) being ) S
+25200 45706 M (used.) S
+1200 /Times-Italic-Acnt F
+25200 43306 M (FieldName) S
+1200 /Times-Roman-Acnt F
+( is the name of the field to be changed from the ) S
+25200 41506 M (record instance of type ) S
+1200 /Times-Italic-Acnt F
+(RecordName) S
+1200 /Times-Roman-Acnt F
+(.) S
+1200 /Times-Italic-Acnt F
+25200 39106 M (Form1) S
+1200 /Times-Roman-Acnt F
+( is an Interlisp form that evaluates to a record of type ) S
+1200 /Times-Italic-Acnt F
+25200 37306 M (RecordName) S
+1200 /Times-Roman-Acnt F
+(.) S
+1200 /Times-Italic-Acnt F
+25200 34906 M (Form2) S
+1200 /Times-Roman-Acnt F
+( is an Interlisp form whose value will be used as the ) S
+25200 33106 M (new value of the field.) S
+18000 30306 M (When the ) S
+1200 /Times-BoldItalic-Acnt F
+(replace) S
+1200 /Times-Roman-Acnt F
+( statement is evaluated, it will replace the old value of ) S
+18000 28506 M (the specified field in the specified record \(i.e., the record returned by ) S
+18000 26706 M (evaluating ) S
+1200 /Times-Italic-Acnt F
+(Form1) S
+1200 /Times-Roman-Acnt F
+(\) using the specified new value \(i.e., the value returned ) S
+18000 24906 M (by evaluating ) S
+1200 /Times-Italic-Acnt F
+(Form2) S
+1200 /Times-Roman-Acnt F
+(\).  The value returned by the ) S
+1200 /Times-BoldItalic-Acnt F
+(replace) S
+1200 /Times-Roman-Acnt F
+( statement is the ) S
+18000 23106 M (new value.) S
+18000 19906 M (Examples:) S
+21600 17706 M (38_Person) S
+1200 /Times-Italic-Acnt F
+21600 15706 M (\(Sam A Smith\)) S
+1200 /Times-Roman-Acnt F
+21600 13706 M (39_ \(replace \(PersonsName Last\) of Person with 'Jones\)) S
+1200 /Times-Italic-Acnt F
+21600 11706 M (Jones) S
+1200 /Times-Roman-Acnt F
+21600 9706 M (40_ \(fetch \(PersonsName Last\) of Person\)) S
+grestore savepage restore showpage
+
+%%Page: 8 8
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (7) S
+7200 75600 M (LispCourse #25:  The Record Package; The Inspector) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 71106 M (Jones) S
+1200 /Times-Roman-Acnt F
+21600 69106 M (41_Person) S
+1200 /Times-Italic-Acnt F
+21600 67106 M (\(Sam A Jones\)) S
+1200 /Times-Roman-Acnt F
+21600 65106 M (42_\(replace \(PersonsName First\) of Person with 'Jane\)) S
+1200 /Times-Italic-Acnt F
+21600 63106 M (Jane) S
+1200 /Times-Roman-Acnt F
+21600 61106 M (43_\(replace \(PersonsName Middle\) of Person with 'Maria\)) S
+1200 /Times-Italic-Acnt F
+21600 59106 M (Maria) S
+1200 /Times-Roman-Acnt F
+21600 57106 M (44_Person) S
+1200 /Times-Italic-Acnt F
+21600 55106 M (\(Jane Maria Jones\)) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 51506 M (Records as Data Abstraction) S
+1200 /Times-Roman-Acnt F
+14400 48506 M (Since records allow you access to data structures by ) S
+1200 /Times-Italic-Acnt F
+(name ) S
+1200 /Times-Roman-Acnt F
+(rather than by ) S
+1200 /Times-Italic-Acnt F
+14400 46706 M (structure) S
+1200 /Times-Roman-Acnt F
+(, they \(to a great extent\) isolate the program from changes in the ) S
+14400 44906 M (underlying data structure.) S
+14400 42106 M (Consider the alternative record definitions: ) S
+1200 /Times-Italic-Acnt F
+(\(RECORD Name \(First Middle Last\)\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+14400 40306 M (and ) S
+1200 /Times-Italic-Acnt F
+(\(RECORD Name \(Last First Middle\)\)) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Italic-Acnt F
+(\(RECORD Name \(SS# BirthPlace ) S
+14400 38506 M (Last Middle First\)) S
+1200 /Times-Roman-Acnt F
+14400 35706 M (CREATE, fetch, and replace statements for all of these would be identical.) S
+18000 33306 M (For example: ) S
+1200 /Times-Italic-Acnt F
+(\(fetch \(Name First\) of NewName\)) S
+1200 /Times-Roman-Acnt F
+( would always return the ) S
+18000 31506 M (first name field, although it would be the CAR of the first type of record, ) S
+18000 29706 M (the CADR of the second type of record, and the 5th element of the third ) S
+18000 27906 M (type of record.) S
+14400 25106 M (Therefore changing the underlying record stucture between any of these three ) S
+14400 23306 M (record declarations \(and many more alternative declarations\) would have no ) S
+14400 21506 M (effect on the programs that accessed the records using CREATE, fetch, and ) S
+14400 19706 M (replace.) S
+1200 /Times-Bold-Acnt F
+10800 15906 M (Hierarchical Data Structures) S
+1200 /Times-Roman-Acnt F
+14400 12906 M (Often data structrues are hierarchical, with smaller data structures embedded in ) S
+14400 11106 M (more global data structures.) S
+grestore savepage restore showpage
+
+%%Page: 9 9
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (8) S
+7200 75600 M (LispCourse #25:  The Record Package; The Inspector) S
+18000 71106 M (An example from last time is the DatabaseEntry list structure.  Each ) S
+18000 69306 M (DatabaseEntry consisted of three items: a name, a phone number, and an ) S
+18000 67506 M (office number.  Each of these three items was in turn a list structure ) S
+18000 65706 M (consisting of two or three atoms.) S
+21600 63906 M (DatabaseEntry: List of three items) S
+25200 62106 M (Name: List of three items) S
+28800 60306 M (First: atom) S
+28800 58506 M (Middle: atom) S
+28800 56706 M (Last: atom) S
+25200 54906 M (PhoneNumber: List of two items) S
+28800 53106 M (Prefix: atom) S
+28800 51306 M (Extension: atom) S
+25200 49506 M (OfficeNumber: List of two items) S
+28800 47706 M (BldgNumber: atom) S
+28800 45906 M (RoomNumber: atom) S
+14400 42906 M (To deal with this hierarchical data structure using the Record Package, you would ) S
+14400 41106 M (define four independent records for DatabaseEntry, Name, PhoneNumber, and ) S
+14400 39306 M (OfficeNumber.) S
+18000 36306 M (For example:) S
+21600 34106 M (\(RECORD DatabaseEntry \(Name PhoneNumber OfficeNumber\)\)) S
+21600 31906 M (\(RECORD Name \(First Middle Last\)\)) S
+21600 29706 M (\(RECORD PhoneNumber \(Prefix Extension\) Prefix _ 494\)) S
+21600 27506 M (\(RECORD OfficeNumber \(Bldg RoomNumber\) Bldg _ 35\)) S
+14400 24506 M (To select the Extension or RoomNumber from a given database entry you could ) S
+14400 22706 M (use embedded ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(fetch ) S
+1200 /Times-Roman-Acnt F
+(statements:) S
+18000 19706 M (Example:) S
+21600 17506 M (45_ Entry) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 15306 M (\(\(Sam A Smith\)\(494 4431\)\(35 2319\)\)) S
+1200 /Times-Roman-Acnt F
+21600 13106 M (46_ \(fetch \(PhoneNumber Extension\) of) S
+28800 11306 M (\(fetch \(DatabaseEntry PhoneNumber\) of Entry\)\)) S
+1200 /Times-Italic-Acnt F
+21600 9106 M (4431) S
+grestore savepage restore showpage
+
+%%Page: 10 10
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (9) S
+7200 75600 M (LispCourse #25:  The Record Package; The Inspector) S
+21600 71106 M (47_ \(fetch \(OfficeNumber RoomNumber\) of) S
+28800 69306 M (\(fetch \(DatabaseEntry OfficeNumber\) of Entry\)\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 67106 M (2319) S
+1200 /Times-Roman-Acnt F
+14400 63506 M (The Record Package provides a shorthand syntax for these embedded access \(i.e., ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 61706 M (fetch) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Bold-Acnt F
+(replace) S
+1200 /Times-Roman-Acnt F
+(\) statements, provided that you have named the fields of the ) S
+14400 59906 M (various records correctly.) S
+18000 56906 M (In particular, if the field name of the ) S
+1200 /Times-Italic-Acnt F
+(embedding) S
+1200 /Times-Roman-Acnt F
+( record is the same as the ) S
+18000 55106 M (record name of the ) S
+1200 /Times-Italic-Acnt F
+(embedded) S
+1200 /Times-Roman-Acnt F
+( record, then you can combine the ) S
+1200 /Times-Bold-Acnt F
+(fetch) S
+1200 /Times-Italic-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+18000 53306 M (statements by using a ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(path name) S
+1200 /Times-Roman-Acnt F
+( as the field specification in a single fetch ) S
+18000 51506 M (statement.  This ) S
+1200 /Times-BoldItalic-Acnt F
+(path name) S
+1200 /Times-Roman-Acnt F
+( should name the highest level record followed ) S
+18000 49706 M (by the field that contains the second level record followed by the field that ) S
+18000 47906 M (contains the third level record and so on until the target field is named.) S
+21600 44906 M (Examples:) S
+21600 42706 M (48_Entry) S
+1200 /Times-Italic-Acnt F
+21600 40506 M (\(\(Sam A Smith\)\(494 4431\)\(35 2319\)\)) S
+1200 /Times-Roman-Acnt F
+21600 38306 M (49_ \(fetch \(DatabaseEntry PhoneNumber Extension\) of Entry\)) S
+1200 /Times-Italic-Acnt F
+21600 36106 M (4431) S
+1200 /Times-Roman-Acnt F
+21600 33906 M (50_ \(fetch \(DatabaseEntry OfficeNumber RoomNumber\) of ) S
+21600 32106 M (Entry\)\)) S
+1200 /Times-Italic-Acnt F
+21600 29906 M (2319) S
+1200 /Times-Roman-Acnt F
+18000 26306 M (Example that doesn't work with the shorthand syntax because the ) S
+18000 24506 M (embedding record field name is not the same as the embedded record ) S
+18000 22706 M (name:) S
+21600 20106 M (60_\(RECORD DatabaseEntry \(Name ) S
+1200 /Times-BoldItalic-Acnt F
+(Phone) S
+1200 /Times-Roman-Acnt F
+( OfficeNumber\)\)) S
+1200 /Times-Italic-Acnt F
+21600 18306 M (DatabaseEntry) S
+1200 /Times-Roman-Acnt F
+21600 16506 M (61_\(RECORD ) S
+1200 /Times-BoldItalic-Acnt F
+(PhoneNumber) S
+1200 /Times-Roman-Acnt F
+( \(Prefix Extension\) Prefix _ 494\)) S
+1200 /Times-Italic-Acnt F
+21600 14706 M (PhoneNumber) S
+1200 /Times-Roman-Acnt F
+21600 12906 M (62_\(SETQ Entry) S
+28800 11506 M (\(CREATE DatabaseEntry Name _ 'Foo) S
+32400 10106 M (Phone _ \(CREATE PhoneNumber ) S
+32400 8706 M (Extension _ 4456\)) S
+grestore savepage restore showpage
+
+%%Page: 11 11
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (10) S
+7200 75600 M (LispCourse #25:  The Record Package; The Inspector) S
+32400 71106 M (OfficeNumber _ 99\)\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 69306 M (\(Foo \(494 4456\) 99\)) S
+1200 /Times-Roman-Acnt F
+21600 67506 M (63_\(fetch \(DatabaseEntry Phone Extension\) of Entry\)) S
+1200 /Times-Italic-Acnt F
+21600 66106 M ( no such record path) S
+21600 64706 M ( at   ... \(DatabaseEntry Phone Extension\) of Entry\)) S
+21600 63306 M (in    \(fetch \(DatabaseEntry Phone Extension\) of Entry\)) S
+21600 60106 M (UNDEFINED CAR OF FORM) S
+21600 58706 M (fetch) S
+1200 /Times-Roman-Acnt F
+21600 55106 M (64_\(fetch \(DatabaseEntry PhoneNumber Extension\) of Entry\)) S
+1200 /Times-Italic-Acnt F
+21600 53306 M ( no such record path) S
+21600 51906 M ( at   ... \(DatabaseEntry PhoneNumber Extension\) of Entry\)) S
+21600 50506 M (in    \(fetch \(DatabaseEntry PhoneNumber Extension\) of Entry\)) S
+21600 48106 M (UNDEFINED CAR OF FORM) S
+21600 46706 M (fetch) S
+1200 /Times-Roman-Acnt F
+21600 43906 M (65_\(fetch \(PhoneNumber Extension\) of) S
+28800 42506 M (\(fetch \(DatabaseEntry Phone\) of Entry\)\)) S
+1200 /Times-Italic-Acnt F
+21600 40706 M (4456) S
+grestore savepage restore showpage
+
+%%Page: 12 12
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 13 13
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (11) S
+7200 75600 M (LispCourse #25:  The Record Package; The Inspector) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 71106 M (Records constructed from different list structures) S
+1200 /Times-Roman-Acnt F
+14400 68306 M (The \(RECORD ...\) statement declares a record data structure that is to be ) S
+14400 66506 M (constructed from an ordinary list.  Each field in the record declaration is to be an ) S
+14400 64706 M (element in that list.) S
+14400 61906 M (There are many alternative list structures that can be constructed using the Record ) S
+14400 60106 M (Package.  These alternative list structures are declared, created, and accessed ) S
+14400 58306 M (using the same statements as are RECORDs, except that the declaration statement ) S
+14400 56506 M (starts with the given record type instead of RECORD.) S
+14400 53506 M (Some of the most important alternative list structures are:) S
+1200 /Times-Bold-Acnt F
+18000 50506 M (TYPERECORD) S
+1200 /Times-Roman-Acnt F
+( \234 just like a RECORD except that the first element of the ) S
+18000 48706 M (list is always the name of record.) S
+1200 /Times-Roman-Acnt F
+21600 46706 M (Example:) S
+25200 44706 M (51_ \(TYPERECORD Name \(First Middle Last\)\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+25200 43106 M (Name) S
+1200 /Times-Roman-Acnt F
+25200 41506 M (52_ \(CREATE Name) S
+32400 40106 M (First _ 'Sam Middle _ 'Ishikawa Last _ ) S
+32400 38706 M ('Watanabe\)) S
+1200 /Times-Italic-Acnt F
+25200 37106 M (\(Name Sam Ishikawa Watanabe\)) S
+1200 /Times-Roman-Acnt F
+25200 35506 M (53_ \(fetch \(Name First\) of IT\)) S
+1200 /Times-Italic-Acnt F
+25200 33506 M (Sam) S
+1200 /Times-Bold-Acnt F
+18000 30106 M (ASSOCRECORD) S
+1200 /Times-Roman-Acnt F
+( \234 the list created is in ASSOC list format with the field ) S
+18000 28306 M (names as keys.) S
+1200 /Times-Roman-Acnt F
+21600 26306 M (Example:) S
+25200 24306 M (54_ \(ASSOCRECORD Name \(First Middle Last\)\)) S
+1200 /Times-Italic-Acnt F
+25200 22706 M (Name) S
+1200 /Times-Roman-Acnt F
+25200 21106 M (55_ \(CREATE Name) S
+32400 19706 M (First _ 'Sam Middle _ 'Ishikawa Last _ ) S
+32400 18306 M ('Watanabe\)) S
+1200 /Times-Italic-Acnt F
+25200 16706 M (\(\(First . Sam\)\(Middle . Ishikawa\)\(Last . Watanabe\)\)) S
+1200 /Times-Roman-Acnt F
+25200 14706 M (56_ \(fetch \(Name First\) of IT\)) S
+1200 /Times-Italic-Acnt F
+25200 12706 M (Sam) S
+grestore savepage restore showpage
+
+%%Page: 14 14
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (12) S
+7200 75600 M (LispCourse #25:  The Record Package; The Inspector) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 71106 M (PROPRECORD) S
+1200 /Times-Roman-Acnt F
+( \234 the list created is in Prop list format with the field ) S
+18000 69306 M (names as props.) S
+1200 /Times-Roman-Acnt F
+21600 67306 M (Example:) S
+25200 65306 M (57_ \(PROPRECORD Name \(First Middle Last\)\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+25200 63706 M (Name) S
+1200 /Times-Roman-Acnt F
+25200 62106 M (58_ \(CREATE Name) S
+32400 60706 M (First _ 'Sam Middle _ 'Ishikawa Last _ ) S
+32400 59306 M ('Watanabe\)) S
+1200 /Times-Italic-Acnt F
+25200 57706 M (\(First Sam Middle Ishikawa Last Watanabe\)) S
+1200 /Times-Roman-Acnt F
+25200 55706 M (59_ \(fetch \(Name First\) of IT\)) S
+1200 /Times-Italic-Acnt F
+25200 53706 M (Sam) S
+1200 /Times-Bold-Acnt F
+10800 50306 M (Determining the record type of an object:  The TYPE? statement) S
+1200 /Times-Roman-Acnt F
+14400 47506 M (There is a fourth tool \(in addition to constructors, selectors, and mutators\) that is ) S
+14400 45706 M (very handy in writing programs with data abstraction \234 the ) S
+1200 /Times-Bold-Acnt F
+(predicator) S
+1200 /Times-Roman-Acnt F
+(.) S
+14400 42906 M (A predicator for a given data structure is a predicate that returns a non-NIL value ) S
+14400 41106 M (if ist argument is an example of the data structure and NIL otherwise.) S
+14400 37906 M (For example, a predicator for the name list from last week might be:) S
+18000 35506 M (\(DEFINEQ \(LC.NameP) S
+21600 33706 M (\(LAMBDA \(List\)) S
+25200 31906 M (\(* * Check if List is a name list structure\)) S
+25200 30106 M (\(AND) S
+28800 28306 M (\(LISTP List\)) S
+28800 26506 M (\(EQUAL \(LENGTH List\) 3\)) S
+28800 24706 M (\(LITAOM \(CAR List\)\)) S
+28800 22906 M (\(LITATOM \(CADR List\)\)) S
+28800 21106 M (\(LITATOM \(CADDR List\)\)\)\)\)\)) S
+14400 17706 M (The ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(TYPE?) S
+1200 /Times-Roman-Acnt F
+( statement is the Record Package mechanism for dealing with ) S
+14400 15906 M (predicators.) S
+14400 13106 M (To use the TYPE? mechanism, you must add a predicator as one of the ) S
+1200 /Times-Italic-Acnt F
+14400 11306 M (ExtraStuffI) S
+1200 /Times-Roman-Acnt F
+( arguments in the record declaration statement for each record.  The ) S
+14400 9506 M (argument must have the format:) S
+grestore savepage restore showpage
+
+%%Page: 15 15
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (13) S
+7200 75600 M (LispCourse #25:  The Record Package; The Inspector) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 71106 M (\(TYPE? ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Form) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+21600 68706 M (TYPE? is a keyword.) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 66306 M (Form) S
+1200 /Times-Roman-Acnt F
+( can be an Interlisp expression using the variable DATUM.) S
+25200 63906 M (DATUM is bound to the record instance to be tested and ) S
+25200 62106 M (then the expression is evaluated, returning  a NIL or a non-) S
+25200 60306 M (NIL value.  Form can also be an atom which is the name of ) S
+25200 58506 M (a function having one argument, the record instance to be ) S
+25200 56706 M (tested.  In this case, the function is applied to the record ) S
+25200 54906 M (instance to get the NIL or non-NIL value.) S
+18000 52106 M (Example:) S
+21600 50306 M (\(RECORD Name \(First Middle Last\)) S
+25200 48506 M (\(TYPE?) S
+28800 46706 M (\(AND) S
+32400 44906 M (\(LITATOM \(fetch \(Name First\) of ) S
+32400 43106 M (DATUM\)\)) S
+32400 41306 M (\(LITATOM \(fetch \(Name Middle\) of ) S
+32400 39506 M (DATUM\)\)) S
+32400 37706 M (\(LITATOM \(fetch \(Name Last\) of ) S
+32400 35906 M (DATUM\)\)\)\)\)) S
+14400 30306 M (Once you have a TYPE? clause in the record declaration for a record, you can ask ) S
+14400 28506 M (of any Lisp object whether it is an instance of that record type.  To do this, use the ) S
+1200 /Times-BoldItalic-Acnt F
+14400 26706 M (TYPE?) S
+1200 /Times-Roman-Acnt F
+( statement.) S
+14400 24106 M (The ) S
+1200 /Times-BoldItalic-Acnt F
+(TYPE?) S
+1200 /Times-Roman-Acnt F
+( statement has the following format:) S
+1200 /Times-Bold-Acnt F
+18000 21506 M (\(TYPE? ) S
+1200 /Times-BoldItalic-Acnt F
+(RecordName) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Form) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+21600 19106 M (TYPE? is a keyword.) S
+1200 /Times-Italic-Acnt F
+21600 16706 M (RecordName) S
+1200 /Times-Roman-Acnt F
+( is the name of an already declared record type.) S
+1200 /Times-Italic-Acnt F
+21600 14306 M (Form) S
+1200 /Times-Roman-Acnt F
+( is any Interlisp form.) S
+14400 10906 M (When the ) S
+1200 /Times-BoldItalic-Acnt F
+(TYPE?) S
+1200 /Times-Roman-Acnt F
+( statement is evaluated, the TYPE? entry is retrieved from the ) S
+14400 9106 M (record declaration for ) S
+1200 /Times-Italic-Acnt F
+(RecordName) S
+1200 /Times-Roman-Acnt F
+( and applied \(as described under the TYPE? ) S
+grestore savepage restore showpage
+
+%%Page: 16 16
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (14) S
+7200 75600 M (LispCourse #25:  The Record Package; The Inspector) S
+14400 71106 M (clause above\) to the value returned by evaluating ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Form) S
+1200 /Times-Roman-Acnt F
+(.  The value of the ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(TYPE?) S
+1200 /Times-Roman-Acnt F
+( ) S
+14400 69306 M (statement is the value of this application.) S
+14400 65906 M (For example, the record declarations for the database entries might be ammended ) S
+14400 64106 M (as follows:) S
+18000 61906 M (\(RECORD DatabaseEntry \(Name PhoneNumber OfficeNumber\)) S
+21600 60106 M (\(TYPE?) S
+25200 58306 M (\(AND \(EQUAL \(LENGTH DATUM\) 3\)) S
+25200 56506 M (\(TYPE? Name \(fetch \(DatabaseEntry Name\) of DATUM\)\)) S
+25200 54706 M (\(TYPE? PhoneNumber) S
+28800 52906 M (\(fetch \(DatabaseEntry PhoneNumber\) of DATUM\)\)) S
+25200 51106 M (\(TYPE? OfficeNumber) S
+28800 49306 M (\(fetch \(DatabaseEntry OfficeNumber\) of ) S
+28800 47506 M (DATUM\)\)\)\)\)) S
+18000 44906 M (\(RECORD Name \(First Middle Last\)) S
+21600 43106 M (\(TYPE?) S
+25200 41306 M (\(AND) S
+28800 39506 M (\(LITATOM \(fetch \(Name First\) of DATUM\)\)) S
+28800 37706 M (\(LITATOM \(fetch \(Name Middle\) of DATUM\)\)) S
+28800 35906 M (\(LITATOM \(fetch \(Name Last\) of DATUM\)\)\)\)\)) S
+18000 33306 M (\(RECORD PhoneNumber \(Prefix Extension\) Prefix _ 494) S
+21600 31506 M (\(TYPE?) S
+25200 29706 M (\(AND) S
+28800 27906 M (\(NUMBERP \(fetch \(PhoneNumber Prefix\) of ) S
+28800 26106 M (DATUM\)\)) S
+28800 24306 M (\(NUMBERP \(fetch \(PhoneNumber Extension\) of ) S
+28800 22506 M (DATUM\)\)\)\)\)) S
+18000 19906 M (\(RECORD OfficeNumber \(Bldg RoomNumber\) Bldg _ 35) S
+21600 18106 M (\(TYPE?) S
+25200 16306 M (\(AND) S
+28800 14506 M (\(NUMBERP \(fetch \(OfficeNumber Bldg\) of ) S
+28800 12706 M (DATUM\)\)) S
+28800 10906 M (\(NUMBERP \(fetch \(OfficeNumber RoomNumber\) ) S
+28800 9106 M (of DATUM\)\)\)\)\)) S
+grestore savepage restore showpage
+
+%%Page: 17 17
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (15) S
+7200 75600 M (LispCourse #25:  The Record Package; The Inspector) S
+14400 71106 M (With these declarations, you can do the following:) S
+18000 68506 M (60_\(TYPE? DatabaseEntry '\(Foo \(494 4456\) Bar\)\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+18000 66506 M (NIL) S
+1200 /Times-Roman-Acnt F
+18000 64506 M (61_\(TYPE? DatabaseEntry '\(\(Frank G Halasz\)\(494 4320\)\(35 1654\)\)\)) S
+1200 /Times-Italic-Acnt F
+18000 62506 M (1654) S
+1200 /Times-Roman-Acnt F
+14400 58706 M (Final note: For TYPERECORD records you don't need to specify a TYPE? clause ) S
+14400 56906 M (in the reord declaration statement for the TYPE? statement to work.  There is a ) S
+14400 55106 M (default TYPE? clause that just checks for a name match between the ) S
+1200 /Times-Italic-Acnt F
+(RecordName ) S
+1200 /Times-Roman-Acnt F
+14400 53306 M (given in the TYPE? statement and the CAR of the record instance.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 49757 M (DATATYPES: Defining New Objects in the Interlisp System) S
+1200 /Times-Roman-Acnt F
+10800 46506 M (Records build data structures out of list structures.  As such, records don't really create ) S
+10800 44706 M (new types of objects in your Interlisp system; they just provide a convenient interface to ) S
+10800 42906 M (lists that have a particular format.) S
+10800 39706 M (In contrast, a ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(DATATYPE) S
+1200 /Times-Roman-Acnt F
+( creates a whole new type of object in the Interlisp system.) S
+10800 36506 M (Basically, a DATATYPE behaves much like a RECORD.  The CREATE, fetch, replace, ) S
+10800 34706 M (and TYPE? statements all work exactly the same for DATATYPEs and for RECORDs.) S
+14400 32306 M (But when you declare a DATATYPE, Interlisp goes through a lot of overhead to ) S
+14400 30506 M (create a new type of object in its world.) S
+18000 28106 M (Then, when you create an instance of the DATATYPE, you are not ) S
+18000 26306 M (creating a list structure but a object of the new type with its own internal ) S
+18000 24506 M (representation different from lists.  Similarly, when you access the ) S
+18000 22706 M (DATATYPE, you are accesings this new object type rather than a list.) S
+10800 19506 M (The advantage of DATATYPEs over RECORDs is that access to any field in a ) S
+10800 17706 M (DATATYPE is much, much faster.) S
+10800 14506 M (The disadvantage of DATATYPEs is that there is a big overhead for the system in ) S
+10800 12706 M (defining and managing new DATATYPEs.) S
+grestore savepage restore showpage
+
+%%Page: 18 18
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (16) S
+7200 75600 M (LispCourse #25:  The Record Package; The Inspector) S
+10800 71106 M (Thus, if you are going to create lots and lots of instances of a given data structure and ) S
+10800 69306 M (access these instances frequently, then you might want to make that structure a ) S
+10800 67506 M (DATATYPE.  If you are creating a few instance that are accessed infrequently, then you ) S
+10800 65706 M (might want to make the structure a RECORD.) S
+10800 62506 M (Since RECORDs and DATATYPEs are created and accessed in the same way, you can ) S
+10800 60706 M (easily write and test a program using RECORDs and then switch to DATATYPEs when ) S
+10800 58906 M (the program goes into real use.) S
+14400 55706 M (Example:) S
+18000 53306 M (To make the Name RECORD into a DATATYPE, all you would have to ) S
+18000 51506 M (do is declare a DATATYPE instead of a RECORD as follows:) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+21600 49106 M (\(DATATYPE Name \(First Middle Last\)\)) S
+1200 /Times-Roman-Acnt F
+21600 46706 M (Note that TYPE? is automatically defined when the DATATYPE ) S
+21600 44906 M (is declared, you do not need a TYPE? clause in the DATATYPE ) S
+21600 43106 M (declaration statement.) S
+18000 40106 M (Thereafter, Name will behave exaclty as in all the examples above, except ) S
+18000 38306 M (it will be a Name object rather than a list structure.) S
+18000 35506 M (In particular, when you CREATE a Name, you will get back a Name ) S
+18000 33706 M (object rather than a list.) S
+21600 31306 M (87_ \(CREATE Name First _ 'Sam Last _ 'Smith Middle _ 'A\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 29506 M ({Name}#51,142770) S
+1200 /Times-Roman-Acnt F
+21600 27706 M (88_ \(fetch \(Name First\) of IT\)) S
+1200 /Times-Italic-Acnt F
+21600 25906 M (Sam) S
+1200 /Times-Roman-Acnt F
+21600 24106 M (89_ \(TYPE? Name NewName\)) S
+1200 /Times-Italic-Acnt F
+21600 22306 M (T) S
+1200 /Times-Roman-Acnt F
+21600 20506 M (90_ \(TYPE? Name 'Foo\)) S
+1200 /Times-Italic-Acnt F
+21600 18706 M (NIL) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 15306 M (System DATATYPEs) S
+1200 /Times-Roman-Acnt F
+10800 12506 M (Many, many data structures in the Interlisp system are implemented in terms of ) S
+10800 10706 M (DATATYPES.) S
+grestore savepage restore showpage
+
+%%Page: 19 19
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (17) S
+7200 75600 M (LispCourse #25:  The Record Package; The Inspector) S
+10800 71106 M (For example, Windows are just a DATATYPE data structure.  The function CREATEW ) S
+10800 69306 M (calls \(CREATE WINDOW ...\) and eventually returns the WINDOW object returned by ) S
+10800 67506 M (this CREATE statement.) S
+10800 64506 M (In fact, the following is the DATATYPE declaration for WINDOW from the Interlisp ) S
+10800 62706 M (system code:) S
+14400 59506 M (\(DATATYPE WINDOW) S
+18000 57906 M (\(DSP NEXTW SAVE REG BUTTONEVENTFN RIGHTBUTTONFN ) S
+18000 56106 M (CURSORINFN CURSOROUTFN CURSORMOVEDFN REPAINTFN ) S
+18000 54306 M (RESHAPEFN EXTENT USERDATA VERTSCROLLREG ) S
+18000 52506 M (HORIZSCROLLREG SCROLLFN VERTSCROLLWINDOW ) S
+18000 50706 M (HORIZSCROLLWINDOW CLOSEFN MOVEFN WTITLE ) S
+18000 48906 M (NEWREGIONFN WBORDER PROCESS WINDOWENTRYFN\)\)) S
+10800 45906 M (A typical window might be filled in as follows:) S
+/bitbltsave save def 14500 10999 translate 35800 32800 scale 358 328 true thebitimage
+B20888B11221040408408040044889226489122408892028000104089100201110400102224410
+B20822311022B3040004488822448822040888B308F813E00F9F024410
+B3091227C404087880400447881E4478C3E4B30244B30690F2400912224410
+B22BFFFC
+B32C
+C0B22B00
+B32C
+B32C
+B31060B3030180000008B311
+B31080B3030040000004B311
+C1E1C4B30D8382113E448842820F843E3871F1C380B30B
+C11224B30D8442112044A84282020C084488422440B30B
+B31212207CA847E102000864084026B30C
+C1104780B30B030082142044A83141B30254884225B30C
+C1118440B30B0083021E3C28A8414082B302F043C5B30C
+C11224B30D8442112028D843F08A00284C814204C0B30B
+B31640A04600184480C20440B30B
+C1E1C780B30C838F9E3E108840A7C2000838F843E380B30B
+C0B20F0060B203000180B21400
+B310B21B00
+B31060B3030180000008B311
+B31080B3030040000004B311
+C113E4420AB30B8287113C385042838F843E08F9F04080B30B
+C13204B30E82132244504284480C08082040B30D
+C1320282B31247E04400087C2043E7C0B30B
+C152010215B30A030542152244A831444200084820424480B30B
+C153C1B30C0085B304414781B312
+C1920282B30E19B30243F408802828A14142B30C
+C192044211B30B84B3038840A40880182860C1B30D
+C113E44F91B30C47113C388840A7C70008182040C1B30C
+C0B20F0060B203000180B21400
+B310B21B00
+B31060B3030180000008B311
+B31080B3030040000004B311
+C0E2210F80B30B87870422448042838F843E7CF9F040B30C
+C1122108B20C008442042AB30284480C20102100B30D
+C113E288B3107C8047E4440010102083E0B30C
+C02222B30C0304B30244F0314442000810204240B30C
+C0C1428FB30B008782042A28884147810004102022B30D
+C1114448B30C84820436288843F408802250A111B30D
+B31640A44880223061B30E
+C0E0844F80B30B87071F2210F040A387001C1020E0C0B30C
+C0B20F0060B203000180B21400
+B310B21B00
+B31040B30B80B30D
+B31080B30B40B30D
+C113E380B30C8201003E387001C20F801C3870B30E
+C1120440B30B010201002044880222020022448820B30D
+C122B30E010F80104408002102000204B30F
+C14205C0B30D090008440802B314
+C1E3C4B20C000100890004387003C082001C38F0B30E
+C1120440B30D850022440802008A00020480B30E
+B30F008045B302880200460022448840B30D
+C1E3E380B30C87C3001C387003E7C2001C3870B30E
+C0B20F0040B20B0080B30D
+B310B21B00
+B32C
+B32C
+C1E1C1020E227C21F2210811B30483820E2028B316
+C11221021126402102610813B304844211B318
+B30651B324
+B3042AB302A10815B3073C54B316
+C1E2B3037851E2A10FB30822B317
+C122B30232408903210819B320
+B31444B316
+C1C227CF8E227C89F227CF91B30303E38F8E3CB317
+C0B22B00
+B32C
+B32C
+B32C
+C111C388843C382041C44811B30302238F80B318
+C1108448842244204224C813B3046108B21900
+C120B32A
+C14085C8B304254815B304A1B31A
+C1E0840F843CB3034FB321
+C11084488424B302264819B3030321B31A
+B32C
+C1E1C3889F3844F9F1C44F91B303022388B319
+C0B22B00
+B32C
+B32C
+B32C
+C0E1C4470E2238890220B30502238F80B318
+C1122448912210990260B3066108B21900
+B302889124B326
+C1022501112810A902A0B306A1B31A
+C1022786113C10A9E2B323
+C1122448912210C90320B3050321B31A
+B32C
+C0E227870E3C3889F2B306022388B319
+C0B22B00
+B32C
+B32C
+B32C
+C0E1C4470E223870420440B30402238F80B318
+C1122448912244884204C0B3056108B21900
+B302889124B326
+C10225011128B3020540B305A1B31A
+C1022786113C448843C5B322
+C1122448912244884206B3050321B31A
+B32C
+C0E227870E3C3889F3E4B305022388B319
+C0B22B00
+B32C
+B32C
+B32C
+C0E1C4470E22447043E78811B30302238F80B318
+C11224489122548842044813B3046108B21900
+B3028891245488A2B323
+C10225011128B30415B304A1B31A
+C1022786113C5488A3C44FB321
+C112244891226C8912044819B3030321B31A
+B32C
+C0E227870E3C447113E78F91B303022388B319
+C0B22B00
+B32C
+B32C
+B32C
+C113E4088E22108110B30602238F80B318
+C11204088426108130B3076108B21900
+C122040FB328
+C1420788842A108150B307A1B31A
+C1E3C445042A10F1B324
+C11204450432108190B3060321B31A
+B32C
+C1E3E7820E227CF910B306022388B319
+C0B22B00
+B32C
+B32C
+B32C
+C113E38891207C8110B30602238F80B318
+C11204489120408130B3076108B21900
+C12204489FB327
+C1420088913C408150B307A1B31A
+C1E3C30F8A2278F1B324
+C11204488A22408190B3060321B31A
+B32C
+C1E3E388843C7CF910B306022388B319
+C0B22B00
+B32C
+B32C
+B32C
+C1F2210F9108B30902238F80B318
+C102210813B30B6108B21900
+C10141B329
+C100810815B30BA1B31A
+C1E0810FB328
+C101410819B30A0321B31A
+C10221B329
+C1F227CF913EB309022388B319
+C0B22B00
+B32C
+B31040B30A18B30460000002B305
+B31080B30A20B30410000001B305
+C0E1C7C89E221088B3094F8E227CF0E20107103C0020E0844F912210A083E10F8E1C387020
+C112240891B30A0100480426408912010890220021108448112A10A08083021122448820
+B30209113E10F8B30988B30400B306881F2A11F840800219026489F0
+C110440A11221088B30B2AB307C0208508112A0C50B3021522548920
+C111878F11141050B3080108042A78F113C0089E220020C0878F0A2A105020B3023C54F120
+C112240891B30E324091120008902200211084480A3610FC22800A13204C80A0
+B30F0082B3112811800611204488A0
+C111C7CF1E087C20B30A0E227CE113E0071F3C0020E3E78F84221029F080020E3E387060
+C0B20F0040B20A0018B2040060B20800
+B310B21B00
+B32C
+B32C
+C043E4420E1C4471F3E44F8EB30302238F80B318
+C04204421122448902044811B3046108B21900
+C0A20482112248B30288B321
+C0A205020220508902050817B304A1B31A
+C0A3C7820C20788902078F10B320
+C11204421122448902044811B3030321B31A
+B32C
+C113E78F8E1C787102078F8EB303022388B319
+C0B22B00
+B32C
+B32C
+B32C
+C111C4471F1C3888E3E7C89F1CB30202238F80B318
+C1122442102244891204089022B3036108B21900
+B302820822449112040910B320
+C1122502040440A112040A102EB303A1B31A
+C1F22782041840F112040F1E20B31F
+C1122442022244891204089022B3020321B31A
+B30301B327
+C111C7871F1C38F0E2040F1F1CB302022388B319
+C0B22B00
+B32C
+B32C
+B32C
+C0E1C4471F3E4088B30702238F80B318
+C112244890204098B3086108B21900
+B30288B328
+C0220508B302A8B308A1B31A
+C0C20788902078B325
+C1122448902040C8B3070321B31A
+B32C
+C0E1C78710207C88B307022388B319
+C0B22B00
+B32C
+B32C
+B32C
+C043E4420E1C4471F3E287113C38500002238F80B318
+C042044211224489020282132244B3026108B21900
+C0A20482112248B325
+C0A2050202205089020542152244A80002A1B31A
+C0A3C7820C2078B325
+C1120442112244B30319B3030321B31A
+B30804B30388B31D
+C113E78F8E1C7871020447113C388800022388B319
+C0B22B00
+B32C
+B32C
+B32C
+C111C4471F1C3888E3E7C50E227870A002238F80B318
+C11224421022448912040504264488A0026108B21900
+B3028208224491B324
+C1122502040440A112040A842A44895002A1B31A
+C1F22782041840F1B324
+C112244202224489B30332B3020321B31A
+B30301B30408B30310B31C
+C111C7871F1C38F0E204088E22787110022388B319
+C0B22B00
+B32C
+B32C
+B32C
+C0E3E3871F2044B30802238F80B318
+C112044890204CB3096108B21900
+B32C
+C1020441102054B309A1B31A
+B302461E3CB326
+C1120448902064B3080321B31A
+B32C
+C0E203871F3E44B308022388B319
+C0B22B00
+B32C
+B32C
+B32C
+C111C10F9022B30902238F80B318
+C15221081026B30A6108B21900
+C1522288B328
+B3042AB30AA1B31A
+B3028F1EB327
+C1B4B224481032B3090321B31A
+B32C
+C111C44F9F22B309022388B319
+C0B22B00
+B32C
+B32C
+B32C
+C0A083821F3EB30A07C89F1C00502223470AB311
+C0A081021020B30A04089022B30224C88AB311
+B3110510B3044895B311
+C150B30F02102000A8B315
+B3043CB30A07821EB3022324C891B311
+B30420B309014405102200A8E2C3471114B310
+C110B30F089022008800004000B311
+C113E38F903EB30A47C89F1C008820B314
+C0B22B00
+B32C
+B32C
+B32C
+C113E2889F1C3871120440B30402238F80B318
+C1320288902210893204C0B3056108B21900
+B3028910B327
+C152054A102E1089520540B305A1B31A
+C153C54F1E20108953C5B322
+C1920548902210899206B3050321B31A
+C19204B329
+C113E44F1F1C387113E4B305022388B319
+C0B22B00
+B32C
+B32C
+B32C
+C0A3C3889E3E44B30940B31A
+C0A224489120B326
+B30249112048B30803E0B31A
+C152244A112050B3080240B31A
+C153C44F113C78B325
+C1524448912044B30801B31B
+C112B32A
+C113838F1E3E78B30800C0B31A
+C0B22B00
+B32C
+B31060B30403B30210B310
+B31080B3040080000008B310
+C10223871F1C38B30984088E1C7C70E085041F08087021C380B30B
+C1022448902244B30B9122408910850404180888222440B30B
+C10244B30E0911B3038FC204007C09F326B30C
+C1E28448100408B30803078A112040102062820400488922A5B30C
+C113C4481E1830B30800844F11207860C08281B302F1B30E
+C1122448902244B30A48912240891087E114002880A264C0B30B
+B31781408CB3032440B30B
+C1E3C3871F1C38B309878F0E1C7C70E0814F840018F861C380B30B
+C0B20F0060B2040003B21400
+B310B21B00
+B32C
+B32C
+C0A1C44F0E147C8842210811B30301C3821F0810204084088E1C7C70E0B30D
+C0A084C891144098B30213B30302210210B3059122408910B30D
+B30841B307051000B302040911B311
+C1508548912A40A842810815B304E1B305078A1120401020B30D
+B30578A843C28FB30501051EB302A0044F11207860C0B30D
+C15086B30240C842228819B304210890B304489122408910B30D
+C110B30222B3022448B30A2110B314
+C111C44F0E227C89F3C44F91B30301C3889F007CF910078F0E1C7C70E0B30D
+C0B22B00
+B32C
+B32C
+B22BFFFC
+FF1FB307F8B304DFB308F7B304FDB20A5554
+FEB209FF7FB303EFB31B
+B31FFEB20AAAA8
+FEFF7DFBBFD80FF07FBEFF7FBBFFBFFBCF1F8FC7FDFEFFFDDFB8743F0F879E1EB30C
+B3049BF3CF9FB306CEEF77BBB304B7B4B3DEF77BBDEEFDB20A5554
+FEFEBAFBBF5BFBDFDF5D7F7E007FBFFBFDF6FB7DB305B7EDFEFFBBF6B30C
+B303BEDBFDBFEF5D7F7FDDFFDF00FFF6FBFD80403FFDDFBFB305FEB20AAAA8
+F9B302BDB3059FB3027BFFF7FBFDBDDEFFFDDFB877EC06B30F
+FEFDD77BBBB302EEEBBF7FEEFFDFBBFDF7877DDDEEB302B7F7EDF6FBBBF67DB20A5554
+B30DEFDBFCEFF73BEDF6FFFDCF77B4B3DEEF7BBDEEADB30B
+B303B7B306801FEFDBFD1EFB47B303D0F8743F1F871E1ECEB20AAAA8
+FEFBEFBBAFDBFBDFDDF7DF7FF77FF7EBFEFEFBBFF5FAFFFDB205FFBFFFFEB30B
+B3039FDBF3CF9DB304FBF3FEFF77BFF9FCB309FDB20A5554
+B303BFD80FF07DB302FFFE01FBFE078F81FDFEB307FFB30D
+FF1FB207FFF8B214FFFEB20AAAA8
+B22BFFFC
+B21C2225B30E
+B21C888DB30E
+
+bitbltsave restore
+grestore savepage restore showpage
+
+%%Page: 20 20
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (18) S
+7200 75600 M (LispCourse #25:  The Record Package; The Inspector) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (Editing record declarations and record instance: EditRec and The Inspector) S
+1200 /Times-Roman-Acnt F
+10800 67506 M (To be completed in class) S
+1400 /Times-Bold-Acnt F
+7200 63757 M (References) S
+1200 /Times-Roman-Acnt F
+10800 60106 M (Chapter 3 of the IRM.) S
+1400 /Times-Bold-Acnt F
+7200 56357 M (Exercises) S
+1200 /Times-Roman-Acnt F
+10800 52706 M (Redo the problem from LispCourse #23 using the Record Package.) S
+grestore savepage restore showpage
+
+%%Trailer

@@ -1,0 +1,2609 @@
+%!PS-Adobe-2.0%%Title: {DSK}<home>larry>lispcourse>OUTLINE36.PS%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate:  7-Nov-2023 21:40:23%%EndComments/bdef {bind def} bind def
+/ldef {load def} bdef
+/S /show ldef
+/M /moveto ldef
+/DR {transform round exch round exch itransform} bdef
+/L {gsave newpath setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/L1 {gsave newpath 0 setdash setgray setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/F {findfont exch scalefont setfont} bdef
+/CLP {newpath M dup 0 rlineto exch 0 exch rlineto
+  neg 0 rlineto closepath clip newpath} bdef
+/R {gsave setgray newpath M dup 0 rlineto exch 0 exch
+  rlineto neg 0 rlineto closepath eofill grestore} bdef
+/ellipsedict 9 dict def
+ellipsedict /mtrx matrix put
+/ellipse
+ { ellipsedict begin
+  /endangle exch def
+  /startangle exch def
+  /orientation exch def
+  /minorrad exch def
+  /majorrad exch def
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  orientation rotate
+  majorrad minorrad scale
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+ end } bdef
+/concatprocs
+ {/proc2 exch cvlit def
+  /proc1 exch cvlit def
+  /newproc proc1 length proc2 length add array def
+  newproc 0 proc1 putinterval
+  newproc proc1 length proc2 putinterval
+  newproc cvx
+ } bdef
+/resmatrix matrix def
+/findresolution
+ {72 0 resmatrix defaultmatrix dtransform
+  /yres exch def /xres exch def
+  xres dup mul yres dup mul add sqrt
+ } bdef
+/thebitimage
+ {/maskp exch def
+  /bihgt exch def
+  /biwid exch def
+  /byte 1 string def
+  /strbufl biwid 8 div ceiling cvi def
+  /strbuf strbufl string def
+  maskp not{{1 exch sub} currenttransfer concatprocs settransfer} if
+  biwid bihgt
+  maskp { true } { 1 } ifelse
+  [biwid 0 0 bihgt 0 0]
+  {/col 0 def
+   {currentfile byte readhexstring pop 0 get
+    dup 16#B2 eq {pop
+    currentfile byte readhexstring pop 0 get 1 add
+    currentfile byte readhexstring pop pop /nbyte byte 0 get def
+    { strbuf col nbyte put /col col 1 add def} repeat}
+   {dup 16#B3 eq {pop /col col
+    currentfile byte readhexstring pop
+    0 get add 1 add def}
+    {16#B4 eq {currentfile byte readhexstring pop pop} if
+     strbuf col byte 0 get put /col col 1 add def} ifelse
+   } ifelse
+   col strbufl ge { exit } if } loop
+   strbuf }
+  maskp { imagemask } { image } ifelse
+ } bdef
+/setuserscreendict 22 dict def
+setuserscreendict begin
+ /tempctm matrix def
+ /temprot matrix def
+ /tempscale matrix def
+end
+/setuserscreen
+ {setuserscreendict begin
+   /spotfunction exch def
+   /screenangle exch def
+   /cellsize exch def
+   /m tempctm currentmatrix def
+   /rm screenangle temprot rotate def
+   /sm cellsize dup tempscale scale def
+   sm rm m m concatmatrix m concatmatrix pop
+   1 0 m dtransform /y1 exch def /x1 exch def
+   /veclength x1 dup mul y1 dup mul add sqrt def
+   /frequency findresolution veclength div def
+   /newscreenangle y1 x1 atan def
+   m 2 get m 1 get mul m 0 get m 3 get mul sub
+   0 gt { { neg } /spotfunction load concatprocs
+          /spotfunction exch def } if
+   frequency newscreenangle /spotfunction load setscreen
+  end
+ } bdef
+/setpatterndict 18 dict def
+setpatterndict begin
+ /bitison
+  {/ybit exch def /xbit exch def
+   /bytevalue bstring ybit bwidth mul xbit 8 idiv add get def
+   /mask 1 7 xbit 8 mod sub bitshift def
+   bytevalue mask and 0 ne
+  } bdef
+end
+/bitpatternspotfunction
+ {setpatterndict begin
+   /y exch def /x exch def
+   /xindex x 1 add 2 div bpside mul 1 sub cvi def
+   /yindex y 1 add 2 div bpside mul 1 sub cvi def
+   xindex yindex bitison
+    {/onbits onbits 1 add def 1}
+    {/offbits offbits 1 add def 0} ifelse
+  end
+ } bdef
+/setpattern
+ {setpatterndict begin
+   /cellsz exch def
+   /angle exch def
+   /bwidth exch def
+   /bpside exch def
+   /bstring exch def
+   /onbits 0 def /offbits 0 def
+   cellsz angle /bitpatternspotfunction load setuserscreen
+   {} settransfer
+   offbits offbits onbits add div setgray
+  end
+ } bdef
+% - - - - - Fraction-setting code, to support NS fonts better - - - - -
+/fractiondict 20 dict def
+/fractionshow 
+{ fractiondict begin
+/denom exch def 
+/num exch def 
+/regfont currentfont def
+/fractfont currentfont [.65 0 0 .6 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(1) true charpath flattenpath pathbbox 
+/height exch def pop pop pop
+ grestore
+0 .4 height mul rmoveto
+fractfont setfont num show
+0 .4 height mul neg rmoveto regfont setfont (\244) show
+fractfont setfont denom show regfont setfont end } bdef
+/f14 { (1) (4) fractionshow } bdef
+/f12 { (1) (2) fractionshow } bdef
+/f34 { (3) (4) fractionshow } bdef
+/f18 { (1) (8) fractionshow } bdef
+/f38 { (3) (8) fractionshow } bdef
+/f58 { (5) (8) fractionshow } bdef
+/f78 { (7) (8) fractionshow } bdef
+/f13 { (1) (3) fractionshow } bdef
+/f23 { (2) (3) fractionshow } bdef
+/bboxdict 20 dict def
+/bboxchk { bboxdict begin
+/regfont currentfont def
+/chkfont currentfont [1.25 0 0 1.25 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(\161) true charpath flattenpath pathbbox 
+/height exch def pop pop pop 
+ grestore 
+ currentpoint 
+ .2 height mul .3 height mul rmoveto
+chkfont setfont (\063) show
+ moveto
+ regfont setfont
+(\161) show end } bdef
+/rencdict 15 dict def
+/encodefont { rencdict begin
+/newname exch def
+/oldfont exch def
+/newcodes [
+8#001 /Aacute
+8#002 /Acircumflex
+8#003 /Adieresis
+8#004 /Agrave
+8#005 /Aring
+8#006 /Atilde
+8#007 /Ccedilla
+8#010 /Eacute
+8#011 /Ecircumflex
+8#012 /Edieresis
+8#013 /Egrave
+8#014 /Iacute
+8#015 /Icircumflex
+8#016 /Idieresis
+8#017 /Igrave
+8#020 /Ntilde
+8#021 /Oacute
+8#022 /Ocircumflex
+8#023 /Odieresis
+8#024 /Ograve
+8#025 /Otilde
+8#026 /Scaron
+8#027 /Uacute
+8#030 /Ucircumflex
+8#031 /Udieresis
+8#032 /Ugrave
+8#033 /Ydieresis
+8#034 /Zcaron
+8#177 /periodinferior
+8#201 /aacute
+8#202 /acircumflex
+8#203 /adieresis
+8#204 /agrave
+8#205 /aring
+8#206 /atilde
+8#207 /ccedilla
+8#210 /eacute
+8#211 /ecircumflex
+8#212 /edieresis
+8#213 /egrave
+8#214 /iacute
+8#215 /icircumflex
+8#216 /idieresis
+8#217 /igrave
+8#220 /ntilde
+8#221 /oacute
+8#222 /ocircumflex
+8#223 /odieresis
+8#224 /ograve
+8#225 /otilde
+8#226 /scaron
+8#227 /uacute
+8#230 /ucircumflex
+8#231 /udieresis
+8#232 /ugrave
+8#233 /ydieresis
+8#234 /zcaron
+8#235 /Eth
+8#236 /eth
+8#237 /Thorn
+8#240 /thorn
+ ] def
+/olddict oldfont findfont def /newfont olddict maxlength dict def
+olddict { exch dup /FID ne { dup /Encoding eq
+{ exch dup length array copy newfont 3 1 roll put }
+{ exch newfont 3 1 roll put } ifelse }
+ { pop pop } ifelse } forall
+newfont /FontName newname put
+newcodes aload pop
+newcodes length 2 idiv { newfont /Encoding get 3 1 roll put } repeat 
+newname newfont definefont pop end } def
+ /accentdict 10 dict def 
+ /accentor { accentdict begin /scaler exch def /delta exch def 
+/unders exch def /accents exch def /mainch exch def /scrt (X) def
+ /w1 mainch stringwidth pop def 
+ currentpoint mainch show currentpoint 4 2 roll 
+accents { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         w1 w2 sub 2 div delta rmoveto scrt show 
+         /delta delta 150 scaler mul 9 div add def
+        } forall 
+unders { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         ch 46 eq { w1 w2 sub 2 div -175 scaler mul 9 div rmoveto scrt show 0 175 rmoveto }
+           { w1 w2 sub 2 div 0 rmoveto scrt show } ifelse 
+        } forall 
+ pop pop moveto end } def 
+%%EndProlog
+%%BeginSetup
+letter/imagesizefactor 1 def%%EndSetup/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+
+%%Page: 1 1
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+54000 75600 M (F.G.H.          ) S
+54000 73800 M (6/12/85) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (LispCourse #36:  More on Variable Binding;) S
+1200 /Times-Roman-Acnt F
+( ) S
+1400 /Times-Bold-Acnt F
+(Control Structures in Lisp) S
+7200 67157 M (NLAMBDA Functions) S
+1200 /Times-Roman-Acnt F
+10800 64106 M (Recall that NLAMBDA functions are treated specially by the Lisp interpreter.) S
+14400 61506 M (In particular, when evaluating a function call containing an NLAMBDA function, ) S
+14400 59706 M (the interpreter does ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(not) S
+1200 /Times-Roman-Acnt F
+( evaluate the arguments before the function is applied.) S
+10800 56706 M (To define an NLAMBDA function, just use the keyword NLAMBDA instead of ) S
+10800 54906 M (LAMBDA in the function definition.) S
+14400 52306 M (For example:) S
+18000 49906 M (1_ \(DEFINEQ ) S
+21600 47906 M (\(E  \(NLAMBDA \(FileName\)) S
+28800 45906 M (\(* * Call TEdit on the named file\)) S
+28800 43906 M (\(TEDIT FileName\)\)\)\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+18000 41906 M (\(E\)) S
+1200 /Times-Roman-Acnt F
+18000 39906 M (2_ \(E <LISPCOURSE>OUTLINE01.TED\)) S
+1200 /Times-Italic-Acnt F
+18000 37906 M ({PROCESS}#32,12345  \(Starts up a TEdit\)) S
+1200 /Times-Roman-Acnt F
+18000 35906 M (3_ \(SETQQ File  <LISPCOURSE>OUTLINE01.TED\)) S
+1200 /Times-Italic-Acnt F
+18000 33906 M (<LISPCOURSE>OUTLINE01.TED) S
+1200 /Times-Roman-Acnt F
+18000 31906 M (4_ \(E File\)) S
+1200 /Times-Italic-Acnt F
+18000 29906 M ({DSK}File not found) S
+1200 /Times-Roman-Acnt F
+14400 26706 M (Contrast the preceeding NLAMBDA with an analogous LAMBDA function:) S
+18000 24306 M (5_ \(DEFINEQ ) S
+21600 22306 M (\(EX  \(LAMBDA \(FileName\)) S
+28800 20306 M (\(* * Call TEdit on the named file\)) S
+28800 18306 M (\(TEDIT FileName\)\)\)\)) S
+1200 /Times-Italic-Acnt F
+18000 16306 M (\(EX\)) S
+1200 /Times-Roman-Acnt F
+18000 14306 M (6_ \(EX '<LISPCOURSE>OUTLINE01.TED\)) S
+1200 /Times-Italic-Acnt F
+18000 12306 M ({PROCESS}#32,12337  \(Starts up a TEdit\)) S
+18000 10306 M (7_ \(SETQQ File ) S
+1200 /Times-Roman-Acnt F
+(<LISPCOURSE>OUTLINE01.TED\)) S
+1200 /Times-Italic-Acnt F
+18000 8306 M (<LISPCOURSE>OUTLINE01.TED) S
+grestore savepage restore showpage
+
+%%Page: 2 2
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (2) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+18000 71106 M (8_ \(EX File\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+18000 69106 M ({PROCESS}#32,12678  \(Starts up a TEdit\)) S
+1200 /Times-Roman-Acnt F
+14400 65906 M (The NLAMBDA version of this function has the ) S
+1200 /Times-Italic-Acnt F
+(advantage) S
+1200 /Times-Roman-Acnt F
+( that user/programmer ) S
+14400 64106 M (does not have to QUOTE the file name argument when calling the function since ) S
+14400 62306 M (the argument is not evaluated.) S
+18000 60106 M (I.e., compare events 2 and 6 in the preceding examples.) S
+14400 56906 M (However, the NLAMBDA version has the ) S
+1200 /Times-Italic-Acnt F
+(disadvantage) S
+1200 /Times-Roman-Acnt F
+( that it is less easily ) S
+14400 55106 M (integrated into the workings of the Lisp Exec.  ) S
+18000 52506 M (For example, you cannot set a variable to the name of the desired file and ) S
+18000 50706 M (then use this variable to refer to the file when calling the NLAMBDA ) S
+18000 48906 M (function.  This is shown in the comparison between events 4 and 8 above.) S
+10800 45906 M (The bottom line is that NLAMBDA function have their uses, especially when writing ) S
+10800 44106 M (functions that interface with the user, but they also have their drawbacks in terms of ) S
+10800 42306 M (flexibility.) S
+14400 39306 M (For example:  LISTFILES is an NLAMBDA function.  ) S
+18000 36306 M (It is nice to be able to type: \(LISTFILES {DSK}HOMEWORK34\) ) S
+18000 34506 M (without worrying about the QUOTE.) S
+18000 31506 M (On the other hand, you can do:) S
+1200 /Times-Italic-Acnt F
+( \(FOR File in ListOfFiles DO \(LISTFILES ) S
+18000 29706 M (File\)\)) S
+1200 /Times-Roman-Acnt F
+( to print out each file in a list of files.) S
+21600 26706 M (You would have to type ) S
+1200 /Times-Italic-Acnt F
+(\(FOR File in ListOfFiles DO \(APPLY ) S
+21600 24906 M ('LISTFILES \(LIST File\)\)\)) S
+1200 /Times-Roman-Acnt F
+(, which is more than a bit clumsy.) S
+10800 21906 M (The other place that NLAMBDA function are very handy is when you want to write ) S
+10800 20106 M (functions that evaluate a bunch of SExpressions in a non-standard order.) S
+14400 17106 M (For example, the following function evaluates the first of two SExpressions only ) S
+14400 15306 M (if the first evaluates to non-NIL:) S
+18000 13306 M (\(DEFINEQ ) S
+21600 11306 M (\(FirstOnlyIfSecond) S
+25200 9306 M (\(NLAMBDA \(SExpr1 SExpr2\)) S
+grestore savepage restore showpage
+
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (3) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+28800 71106 M (\(COND \(\(EVAL SExpr2\) \(EVAL SExpr1\)\)\)\)\)\)) S
+14400 68106 M (Note that COND, AND, OR, PROG, etc. are all standard Interlisp functions that ) S
+14400 66306 M (use this trick to change the order in which a set of SExpressions are evaluated.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 62557 M (Spread and NoSpread Functions) S
+1200 /Times-Roman-Acnt F
+10800 58906 M (The ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Spread/NoSpread) S
+1200 /Times-Roman-Acnt F
+( distinction is a second classification of functions in Interlisp that ) S
+10800 57106 M (is orthogonal to the LAMBDA/NLAMBDA distinction.) S
+10800 53506 M (So far, we have been looking only at ) S
+1200 /Times-BoldItalic-Acnt F
+(spread) S
+1200 /Times-Roman-Acnt F
+( functions.) S
+10800 50906 M (A ) S
+1200 /Times-BoldItalic-Acnt F
+(spread) S
+1200 /Times-Roman-Acnt F
+( function is one whose parameter list is in fact a LISTP.) S
+14400 48306 M (Thus, a spread function definition has the form ) S
+1200 /Times-Bold-Acnt F
+(\(LAMBDA ) S
+1200 /Times-BoldItalic-Acnt F
+(List) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(SExpr1) S
+1200 /Times-Bold-Acnt F
+( ... ) S
+1200 /Times-BoldItalic-Acnt F
+14400 46506 M (SExprN) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( or the form ) S
+1200 /Times-Bold-Acnt F
+(\(NLAMBDA ) S
+1200 /Times-BoldItalic-Acnt F
+(List) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(SExpr1) S
+1200 /Times-Bold-Acnt F
+( ... ) S
+1200 /Times-BoldItalic-Acnt F
+(SExprN) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+(.) S
+14400 43906 M (When APPLYing spread functions, the Interlisp interpreter matches each ) S
+14400 42106 M (parameter in this parameter list with the corresponding argument in the function ) S
+14400 40306 M (call.) S
+14400 37706 M (Note that the effect of this scheme is that each spread function has a fixed  ) S
+14400 35906 M (number of parameters.  If there are more arguments then parameters, the ) S
+14400 34106 M (arguments are just ignored.) S
+10800 30506 M (In contrast, a ) S
+1200 /Times-BoldItalic-Acnt F
+(nospread) S
+1200 /Times-Roman-Acnt F
+( function has a parameter "list" consisting of a single LITATOM.  ) S
+14400 27906 M (Thus, a nospread function definition has the form ) S
+1200 /Times-Bold-Acnt F
+(\(LAMBDA ) S
+1200 /Times-BoldItalic-Acnt F
+(Litatom) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(SExpr1) S
+1200 /Times-Bold-Acnt F
+( ... ) S
+1200 /Times-BoldItalic-Acnt F
+14400 26106 M (SExprN) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( or the form ) S
+1200 /Times-Bold-Acnt F
+(\(NLAMBDA ) S
+1200 /Times-BoldItalic-Acnt F
+(Litatom) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(SExpr1) S
+1200 /Times-Bold-Acnt F
+( ... ) S
+1200 /Times-BoldItalic-Acnt F
+(SExprN) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+(.) S
+14400 23506 M (When APPLYing a nospread function, Interlisp sets up this LITATOM to point to ) S
+14400 21706 M (the list of all arguments in the function call.  Using the LITATOM as a reference ) S
+14400 19906 M (\(as described below\), you can access this list from within the function. ) S
+14400 17306 M (This scheme allows a single parameter to refer to an arbitrarily long list of ) S
+14400 15506 M (arguments.  Thus, nospread functions have no fixed number of parameters.) S
+10800 12106 M (The manner in which one can reference the arguments of a nospread function differs for ) S
+10800 10306 M (LAMBDA and NLAMBDA functions.) S
+grestore savepage restore showpage
+
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (4) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 71106 M (NLAMBDA nospread functions) S
+1200 /Times-Roman-Acnt F
+14400 67706 M (Interlisp simply sets the LITATOM that is the parameter "list" to the list of ) S
+14400 65906 M (arguments \(unevaluated\).  You can then get to any element of the this list using ) S
+14400 64106 M (CAR, CDR, LAST, etc.) S
+18000 61306 M (For example, the following function calls TEdit for each of an arbitrary ) S
+18000 59506 M (number of files:) S
+21600 56906 M (10_\(DEFINEQ ) S
+25200 54906 M (\(TEDs) S
+28800 52906 M (\(NLAMBDA Files) S
+32400 50906 M (\(FOR File in Files DO \(TEDIT File\)\)\)\)\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 48906 M (\(TEDs\)) S
+1200 /Times-Roman-Acnt F
+21600 46706 M (11_\(TEDs {DSK}FOO\)) S
+1200 /Times-Italic-Acnt F
+21600 44506 M (NIL \(Starts TEdit on a single file {DSK}FOO\) ) S
+1200 /Times-Roman-Acnt F
+21600 42306 M (12_ \(TEDs {DSK}BAR {ERIS}<HALASZ>BAZ {DSK}ARG\)) S
+1200 /Times-Italic-Acnt F
+21600 40106 M (NIL \(Starts 3 TEdits on three files as specified\) ) S
+1200 /Times-Roman-Acnt F
+21600 37906 M (13_ \(TEDs A B C D E F G H J K\)) S
+1200 /Times-Italic-Acnt F
+21600 35706 M (NIL \(Starts 10 TEdits on ten files as specified\) ) S
+grestore savepage restore showpage
+
+%%Page: 5 5
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 6 6
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (5) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 71106 M (LAMBDA nospread functions) S
+1200 /Times-Roman-Acnt F
+14400 67706 M (LAMBDA nospread functions are a bit more complicated.) S
+18000 64306 M (The LITATOM that is the parameter "list" is bound to the number of ) S
+18000 62506 M (arguments being passed in the current function call.) S
+18000 59106 M (The arguments can be accessed individually using the functions ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(ARG ) S
+1200 /Times-Roman-Acnt F
+(and ) S
+1200 /Times-BoldItalic-Acnt F
+18000 57306 M (SETARG) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(.) S
+1200 /Times-Bold-Acnt F
+21600 54706 M (\(ARG ) S
+1200 /Times-BoldItalic-Acnt F
+(Litatom) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(M) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234  In a LAMBDA nospread function whose ) S
+21600 52906 M (parameter specification is the LITATOM ) S
+1200 /Times-Italic-Acnt F
+(Litatom) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-BoldItalic-Acnt F
+(ARG) S
+1200 /Times-Roman-Acnt F
+( returns the ) S
+1200 /Times-Italic-Acnt F
+21600 51106 M (M) S
+1200 /Times-Roman-Acnt F
+(th argument of the current function call.  ARG is itself an ) S
+21600 49306 M (NLAMBDA function that doesn't evaluate its argument but DOES ) S
+21600 47506 M (evaluate its second argument.) S
+1200 /Times-Bold-Acnt F
+21600 44906 M (\(SETARG ) S
+1200 /Times-BoldItalic-Acnt F
+(Litatom) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(M) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Value) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234  In a LAMBDA nospread function ) S
+21600 43106 M (whose parameter specification is the LITATOM ) S
+1200 /Times-Italic-Acnt F
+(Litatom) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-BoldItalic-Acnt F
+21600 41306 M (SETARG) S
+1200 /Times-Roman-Acnt F
+( sets the ) S
+1200 /Times-Italic-Acnt F
+(M) S
+1200 /Times-Roman-Acnt F
+(th argument of the current function call to ) S
+1200 /Times-Italic-Acnt F
+21600 39506 M (Value) S
+1200 /Times-Roman-Acnt F
+(.  SETARG is itself an NLAMBDA function that doesn't ) S
+21600 37706 M (evaluate its argument but DOES evaluate its second and third ) S
+21600 35906 M (arguments.) S
+18000 33106 M (For example, the following \(nonsense\) function collects the results of ) S
+18000 31306 M (evaluating an arbitrary number of SExprs, where each result is made into a ) S
+18000 29506 M (string:) S
+21600 26906 M (14_\(DEFINEQ ) S
+25200 24906 M (\(ResultsAsStrings) S
+28800 22906 M (\(LAMBDA SExprs) S
+32400 20906 M (\(FOR Index FROM 1 to SExprs) S
+36000 18906 M (COLLECT) S
+39600 16906 M (\(MKSTRING \(ARG SExprs ) S
+39600 15106 M (Index\)\)\)\)\)\)) S
+1200 /Times-Italic-Acnt F
+21600 11106 M (\(ResultsAsStrings\)) S
+1200 /Times-Roman-Acnt F
+21600 8906 M (15_ \(ResultsAsStrings \(PLUS 1 2\) 'ABC \(REVERSE '\(A B C\)\)\)) S
+grestore savepage restore showpage
+
+%%Page: 7 7
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (6) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 71106 M (\("3"  "ABC"  "\(C B A\)"\)) S
+1200 /Times-Roman-Acnt F
+21600 68906 M (16_ \(ResultsAsStrings  \(PLUS 2 3\) '\(PLUS 2 3\) \(EVAL \(PLUS 2 ) S
+21600 67106 M (3\)\)\)) S
+1200 /Times-Italic-Acnt F
+21600 64906 M (\("5"  "\(PLUS 2 3\)"  "5"\)) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 61506 M (What are nospread functions good for?) S
+1200 /Times-Roman-Acnt F
+14400 58106 M (Nospread functions are handy whenever you want to write a function that handles ) S
+14400 56306 M (an arbitrary number of arguments.) S
+14400 53506 M (COND, PROG, AND, OR, and PLUS are all implemented as nospread functions ) S
+14400 51706 M (since they all handle an arbitrary number of arguments.) S
+14400 48706 M (Another example might be the print function, LC.Print, from Homework #35.) S
+18000 46106 M (LC.Print was defined as a spread function as follows:) S
+21600 43706 M (\(DEFINEQ \(LC.Print) S
+25200 41706 M (\(LAMBDA \(#Items Thing1 Thing2 Thing3 Thing4 ) S
+25200 39906 M (Thing5\)) S
+28800 37906 M (\(FOR Thing) S
+32400 35906 M (IN \(LIST Thing1 Thing2 Thing3 Thing4 ) S
+32400 34106 M (Thing5\) ) S
+32400 32106 M (AS Ctr FROM 1 TO #Items) S
+32400 30106 M (DO \(PRIN1 Thing\)\)) S
+28800 26706 M (\(TERPRI\)\)\)\)) S
+18000 23306 M (This version of LC.Print could handle at most 5 things to be printed and ) S
+18000 21506 M (required a sixth argument specifying how many actual arguments there ) S
+18000 19706 M (were if there were less than 5.) S
+18000 16306 M (But LC.Print should have been defined as a nospread function as follows:) S
+21600 13906 M (\(DEFINEQ) S
+25200 11906 M (\(LC.Print \(LAMBDA Things) S
+28800 9906 M (\(FOR Index FROM 1 TO Things) S
+grestore savepage restore showpage
+
+%%Page: 8 8
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (7) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+32400 71106 M (DO \(PRIN1 \(ARG Things Index\)\)\)) S
+28800 69106 M (\(TERPRI\)\)\)\)) S
+18000 66106 M (Note that this nospread version of LC.Print can print an arbitrary number ) S
+18000 64306 M (of things and does not require an explicit parameter specifying how many ) S
+18000 62506 M (arguments there are.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 59106 M (Summary of 4 function types) S
+1200 /Times-Roman-Acnt F
+14400 55706 M (Since Spread/Nospread and LAMBDA/NLAMBDA are orthogonol distinctions, ) S
+14400 53906 M (there are a total of 4 different kinds of functions in Interlisp:) S
+18000 51706 M (LAMBDA spread) S
+18000 49506 M (LAMBDA nospread) S
+18000 47306 M (NLAMBDA spread) S
+18000 45106 M (NLAMBDA nospread) S
+14400 42106 M (You can find out the type of an arbitrary function in Interlisp using the ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(?=) S
+1200 /Times-Roman-Acnt F
+( facility ) S
+14400 40306 M (in the Lisp Exec.) S
+18000 38106 M (In the Lisp Exec, just type a ) S
+1200 /Times-Italic-Acnt F
+("\(") S
+1200 /Times-Roman-Acnt F
+(, the) S
+1200 /Times-Italic-Acnt F
+( function name) S
+1200 /Times-Roman-Acnt F
+(, a) S
+1200 /Times-Italic-Acnt F
+( space) S
+1200 /Times-Roman-Acnt F
+(, the characters ) S
+1200 /Times-Italic-Acnt F
+18000 36306 M ("?=") S
+1200 /Times-Roman-Acnt F
+( and a ) S
+1200 /Times-Italic-Acnt F
+(carriage return) S
+1200 /Times-Roman-Acnt F
+(.) S
+21600 34106 M (Once the return is typed, the ?= will be erased and on the next line ) S
+21600 32306 M (there will be a print out the parameter "list" of the named function.) S
+21600 30106 M (Following the parameter list will be a indication of the type of the ) S
+21600 28306 M (function as follows:) S
+25200 26106 M (LAMBDA spread -- Blank) S
+25200 23906 M (LAMBDA nospread -- ) S
+1200 /Times-Italic-Acnt F
+({L*}) S
+1200 /Times-Roman-Acnt F
+25200 21706 M (NLAMBDA spread -- ) S
+1200 /Times-Italic-Acnt F
+({NL}) S
+1200 /Times-Roman-Acnt F
+25200 19506 M (NLAMBDA nospread -- ) S
+1200 /Times-Italic-Acnt F
+({NL*}) S
+1200 /Times-Roman-Acnt F
+18000 17306 M (Examples:) S
+21600 14306 M (LAMBDA spread) S
+grestore savepage restore showpage
+
+%%Page: 9 9
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (8) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+/bitbltsave save def 25200 64599 translate 23100 7400 scale 231 74 true thebitimage
+B21C44
+B31C
+B21B1110
+B31C
+B21C44
+4FB219FFFE44
+1FB319FF10
+1CB219000710
+4CB3190644
+B31C
+1C08B30B10B30B0710
+1C10B30B08B30D
+4C10F8F3060FD9BF6679F8044004B30C0644
+4C20CC63060C19B06ECD80B30204B30D
+1CB3041B30B3020280B30D0710
+B3051E307EC1800100B30F
+4CB302E7CF9F3E7EC1F001000AB30C0644
+B303060C19B076CD800280B30F
+1C10B30804401108B30B0710
+1C10F8F3F7EFDF3F6679F8B311
+4C08B20B0010B30B0644
+4CB219000644
+1CB30240B3150710
+B30380B317
+4C38F800878710207C89F2238F80B30C0644
+4C442041044210204089026448B20D000644
+1C042081B30491B3100710
+1C0421F1B304A102A408B30F
+4C38208104421E3C78F1E2A40FB30D0644
+4C04A041044210204089032448B30F
+1C44600084B3150710
+1C38200087871F3E7CF1F2238F80B30E
+4CB2020040B215000644
+B303B216000644
+1CB3190710
+B31C
+4C4471F0B3160644
+4C4C21B217000644
+1CB3190710
+1C54B31A
+4CB3190644
+4C64B31A
+1CB3190710
+1C4471B319
+4CB219000644
+B31C
+1CB3190710
+B31C
+4C38F8B3170644
+4C442040B318
+1C042080B3160710
+1C0421F0B318
+4CB219000644
+B31C
+1FB21AFF10
+B30ED5B20A555710
+4FB3195644
+B30EB20BAAAE44
+1F8037F600F83FFDF7EDFBC2F0FDEFB30BAF10
+1FBFFBEEFFE7DFB303BCEF7DEFD5B20A555710
+4FBFFDDEFFEFEFFAEBEDFB7EDFBDB30C5644
+B304DFB306BAD7B20BAAAE44
+1FBFFEBEFFDFFFB313AF10
+1F807F7E01DFFFF75DB303B6DBD5B20A555710
+4FBFFEBEFFB303ECF7BCEF773BB30B5644
+4FBFFDDEFFDFEFF75DED0FC2F0F73BB20BAAAE44
+1FB303B202EFBEFFFFFEB202FFB30BAF10
+1FBFFBEEFFE7DFEFBEEFB304D5B20A555710
+4F8037F600F83FB3135644
+4FB20DFFB20BAAAE44
+1FB30DB20CFF10
+B21B1110
+B21C44
+B31C
+
+bitbltsave restore
+21600 61906 M (LAMBDA nospread) S
+/bitbltsave save def 25200 53299 translate 22500 7300 scale 225 73 true thebitimage
+B21B1100
+B31C
+B21B4400
+4FB219FFFE00
+1FB319FF00
+1CB219000700
+4CB3190600
+B31C
+1C08B30A0EB302010001800060B3030700
+1C10B30A01B302008002000010B305
+4C10FCF0C60C03331C004220888D1C10204080021FB3050600
+4C20C198B30336B3039322B302400210B307
+1CB30206B30230B3039104B20200B3080700
+B3028007CCB30718B3030C10080CB305
+4CB302066EC33B300043208C9322B30302102A10B3030600
+B30298066F8F3E7C0042C38B0D1CB3051CB306
+1C10B302600000300042B206008002102AB3040700
+1C10C0F007C003000001F20080B30708B306
+4C08B20E00010001800060B3030600
+4CB219000600
+1CB30240B3150700
+B30380B317
+4C38700087C70420401110C0B30E0600
+4C448841040884B3021120B310
+1C040881040880B303B20F000700
+1C0409F10408003CB314
+4C387081B30222641191B30F0600
+4C04084104088022587163C0B310
+1C44880084B302000001B20F000700
+1C3870008407003C0010B210000700
+4CB2020040B215000600
+B303B216000600
+1CB3190700
+B31C
+4C4471F0B3160600
+4C4C21B217000600
+1CB3190700
+1C54B31A
+4CB3190600
+4C64B31A
+1CB3190700
+1C4471B319
+4CB219000600
+B31C
+1CB3190700
+B31C
+4C3870B3170600
+4C448840B318
+1C040880B3160700
+1C0409F0B318
+4CB219000600
+B31C
+1FB21AFF00
+B30ED5B20A555700
+4FB3195600
+B30EB20BAAAE00
+1F8037F600F83FFDF7EDFBC2F0FDEFB30BAF00
+1FBFFBEEFFE7DFB303BCEF7DEFD5B20A555700
+4FBFFDDEFFEFEFFAEBEDFB7EDFBDB30C5600
+B304DFB306BAD7B20BAAAE00
+1FBFFEBEFFDFFFB313AF00
+1F807F7E01DFFFF75DB303B6DBD5B20A555700
+4FBFFEBEFFB303ECF7BCEF773BB30B5600
+4FBFFDDEFFDFEFF75DED0FC2F0F73BB20BAAAE00
+1FB303B202EFBEFFFFFEB202FFB30BAF00
+1FBFFBEEFFE7DFEFBEEFB304D5B20A555700
+4F8037F600F83FB3135600
+4FB20DFFB20BAAAE00
+1FB30DB20CFF00
+B21B1100
+B21B4400
+B31C
+B21B1100
+
+bitbltsave restore
+21600 50606 M (NLAMBDA spread) S
+/bitbltsave save def 25200 41999 translate 22900 7300 scale 229 73 true thebitimage
+B21B1110
+B31C
+B21B4440
+B31C
+B21B1110
+13B21AFF90
+47B31AC0
+47B2190001C0
+13B31A90
+B31C
+4702B3023870B302200030000CB30CC0
+4704B30260C0B3021000400002B30D
+13041E7E30F1E008800810004227C2B30C90
+13083360319B30B3020800426402B30D
+47B3050500B312C0
+470806B30302B3020182A40180B30C
+13081C7CB30414080042A402B20B000190
+13083360B30205B3034324B30E
+4704B30408802210B310C0
+47041E7EFCF1E0B30442B30F
+1302B20700200030000CB30C90
+13B219000190
+47B3021000000183B312C0
+B3032000000204B313
+130E3E0020E3E1070EB31290
+131120104112010891B313
+47011020B317C0
+4701087C4022B316
+130E042040C3C1B31490
+13012210411201B315
+4711220021B316C0
+470E1C0020E3E7C70EB313
+13B2020010B215000190
+B303B216000190
+4702B30280B315C0
+4704B30240B316
+13043C78F0B31690
+130822448820B316
+47B31AC0
+B31C
+13B31A90
+B31C
+4704B30240B315C0
+47043C78F0B317
+1302B2020080B31590
+13B219000190
+47B305040810B311C0
+B306020408B312
+131F3E7C0111C7C2B31390
+13102040013084010204B312
+47081020B317C0
+470408100150B316
+13B219000190
+B31C
+47B21AFFC0
+B30EF5B20B55C0
+13B31A90
+B30EEAB20AAAAB90
+47E00DFD803E0FFF7DFB7EF0BC3F7BB30CC0
+47EFFEFBBFF9F7B303EF3BDF7BF5B20B55C0
+13EFFF77BFFBFBFEBAFB7EDFB7EFB30D90
+B304F7B306EEB5EAB20AAAAB90
+47EFFFAFBFF7FFB314C0
+47E01FDF8077FFFDD77BB302EDB6F5B20B55C0
+13EFFFAFBFF7B3033DEF3BDDCEB30C90
+B30277BFF7FBB30243F0BC3DCEEAB20AAAAB90
+47B303B202FBEFBFFFFFBFFFFFB30CC0
+47EFFEFBBFF9F7FBEFBBB304F5B20B55C0
+13E00DFD803E0FB31490
+13B20DFFEAB20AAAAB90
+47B30DB20CFFC0
+B21B4440
+B21B1110
+
+bitbltsave restore
+21600 39306 M (NLAMBDA nospread) S
+/bitbltsave save def 25200 30699 translate 22800 7300 scale 228 73 true thebitimage
+B21B1110
+B31C
+B21B4440
+B31C
+B21B1110
+13B21AFF90
+47B31AC0
+47B2190001C0
+13B31A90
+B31C
+4702B30F400060000030B303C0
+4704B30F200080000008B304
+13043F3C786303CFDF9E0080E3E7C70408102000844F80B30490
+13083018CC63018C18330080420408840810100084C800B305
+47B30D800000B309C0
+B30318B30306B30301B20200100305480406B304
+13B3027063E18C1F1C00F0420786B3030085481508B30390
+B303CC63018C1833008042040880B30386480EB305
+4704B30F20B30215B304C0
+B3023C79FBF3CC1F9E00F8E207C7B202002000844804B305
+1302B20F00400060000030B30390
+13B219000190
+47B30210B316C0
+B30320B317
+130E3E0021F1C382101C7CF8E0B30E90
+13112010410084421008408110B30F
+47011020B317C0
+4701087C41008082B3028020B30F
+130E0420410083021E0840F0C0B30E90
+13012210410084421008408110B30F
+4711220021B316C0
+470E1C002101C38F9F1C40F8E0B30F
+13B2020010B215000190
+B303B216000190
+4702B30280B315C0
+4704B30240B316
+13043C78F0B31690
+130822448820B316
+47B31AC0
+B31C
+13B31A90
+B31C
+4704B30240B315C0
+47043C78F0B317
+1302B2020080B31590
+13B219000190
+47B305040810B311C0
+B306020408B312
+131F3E7C0111C7C2B31390
+13102040013084010204B312
+47081020B317C0
+470408100150B316
+13B219000190
+B31C
+47B21AFFC0
+B30EF5B20B55C0
+13B31A90
+B30EEAB20AAAAB90
+47E00DFD803E0FFF7DFB7EF0BC3F7BB30CC0
+47EFFEFBBFF9F7B303EF3BDF7BF5B20B55C0
+13EFFF77BFFBFBFEBAFB7EDFB7EFB30D90
+B304F7B306EEB5EAB20AAAAB90
+47EFFFAFBFF7FFB314C0
+47E01FDF8077FFFDD77BB302EDB6F5B20B55C0
+13EFFFAFBFF7B3033DEF3BDDCEB30C90
+B30277BFF7FBB30243F0BC3DCEEAB20AAAAB90
+47B303B202FBEFBFFFFFBFFFFFB30CC0
+47EFFEFBBFF9F7FBEFBBB304F5B20B55C0
+13E00DFD803E0FB31490
+13B20DFFEAB20AAAAB90
+47B30DB20CFFC0
+B21B4440
+B21B1110
+
+bitbltsave restore
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 26657 M (Functions as Arguments in Function Calls) S
+1200 /Times-Roman-Acnt F
+10800 23406 M (In Lisp, using a function as an argument in a function call is no big deal.  Functional ) S
+10800 21606 M (arguments follow the same rules as any other argument.) S
+14400 18406 M (Example:) S
+18000 15206 M (1_\(DEFINEQ ) S
+21600 13206 M (\(DoItToFiveAndFour) S
+25200 11206 M (\(LAMBDA \(ItFn\)) S
+28800 9206 M (\(APPLY ItFn \(LIST 5 4\)\)\)\)\)) S
+grestore savepage restore showpage
+
+%%Page: 10 10
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (9) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+18000 71106 M (\(DoItToFiveAndFour\)) S
+1200 /Times-Roman-Acnt F
+18000 69106 M (2_\(DoItToFiveAndFour 'PLUS\)) S
+1200 /Times-Italic-Acnt F
+18000 67106 M (9) S
+1200 /Times-Roman-Acnt F
+18000 65106 M (3_\(DoItToFiveAndFour 'DIFFERENCE\)) S
+1200 /Times-Italic-Acnt F
+18000 63106 M (1) S
+1200 /Times-Roman-Acnt F
+18000 61106 M (4_\(DoItToFiveAndFour \(MKATOM \(CONCAT "TI" 'MES\)\)\)) S
+1200 /Times-Italic-Acnt F
+18000 59106 M (20) S
+18000 57106 M (5_ ) S
+1200 /Times-Roman-Acnt F
+(\(DoItToFiveAndFour \(LIST 'PLUS\)\)) S
+1200 /Times-Italic-Acnt F
+18000 55106 M (UDEFINED FUNCTION) S
+18000 53106 M (\(PLUS\)) S
+1200 /Times-Roman-Acnt F
+10800 49906 M (Note: you can generally use a function definition \(i.e., a list beginning with a LAMBDA\) ) S
+10800 48106 M (where a function name is required.  This is because most Lisp functions that require a ) S
+10800 46306 M (function name, will accept a function definition instead.) S
+18000 43106 M (Example:) S
+21600 40706 M (6_ \(DoItToFiveAndFour '\(LAMBDA \(X Y\) \(SUB1 \(PLUS X ) S
+21600 38906 M (Y\)\)\)\)) S
+1200 /Times-Italic-Acnt F
+21600 36906 M (8) S
+1200 /Times-Roman-Acnt F
+21600 34906 M (7) S
+1200 /Times-Italic-Acnt F
+(_ ) S
+1200 /Times-Roman-Acnt F
+(\(DoItToFiveAndFour '\(LAMBDA \(X Y\) \(TIMES \(PLUS X Y\) ) S
+21600 33106 M (Y\)\)\)) S
+1200 /Times-Italic-Acnt F
+21600 31106 M (36 [=\(5+4\)*4]) S
+1200 /Times-Roman-Acnt F
+10800 27906 M (When passing functions as arguments, it is important to pass down function with the ) S
+10800 26106 M (appropriate characteristics, e.g., the required number of parameters.) S
+18000 22906 M (Example:) S
+21600 20506 M (8_ \(DoItToFiveAndFour '\(LAMBDA \(X Y Z\) \(PLUS X Z Y\)\)\)\)) S
+1200 /Times-Italic-Acnt F
+21600 18506 M (NON-NUMERIC ARG) S
+21600 16506 M (NIL) S
+21600 14506 M ([Because Z is bound to NIL when \(PLUS X Y Z\) is evaluated.]) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 11306 M (FUNCTION) S
+1200 /Times-Roman-Acnt F
+( \234 in the preceeding examples, I used QUOTE to prevent evaluation of ) S
+10800 9506 M (function names or function definitions used as arguments in a function call.) S
+grestore savepage restore showpage
+
+%%Page: 11 11
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (10) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+14400 71106 M (I actually should have used the function FUNCTION in place of QUOTE in these ) S
+14400 69306 M (cases.) S
+14400 66706 M (FUNCTION behaves much like QUOTE, but tells Lisp that it is dealing with a ) S
+14400 64906 M (function rather than a data object.  In some cases \(e.g., in the compiler\) this will ) S
+14400 63106 M (allow Lisp to behave much more efficiently.) S
+14400 60506 M (Example:) S
+18000 58106 M (9_ \(DoItToFiveAndFour \(FUNCTION \(LAMBDA \(X Y\) \(SUB1 \(PLUS ) S
+18000 56306 M (X Y\)\)\)\)\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+18000 54306 M (8) S
+1200 /Times-Roman-Acnt F
+18000 52306 M (10_\(DoItToFiveAndFour \(FUNCTION PLUS\)\)) S
+1200 /Times-Italic-Acnt F
+18000 50306 M (9) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 47106 M (A more realistic example) S
+1200 /Times-Roman-Acnt F
+14400 43906 M (1_ \(DEFINEQ ) S
+18000 41906 M (\(WindowOp \(LAMBDA \(Op Window\)) S
+21600 39906 M (\(OR \(WINDOWP Window\)\(SETQ Window \(GetWindow\)\)\)) S
+21600 37906 M (\(APPLY* Op Window\)\)\)) S
+1200 /Times-Italic-Acnt F
+14400 35906 M (\(WindowOp\)) S
+1200 /Times-Roman-Acnt F
+14400 33906 M (2_ \(WindowOp \(FUNCTION CLOSEW\) W\)) S
+1200 /Times-Italic-Acnt F
+14400 31906 M (CLOSED [Closes the window that is the value of W]) S
+1200 /Times-Roman-Acnt F
+14400 29906 M (3_ \(WindowOp \(FUNCTION MOVEW\)\)) S
+1200 /Times-Italic-Acnt F
+14400 27906 M (\(100 . 100\) [Gets a window from the user, then moves that window]) S
+1400 /Times-Bold-Acnt F
+7200 23557 M (Control Structures in Lisp) S
+10800 19757 M (Procedural  Abstraction) S
+1200 /Times-Roman-Acnt F
+14400 16706 M (If there's one important concept in programming, its ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(abstraction) S
+1200 /Times-Italic-Acnt F
+(.) S
+1200 /Times-Bold-Acnt F
+18000 13706 M (Abstraction) S
+1200 /Times-Roman-Acnt F
+( starts with the process of breaking down a large task into a ) S
+18000 11906 M (set of sub-tasks, breaking down each sub-task into a set of sub-sub-tasks, ) S
+18000 10106 M (and so on until you get to atomic tasks that can't be further decomposed.) S
+grestore savepage restore showpage
+
+%%Page: 12 12
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (11) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+18000 71106 M (You then write the primitive functions to carry out the lowest-level, most ) S
+18000 69306 M (detailed sub-sub-... tasks.  Once these functions are written, you can write ) S
+18000 67506 M (the functions that carry out the next higher level in terms of these more ) S
+18000 65706 M (primitive, lower level functions.  And so on, until the function that ) S
+18000 63906 M (accomplishes the top-level task can be written in terms of the functions ) S
+18000 62106 M (that carry out its compoenent sub-tasks.) S
+18000 59106 M (The important concept here is that the functions at each level should be as ) S
+18000 57306 M (independent as possible from both the lower level functions it uses and the ) S
+18000 55506 M (higher level function that use it.) S
+21600 52706 M (The only assumptions that should be made are about these higher ) S
+21600 50906 M (or lower level functions concern the syntax and semantics of their ) S
+21600 49106 M (arguments and returned values, and some information about their ) S
+21600 47306 M (side-effects on the environment.) S
+21600 44506 M (In particular, NO assumptions should be made about the details of ) S
+21600 42706 M (how they are implemented.) S
+18000 39706 M (The goal of abstraction is to be able to write programs in which bugs, ) S
+18000 37906 M (required changes, etc. will be isolated to only those few functions that are ) S
+18000 36106 M (directly relevent to the bug or change or whatever.) S
+21600 33106 M (For example:) S
+25200 30706 M (Consider a program that does some complex computations, ) S
+25200 28906 M (printing out intermediate results in the Exec window along ) S
+25200 27106 M (the way.) S
+25200 24706 M (The task of printing out the intermediate results on the ) S
+25200 22906 M (screen should be isolated into a separate function \(or ) S
+25200 21106 M (functions\) and not be part of the functions that do the ) S
+25200 19306 M (calculations.) S
+25200 16906 M (Then, if you want to change the printout to use special ) S
+25200 15106 M (fonts or to go to a file rather than the screen, you have to ) S
+25200 13306 M (change only the printing function\(s\).  No changes will have ) S
+25200 11506 M (to made to all of the functions that do the computational ) S
+25200 9706 M (work.) S
+grestore savepage restore showpage
+
+%%Page: 13 13
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (12) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+18000 71106 M (The advantages of properly abstracted programs are too many to ) S
+18000 69306 M (enumerate!!!  Ease of programming, ease of debugging, ease of ) S
+18000 67506 M (modification, and so on.) S
+14400 64506 M (We covered ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(data abstraction,) S
+1200 /Times-Roman-Acnt F
+( i.e. abstraction when dealing with data structures, ) S
+14400 62706 M (in glorious detail earlier \(see LispCourse #s 24 thru 26\).) S
+1200 /Times-BoldItalic-Acnt F
+14400 59706 M (Procedural abstraction) S
+1200 /Times-Roman-Acnt F
+( is the analogous concept in the realm of writing ) S
+14400 57906 M (procedures to carry out arbitrary tasks.) S
+18000 55506 M (Procedural abstraction is the art of writing functions by ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(combining) S
+1200 /Times-Roman-Acnt F
+( calls to ) S
+18000 53706 M (other, more detailed functions.) S
+18000 51306 M (There are various schemes for doing this ) S
+1200 /Times-Italic-Acnt F
+(combination) S
+1200 /Times-Roman-Acnt F
+( of function calls to ) S
+18000 49506 M (make interesting and useful functions in Lisp.) S
+18000 47106 M (The various schemes are called ) S
+1200 /Times-Italic-Acnt F
+(control structures) S
+1200 /Times-Roman-Acnt F
+( and are the topic of the ) S
+18000 45306 M (next section.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+10800 41357 M (Interlisp Control Structures) S
+1200 /Times-Roman-Acnt F
+14400 38306 M (A ) S
+1200 /Times-Italic-Acnt F
+(control structure) S
+1200 /Times-Roman-Acnt F
+( is a scheme for controlling the order of a set of function calls ) S
+14400 36506 M (being made in order to accomplish some task.) S
+14400 33706 M (In Lisp, there are a number of basic control structures available for use in writing ) S
+14400 31906 M (your functions.) S
+18000 29306 M (These control structures are generally implemented as functions that take ) S
+18000 27506 M (an arbitrary number of SExpressions \(i.e., function calls\) and evaluate ) S
+18000 25706 M (them in some specific order.) S
+1200 /Times-Bold-Acnt F
+14400 21906 M (Review:  Control Structures Already Covered) S
+1200 /Times-Roman-Acnt F
+18000 18906 M (The following are basic control structures that we've already covered in ) S
+18000 17106 M (previous LispCourses.) S
+1200 /Times-Bold-Acnt F
+21600 13906 M (Sequential evaluation) S
+1200 /Times-Roman-Acnt F
+25200 11306 M (As a default rule, when you can specify an arbitrary ) S
+25200 9506 M (number of SExprerssions for evaluation, these ) S
+grestore savepage restore showpage
+
+%%Page: 14 14
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (13) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+25200 71106 M (SExpressions are evaluated in sequential order and the ) S
+25200 69306 M (value of the last SExpression is returned as the value of the ) S
+25200 67506 M (whole set of SExpressions.) S
+25200 64906 M (The most salient instance of this is in the body of a function ) S
+25200 63106 M (definition.) S
+25200 60506 M (Another instance is after the DO or COLLECT in a FOR ) S
+25200 58706 M (loop.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 55506 M (Embedding) S
+1200 /Times-Roman-Acnt F
+25200 52906 M (Perhaps, the most prevelant control structure in Lisp is ) S
+25200 51106 M (embedding function calls as arguments to other ) S
+25200 49306 M (\(LAMBDA\) function calls.) S
+28800 46706 M (Example:) S
+32400 44706 M (\(SQRT) S
+36000 42706 M (\(PLUS) S
+39600 40706 M (\(SQUARE \(DIFFERENCE ) S
+39600 38906 M (X1 X2\)\)) S
+39600 36906 M (\(SQUARE \(DIFFERENCE ) S
+39600 35106 M (Y1 Y2\)\)\)\)) S
+25200 32506 M (For LAMBDA function calls, the Lisp evaluator insures ) S
+25200 30706 M (that the arguments will be evaluated in sequential order ) S
+25200 28906 M (\(from left to right\) before the function is applied.) S
+28800 26306 M (In the precedding example this means that before ) S
+28800 24506 M (the SQRT function is applied, the PLUS is ) S
+28800 22706 M (evaluated.  But  before the PLUS is applied, the two ) S
+28800 20906 M (SQUARE calls are evaluated in order.  And so on.) S
+25200 17906 M (Note: NLAMBDA functions to not have this property.  ) S
+28800 14906 M (If the arguments to an NLAMBDA function are ) S
+28800 13106 M (evaluated at all, they are evaluated by the function ) S
+28800 11306 M (itself and not by the Lisp evaluator.) S
+grestore savepage restore showpage
+
+%%Page: 15 15
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (14) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+28800 71106 M (Since the function can evaluate its arguments in any ) S
+28800 69306 M (order, the order of evaluation of an NLAMBDA ) S
+28800 67506 M (function's arguments is impossible to predict, ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(a ) S
+28800 65706 M (priori.) S
+1200 /Times-Roman-Acnt F
+28800 62706 M (However, if you happen to know how an ) S
+28800 60906 M (NLAMBDA function evaluates it arguments, you ) S
+28800 59106 M (can use embedding.) S
+32400 56706 M (Example:) S
+1200 /Times-Italic-Acnt F
+36000 54306 M (\(SETQ FOO \(SETQ BAR \(PLUS A ) S
+36000 52506 M (B\)\)\)  ) S
+1200 /Times-Roman-Acnt F
+(Sets both FOO and BAR to the ) S
+36000 50706 M (result of \(PLUS A B\).) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 47506 M (COND) S
+1200 /Times-Roman-Acnt F
+25200 44906 M (COND implements a conditional \(IF-THEN-ELSE\) control ) S
+25200 43106 M (structure in Lisp.  \(See LispCourse #4, page 5\)) S
+25200 40506 M (COND has the form:) S
+28800 38106 M (\(COND \() S
+1200 /Times-Italic-Acnt F
+(Test1) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(Consequent1) S
+1200 /Times-Roman-Acnt F
+(\)\() S
+1200 /Times-Italic-Acnt F
+(Test2) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(Consequent2) S
+1200 /Times-Roman-Acnt F
+(\) ) S
+1200 /Times-Italic-Acnt F
+28800 36306 M (...) S
+1200 /Times-Roman-Acnt F
+(\)) S
+28800 33906 M (COND evaluates each ) S
+1200 /Times-Italic-Acnt F
+(TestI ) S
+1200 /Times-Roman-Acnt F
+(in turn until the first ) S
+28800 32106 M (one that evaluates to non-NIL.) S
+32400 29906 M (It then evaluates each SExpression in the ) S
+1200 /Times-Italic-Acnt F
+32400 28106 M (Consequent) S
+1200 /Times-Roman-Acnt F
+( after this first non-NIL ) S
+1200 /Times-Italic-Acnt F
+(Test) S
+1200 /Times-Roman-Acnt F
+( and ) S
+32400 26306 M (returns the value of the last of these ) S
+32400 24506 M (SExpressions. \(Or the value of the ) S
+1200 /Times-Italic-Acnt F
+(Test) S
+1200 /Times-Roman-Acnt F
+( if ) S
+32400 22706 M (there are no SExpressions in the ) S
+1200 /Times-Italic-Acnt F
+32400 20906 M (Consequent) S
+1200 /Times-Roman-Acnt F
+(.\)) S
+28800 18706 M (If there is no ) S
+1200 /Times-Italic-Acnt F
+(TestI) S
+1200 /Times-Roman-Acnt F
+( that evaluates to non-NIL, ) S
+28800 16906 M (COND returns NIL.) S
+25200 14306 M (Example:) S
+28800 12306 M (\(COND) S
+32400 10306 M (\(\(LITATOM SExpr\)\(LookupValue SExpr ) S
+32400 8506 M (Stack\)\)) S
+grestore savepage restore showpage
+
+%%Page: 16 16
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (15) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+32400 71106 M (\(\(LISTP SExpr\)\(LC.Eval SExpr Stack\)\)) S
+32400 69106 M (\(T SExpr\)\)) S
+32400 66306 M (In English:) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+36000 64306 M (If) S
+1200 /Times-Roman-Acnt F
+( SExpr is a LITATOM, Lookup its ) S
+36000 62506 M (value;) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+36000 60506 M (Else if) S
+1200 /Times-Roman-Acnt F
+( SExpr is a list, the eval that ) S
+36000 58706 M (list,) S
+1200 /Times-Bold-Acnt F
+36000 56706 M (Otherwise) S
+1200 /Times-Roman-Acnt F
+(, return SExpr.) S
+grestore savepage restore showpage
+
+%%Page: 17 17
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (16) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+grestore savepage restore showpage
+
+%%Page: 18 18
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 19 19
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (17) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+21600 71106 M ( ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(AND, OR) S
+1200 /Times-Roman-Acnt F
+25200 68506 M (AND and OR are two functions that are meant to be logical ) S
+25200 66706 M (functions, but often serve to control the order of evaluation ) S
+25200 64906 M (of SExpressions.  ) S
+25200 62306 M (Both AND and OR take an arbitrary number of ) S
+25200 60506 M (SExpressions as arguments.) S
+1200 /Times-Bold-Acnt F
+28800 57906 M (AND) S
+1200 /Times-Roman-Acnt F
+( \234 evaluates the SExpressions in sequential ) S
+28800 56106 M (order but stops at the first SExpression that ) S
+28800 54306 M (evaluates to NIL and returns NIL.  If no such ) S
+28800 52506 M (SExpression is found, AND returns the value of the ) S
+28800 50706 M (last SExpression.) S
+1200 /Times-Bold-Acnt F
+28800 48106 M (OR) S
+1200 /Times-Roman-Acnt F
+( \234 evaluates the SExpressions in sequential order ) S
+28800 46306 M (but stops at the first SExpression that evaluates to ) S
+28800 44506 M (non-NIL and returns its value.  If no such ) S
+28800 42706 M (SExpression is found, OR returns NIL.) S
+25200 40106 M (AND is often used to replace single clause COND ) S
+25200 38306 M (expressions:) S
+28800 35506 M (1.) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+32400 35506 M (\(AND YesFlg \(SETQQ Blat Fumble\)\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+32400 33306 M (is equivalent to) S
+32400 31106 M (\(COND \(YesFlg \(SETQQ Blat Fumble\)\)\).) S
+28800 28306 M (2.) S
+1200 /Times-Italic-Acnt F
+32400 28306 M (\(AND \(SETQ Baz \(CAR Fu\)\) \(PLUS 3 Baz\)\)) S
+1200 /Times-Roman-Acnt F
+32400 26106 M (is equivalent to) S
+32400 23906 M (\(COND \(\(SETQ Baz \(CAR Fu\)\) \(PLUS 3 ) S
+32400 22106 M (Baz\)\)\).) S
+28800 19306 M (3.) S
+1200 /Times-Italic-Acnt F
+32400 19306 M (\(AND Window TextStream ID) S
+36000 17506 M (\(LC.SetID ID Window TextStream\)\)) S
+1200 /Times-Roman-Acnt F
+32400 15306 M (is equivalent to) S
+32400 13106 M (\(COND) S
+36000 11306 M (\(\(AND ID Window TextStream\)) S
+grestore savepage restore showpage
+
+%%Page: 20 20
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (18) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+39600 71106 M (\(LC.SetID ID Window ) S
+42000 69306 M (TextStream\)\)\)\)) S
+25200 66106 M (OR is often used to replace COND statements with a ) S
+25200 64306 M (number of clauses, each having a test and no consequents:) S
+28800 61706 M (1.) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+31200 61706 M (\(OR) S
+32400 59906 M (\(WINDOWP Window\)) S
+32400 58106 M (\(SETQ Window \(CREATEW\)\)\)) S
+1200 /Times-Roman-Acnt F
+32400 55906 M (is equivalent to) S
+32400 53706 M (\(COND) S
+36000 51906 M (\(\(WINDOWP Window\)\)) S
+36000 50106 M (\(\(SETQ Window \(CREATEW\)\)\)\)) S
+28800 47506 M (2.) S
+1200 /Times-Italic-Acnt F
+31200 47506 M (\(OR List Array) S
+36000 44906 M (\(ERROR "Neither list nor array ) S
+38400 43106 M (present"\)\)) S
+1200 /Times-Roman-Acnt F
+32400 40906 M (is equivalent to) S
+32400 38706 M (\(COND) S
+36000 36906 M (\(List\)) S
+36000 35106 M (\(Array\)) S
+36000 33306 M (\(\(ERROR ".."\)\)\)) S
+28800 30706 M (3.) S
+1200 /Times-Italic-Acnt F
+31200 30706 M (\(SETQ Foo) S
+32400 28906 M (\(OR Arg1 Arg2 \(SETQ Arg1 \(SETQ Arg2 ) S
+34800 27106 M (Arg3\)\)\)\)) S
+1200 /Times-Roman-Acnt F
+32400 24906 M (is equivalent to) S
+32400 22706 M (\(SETQ Foo) S
+36000 20906 M (\(COND) S
+39600 19106 M (\(Arg1\)) S
+39600 17306 M (\(Arg2\)) S
+39600 15506 M (\(\(SETQ Arg1 \(SETQ Arg2 ) S
+42000 13706 M (Arg3\)\)\)\)) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 10506 M (Iteration: FOR, WHILE, and UNTIL) S
+grestore savepage restore showpage
+
+%%Page: 21 21
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (19) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+25200 71106 M (FOR, WHILE, and UNTIL implement iterative loops in ) S
+25200 69306 M (Interlisp that allow you to repeat a set of operations for ) S
+25200 67506 M (each element in a sequence or list of elements.) S
+25200 64906 M (The basic notion of an iterative loop is that there is an ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+25200 63106 M (iteration sequence) S
+1200 /Times-Roman-Acnt F
+( \(e.g., a list or a sequence of integers\),  ) S
+25200 61306 M (an ) S
+1200 /Times-Italic-Acnt F
+(iterative variable) S
+1200 /Times-Roman-Acnt F
+(, and a ) S
+1200 /Times-Italic-Acnt F
+(body of SExpressions) S
+1200 /Times-Roman-Acnt F
+( that \(may\) ) S
+25200 59506 M (use the iterative variable.) S
+28800 56906 M (For each element in the iteration sequence in turn, ) S
+28800 55106 M (the iteration loop binds the iterative variable to this ) S
+28800 53306 M (element and then evaluates the SExpressions in the ) S
+28800 51506 M (body.) S
+28800 48906 M (The clauses in a basic FOR, WHILE, or UNTIL ) S
+28800 47106 M (statement specify the iteration sequence, the ) S
+28800 45306 M (iteration variable, and the body.) S
+32400 42706 M (See LispCourse #5, page 1 for a description ) S
+32400 40906 M (of the basic FOR, WHILE and UNTIL ) S
+32400 39106 M (loops.) S
+28800 36506 M (Additional clauses, can specify what to do with the ) S
+28800 34706 M (results of evaluating the body \(e.g., the COLLECT ) S
+28800 32906 M (statement\), under what conditions to terminate the ) S
+28800 31106 M (iteration before the iteration sequence is exhausted, ) S
+28800 29306 M (etc.) S
+28800 26706 M (In particular,) S
+32400 24106 M (For conditional execution of the body of an ) S
+32400 22306 M (iterative loop,  see LispCourse #26, page 16 ) S
+32400 20506 M (for a description of the WHEN clause in ) S
+32400 18706 M (FOR/WHILE loops.) S
+32400 16106 M (For multiple iteration variables, see ) S
+32400 14306 M (LispCourse Homework #28, page 6 for a ) S
+32400 12506 M (description of the AS clause in ) S
+32400 10706 M (FOR/WHILE loops.) S
+grestore savepage restore showpage
+
+%%Page: 22 22
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (20) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+25200 71106 M (Loaded example:) S
+28800 68906 M (\(FOR Item IN List) S
+32400 66906 M (AS Index FROM 1 TO \(LENGTH List\) BY ) S
+32400 65106 M (1) S
+32400 63106 M (WHILE \(KEYDOWNP 'A\)) S
+32400 61106 M (WHEN \(NUMBERP \(ELT Array Index\)\)) S
+32400 59106 M (COLLECT \(ADD1 \(SETA Array Index ) S
+32400 57306 M (Item\)\)\)) S
+28800 54706 M (This example has 2 iterative sequences \() S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(List) S
+1200 /Times-Roman-Acnt F
+( & ) S
+1200 /Times-Italic-Acnt F
+28800 52906 M (FROM 1 TO \(LENGTH List\) BY 1) S
+1200 /Times-Roman-Acnt F
+(\) and, ) S
+28800 51106 M (correspondingly, two iterative variables \() S
+1200 /Times-Italic-Acnt F
+(Item) S
+1200 /Times-Roman-Acnt F
+( & ) S
+1200 /Times-Italic-Acnt F
+28800 49306 M (Index) S
+1200 /Times-Roman-Acnt F
+(\).) S
+28800 46706 M (It has a standard body thgat uses both iteration ) S
+28800 44906 M (variables  --  ) S
+1200 /Times-Italic-Acnt F
+(\(ADD1 ...\)) S
+1200 /Times-Roman-Acnt F
+28800 42306 M (It has an early termination condition -- ) S
+1200 /Times-Italic-Acnt F
+(WHILE ...) S
+1200 /Times-Roman-Acnt F
+28800 39706 M (It has conditional evaluation of its body -- ) S
+1200 /Times-Italic-Acnt F
+(WHEN ...) S
+1200 /Times-Roman-Acnt F
+28800 37106 M (And it returns the list of evaluation results from ) S
+28800 35306 M (each iteration -- ) S
+1200 /Times-Italic-Acnt F
+(COLLECT ...) S
+grestore savepage restore showpage
+
+%%Page: 23 23
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 24 24
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (21) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 71106 M (LET) S
+1200 /Times-Roman-Acnt F
+25200 68506 M (LET is an implementation of the basic sequential ) S
+25200 66706 M (evaluation of SExpressions.  Thus as a control structure its ) S
+25200 64906 M (not very interesting.  Its basic use is for binding variables.) S
+28800 62306 M (\(SEE LispCourse #34, page 19\)) S
+1200 /Times-Bold-Acnt F
+21600 59106 M (PROG with RETURN) S
+1200 /Times-Roman-Acnt F
+25200 56506 M (Like LET, PROG is used basically for binding variables.) S
+28800 53906 M (\(SEE LispCourse #34, page 23\)) S
+25200 51306 M (Basically, PROG implements a sequential evaluation of ) S
+25200 49506 M (SExpressions.) S
+25200 46906 M (However, with an embedded RETURN statement, you can ) S
+25200 45106 M (terminate this sequential evaluation at any point and force ) S
+25200 43306 M (PROG to return an arbitrary value.) S
+25200 40706 M (PROG with RETURN together with COND, AND, OR, ) S
+25200 38906 M (etc. can be used to built tailor-made control structures.) S
+25200 36306 M (Example:) S
+28800 33706 M (\(PROG NIL) S
+32400 31706 M (\(AND \(WINDOWP Window\)\(RETURN ) S
+32400 29906 M (Window\)\)) S
+32400 27906 M (\(AND) S
+36000 25906 M (\(WINDOWP) S
+39600 23906 M (\(SETQ Window) S
+43200 21906 M (\(WindowOfText ) S
+43200 20106 M (TextStream\)\)) S
+36000 18106 M (\(RETURN Window\)\)) S
+32400 16106 M (\(SETQ Window \(CREATEW\)\)) S
+32400 14106 M (\(AND) S
+36000 12106 M (\(WindowOffScreenP Window\)) S
+36000 10106 M (\(RETURN Window\)\)) S
+grestore savepage restore showpage
+
+%%Page: 25 25
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (22) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+32400 71106 M (... Do lots of work with the window ...) S
+32400 69106 M (\(RETURN Window\)\)) S
+28800 66106 M (This is an example of using PROG with no binding ) S
+28800 64306 M (list just to take advantage of the RETURN ) S
+28800 62506 M (statments.) S
+28800 59506 M (The example is actually equivalent to the following ) S
+28800 57706 M (COND statement.  But the PROG version is much ) S
+28800 55906 M (easier to follow that the COND version \(at least for ) S
+28800 54106 M (an old FORTRAN programmer!\).) S
+32400 51706 M (\(COND) S
+36000 49706 M (\(\(WINDOWP Window\) Window\)) S
+36000 47706 M (\(\(WINDOWP) S
+39600 45706 M (\(SETQ Window) S
+43200 43706 M (\(WindowOfText ) S
+43200 41906 M (TextStream\)\)\)) S
+36000 39906 M (   Window\)) S
+36000 37906 M (\(\(WindowOffScreenP) S
+39600 35906 M (\(SETQ Window ) S
+39600 34106 M (\(CREATEW\)\)\)) S
+36000 32106 M (   Window\)) S
+36000 30106 M (\(T  ... Do lots of work with the ) S
+36000 28306 M (window ...) S
+36000 26306 M (   Window\)\)) S
+grestore savepage restore showpage
+
+%%Page: 26 26
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 27 27
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (23) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 71106 M (PROG with GO) S
+1200 /Times-Roman-Acnt F
+25200 68506 M (Note that PROG also supports a GO clause that can be used ) S
+25200 66706 M (to construct tailor-made iterative loops.) S
+25200 64106 M (The GO clause is like the FORTRAN GOTO.) S
+25200 61506 M (Since GOTOs are considered BAD programming style, we ) S
+25200 59706 M (won't cover GO here.  ) S
+25200 57106 M (See pages 4.3 & 4.4 of the IRM for more information.) S
+25200 54506 M (Note, however, that FOR/WHILE/UNTIL loops are ) S
+25200 52706 M (actually constructed by CLISP from ) S
+25200 50906 M (PROG/GO/RETURN!!!) S
+1200 /Times-Bold-Acnt F
+14400 46706 M (Other Control Structures) S
+18000 42506 M (SELECTQ) S
+1200 /Times-Roman-Acnt F
+21600 39506 M (SELECTQ is a control structure that will select a sequence of ) S
+21600 37706 M (SExpressions to evaluate based on the value of its first argument.) S
+21600 34706 M (SELECTQ has the following format:) S
+1200 /Times-Bold-Acnt F
+25200 31706 M (\(SELECTQ ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Selector Clause1 Clause2 ...) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(DefaultSExpr) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+28800 28706 M (SELECTQ is an NLAMBDA function.) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+28800 25706 M (Selector) S
+1200 /Times-Roman-Acnt F
+( is an arbitrary SExpression that evaluates ) S
+28800 23906 M (to an atomic value.) S
+1200 /Times-Italic-Acnt F
+28800 20906 M (DefaultSExpr) S
+1200 /Times-Roman-Acnt F
+( is an arbitrary SExpression. It MUST ) S
+28800 19106 M (be present. \(Its a common mistake to forget it!!\)) S
+28800 16106 M (Each ) S
+1200 /Times-Italic-Acnt F
+(ClauseI) S
+1200 /Times-Roman-Acnt F
+( is an SExpression of the format:) S
+1200 /Times-Bold-Acnt F
+32400 13106 M (\() S
+1200 /Times-BoldItalic-Acnt F
+(Key) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(SExpr1) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(SExpr2 ...) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Italic-Acnt F
+32400 10106 M (Key) S
+1200 /Times-Roman-Acnt F
+( is either a single atom or a list of atoms.) S
+grestore savepage restore showpage
+
+%%Page: 28 28
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (24) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+32400 71106 M (The ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(SExprI) S
+1200 /Times-Roman-Acnt F
+( are arbitrary SExpressions.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+25200 68106 M (SELECTQ) S
+1200 /Times-Roman-Acnt F
+( works as follows:) S
+1200 /Times-Italic-Acnt F
+28800 65506 M (Selector) S
+1200 /Times-Roman-Acnt F
+( is evaluated.  And then compared against ) S
+28800 63706 M (the ) S
+1200 /Times-Italic-Acnt F
+(Key) S
+1200 /Times-Roman-Acnt F
+( \(which is unevaluated\) of each ) S
+1200 /Times-Italic-Acnt F
+(Clause) S
+1200 /Times-Roman-Acnt F
+( in ) S
+28800 61906 M (turn until a match is found.) S
+36000 59306 M (A match is defined as follows:) S
+39600 57106 M (If ) S
+1200 /Times-Italic-Acnt F
+(Key) S
+1200 /Times-Roman-Acnt F
+( is an atom, then ) S
+1200 /Times-Italic-Acnt F
+(Key) S
+1200 /Times-Roman-Acnt F
+( ) S
+39600 55306 M (must be ) S
+1200 /Times-Bold-Acnt F
+(EQ) S
+1200 /Times-Roman-Acnt F
+( to the value of ) S
+1200 /Times-Italic-Acnt F
+39600 53506 M (Selector) S
+1200 /Times-Roman-Acnt F
+(.) S
+39600 51306 M (If ) S
+1200 /Times-Italic-Acnt F
+(Key) S
+1200 /Times-Roman-Acnt F
+( is a list, then the value ) S
+39600 49506 M (of ) S
+1200 /Times-Italic-Acnt F
+(Selector) S
+1200 /Times-Roman-Acnt F
+( must be a ) S
+39600 47706 M (MEMEBER of ) S
+1200 /Times-Italic-Acnt F
+(Key) S
+1200 /Times-Roman-Acnt F
+(.) S
+32400 45106 M (For the first ) S
+1200 /Times-Italic-Acnt F
+(Clause) S
+1200 /Times-Roman-Acnt F
+( whose ) S
+1200 /Times-Italic-Acnt F
+(Key) S
+1200 /Times-Roman-Acnt F
+( matches, ) S
+32400 43306 M (each of the SExprs in the ) S
+1200 /Times-Italic-Acnt F
+(Clause) S
+1200 /Times-Roman-Acnt F
+( are ) S
+32400 41506 M (evaluated in turn, and the value of the ) S
+32400 39706 M (SELECTQ is the result of the last ) S
+32400 37906 M (evaluation.) S
+32400 35306 M (If no matching clause is found, then ) S
+1200 /Times-Italic-Acnt F
+32400 33506 M (DefaultSExpr) S
+1200 /Times-Roman-Acnt F
+( is evaluated and the result is ) S
+32400 31706 M (returned as the value of the SELECTQ.) S
+21600 28706 M (Example:) S
+25200 26306 M (1_\(DEFINEQ) S
+25200 23906 M (    \(ProcessCommand ) S
+28800 21506 M (   \(LAMBDA \(Command\)) S
+32400 19106 M (\(SELECTQ Command) S
+36000 17306 M (\(Create) S
+39600 15506 M (\(CREATEW\)\)) S
+36000 13706 M (\(Close) S
+39600 11906 M (\(SETQ Window ) S
+39600 10106 M (\(GetWindow\)\)) S
+39600 8306 M (\(CLOSEW Window\)) S
+grestore savepage restore showpage
+
+%%Page: 29 29
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (25) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+39600 71106 M (Window\)) S
+36000 69306 M (\(Move) S
+39600 67506 M (\(SETQ Window ) S
+39600 65706 M (\(GetWindow\)\)) S
+39600 63906 M (\(MOVEW Window\)) S
+39600 62106 M (Window\)) S
+36000 60306 M (\(\(Shape Reshape\)) S
+39600 58506 M (\(SETQ Window ) S
+39600 56706 M (\(GetWindow\)\)) S
+39600 54906 M (\(SHAPEW Window\)) S
+39600 53106 M (Window\)) S
+36000 51306 M (\(ERROR "Unknown Command" ) S
+36000 49506 M (Command\)\)\)\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+25200 47106 M (\(ProcessCommand\)) S
+1200 /Times-Roman-Acnt F
+25200 44706 M (3_ \(ProcessCommand 'Create\)) S
+1200 /Times-Italic-Acnt F
+25200 42306 M ([Prompt for a region and create a window in it.]) S
+25200 39906 M ({WINDOW}#43,12557) S
+1200 /Times-Roman-Acnt F
+25200 37506 M (4_ \(ProcessCommand 'Shape\)) S
+1200 /Times-Italic-Acnt F
+25200 35106 M ([Prompt for a window and reshape it.]) S
+25200 32706 M ({WINDOW}#43,12345) S
+1200 /Times-Roman-Acnt F
+25200 30306 M (4_ \(ProcessCommand 'Display\)) S
+1200 /Times-Italic-Acnt F
+25200 27906 M (Unknown Command) S
+25200 25506 M (Display) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 22106 M (EFS:) S
+1200 /Times-Roman-Acnt F
+( What is the format of the COND statement equivalent to ) S
+21600 20306 M (SELECTQ.) S
+1200 /Times-Bold-Acnt F
+18000 17306 M (PROG1, PROG2, PROGN) S
+1200 /Times-Roman-Acnt F
+21600 14306 M (PROG1, PROG2, and PROGN) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(are three variations on the theme of ) S
+21600 12506 M (sequential evaluation.  ) S
+grestore savepage restore showpage
+
+%%Page: 30 30
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (26) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+21600 71106 M (All of these functions sequential evaluate an arbitrary number of ) S
+21600 69306 M (SExpressions.) S
+21600 66506 M (They differ in the value that they return.  In particular:) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+25200 63906 M (PROG1) S
+1200 /Times-Roman-Acnt F
+( returns the value the ) S
+1200 /Times-Bold-Acnt F
+(first) S
+1200 /Times-Roman-Acnt F
+( SExpression.) S
+1200 /Times-Bold-Acnt F
+25200 61306 M (PROG2) S
+1200 /Times-Roman-Acnt F
+( returns the value of the ) S
+1200 /Times-Bold-Acnt F
+(second) S
+1200 /Times-Roman-Acnt F
+( SExpression.) S
+1200 /Times-Bold-Acnt F
+25200 58706 M (PROGN) S
+1200 /Times-Roman-Acnt F
+( returns the value of the ) S
+1200 /Times-Bold-Acnt F
+(last) S
+1200 /Times-Roman-Acnt F
+( SExpression.) S
+21600 55706 M (Note: These are NOT variations of the PROG, they do NOT bind ) S
+21600 53906 M (any variables.) S
+21600 50906 M (PROG1 and PROG2 are used when need to evaluated a sequence ) S
+21600 49106 M (of SExpressions in a particular order, but want to return the value ) S
+21600 47306 M (of the first or second SExpression rather than the last as is usually ) S
+21600 45506 M (the case.) S
+25200 42506 M (Example from LC.Apply from Homework#35: ) S
+28800 39906 M (\( LAMBDA ) S
+32400 37906 M (...) S
+32400 35906 M (\(PROG1) S
+36000 33906 M (\(LC.Eval \(CAR \(LAST SExprs\)\) ) S
+36000 32106 M (Stack\)) S
+36000 30106 M (\(LC.Unbind Stack\)\)\)) S
+28800 27506 M (The problem here is that LC.Apply has to evaluate ) S
+28800 25706 M (the last SExpr BEFORE unbinding the stack, but ) S
+28800 23906 M (needs to return the value of the evaluatiuon AFTER ) S
+28800 22106 M (unbinding the stack.) S
+28800 19506 M (PROG1 solves the problem efficiently.  In the ) S
+28800 17706 M (Homework #35 solutions, we needed to bind an ) S
+28800 15906 M (extra variable \(i.e., Result\) using LET in order to ) S
+28800 14106 M (accomplish the same thing:) S
+28800 11506 M (\( LAMBDA ) S
+32400 9506 M (...) S
+grestore savepage restore showpage
+
+%%Page: 31 31
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (27) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+32400 71106 M (\(LET \(Result\)) S
+36000 69106 M (...) S
+36000 67106 M (\(SETQ Result) S
+39600 65106 M (\(LC.Eval \(CAR \(LAST ) S
+39600 63306 M (SExprs\)\) Stack\)) S
+36000 61306 M (\(LC.Unbind Stack\)) S
+36000 59306 M (Result\)\)) S
+21600 56106 M (PROGN is used where only a single SExpr is allowed, but you ) S
+21600 54306 M (need to evaluate several SExpressions in order.  In this case, you ) S
+21600 52506 M (just wrap the SExpressions in a PROGN, which counts as a single ) S
+21600 50706 M (SExpression.) S
+25200 47706 M (Example:) S
+28800 45306 M (\(SELECTQ) S
+32400 43506 M (Command) S
+36000 41706 M (\(Create \(CREATEW\) 'Created\)) S
+36000 39906 M (\(Close) S
+39600 38106 M (\(SETQ Window ) S
+39600 36306 M (\(GetWindow\)\)) S
+39600 34506 M (\(CLOSEW Window\)) S
+39600 32706 M ('Closed\)) S
+36000 30906 M (\(PROGN) S
+39600 29106 M (\(SETQ Window ) S
+39600 27306 M (\(GetWindow\)\)) S
+39600 25506 M (\(MOVEW Window\)) S
+39600 23706 M ('Moved\)\)) S
+28800 20906 M (The problem here is that the default clause of a ) S
+28800 19106 M (SELECTQ must be a single SExpression.  But we ) S
+28800 17306 M (want to do three things in the default case: get the ) S
+28800 15506 M (window, move it, and return the atom Moved.  ) S
+28800 13706 M (Solution is to use a PROGN to wrap the three ) S
+28800 11906 M (function calls into a single unit.) S
+grestore savepage restore showpage
+
+%%Page: 32 32
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (28) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 71106 M (Simple Repetition: RPT and RPTQ) S
+1200 /Times-Roman-Acnt F
+21600 68106 M (RPT and RPTQ implement a simple repetition control structure. ) S
+1200 /Times-Bold-Acnt F
+21600 65106 M (\(RPT ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(N) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(SExpr) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234  Evaluates ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(SExpr) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(N) S
+1200 /Times-Roman-Acnt F
+( times and returns the value of ) S
+21600 63306 M (the last evaluation.  Before each evaluation the free variable ) S
+1200 /Times-Bold-Acnt F
+(RPTN) S
+1200 /Times-Roman-Acnt F
+( ) S
+21600 61506 M (is set to the number of repetitions still to take place.  RPTN can be ) S
+21600 59706 M (used inside of ) S
+1200 /Times-Italic-Acnt F
+(SExpr) S
+1200 /Times-Roman-Acnt F
+(.) S
+25200 56706 M (RPT is a LAMBDA-spread function.  Therefore, it is ) S
+25200 54906 M (actually the value of the argument that is being repeatedly ) S
+25200 53106 M (evaluated.) S
+25200 50106 M (Example:) S
+28800 47106 M (1_ \(RPT 5  \(QUOTE \(PRINT RPTN\)\)\)) S
+28800 45106 M (5) S
+28800 43106 M (4) S
+28800 41106 M (3) S
+28800 39106 M (2) S
+28800 37106 M (1) S
+28800 34106 M (2_ \(RPT 3 \(QUOTE \(CREATEW\)\)\)) S
+1200 /Times-Italic-Acnt F
+28800 32106 M ([Creates 3 windows]) S
+28800 30106 M ({WINDOW}#34,00123) S
+1200 /Times-Bold-Acnt F
+21600 27106 M (\(RPTQ ) S
+1200 /Times-BoldItalic-Acnt F
+(N) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(SExpr1 SExpr2 ...) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234  Evaluates each) S
+1200 /Times-Italic-Acnt F
+( SExprI) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(N) S
+1200 /Times-Roman-Acnt F
+( times and ) S
+21600 25306 M (returns the value of the last evaluation.  Order of evaluation is to ) S
+21600 23506 M (do each ) S
+1200 /Times-Italic-Acnt F
+(SExprI) S
+1200 /Times-Roman-Acnt F
+( once, then repeat. Before each evaluation the free ) S
+21600 21706 M (variable ) S
+1200 /Times-Bold-Acnt F
+(RPTN) S
+1200 /Times-Roman-Acnt F
+( is set to the number of repetitions still to take ) S
+21600 19906 M (place.  RPTN can be used inside of ) S
+1200 /Times-Italic-Acnt F
+(SExpr) S
+1200 /Times-Roman-Acnt F
+(.) S
+25200 16906 M (RPT is a NLAMBDA-nospread function.) S
+25200 13906 M (Example:) S
+28800 10906 M (3_ \(SETQ A 6\)) S
+1200 /Times-Italic-Acnt F
+28800 8906 M (6) S
+grestore savepage restore showpage
+
+%%Page: 33 33
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (29) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+28800 71106 M (4_\(RPTQ 6 \(SETQ A \(ADD1 A\)\) \(SETQ A \(SUB1 ) S
+28800 69306 M (\(SUB1 A\)\)\)\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+28800 67306 M (0) S
+1200 /Times-Roman-Acnt F
+28800 65306 M (5_ A) S
+1200 /Times-Italic-Acnt F
+28800 63306 M (0) S
+1200 /Times-Roman-Acnt F
+28800 61306 M (6_\(RPTQ 2 \(PRINT "A"\)\(PRINT "B"\)\)) S
+1200 /Times-Italic-Acnt F
+28800 59306 M ("A") S
+28800 57306 M ("B") S
+28800 55306 M ("A") S
+28800 53306 M ("B") S
+28800 51306 M ("B") S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 47106 M (Mapping functions: MAP, MAPC, MAPLIST, MAPCAR) S
+1200 /Times-Roman-Acnt F
+21600 44106 M (Mapping functions are a common Lisp control structure.) S
+21600 41106 M (A mapping function iterates over some data structure \(usually a ) S
+21600 39306 M (list\) and applies some other function to each element of the data ) S
+21600 37506 M (structure in turn.) S
+21600 34506 M (Interlisp has several built in mapping functions for lists.  We will ) S
+21600 32706 M (cover only MAPC and MAPCAR.) S
+1200 /Times-Bold-Acnt F
+21600 29706 M (\(MAPC ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(List WorkFn NextFn) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234  Does  \() S
+1200 /Times-Italic-Acnt F
+(APPLY* WorkFn) S
+1200 /Times-Roman-Acnt F
+( \(CAR ) S
+1200 /Times-Italic-Acnt F
+21600 27906 M (List) S
+1200 /Times-Roman-Acnt F
+(\)\), then does \() S
+1200 /Times-Italic-Acnt F
+(APPLY* WorkFn) S
+1200 /Times-Roman-Acnt F
+( \(CAR \() S
+1200 /Times-Italic-Acnt F
+(NextFn) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(List) S
+1200 /Times-Roman-Acnt F
+(\)\)\), then ) S
+21600 26106 M (does \() S
+1200 /Times-Italic-Acnt F
+(APPLY* WorkFn) S
+1200 /Times-Roman-Acnt F
+( \(CAR \() S
+1200 /Times-Italic-Acnt F
+(NextFn) S
+1200 /Times-Roman-Acnt F
+( \() S
+1200 /Times-Italic-Acnt F
+(NextFn) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(List) S
+1200 /Times-Roman-Acnt F
+(\)\)\)\) and so on ) S
+21600 24306 M (until \() S
+1200 /Times-Italic-Acnt F
+(NextFn) S
+1200 /Times-Roman-Acnt F
+( \( ... \() S
+1200 /Times-Italic-Acnt F
+(NextFn) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(List) S
+1200 /Times-Roman-Acnt F
+(\)\)\) returns NIL.  MAPC always ) S
+21600 22506 M (returns NIL.) S
+28800 19506 M (If ) S
+1200 /Times-Italic-Acnt F
+(NextFn) S
+1200 /Times-Roman-Acnt F
+( is NIL, CDR is used.) S
+25200 16506 M (Examples:) S
+1200 /Times-Bold-Acnt F
+28800 13506 M (\(MAPC \(OPENWINDOWS\) 'CLOSEW\)) S
+1200 /Times-Roman-Acnt F
+( will ) S
+28800 11706 M (CDR down the list of OPENWINDOWS and ) S
+28800 9906 M (CLOSEW each window in turn.) S
+grestore savepage restore showpage
+
+%%Page: 34 34
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (30) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+28800 71106 M (\(MAPC \(OPENWINDOWS\) 'CLOSEW 'CDDR\) ) S
+1200 /Times-Roman-Acnt F
+28800 69306 M (will map down every other window in the ) S
+28800 67506 M (OPENWINDOWS list \(due to the use of CDDR ) S
+28800 65706 M (rather than CDR\)  and CLOSEW each of these ) S
+28800 63906 M (windows in turn.) S
+1200 /Times-Bold-Acnt F
+21600 60906 M (\(MAPCAR ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(List WorkFn NextFn) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234  Essentially the same as ) S
+21600 59106 M (MAPC, but returns a list of the values returned by all the ) S
+21600 57306 M (evaluations of ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(WorkFn) S
+1200 /Times-Roman-Acnt F
+(.) S
+25200 54306 M (Examples:) S
+1200 /Times-Bold-Acnt F
+28800 51306 M (\(MAPC \(LIST 1 2 3 4 5 6 7\) 'ADD1\)) S
+1200 /Times-Roman-Acnt F
+( will CDR ) S
+28800 49506 M (down the list \(1 2 3 4 5 6 7\) and ADD1 each item in ) S
+28800 47706 M (turn, returning the result of all the ADD1s, i.e.,) S
+1200 /Times-Italic-Acnt F
+( \(2 3 ) S
+28800 45906 M (4 5 6 7 8\)) S
+1200 /Times-Roman-Acnt F
+(.) S
+1200 /Times-Bold-Acnt F
+28800 42906 M (\(MAPC \(LIST 1 2 3 4 5 6 7\) 'ADD1 'CDDDR\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+28800 41106 M (will map down every third element the list \(1 2 3 4 ) S
+28800 39306 M (5 6 7\) and ADD1 each of these elements in turn, ) S
+28800 37506 M (returning the result of all the ADD1s, i.e.,) S
+1200 /Times-Italic-Acnt F
+( \(2 5 8\)) S
+1200 /Times-Roman-Acnt F
+(.) S
+1200 /Times-Bold-Acnt F
+21600 34506 M (Note: ) S
+1200 /Times-Roman-Acnt F
+(Section 5.3 of the IRM describes several relatives of MAPC ) S
+21600 32706 M (and MAPCAR.) S
+1200 /Times-Bold-Acnt F
+21600 29706 M (Note: ) S
+1200 /Times-Roman-Acnt F
+(MAPC and MAPCAR are nearly identical in functionality to ) S
+21600 27906 M (various FOR/COLLECT constructions.  \(In fact, CLISP actually ) S
+21600 26106 M (implements many FOR loops as MAPC/MAPCAR type functions\)  ) S
+21600 24306 M (Since FOR is much easier to use, I seldom use MAPC and ) S
+21600 22506 M (MAPCAR and their relatives. ) S
+25200 19506 M (But, the notion of a mapping function appears other places ) S
+25200 17706 M (in Lisp, where functions like FOR are not available.) S
+28800 15306 M (For example, TEdit has a function called ) S
+28800 13506 M (TEDIT.MAPPIECES that allows you to apply an ) S
+28800 11706 M (arbitrary function to every "piece" of text in a TEdit ) S
+28800 9906 M (text.) S
+grestore savepage restore showpage
+
+%%Page: 35 35
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (31) S
+7200 75600 M (LispCourse #36:  More on Variable Binding; Control Structures in Lisp) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (Recursion -- The ultimate control structure in Lisp) S
+1200 /Times-Roman-Acnt F
+10800 67306 M (To be completed) S
+1400 /Times-Bold-Acnt F
+7200 63557 M (References) S
+1200 /Times-Roman-Acnt F
+10800 61106 M (The LAMBDA/NLAMBDA and Spread/Nospread distinctions are covered in 5.1 of the ) S
+10800 59306 M (IRM.  Sections 5.1.0 thru 5.1.4 are most relevent.  Also look at Section 5.1.7.) S
+10800 56906 M (Functional arguments and FUNCTION are covered in Section 5.4 of the IRM.) S
+10800 54506 M (Most control structures \(e.g., COND, AND, OR, SELECTQ, PROG, PROG1, PROGN, ) S
+10800 52706 M (etc.\) are covered in Chapter 4 of the IRM.) S
+10800 50306 M (RPT, RPTQ, MAPC and MAPCAR are covered in Section 5.3 of the IRM.) S
+grestore savepage restore showpage
+
+%%Trailer

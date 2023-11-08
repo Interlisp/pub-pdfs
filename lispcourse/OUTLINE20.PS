@@ -1,0 +1,1900 @@
+%!PS-Adobe-2.0%%Title: {DSK}<home>larry>lispcourse>OUTLINE20.PS%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate:  7-Nov-2023 21:40:09%%EndComments/bdef {bind def} bind def
+/ldef {load def} bdef
+/S /show ldef
+/M /moveto ldef
+/DR {transform round exch round exch itransform} bdef
+/L {gsave newpath setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/L1 {gsave newpath 0 setdash setgray setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/F {findfont exch scalefont setfont} bdef
+/CLP {newpath M dup 0 rlineto exch 0 exch rlineto
+  neg 0 rlineto closepath clip newpath} bdef
+/R {gsave setgray newpath M dup 0 rlineto exch 0 exch
+  rlineto neg 0 rlineto closepath eofill grestore} bdef
+/ellipsedict 9 dict def
+ellipsedict /mtrx matrix put
+/ellipse
+ { ellipsedict begin
+  /endangle exch def
+  /startangle exch def
+  /orientation exch def
+  /minorrad exch def
+  /majorrad exch def
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  orientation rotate
+  majorrad minorrad scale
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+ end } bdef
+/concatprocs
+ {/proc2 exch cvlit def
+  /proc1 exch cvlit def
+  /newproc proc1 length proc2 length add array def
+  newproc 0 proc1 putinterval
+  newproc proc1 length proc2 putinterval
+  newproc cvx
+ } bdef
+/resmatrix matrix def
+/findresolution
+ {72 0 resmatrix defaultmatrix dtransform
+  /yres exch def /xres exch def
+  xres dup mul yres dup mul add sqrt
+ } bdef
+/thebitimage
+ {/maskp exch def
+  /bihgt exch def
+  /biwid exch def
+  /byte 1 string def
+  /strbufl biwid 8 div ceiling cvi def
+  /strbuf strbufl string def
+  maskp not{{1 exch sub} currenttransfer concatprocs settransfer} if
+  biwid bihgt
+  maskp { true } { 1 } ifelse
+  [biwid 0 0 bihgt 0 0]
+  {/col 0 def
+   {currentfile byte readhexstring pop 0 get
+    dup 16#B2 eq {pop
+    currentfile byte readhexstring pop 0 get 1 add
+    currentfile byte readhexstring pop pop /nbyte byte 0 get def
+    { strbuf col nbyte put /col col 1 add def} repeat}
+   {dup 16#B3 eq {pop /col col
+    currentfile byte readhexstring pop
+    0 get add 1 add def}
+    {16#B4 eq {currentfile byte readhexstring pop pop} if
+     strbuf col byte 0 get put /col col 1 add def} ifelse
+   } ifelse
+   col strbufl ge { exit } if } loop
+   strbuf }
+  maskp { imagemask } { image } ifelse
+ } bdef
+/setuserscreendict 22 dict def
+setuserscreendict begin
+ /tempctm matrix def
+ /temprot matrix def
+ /tempscale matrix def
+end
+/setuserscreen
+ {setuserscreendict begin
+   /spotfunction exch def
+   /screenangle exch def
+   /cellsize exch def
+   /m tempctm currentmatrix def
+   /rm screenangle temprot rotate def
+   /sm cellsize dup tempscale scale def
+   sm rm m m concatmatrix m concatmatrix pop
+   1 0 m dtransform /y1 exch def /x1 exch def
+   /veclength x1 dup mul y1 dup mul add sqrt def
+   /frequency findresolution veclength div def
+   /newscreenangle y1 x1 atan def
+   m 2 get m 1 get mul m 0 get m 3 get mul sub
+   0 gt { { neg } /spotfunction load concatprocs
+          /spotfunction exch def } if
+   frequency newscreenangle /spotfunction load setscreen
+  end
+ } bdef
+/setpatterndict 18 dict def
+setpatterndict begin
+ /bitison
+  {/ybit exch def /xbit exch def
+   /bytevalue bstring ybit bwidth mul xbit 8 idiv add get def
+   /mask 1 7 xbit 8 mod sub bitshift def
+   bytevalue mask and 0 ne
+  } bdef
+end
+/bitpatternspotfunction
+ {setpatterndict begin
+   /y exch def /x exch def
+   /xindex x 1 add 2 div bpside mul 1 sub cvi def
+   /yindex y 1 add 2 div bpside mul 1 sub cvi def
+   xindex yindex bitison
+    {/onbits onbits 1 add def 1}
+    {/offbits offbits 1 add def 0} ifelse
+  end
+ } bdef
+/setpattern
+ {setpatterndict begin
+   /cellsz exch def
+   /angle exch def
+   /bwidth exch def
+   /bpside exch def
+   /bstring exch def
+   /onbits 0 def /offbits 0 def
+   cellsz angle /bitpatternspotfunction load setuserscreen
+   {} settransfer
+   offbits offbits onbits add div setgray
+  end
+ } bdef
+% - - - - - Fraction-setting code, to support NS fonts better - - - - -
+/fractiondict 20 dict def
+/fractionshow 
+{ fractiondict begin
+/denom exch def 
+/num exch def 
+/regfont currentfont def
+/fractfont currentfont [.65 0 0 .6 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(1) true charpath flattenpath pathbbox 
+/height exch def pop pop pop
+ grestore
+0 .4 height mul rmoveto
+fractfont setfont num show
+0 .4 height mul neg rmoveto regfont setfont (\244) show
+fractfont setfont denom show regfont setfont end } bdef
+/f14 { (1) (4) fractionshow } bdef
+/f12 { (1) (2) fractionshow } bdef
+/f34 { (3) (4) fractionshow } bdef
+/f18 { (1) (8) fractionshow } bdef
+/f38 { (3) (8) fractionshow } bdef
+/f58 { (5) (8) fractionshow } bdef
+/f78 { (7) (8) fractionshow } bdef
+/f13 { (1) (3) fractionshow } bdef
+/f23 { (2) (3) fractionshow } bdef
+/bboxdict 20 dict def
+/bboxchk { bboxdict begin
+/regfont currentfont def
+/chkfont currentfont [1.25 0 0 1.25 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(\161) true charpath flattenpath pathbbox 
+/height exch def pop pop pop 
+ grestore 
+ currentpoint 
+ .2 height mul .3 height mul rmoveto
+chkfont setfont (\063) show
+ moveto
+ regfont setfont
+(\161) show end } bdef
+/rencdict 15 dict def
+/encodefont { rencdict begin
+/newname exch def
+/oldfont exch def
+/newcodes [
+8#001 /Aacute
+8#002 /Acircumflex
+8#003 /Adieresis
+8#004 /Agrave
+8#005 /Aring
+8#006 /Atilde
+8#007 /Ccedilla
+8#010 /Eacute
+8#011 /Ecircumflex
+8#012 /Edieresis
+8#013 /Egrave
+8#014 /Iacute
+8#015 /Icircumflex
+8#016 /Idieresis
+8#017 /Igrave
+8#020 /Ntilde
+8#021 /Oacute
+8#022 /Ocircumflex
+8#023 /Odieresis
+8#024 /Ograve
+8#025 /Otilde
+8#026 /Scaron
+8#027 /Uacute
+8#030 /Ucircumflex
+8#031 /Udieresis
+8#032 /Ugrave
+8#033 /Ydieresis
+8#034 /Zcaron
+8#177 /periodinferior
+8#201 /aacute
+8#202 /acircumflex
+8#203 /adieresis
+8#204 /agrave
+8#205 /aring
+8#206 /atilde
+8#207 /ccedilla
+8#210 /eacute
+8#211 /ecircumflex
+8#212 /edieresis
+8#213 /egrave
+8#214 /iacute
+8#215 /icircumflex
+8#216 /idieresis
+8#217 /igrave
+8#220 /ntilde
+8#221 /oacute
+8#222 /ocircumflex
+8#223 /odieresis
+8#224 /ograve
+8#225 /otilde
+8#226 /scaron
+8#227 /uacute
+8#230 /ucircumflex
+8#231 /udieresis
+8#232 /ugrave
+8#233 /ydieresis
+8#234 /zcaron
+8#235 /Eth
+8#236 /eth
+8#237 /Thorn
+8#240 /thorn
+ ] def
+/olddict oldfont findfont def /newfont olddict maxlength dict def
+olddict { exch dup /FID ne { dup /Encoding eq
+{ exch dup length array copy newfont 3 1 roll put }
+{ exch newfont 3 1 roll put } ifelse }
+ { pop pop } ifelse } forall
+newfont /FontName newname put
+newcodes aload pop
+newcodes length 2 idiv { newfont /Encoding get 3 1 roll put } repeat 
+newname newfont definefont pop end } def
+ /accentdict 10 dict def 
+ /accentor { accentdict begin /scaler exch def /delta exch def 
+/unders exch def /accents exch def /mainch exch def /scrt (X) def
+ /w1 mainch stringwidth pop def 
+ currentpoint mainch show currentpoint 4 2 roll 
+accents { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         w1 w2 sub 2 div delta rmoveto scrt show 
+         /delta delta 150 scaler mul 9 div add def
+        } forall 
+unders { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         ch 46 eq { w1 w2 sub 2 div -175 scaler mul 9 div rmoveto scrt show 0 175 rmoveto }
+           { w1 w2 sub 2 div 0 rmoveto scrt show } ifelse 
+        } forall 
+ pop pop moveto end } def 
+%%EndProlog
+%%BeginSetup
+letter/imagesizefactor 1 def%%EndSetup/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+
+%%Page: 1 1
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+54000 75600 M (F.G.H.          ) S
+54000 73800 M (4/9/85) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (LispCourse #20 :  Living in the Network World \234 Part 2) S
+7200 67157 M (Completions and Corrections) S
+10800 63357 M (FTP Server package) S
+1200 /Times-Roman-Acnt F
+14400 60706 M (There is a Lisp Library package that allows a Lisp machine to act as a server for ) S
+14400 58906 M (PUP FTP.) S
+14400 56306 M (Load {eris}<lisp>harmony>library>ftpserver.dcom and run eval the function ) S
+14400 54506 M (\(FTPSERVER\).  This will start up a FTP server process that runs in the ) S
+14400 52706 M (background.) S
+14400 50106 M (Once the server is running you can copy files back and forth to your machine's ) S
+14400 48306 M (local disk from another machine running Interlisp \(or running Alto FTP\).  ) S
+14400 45706 M (For example, if I start up FTPSERVER on my machine, I can go over to ISLPool ) S
+14400 43906 M (DLion and do a ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(\(COPYFILE '{DSK}<LISPFILES>INIT '{HALASZ}INIT\)) S
+1200 /Times-Roman-Acnt F
+( to ) S
+14400 42106 M (copy an INIT file from the DLion local disk to the local disk on my machine \(i.e.., ) S
+14400 40306 M (the Dorado named Halasz\).  I could also have refered to my machine by number ) S
+14400 38506 M (as in ) S
+1200 /Times-Italic-Acnt F
+(\(COPYFILE '{DSK}<LISPFILES>INIT '{6#60#}INIT\)) S
+1200 /Times-Roman-Acnt F
+(.) S
+14400 35906 M (Copying works both ways:  ) S
+1200 /Times-Italic-Acnt F
+(\(COPYFILE '{HALASZ}INIT ) S
+14400 34106 M ('{DSK}<LISPFILES>INIT\)) S
+1200 /Times-Roman-Acnt F
+( would work just as well.) S
+14400 31506 M (You can also do a DIR and run the FILEBROWSER to a machine running the ) S
+14400 29706 M (Interlisp FTP sever.  For example, if my Dorado is running FTPSERVER then I ) S
+14400 27906 M (can do a \(FB {HALASZ}\) or \(FB {6#60#}\) from the ISL Dlion to get a listing of ) S
+14400 26106 M (the files on my Dorado.) S
+14400 23506 M (Documentation is on {eris}<lisp>harmony>library>ftpserver.tedit \(& .press\).) S
+1400 /Times-Bold-Acnt F
+10800 19757 M (Note on the use of the word ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1400 /Times-BoldItalic-Acnt F
+(host) S
+1400 /Times-Bold-Acnt F
+(.) S
+1200 /Times-Roman-Acnt F
+14400 16906 M (In the Interlisp documentation, the word ) S
+1200 /Times-Italic-Acnt F
+("host") S
+1200 /Times-Roman-Acnt F
+( is often used to refer to a machine.  ) S
+14400 15106 M (A ) S
+1200 /Times-Italic-Acnt F
+(host name) S
+1200 /Times-Roman-Acnt F
+( is what we refer to here as a ) S
+1200 /Times-Italic-Acnt F
+(machine name) S
+1200 /Times-Roman-Acnt F
+(.  For example,  Phylum ) S
+14400 13306 M (is refered to as a host and "Phylum" as a host name.  The distinction between ) S
+14400 11506 M (machines and hosts is non-existent.) S
+grestore savepage restore showpage
+
+%%Page: 2 2
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (2) S
+7200 75600 M (LispCourse #20:  Living in the Network World \234 Part 2) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (The NS World) S
+1200 /Times-Bold-Acnt F
+10800 68306 M (Machine Addresses) S
+1200 /Times-Roman-Acnt F
+14400 65706 M (Machine addressess seem to be less important \(from the user's point of view\) in ) S
+14400 63906 M (the NS world than in the PUP world.) S
+14400 61306 M (Each machine on the NS network has an address:  a 32-bit \(i.e., between 0 and a ) S
+14400 59506 M (very big number\) network number and a 48-bit machine number.  As in the PUP ) S
+14400 57706 M (world, both the network number and the machine number are followed by a ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+("#") S
+1200 /Times-Roman-Acnt F
+(.   ) S
+14400 55906 M (When printed out, the machine number prints as three 16-bit quantities separated ) S
+14400 54106 M (by periods.) S
+14400 51706 M (To find the address of your machine, evaluate the variable ) S
+1200 /Times-Bold-Acnt F
+(\\MY.NSADDRESS) S
+1200 /Times-Roman-Acnt F
+(.  ) S
+14400 49906 M (To find the address of some other machine from its name \(see below for NS name ) S
+14400 48106 M (conventions\) use the function ) S
+1200 /Times-Bold-Acnt F
+(LOOKUP.NS.SERVER ) S
+1200 /Times-Roman-Acnt F
+(as in ) S
+1200 /Times-Italic-Acnt F
+14400 46306 M (\(LOOKUP.NS.SERVER 'Phylex:\), ) S
+1200 /Times-Roman-Acnt F
+(which returns ) S
+1200 /Times-Italic-Acnt F
+(204#0.125000.20217#.  ) S
+1200 /Times-Roman-Acnt F
+18000 43906 M (Examples:) S
+21600 41706 M (Phylex:'s address is ) S
+21600 39506 M (StarFile:'s address is 131#0.125000.24314#) S
+21600 37306 M (PaperMate:'s address is 142#0.125000.12122#) S
+21600 35106 M (ISLPoolDlion's address is 142#0.125000.32462#) S
+21600 32906 M (Halasz's Dorado address is 6#0.52612.100312#) S
+18000 30506 M (Note:  The NS network number is, by convention, the same as the PUP ) S
+18000 28706 M (network number for the same physical network.  For example:  the ) S
+18000 26906 M (ISLPoolDlion is known as ) S
+1200 /Times-Bold-Acnt F
+(204#) S
+1200 /Times-Roman-Acnt F
+(36# in the PUP world and ) S
+1200 /Times-Bold-Acnt F
+18000 25106 M (204#) S
+1200 /Times-Roman-Acnt F
+(0.125000.32462# in the NS world.) S
+18000 22706 M (Moreover, Phlyex: is on the same physical network \(i.e., cable\) as the ) S
+18000 20906 M (ISLPoolDLion.  Phylex: is known as ) S
+1200 /Times-Bold-Acnt F
+(204#) S
+1200 /Times-Roman-Acnt F
+(0.125000.20217# in the NS ) S
+18000 19106 M (world.  Phylex: has no PUP address because it does not speak PUP.) S
+1200 /Times-Bold-Acnt F
+10800 15506 M (NS Names:  Machines and people are part of a common name space) S
+14400 12906 M (Basic Concepts: Objects, Domains, and Organizations) S
+1200 /Times-Roman-Acnt F
+18000 10506 M (In the PUP world, the naming of machines is separate from the naming of ) S
+18000 8706 M (people \(or groups of people\).  Machines are named using a litatom ) S
+grestore savepage restore showpage
+
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (3) S
+7200 75600 M (LispCourse #20:  Living in the Network World \234 Part 2) S
+18000 71106 M (processed by a Name server.  People are named using a Grapevine name ) S
+18000 69306 M (and password processed by a Grapevine authetication server.) S
+21600 67106 M (For example:) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+25200 64906 M (PHYLUM) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Italic-Acnt F
+(ERIS) S
+1200 /Times-Roman-Acnt F
+( refer to machines) S
+1200 /Times-Italic-Acnt F
+25200 62706 M (Halasz.pa) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Italic-Acnt F
+(Feuerman.pasa ) S
+1200 /Times-Roman-Acnt F
+(refer to people) S
+1200 /Times-Italic-Acnt F
+25200 60506 M (LispUsers^.pa) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Italic-Acnt F
+(NoteCardsInfo^.pasa) S
+1200 /Times-Roman-Acnt F
+( refer to groups of ) S
+25200 58706 M (people.) S
+18000 55706 M (In the NS world all objects, including machines, people, and groups, are ) S
+18000 53906 M (named in the same way, i.e., according to the NS naming standard.) S
+18000 50906 M (The NS naming standard is hierarchical and works as follows: ) S
+21600 47906 M (Every object has an ) S
+1200 /Times-Italic-Acnt F
+(object name) S
+1200 /Times-Roman-Acnt F
+(.  An object is a machine, a ) S
+21600 46106 M (person, a group, or any other "thing" in the NS world.) S
+21600 43106 M (Every object also belongs to a particular ) S
+1200 /Times-Italic-Acnt F
+(domain) S
+1200 /Times-Roman-Acnt F
+(, which has a ) S
+1200 /Times-Italic-Acnt F
+21600 41306 M (domain name.  ) S
+1200 /Times-Roman-Acnt F
+(There are always many objects within a given ) S
+21600 39506 M (domain. ) S
+21600 36506 M (Every domain belongs to an ) S
+1200 /Times-Italic-Acnt F
+(organization) S
+1200 /Times-Roman-Acnt F
+(, which has an ) S
+1200 /Times-Italic-Acnt F
+21600 34706 M (organization name) S
+1200 /Times-Roman-Acnt F
+(.  There are generally many domains within an ) S
+21600 32906 M (organization.) S
+grestore savepage restore showpage
+
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (4) S
+7200 75600 M (LispCourse #20:  Living in the Network World \234 Part 2) S
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+18016.5 57942.0 M (Names) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 22000 58000 M
+stroke
+grestore
+26000 46000 22000 58000 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 26000 46000 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 22000 58000 M
+stroke
+grestore
+26000 58000 22000 58000 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 26000 58000 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 22000 58000 M
+stroke
+grestore
+26800 66800 22000 58000 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 26800 66800 M
+stroke
+grestore
+1000 /Helvetica-Acnt F
+26086.0 45942.0 M (Organization3) S
+1000 /Helvetica-Acnt F
+26086.0 57942.0 M (Organization2) S
+1400 /Helvetica-Acnt F
+27372.0 66718.0 M (Xerox) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 32400 66800 M
+stroke
+grestore
+36400 62800 32400 66800 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 36400 62800 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 32400 66800 M
+stroke
+grestore
+34800 66800 32400 66800 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 34800 66800 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 32400 66800 M
+stroke
+grestore
+36400 70800 32400 66800 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 36400 70800 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 33200 46000 M
+stroke
+grestore
+36400 46000 33200 46000 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 36400 46000 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 33200 58000 M
+stroke
+grestore
+36400 58000 33200 58000 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 36400 58000 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 33200 58000 M
+stroke
+grestore
+36400 50800 33200 58000 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 36400 50800 M
+stroke
+grestore
+1000 /Helvetica-Acnt F
+35220.0 66742.0 M (OSBU North) S
+1000 /Helvetica-Acnt F
+36799.5 45942.0 M (Domain1) S
+1000 /Helvetica-Acnt F
+36799.5 50742.0 M (Domain2) S
+1000 /Helvetica-Acnt F
+36799.5 57942.0 M (Domain1) S
+1000 /Helvetica-Acnt F
+37411.0 61942.0 M (PARC) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 41200 46000 M
+stroke
+grestore
+43600 46000 41200 46000 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 43600 46000 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 41200 50800 M
+stroke
+grestore
+43600 50800 41200 50800 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 43600 50800 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 41200 50800 M
+stroke
+grestore
+43600 49200 41200 50800 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 43600 49200 M
+stroke
+grestore
+43600 49200 43600 49200 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 43600 49200 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 41200 58000 M
+stroke
+grestore
+43600 58000 41200 58000 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 43600 58000 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 41200 58000 M
+stroke
+grestore
+43600 56400 41200 58000 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 43600 56400 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 41200 58000 M
+stroke
+grestore
+43600 54800 41200 58000 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 43600 54800 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 41200 58000 M
+stroke
+grestore
+43600 53200 41200 58000 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 43600 53200 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 41200 62800 M
+stroke
+grestore
+43600 63600 41200 62800 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 43600 63600 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 43600 62000 M
+stroke
+grestore
+43600 62000 41200 62800 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 41200 62800 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 41200 62800 M
+stroke
+grestore
+43600 60400 41200 62800 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 43600 60400 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 41200 66800 M
+stroke
+grestore
+43600 67600 41200 66800 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 43600 67600 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 41200 66800 M
+stroke
+grestore
+43600 66000 41200 66800 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 43600 66000 M
+stroke
+grestore
+1000 /Helvetica-Acnt F
+44275.5 45942.0 M (Object4) S
+1000 /Helvetica-Acnt F
+44275.5 49142.0 M (Object2) S
+1000 /Helvetica-Acnt F
+44275.5 50742.0 M (Object1) S
+1000 /Helvetica-Acnt F
+44275.5 53142.0 M (Object4) S
+1000 /Helvetica-Acnt F
+44275.5 54742.0 M (Object3) S
+1000 /Helvetica-Acnt F
+44275.5 56342.0 M (Object2) S
+1000 /Helvetica-Acnt F
+44275.5 57942.0 M (Object1) S
+1000 /Helvetica-Acnt F
+44400 60342.0 M (Phylex) S
+1000 /Helvetica-Acnt F
+44400 61942.0 M (PaperMate) S
+1000 /Helvetica-Acnt F
+44400 63542.0 M (Frank Halasz) S
+1000 /Helvetica-Acnt F
+44275.5 65942.0 M (Object2) S
+1000 /Helvetica-Acnt F
+44275.5 67542.0 M (Object1) S
+1000 /Helvetica-Acnt F
+44275.5 69942.0 M (Object2) S
+1000 /Helvetica-Acnt F
+36400 70742.0 M (XICTMD) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 41200 70800 M
+stroke
+grestore
+43600 71600 41200 70800 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 43600 71600 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 41200 70800 M
+stroke
+grestore
+43600 70000 41200 70800 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 43600 70000 M
+stroke
+grestore
+1200 /Times-Roman-Acnt F
+18000 42406 M (An ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(organization) S
+1200 /Times-Roman-Acnt F
+( is intended to refer to a single company or major division ) S
+18000 40606 M (within a company.  For example: all of Xerox is considered a single ) S
+18000 38806 M (organization.) S
+18000 35806 M (A ) S
+1200 /Times-Italic-Acnt F
+(domain) S
+1200 /Times-Roman-Acnt F
+( is intended to be a small division of an organization that shares ) S
+18000 34006 M (common resources such as file servers and printers.  A domain might be ) S
+18000 32206 M (anywhere from large facilties like PARC \(with 160 people\) to small ) S
+18000 30406 M (projects like WBST129UL \(with 25 people\).) S
+18000 27406 M (Unlike Grapevine registries \(e.g., ) S
+1200 /Times-Italic-Acnt F
+(.pa) S
+1200 /Times-Roman-Acnt F
+(\), a domain is not intended to ) S
+18000 25606 M (specifically refer to geographic location.  Often, however, domains are ) S
+18000 23806 M (used to divide an organization into organizational/geographic groups.) S
+21600 21606 M (Examples from within Xerox:) S
+1200 /Times-Italic-Acnt F
+25200 19406 M (PARC) S
+1200 /Times-Roman-Acnt F
+( is a domain) S
+1200 /Times-Italic-Acnt F
+25200 17206 M (OSBU North) S
+1200 /Times-Roman-Acnt F
+( is one domain.) S
+1200 /Times-Italic-Acnt F
+25200 15006 M (OSBU South) S
+1200 /Times-Roman-Acnt F
+( is another domain.) S
+1200 /Times-Italic-Acnt F
+25200 12806 M (OSBU Bayshore) S
+1200 /Times-Roman-Acnt F
+( is a third domain.) S
+25200 10606 M (The Webster, N.Y. facility has 20 or so different domains ) S
+25200 8806 M (corresponding to different organizational groups located in ) S
+grestore savepage restore showpage
+
+%%Page: 5 5
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (5) S
+7200 75600 M (LispCourse #20:  Living in the Network World \234 Part 2) S
+25200 71106 M (Webster.  Examples:  ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(WBST128) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Italic-Acnt F
+(WBST129) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Italic-Acnt F
+(WBST129UL,) S
+1200 /Times-Roman-Acnt F
+( ) S
+25200 69306 M (and ) S
+1200 /Times-Italic-Acnt F
+(WRC) S
+1200 /Times-Roman-Acnt F
+(.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 66306 M (NS Names and Aliases; Properties of Objects) S
+1200 /Times-Roman-Acnt F
+18000 64106 M (An object's NS name) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(consists of an object name, a domain name, and an ) S
+18000 62306 M (organization name separated by ) S
+1200 /Times-Italic-Acnt F
+(":") S
+1200 /Times-Roman-Acnt F
+('s.) S
+21600 60106 M (Examples:) S
+25200 57906 M (Frank Halasz:PARC:Xerox) S
+25200 55706 M (Phylex:PARC:Xerox) S
+25200 53506 M (Pluto:OSBU North:Xerox) S
+25200 51306 M (Bill Liles:XSIS:Xerox) S
+18000 48306 M (Within a domain, an object may have several alternative object names ) S
+18000 46506 M (known as ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(aliases) S
+1200 /Times-Roman-Acnt F
+(.  An object's alias can always be used in place of its real ) S
+18000 44706 M (object name to refer to the object.) S
+21600 42506 M (Examples:) S
+25200 40306 M (Within PARC:Xerox) S
+1200 /Times-Italic-Acnt F
+28800 38106 M (Halasz: ) S
+1200 /Times-Roman-Acnt F
+(is an alias for ) S
+1200 /Times-Italic-Acnt F
+(Frank) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(Halasz:) S
+1200 /Times-Italic-Acnt F
+28800 35906 M (aifile:) S
+1200 /Times-Roman-Acnt F
+( is an alias for ) S
+1200 /Times-Italic-Acnt F
+(Phylex:) S
+1200 /Times-Italic-Acnt F
+28800 33706 M (print:) S
+1200 /Times-Roman-Acnt F
+( is an alias of ) S
+1200 /Times-Italic-Acnt F
+(LispPrint:) S
+1200 /Times-Roman-Acnt F
+25200 31506 M (Thus:) S
+1200 /Times-Italic-Acnt F
+28800 29306 M (Frank Halasz:PARC:Xerox) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Italic-Acnt F
+28800 27506 M (Halasz:PARC:Xerox) S
+1200 /Times-Roman-Acnt F
+( refer to the same object.  So ) S
+28800 25706 M (do ) S
+1200 /Times-Italic-Acnt F
+(Phylex:PARC:Xerox) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Italic-Acnt F
+(aifile:PARC:Xerox) S
+1200 /Times-Roman-Acnt F
+18000 22706 M (Every named object in the NS world has a bunch of properties that ) S
+18000 20906 M (describe the object.  For example, every object name has an address, either ) S
+18000 19106 M (a NS network address or a NS mail server address.  For the most part these ) S
+18000 17306 M (properties are not accessible to the ordinary user.) S
+18000 14306 M (However, every object has a property that tells what type of object it is.  ) S
+18000 12506 M (For example: people have a property called USER.  FileServers have a ) S
+18000 10706 M (property called FILE.SERVICE.) S
+21600 8506 M (The possible properties that define types of objects are:) S
+grestore savepage restore showpage
+
+%%Page: 6 6
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (6) S
+7200 75600 M (LispCourse #20:  Living in the Network World \234 Part 2) S
+25200 71106 M (USER \234 a person) S
+25200 68906 M (PRINT.SERVICE \234 a print server) S
+25200 66706 M (FILE.SERVICE \234 a file server) S
+25200 64506 M (MEMBERS \234 a distribution list) S
+18000 61506 M (These properties come in handy when you want to know all the file ) S
+18000 59706 M (servers in PARC or all the people in the OSBU North domain.  \(See below ) S
+18000 57906 M (for how to do these querires\).) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 54906 M (Default Domain and Organization) S
+1200 /Times-Roman-Acnt F
+18000 52106 M (In Lisp, you can leave the domain and organization parts off of any NS ) S
+18000 50306 M (name.  If you do so, the values of the atoms ) S
+1200 /Times-Bold-Acnt F
+(CH.DEFAULT.DOMAIN) S
+1200 /Times-Roman-Acnt F
+( ) S
+18000 48506 M (and ) S
+1200 /Times-Bold-Acnt F
+(CH.DEFAULT.ORGANIZATION) S
+1200 /Times-Roman-Acnt F
+( will be used for the domain and ) S
+18000 46706 M (organization parts of a name whereever necessary.) S
+18000 43906 M (Usually, CH.DEFAULT.DOMAIN and ) S
+18000 42306 M (CH.DEFAULT.ORGANIZATION are set in your system INIT file.  You ) S
+18000 40706 M (can change them in your personal INIT file or by SETQing them in the ) S
+18000 39106 M (Lisp Exec if you refer to domains and/or organizations different than the ) S
+18000 37506 M (ones set in the system INIT file.) S
+18000 34906 M (At Parc, CH.DEFAULT.DOMAIN is set to ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(PARC) S
+1200 /Times-Roman-Acnt F
+( and ) S
+18000 33306 M (CH.DEFAULT.ORGANIZATION is set to ) S
+1200 /Times-Italic-Acnt F
+(Xerox) S
+1200 /Times-Roman-Acnt F
+(. ) S
+18000 30706 M (Examples:  Given the standard settings for PARC,) S
+1200 /Times-Italic-Acnt F
+21600 28506 M (Phylex:) S
+1200 /Times-Roman-Acnt F
+( refers to ) S
+1200 /Times-Italic-Acnt F
+(Phylex:PARC:Xerox) S
+1200 /Times-Italic-Acnt F
+21600 26306 M (StarFile:) S
+1200 /Times-Roman-Acnt F
+( refers to ) S
+1200 /Times-Italic-Acnt F
+(StarFile:PARC:Xerox) S
+1200 /Times-Italic-Acnt F
+21600 24106 M (Tundra:OSBU North:) S
+1200 /Times-Roman-Acnt F
+( refers to ) S
+1200 /Times-Italic-Acnt F
+(Tundra:OSBU North:Xerox) S
+1200 /Times-Bold-Acnt F
+14400 21106 M (Clearinghouses: Name and Authentication Servers for NS World) S
+1200 /Times-Bold-Acnt F
+18000 18506 M (Introduction) S
+1200 /Times-Roman-Acnt F
+21600 16106 M (In the NS world, a server called a ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Clearinghouse) S
+1200 /Times-Roman-Acnt F
+( carries out the ) S
+21600 14306 M (functions of both the PUP Name server \(machine name to machine ) S
+21600 12506 M (address translation\) and the Grapevine authentication service ) S
+21600 10706 M (\(checking peoples names/passwords and distribution list ) S
+21600 8906 M (maintenance\).) S
+grestore savepage restore showpage
+
+%%Page: 7 7
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (7) S
+7200 75600 M (LispCourse #20:  Living in the Network World \234 Part 2) S
+21600 71106 M (Every domain has one or more Clearinghouses.) S
+21600 68506 M (Every Clearinghouse knows the names and addresses of the ) S
+21600 66706 M (Clearinghouses for every domain and organization on the NS ) S
+21600 64906 M (internet.) S
+25200 62506 M (Every so often \(each night or every other night\), all the ) S
+25200 60706 M (Clearinginghouses on the network exchange information ) S
+25200 58906 M (about who they are and what domains they cover, etc.  ) S
+25200 57106 M (Thus, every Clearinghouse has reasonably up-to-date ) S
+25200 55306 M (information about all other Clearinghouses. ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 52706 M (Clearinghouse Services) S
+21600 50306 M (Name Service) S
+1200 /Times-Roman-Acnt F
+25200 47906 M (Every time you type in an NS name, your D-machine ) S
+25200 46106 M (interrogates its Clearinghouse server for the translation for ) S
+25200 44306 M (the name.  For example, if you type in ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(DIR ) S
+25200 42506 M ({Phylex:Parc:Xerox}<halasz>*) S
+1200 /Times-Roman-Acnt F
+(, your machine will ) S
+25200 40706 M (interrogate its Clearinghouse for the address of ) S
+25200 38906 M (Phylex:Parc:Xerox.) S
+25200 36506 M (If the named object is not in the same domain as your ) S
+25200 34706 M (Clearinghouse, then your Clearinghouse tells your machine ) S
+25200 32906 M (the appropriate Clearinghouse to contact for the domain of ) S
+25200 31106 M (the object.  Your machine then queries that Clearinghouse ) S
+25200 29306 M (to get the address of the named object.) S
+1200 /Times-Bold-Acnt F
+21600 26906 M (Authentication Service) S
+1200 /Times-Roman-Acnt F
+25200 24506 M (Similarly, if you attempt to login to a NS file server \(which ) S
+25200 22706 M (is done every time you access it, even for a DIR\), the file ) S
+25200 20906 M (server will ask its Clearinghouse about your NS name and ) S
+25200 19106 M (password.  If you are registered on that Clearinghouse, you ) S
+25200 17306 M (will be okayed.  Otherwise, that Clearinghouse will give ) S
+25200 15506 M (the file server the location of the Clearinghouse for your ) S
+25200 13706 M (domain and the file server will check with your ) S
+25200 11906 M (Clearinghouse.) S
+grestore savepage restore showpage
+
+%%Page: 8 8
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (8) S
+7200 75600 M (LispCourse #20:  Living in the Network World \234 Part 2) S
+28800 71106 M (For example, if I log into ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Tundra:Osbu ) S
+28800 69306 M (North:Xerox) S
+1200 /Times-Roman-Acnt F
+(, Tundra gets the location of the PARC ) S
+28800 67506 M (Clearinghouse \(since my name is ) S
+28800 65706 M (Halasz:) S
+1200 /Times-Italic-Acnt F
+(PARC) S
+1200 /Times-Roman-Acnt F
+(:Xerox\) from the Osbu North ) S
+28800 63906 M (Clearinghouse.  Tundra then checks the name and ) S
+28800 62106 M (password with the PARC Clearinghouse .  If I am ) S
+28800 60306 M (registered on the PARC Clearinghouse, then I am ) S
+28800 58506 M (allowed to login on Tundra.) S
+1200 /Times-Italic-Acnt F
+25200 55506 M (Note: ) S
+1200 /Times-Roman-Acnt F
+(The NS world and the PUP/Grapevine world are ) S
+25200 53706 M (totally separate.  You must be registered on a ) S
+25200 51906 M (Clearinghouse somewhere to access NS servers of any ) S
+25200 50106 M (type.  A Grapevine user name and password is not enough!!) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 47706 M (Distribution Lists) S
+1200 /Times-Roman-Acnt F
+25200 45306 M (Clearinghouses also maintain distribution lists for the NS ) S
+25200 43506 M (mail system.  Unfortunately, there is no interface like ) S
+25200 41706 M (MAINTAIN whereby normal users can make changes to ) S
+25200 39906 M (these distribution lists.  All changes to the lists on a given ) S
+25200 38106 M (Clearinghouse must be done by the administrator of that ) S
+25200 36306 M (Clearinghouse. \(At PARC, Carol Lehner is the ) S
+25200 34506 M (Clearinghouse administrator\).) S
+1200 /Times-Bold-Acnt F
+18000 31306 M (Your Clearinghouse and the set of known Clearinghouses) S
+21600 28506 M (Your Clearinghouse) S
+1200 /Times-Roman-Acnt F
+21600 26106 M (The previous descriptions refer to "your Clearinghouse".  In the ) S
+21600 24306 M (NS world, each D-machine has to discover for itself the location of ) S
+21600 22506 M (its Clearinghouse \(i.e., the nearest Clearinghouse that is up\).  This ) S
+21600 20706 M (works as follows:) S
+25200 18506 M (The first time you refer to an NS object \(e.g., an NS file ) S
+25200 16706 M (server or an NS printer\) your D-machine goes out and tries ) S
+25200 14906 M (to find the nearest Clearinghouse server to it.  It does this ) S
+25200 13106 M (by looking around in turn on each of the various networks ) S
+25200 11306 M (it knows about until it finds a Clearinghouse.) S
+grestore savepage restore showpage
+
+%%Page: 9 9
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (9) S
+7200 75600 M (LispCourse #20:  Living in the Network World \234 Part 2) S
+28800 71106 M (While its looking, you will see messages of the ) S
+28800 69306 M (form ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Looking for Clearinghouse servers on net 132) S
+1200 /Times-Roman-Acnt F
+( ) S
+28800 67506 M (appearing in your Prompt window.   Each such ) S
+28800 65706 M (message represents one net that your machine is ) S
+28800 63906 M (looking for Clearinghouses on.  When a ) S
+28800 62106 M (Clearinghouse has been found, it prints out ) S
+28800 60306 M (something like ) S
+1200 /Times-Italic-Acnt F
+(Noting Clearinghouse ) S
+28800 58506 M (131#0.125000.77654) S
+1200 /Times-Roman-Acnt F
+( in the Prompt window.) S
+25200 55506 M (The parameter ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(CH.NET.HINT) S
+1200 /Times-Roman-Acnt F
+( determines the network on ) S
+25200 53706 M (which your machine begins its search for a Clearinghouse.  ) S
+25200 51906 M (It should be set in your system or personal INIT files.  If ) S
+25200 50106 M (CH.NET.HINT is set to correct network number, the search ) S
+25200 48306 M (for a Clearinghouse will be efficient \(providing your ) S
+25200 46506 M (Clearinghouse is up\).  If CH.NET.HINT is incorrectly set, ) S
+25200 44706 M (your machine may look on many, many nets before it finds ) S
+25200 42906 M (a Clearinghouse.  ) S
+1000 /Times-Roman-Acnt F
+(At PARC, CH.NET.HINT should be set to 89.) S
+1200 /Times-Roman-Acnt F
+25200 39906 M (The function call ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(\(START.CLEARINGHOUSE T\)) S
+1200 /Times-Roman-Acnt F
+( will ) S
+25200 38106 M (carry out a search for the nearest Clearinghouse and set the ) S
+25200 36306 M (appropriate variables to make it "your" Clearinghouse.  this ) S
+25200 34506 M (function is done automatically for you whenever you make ) S
+25200 32706 M (your first NS reference.  However, if your Clearinghouse ) S
+25200 30906 M (goes down you may have to manually reinitiate the search ) S
+25200 29106 M (using START.CLEARINGHOUSE.) S
+1200 /Times-Bold-Acnt F
+21600 25506 M (The set of known Clearinghouses) S
+1200 /Times-Roman-Acnt F
+21600 23106 M (Every time you refer to an NS domain other than your own, your ) S
+21600 21306 M (machine asks your Clearinghouse for the location of the ) S
+21600 19506 M (Clearinghouse for that domain.  It then tries to make contact with ) S
+21600 17706 M (that Clearinghouse.) S
+25200 15306 M (While contact is being made a message like ) S
+1200 /Times-Italic-Acnt F
+(Finding ) S
+25200 13506 M (Clearinghouse server for WBST129) S
+1200 /Times-Roman-Acnt F
+( is displayed in your ) S
+25200 11706 M (Prompt window.  When it finds the Clearinghouse the ) S
+grestore savepage restore showpage
+
+%%Page: 10 10
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (10) S
+7200 75600 M (LispCourse #20:  Living in the Network World \234 Part 2) S
+25200 71106 M (message ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Noting Clearinghouse 204#0.125000.23452) S
+1200 /Times-Roman-Acnt F
+( will ) S
+25200 69306 M (be printed.) S
+21600 66506 M (Your machine then remembers the location of that ) S
+21600 64706 M (domain/Clearinghouse pair so that the next time you access the ) S
+21600 62906 M (domain, it will know what Clearinghouse to contact.) S
+25200 60506 M (Example: If I type ) S
+1200 /Times-Italic-Acnt F
+(DIR {Tundra:OSBU% North}, ) S
+1200 /Times-Roman-Acnt F
+(my ) S
+25200 58706 M (machine firsts makes contact with the OSBU North ) S
+25200 56906 M (Clearinghouse) S
+1200 /Times-Italic-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(printing the appropriate messages in the ) S
+25200 55106 M (Prompt window.  It then queries that Clearinghouse for the ) S
+25200 53306 M (address of Tundra.) S
+21600 50306 M (The function call ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(\(SHOW.CLEARINGHOUSE\) ) S
+1200 /Times-Roman-Acnt F
+(will print a ) S
+21600 48506 M (graph of all of the Clearinghouses that your machine knows about.  ) S
+21600 46706 M (It prompts for a region for the graph window.) S
+1200 /Times-Bold-Acnt F
+18000 43506 M (Accessing the Clearinghouse Information from Interlisp) S
+1200 /Times-Roman-Acnt F
+21600 40706 M (Interlisp allows provides several functions that allow you to query ) S
+21600 38906 M (the information on the Clearinghouse network.  These function ) S
+21600 37106 M (allow you, for example, to find the names of all the NS print ) S
+21600 35306 M (servers in PARC.) S
+21600 32306 M (The functions are the following:) S
+1200 /Times-Bold-Acnt F
+21600 29306 M (\(CH.LIST.ORGANIZATIONS ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(ObjectPattern) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 returns a list of ) S
+21600 27506 M (all of the organizations on the NS Internet whose organization ) S
+21600 25706 M (name matches the ) S
+1200 /Times-Italic-Acnt F
+(OrganizationPattern) S
+1200 /Times-Roman-Acnt F
+(.  ) S
+1200 /Times-Italic-Acnt F
+(OrganizationPattern) S
+1200 /Times-Roman-Acnt F
+( can ) S
+21600 23906 M (include the * wildcard character, standing for 0 or more of any ) S
+21600 22106 M (characters.  If ) S
+1200 /Times-Italic-Acnt F
+(OrganizationPattern) S
+1200 /Times-Roman-Acnt F
+( is NIL or just *, then the list ) S
+21600 20306 M (returned will contain all of the organizations known.) S
+21600 17306 M (Examples:) S
+25200 15306 M (10_\(CH.LIST.ORGANIZATIONS\)) S
+1200 /Times-Italic-Acnt F
+25200 13306 M (\("..." "a long organization." "aflc" "AIL" "airgate" "Allen-) S
+25200 11706 M (Bradley Co."  "Boeing" "Comm Test" "Conserve" ) S
+25200 10106 M ("C) S
+26604 10106 M (\310) S
+26904 10106 M (Servers" "CTMD" "Demo" "DPI" "Earth"  "Fuji Xerox" ) S
+25200 8506 M ("G/C" "GDP" "Leesburg" "Lou OPD" "MANKKAA" ) S
+grestore savepage restore showpage
+
+%%Page: 11 11
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (11) S
+7200 75600 M (LispCourse #20:  Living in the Network World \234 Part 2) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+25200 71106 M ("MATRA" "NASA/JSC"  "Nash" "Ois-l" "org" "R&D" "Rx" ) S
+25200 69506 M ("RX IT" "RX Sweden" "RX-N" "RX/Denmark" "Rxa"  ) S
+25200 67906 M ("RXCH" "RXDK" "RXEG" "RXF" "RXFINLAND" "Rxg" ) S
+25200 66306 M ("rxhh" "rxhol" "rxihq"  "Rxihq Tsd" "rxn" "RXS" "RXSF" ) S
+25200 64706 M ("RXSweden" "rxtsd" "RXUK" "Sanyo Kiko" "SBD"  ) S
+25200 63106 M ("SIEMENS" "SiemensAG" "SMD" "TA" "veroh" "Versatec" ) S
+25200 61506 M ("Xci" "XCSS" "Xerox"  "Xerox OSD" "Xerox Visitors" ) S
+25200 59906 M ("Xopd" "XOS" "xosm"\) ) S
+1200 /Times-Roman-Acnt F
+(11_\(CH.LIST.ORGANIZATIONS ) S
+25200 58306 M ('Xerox*]) S
+1200 /Times-Italic-Acnt F
+25200 56306 M (\("Xerox" "Xerox OSD" "Xerox Visitors"\)) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 52906 M (\(CH.LIST.DOMAINS ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(DomainPattern) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 returns a list of all of the ) S
+21600 51106 M (domains whose domain name matches the ) S
+1200 /Times-Italic-Acnt F
+(DomainPattern) S
+1200 /Times-Roman-Acnt F
+(.  ) S
+1200 /Times-Italic-Acnt F
+21600 49306 M (DomainPattern) S
+1200 /Times-Roman-Acnt F
+( consists of the domain and organization parts of an ) S
+21600 47506 M (NS name.  The domain part \(but not the organization part\) can  ) S
+21600 45706 M (include the * wildcard character, standing for 0 or more of any ) S
+21600 43906 M (characters.  If the organization part is left off, the default ) S
+21600 42106 M (organization \(i.e., the value of CH.DEFAULT.ORGANIZATION\) ) S
+21600 40306 M (is used.  If ) S
+1200 /Times-Italic-Acnt F
+(DomainPattern) S
+1200 /Times-Roman-Acnt F
+( is NIL or just *, then the list returned ) S
+21600 38506 M (will be a list of all domains in the default organization.) S
+21600 35506 M (Examples:) S
+/Courier /Courier-Acnt encodefont
+1000 /Courier-Acnt F
+25200 33749 M (20_\(CH.LIST.DOMAINS "*:"\)) S
+/Courier-Oblique /Courier-Oblique-Acnt encodefont
+1000 /Courier-Oblique-Acnt F
+25200 32349 M (\("A&E1" "A&E2" "A&E3" "AAAI" "Albany" ) S
+25200 31149 M ("Albuquerque" "AlphaMesa"  "Alphaservices-Es" ) S
+25200 29949 M ("Alphaservices-Pa" "AlphaServices-PTL" ) S
+25200 28749 M ("Alphaservices-Rx"  "alphaservoices-rx" "ATL-) S
+25200 27549 M (ECE" "Atlanta" "Austin" "BIRMINGHAM" "Bones"  ) S
+25200 26349 M ("Brookriver" "CIN OPS" "CrashTest" "ctmd" ) S
+25200 25149 M ("dagobah" "DallasInfomart"  "DEMO ROOM" ) S
+25200 23949 M ("detroit" "DlosCE" "DlosEtron" "DLOSL200" ) S
+25200 22749 M ("DlosL300" "DlosLC"  "DlosLV" "DlosLV-Comm" ) S
+25200 21549 M ("DlosMBT" "DlosNSC" "DlosSkeff" "Ece-Hq" "ECE-) S
+25200 20349 M (WASH"  "ecewest" "EDGE-Net" "EDNPS Test" "El ) S
+25200 19149 M (Segundo" "\302el\301e\313c\301at\301u\303o\310u"  "Es A&E1" "ES A&E1 CHS" ) S
+25200 17949 M ("ES A&E2" "ES A&E3" "ES EDNPS Test" "ES GSD"  ) S
+25200 16749 M ("ES GSD/WCO" "eS M1" "ES M4" "ES PSI Test" "ES ) S
+25200 15549 M (XC OST" "ES XC Pri"  "ES XC XDMS" "ES XC16" ) S
+25200 14349 M ("Evaluation" "FAX-TEST" "GGW-Test" "Grnch" ) S
+25200 13149 M ("Harb"  "HENR801A" "HENR801B" "HENR801C" ) S
+25200 11949 M ("HENR801E" "Henr801F" "HENR868" "Houston"  "HUB ) S
+25200 10749 M (TEST" "HWDENGDlos" "ISD-NAM" "lac" "LAS VEGAS" ) S
+25200 9549 M ("loop ECE" "LSBG-ECE"  "M1 ES" "Minneapolis ) S
+25200 8349 M (Demo" "MWEAOC" "mwwaoc" "NCRHQ" "NEFSO2" "NER-) S
+grestore savepage restore showpage
+
+%%Page: 12 12
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (12) S
+7200 75600 M (LispCourse #20:  Living in the Network World \234 Part 2) S
+/Courier-Oblique /Courier-Oblique-Acnt encodefont
+1000 /Courier-Oblique-Acnt F
+25200 71349 M (OSM" "NetA"  "NetB" "ns/csc" "NSC" "NSC-5.0" ) S
+25200 70149 M ("OGC" "OPD-ENG" "OPD-HQ" "OPD-IS" "OPD-LE"  ) S
+25200 68949 M ("OPD-MFG" "OPD-MPO" "OPD-MS" "orange" "OS ) S
+25200 67749 M (Service" "osba" "Osbu Bayshore"  "OSBU North" ) S
+25200 66549 M ("OSBU South" "OSD Associates" "OSM-OKC" "OSM-) S
+25200 65349 M (TRG" "OSMDB" "Parc"  "Parc Place" "Phoenix" ) S
+25200 64149 M ("PQAnet1" "PQAnet2" "PQAnet3" "PR" "ProdTest"  ) S
+25200 62949 M ("ProductTest" "Psd-Executive" "PSD5700" ) S
+25200 61749 M ("Rainbow" "Raisin" "roch" "ROCH041"  "Roch805" ) S
+25200 60549 M ("Roch805t" "ROCH853" "Roch888" "ROCH892" ) S
+25200 59349 M ("RochECE" "SalmonDomain"  "San Antonio" "Santa ) S
+25200 58149 M (Fe" "South" "STHQ" "Test Base" "Test Net" ) S
+25200 56949 M ("TestServices"  "TOMF" "TransientRoutes" "TSC" ) S
+25200 55749 M ("TYSON" "Vista" "Walnut Creek" "waoc"  "WBST MFG ) S
+25200 54549 M (HUB" "WBST102A" "wbst102t" "wbst102tchs" ) S
+25200 53349 M ("WBST105" "Wbst105B"  "WBST114" "Wbst128" ) S
+25200 52149 M ("WBST129" "WBST129UL" "WBST200" "WBST200LL" ) S
+25200 50949 M ("WBST200UL"  "WBST205LL" "wbst205t" "WBST205UL" ) S
+25200 49749 M ("WBST207" "Wbst207ul" "WBST208" "WBST212"  ) S
+25200 48549 M ("WBST218LL" "WBST218UL" "WBST223" "WBST223CHS2" ) S
+25200 47349 M ("WBST300" "WBST304" "WBST311"  "WBST311C" ) S
+25200 46149 M ("wbst311J" "WBST311X" "WBST845" "WRC" "xais-) S
+25200 44949 M (demo" "xc es"  "XNS-DLBK" "XNS-MAR" "XOS WR" ) S
+25200 43749 M ("XOS-MAR" "xos-mwr" "XOS-OPS" "XOS-SCBC"  "XOS-) S
+25200 42549 M (SR" "XRCC" "Xsis" "XSIS North" "Xsis-Ai" "XSIS-) S
+25200 41349 M (HQ"\)) S
+/Courier /Courier-Acnt encodefont
+1000 /Courier-Acnt F
+25200 39149 M (21_\(CH.LIST.DOMAINS "P*C:Xerox"]) S
+1000 /Courier-Oblique-Acnt F
+25200 37749 M (\("Parc"\)) S
+1000 /Courier-Acnt F
+25200 35549 M (22_\(CH.LIST.DOMAINS "WBST*:"\)) S
+1000 /Courier-Oblique-Acnt F
+25200 34149 M (\("WBST MFG HUB" "WBST102A" "wbst102t" ) S
+25200 32949 M ("wbst102tchs" "WBST105" "Wbst105B"  "WBST114" ) S
+25200 31749 M ("Wbst128" "WBST129" "WBST129UL" "WBST200" ) S
+25200 30549 M ("WBST200LL" "WBST200UL"  "WBST205LL" "wbst205t" ) S
+25200 29349 M ("WBST205UL" "WBST207" "Wbst207ul" "WBST208" ) S
+25200 28149 M ("WBST212"  "WBST218LL" "WBST218UL" "WBST223" ) S
+25200 26949 M ("WBST223CHS2" "WBST300" "WBST304" "WBST311"  ) S
+25200 25749 M ("WBST311C" "wbst311J" "WBST311X" "WBST845"\) ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 22506 M (\(CH.LIST.OBJECTS ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(ObjectPattern) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Property) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 returns a list of ) S
+21600 20706 M (all of the objects whose object name matches the ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(ObjectPattern) S
+1200 /Times-Roman-Acnt F
+( ) S
+21600 18906 M (AND who have property ) S
+1200 /Times-Italic-Acnt F
+(Property) S
+1200 /Times-Roman-Acnt F
+(.  ) S
+1200 /Times-Italic-Acnt F
+(ObjectPattern) S
+1200 /Times-Roman-Acnt F
+( consists of an ) S
+21600 17106 M (NS name.  The object part \(but not the domain and organization ) S
+21600 15306 M (parts\) can  include the * wildcard character, standing for 0 or more ) S
+21600 13506 M (of any characters.  If the domain and/or organization parts are left ) S
+21600 11706 M (off, the default domain and/or organization is used.  If ) S
+grestore savepage restore showpage
+
+%%Page: 13 13
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (13) S
+7200 75600 M (LispCourse #20:  Living in the Network World \234 Part 2) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 71106 M (ObjectPattern) S
+1200 /Times-Roman-Acnt F
+( is NIL or just *, then the list returned will be a list ) S
+21600 69306 M (of all objects in the default domain and organization.) S
+21600 66706 M (The ) S
+1200 /Times-Italic-Acnt F
+(Property) S
+1200 /Times-Roman-Acnt F
+( argument indicates the type of object to look for and ) S
+21600 64906 M (can be one of: USER, PRINT.SERVICE, FILE.SERVICE, ) S
+21600 63106 M (MAIL.SERVICE, MEMBERS, or ALL as described above.   If the ) S
+1200 /Times-Italic-Acnt F
+21600 61306 M (Property) S
+1200 /Times-Roman-Acnt F
+( argument is NIL, then ALL will be used meaning all ) S
+21600 59506 M (types of objects.) S
+21600 56906 M (Examples:) S
+/Courier /Courier-Acnt encodefont
+1000 /Courier-Acnt F
+25200 54949 M (28_\(CH.LIST.OBJECTS \(QUOTE *:Parc:Xerox\)) S
+32400 53149 M ( \(QUOTE FILE.SERVICE]) S
+/Courier-Oblique /Courier-Oblique-Acnt encodefont
+1000 /Courier-Oblique-Acnt F
+25200 51749 M (\("phylex" "Starfile"\)) S
+1000 /Courier-Acnt F
+25200 49949 M (29_\(CH.LIST.OBJECTS \(QUOTE *:Parc:Xerox\)) S
+32400 48149 M ( \(QUOTE PRINT.SERVICE]) S
+1000 /Courier-Oblique-Acnt F
+25200 46749 M (\("Kukai" "PaperMate" "print"\)) S
+1000 /Courier-Acnt F
+25200 44949 M (30_\(CH.LIST.OBJECTS '*:Parc:Xerox 'USER\)) S
+1000 /Courier-Oblique-Acnt F
+25200 43549 M (\("Akis Doganis" "Ann Derrick" "Arnold J Blum" ) S
+25200 42349 M ("Art Farley" "Barbara Hemstad"  "Bart Kinne" ) S
+25200 41149 M ("Beaumont Sheil" "Benny Pugh" "Bev Manes" "Bill ) S
+25200 39949 M (Hunter"  "Bill Jackson" "Bill van Melle" "Bill ) S
+25200 38749 M (Winfield" "Bob Allen" "Bob Ritchie"  "Brad ) S
+25200 37549 M (Burns" "CA Lehner" "Cari Sullivan" "Carlin ) S
+25200 36349 M (DeCato" "Carol Lehner"  "Cathy Turner" "Charles ) S
+25200 35149 M (Orgish" "Cheryl James" "Courtney Tagupa"  "Cyndi ) S
+25200 33949 M (Vanderhorst" "D. Austin Henderson" "Dale Mann" ) S
+25200 32749 M ("Dan Jordan"  "Dan Russell" "Dave Pirogowicz" ) S
+25200 31549 M ("David Myron Levy" "David Porter"  "David ) S
+25200 30349 M (Vinayak Wallace" "David Weckler" "Diane ) S
+25200 29149 M (Hutchins" "Don Charnley"  "Dorene Allen" "Doug ) S
+25200 27949 M (Walters" "Ed Fiala" "Eric Rawson" "Eric Schoen"  ) S
+25200 26749 M ("Eric Steffensen" "Facilities Monitoring" ) S
+25200 25549 M ("Fernando Ponce" "Frances Grimble"  "Frank ) S
+25200 24349 M (Halasz" "Frank Shih" "Frank Vest" "Fumiko ) S
+25200 23149 M (Mannes" "Gary Chang"  "Gary Emanuel" "Gary ) S
+25200 21949 M (Rhoades" "Gary Toyama" "Gene Hall" "Giuliana ) S
+25200 20749 M (Lavendel"  "Gloria Warner" "Greg Nuyens" "Gregor ) S
+25200 19549 M (Kiczales" "Guest" "Hal Murray"  "Harriet Weeks" ) S
+25200 18349 M ("Henry S. Thompson" "Herb Jellinek" "Hugh Vander ) S
+25200 17149 M (Plas"  "I-Wei Wu" "Irene Lile" "Jacqeline M. ) S
+25200 15949 M (Guibert" "Jay Trow" "Jean Gascon"  "Jeanette ) S
+25200 14749 M (Figueroa" "Jeannie Lewandowski" "Jim Cooper" ) S
+25200 13549 M ("Jim D'Alfonso"  "John Brown" "John D. Sybalsky" ) S
+25200 12349 M ("John L. White" "John Larson" "John S. Brown"  ) S
+25200 11149 M ("John Shaw" "John White" "Jon Bokelman" "Joseph ) S
+25200 9949 M (Kaminski" "Julian Orr"  "Karen Martelli" "Kathy ) S
+25200 8749 M (Jarvis" "Kelly Roach" "Kenneth Beckman" "Kerry ) S
+grestore savepage restore showpage
+
+%%Page: 14 14
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (14) S
+7200 75600 M (LispCourse #20:  Living in the Network World \234 Part 2) S
+/Courier-Oblique /Courier-Oblique-Acnt encodefont
+1000 /Courier-Oblique-Acnt F
+25200 71349 M (Brown"  "Larry Masinter" "Librarian" "Lillian ) S
+25200 70149 M (Barth" "Lorraine Watanabe"  "LouAnne Johnson" ) S
+25200 68949 M ("Lynne Seymour" "Maia Pindar" "Mariela Esser" ) S
+25200 67749 M ("Mark Chow"  "Mary Hausladen" "Meg Withgott" ) S
+25200 66549 M ("Melissa Monty" "Michael Dawson"  "Michael ) S
+25200 65349 M (Fisher" "Michael Herring" "Michael Plass" ) S
+25200 64149 M ("Michael Sannella"  "Michael Young" "Michalene ) S
+25200 62949 M (Casey" "Michel Desmarais" "Mike Dixon"  "Mimi ) S
+25200 61749 M (Gardner" "Mitchell Lichtenberg" "Nancy Freige" ) S
+25200 60549 M ("Neil Gunther"  "Nicholas Briggs" "PARCPublic" ) S
+25200 59349 M ("Patricia Sheehan" "Paul Ricci" "Paul Turner"  ) S
+25200 58149 M ("PC Demo" "Per-Kristian Halvorsen" "Peter ) S
+25200 56949 M (Struss" "Richard Burton"  "Richard E. Sweet" ) S
+25200 55749 M ("Richard Martin" "Robert Allen" "Robert ) S
+25200 54549 M (Bachrach"  "Robert Spinrad" "Robert Tremain" ) S
+25200 53349 M ("Ronald Kaplan" "Ronald Schmidt"  "Salina ) S
+25200 52149 M (Snipes" "Sharon Johnson" "Sharon Penner" "Star1" ) S
+25200 50949 M ("Star2" "Star3"  "Star4" "Stephen Jackson" ) S
+25200 49749 M ("Stephen Quarterman" "Steve Martino"  "Steve ) S
+25200 48549 M (Wallgren" "Steven Purcell" "Susan Newman" "Susi ) S
+25200 47349 M (Lilly" "Susie Mulhern"  "Sweetsun Chen" "Tak ) S
+25200 46149 M (Oki" "Tami DeMerritt" "Tayloe Stansbury" "Terry ) S
+25200 44949 M (Haney"  "Thomas Hartmann" "Tiao-Yuah Huang" "Tim ) S
+25200 43749 M (Brunner" "Tim Diebert" "Toby Morrill"  "Tom ) S
+25200 42549 M (Moran" "Victor Bojorquez" "Victoria Carlson" ) S
+25200 41349 M ("Wes Dorman" "Yoko Nonaka"  "Zoran Popovic"\) ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 36906 M (\(CH.LIST.ALIASES.OF ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(ObjectPattern) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 returns a list of all of ) S
+21600 35106 M (the aliases of ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Object,) S
+1200 /Times-Roman-Acnt F
+( where ) S
+1200 /Times-Italic-Acnt F
+(Object) S
+1200 /Times-Roman-Acnt F
+( is an NS name.) S
+1000 /Times-Roman-Acnt F
+21600 32855 M (The object part \(but not the domain and organization parts\) can include the * ) S
+21600 31255 M (wildcard character.  However, the function will return the aliases of only the ) S
+21600 29655 M (first object found that matches the pattern.  Thus, it makes little sense to use  ) S
+21600 28055 M (wildcards in this function.) S
+1000 /Times-Roman-Acnt F
+21600 25655 M (If the domain and/or organization parts are left off, the default domain and/or ) S
+21600 24055 M (organization is used.  If ) S
+1000 /Times-Italic-Acnt F
+(Object) S
+1000 /Times-Roman-Acnt F
+( is NIL, * is assumed and the aliases of the first ) S
+21600 22455 M (object in the default domain will be returned.) S
+1200 /Times-Roman-Acnt F
+21600 19906 M (Examples:) S
+25200 17706 M (36_\(CH.LIST.ALIASES.OF \(QUOTE Frank% Halasz\)\)) S
+1200 /Times-Italic-Acnt F
+25200 15906 M (\(Halasz:\)) S
+1200 /Times-Roman-Acnt F
+25200 14106 M (37_\(CH.LIST.ALIASES.OF \(QUOTE StarFile:\)\)) S
+1200 /Times-Italic-Acnt F
+25200 12306 M (\(Help Server: Help Service:\)) S
+1200 /Times-Roman-Acnt F
+25200 10506 M (38_\(CH.LIST.ALIASES.OF \(QUOTE Phylex:\)\)) S
+1200 /Times-Italic-Acnt F
+25200 8706 M (\(aifile:\)) S
+grestore savepage restore showpage
+
+%%Page: 15 15
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (15) S
+7200 75600 M (LispCourse #20:  Living in the Network World \234 Part 2) S
+25200 71106 M (39_\(CH.LIST.ALIASES.OF \(QUOTE aifile:\)\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+25200 69306 M (\(aifile:\)) S
+1200 /Times-Roman-Acnt F
+25200 67506 M (40_\(CH.LIST.ALIASES.OF \(QUOTE *:PARC:\)\)) S
+1200 /Times-Italic-Acnt F
+25200 65706 M (\(ht: HThompson:\)) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 62506 M (\(CH.RETRIEVE.MEMBERS ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Object) S
+1200 /Times-Bold-Acnt F
+( 'MEMBERS\)) S
+1200 /Times-Roman-Acnt F
+( \234 retrieves ) S
+21600 60706 M (the list of members of a distribution list.  ) S
+1200 /Times-Italic-Acnt F
+(Object) S
+1200 /Times-Roman-Acnt F
+( is the NS name of ) S
+21600 58906 M (the distribution list.  A distribution list is an NS object with a ) S
+21600 57106 M (MEMBERS property, i.e., an object returned by ) S
+1200 /Times-Italic-Acnt F
+21600 55306 M (\(CH.LIST.OBJECTS "*:PARC:XEROX" 'MEMBERS\)) S
+1200 /Times-Roman-Acnt F
+(.) S
+21600 51706 M (Example:) S
+25200 49506 M (48_\(CH.LIST.OBJECTS '* 'MEMBERS]) S
+1200 /Times-Italic-Acnt F
+25200 47706 M (\("AllParc" "AllXerox" "Alpha BWS" "BWS Users" ) S
+25200 46306 M ("HelpGroup" "ICL Star Users"  "LispAccess" ) S
+25200 44906 M ("LISPCORE" "NewXAISEmployees" "PTS"\)) S
+1200 /Times-Roman-Acnt F
+25200 43106 M (49_\(CH.RETRIEVE.MEMBERS \(QUOTE PTS:\) ) S
+25200 41706 M ('MEMBERS]) S
+1200 /Times-Italic-Acnt F
+25200 39906 M (\(Carol Lehner: Toby Morrill:\)) S
+1400 /Times-Bold-Acnt F
+10800 36557 M (Mail Service) S
+1200 /Times-Roman-Acnt F
+14400 33706 M (The NS world provides a mail delivery service similar to, but separate from, the ) S
+14400 31906 M (Grapevine mail system.  To use this mail system, you will need get registered in a ) S
+14400 30106 M (Clearinghouse and have a mail folder set up for you on some mail server. At ) S
+14400 28306 M (PARC, see Carol Lehner to have this done.) S
+14400 25506 M (If you load {eris}<lisp>harmony>library>nsmail.dcom then evaluate the function ) S
+14400 23706 M (call ) S
+1200 /Times-Bold-Acnt F
+(\(LAFITEMODE 'NS\)) S
+1200 /Times-Roman-Acnt F
+(, you can use Lafite to gain access to your NS mail.   ) S
+14400 21906 M (The Lafite ) S
+1200 /Times-Italic-Acnt F
+(Get Mail) S
+1200 /Times-Roman-Acnt F
+( command will retrieve mail from your NS mail folder and ) S
+14400 20106 M (the ) S
+1200 /Times-Italic-Acnt F
+(Send Mail) S
+1200 /Times-Roman-Acnt F
+( command will send the mail out using the NS mail system.) S
+14400 17306 M (You can send and recieve mail in only one world at a time.  To read your ) S
+14400 15506 M (Grapevine mail again, evaluate ) S
+1200 /Times-Bold-Acnt F
+(\(LAFITEMODE 'GV\)) S
+1200 /Times-Roman-Acnt F
+(.  To return to NS mail use ) S
+1200 /Times-Bold-Acnt F
+14400 13706 M (\(LAFITEMODE 'NS\)) S
+1200 /Times-Roman-Acnt F
+( again.) S
+14400 10906 M (You can intermix Grapevine and NS mail messages in a Lafite mail folder.  That ) S
+14400 9106 M (is, you needn't use different mail folders as you switch between the two mail ) S
+grestore savepage restore showpage
+
+%%Page: 16 16
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (16) S
+7200 75600 M (LispCourse #20:  Living in the Network World \234 Part 2) S
+14400 71106 M (systems.  However, the ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Answer) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Italic-Acnt F
+(Forward) S
+1200 /Times-Roman-Acnt F
+( will not work correctly for NS mail ) S
+14400 69306 M (when the LAFITEMODE is GV, and vice versa.) S
+14400 66506 M (When sending NS mail, you need to include the full NS name of the recipient ) S
+14400 64706 M (\(i.e., name/alias, domain, and organization\).  If the recipient belongs to the same ) S
+14400 62906 M (domain and/or organization, you can omit these parts of the NS name.  For ) S
+14400 61106 M (example, to send mail to me the receipient list should be ) S
+1200 /Times-Italic-Acnt F
+(Halasz:PARC:Xerox) S
+1200 /Times-Roman-Acnt F
+( or ) S
+1200 /Times-Italic-Acnt F
+14400 59306 M (Frank Halasz:PARC:Xerox) S
+1200 /Times-Roman-Acnt F
+(.) S
+14400 56506 M (Your NS mail server and the Clearinghouse take care of delivering the mail to the ) S
+14400 54706 M (appropriate mail server for each recipient.) S
+14400 51906 M (I think there are distribution lists allowed in the NS mail system.  These are the ) S
+14400 50106 M (NS objects with the MEMBERS property discussed above.  Mailing to these ) S
+14400 48306 M (distributiuon lists is like mailing to each member of the list.  For example. mailing ) S
+14400 46506 M (to ) S
+1200 /Times-Italic-Acnt F
+(PTS:PARC:Xerox) S
+1200 /Times-Roman-Acnt F
+( is like mailing to ) S
+1200 /Times-Italic-Acnt F
+(Lehner:PARC:Xerox ) S
+1200 /Times-Roman-Acnt F
+(and ) S
+1200 /Times-Italic-Acnt F
+14400 44706 M (Morril:PARC:Xerox) S
+1200 /Times-Roman-Acnt F
+(, since these are the only two MEMBERS of ) S
+1200 /Times-Italic-Acnt F
+14400 42906 M (PTS:PARC:Xerox) S
+1200 /Times-Roman-Acnt F
+(.  ) S
+18000 40106 M (Unlike in Grapevine, these distribution lists can be changed only by the ) S
+18000 38306 M (Clearinghouse administrator.  Although they can be examined using the ) S
+18000 36506 M (CH.LIST.OBJECTS and CH.RETRIEVE.MEMBERS functions described ) S
+18000 34706 M (above.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+10800 30957 M (File Service, Print Service, Press versus Interpress printers) S
+1200 /Times-Roman-Acnt F
+14400 28106 M (File service in the NS world is provided by NS file servers.  These are similar to ) S
+14400 26306 M (IFSs, but do not have some of the IFS features.  The salient points of NS file ) S
+14400 24506 M (server have been discussed in the LispCourse sections on filing.) S
+14400 21706 M (Print service in the NS world is provided by NS printers \(the Xerox 8044 printer\).  ) S
+14400 19906 M (The 8044 NS printers are abysmally slow but in general have much higher print ) S
+14400 18106 M (quality than the Dover and full-press printers in the PUP world. All NS printers ) S
+14400 16306 M (print files only in the Interpress document format. Press files cannot be printed in ) S
+14400 14506 M (the NS world.) S
+1200 /Times-Roman-Acnt F
+14400 11706 M (Most files in Interlisp can printed on either the Press \(Pup\) or Interpress \(NS\) ) S
+14400 9906 M (printers.  But note that the fonts available on the two printers are different.  ) S
+grestore savepage restore showpage
+
+%%Page: 17 17
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (17) S
+7200 75600 M (LispCourse #20:  Living in the Network World \234 Part 2) S
+14400 71106 M (Interlisp does most of its screen displays in PUP-world fonts like Gacha, ) S
+14400 69306 M (TimesRoman, and Helvetica.  Whenprinted on an Press printer, these fonts appear ) S
+14400 67506 M (as they do on the screen \(except at higher resolution\).  When printed on an ) S
+14400 65706 M (Interpress printer, these fonts are translated into their NS analogs: Terminal, ) S
+14400 63906 M (Modern, and Classic.   For most applications, this is okay.  But files which are, for ) S
+14400 62106 M (example, carefully adjusted to fit on a Press page will not fit in the same way \(or ) S
+14400 60306 M (not at all\) on an Interpress page.) S
+18000 57906 M (You can use the NS fonts on the screen \(e.g., in a TEdit window\) by ) S
+18000 56106 M (setting the correct font variables.  When printed on a Press printer, these ) S
+18000 54306 M (fonts will be printed in their Pup-world analogs.  When printed on an ) S
+18000 52506 M (Interpress printer, these fonts will appear as they do on the screen \(modulo ) S
+18000 50706 M (the resolution\).) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 46957 M (Interfaces Between the PUP and NS Worlds \234 Interlisp-D and Mail Gateways) S
+1200 /Times-Roman-Acnt F
+10800 43306 M (The PUP and NS world are generally separate worlds.  But since Interlisp-D speaks to ) S
+10800 41506 M (both worlds, you can often mix and match operations in the PUP world with operations in ) S
+10800 39706 M (the NS world.  For example, you can COPYFILE a file between an IFS and an NS file ) S
+10800 37906 M (server as in ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(\(COPYFILE '{phylex:}<halasz>init '{phylum}<halasz>init\).) S
+1200 /Times-Roman-Acnt F
+10800 35306 M (In all of the interactions where you are dealing with a mix of NS and PUP, your Interlisp ) S
+10800 33506 M (machine is the intermediary between the two worlds.  For example, COPYFILE copies ) S
+10800 31706 M (the file from the NS server to the Lisp virtual memory using the NS filing protocol and ) S
+10800 29906 M (then copies it from the Lisp virtual memory to the IFS using the FTP protocol.) S
+10800 26906 M (There is one interface between the PUP and NS worlds that exists apart from your ) S
+10800 25106 M (machine: the mail gateway between the Xerox PUP Internet and the Xerox NS Internet.  ) S
+10800 23306 M (The mail gateway is a machine running somewhere in OSD that takes Grapevine mail ) S
+10800 21506 M (addressed to NS mail recipients, translates it into NS mail and gives it the NS mail ) S
+10800 19706 M (system to deliver.  Similarly, it takes NS mail intended for Grapevine recipients, ) S
+10800 17906 M (translates it to Grapevine mail, and then gives it to the Grapevine to deliver.) S
+14400 15106 M (To send mail through the gateway from Grapevine to an NS mail recipient, you ) S
+14400 13306 M (should address the mail to ) S
+1200 /Times-Bold-Acnt F
+(") S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(NSName) S
+1200 /Times-Bold-Acnt F
+(".ns) S
+1200 /Times-Roman-Acnt F
+(, where ) S
+1200 /Times-Italic-Acnt F
+(NSName) S
+1200 /Times-Roman-Acnt F
+( is the NS Name of the ) S
+14400 11506 M (recipient.  For example, to send me NS mail from Lafite running in GV mode, ) S
+grestore savepage restore showpage
+
+%%Page: 18 18
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (18) S
+7200 75600 M (LispCourse #20:  Living in the Network World \234 Part 2) S
+14400 71106 M (you should address the mail to ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+("Halasz:PARC:Xerox".ns) S
+1200 /Times-Roman-Acnt F
+( \(don't forget the " ) S
+14400 69306 M (before and after the NS Name\).) S
+14400 66506 M (To send mail through the gateway, from the NS world to the Grapevine world, ) S
+14400 64706 M (you have to carry out a similar, but presently \(9-Apr-85 00:16:00\) unknown trick ) S
+14400 62906 M (in specifying the recipients address.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 58957 M (Documentation on Networks) S
+1200 /Times-Roman-Acnt F
+10800 55906 M (There is relatively little documentation on the Interlisp/NS world.) S
+10800 52906 M (The Interlisp/PUP world is scattered throughout the IRM and package documentation, ) S
+10800 51106 M (since almost all parts of Interlisp take advantage of the network at times. ) S
+10800 48106 M (The Interlisp interface to both NS and PUP networks is covered in Chapter 21 of the ) S
+10800 46306 M (IRM.    All of the Clearinghouse functions described above are covered here.  Most of the ) S
+10800 44506 M (chapter, however, is aimed at programmer's interface to the PUP and NS networks.) S
+10800 41506 M (The Lafite interface to NS mail is documented in ) S
+10800 39706 M ({eris}<lisp>harmony>library>nsmail.tedit \(&.press\).) S
+10800 36706 M (There are several PARC Blue&White reports covering various apsects of both the PUP ) S
+10800 34906 M (and NS network designs.  You can probably get a list of these from the TIC.) S
+10800 31906 M (   ) S
+grestore savepage restore showpage
+
+%%Trailer

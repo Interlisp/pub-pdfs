@@ -1,0 +1,2723 @@
+%!PS-Adobe-2.0%%Title: {DSK}<home>larry>lispcourse>OUTLINE09.PS%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate:  7-Nov-2023 21:39:58%%EndComments/bdef {bind def} bind def
+/ldef {load def} bdef
+/S /show ldef
+/M /moveto ldef
+/DR {transform round exch round exch itransform} bdef
+/L {gsave newpath setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/L1 {gsave newpath 0 setdash setgray setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/F {findfont exch scalefont setfont} bdef
+/CLP {newpath M dup 0 rlineto exch 0 exch rlineto
+  neg 0 rlineto closepath clip newpath} bdef
+/R {gsave setgray newpath M dup 0 rlineto exch 0 exch
+  rlineto neg 0 rlineto closepath eofill grestore} bdef
+/ellipsedict 9 dict def
+ellipsedict /mtrx matrix put
+/ellipse
+ { ellipsedict begin
+  /endangle exch def
+  /startangle exch def
+  /orientation exch def
+  /minorrad exch def
+  /majorrad exch def
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  orientation rotate
+  majorrad minorrad scale
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+ end } bdef
+/concatprocs
+ {/proc2 exch cvlit def
+  /proc1 exch cvlit def
+  /newproc proc1 length proc2 length add array def
+  newproc 0 proc1 putinterval
+  newproc proc1 length proc2 putinterval
+  newproc cvx
+ } bdef
+/resmatrix matrix def
+/findresolution
+ {72 0 resmatrix defaultmatrix dtransform
+  /yres exch def /xres exch def
+  xres dup mul yres dup mul add sqrt
+ } bdef
+/thebitimage
+ {/maskp exch def
+  /bihgt exch def
+  /biwid exch def
+  /byte 1 string def
+  /strbufl biwid 8 div ceiling cvi def
+  /strbuf strbufl string def
+  maskp not{{1 exch sub} currenttransfer concatprocs settransfer} if
+  biwid bihgt
+  maskp { true } { 1 } ifelse
+  [biwid 0 0 bihgt 0 0]
+  {/col 0 def
+   {currentfile byte readhexstring pop 0 get
+    dup 16#B2 eq {pop
+    currentfile byte readhexstring pop 0 get 1 add
+    currentfile byte readhexstring pop pop /nbyte byte 0 get def
+    { strbuf col nbyte put /col col 1 add def} repeat}
+   {dup 16#B3 eq {pop /col col
+    currentfile byte readhexstring pop
+    0 get add 1 add def}
+    {16#B4 eq {currentfile byte readhexstring pop pop} if
+     strbuf col byte 0 get put /col col 1 add def} ifelse
+   } ifelse
+   col strbufl ge { exit } if } loop
+   strbuf }
+  maskp { imagemask } { image } ifelse
+ } bdef
+/setuserscreendict 22 dict def
+setuserscreendict begin
+ /tempctm matrix def
+ /temprot matrix def
+ /tempscale matrix def
+end
+/setuserscreen
+ {setuserscreendict begin
+   /spotfunction exch def
+   /screenangle exch def
+   /cellsize exch def
+   /m tempctm currentmatrix def
+   /rm screenangle temprot rotate def
+   /sm cellsize dup tempscale scale def
+   sm rm m m concatmatrix m concatmatrix pop
+   1 0 m dtransform /y1 exch def /x1 exch def
+   /veclength x1 dup mul y1 dup mul add sqrt def
+   /frequency findresolution veclength div def
+   /newscreenangle y1 x1 atan def
+   m 2 get m 1 get mul m 0 get m 3 get mul sub
+   0 gt { { neg } /spotfunction load concatprocs
+          /spotfunction exch def } if
+   frequency newscreenangle /spotfunction load setscreen
+  end
+ } bdef
+/setpatterndict 18 dict def
+setpatterndict begin
+ /bitison
+  {/ybit exch def /xbit exch def
+   /bytevalue bstring ybit bwidth mul xbit 8 idiv add get def
+   /mask 1 7 xbit 8 mod sub bitshift def
+   bytevalue mask and 0 ne
+  } bdef
+end
+/bitpatternspotfunction
+ {setpatterndict begin
+   /y exch def /x exch def
+   /xindex x 1 add 2 div bpside mul 1 sub cvi def
+   /yindex y 1 add 2 div bpside mul 1 sub cvi def
+   xindex yindex bitison
+    {/onbits onbits 1 add def 1}
+    {/offbits offbits 1 add def 0} ifelse
+  end
+ } bdef
+/setpattern
+ {setpatterndict begin
+   /cellsz exch def
+   /angle exch def
+   /bwidth exch def
+   /bpside exch def
+   /bstring exch def
+   /onbits 0 def /offbits 0 def
+   cellsz angle /bitpatternspotfunction load setuserscreen
+   {} settransfer
+   offbits offbits onbits add div setgray
+  end
+ } bdef
+% - - - - - Fraction-setting code, to support NS fonts better - - - - -
+/fractiondict 20 dict def
+/fractionshow 
+{ fractiondict begin
+/denom exch def 
+/num exch def 
+/regfont currentfont def
+/fractfont currentfont [.65 0 0 .6 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(1) true charpath flattenpath pathbbox 
+/height exch def pop pop pop
+ grestore
+0 .4 height mul rmoveto
+fractfont setfont num show
+0 .4 height mul neg rmoveto regfont setfont (\244) show
+fractfont setfont denom show regfont setfont end } bdef
+/f14 { (1) (4) fractionshow } bdef
+/f12 { (1) (2) fractionshow } bdef
+/f34 { (3) (4) fractionshow } bdef
+/f18 { (1) (8) fractionshow } bdef
+/f38 { (3) (8) fractionshow } bdef
+/f58 { (5) (8) fractionshow } bdef
+/f78 { (7) (8) fractionshow } bdef
+/f13 { (1) (3) fractionshow } bdef
+/f23 { (2) (3) fractionshow } bdef
+/bboxdict 20 dict def
+/bboxchk { bboxdict begin
+/regfont currentfont def
+/chkfont currentfont [1.25 0 0 1.25 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(\161) true charpath flattenpath pathbbox 
+/height exch def pop pop pop 
+ grestore 
+ currentpoint 
+ .2 height mul .3 height mul rmoveto
+chkfont setfont (\063) show
+ moveto
+ regfont setfont
+(\161) show end } bdef
+/rencdict 15 dict def
+/encodefont { rencdict begin
+/newname exch def
+/oldfont exch def
+/newcodes [
+8#001 /Aacute
+8#002 /Acircumflex
+8#003 /Adieresis
+8#004 /Agrave
+8#005 /Aring
+8#006 /Atilde
+8#007 /Ccedilla
+8#010 /Eacute
+8#011 /Ecircumflex
+8#012 /Edieresis
+8#013 /Egrave
+8#014 /Iacute
+8#015 /Icircumflex
+8#016 /Idieresis
+8#017 /Igrave
+8#020 /Ntilde
+8#021 /Oacute
+8#022 /Ocircumflex
+8#023 /Odieresis
+8#024 /Ograve
+8#025 /Otilde
+8#026 /Scaron
+8#027 /Uacute
+8#030 /Ucircumflex
+8#031 /Udieresis
+8#032 /Ugrave
+8#033 /Ydieresis
+8#034 /Zcaron
+8#177 /periodinferior
+8#201 /aacute
+8#202 /acircumflex
+8#203 /adieresis
+8#204 /agrave
+8#205 /aring
+8#206 /atilde
+8#207 /ccedilla
+8#210 /eacute
+8#211 /ecircumflex
+8#212 /edieresis
+8#213 /egrave
+8#214 /iacute
+8#215 /icircumflex
+8#216 /idieresis
+8#217 /igrave
+8#220 /ntilde
+8#221 /oacute
+8#222 /ocircumflex
+8#223 /odieresis
+8#224 /ograve
+8#225 /otilde
+8#226 /scaron
+8#227 /uacute
+8#230 /ucircumflex
+8#231 /udieresis
+8#232 /ugrave
+8#233 /ydieresis
+8#234 /zcaron
+8#235 /Eth
+8#236 /eth
+8#237 /Thorn
+8#240 /thorn
+ ] def
+/olddict oldfont findfont def /newfont olddict maxlength dict def
+olddict { exch dup /FID ne { dup /Encoding eq
+{ exch dup length array copy newfont 3 1 roll put }
+{ exch newfont 3 1 roll put } ifelse }
+ { pop pop } ifelse } forall
+newfont /FontName newname put
+newcodes aload pop
+newcodes length 2 idiv { newfont /Encoding get 3 1 roll put } repeat 
+newname newfont definefont pop end } def
+ /accentdict 10 dict def 
+ /accentor { accentdict begin /scaler exch def /delta exch def 
+/unders exch def /accents exch def /mainch exch def /scrt (X) def
+ /w1 mainch stringwidth pop def 
+ currentpoint mainch show currentpoint 4 2 roll 
+accents { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         w1 w2 sub 2 div delta rmoveto scrt show 
+         /delta delta 150 scaler mul 9 div add def
+        } forall 
+unders { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         ch 46 eq { w1 w2 sub 2 div -175 scaler mul 9 div rmoveto scrt show 0 175 rmoveto }
+           { w1 w2 sub 2 div 0 rmoveto scrt show } ifelse 
+        } forall 
+ pop pop moveto end } def 
+%%EndProlog
+%%BeginSetup
+letter/imagesizefactor 1 def%%EndSetup/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+
+%%Page: 1 1
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+54000 75600 M (F.G.H.          ) S
+54000 73800 M (2/19/85) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (LispCourse #9:  Typing Into the TTY Window:) S
+25200 68957 M (TTYIN & the Programmer's Assistant) S
+7200 65157 M (Introduction) S
+1200 /Times-Bold-Acnt F
+10800 62106 M ("read-EVAL-print loop"  versus "READ-eval-print loop" ) S
+1200 /Times-Roman-Acnt F
+14400 59506 M (Recall the following from class #2:) S
+18000 57106 M (1.  The user interacts with Lisp by typing into the ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(top-level TTY window) S
+1200 /Times-Roman-Acnt F
+( ) S
+21600 55306 M (\(a.k.a. the ) S
+1200 /Times-Italic-Acnt F
+(Exec window) S
+1200 /Times-Roman-Acnt F
+(\).) S
+18000 52906 M (2.  In the TTY window Lisp is running in a read-eval-print loop:) S
+21600 51106 M (WHILE T) S
+25200 49306 M (Read user's typed input) S
+25200 47706 M (Evaluate user's input) S
+25200 46106 M (Print result of evaluation) S
+18000 43906 M (3.  This loop is really the read-EVAL-print loop because EVALUATION ) S
+21600 42106 M (IS THE THING that does all the work in Lisp.) S
+14400 39506 M (In many Lisps, "read-EVAL-print" is an accurate picture of what goes on.  ) S
+14400 37706 M (Reading the user input is a trivial operation, evaluation is the important "work-) S
+14400 35906 M (doing" part of the loop.) S
+14400 33306 M (Interlisp is different.  The evaluator is the most important part, ) S
+1200 /Times-Bold-Acnt F
+(BUT) S
+1200 /Times-Roman-Acnt F
+( the read part ) S
+14400 31506 M (of the read-eval-print loop in Interlisp is very complex and very powerful and in ) S
+14400 29706 M (fact does a lot of work over and above what the Lisp evaluator does.) S
+14400 27106 M (So, the topic for the next couple of classes is the READ-eval-print loop.  ) S
+14400 25306 M (Emphasis is on the READ part of the read-eval-print loop and all the help it gives ) S
+14400 23506 M (us in interacting with Interlisp.) S
+1200 /Times-Bold-Acnt F
+10800 20506 M (The complexity issue once again) S
+1200 /Times-Roman-Acnt F
+14400 17906 M (The mechanism Interlisp uses to read and process your type-in \(i.e., ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(the Lisp ) S
+14400 16106 M (Exec) S
+1200 /Times-Roman-Acnt F
+(\) is very complex.  It represents the result of many years of non-coordinated ) S
+14400 14306 M (development by many different sets of people.) S
+14400 11706 M (The mechanism consists of several different packages.) S
+grestore savepage restore showpage
+
+%%Page: 2 2
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (2) S
+7200 75600 M (LispCourse #9:  TTYIN & the Programmer's Assistant) S
+14400 71106 M (Once again, each package is somewhat different, having different conventions, ) S
+14400 69306 M (etc.) S
+14400 66706 M (Once again, the trade-off between increased functionality and ease of ) S
+14400 64906 M (use/learnability has been settled in favor of functionality.) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+14400 62306 M (BUT, ) S
+1200 /Times-Roman-Acnt F
+(if you accept things as they are and simply memorize the few things you ) S
+14400 60506 M (deal with frequently, the Lisp Exec can help you A LOT in doing your work!!!!) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 57506 M (An overview of how Interlisp processes user input \(i.e., the Lisp Exec\)) S
+1200 /Times-Roman-Acnt F
+14400 54906 M (The first page of the Appendix contains a flow diagram of how Interlisp processes ) S
+14400 53106 M (type-in in the Exec window. ) S
+14400 50506 M (The diagram illustrates the following components:) S
+18000 47906 M (Most characters typed in by the user are input into a small text editor ) S
+18000 46106 M (called the ) S
+1200 /Times-Bold-Acnt F
+(TTYIN) S
+1200 /Times-Roman-Acnt F
+( editor.  The TTYIN editor allows you to make changes ) S
+18000 44306 M (to your type-in before it is actually processed by Lisp.) S
+21600 41906 M (Note that some characters \(e.g., Ctrl-D and Ctrl-E\) don't go to ) S
+21600 40106 M (TTYIN.  These characters are special interrupt characters that can ) S
+21600 38306 M (interrupt or abort Lisp at any time.  Thus theyare handled by a ) S
+21600 36506 M (special ) S
+1200 /Times-Bold-Acnt F
+(Interrupt mechanism) S
+1200 /Times-Roman-Acnt F
+(.) S
+18000 33906 M (After the input in the TTYIN editor is "completed" [e.g., by typing a ) S
+18000 32106 M (<RETURN> or by entering the last "\)" in a list],  the input is passed on to ) S
+18000 30306 M (the ) S
+1200 /Times-Bold-Acnt F
+(Programmer's Assistant.) S
+1200 /Times-Roman-Acnt F
+21600 27906 M (The P.A. is a general purpose "assistant" that keeps a history of ) S
+21600 26106 M (your type-in,  allows you to repeat or undo previous function calls,  ) S
+21600 24306 M (provides several short-hand methods for typing in Lisp function ) S
+21600 22506 M (calls, and so on.) S
+21600 20106 M (When the P.A. receives a complete user input, it determines the ) S
+21600 18306 M (nature of the input.) S
+25200 15906 M (If it is a P.A. command \(e.g., a history reference\), then it ) S
+25200 14106 M (executes the command.) S
+grestore savepage restore showpage
+
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (3) S
+7200 75600 M (LispCourse #9:  TTYIN & the Programmer's Assistant) S
+25200 71106 M (If it is P.A. short-hand for some Lisp expression, then it ) S
+25200 69306 M (translates the expression to a standard Lisp expression and ) S
+25200 67506 M (sends it on to the Lisp read mechanism.) S
+25200 65106 M (If it is a standard Lisp expression, it just passes it on to the ) S
+25200 63306 M (Lisp read mechanism.) S
+18000 60706 M (The ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(Lisp reader) S
+1200 /Times-Roman-Acnt F
+(, accepts standard Lisp expressions and expands any Lisp ) S
+18000 58906 M (short-hand thay may have.  For example, if the input contains a '\(A B C\), ) S
+18000 57106 M (the Lisp reader will change this to \(QUOTE \(A B C\)\) as required by the ) S
+18000 55306 M (evaluator.) S
+1200 /Times-Roman-Acnt F
+18000 52706 M (The Lisp reader, then passes the standard Lisp expression to the ) S
+1200 /Times-Bold-Acnt F
+(Lisp ) S
+18000 50906 M (Evaluator) S
+1200 /Times-Roman-Acnt F
+(.  If all is correct, then the Lisp evaluator does its work as we ) S
+18000 49106 M (discovered in some detail a couple sessions ago.) S
+18000 46506 M (If the evaluator discovers an error in the Lisp expression, it passes the ) S
+18000 44706 M (error off to the ) S
+1200 /Times-Bold-Acnt F
+(error handler) S
+1200 /Times-Roman-Acnt F
+( which tries to handle the error in one of ) S
+18000 42906 M (several ways:) S
+25200 40306 M (By getting ) S
+1200 /Times-Bold-Acnt F
+(CLISP) S
+1200 /Times-Roman-Acnt F
+( to translate the syntactic sugar into ) S
+25200 38506 M ("real" Lisp.) S
+25200 35906 M (By getting ) S
+1200 /Times-Bold-Acnt F
+(DWIM) S
+1200 /Times-Roman-Acnt F
+( to automatically correct the error.) S
+25200 33506 M (By calling on the ) S
+1200 /Times-Bold-Acnt F
+(Break Package) S
+1200 /Times-Roman-Acnt F
+( to open a break window ) S
+25200 31706 M (so that the user can correct the error or abort the operation.) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+14400 28706 M (Note) S
+1200 /Times-Roman-Acnt F
+( that in our earlier view, the Lisp evaluator was the only thing that did ) S
+14400 26906 M ("work" in Lisp.  That is, when we give Lisp a "command", we said it was the ) S
+14400 25106 M (evaluator which carried out the command.) S
+14400 22706 M (According to this diagram, there are several components that can be seen as ) S
+14400 20906 M (carrying out "work", i.e., carrying out user commands.  In particular, there are ) S
+14400 19106 M (Programmer Assistant commands that are separate from Lisp function calls and ) S
+14400 17306 M (that allow you to do certain kinds of "work".) S
+1000 /Times-Roman-Acnt F
+18000 15055 M (Note that in reality it is the Lisp Evaluator thats doing all of the work.  The P.A. is just a ) S
+18000 13655 M (Lisp program.  So, the process of interpreting and carrying out P.A. commands ) S
+18000 12255 M (eventually reduces to Lisp being evaluted by the Lisp evaluator.) S
+1200 /Times-Bold-Acnt F
+10800 9506 M (Today's topics:  The main path through TTYIN and the P.A.) S
+grestore savepage restore showpage
+
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (4) S
+7200 75600 M (LispCourse #9:  TTYIN & the Programmer's Assistant) S
+14400 71106 M (The diagram on the second page of the Appendix contains a simplified version of ) S
+14400 69306 M (the complete diagram.) S
+14400 66706 M (When all is well and there are no errors and no interrupt characters, this represents ) S
+14400 64906 M (the processing Interlisp does to your type-in.  The major components are the ) S
+14400 63106 M (TTYIN editor and the Programmer's Assistant.) S
+14400 60506 M (We'll cover these two parts today.  Next time we'll cover the Lisp READer and ) S
+14400 58706 M (the Interrupt mechanism as well as DWIM and CLISP.) S
+14400 56106 M (The following time we'll cover the Error Handler and the Break Package.) S
+grestore savepage restore showpage
+
+%%Page: 5 5
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (5) S
+7200 75600 M (LispCourse #9:  TTYIN & the Programmer's Assistant) S
+grestore savepage restore showpage
+
+%%Page: 6 6
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 7 7
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (6) S
+7200 75600 M (LispCourse #9:  TTYIN & the Programmer's Assistant) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (The TTYIN type-in editor ) S
+1200 /Times-Bold-Acnt F
+10800 68306 M (The Basics) S
+1200 /Times-Roman-Acnt F
+14400 65906 M (The TTYIN editor is a simple text editor that uses both the mouse and key ) S
+14400 64106 M (commands.) S
+14400 61706 M (The editor operates in an ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(active region) S
+1200 /Times-Roman-Acnt F
+( that contains only the current type-in ) S
+14400 59906 M (line\(s\) within the Lisp Exec window.  Thus, you can only edit the current type-in ) S
+14400 58106 M (and no other text appearing in the Lisp Exec window.) S
+18000 55306 M (If "94_" is the current uncompleted input line:) S
+/bitbltsave save def 16550 36199 translate 35300 17600 scale 353 176 true thebitimage
+B2281161163200
+B32864463200
+B2284464462200
+B32861160000
+3FB229FFFC00
+B32C
+70B229000C00
+B32C
+30B3290E00
+B32C
+70B32B
+B32C
+30B3231040B305
+B30201B32018C0B305
+70000002B3200D80B3030C00
+70E040020422387001C38011220071120382003E3889F0078F8E22380040840F9E0010204087B204000C00
+31104104042210880084401126002132044200201099000448042644B3020811B30382B306
+3013E2B3071FB315B208000C00
+70F247C4B30210008080112A002153C4B303A9B3032A5C00408788B30C
+71124204043E10600083000AB3025224B304E0078F042A400041444FB30A0E00
+31114104042210880084400A32002192B304C9000488043244B30248B30C
+31114002B3184224B30D
+70E0C0021F22387001C3800422007113C44F80203889F0070F8E223801F2278F9EB30B
+70000001B226000C00
+30B229000C00
+B32C
+70B32B
+7111C7C0B328
+313084B227000C00
+B32C
+7150B32A
+B32C
+3190B3280E00
+B32C
+7111C4B329
+70B229000E00
+30B32B
+B30204B328
+70000002B3260C00
+70E040B329
+31104101B328
+3013E2B329
+70F247C1B328
+71124201B328
+311141B329
+31114002B328
+70E0C0B3270F80
+70000004B328
+30B229000F80
+B32C
+70B3290C00
+70E0B3280F80
+3110B32A
+B32C
+71B32B
+71E0B3280C00
+31B229000F80
+3110B32A
+70E0B32A
+70B229000F80
+30B3290C00
+B30201B30940B31B0F80
+70000002B30920B31D
+70E1C0020E207C70E007C01F0038B31C0C00
+311221040420408910010010004410B31D
+301022B307080004B31E
+70F027C4043C408820010004B320
+7111C20404224088C00100020038B31E
+311021B30389100500110004B31C0F80
+31122002B30403B3024420B31D
+70E1C0020E3C4088E001000E0038B31C0C00
+70000001B2090040B31D
+30B229000D00
+B32C
+70B3290C00
+71F3E0B329
+3042B228000D00
+3041B32A
+704080B3270C00
+704040B329
+314220B3270D00
+30C2B32A
+7041C0B3270C00
+70B229000C00
+30B3290D00
+B30201B30820B31E
+70000002B30810B31C0C00
+70E3E002103E387001C001001CB31F
+3112010410204488022001002208B31C0D00
+301102B30400200F8002B31F
+70F087C41E2044100020090022B31D0C00
+711042041120446001C009003CB31F
+311221B303880020050020B31D0D00
+31122002B30302B30310B31E
+70E1C0021E20447001C003003EB31D0C00
+70000001B2080020B31E
+30B229000D00
+B32C
+70B3290C00
+7111C7C0B328
+313084B227000D00
+B32C
+7150B3280C00
+B32C
+3190B3280D00
+B32C
+7111C4B3270C00
+70B229000C00
+30B3290D00
+B30201B30320B304102040B30340B304204081B30E
+70000002B30340B304204080B30320B30410204080B30B0C00
+70E3E0020E22440041C44F11B30384400E00782003C00F8020B311
+3110810411B3028224489100004081044011004410022008002008102040B30B0D00
+30108204113E48008227C892B30307C0B31A
+70F087C41022500082044894B303044010B3170C00
+71108204101478008202889EB3030280B3050F003CB311
+3112810411144400822288910010B30311B304080020B30F0D00
+31118002B30342B304204082B30320B30410204080B30D
+70E080020E08780041C10F1EB30381000E00782003C00F803EB30F0C00
+70000001B2030020B20400102040B2030040B20400204081B20C000C00
+30B229000D00
+B32C
+70B3290C00
+7110B32A
+31B3290D00
+31F0B32A
+7110B3280C00
+70A0B32A
+30B3290D00
+B32C
+7040B3280C00
+70B229000C00
+30B3290D00
+B30201B30440B3034080B31C
+70000002B30480B3032040B31A0C00
+70E1C0020E2244000084401E0038B31E
+3112210411B3020104401100441020B31A0D00
+30132204113E48000107C0B321
+70F2A7C410225000010440110040B31C0C00
+7112A204101478000102801EB320
+3112610411144400410280120044B31C0D00
+31122002B3034082B3032040B31C
+70E1C0020E0878004081001C0038B31C0C00
+70000001B2040040B203004080B31C
+30B229000D00
+B32C
+70B3290C00
+70E22780B328
+30B229000D00
+B32C
+7FB229FFFC00
+B30EB21B555C00
+3FB3295D00
+B30DFEB21BAAAD00
+7E00DFD803E0FFF7DFB7EF0BC3F7BEB31BAC00
+7EFFEFBBFF9F7FB302EEF3BDF7BFB21B555C00
+3EFFF77BFFBFBFEBAFB7EDFB7EB31D5D00
+B3047FB306EB5EB21BAAAD00
+7EFFFAFBFF7FFFB323AC00
+7E01FDF8077FFFDD77B303DB6FB21B555C00
+3EFFFAFBFFB303B4B3DEF3BDDCEFB31B5D00
+3EFFF77BFF7FBFDD77B4B43F0BC3DCEEB21BAAAD00
+7EB303BFBFBEFBFFFFFBFFFFFEB31BAC00
+7EFFEFBBFF9F7FBEFBBFB303FFB21B555C00
+3E00DFD803E0FFB3235D00
+3FB20CFFFEB21BAAAD00
+7FB30CB21CFFFC00
+B22B4400
+B22B1100
+B32C
+B22B4400
+B32C
+B22B1100
+B32C
+B22B4400
+B32C
+
+bitbltsave restore
+18000 33706 M (Then the boxed area is the region in which TTYIN is active:) S
+/bitbltsave save def 16200 14999 translate 36000 17200 scale 360 172 true thebitimage
+B22C88
+B22C22
+B32C
+B22C88
+B32C
+B22C22
+22B22AFFF2
+88B32AF8
+88C0B2290038
+22B32A32
+B32C
+88B302B222FFE0B30338
+B32C
+22B302C0B2210060B30332
+B32582B305
+88B302C4B320C6B30438
+B303C8B3206CB305
+22C38100C81088E1C0070E00448801C4480E0800F8E227C01E3E3888E00102103E780040810238B30432
+22C44104D01088422002110044980084C8110800804264001120109910B3022044B30310B305
+88C04F88B3077CB315B20300B30438
+88C3C91FB302404002020044A800854FB304A4B303A97001021EB30C
+22C44908D010F84180020C0028B3024891B303A7801E3C10A9000105113CB30A32
+22C44504D01088422002110028C80086B304432400122010C910B30220B30B
+88C44500C8B3180891B30B38
+88C38300C87C88E1C0070E00108801C44F113E0080E227C01C3E3888E007C89E3E78B30A
+22C00000C4B22100B30432
+B303C0B30902B31C
+88B302B222FFE0B30338
+B32C
+22C4471FB2270032
+22C4C210B328
+88B32A38
+88C542B329
+22B32A32
+22C6B32A
+88B32A38
+88C447B329
+22C0B2290032
+B32C
+88B30210B32638
+B30308B327
+22C381B32832
+22C4410404B327
+88C04F88B32738
+88C3C91FB328
+22C44908B32732
+22C44504B328
+88C4450008B32638
+88C383B329
+22C0000010B32632
+B303B2270032
+88B32A38
+B32C
+22C380B32832
+22C440B329
+88B32A38
+B32C
+22C780B32832
+22C4B2290032
+88C440B32838
+88C380B329
+22C0B2290032
+B32C
+88B30204B30801B31C38
+B30308B3080080B31C
+22C38700083881F1C3801F007C00E0B31C32
+22C44884101081022440040040011040B31C
+88C04088B3072000B31D38
+88C3C09F1010F1022080040010B31F
+22C4470810108902230004000800E0B31C32
+22C44084B30324401400440010B31D
+88C4488008B3040C0044011080B31B38
+88C387000838F102238004003800E0B31D
+22C0000004B2080001B21C0032
+B303B2270032
+88B32A38
+B32C
+22C7CF80B32732
+22C108B2280032
+88C104B32838
+88C102B329
+22C101B32832
+22C50880B328
+88C3B32938
+88C107B2280038
+22C0B2290032
+B32C
+88B30204B30880B31C38
+B30308B30840B31D
+22C38F800840F8E1C00700040070B31D32
+22C448041040811220088004008820B31D
+88C04408B30400803E0008B31D38
+88C3C21F10788110400080240088B31E
+22C44108104481118007002400F0B31D32
+22C44884B30212200080140080B31E
+88C4488008B30308B30340B31C38
+88C3870008788111C007000C00F8B31E
+22C0000004B2080080B31C32
+B303B2270032
+88B32A38
+B32C
+22C4471FB32732
+22C4C210B328
+88B32A38
+88C542B329
+22B32A32
+22C6B32A
+88B32A38
+88C447B329
+22C0B2290032
+B32C
+88B30204B30380B3044081B30301B305810204B30C38
+B30308B30201B205008102B3030080B304408102B30D
+22C38F80083889100107113C44B30311003801E0800F003E0080B30F32
+22C44204104489100208912244000102041100440110400880200080204081B30D
+88C042081044F92002089F2248B3031FB31938
+88C3C21F104089400208112250B303110040B318
+22C44208104051E002080A2278B3030AB3063C00F0B30F32
+22C44A041044511002088A22440041B30344B304200080B310
+88C4460008B30201B304408102B30480B304408102B30C38
+88C38200083821E00107043C78B30304003801E0800F003E00F8B310
+22C0000004B2030080B204004081B2030001B20500810204B30C32
+B303B2270032
+88B32A38
+B32C
+22C440B32832
+B32C
+88C7C0B32838
+88C440B329
+22C280B32832
+B32C
+88B32A38
+88C1B2290038
+22C0B32932
+B32C
+88B30204B30301B3030102B31B38
+B30308B30302B3030081B31C
+22C3870008388910000211007800E0B31C32
+22C448841044B3020411004401104080B31B
+88C04C881044F92000041FB32038
+88C3CA9F10408940000411B30200B31D
+22C44A88104051E000040A0078B31E32
+22C449841044511001B302480110B31D
+88C4488008B30302B30481B21B0038
+88C38700083821E0010204007000E0B31D
+22C0000004B2030001B203000102B31B32
+B303B2270032
+88B32A38
+B32C
+22C3889EB32732
+22C0B2290032
+88B32A38
+88B22AFFF8
+22B30DFDB21B5572
+B32C
+88B30DFAB21BAAB8
+88F8037F600F83FFDF7EDFBC2F0FDEB31D
+22FBFFBEEFFE7DB303BBCEF7DEFDB21B5572
+B302DDEFFEFEFFAEBEDFB7EDFBB31E
+88B303FDB307AD7AB21BAAB8
+B302EBEFFDFFB325
+22F807F7E01DFFFF75DEB3036DBDB21B5572
+22FBFFEBEFFDB303CF7BCEF773B31D
+88FBFFDDEFFDFEB302D0FC2F0F73BAB21BAAB8
+B304B202FEFBEFFFFFEFFFFFFAB31C
+22FBFFBEEFFE7DFEFBEEB304FDB21B5572
+22F8037F600F83B325
+88B20DFFFAB21BAAB8
+B30EB21CFFF8
+B22C22
+B32C
+B22C88
+
+bitbltsave restore
+52200 14999 M ( ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+14400 11999 M (TTYIN is always in insert mode: your type-in is inserted just before the ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(blinking ) S
+14400 10199 M (caret) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(on the input line.) S
+grestore savepage restore showpage
+
+%%Page: 8 8
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (7) S
+7200 75600 M (LispCourse #9:  TTYIN & the Programmer's Assistant) S
+14400 71106 M (While you are typing in TTYIN helps you balance parentheses.  Every time you ) S
+14400 69306 M (type a "\)" or a "]", the ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(blinking caret) S
+1200 /Times-Roman-Acnt F
+( moves to the matching "\(" or "[".  It remains ) S
+14400 67506 M (there for 1 second or until you type a character and then returns to its previous ) S
+14400 65706 M (location.  ) S
+1000 /Times-Roman-Acnt F
+(Note that any characters you type when the caret is in this "balancing indicator" mode ) S
+14400 64055 M (will go at the previous location of the caret and not at its current location near the balancing "\(" or ) S
+14400 62306 M ("[".) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+18000 59906 M (Example:) S
+1200 /Times-Roman-Acnt F
+(  The "\)" has just been typed. The left arrow points to the caret in ) S
+18000 58106 M ("balancing" mode.  The right arrow points to the insertion point.  After ) S
+18000 56306 M (one second, the caret will return to the insertion point.) S
+/bitbltsave save def 16600 36999 translate 35200 17200 scale 352 172 true thebitimage
+B22B11
+B22B44
+B32B
+3FB229FFFD
+B32B
+70B229000C
+B30C1040B31C
+30B30B18C0B31B0D
+B30201B30440B3020D90B30680B314
+70000002B30480B3020720B30640B3130C
+70E1C002103E387000840F8E1C022103E387003E0070B315
+3112210410204488010408112200410204488020008820B3130D
+301022B30F100008B315
+701227C41E20441001078811040041E204410008B3160C
+70E3C204112044600104481118004112044600040070B315
+301201B30388B30322B3034880220008B3140D
+31120002B3030084B30321B3058840B314
+70E3E0021E204470008788111C0021E20447001C0070B3140C
+70000001B2040040B2030010B206008080B313
+30B20B0002B2070001C0B3120D
+B30C07B30703E0B313
+70B30B0F80B30607F0B3120C
+7111C7C0B3081FC0B3060FF8B313
+313084B209003FE0B3061FFCB3120D
+B30C7FF0B30601C0B313
+7150B30A07B20700B3140C
+B32B
+3190B3280D
+B32B
+7111C4B3270C
+70B20B00B31E
+30B3290D
+3020B30501B322
+7040B3050080B3200C
+70422440101C387060B322
+3082B3022244889040B3200D
+308142801020088080B322
+70808100103E30F8B3220C
+B30319224488B323
+30814280161C3871E0B3210D
+30422440B203008080B30BB214000D
+70B30600B3210C
+7020B2050001B221000C
+30B229000D
+B30201B30218000004B320
+70000002B30220000002B31F0C
+70E040020E3E1070022442B320
+3110410411201088022441B31F0D
+3013E2B304014281B320
+701247C402B302008101B31F0C
+70E242040C3CB325
+3011410411201088014281B31F0D
+31114002B303022442B320
+70E0C0020E3E7C70B3220C
+70000001B2050004B320
+30B229000D
+B32B
+70B3290C
+B32B
+30B3290D
+B32B
+70B3290C
+B32B
+30B3290D
+B32B
+70B3290C
+B32B
+30B3290D
+B30201B3071CB31E
+70000002B30704B31D0C
+70E1C0021F3C3821E2200704B31F
+311221041022102112A002B31F0D
+301022B328
+701027C4B3260C
+70E1C2041EB302E2B322
+3010210410B3022360B3200D
+31122002B327
+70E1C0021F3C38F9C220071FB31E0C
+70000001B207001CB31E
+30B229000D
+3030B304C00002B321
+7040B304200001B3200C
+7043C3821122402141C1010E1038F8B31C
+3042210215B30242230111104480B31B0D
+B3043E4023F0200F91084440B31C
+7182B302227818A2200911084420B31B0C
+7043C10215144420A3C0091E047810B31C
+304241021B144421FA000510044088B31B0D
+B30620520005110244B31D
+7043838F9108782053E0030E3E3870B31B0C
+7030B20400C0B222000C
+30B229000D
+B30201B30218B30420B31D
+70000002B30220B30410B31C0C
+70E3E0020E3E10700224400E08B31E
+3112010411201088B302040808B31C0D
+301102B304014280B320
+701087C402B302008100B31F0C
+70E042040C3CB325
+3012210411201088014280B31F0D
+31122002B303022440040810B31D
+70E1C0020E3E7C70B3020E3EB31D0C
+70000001B2080020B31D
+30B229000D
+3030B304C00002B321
+7040B304200001B3200C
+7043C3821122402141C1010E1038F8B31C
+3042210215B30242230111104480B31B0D
+B3043E4023F0200F91084440B31C
+7182B302227818A2200911084420B31B0C
+7043C10215144420A3C0091E047810B31C
+304241021B144421FA000510044088B31B0D
+B30620520005110244B31D
+7043838F9108782053E0030E3E3870B31B0C
+7030B20400C0B222000C
+30B229000D
+B30201B30910B30D81B30D
+70000002B30920B30D4080B30B0C
+70E3E0021E1C108912038710080020E224401E3E4088E3E10711227C20B30E
+31108104110810A91204489008004112244011204089120108912240202040B30B0D
+301082B304F2B30513E480B302F9B3029F24B310
+701087C4B30313C4089EB302022500B30289B3021128B30F0C
+70E082041E0810A8A2240891140041014780113C7851B3020A3C78B30F
+30128104120810D8A22448B303114440112040B3038A2240B30E0D
+31118002B307220021B30D4080B30C
+70E080021C1C7C8843C3871E220020E087801E3E7C211207C7043C7CF8B30D0C
+70000001B2090010B20D0081B20C000C
+30B229000D
+B32B
+70B3290C
+B32B
+30B3290D
+B32B
+70B3290C
+B32B
+30B3290D
+B32B
+70B3290C
+B32B
+30B3290D
+B32B
+70B3290C
+B32B
+30B3290D
+B32B
+70B3290C
+B32B
+30B3290D
+B32B
+7FB229FFFC
+B30EB21B555C
+3FB3295D
+B30DFEB21BAAAD
+7E00DFD803E0FFF7DFB7EF0BC3F7BEB31BAC
+7EFFEFBBFF9F7FB302EEF3BDF7BFB21B555C
+3EFFF77BFFBFBFEBAFB7EDFB7EB31D5D
+B3047FB306EB5EB21BAAAD
+7EFFFAFBFF7FFFB323AC
+7E01FDF8077FFFDD77B303DB6FB21B555C
+3EFFFAFBFFB303B4B3DEF3BDDCEFB31B5D
+3EFFF77BFF7FBFDD77B4B43F0BC3DCEEB21BAAAD
+7EB303BFBFBEFBFFFFFBFFFFFEB31BAC
+7EFFEFBBFF9F7FBEFBBFB303FFB21B555C
+3E00DFD803E0FFB3235D
+3FB20CFFFEB21BAAAD
+7FB30CB21CFFFC
+B22B44
+B22B11
+B32B
+B22B44
+B32B
+B22B11
+
+bitbltsave restore
+14400 33706 M (The editor remains in operation in the type-in active region as long as the type-in ) S
+14400 31906 M (remains "uncompleted".   Whe the input is completed, TTYIN sends it along to ) S
+14400 30106 M (the Programmer's Assistant and you can no longer edit it.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 26506 M (TTYIN's Definition of "Complete" Input) S
+1200 /Times-Roman-Acnt F
+14400 23906 M (Completed input is defined similarly to the DEdit type-in:) S
+18000 20906 M (An input beginning with a "\(" is complete when a balancing or over-) S
+18000 19106 M (balancing "\)" is typed.) S
+25200 16906 M (Examples: ) S
+1200 /Times-Italic-Acnt F
+28800 14906 M (\(A B C\)) S
+1200 /Times-Roman-Acnt F
+( is complete) S
+1200 /Times-Italic-Acnt F
+28800 12906 M (\(A \(B C\)) S
+1200 /Times-Roman-Acnt F
+( is not complete) S
+21600 10506 M (A "]" balances any number of "\(", until the most recent "[".) S
+25200 8306 M (Examples: ) S
+grestore savepage restore showpage
+
+%%Page: 9 9
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (8) S
+7200 75600 M (LispCourse #9:  TTYIN & the Programmer's Assistant) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+28800 71106 M (\(A \(B \(C D]) S
+1200 /Times-Roman-Acnt F
+( is complete) S
+1200 /Times-Italic-Acnt F
+28800 69106 M (\(A [B \(C D]) S
+1200 /Times-Roman-Acnt F
+( is not complete) S
+1200 /Times-Italic-Acnt F
+28800 67106 M (\(A [B \(C D]\)) S
+1200 /Times-Roman-Acnt F
+( is complete ) S
+21600 64506 M (A <RETURN> causes a new line to be started in the Exec window, ) S
+21600 62706 M (but does not complete the current input.) S
+/bitbltsave save def 18300 43699 translate 35400 17500 scale 354 175 true thebitimage
+B228888C22C540
+B228222C22C640
+B32988C640
+B228888C88C440
+B32922C000
+27B22AFF80
+B32C
+8EB229000180
+B32C
+26B31A2080B30DC0
+B31B31B30F
+8EB31A1BB20D0001C0
+8E2244F00084470E00387000844F801C7C70E227801F1C44F80081020EB30F
+26224C88008442110010880084480022408912644010084C80B30204B30F
+263EB317B2100001C0
+8E2254B30302001010B30304408112A4B30254B31380
+8E14B30287C20C0010600087CF001878B306F0B313
+2614648800844211001088008448002240891324B3026480B313
+B32C
+8E0844F003E4470E00387003E44F801C7C70E22780101C44F8B313
+8EB2290001C0
+26B32B
+B30320B327
+8EB30240B327
+8E1C38004084470E0038700224400E2240704007C7113E00F1F1C44700081081F3C0B30980
+26224420808442110010880224C004264088400402132000890084C880B3020220B30A
+26020440B30603E4B31F
+8E1E3CF8B30202001010022540042A78B30315B303854BB302F1B30C
+8E2244408087C20C0010600145B30244B3043C00F1E0854800082889E2B30B
+26224420808442110010880146400432B3041920009100864880B30202B30B
+B3020040B31844B30D
+8E1C380043E4470E0038700084400E227889F00407113E00E1F1C447003E44F1F3C0B30A
+8EB2020020B225000180
+26B302B2260001C0
+B32C
+8EB32B
+8E3CB32A
+2622B32A
+B32C
+8EB32A80
+8E3CB32A
+2624B32A
+B32C
+8E38B32A
+8EB229000180
+26B32B
+B30602B30280B320
+8EB30504B30240B31FC0
+8E1C3800E3E100042200F0B321
+262244211201000822008820B320
+26024441B3033EB323
+8E1E44F822B30222B32280
+8E223840C3C100081400F0B320C0
+262244211201B30390B321
+B30201B30204B30240B320
+8E1C3800E3E7C0040800E0B321
+8EB2050002B2020080B31F80
+26B305B2230001C0
+B32C
+8EB32B
+8E3CB32A
+2622B32980
+B32BC0
+8EB32B
+8E3CB32980
+2624B32A
+B32C
+8E38B32A
+8EB229000180
+26B32AC0
+B30501B30240B321
+8EB30402B30220B32080
+8E1C2000E3E102110078B322
+2622202112010411004410B321
+26021041B3021FB324
+8E1E10F822010411B324
+8E220840C3C1040A0078B322
+262208211201B30248B322
+26220401120102B30220B321
+8E1C7C00E3E7C2040070B322
+8EB2040001B2020040B321
+26B304B224000180
+B32C
+8EB32B
+8E3CB32A
+2622B32A
+B32C
+8EB32B
+8E3CB32A
+2624B32A
+B32C
+8E38B32A
+8EB229000180
+26B32B
+2604B30510B323
+8E08B30508B323
+8E08440101C38706B324
+261044010224488904B323
+26107C0102008808B324
+8E10440103E30F88B324
+8E102801922448B325
+26B30261C3871EB324
+260828B203000808B323
+8E0810B30300B324
+8E04B2050010B323
+26B229000180
+B30507B30270B321
+8EB30404B30210B321
+8E1C3800E3E104110078B322
+262244211201B30244B322
+26024441B3021FB324
+8E1E44F822010411B324
+8E227840C3C1040A0078B322
+262240211201B30248B322
+26224401B328
+8E1C3800E3E7C4040070B322
+8EB2040007B2020070B321
+26B304B224000180
+B32C
+8EB32B
+B32C
+26B32B
+B32C
+8EB32B
+B32C
+26B32B
+B32C
+8EB32B
+B32C
+26B32B
+B32C
+8EB32B
+8E22B32A
+26B32B
+263EB32A
+8E22B32A
+8E14B32A
+26B32B
+B32C
+8E08B32A
+8EB229000180
+26B32B
+B32C
+8EB32B
+8E1C44F1F203889F3C0071122007100040711220B318
+26224C89020109902200891220089000408912A0B318
+B30AF240B30422B319
+8E2254B3020AB302811280B30442B319
+B303E3C10A9E220080A3C0089E007889E2B319
+26B229000180
+B32C
+8FB22AFF80
+B30EEAB21AAAAB80
+27B32B
+B30ED5B21B5580
+8FC01BFB007C1FFEFBF6FDE1787EF7B31D
+8FDFFDF77FF3EFB303DE77BEF7EAB21AAAAB80
+27DFFEEF7FF7F7FD75F6FDBF6FDEB31E
+B304EFB306DD6BD5B21B5580
+8FDFFF5F7FEFFFB325
+8FC03FBF00EFFFFBAEB303DB6DEAB21AAAAB80
+27DFFF5F7FB3047BDE77BB9DB31D
+27DFFEEF7FEFF7B30287E1787B9DD5B21B5580
+8FB303B202F7DF7FFFFF7FFFFFB31D
+8FDFFDF77FF3EFF7DF77B304EAB21AAAAB80
+27C01BFB007C1FB325
+27B20DFFD5B21B5580
+8FB30DB21CFF80
+B22B8880
+B22B2200
+B32C
+B22B8880
+B32C
+B22B2200
+B32C
+
+bitbltsave restore
+18000 40406 M (An input beginning with an atom completes as follows:) S
+21600 37406 M (If the first atom is immediately followed by a "\(" or a "[", the input ) S
+21600 35606 M (completes when this a "\(" or "[" is balanced by a "\)" or a "]".) S
+25200 33406 M (Examples: ) S
+1200 /Times-Italic-Acnt F
+28800 31406 M (SET[A B]) S
+1200 /Times-Roman-Acnt F
+( is complete) S
+1200 /Times-Italic-Acnt F
+28800 29406 M (SET\(A B\)) S
+1200 /Times-Roman-Acnt F
+( is complete) S
+1200 /Times-Italic-Acnt F
+28800 27406 M (SET \(A B\)) S
+1200 /Times-Roman-Acnt F
+( is not complete ) S
+1200 /Times-Italic-Acnt F
+28800 25406 M (SET\(A \(B C\)) S
+1200 /Times-Roman-Acnt F
+( is not complete) S
+21600 22406 M (The input always completes when an  over-balancing "\)" or "]" is ) S
+21600 20606 M (typed.) S
+25200 18406 M (Examples: ) S
+1200 /Times-Italic-Acnt F
+28800 16406 M (SETQ A B]) S
+1200 /Times-Roman-Acnt F
+( is complete) S
+1200 /Times-Italic-Acnt F
+28800 14406 M (SETQ A B\)) S
+1200 /Times-Roman-Acnt F
+( is complete) S
+1200 /Times-Italic-Acnt F
+28800 12406 M (SET \(A B\)) S
+1200 /Times-Roman-Acnt F
+( \) ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(is) S
+1200 /Times-Roman-Acnt F
+( complete ) S
+1200 /Times-Italic-Acnt F
+28800 10406 M (SET\(A \(B C\)) S
+1200 /Times-Roman-Acnt F
+( is not complete ) S
+grestore savepage restore showpage
+
+%%Page: 10 10
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (9) S
+7200 75600 M (LispCourse #9:  TTYIN & the Programmer's Assistant) S
+21600 71106 M (The input always completes when all parentheses are balanced and ) S
+21600 69306 M (a <RETURN> is typed.) S
+25200 67106 M (Examples: ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+28800 65106 M (SET \(A B\)<RETURN>) S
+1200 /Times-Roman-Acnt F
+( is complete) S
+1200 /Times-Italic-Acnt F
+28800 63106 M (SET \(A B<RETURN>) S
+1200 /Times-Roman-Acnt F
+( is not complete) S
+1200 /Times-Italic-Acnt F
+28800 61106 M (PLUS 2 3<RETURN> ) S
+1200 /Times-Roman-Acnt F
+( is complete ) S
+1200 /Times-Italic-Acnt F
+28800 59106 M (\(PLUS 2 3<RETURN> ) S
+1200 /Times-Roman-Acnt F
+(is not complete) S
+21600 56106 M (If all parentheses are ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(NOT ) S
+1200 /Times-Roman-Acnt F
+(balanced and a <RETURN> is typed, ) S
+21600 54306 M (then input continues on the next line:) S
+/bitbltsave save def 21600 35099 translate 35000 17100 scale 350 171 true thebitimage
+B22B88
+B22A2220
+B32B
+B22B88
+B32B
+7FB229FFF8
+B32B
+E0B2290018
+B32B
+60B3040104B323
+B3068CB323
+E0B30400D8B323
+E1C00F003E008070B323
+6220088020008020B323
+B306B2050002B31D
+E200B30A06B31D
+B3033C00F0B3050EB31D
+62200880200080B3051EB31D
+B30C3EB31D
+E1C00F003E00F8B3057EB31D
+E0B20B00FEB31D
+60B30A01B203FFF8B319
+B30740B30203B31E
+E0B30680B30207B31E
+E1C3801F1C38200084401EB320
+62244210084420010440110003B31E
+602644B30407C0110001B31E
+E0254F90080820010440110000FEB21C0018
+E1C544100830200102801E00007EB31D
+6024C2100844B3031200003EB31D
+622440B3030082B3031EB31D
+F1C380101C38F80081001C00000EB31D
+E0B2060040B2030006B31D
+60B306B2040002B31D
+B30CB21D0018
+E0B32A
+B32B
+60B32A
+B32B
+E0B32A
+B32B
+60B32A
+B32B
+E0B32A
+B32B
+60B32A
+B32B
+E0B32A
+B32B
+60B32A
+B32B
+E0B32A
+B32B
+60B32A
+B32B
+E0B32A
+B32B
+60B32A
+B32B
+E0B32A
+B32B
+60B32A
+B32B
+E0B32A
+B32B
+60B32A
+B32B
+E0B32A
+B32B
+60B32A
+B30202B327
+E0000004B327
+E1C38004207C70E007C00EB320
+6224420820408910040011B320
+602644B304020001B320
+E0254F883C40882001B322
+E1C54408224088C000800EB320
+6024C2B3028910044001B320
+62244004B30511B320
+E1C380043C4088E003800EB320
+E0000002B2260018
+60B2290018
+B32B
+E0B32A
+E1C0B329
+6220B329
+60B32A
+E2B32A
+E3C0B329
+62B2290018
+B32B
+E3E0B329
+E0B2290018
+60B32A
+B30202B30610B31F
+E0000004B30608B31F
+B303207C70E007C00EB320
+600000082040891004001104B31F
+6007C0B304020001B320
+E00000083C40882001B322
+E007C008224088C000800EB320
+600000B3028910044001B320
+B30204B3051108B31F
+E0B3023C4088E003800EB320
+B30202B2060010B31F
+60B2290018
+B32B
+E0B32A
+E3E380103E387003E007B321
+6204421020448802000880B320
+610044B303010000B321
+E083CF9E2044100080B322
+E0444411204460004007B2200018
+622442B3028802200080B320
+622440B30508B321
+E1C3801E20447001C007B2200018
+E0B2290018
+60B32A
+B32B
+E0B32A
+E3C0B329
+6220B329
+B32B
+E2B32A
+E3C0B329
+6240B329
+B32B
+E380B329
+E0B2290018
+60B32A
+61C0B329
+E040B329
+B32B
+60B32A
+B32B
+E0B32A
+B32B
+60B32A
+B32B
+E0B32A
+E1C0B329
+60B2290018
+B30620B323
+E0B30540B323
+E3E3800E3E100042200FB321
+6204421120100082200880B320
+610444B30383E0B322
+E0844F82B3028220B322
+E043840C3C100081400FB2200018
+60B2290018
+B32B
+B22AFFF8
+B30DFEB21BAAB8
+7FB32A
+B30DFDB21B5558
+FC01BFB007C1FFEFBF6FDE1787EF7DB31C
+FDFFDF77FF3EB303DDE77BEF7EB21BAAB8
+7DFFEEF7FF7F7FD75F6FDBF6FDB31E
+B303FEFFB306D6BDB21B5558
+FDFFF5B302FFB324
+FC03FBF00EFFFFBAEFB303B6DEB21BAAB8
+7DFFF5F7FEB30367BDE77BB9B31D
+7DFFEEB3027FBAEF687E1787B9DDB21B5558
+FDB302FF7F7F7DF7FFFFF7FFFFFDB31C
+FDFFDF77FF3EFF7DF77FB303FEB21BAAB8
+7C01BFB007C1B325
+7FB20CFFFDB21B5558
+B22AFFF8
+B22B88
+B22A2220
+B32B
+
+bitbltsave restore
+1200 /Times-Bold-Acnt F
+10800 30006 M (Mouse-based editing in TTYIN) S
+1200 /Times-Roman-Acnt F
+14400 27006 M (The most convenient way to edit text in TTYIN is with the mouse.) S
+14400 24006 M (The mouse buttons work as follows:) S
+1200 /Times-Bold-Acnt F
+18000 21006 M (LEFT) S
+1200 /Times-Roman-Acnt F
+( \234 used to change the place where text will be inserted when you ) S
+18000 19206 M (type.  When the LEFT button is held down, the TTYIN caret will follow ) S
+18000 17406 M (the mouse cursor as it moves about the TTYIN active region.  If the mouse ) S
+18000 15606 M (cursor moves out of the active region, this tracking stops until the cursor ) S
+18000 13806 M (moves back into the active region.) S
+1200 /Times-Bold-Acnt F
+18000 10806 M (MIDDLE) S
+1200 /Times-Roman-Acnt F
+( \234  Same as LEFT, except that the caret moves only to word ) S
+18000 9006 M (boundries \(i.e., just before or just after any word in the active region, ) S
+grestore savepage restore showpage
+
+%%Page: 11 11
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (10) S
+7200 75600 M (LispCourse #9:  TTYIN & the Programmer's Assistant) S
+18000 71106 M (where words are separated by spaces, tabs, periods, commas, etc. as well ) S
+18000 69306 M (as the various types of parentheses.\)) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 66306 M (RIGHT) S
+1200 /Times-Roman-Acnt F
+( \234 used to delete the text from the caret position to the mouse ) S
+18000 64506 M (cursor position.  As long as you hold down the RIGHT button with the ) S
+18000 62706 M (cursor in the active region, any text between the caret and the cursor is ) S
+18000 60906 M (complemented \(i.e., reverse-videoed\).  When you let up on the RIGHT ) S
+18000 59106 M (button, the complemented text \(i.e., the text between the caret and cursor ) S
+18000 57306 M (at that point in time\) is deleted.) S
+18000 54906 M (If you move out of the active region while holding down the RIGHT ) S
+18000 53106 M (button, the text complementing is stopped until you move back into the ) S
+18000 51306 M (active region with the button down.  You can ) S
+1200 /Times-Bold-Acnt F
+(abort) S
+1200 /Times-Roman-Acnt F
+( the delete by letting ) S
+18000 49506 M (up on the RIGHT button while outside the active region.) S
+1200 /Times-Bold-Acnt F
+14400 46106 M (Copy, Move and Delete Text) S
+1200 /Times-Roman-Acnt F
+18000 43106 M (Copy, Move and Delete selections are also available in TTYIN.) S
+18000 40706 M (To make these secondary selections you hold down the SHIFT and/or ) S
+18000 38906 M (CTRL keys [see below] while making and \(optionally\) extending a ) S
+18000 37106 M (selection with the mouse.) S
+18000 34706 M (In a secondary selection the mouse buttons work as follows:) S
+1200 /Times-Bold-Acnt F
+21600 32506 M (LEFT) S
+1200 /Times-Roman-Acnt F
+( \234 selects the indicated letter) S
+1200 /Times-Bold-Acnt F
+21600 30306 M (MIDDLE) S
+1200 /Times-Roman-Acnt F
+( \234 selects the indicated word) S
+1200 /Times-Bold-Acnt F
+21600 28106 M (RIGHT) S
+1200 /Times-Roman-Acnt F
+( \234 extends a selection just made with the LEFT or MIDDLE ) S
+21600 26306 M (buttons.   The selection is extended from the previous selection to ) S
+21600 24506 M (the current cursor position.) S
+18000 22106 M (In all cases, the selection takes effect when the mouse button is ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(released) S
+1200 /Times-Roman-Acnt F
+(.  ) S
+18000 20306 M (Moving within the active region with the mouse button held down, moves ) S
+18000 18506 M (the selection.  Moving out of the active region and letting up on the mouse ) S
+18000 16706 M (button, aborts the selection.) S
+18000 14306 M (The SHIFT/CTRL keys are used to determine whether the secondary ) S
+18000 12506 M (selection is a copy, a move, or a delete.) S
+grestore savepage restore showpage
+
+%%Page: 12 12
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (11) S
+7200 75600 M (LispCourse #9:  TTYIN & the Programmer's Assistant) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 71106 M (Copy) S
+1200 /Times-Roman-Acnt F
+( \234 holding down the ) S
+1200 /Times-Bold-Acnt F
+(SHIFT) S
+1200 /Times-Roman-Acnt F
+( key and making a secondary ) S
+21600 69306 M (selection will copy the selected text and insert it at the blinking ) S
+21600 67506 M (caret.  During the secondary selection, the text to be copied is ) S
+21600 65706 M (underlined with a dotted line.) S
+1200 /Times-Bold-Acnt F
+21600 63106 M (Move) S
+1200 /Times-Roman-Acnt F
+( \234 holding down the ) S
+1200 /Times-Bold-Acnt F
+(SHIFT and CTRL) S
+1200 /Times-Roman-Acnt F
+( keys while making a ) S
+21600 61306 M (secondary selection will move the selected text to just after the ) S
+21600 59506 M (blinking caret.  During the secondary selection, the text to be ) S
+21600 57706 M (moved is complemented.) S
+1200 /Times-Bold-Acnt F
+21600 55106 M (Delete) S
+1200 /Times-Roman-Acnt F
+( \234 holding down the ) S
+1200 /Times-Bold-Acnt F
+(CTRL) S
+1200 /Times-Roman-Acnt F
+( key while making a secondary ) S
+21600 53306 M (selection will delete the selected text.  During the secondary ) S
+21600 51506 M (selection, the text to be deleted is complemented.  ) S
+1000 /Times-Roman-Acnt F
+(Note: this is very ) S
+21600 49855 M (similar to the RIGHT button primary selection described above.) S
+1200 /Times-Roman-Acnt F
+18000 47106 M (Copy, Move, and Delete ) S
+1200 /Times-Bold-Acnt F
+(do) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(not) S
+1200 /Times-Roman-Acnt F
+( take effect until you let up on the SHIFT ) S
+18000 45306 M (and CTRL keys.  You are free to select and reselect while the CTRL ) S
+18000 43506 M (and/or SHIFT keys are down.  ) S
+18000 40706 M (To abort a Copy, Move, or Delete just move the mouse outside the active ) S
+18000 38906 M (region while holding down the LEFT or MIDDLE buttons and then let up ) S
+18000 37106 M (on the CTRL and SHIFT keys.) S
+1200 /Times-Bold-Acnt F
+18000 34306 M (Important Note:) S
+1200 /Times-Roman-Acnt F
+(  Pressing the) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(middle-blank key on Dolphins/Dorados or ) S
+18000 32506 M (the OPEN key on the Dandelions will retrieve the last bit of deleted text ) S
+18000 30706 M (and insert it at the blinking caret.  Hence, these keys can be used to UNDO ) S
+18000 28906 M (an mistaken deletion.) S
+1200 /Times-Bold-Acnt F
+10800 25306 M (Key-based editing in TTYIN) S
+1200 /Times-Roman-Acnt F
+14400 22306 M (TTYIN has a full-complement of key-based editing commands.) S
+1200 /Times-Bold-Acnt F
+(  ) S
+1200 /Times-Roman-Acnt F
+(These are mainly ) S
+14400 20506 M (meant for use on Interlisp-10 and Interlisp-Vax where there are no mice and bit-) S
+14400 18706 M (mapped displays.) S
+1200 /Times-Bold-Acnt F
+(  ) S
+1200 /Times-Roman-Acnt F
+14400 16106 M (We will cover only those key commands that are handy for Interlisp-D users with ) S
+14400 14306 M (mice.  Refer to the IRM \(Section 20.7\) for a full-description of all of the available ) S
+14400 12506 M (commands.) S
+14400 9906 M (Key commands can be typed at any time while using TTYIN.) S
+grestore savepage restore showpage
+
+%%Page: 13 13
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (12) S
+7200 75600 M (LispCourse #9:  TTYIN & the Programmer's Assistant) S
+14400 71106 M (The useful commands are:) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 68706 M (BS, Ctrl-A) S
+1200 /Times-Roman-Acnt F
+( \234 deletes the character just before the blinking caret.) S
+1200 /Times-Bold-Acnt F
+18000 66306 M (Ctrl-W ) S
+1200 /Times-Roman-Acnt F
+(\234 deletes text from blinking caret backwards to nearest beginning ) S
+18000 64506 M (of a word.  Word beginnings are usually marked by a space, period, or ) S
+18000 62706 M (parenthesis.) S
+1200 /Times-Bold-Acnt F
+18000 60306 M (Ctrl-Q ) S
+1200 /Times-Roman-Acnt F
+(\234 deletes the line of text containing the caret.  If this line is blank, ) S
+18000 58506 M (Ctrl-Q will delete the previous line.  So several Ctrl-Qs can be used to ) S
+18000 56706 M (delete all of the lines in a multi-line type-in.) S
+1200 /Times-Bold-Acnt F
+18000 54306 M (Ctrl-X ) S
+1200 /Times-Roman-Acnt F
+(\234 moves the blinking caret to the end of your current input.  If the ) S
+18000 52506 M (parentheses in the input are balanced or over-balanced will "complete" the  ) S
+18000 50706 M (current input.) S
+1200 /Times-Bold-Acnt F
+18000 48306 M (Middle-blank/OPEN ) S
+1200 /Times-Roman-Acnt F
+(\234 ) S
+21600 46106 M (If the last command was a Ctrl-A, a BS, a Ctrl-Q or a Ctrl-W, ) S
+21600 44306 M (undoes that command.) S
+21600 42106 M (Otherwise, retrieves the last text deleted using the mouse and ) S
+21600 40306 M (inserts it at the blinking caret.) S
+1200 /Times-Bold-Acnt F
+18000 37906 M (ESC ) S
+1200 /Times-Roman-Acnt F
+(\234 Tries to complete the word that the caret is in.  For example,  typing ) S
+18000 36106 M (in "NC.T<ESC>" might result in "NC.TestFunction" because the only ) S
+18000 34306 M ("known" word matching "NC.T ..." is "NC.TestFunction".  ) S
+21600 31906 M (TTYIN searches a list of words \(the value of USERWORDS\) ) S
+21600 30106 M (which contains all the words recently defined with a DEFINEQs or ) S
+21600 28306 M (set with a SETQ, and so on.  If TTYIN cannot find a completion, it ) S
+21600 26506 M (places an ESC in the text \(which appears on the terminal as a "$"\).  ) S
+21600 24706 M (If TTYIN finds more than one possible completion, it flashes the ) S
+21600 22906 M (window.  ) S
+1200 /Times-Bold-Acnt F
+14400 19306 M (Very specialized stuff -- Meta-key commands) S
+1200 /Times-Roman-Acnt F
+18000 16906 M (Most of the more specialized commands in TTYIN are meta-key ) S
+18000 15106 M (commands.  To use them you must use the Meta-key as well as the ) S
+18000 13306 M (commands key \(or keys\).) S
+18000 10906 M (The Meta-key works in one of two ways:) S
+grestore savepage restore showpage
+
+%%Page: 14 14
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (13) S
+7200 75600 M (LispCourse #9:  TTYIN & the Programmer's Assistant) S
+21600 71106 M (1.  Meta can work like a CTRL key in that you depress the Meta ) S
+21600 69306 M (key and the command key simulateously.) S
+21600 66906 M (2.  Meta can be a prefix key where you hit the Meta key first and ) S
+21600 65106 M (then the command key.) S
+18000 62706 M (The default Meta key is Top-Blank on Dolphins/Dorados and ) S
+18000 60906 M (KEYBOARD on Dandelions.  This is a ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(prefix) S
+1200 /Times-Roman-Acnt F
+( meta-key.  To change this to ) S
+18000 59106 M (a simultaneous Meta-key, see section 20.7.3 of the IRM.) S
+18000 56706 M (Thus by default, the meta-key commands are activated by pressing Meta ) S
+18000 54906 M (followed by the command key\(s\).) S
+18000 52506 M (The following are interesting Meta-key commands:) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 50106 M (Meta-U) S
+1200 /Times-Roman-Acnt F
+( \234 upper-cases the word containing the caret.) S
+1200 /Times-Bold-Acnt F
+21600 47706 M (Meta-L) S
+1200 /Times-Roman-Acnt F
+( \234 lower-cases the word containing the caret.) S
+1200 /Times-Bold-Acnt F
+21600 45306 M (Meta-C) S
+1200 /Times-Roman-Acnt F
+( \234 capitalizes the word containing the caret.) S
+1200 /Times-Bold-Acnt F
+21600 42906 M (Meta-Ctrl-Y) S
+1200 /Times-Roman-Acnt F
+( \234 lets you talk to a recursive call to Lisp.  You can do ) S
+21600 41106 M (anything you want in this sub-Lisp \(including do a further ) S
+21600 39306 M (recursion by typing Meta-Ctrl-Y to the sub-Lisp\).  When you are ) S
+21600 37506 M (done, type "OK<RETURN>".  This will return you to the current ) S
+21600 35706 M (input at the point you typed Meta-Ctrl-Y. ) S
+1200 /Times-Bold-Acnt F
+10800 32106 M (Concluding remarks for TTYIN) S
+1200 /Times-Roman-Acnt F
+14400 29106 M (90% of my editing with TTYIN is done using the notmal Left and Right mouse ) S
+14400 27306 M (button operations, BS, and Ctrl-X) S
+1200 /Times-Bold-Acnt F
+(.) S
+1200 /Times-Roman-Acnt F
+14400 24706 M (Another 5% is covered by the ESC completion and CTRL-Q commands.) S
+14400 22106 M (The rest of the stuff I use very little.  It comes in handy when I need it, but I could ) S
+14400 20306 M (easily live without it.) S
+1200 /Times-Bold-Acnt F
+10800 17706 M (TTYIN Documentation) S
+1200 /Times-Roman-Acnt F
+14400 15106 M (TTYIN is documented in Section 20.7 of the IRM.  Sub-sections 20.7.1 thru ) S
+14400 13306 M (20.7.3 are most relevant to the non-programming user.) S
+14400 10706 M (Section 20.7.10 described the parameters and FLGs for TTYIN, most of which ) S
+14400 8906 M (are fairly technical and none of which are especially useful.) S
+grestore savepage restore showpage
+
+%%Page: 15 15
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (14) S
+7200 75600 M (LispCourse #9:  TTYIN & the Programmer's Assistant) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (The Programmer's Assistant) S
+1200 /Times-Roman-Acnt F
+10800 67906 M (The Programmer's Assistant is a tool that helps you manage your interactions with ) S
+10800 66106 M (Interlisp.  The P.A. basically offers three services to the Interlisp user:) S
+14400 63706 M (1.  Alternative syntactic forms for some common, but clumsy Lisp synatx.) S
+14400 61306 M (2.  A history mechanism that keeps a record of the user's interactions with Lisp ) S
+14400 59506 M (and allows the user to undo and/or redo) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(interactions or sequences of interactions.) S
+1200 /Times-Roman-Acnt F
+14400 57106 M (3.  A set of special P.A. \(and LISPX\) commands that by-pass ) S
+1000 /Times-Roman-Acnt F
+(\(to some extent\)) S
+1200 /Times-Roman-Acnt F
+( the ) S
+14400 55306 M (normal Lisp evaluation mechanism, allowing the user to carry out various tasks ) S
+14400 53506 M (for which there are no specific Lisp functions or for which the Lisp functions are ) S
+14400 51706 M (particularly clumsy to use.) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+10800 48706 M (Commentary:) S
+1200 /Times-Roman-Acnt F
+(  Except for the history list and a bit of the alternative syntax, most of this ) S
+10800 46906 M (stuff is seldom used.  But it is there and you do occassionally have to interact with the ) S
+10800 45106 M (P.A. or with someone using the P.A., so its best to have some familiarity with how it ) S
+10800 43306 M (works.) S
+1200 /Times-Bold-Acnt F
+10800 40306 M (The Good Stuff:  The History Mechanism) S
+1200 /Times-Roman-Acnt F
+14400 37306 M (The P.A. maintains a record of your inputs and the results of those inputs.  An ) S
+14400 35506 M (input and its results are called an ) S
+1200 /Times-Bold-Acnt F
+(event) S
+1200 /Times-Roman-Acnt F
+(.  The P.A. automatically maintains a ) S
+14400 33706 M (record of the last 100 or so events.) S
+1200 /Times-Bold-Acnt F
+(  ) S
+1200 /Times-Roman-Acnt F
+(Through a series of P.A. commands, you have ) S
+14400 31906 M (access to these 100 events.  You can undo or redo any of the events.) S
+1200 /Times-Roman-Acnt F
+14400 29306 M (All events have an event number.  This is the number that is printyed before each ) S
+14400 27506 M (input in the Exec window, e.g., "12_" is event number 12.  ) S
+1200 /Times-Bold-Acnt F
+14400 24106 M (EventSpecs:) S
+1200 /Times-Roman-Acnt F
+( All history P.A. commands) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(refer to an event using a EventSpec ) S
+14400 22306 M (which can be one of the following:) S
+1200 /Times-Bold-Acnt F
+18000 19906 M (N) S
+1200 /Times-Roman-Acnt F
+( \(i.e., a positive integer\) \234 refers to event number N.) S
+18000 17506 M (\234) S
+1200 /Times-Bold-Acnt F
+(N ) S
+1200 /Times-Roman-Acnt F
+(\(i.e., a negative integer\) \234 ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(refers to N events prior to the current event ) S
+18000 15706 M (being input.  E.g., -1 is the previous event and -3 is three events back.) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+18000 13306 M (Pattern ) S
+1200 /Times-Roman-Acnt F
+(\234 refers to the last event that matches the given pattern.  The ) S
+18000 11506 M (allowable patterns are as defined in the DEdit Find command and are ) S
+18000 9706 M (described on page 17.13 of the IRM.  ) S
+grestore savepage restore showpage
+
+%%Page: 16 16
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (15) S
+7200 75600 M (LispCourse #9:  TTYIN & the Programmer's Assistant) S
+21600 71106 M (Examples:) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+25200 68906 M (ABC) S
+1200 /Times-Roman-Acnt F
+( refers the last event that used ABC as an atom or ) S
+25200 67506 M (function name.) S
+1200 /Times-Italic-Acnt F
+25200 65706 M (SETQ) S
+1200 /Times-Roman-Acnt F
+( refers to the last event using SETQ. ) S
+1200 /Times-Italic-Acnt F
+25200 63906 M (SET<ESC>) S
+1200 /Times-Roman-Acnt F
+( refers to the last event using any of SET, ) S
+25200 62506 M (SETQ or SETQQ, etc.) S
+1200 /Times-Italic-Acnt F
+25200 60706 M (\(LIST & &\)) S
+1200 /Times-Roman-Acnt F
+( refers to the last event that called LIST with ) S
+25200 59306 M (two arguments.) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+18000 57306 M (Empty) S
+1200 /Times-Roman-Acnt F
+( \(i.e., nothing\) \234 refers to event -1, i.e., the last event.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 53906 M (Compound Event Specs:  ) S
+1200 /Times-Roman-Acnt F
+(EventSpecs can be combined to refer to ranges of ) S
+14400 52106 M (events.  The combinations are:) S
+1200 /Times-BoldItalic-Acnt F
+18000 49706 M (EventSpec1) S
+1200 /Times-Bold-Acnt F
+( THRU ) S
+1200 /Times-BoldItalic-Acnt F
+(EventSpec2) S
+1200 /Times-Roman-Acnt F
+( \234 refers the events from ) S
+1200 /Times-Italic-Acnt F
+(EventSpec1) S
+1200 /Times-Roman-Acnt F
+( ) S
+18000 47906 M (through ) S
+1200 /Times-Italic-Acnt F
+(EventSpec2) S
+1200 /Times-Roman-Acnt F
+( inclusive, e.g., "47 THRU 49" refers to event 47 ) S
+18000 46106 M (through event 49.) S
+1200 /Times-BoldItalic-Acnt F
+18000 43706 M (EventSpec1) S
+1200 /Times-Bold-Acnt F
+( TO ) S
+1200 /Times-BoldItalic-Acnt F
+(EventSpec2) S
+1200 /Times-Roman-Acnt F
+( \234 refers to the events from ) S
+1200 /Times-Italic-Acnt F
+(EventSpec1) S
+1200 /Times-Roman-Acnt F
+( to ) S
+1200 /Times-Italic-Acnt F
+18000 41906 M (EventSpec2) S
+1200 /Times-Roman-Acnt F
+( non-inclusive of ) S
+1200 /Times-Italic-Acnt F
+(EventSpec2) S
+1200 /Times-Roman-Acnt F
+(, e.g., "47 TO 49" refers to event ) S
+18000 40106 M (47 through event 48.) S
+1200 /Times-Bold-Acnt F
+18000 37706 M (ALL) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(EventSpec) S
+1200 /Times-Italic-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(\234 refers to all events matching ) S
+1200 /Times-Italic-Acnt F
+(EventSpec) S
+1200 /Times-Roman-Acnt F
+( rather than just ) S
+18000 35906 M (the last one, e.g., "ALL SETQ" refers to all events with SETQ in them.) S
+1200 /Times-BoldItalic-Acnt F
+18000 33506 M (EventSpec1) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(AND) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(EventSpec2) S
+1200 /Times-Roman-Acnt F
+( \234 refers to ) S
+1200 /Times-Italic-Acnt F
+(EventSpec1) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Italic-Acnt F
+(EventSpec2) S
+1200 /Times-Roman-Acnt F
+(, e.g.,  ) S
+18000 31706 M ("SETQ AND 47 AND 34" refers to the last event with SETQ, event 47, ) S
+18000 29906 M (and to event 34.) S
+1200 /Times-Bold-Acnt F
+14400 26506 M (P.A. History Commands:  ) S
+1200 /Times-Roman-Acnt F
+(The following are P.A. commands that refer to the ) S
+14400 24706 M (history list.  To execute, a P.A. command you can just type it into the Exec ) S
+14400 22906 M (window terminated by a <RETURN>. ) S
+1000 /Times-Roman-Acnt F
+( \(See below for a discussion of P.A. commands in ) S
+14400 21255 M (general.\)) S
+1200 /Times-Bold-Acnt F
+18000 18306 M (?? ) S
+1200 /Times-BoldItalic-Acnt F
+(EventSpec ) S
+1200 /Times-Roman-Acnt F
+(\234 prints the event or events referred to ) S
+1200 /Times-Italic-Acnt F
+(EventSpec) S
+1200 /Times-Roman-Acnt F
+(.  Each ) S
+18000 16506 M (event is printed with the user's input followed by Lisp's response to this ) S
+18000 14706 M (input.   If any event ended in an error, the Exec window will be flashed ) S
+18000 12906 M (when this event is printed.  "??" alone will print the entire history list. "?? -) S
+18000 11106 M (1" will print the last event.) S
+grestore savepage restore showpage
+
+%%Page: 17 17
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (16) S
+7200 75600 M (LispCourse #9:  TTYIN & the Programmer's Assistant) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 71106 M (UNDO ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(EventSpec) S
+1200 /Times-Roman-Acnt F
+( \234 UNDOes the events specified by ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(EventSpec.  ) S
+1200 /Times-Roman-Acnt F
+(Not all ) S
+18000 69306 M (events can be undone.  However, the P.A. takes every effort to insure that ) S
+18000 67506 M (events the user types in are in fact undoable.  For example, SETQ and ) S
+18000 65706 M (DEFINEQ are undoable. However, COPYFILE is not undoable since Lisp ) S
+18000 63906 M (doesn't know how to undo a file copy.) S
+21600 61506 M (Examples:) S
+25200 59706 M (1_ \(SETQ A 5\)) S
+1200 /Times-Italic-Acnt F
+25200 58106 M (5) S
+1200 /Times-Roman-Acnt F
+25200 56506 M (2_ \(SETQ A 10\)) S
+1200 /Times-Italic-Acnt F
+25200 54906 M (10) S
+1200 /Times-Roman-Acnt F
+25200 53306 M (3_ A) S
+1200 /Times-Italic-Acnt F
+25200 51706 M (10) S
+1200 /Times-Roman-Acnt F
+25200 50106 M (4_ UNDO 2) S
+1200 /Times-Italic-Acnt F
+25200 48506 M (SETQ undone.) S
+1200 /Times-Roman-Acnt F
+25200 46906 M (5_ A) S
+1200 /Times-Italic-Acnt F
+25200 45306 M (5) S
+1200 /Times-Roman-Acnt F
+25200 43706 M (6_ UNDO UNDO) S
+1200 /Times-Italic-Acnt F
+25200 42106 M (UNDO undone.) S
+1200 /Times-Roman-Acnt F
+25200 40506 M (7_ A) S
+1200 /Times-Italic-Acnt F
+25200 38906 M (10) S
+1200 /Times-Bold-Acnt F
+18000 36106 M (REDO ) S
+1200 /Times-BoldItalic-Acnt F
+(EventSpec) S
+1200 /Times-Roman-Acnt F
+( \234 REDOes the events specified by ) S
+1200 /Times-Italic-Acnt F
+(EventSpec.  ) S
+1200 /Times-Roman-Acnt F
+18000 34306 M (REDOing an event has the same effect as if you retyped the same input ) S
+18000 32506 M (again.  ) S
+21600 30106 M (Examples:) S
+25200 28306 M (8_ \(SETQ A '\(A B C D E F\)\)) S
+1200 /Times-Italic-Acnt F
+25200 26706 M (\(A B C D E F\)) S
+1200 /Times-Roman-Acnt F
+25200 25106 M (9_ \(SETQ A \(CDR A\)\)) S
+1200 /Times-Italic-Acnt F
+25200 23506 M (\(B C D E F\)) S
+1200 /Times-Roman-Acnt F
+25200 21906 M (10_ REDO) S
+1200 /Times-Italic-Acnt F
+25200 20306 M (\(C D E F\)) S
+1200 /Times-Roman-Acnt F
+25200 18706 M (11_ UNDO) S
+1200 /Times-Italic-Acnt F
+25200 17106 M (REDO undone.) S
+1200 /Times-Roman-Acnt F
+25200 15506 M (12_ A) S
+1200 /Times-Italic-Acnt F
+25200 13906 M (\(B C D E F\)) S
+1200 /Times-Roman-Acnt F
+25200 12306 M (13_ REDO SETQ) S
+1200 /Times-Italic-Acnt F
+25200 10706 M (\(C D E F\)) S
+1200 /Times-Roman-Acnt F
+25200 9106 M (14_ REDO 9) S
+grestore savepage restore showpage
+
+%%Page: 18 18
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (17) S
+7200 75600 M (LispCourse #9:  TTYIN & the Programmer's Assistant) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+25200 71106 M (\(D E F\)) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 68306 M (FIX ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(EventSpec) S
+1200 /Times-Roman-Acnt F
+( \234 If ) S
+1200 /Times-Italic-Acnt F
+(EventSpec) S
+1200 /Times-Roman-Acnt F
+( refers to a single event, will reprint the input ) S
+18000 66506 M (for that event in the Exec window.  You can then use TTYIN to edit the ) S
+18000 64706 M (input and then redo the event.) S
+18000 62306 M (If ) S
+1200 /Times-Italic-Acnt F
+(EventSpec) S
+1200 /Times-Roman-Acnt F
+( refers to more than one event, the P.A. will pop you into ) S
+18000 60506 M (DEdit with a list of the events' inputs.  You can then edit this list.  When ) S
+18000 58706 M (you exit DEdit normally \(i.e., with OK or Exit\), then the P.A. will redo all ) S
+18000 56906 M (the events in the list with the modifications made in DEdit.  If you exit ) S
+18000 55106 M (DEdit with STOP, then the P.A. will do nothing.) S
+1200 /Times-Bold-Acnt F
+18000 52106 M (USE ) S
+1200 /Times-BoldItalic-Acnt F
+(New ) S
+1200 /Times-Bold-Acnt F
+(FOR ) S
+1200 /Times-BoldItalic-Acnt F
+(Old ) S
+1200 /Times-Bold-Acnt F
+(IN ) S
+1200 /Times-BoldItalic-Acnt F
+(EventSpec) S
+1200 /Times-Roman-Acnt F
+( \234 REDOes every event in ) S
+1200 /Times-Italic-Acnt F
+(EventSpec) S
+1200 /Times-Roman-Acnt F
+( ) S
+18000 50306 M (after substituting every ) S
+1200 /Times-Italic-Acnt F
+(New) S
+1200 /Times-Roman-Acnt F
+( for every ) S
+1200 /Times-Italic-Acnt F
+(Old) S
+1200 /Times-Roman-Acnt F
+( in the event.  Note that ) S
+1200 /Times-Italic-Acnt F
+(New) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Italic-Acnt F
+18000 48506 M (Old) S
+1200 /Times-Roman-Acnt F
+( can be sequences, in which case ) S
+1200 /Times-Italic-Acnt F
+(New1) S
+1200 /Times-Roman-Acnt F
+( is substituted for ) S
+1200 /Times-Italic-Acnt F
+(Old1) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Italic-Acnt F
+(New2 ) S
+1200 /Times-Roman-Acnt F
+(is ) S
+18000 46706 M (substituted for) S
+1200 /Times-Italic-Acnt F
+( Old2, ) S
+1200 /Times-Roman-Acnt F
+(and so on.  Note that both ) S
+1200 /Times-Italic-Acnt F
+(Old) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Italic-Acnt F
+(New) S
+1200 /Times-Roman-Acnt F
+( may conatin ) S
+18000 44906 M (wildcards and other special pattern match characters as specified in ) S
+18000 43106 M (Section 17.4 of the IRM.) S
+21600 40706 M (Example:) S
+25200 38906 M (14_ \(SETQ FIE 'AAA\)) S
+1200 /Times-Italic-Acnt F
+25200 37306 M (AAA) S
+1200 /Times-Roman-Acnt F
+25200 35706 M (15_ \(SETQ FOO 'BAR\)) S
+1200 /Times-Italic-Acnt F
+25200 34106 M (BAR) S
+1200 /Times-Roman-Acnt F
+25200 32506 M (16_ USE BAZ FOR BAR IN -1) S
+1200 /Times-Italic-Acnt F
+25200 30906 M (BAZ) S
+1200 /Times-Roman-Acnt F
+25200 29306 M (17_ FOO) S
+1200 /Times-Italic-Acnt F
+25200 27706 M (BAZ) S
+1200 /Times-Roman-Acnt F
+25200 26106 M (18_ \(SETQ FOO 'JAR\)) S
+1200 /Times-Italic-Acnt F
+25200 24506 M (JAR) S
+1200 /Times-Roman-Acnt F
+25200 22906 M (19_ USE FIE FOR FOO IN 15) S
+1200 /Times-Italic-Acnt F
+25200 21306 M (BAR) S
+1200 /Times-Roman-Acnt F
+25200 19706 M (20_ FOO) S
+1200 /Times-Italic-Acnt F
+25200 18106 M (JAR) S
+1200 /Times-Roman-Acnt F
+25200 16506 M (21_ FIE) S
+1200 /Times-Italic-Acnt F
+25200 14906 M (BAR) S
+1200 /Times-Roman-Acnt F
+25200 13306 M (22_ USE FIZ BANG FOR FIE BAR IN SETQ) S
+1200 /Times-Italic-Acnt F
+25200 11706 M (BANG) S
+1200 /Times-Roman-Acnt F
+25200 10106 M (23_ \(LIST FIE FOO FIZ\)) S
+1200 /Times-Italic-Acnt F
+25200 8506 M (\(BAR JAR BANG\)) S
+grestore savepage restore showpage
+
+%%Page: 19 19
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (18) S
+7200 75600 M (LispCourse #9:  TTYIN & the Programmer's Assistant) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 71106 M (Final Notes:) S
+1200 /Times-Roman-Acnt F
+( ) S
+18000 68306 M (The History mechanism is real, real handy.  Learn to use it effectively!!!!!) S
+1200 /Times-Bold-Acnt F
+18000 65506 M (HistMenu: ) S
+1200 /Times-Roman-Acnt F
+(There is a menu-based interface to the history mechanism ) S
+18000 63706 M (available as a LispUser package on {eris}<lispusers>HistMenu.Dcom ) S
+18000 61906 M (\(&.press, .tty for documentation\).  I find this interface much more difficult ) S
+18000 60106 M (to use that the P.A. command interface, but not everyone agrees.  Load ) S
+18000 58306 M (HistMenu and try for yourself.  BUT NOT UNTIL YOU BECOME ) S
+18000 56506 M (THOROUGHLY FAMILIAR WITH THE HISTORY MECHANISM.) S
+1200 /Times-Bold-Acnt F
+18000 53706 M (Documentation:  ) S
+1200 /Times-Roman-Acnt F
+(Can be found in Section 8.2 in the IRM.  There's lots of ) S
+18000 51906 M (details about the history mechanism there that we haven't even touched on ) S
+18000 50106 M (here!) S
+1200 /Times-Bold-Acnt F
+18000 47306 M (Parameters:  ) S
+1200 /Times-Roman-Acnt F
+(See Section 8.3 of the IRM for a discussion of the ) S
+18000 45506 M (parameters that effect the hsitory mechanism.. In particular, the function ) S
+18000 43706 M (\(CHANGESLICE ...\) can be used to alter the number of events recoreded ) S
+18000 41906 M (in your history list.) S
+1200 /Times-Bold-Acnt F
+10800 38306 M (Other parts of the P.A.:  Alternative syntax) S
+1200 /Times-Roman-Acnt F
+14400 35706 M (The P.A. allows several variants on standard Lisp syntax.  It accepts this syntax ) S
+14400 33906 M (and then translates it into standard Lisp to be passed to the Lisp evaluator.) S
+14400 31306 M (The syntax rules for the P.A. are the following:) S
+1200 /Times-Bold-Acnt F
+18000 28706 M (Standard Lisp Format:) S
+1200 /Times-Roman-Acnt F
+(  If the input is a single atom or a standard Lisp ) S
+18000 26906 M (expression beginning with a "\(" or "[" and ending in a balancing "\)" or "]", ) S
+18000 25106 M (then this is standard Lisp syntax which the P.A. will pass directly to the ) S
+18000 23306 M (Lisp evaluator \(with the very important exceptions about P.A. commands ) S
+18000 21506 M (noted below!!!\).) S
+1200 /Times-Bold-Acnt F
+18000 18906 M (EVAL-QUOTE Format:) S
+1200 /Times-Roman-Acnt F
+(  If the input begins with an atom immediately ) S
+18000 17106 M (followed by a single list, then the atom is assumed to be a function to be ) S
+18000 15306 M (applied to the quoted \(i.e., unevaluated\) elements of the list.  This is ) S
+18000 13506 M (commonly known as EVAL-QUOTE format, but as APPLY-format in the ) S
+18000 11706 M (IRM.  The EVAL-QUOTE expression is translated into its standard Lisp ) S
+18000 9906 M (equivalent before being passed to the Lisp evaluator.) S
+grestore savepage restore showpage
+
+%%Page: 20 20
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (19) S
+7200 75600 M (LispCourse #9:  TTYIN & the Programmer's Assistant) S
+21600 71106 M (Examples:) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+25200 68906 M (LIST\(A B\) ) S
+1200 /Times-Roman-Acnt F
+(=> \(LIST \(QUOTE A\)\(QUOTE B\)\)) S
+1200 /Times-Italic-Acnt F
+25200 66706 M (SET\(A B\) ) S
+1200 /Times-Roman-Acnt F
+(=> \(SETQ A \(QUOTE B\)\) or to \(SETQQ A B\)) S
+1200 /Times-Italic-Acnt F
+25200 64506 M (COPYFILE[FOO BAR]) S
+1200 /Times-Roman-Acnt F
+( =>  \(COPYFILE 'FOO 'BAR\)) S
+1200 /Times-Italic-Acnt F
+25200 62306 M (CONS[A \(B C D\)]) S
+1200 /Times-Roman-Acnt F
+( => \(CONS 'A '\(B C D\)\)) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 59706 M (Other formats:) S
+1200 /Times-Roman-Acnt F
+(  If the input begins with an atom followed by a space and ) S
+18000 57906 M (then zero or more other atoms and lists, then the P.A. uses the following ) S
+18000 56106 M (rules:) S
+21600 53706 M (If input is a single atom, assume it is a single atom and ignore the ) S
+21600 51906 M (space.) S
+21600 49506 M (If input is two atoms, then APPLY the function named by the first ) S
+21600 47706 M (atom to NIL.) S
+21600 45306 M (If input is an atom followed by a list, then assume it is EVAL-) S
+21600 43506 M (QUOTE format with an extra space.) S
+21600 41106 M (If input has three or more atoms and lists, then wrap parentheses ) S
+21600 39306 M (around the beginning and the end of the list.) S
+21600 36906 M (Examples:) S
+1200 /Times-Italic-Acnt F
+25200 34506 M (Atom<space>) S
+1200 /Times-Roman-Acnt F
+( => Atom) S
+1200 /Times-Italic-Acnt F
+25200 32106 M (Function Argument) S
+1200 /Times-Roman-Acnt F
+( => \(Function\)) S
+1200 /Times-Italic-Acnt F
+25200 29706 M (MINUS 7) S
+1200 /Times-Roman-Acnt F
+( => \(MINUS\)) S
+1200 /Times-Italic-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+({resulting in non-numeric arg ) S
+25200 27906 M (error}) S
+1200 /Times-Italic-Acnt F
+25200 25506 M (LIST A ) S
+1200 /Times-Roman-Acnt F
+(=> \(LIST\) {resulting in NIL}) S
+1200 /Times-Italic-Acnt F
+25200 23106 M (LIST \(A B\)) S
+1200 /Times-Roman-Acnt F
+( => LIST\(AB\) => \(LIST 'A 'B\)) S
+1200 /Times-Italic-Acnt F
+25200 20706 M (PLUS 7 8) S
+1200 /Times-Roman-Acnt F
+( => \(PLUS 7 8\) {resulting in 15}) S
+1200 /Times-Italic-Acnt F
+25200 18306 M (PLUS \(MINUS 7\) 8) S
+1200 /Times-Roman-Acnt F
+( => \(PLUS \(MINUS 7\) 8\)) S
+14400 15306 M (Except for the EVAL-QUOTE format, syntax other than the standard Lisp syntax ) S
+14400 13506 M (is seldom used.  The rules are too arcane to be effectively used.) S
+14400 10506 M (EVAL-QUOTE format is handy and is frequently used.  It cuts down on the ) S
+14400 8706 M (numer of QUOTES and 's you have to type.  BUT BE CAREFUL!!!  EVAL-) S
+grestore savepage restore showpage
+
+%%Page: 21 21
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (20) S
+7200 75600 M (LispCourse #9:  TTYIN & the Programmer's Assistant) S
+14400 71106 M (QUOTE format can lead to unexpected results when used with NLambda ) S
+14400 69306 M (functions that evaluate their arguments.) S
+18000 66906 M (Example:) S
+21600 64706 M (SET\(A B\) sets A to B as expected, but SETQ\(A B\) sets A to the ) S
+21600 62906 M (value of B just as does \(SETQ A B\)!!  This is because the function ) S
+21600 61106 M (SETQ evaluates its second argument by itself.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 58106 M (Other parts of the P.A.:  P.A. Commands and LISPX macros) S
+1200 /Times-Roman-Acnt F
+14400 55106 M (The P.A. has a set of commands that the user can execute to do various things.  ) S
+14400 53306 M (Most of these commands deal with manipulating the history list and are covered ) S
+14400 51506 M (in detail above.  However, there are some non-history P.A. commands which will ) S
+14400 49706 M (be described briefly here.) S
+14400 47106 M (Examples of P.A. commands include ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(DIR, CONN) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Italic-Acnt F
+(FB) S
+1200 /Times-Roman-Acnt F
+(.) S
+14400 44506 M (The user or programmer can also create his or her own P.A. commands called ) S
+14400 42706 M (LISPX macros.  These LISPX macros are indistinguishable from the built-in P.A. ) S
+14400 40906 M (commands.  Therefore, both the built-in P.A. commands and the LISPX macros ) S
+14400 39106 M (will be called P.A. commands here.) S
+14400 36506 M (P.A. commands work as follows:) S
+18000 33906 M (For all input, the P.A. checks to see if the first atom in the input matches a ) S
+18000 32106 M (P.A. command.) S
+21600 29706 M (If the first atom is a P.A. command, the P.A. command is executed ) S
+21600 27906 M (using the rest of the input as its argument.  No evaluation is carried ) S
+21600 26106 M (out on the rest of the input.) S
+21600 23706 M (If the first atom is not a P.A. command, the input is processed as ) S
+21600 21906 M (described above and sent on to the Lisp evaluator.) S
+1200 /Times-Bold-Acnt F
+14400 19306 M (NOTE:  If an atom is a P.A. command, it will always be interpreted as a P.A. ) S
+14400 17506 M (command when the first atom in an input.  It will mask the value and ) S
+14400 15706 M (function definitions of the atom from the user.) S
+1200 /Times-Roman-Acnt F
+18000 13306 M (Example:) S
+grestore savepage restore showpage
+
+%%Page: 22 22
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (21) S
+7200 75600 M (LispCourse #9:  TTYIN & the Programmer's Assistant) S
+21600 71106 M (If I create a P.A. command called SETQ, then "\(SETQ A B\)" will ) S
+21600 69306 M (always cause the ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(P.A. command) S
+1200 /Times-Roman-Acnt F
+( called SETQ to be carried out and ) S
+21600 67506 M (never the function SETQ.) S
+21600 65306 M (But note that "\(NULL \(SETQ A B\)\)" will cause the ) S
+1200 /Times-Italic-Acnt F
+(function SETQ) S
+1200 /Times-Roman-Acnt F
+( ) S
+21600 63506 M (to be evaluated because SETQ is not the first atom in the input.) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+21600 61306 M (Bizzare!!!!) S
+1200 /Times-Roman-Acnt F
+14400 58706 M (A P.A. command can be entered as either a series of atoms or as a standard Lisp ) S
+14400 56906 M (expression.  All that matters is that the first atom be the P.A. command.  ) S
+18000 54706 M (Example:) S
+21600 52506 M (DIR is a P.A. command.) S
+1200 /Times-Italic-Acnt F
+21600 50306 M (DIR {phylum}<halasz>) S
+1200 /Times-Roman-Acnt F
+( is equivalent to ) S
+1200 /Times-Italic-Acnt F
+(\(DIR {phylum}<halasz>\)) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 46706 M ("Interesting" P.A. Commands) S
+1200 /Times-Roman-Acnt F
+18000 44306 M (There are no truely interesting P.A. commands.  Any task worth doing is ) S
+18000 42506 M (better implemented as a full-fledged Lisp function!!!) S
+18000 40106 M (But, here are some that aren't:) S
+1200 /Times-Bold-Acnt F
+18000 37706 M (DIR) S
+1200 /Times-Roman-Acnt F
+( \234 lists the files matching the given file specification) S
+1200 /Times-Bold-Acnt F
+(.) S
+18000 35306 M (CONN) S
+1200 /Times-Roman-Acnt F
+( \234 "connects" to the given directory, e.g. "CONN ) S
+18000 33506 M ({phylum}<halasz>") S
+1200 /Times-Bold-Acnt F
+(.) S
+18000 31106 M (FB ) S
+1200 /Times-Roman-Acnt F
+(\234 starts a FileBrowser on the files described, e.g., "FB {DSK}".) S
+1200 /Times-Bold-Acnt F
+18000 28706 M (PL) S
+1200 /Times-Roman-Acnt F
+( \234 prints the property list of the given atom, e.g., "PL NOTECARDS".) S
+1200 /Times-Bold-Acnt F
+18000 26306 M (;) S
+1200 /Times-Roman-Acnt F
+( \234 ignores the rest of the line, allowing the user to type a comment that will ) S
+18000 24506 M (show up, for example, in a dribble file.) S
+grestore savepage restore showpage
+
+%%Page: 23 23
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 24 24
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (22) S
+7200 75600 M (LispCourse #9:  TTYIN & the Programmer's Assistant) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 71106 M (Documentation on the Programmer's Assistant) S
+1200 /Times-Roman-Acnt F
+14400 68106 M (The Programmer's Assistant is described in some detail in Chapter 8 of the IRM.  ) S
+14400 66306 M (Sections 8.1, 8.2, and 8.3 may contain some useful information, though much of it ) S
+14400 64506 M (may be difficult to understand for beginners.  Sections 8.4 and beyond:  don't ) S
+14400 62706 M (even bother looking there.) S
+1400 /Times-Bold-Acnt F
+7200 58957 M (References) S
+1200 /Times-Roman-Acnt F
+14400 56306 M (The aforementioned chapters and sections of the IRM.  ) S
+14400 53706 M (Also see some of the references at the end of Section 1 of the old \(1975\) IRM.  ) S
+14400 51906 M (There are pointer to articles about the original design of the P.A., which in its ) S
+14400 50106 M (time was quite a novel idea.) S
+1400 /Times-Bold-Acnt F
+7200 46357 M (Exercises) S
+1200 /Times-Roman-Acnt F
+10800 43906 M (Fool around with the TTYIN editor trying out some of the features.) S
+10800 41506 M (Fool around with EVAL-QUOTE format.) S
+10800 39106 M (Fool around with the history mechanism.) S
+10800 36706 M (Do the old excercises you never did!) S
+grestore savepage restore showpage
+
+%%Trailer

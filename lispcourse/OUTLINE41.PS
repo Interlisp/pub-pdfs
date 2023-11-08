@@ -1,0 +1,1788 @@
+%!PS-Adobe-2.0%%Title: {DSK}<home>larry>lispcourse>OUTLINE41.PS%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate:  7-Nov-2023 21:40:30%%EndComments/bdef {bind def} bind def
+/ldef {load def} bdef
+/S /show ldef
+/M /moveto ldef
+/DR {transform round exch round exch itransform} bdef
+/L {gsave newpath setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/L1 {gsave newpath 0 setdash setgray setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/F {findfont exch scalefont setfont} bdef
+/CLP {newpath M dup 0 rlineto exch 0 exch rlineto
+  neg 0 rlineto closepath clip newpath} bdef
+/R {gsave setgray newpath M dup 0 rlineto exch 0 exch
+  rlineto neg 0 rlineto closepath eofill grestore} bdef
+/ellipsedict 9 dict def
+ellipsedict /mtrx matrix put
+/ellipse
+ { ellipsedict begin
+  /endangle exch def
+  /startangle exch def
+  /orientation exch def
+  /minorrad exch def
+  /majorrad exch def
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  orientation rotate
+  majorrad minorrad scale
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+ end } bdef
+/concatprocs
+ {/proc2 exch cvlit def
+  /proc1 exch cvlit def
+  /newproc proc1 length proc2 length add array def
+  newproc 0 proc1 putinterval
+  newproc proc1 length proc2 putinterval
+  newproc cvx
+ } bdef
+/resmatrix matrix def
+/findresolution
+ {72 0 resmatrix defaultmatrix dtransform
+  /yres exch def /xres exch def
+  xres dup mul yres dup mul add sqrt
+ } bdef
+/thebitimage
+ {/maskp exch def
+  /bihgt exch def
+  /biwid exch def
+  /byte 1 string def
+  /strbufl biwid 8 div ceiling cvi def
+  /strbuf strbufl string def
+  maskp not{{1 exch sub} currenttransfer concatprocs settransfer} if
+  biwid bihgt
+  maskp { true } { 1 } ifelse
+  [biwid 0 0 bihgt 0 0]
+  {/col 0 def
+   {currentfile byte readhexstring pop 0 get
+    dup 16#B2 eq {pop
+    currentfile byte readhexstring pop 0 get 1 add
+    currentfile byte readhexstring pop pop /nbyte byte 0 get def
+    { strbuf col nbyte put /col col 1 add def} repeat}
+   {dup 16#B3 eq {pop /col col
+    currentfile byte readhexstring pop
+    0 get add 1 add def}
+    {16#B4 eq {currentfile byte readhexstring pop pop} if
+     strbuf col byte 0 get put /col col 1 add def} ifelse
+   } ifelse
+   col strbufl ge { exit } if } loop
+   strbuf }
+  maskp { imagemask } { image } ifelse
+ } bdef
+/setuserscreendict 22 dict def
+setuserscreendict begin
+ /tempctm matrix def
+ /temprot matrix def
+ /tempscale matrix def
+end
+/setuserscreen
+ {setuserscreendict begin
+   /spotfunction exch def
+   /screenangle exch def
+   /cellsize exch def
+   /m tempctm currentmatrix def
+   /rm screenangle temprot rotate def
+   /sm cellsize dup tempscale scale def
+   sm rm m m concatmatrix m concatmatrix pop
+   1 0 m dtransform /y1 exch def /x1 exch def
+   /veclength x1 dup mul y1 dup mul add sqrt def
+   /frequency findresolution veclength div def
+   /newscreenangle y1 x1 atan def
+   m 2 get m 1 get mul m 0 get m 3 get mul sub
+   0 gt { { neg } /spotfunction load concatprocs
+          /spotfunction exch def } if
+   frequency newscreenangle /spotfunction load setscreen
+  end
+ } bdef
+/setpatterndict 18 dict def
+setpatterndict begin
+ /bitison
+  {/ybit exch def /xbit exch def
+   /bytevalue bstring ybit bwidth mul xbit 8 idiv add get def
+   /mask 1 7 xbit 8 mod sub bitshift def
+   bytevalue mask and 0 ne
+  } bdef
+end
+/bitpatternspotfunction
+ {setpatterndict begin
+   /y exch def /x exch def
+   /xindex x 1 add 2 div bpside mul 1 sub cvi def
+   /yindex y 1 add 2 div bpside mul 1 sub cvi def
+   xindex yindex bitison
+    {/onbits onbits 1 add def 1}
+    {/offbits offbits 1 add def 0} ifelse
+  end
+ } bdef
+/setpattern
+ {setpatterndict begin
+   /cellsz exch def
+   /angle exch def
+   /bwidth exch def
+   /bpside exch def
+   /bstring exch def
+   /onbits 0 def /offbits 0 def
+   cellsz angle /bitpatternspotfunction load setuserscreen
+   {} settransfer
+   offbits offbits onbits add div setgray
+  end
+ } bdef
+% - - - - - Fraction-setting code, to support NS fonts better - - - - -
+/fractiondict 20 dict def
+/fractionshow 
+{ fractiondict begin
+/denom exch def 
+/num exch def 
+/regfont currentfont def
+/fractfont currentfont [.65 0 0 .6 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(1) true charpath flattenpath pathbbox 
+/height exch def pop pop pop
+ grestore
+0 .4 height mul rmoveto
+fractfont setfont num show
+0 .4 height mul neg rmoveto regfont setfont (\244) show
+fractfont setfont denom show regfont setfont end } bdef
+/f14 { (1) (4) fractionshow } bdef
+/f12 { (1) (2) fractionshow } bdef
+/f34 { (3) (4) fractionshow } bdef
+/f18 { (1) (8) fractionshow } bdef
+/f38 { (3) (8) fractionshow } bdef
+/f58 { (5) (8) fractionshow } bdef
+/f78 { (7) (8) fractionshow } bdef
+/f13 { (1) (3) fractionshow } bdef
+/f23 { (2) (3) fractionshow } bdef
+/bboxdict 20 dict def
+/bboxchk { bboxdict begin
+/regfont currentfont def
+/chkfont currentfont [1.25 0 0 1.25 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(\161) true charpath flattenpath pathbbox 
+/height exch def pop pop pop 
+ grestore 
+ currentpoint 
+ .2 height mul .3 height mul rmoveto
+chkfont setfont (\063) show
+ moveto
+ regfont setfont
+(\161) show end } bdef
+/rencdict 15 dict def
+/encodefont { rencdict begin
+/newname exch def
+/oldfont exch def
+/newcodes [
+8#001 /Aacute
+8#002 /Acircumflex
+8#003 /Adieresis
+8#004 /Agrave
+8#005 /Aring
+8#006 /Atilde
+8#007 /Ccedilla
+8#010 /Eacute
+8#011 /Ecircumflex
+8#012 /Edieresis
+8#013 /Egrave
+8#014 /Iacute
+8#015 /Icircumflex
+8#016 /Idieresis
+8#017 /Igrave
+8#020 /Ntilde
+8#021 /Oacute
+8#022 /Ocircumflex
+8#023 /Odieresis
+8#024 /Ograve
+8#025 /Otilde
+8#026 /Scaron
+8#027 /Uacute
+8#030 /Ucircumflex
+8#031 /Udieresis
+8#032 /Ugrave
+8#033 /Ydieresis
+8#034 /Zcaron
+8#177 /periodinferior
+8#201 /aacute
+8#202 /acircumflex
+8#203 /adieresis
+8#204 /agrave
+8#205 /aring
+8#206 /atilde
+8#207 /ccedilla
+8#210 /eacute
+8#211 /ecircumflex
+8#212 /edieresis
+8#213 /egrave
+8#214 /iacute
+8#215 /icircumflex
+8#216 /idieresis
+8#217 /igrave
+8#220 /ntilde
+8#221 /oacute
+8#222 /ocircumflex
+8#223 /odieresis
+8#224 /ograve
+8#225 /otilde
+8#226 /scaron
+8#227 /uacute
+8#230 /ucircumflex
+8#231 /udieresis
+8#232 /ugrave
+8#233 /ydieresis
+8#234 /zcaron
+8#235 /Eth
+8#236 /eth
+8#237 /Thorn
+8#240 /thorn
+ ] def
+/olddict oldfont findfont def /newfont olddict maxlength dict def
+olddict { exch dup /FID ne { dup /Encoding eq
+{ exch dup length array copy newfont 3 1 roll put }
+{ exch newfont 3 1 roll put } ifelse }
+ { pop pop } ifelse } forall
+newfont /FontName newname put
+newcodes aload pop
+newcodes length 2 idiv { newfont /Encoding get 3 1 roll put } repeat 
+newname newfont definefont pop end } def
+ /accentdict 10 dict def 
+ /accentor { accentdict begin /scaler exch def /delta exch def 
+/unders exch def /accents exch def /mainch exch def /scrt (X) def
+ /w1 mainch stringwidth pop def 
+ currentpoint mainch show currentpoint 4 2 roll 
+accents { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         w1 w2 sub 2 div delta rmoveto scrt show 
+         /delta delta 150 scaler mul 9 div add def
+        } forall 
+unders { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         ch 46 eq { w1 w2 sub 2 div -175 scaler mul 9 div rmoveto scrt show 0 175 rmoveto }
+           { w1 w2 sub 2 div 0 rmoveto scrt show } ifelse 
+        } forall 
+ pop pop moveto end } def 
+%%EndProlog
+%%BeginSetup
+letter/imagesizefactor 1 def%%EndSetup/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+
+%%Page: 1 1
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+54000 75600 M (F.G.H.          ) S
+54000 73800 M (7/11/85) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (LispCourse #41:  The Compiler and MASTERSCOPE) S
+7200 67157 M (The Interlisp Compiler) S
+1200 /Times-Bold-Acnt F
+10800 64106 M (What is the Interlisp Compiler?) S
+1200 /Times-Roman-Acnt F
+14400 61306 M (An important goal of any program is that it run FAST.  ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Ceteris paribus) S
+1200 /Times-Roman-Acnt F
+(, the faster ) S
+14400 59506 M (it runs the more work it can do.) S
+14400 56906 M (Running fast, usually means doing as little work as possible while the program is ) S
+14400 55106 M (running.) S
+18000 52506 M (There are two ways to accomplish this:) S
+21600 50106 M (1\)) S
+24000 50106 M (Minimize the amount of work to do) S
+21600 47706 M (2\)) S
+24000 47706 M (Do some work ahead of time so there is less work to do while ) S
+24000 45906 M (the program is running.) S
+14400 42906 M (Recall from LispCourse #34 \(and Homework #34\) that the Lisp evaluator \(i.e., ) S
+14400 41106 M (EVAL/APPLY\) does lots and lots of work whenever it evaluates a function call.) S
+18000 38106 M (Because of this, evaluating a function call is relatively slow.) S
+18000 35106 M (And because programs are made up of evaluating function calls, ) S
+18000 33306 M (\(interpreted\) Lisp programs tend to be relatively slow.) S
+18000 30306 M (Moreover, in the evaluator outlined in LispCourse #34 \(& 35\), all of the ) S
+18000 28506 M (work is done each and every time the function is called, at the time ) S
+18000 26706 M (function is called.) S
+21600 24106 M (Much of this work is in fact redundant and need only be done ) S
+21600 22306 M (once, e.g., when the function is called for the first time.) S
+18000 19306 M (Thus the Lisp evaluator in LispCourse #34 ignores both of the speed-up ) S
+18000 17506 M (techniques described above.) S
+14400 14506 M (The goal of the ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(compiler) S
+1200 /Times-Roman-Acnt F
+( is to make these two speed-up techniques available in ) S
+14400 12706 M (the Interlisp evaluation process.) S
+grestore savepage restore showpage
+
+%%Page: 2 2
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (2) S
+7200 75600 M (LispCourse #41:  The Compiler and MASTERSCOPE) S
+18000 71106 M (The compiler is a program that takes a Lisp function definition in source ) S
+18000 69306 M (code form \(i.e., in the form that you write it in\) and does as much of the ) S
+18000 67506 M ("evaluation work" as it can.) S
+18000 64906 M (It then rewrites the function definition in a new form \(i.e., compiled code ) S
+18000 63106 M (form\) that captures all of the work it has done.) S
+18000 60506 M (When the Lisp evaluation process encounters a function definition in ) S
+18000 58706 M (compiled code form, it can take advantage of the work the compiler has ) S
+18000 56906 M (already done and therefore APPLYing the function is much faster than if ) S
+18000 55106 M (the function were in source code form.) S
+14400 52106 M (Since the compiler is run once, before the function is ever evaluated, it does two ) S
+14400 50306 M (things:) S
+18000 47906 M (1\)) S
+20400 47906 M (it minimizes work by getting rid of the redundancy in multiple ) S
+20400 46106 M (evaluations) S
+18000 43706 M (2\)) S
+20400 43706 M (it moves some of the cost of function call evaluation from the time of ) S
+20400 41906 M (evaluation to some earlier time \(i.e., to the time when compilation is ) S
+20400 40106 M (done\).) S
+14400 37506 M (The result is that compiled functions can be evaluated much, much faster than the ) S
+14400 35706 M (equivalent interpreted \(i.e. source code\) functions.  This is an obvious advantage. ) S
+14400 33106 M (The disadvantage of the compiler scheme is that you have to take the time to ) S
+14400 31306 M (compile your functions before you run them.) S
+18000 28706 M (This can be a big disadvantage when you are debugging and testing your ) S
+18000 26906 M (program.) S
+18000 24306 M (In these cases, you make frequent changes to your function definitions.) S
+18000 21706 M (If you have to recompile your functions each time you make a change, the ) S
+18000 19906 M (compile time can easily outweigh the time wasted by the slower ) S
+18000 18106 M (evaluation of interpreted functions.) S
+14400 15506 M (Other disadvantages of compiled code are the following:) S
+18000 13106 M (1\)) S
+20400 13106 M (Compiled code can be read only by real Lisp wizards.  To the rest of ) S
+20400 11306 M (us, it looks like gibberish.) S
+grestore savepage restore showpage
+
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (3) S
+7200 75600 M (LispCourse #41:  The Compiler and MASTERSCOPE) S
+18000 71106 M (2\)) S
+20400 71106 M (Compiled code to some extent brings back the data/program ) S
+20400 69306 M (distinction into Lisp.) S
+21600 66906 M (In source code form, function definitions are just list structures that ) S
+21600 65106 M (can easily be treated as data by another function.) S
+21600 62706 M (In compiled code form, function definitions are special objects that ) S
+21600 60906 M (are not easily accessible using the standard Interlisp data ) S
+21600 59106 M (manipulation mechanisms.) S
+14400 56706 M (The bottom-line is that compiled code is good for helping finished programs run ) S
+14400 54906 M (fast while interpreted code is good for testing and debugging, and when you need ) S
+14400 53106 M (to blur the distinction between data and program.) S
+14400 50706 M (An important feature of Interlisp \(in fact of most Lisps\) is that compiled code and ) S
+14400 48906 M (interpreted code can be freely intermixed without any special considerations on ) S
+14400 47106 M (the part of the programmer.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 43506 M (An example of what the compiler does) S
+1200 /Times-Roman-Acnt F
+14400 40506 M (The compiler is a very complex program that does lots and lots of fancy things to ) S
+14400 38706 M (speed up the evaluation of Lisp code.) S
+18000 36106 M (Compiler research and the problem of compiled code optimization are ) S
+18000 34306 M (important research areas in computer science. ) S
+18000 31706 M (None of this will be covered here \(since I don't know anything about it!\).) S
+14400 29106 M (However, the following is an example of what the compiler does:) S
+18000 26506 M (Consider the following abstract function definition:) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 23906 M (\(LAMBDA \(A B\) \(LET \(D E\)\(LET \(F G\) \(LIST A B D E F G\)\)\)\)) S
+1200 /Times-Roman-Acnt F
+18000 20906 M (In the) S
+1200 /Times-Italic-Acnt F
+( ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(interpreter) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(outlined in LispCourse #34, evaluation of the LIST ) S
+18000 19106 M (function call would involve calling the ) S
+1200 /Times-Bold-Acnt F
+(LookUpValue) S
+1200 /Times-Roman-Acnt F
+( function 6 times to ) S
+18000 17306 M (look up the values of the atoms A, B, ....) S
+21600 14306 M (Each time, the ) S
+1200 /Times-Bold-Acnt F
+(LookUpValue) S
+1200 /Times-Roman-Acnt F
+( function would search up the stack ) S
+21600 12506 M (looking for a binding of the given variable.  For A & B, it would ) S
+21600 10706 M (find the binding on the third stack frame from the bottom.  D & E ) S
+21600 8906 M (would be found on the second stack frame, etc.) S
+grestore savepage restore showpage
+
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (4) S
+7200 75600 M (LispCourse #41:  The Compiler and MASTERSCOPE) S
+21600 71106 M (All of this stack searching would take lots of time.) S
+18000 68106 M (The compiler, however, can do some of the interpretation work ahead of ) S
+18000 66306 M (time.  For example:) S
+21600 63306 M (The compiler can predict \(based on the structure of the Lisp source ) S
+21600 61506 M (code\) that any reference to A within the second embedded LET ) S
+21600 59706 M (will refer to the A bound in the third stack frame from the bottom.) S
+25200 57306 M (Furthermore, since A is the first item in the parameter list, ) S
+25200 55506 M (the compiler can figure out that A will be the first bound ) S
+25200 53706 M (variable in its stack frame.) S
+25200 51306 M (The compiler knows about the format of the stack.  It can ) S
+25200 49506 M (therefore generate code that directly fetches the value of the ) S
+25200 47706 M (first bound variable in the third stack frame without any ) S
+25200 45906 M (search of the stack.) S
+25200 43506 M (Thus, the compiler would replace all the references to the ) S
+25200 41706 M (value of A within the second embedded LET with compiled ) S
+25200 39906 M (code that just looks up the value of the first bound variable ) S
+25200 38106 M (in the third stack frame.) S
+25200 35706 M (Then, when the function is later evaluated, the expensive ) S
+25200 33906 M (stack lookup operation for the value of A would be ) S
+25200 32106 M (skipped.) S
+21600 29106 M (The compiler could do the analogous thing for all of the bound ) S
+21600 27306 M (variables within this function defintion.) S
+25200 24706 M (If the function were compiled, the evaluation of the \(LIST ) S
+25200 22906 M (...\) statement would involve no stack lookup operations, ) S
+25200 21106 M (resulting in a much faster evaluation.) S
+21600 18106 M (Note that the compiler ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(cannot) S
+1200 /Times-Roman-Acnt F
+( do the same thing for free variable ) S
+21600 16306 M (references.  This is because the stack frame binding refered to by a ) S
+21600 14506 M (free variable is determined at ) S
+1200 /Times-Italic-Acnt F
+(run time) S
+1200 /Times-Roman-Acnt F
+( by what functions and ) S
+21600 12706 M (bindings are currently on the stack.) S
+grestore savepage restore showpage
+
+%%Page: 5 5
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (5) S
+7200 75600 M (LispCourse #41:  The Compiler and MASTERSCOPE) S
+25200 71106 M (The compiler has no way of predicting what the stack will ) S
+25200 69306 M (look like at run time, and can therefore not replace the ) S
+25200 67506 M (stack lookup by a direct reference.) S
+18000 64106 M (A good compiler, however, could also do some optimizations in this ) S
+18000 62306 M (function.) S
+21600 59906 M (In particular, the two LETs could be collapsed into a single LET, ) S
+21600 58106 M (eliminating the need to create an additional stack frame.) S
+25200 55706 M (This is possible because the compiler can tell that the ) S
+25200 53906 M (embedded LET does not rebind any of the variables used in ) S
+25200 52106 M (the outer LET.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 48506 M (Using the compiler) S
+14400 45506 M (Compiler Questions) S
+1200 /Times-Roman-Acnt F
+18000 42506 M (All of the functions that invoke the compiler start by asking the user the ) S
+18000 40706 M (following series of questions.  Each question should be answered "Yes" ) S
+18000 38906 M (\(or "Y"\) or "No" \(or "N"\), followed by a Carriage Return.) S
+1200 /Times-Bold-Acnt F
+21600 35906 M (Listing?) S
+1200 /Times-Roman-Acnt F
+( \234 Asks whether you want a detailed listing of the compiled ) S
+21600 34106 M (code being generated.  Always answer this question with "No".) S
+1200 /Times-Bold-Acnt F
+21600 31106 M (REDFINE?) S
+1200 /Times-Roman-Acnt F
+( \234 Asks whether the compiled code should replace the ) S
+21600 29306 M (source code as the function definition for the functions being ) S
+21600 27506 M (compiled.  In general, this question should be answered "Yes".) S
+25200 24506 M (Occasionally, you may just want to create a file of ) S
+25200 22706 M (compiled code without altering the definitions in the ) S
+25200 20906 M (current virtual memory.  In this case, answer this question ) S
+25200 19106 M (with "No".) S
+1200 /Times-Bold-Acnt F
+21600 16106 M (SAVE EXPRS?) S
+1200 /Times-Roman-Acnt F
+( \234 Asks whether to save the original source code ) S
+21600 14306 M (whenever a function is redefined using its compiled code.) S
+25200 11706 M (If "No", then the original code is lost when the function is ) S
+25200 9906 M (redefined with the compiled code.) S
+grestore savepage restore showpage
+
+%%Page: 6 6
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (6) S
+7200 75600 M (LispCourse #41:  The Compiler and MASTERSCOPE) S
+25200 71106 M (If "Yes", then the original source code is placed on the ) S
+25200 69306 M (property list of the atom that is the function's name using ) S
+25200 67506 M (the property EXPR.) S
+28800 65106 M (The editor, the compiler, the file package, etc. all ) S
+28800 63306 M (know about the EXPR property and handle in ) S
+28800 61506 M (appropriately.) S
+32400 59106 M (For example, if you call DEdit on a function ) S
+32400 57306 M (whose definition is compiled code, DEdit ) S
+32400 55506 M (will instead edit the  source code stored in ) S
+32400 53706 M (the EXPR property \(if there is any\).) S
+32400 51306 M (If the function definition stored in EXPR is ) S
+32400 49506 M (changed during the DEdit, then DEdit ) S
+32400 47706 M (automatically redefines the function to be ) S
+32400 45906 M (the ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(new) S
+1200 /Times-Roman-Acnt F
+( source code and saves the old ) S
+32400 44106 M (compiled definition on the property list ) S
+32400 42306 M (under the property CODE.) S
+25200 39906 M (In general, answer this question "Yes". because you will ) S
+25200 38106 M (often want to edit the source code and recompile the ) S
+25200 36306 M (function.) S
+28800 33906 M (If you answer "No", you will have lreoad the source ) S
+28800 32106 M (code from a file \(if you even bothered to save it\) ) S
+28800 30306 M (when you want to change the function.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 27306 M (OUTPUT FILE?) S
+1200 /Times-Roman-Acnt F
+( \234 Asks whether to write the compiled code to a ) S
+21600 25506 M (file that can be LOADed at a later time or in a new sysout, etc. ) S
+25200 22906 M ("No" means no file will be created.) S
+25200 20306 M ("Yes" will cause the compiler to prompt you for a file ) S
+25200 18506 M (name.) S
+25200 15906 M (Anything else will be interpreted as a file name, in which ) S
+25200 14106 M (case "Yes" will be assumed and that file will be used.) S
+18000 10906 M (Note: as a shorthand you can answer the ) S
+1200 /Times-Bold-Acnt F
+(LISTING?) S
+1200 /Times-Roman-Acnt F
+( question can be ) S
+18000 9106 M (answered using the following:) S
+grestore savepage restore showpage
+
+%%Page: 7 7
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (7) S
+7200 75600 M (LispCourse #41:  The Compiler and MASTERSCOPE) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 71106 M (S) S
+1200 /Times-Roman-Acnt F
+( \234 use the same answers to all questions as given for the last ) S
+21600 69306 M (compile.) S
+1200 /Times-Bold-Acnt F
+21600 66906 M (F) S
+1200 /Times-Roman-Acnt F
+( \234 just compile to a file without redefining the functions in the ) S
+21600 65106 M (virtual memory.) S
+1200 /Times-Bold-Acnt F
+21600 62706 M (ST) S
+1200 /Times-Roman-Acnt F
+( \234 answer REDFINE? and SAVE EXPRS? with "Yes" but ask ) S
+21600 60906 M (about the output file.) S
+1200 /Times-Bold-Acnt F
+21600 58506 M (STF) S
+1200 /Times-Roman-Acnt F
+( \234 answer REDFINE? with "Yes" and SAVE EXPRS? with ) S
+21600 56706 M ("No" and ask about the output file.) S
+1200 /Times-Bold-Acnt F
+14400 53106 M (Functions that invoke the compiler) S
+1200 /Times-Roman-Acnt F
+18000 49506 M (The following function invoke the compiler:) S
+1200 /Times-Bold-Acnt F
+21600 46506 M (\(COMPILE ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Functions) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 Compile the current source code ) S
+21600 44706 M (definitions for each of the functions in the list ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Functions) S
+1200 /Times-Roman-Acnt F
+(.  If ) S
+1200 /Times-Italic-Acnt F
+21600 42906 M (Functions) S
+1200 /Times-Roman-Acnt F
+( is an atom, \(LIST ) S
+1200 /Times-Italic-Acnt F
+(Functions) S
+1200 /Times-Roman-Acnt F
+(\) is used.) S
+25200 40506 M (The current source code definition is either the function ) S
+25200 38706 M (definition or the source code stored under EXPR on the ) S
+25200 36906 M (property list.) S
+1200 /Times-Bold-Acnt F
+21600 33906 M (\(TCOMPL ) S
+1200 /Times-BoldItalic-Acnt F
+(Files) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 Used to compile source code files created by ) S
+21600 32106 M (MAKEFILE.  ) S
+1200 /Times-Italic-Acnt F
+(Files) S
+1200 /Times-Roman-Acnt F
+( is a list of source code files to be compiled ) S
+21600 30306 M (one-by-one in order.  If ) S
+1200 /Times-Italic-Acnt F
+(Files) S
+1200 /Times-Roman-Acnt F
+( is atomic, \(LIST ) S
+1200 /Times-Italic-Acnt F
+(Files) S
+1200 /Times-Roman-Acnt F
+(\) will be used.) S
+25200 27906 M (Compiling a MAKEFILE file involves compiling all of the ) S
+25200 26106 M (functions on that file, writing the compiled code to a new ) S
+25200 24306 M (file of the same name \(but with the extension .DCOM\), and ) S
+25200 22506 M (then copying all of the non-function items \(e.g., VARS, ) S
+25200 20706 M (RECORDS, etc\) from the source file to the new compiled ) S
+25200 18906 M (file.) S
+25200 16506 M (The resulting .DCOM file is a LOADable replacement of ) S
+25200 14706 M (the original MAKEFILE source file, except that the ) S
+25200 12906 M (function definitions contaion compiled rather than source ) S
+25200 11106 M (code.) S
+25200 8706 M (TCOMPL returns a list of DCOM file produced.) S
+grestore savepage restore showpage
+
+%%Page: 8 8
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (8) S
+7200 75600 M (LispCourse #41:  The Compiler and MASTERSCOPE) S
+25200 71106 M (Note: Since TCOMPL automatically produces a file, it does ) S
+25200 69306 M (not ask the OUTPUT FILE? question.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 66306 M (\(RECOMPILE ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(File) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 Used to recompile a single source code file ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 64506 M (File) S
+1200 /Times-Roman-Acnt F
+( after one or more of its functions have been edited using ) S
+21600 62706 M (DEdit.) S
+1200 /Times-Roman-Acnt F
+25200 59706 M (RECOMPILE works like TCOMPL, except that it does not ) S
+25200 57906 M (compile all functions on ) S
+1200 /Times-Italic-Acnt F
+(File) S
+1200 /Times-Roman-Acnt F
+(.  Instead the following ) S
+25200 56106 M (scheme is used:) S
+28800 53106 M (If the function definition in the virtual memory is an ) S
+28800 51306 M (EXPR \(i.e., is not compiled code\), then ) S
+28800 49506 M (RECOMPILE compiles that definition and writes it ) S
+28800 47706 M (to the output DCOM file. [As indicated above, ) S
+28800 45906 M (functions are redefined to be their EXPR version ) S
+28800 44106 M (\(source code\) whenever they are edited using ) S
+28800 42306 M (DEdit.]) S
+28800 39306 M (If the function definition in the virtual memory is ) S
+28800 37506 M (NOT an EXPR, then RECOMPILE simply copies ) S
+28800 35706 M (the previous compiled definition from the previous ) S
+28800 33906 M (version of the DCOM corresponding to ) S
+1200 /Times-Italic-Acnt F
+(File) S
+1200 /Times-Roman-Acnt F
+(.) S
+25200 30906 M (RECOMPILE is considerably faster than TCOMPL when ) S
+25200 29106 M (only one or a few function definitions have been changed ) S
+25200 27306 M (because it doesn't recompile functions that haven't ) S
+25200 25506 M (changed.) S
+1200 /Times-Bold-Acnt F
+14400 21906 M (Example) S
+1200 /Times-Roman-Acnt F
+18000 18906 M (32_\(DEFINEQ \(AAA \(LAMBDA \(A B C\) \(PLUS A B C\)\)\)\)) S
+1200 /Times-Italic-Acnt F
+18000 17306 M (\(AAA\)) S
+1200 /Times-Roman-Acnt F
+18000 15706 M (33_\(DEFINEQ \(BBB \(LAMBDA \(A B C\) \(LIST A B C\)\)\)\)) S
+1200 /Times-Italic-Acnt F
+18000 14106 M (\(BBB\)) S
+1200 /Times-Roman-Acnt F
+18000 12506 M (34_\(SETQ EXAMPLECOMS '\(\(FNS AAA BBB\)\(VARS \(XYZ 44\)\)\)\)) S
+1200 /Times-Italic-Acnt F
+18000 10906 M (\(\(FNS AAA BBB\) \(VARS \(XYZ 44\)\)\)) S
+1200 /Times-Roman-Acnt F
+18000 9306 M (35_\(MAKEFILE 'EXAMPLE\)) S
+grestore savepage restore showpage
+
+%%Page: 9 9
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (9) S
+7200 75600 M (LispCourse #41:  The Compiler and MASTERSCOPE) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+18000 71106 M ({PHYLUM}<HALASZ>EXAMPLE.;1) S
+1200 /Times-Roman-Acnt F
+18000 69506 M (36_\(TCOMPL 'Example]) S
+1200 /Times-Italic-Acnt F
+18000 67906 M (listing? ) S
+1200 /Times-Roman-Acnt F
+(no) S
+1200 /Times-Italic-Acnt F
+18000 66306 M (redefine?) S
+1200 /Times-Roman-Acnt F
+( yes) S
+1200 /Times-Italic-Acnt F
+18000 64706 M (save exprs?) S
+1200 /Times-Roman-Acnt F
+( yes) S
+1200 /Times-Italic-Acnt F
+18000 63106 M (\(dwimifying AAA\)) S
+18000 61506 M (\(AAA \(A B C\)\)) S
+18000 59906 M (\(AAA redefined\)) S
+18000 58306 M (\(dwimifying BBB\)) S
+18000 56706 M (\(BBB \(A B C\)\)) S
+18000 55106 M (\(BBB redefined\)) S
+18000 53506 M (\({PHYLUM}<HALASZ>EXAMPLE.DCOM;1\)) S
+1200 /Times-Roman-Acnt F
+18000 51906 M (37_DF[AAA]) S
+1200 /Times-Italic-Acnt F
+18000 50306 M (prop unsaved) S
+18000 48706 M (AAA) S
+1200 /Times-Roman-Acnt F
+18000 47106 M (38_\(MAKEFILE 'EXAMPLE\)) S
+1200 /Times-Italic-Acnt F
+18000 45506 M ({PHYLUM}<HALASZ>EXAMPLE.;2) S
+1200 /Times-Roman-Acnt F
+18000 43906 M (39_\(RECOMPILE 'EXAMPLE]) S
+1200 /Times-Italic-Acnt F
+18000 42306 M (listing? ) S
+1200 /Times-Roman-Acnt F
+(N) S
+1200 /Times-Italic-Acnt F
+18000 40706 M (redefine? ) S
+1200 /Times-Roman-Acnt F
+(Y) S
+1200 /Times-Italic-Acnt F
+18000 39106 M (save exprs?) S
+1200 /Times-Roman-Acnt F
+( Y) S
+1200 /Times-Italic-Acnt F
+18000 37506 M (\(dwimifying AAA\)) S
+18000 35906 M (\(AAA \(A B C\)\)) S
+18000 34306 M (\(AAA redefined\)) S
+18000 32706 M (BBB, ) S
+18000 31106 M ({PHYLUM}<HALASZ>EXAMPLE.DCOM;2) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 27506 M (Special Considerations when Writing Code to be Compiled) S
+1200 /Times-Roman-Acnt F
+14400 24306 M (Interlisp takes ever effort to make compiled and interpreted code totally ) S
+14400 22506 M (interchangeable.  However, there are some ways in which this simply cannot be ) S
+14400 20706 M (done.  The following are some special considerations involved in writing code ) S
+14400 18906 M (that will be compiled.) S
+18000 16306 M (All of these considerations are optional.  They are simply ways of taking ) S
+18000 14506 M (advantage of feature available in compiled but not interpreted code.) S
+grestore savepage restore showpage
+
+%%Page: 10 10
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 11 11
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (10) S
+7200 75600 M (LispCourse #41:  The Compiler and MASTERSCOPE) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 71106 M (GLOBALVARS ) S
+1200 /Times-Roman-Acnt F
+18000 68106 M (As described above, the compiler writes special code to handle many of ) S
+18000 66306 M (the variable references more efficiently than the standard stack search ) S
+18000 64506 M (mechanism.) S
+18000 61506 M (As we discussed in LispCourse #34, free variable reference in interpreeted ) S
+18000 59706 M (code is always done through a stack search unless you use the ) S
+18000 57906 M (GETTOPVAL/SETTOPVAL functions.  In the later case, the value cell of ) S
+18000 56106 M (the atom is used directly without any stack search.) S
+18000 53106 M (You have a little more control over this process in code produced by the ) S
+18000 51306 M (compiler.  In particular, you can declare any variable to be a ) S
+1200 /Times-Bold-Acnt F
+18000 49506 M (GLOBALVAR) S
+1200 /Times-Roman-Acnt F
+(.) S
+21600 46506 M (Declaring a variable to be a GLOBALVAR tells the compiler that ) S
+21600 44706 M (whenever that variable is used freely in a function, code should be ) S
+21600 42906 M (generated to directly access the value of the atom, skipping the ) S
+21600 41106 M (stack search.  Declaring a variable to be a GLOBALVAR is ) S
+21600 39306 M (essentially telling the compiler to generate code to do a ) S
+21600 37506 M (SETTOPVAL or GETTOPVAL  whenever the variable is used ) S
+21600 35706 M (freely.) S
+21600 32706 M (If you don't declare a variable to be a GLOBALVAR, then the ) S
+21600 30906 M (compiler will generate code to do the normal stack search when it ) S
+21600 29106 M (encounters that variable used freely.) S
+18000 26106 M (There are several ways to declare a variable as a GLOBALVAR:) S
+21600 23106 M (1\) Put a clause in the COMS list that contains the functions that ) S
+21600 21306 M (you want to use that variable as a GLOBALVAR.  The clause ) S
+21600 19506 M (should be of the form ) S
+1200 /Times-Bold-Acnt F
+(\(GLOBALVARS ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Var1) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Var2) S
+1200 /Times-Bold-Acnt F
+( ...\)) S
+1200 /Times-Roman-Acnt F
+(.) S
+25200 17106 M (When any of the functions on the file are compiled, free ) S
+25200 15306 M (variable references for any variable in a GLOBALVARS ) S
+25200 13506 M (clause will be compiled as global variables.) S
+grestore savepage restore showpage
+
+%%Page: 12 12
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (11) S
+7200 75600 M (LispCourse #41:  The Compiler and MASTERSCOPE) S
+21600 71106 M (2\) Put a property GLOBALVAR with value T on the property list ) S
+21600 69306 M (of the atom.  Anytime the compiler runs across this atom used as a ) S
+21600 67506 M (free variable, it will compile it as a global variable.) S
+21600 64506 M (3\) Add the atom to the global list GLOBALVARS. Anytime the ) S
+21600 62706 M (compiler runs across this atom used as a free variable, it will ) S
+21600 60906 M (compile it as a global variable.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 57506 M (Macros) S
+1200 /Times-Roman-Acnt F
+18000 54506 M (A macro is a Lisp form that is evaluated at compile time to produce a Lisp ) S
+18000 52706 M (form that is in turn compiled.) S
+21600 50306 M (The evaluation of a macro to produce the form to be compiled is ) S
+21600 48506 M (called ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(expanding) S
+1200 /Times-Roman-Acnt F
+( the macro.) S
+21600 46106 M (For example: ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(\(LIST \(CAR '\(PLUS DIFFERENCE\)\) A B\)) S
+1200 /Times-Roman-Acnt F
+( might be ) S
+21600 44306 M (a macro that when expanded returns the Lisp form \(PLUS 33 C\) ) S
+21600 42506 M (given that the value of A is 33 and B is C when the macro is ) S
+21600 40706 M (expanded.) S
+21600 38306 M (Note that the form that gets entered into the compiled function is ) S
+21600 36506 M (\(PLUS 33 C\).  When this compiled function later gets evaluated, ) S
+21600 34706 M (the variables A and B have no effect whatsoever, only the variable ) S
+21600 32906 M (C \(which didn't appear in the macro definition at all\) is releveant ) S
+21600 31106 M (to the evaluation.) S
+18000 28106 M (Contrast the concept of a macro with the following Lisp construction:) S
+1200 /Times-Italic-Acnt F
+21600 25106 M (\(EVAL \(LIST \(CAR '\(PLUS DIFFERENCE\)\) A B\)\)) S
+1200 /Times-Roman-Acnt F
+21600 22106 M (When this form is evaluated, the inner LIST function returns ) S
+21600 20306 M (\(PLUS 5 6\) given that the value of A is 5 and B is 6.  This form is ) S
+21600 18506 M (then evaluated by EVAL.) S
+21600 15506 M (Note that if this form were compiled, it would be compiled exactly ) S
+21600 13706 M (as is.  The value of A and B would not enter into the compiling ) S
+21600 11906 M (process but would appear as variables in the compiled definition ) S
+21600 10106 M (\(as they are in the source definition\).  The value of A and B are ) S
+grestore savepage restore showpage
+
+%%Page: 13 13
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (12) S
+7200 75600 M (LispCourse #41:  The Compiler and MASTERSCOPE) S
+21600 71106 M (then used at evaluation time, i.e., when the compiled form is being ) S
+21600 69306 M (evaluated.) S
+18000 66306 M (Compiler macros are an important part of most Lisp dialects.  ) S
+18000 64506 M (Unfortunately, in Interlisp they are relatively poorly implemented and ) S
+18000 62706 M (very clumsy to use.  Therefore, macros are not used with high frequency ) S
+18000 60906 M (in Interlisp.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 57906 M (Using Macros) S
+1200 /Times-Roman-Acnt F
+21600 54906 M (Macros are used very much like functions \234 in fact many of the ) S
+21600 53106 M (Interlisp "functions" we have talked about are in fact implemented ) S
+21600 51306 M (as macros.) S
+25200 48906 M (Example:  If TestList is a macro name, then \(TestList A B ) S
+25200 47106 M (C\) would be a form that calls that macro.) S
+28800 44506 M (The name TestList cues the interpreter or the ) S
+28800 42706 M (compiler that the TestList macro should be ) S
+28800 40906 M (expanded using A B C as arguments to the ) S
+28800 39106 M (expansion. \(Expansion is described below.\)) S
+28800 36506 M (The form that actually gets evaluated or compiled is ) S
+28800 34706 M (the form that results from this expansion.) S
+32400 32306 M (The original form \(TestList A B C\) is ) S
+32400 30506 M (basically ignored.) S
+21600 27306 M (The compiler and the interpreter treat macros slightly differently:) S
+25200 24706 M (Whenever he compiler encounters a form, it first checks to ) S
+25200 22906 M (see if the CAR of the form is an atom with a macro ) S
+25200 21106 M (definition.  If so, it expands the macro \(as described below\) ) S
+25200 19306 M (and compiles the result of this expansion instead of the ) S
+25200 17506 M (original form.  ) S
+28800 15106 M (If there is no macro definition, then the complier ) S
+28800 13306 M (looks to see if the CAR has a function definition.) S
+25200 10506 M (In contrast, the interpreter looks first for a function ) S
+25200 8706 M (definition and only if one is not found does it look for a ) S
+grestore savepage restore showpage
+
+%%Page: 14 14
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (13) S
+7200 75600 M (LispCourse #41:  The Compiler and MASTERSCOPE) S
+25200 71106 M (macro definition for the CAR of a form.  If it needs and ) S
+25200 69306 M (finds a macro definition, it expands the macro \(as described ) S
+25200 67506 M (below\) and evaluates the result of this expansion in place of ) S
+25200 65706 M (the original form. ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 62706 M (Defining macros and macro expansion) S
+1200 /Times-Roman-Acnt F
+21600 59706 M (To define a macro, you need to put a macro definition onto the ) S
+21600 57906 M (property list of the macro's name under the property MACRO \(or ) S
+21600 56106 M (DMACRO\).) S
+21600 53106 M (The definition should be an Lisp form with one of the following ) S
+21600 51306 M (formats:) S
+1200 /Times-Bold-Acnt F
+25200 48306 M (\() S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(List) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(SExpression) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 this is called a substitution macro.  ) S
+25200 46506 M (When this macro is expanded, each time an atom appearing ) S
+25200 44706 M (in ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(List) S
+1200 /Times-Roman-Acnt F
+( appears in ) S
+1200 /Times-Italic-Acnt F
+(SExpression) S
+1200 /Times-Roman-Acnt F
+(, the corresponding argument ) S
+25200 42906 M (from the macro call \(e.g., the A B C in ) S
+1200 /Times-Italic-Acnt F
+(\(TestList A B C\)) S
+1200 /Times-Roman-Acnt F
+( \) is ) S
+25200 41106 M (substituted in its place.  The result is ) S
+1200 /Times-Italic-Acnt F
+(SExpression) S
+1200 /Times-Roman-Acnt F
+( with ) S
+25200 39306 M (these substitutions.) S
+28800 36306 M (Example:) S
+28800 34106 M (If ) S
+1200 /Times-Italic-Acnt F
+(\(PUTPROP 'ADD2 'MACRO '\(\(X\) \(PLUS X 2\)\)\)) S
+1200 /Times-Roman-Acnt F
+28800 32106 M (Then) S
+1200 /Times-Italic-Acnt F
+( \(ADD2 \(CAR Z\)\) ) S
+1200 /Times-Roman-Acnt F
+(would expand to ) S
+1200 /Times-Italic-Acnt F
+(\(PLUS ) S
+28800 30306 M (\(CAR Z\) 2\)) S
+1200 /Times-Bold-Acnt F
+25200 27306 M (\() S
+1200 /Times-BoldItalic-Acnt F
+(LitAtom) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(SExpression) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 When this macro is expanded, ) S
+1200 /Times-Italic-Acnt F
+25200 25506 M (LitAtom) S
+1200 /Times-Roman-Acnt F
+( is bound to the CDR of the calling form.  ) S
+1200 /Times-Italic-Acnt F
+25200 23706 M (SExpression) S
+1200 /Times-Roman-Acnt F
+( is then evaluated.  The result of the expansion ) S
+25200 21906 M (is the result of this evaluation.  ) S
+28800 19306 M (This format allows you to compute the SExpression ) S
+28800 17506 M (to be compiled \(or evaluated\).) S
+28800 14906 M (Example:) S
+25200 12506 M (If ) S
+1200 /Times-Italic-Acnt F
+(\(PUTPROP 'LIST 'MACRO '\(Args ) S
+28800 10506 M (\(LET \(\(ConsList \(CONS NIL NIL\)\)\)) S
+32400 8906 M (\(FOR Item IN \(REVERSE Args\) ) S
+grestore savepage restore showpage
+
+%%Page: 15 15
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (14) S
+7200 75600 M (LispCourse #41:  The Compiler and MASTERSCOPE) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+36000 71106 M (DO \(SETQ ConsList) S
+39600 69506 M (\(CONS) S
+39600 67906 M (    \(CONS \(QUOTE CONS\)) S
+43200 66306 M (\(CONS Item ) S
+43200 64906 M (ConsList\)\)) S
+39600 63306 M (NIL\)\)\)) S
+32400 61706 M (\(CAR ConsList\)\)) S
+1200 /Times-Roman-Acnt F
+32400 59706 M (Then: ) S
+1200 /Times-Italic-Acnt F
+(\(LIST 1 2 3\)) S
+1200 /Times-Roman-Acnt F
+( would expand to ) S
+1200 /Times-Italic-Acnt F
+(\(CONS ) S
+32400 57906 M (1 \(CONS) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(2 \(CONS 3 NIL\)\)\)) S
+1200 /Times-Roman-Acnt F
+(.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+25200 54306 M (\(LAMBDA) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+( ParamList FunctionDefinition) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 When this ) S
+25200 52506 M (macro is expanded, it simply returns the function call form ) S
+25200 50706 M (generated by using the LAMBDA expresion as the CAR of ) S
+25200 48906 M (the form and the arguments to the macro call as the CDR of ) S
+25200 47106 M (the form.) S
+28800 44106 M (Example:) S
+32400 41706 M (If ) S
+1200 /Times-Italic-Acnt F
+(\(PUTPROP 'ABS 'MACRO '\(LAMBDA ) S
+32400 39906 M (\(X\) \(COND \(\(GREATERP X 0\) X\)\(T ) S
+32400 38106 M (\(MINUS X\)\)\)\)\)) S
+1200 /Times-Roman-Acnt F
+32400 35706 M (Then \(ABS \(CAR \(LIST 1 3\)\)\) would ) S
+32400 33906 M (expand to \() S
+1200 /Times-Italic-Acnt F
+(\(LAMBDA \(X\) \(COND ) S
+32400 32106 M (\(\(GREATERP X 0\) X\)\(T \(MINUS X\)\)\)\)\) ) S
+32400 30306 M (\(CAR \(LIST 1 3\)\)\)) S
+1200 /Times-Roman-Acnt F
+28800 27906 M (The purpose of this is to avoid the expense of a ) S
+28800 26106 M (function call in the compiled code, but to make the ) S
+28800 24306 M (source code look and function just like a function ) S
+28800 22506 M (call.) S
+28800 20106 M (The macro expansion takes care of turning the ) S
+28800 18306 M (\(ABS ..\) form into an equivalent form that does not ) S
+28800 16506 M (require a function call when compiled.  ) S
+1200 /Times-Bold-Acnt F
+18000 13506 M (The bottom line on Interlisp macros) S
+1200 /Times-Roman-Acnt F
+21600 10506 M (In several years of Interlisp programming, I have written only two ) S
+21600 8706 M (macros.) S
+grestore savepage restore showpage
+
+%%Page: 16 16
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (15) S
+7200 75600 M (LispCourse #41:  The Compiler and MASTERSCOPE) S
+21600 71106 M (On the other hand, there are others, especially those who were ) S
+21600 69306 M (brought up in other Lisp dialects, who use macros quite a bit.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 65557 M (MASTERSCOPE) S
+1200 /Times-Roman-Acnt F
+10800 63106 M (MASTERSCOPE is a very handy Interlisp package that comes loaded with every ) S
+10800 61306 M (standard Interlisp sysout.) S
+10800 58906 M (MASTERSCOPE will analyze functions for you, store these analyses in a database, and ) S
+10800 57106 M (then allow you to ask questions about the analyzed functions and their relationships.) S
+10800 54706 M (The following will be a very brief description of some of the commands available in ) S
+10800 52906 M (MASTERSCOPE.  The whole package is fairly complex and will not be covered in detail ) S
+10800 51106 M (here \(but see Chapter 13 of the IRM\).) S
+10800 48706 M (MASTERSCOPE has "English-like" commands implemented as a single NLAMBDA-) S
+10800 46906 M (NoSpread function whose name is ".".  Thus all MASTERSCOPE commands consist of a ) S
+10800 45106 M (period followed by a command or "question".) S
+10800 42706 M (The following are some of the useful commands:) S
+1200 /Times-Bold-Acnt F
+14400 40306 M (\(. ANALYZE ALL ON ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(File) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 analyzes all of the functions on the source file ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+14400 38506 M (File) S
+1200 /Times-Roman-Acnt F
+(.  This is usually the first command in a MASTERSCOPE analysis of a set of ) S
+14400 36706 M (functions.) S
+18000 34306 M (Example:  \(. ANALYZE ALL ON HOMEWORK34\)) S
+1200 /Times-Bold-Acnt F
+14400 31306 M (\(. SHOW PATHS FROM ) S
+1200 /Times-BoldItalic-Acnt F
+(Function) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 opens a window that shows a graph of all ) S
+14400 29506 M (the \(analyzed\) functions that are called directly or indirectly from ) S
+1200 /Times-Italic-Acnt F
+(Function) S
+1200 /Times-Roman-Acnt F
+(.) S
+18000 27106 M (Example:  \(. SHOW PATHS FROM LC.Eval\)) S
+grestore savepage restore showpage
+
+%%Page: 17 17
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (16) S
+7200 75600 M (LispCourse #41:  The Compiler and MASTERSCOPE) S
+/bitbltsave save def 18000 52499 translate 32100 19500 scale 321 195 true thebitimage
+B2278880
+B328
+B2272200
+B328
+BFB225FFFC80
+B328
+30B225000E00
+B328
+B0B3250C80
+B328
+30B3250E00
+B30AF3112236BC7360B316
+B0B3098491624AB4B294A0B3140C80
+B30B01623AB4B293B317
+30B308028401E20AB4B290B8B3140E00
+B30904B302335C7324B316
+B0B30A81A2001010B3150C80
+B30908830126B30238B316
+30B30810B21B000E00
+B328
+B0B30821B204FFE0B30307FFFFB30E0C80
+B30941B2040020B303040001B310
+30B3250E00
+B30981B31D
+B0B30701017988840922B30405EF11B30E0C80
+B30A4248840925B30508B311
+30B30702014200840924B3160E00
+B30804034200E489243FB203FFFD0EB311
+B0B3080542009719CE20B203000508B30F0C80
+B30808094240900004B318
+30B30710114180E00800B3050F7DB30E0E00
+B30AB20400B304040001B310
+B0B3072021B31B0C80
+B3084041B204FFE0B30307FFFFB310
+30B30881FFFFC0B218000E00
+B3088101000040B31A
+B0B3060102B31C0C80
+B30804B31E
+30B3060204017BC4B3190E00
+B3070408014204B31B
+B0B30710B30E7FB203FFF8B3070C80
+B3070820034384B30B40B2030008B309
+30B3061040054204B3190E00
+B3088019B31D
+B0B30621002143DFB30B5E6221024888B3070C80
+B3074100410000B30B509221024948B309
+30B306820081B30E80B30208B3070E00
+B307840101FFFFC0B30903D0803922B30B
+B0B305010806B20D00FC508025C67388B3070C80
+B306021008B30580B3053F00509024000108B309
+30B3062010B30B0FC0005060380200B3080E00
+B30604202000F311E6324EE11A47300003F0000040B20300B30A
+B0B305084040008491094A9293A4494000FCB20200B30D0C80
+B3078180008401094B12929C49703FB203007FB203FFF8B309
+30B30511020002B3024A9296C44949C0B305F0B20A000E00
+B3062204000C8401063252E6D849303FB303400010B30C
+B0B3052408003084810002000440400000FCB3100C80
+B306481000C08301B304C0000003F0B311
+30B305886003B20B000FC0005EF1B30B0E00
+B30690800CB30B003F005081B30D
+B0B30401210030B30C00FCB30D0C80
+B305024200C0B30D03D0E1B30D
+30B3058403B20F005081B30B0E00
+B30505180CB31F
+B0B3040A2030B310F7D0B30A0C80
+B30640C0B30F400010B30C
+30B3041483B21000B30D0E00
+B305290CB3107FFFF0B30C
+B4B3B203FFF83630B310B20D000C80
+B4B2B203000868C0B320
+32B304D3B21F000E00
+B305ACB321
+B4B2F311E63489F0B30D1FB203FFFEB30B0C80
+B4B2849106488BC0B30D10B2030002B30D
+32840109388BB20E00B3110E00
+B302C9088CB322
+B4B2840109308AB30E179888409222B30B0C80
+B4B2848100008BB30E1424B30252B30D
+328301E0018980B30E2008409242B30B0E00
+32B2030008B30E34200E48B30F
+B4B2B304C0B30D542009719CE2B30B0C80
+B4B3B203FFF860B30D942409000042B30D
+30B2040030B30C0114180E008002B30B0E00
+B30528B30C0210B20300B30E
+B0B30414B30C04B3110C80
+B3050AB30C081FB203FFFEB30D
+30B312101FFFFCB20E000E00
+B30505B30D100004B310
+B0B3040280B30B20B3110C80
+B30640B30B40B313
+30B3040120B30B8017BC44B30E0E00
+B3050090B30A01001420B311
+B0B30588B30A02B3120C80
+B30648B30A04003438B311
+30B30524B30A0800D420B30F0E00
+B30622B30A100114B312
+B0B30511B30A2002143DF4B30E0C80
+B3060880B309400C100004B310
+30B30640B3098010B3110E00
+B3060420B3080100201FFFFCB30803B204FFCE00
+B0B30502B3090200C0B20B0002B204004C80
+B30710B30901B20C00B307
+30B3050108B3080402B3124E00
+B3060084B308080C000F310C6108D23980B304F3110812444E00
+B0B30682B308101000084912829D224AB2040002849108124A4C80
+B30741B308206000084002E214E24B80B305010812484C80
+30B30621B30840800068400C9236224A4FB203FFFE8401C912484E00
+B3071080B3078100018840106736C24980B203000284012E339C4E00
+B0B30740B3060106000E084812022202B205000284812000084C80
+B3070820B3060208003008300C002206B3068301C010004C80
+30B3060410B306041000C0B20B0002B204004E00
+B30808B306086007B20C00B307
+B0B3060204B306108018001FB203FFC0B30503B204FFCC80
+B30701B3072300E00010B2030040B305B205000C80
+30B30702B306440300B3120E00
+B3070081B306880CB315
+B0B3074080B305B070000017988F31A4B30C0C80
+B30940B30401418000001424883244B30E
+30B30720200000084010028EB2020014200849C4B30C0E00
+B3081010B303080730000007F4200E4844B30E
+B0B309F3111E70840CC0001FF81420084984B30C0C80
+B3080808849119488A1F007FE0001424080004B30E
+30B30704048401F9489239FF80000014180F000CB30C0E00
+B309028400A948927EB2030010B20300B30E
+B0B30702008400AE70923FB3150C80
+B30801008480A0008018F8B3021FB203FFC0B3061FFFFCB303
+30B30983004001800E0780B20E0010000400000E00
+B3080080B2040005007CB30520084010B30B
+B0B30840B30402C003E0B30708B3090C80
+B30941B203FFFC0220001E000F311E27391E7084B30417BC44B303
+30B30821B203000401180001F008491020A519488AB3041420B3020E00
+B30911B304008400000F0840102325F94892B30B
+B0B30F43B20200E840102424A948927FB203FFF438B3020C80
+B309097988F31A44002080000008401063B8AE7092B204001420B304
+30B308054248832444001060B30248100000A00080B3090E00
+B30B00849C44000810B302301020004001B3063DF4B303
+B0B308034200E4844400040CB20E0010000400000C80
+B309014200849844000203B315
+30B30A4080004400010080B30D1FFFFC00000E00
+B30A4180F000C400008060B30DB204000E00
+B0B309B2030004B30210B3120C80
+B311400CB314
+30B309B203FFFC00002002B3120E00
+B309B20700100180B3093FB203FFFCB303
+B0B310080040B30920B203000400000C80
+B311040030B313
+30B310020008B3110E00
+B3110100060F311C249CB3042F3110812444B303
+B0B31000800108491224A4B3042849B302A400000C80
+B3124000C840B30840B30284B303
+30B311200028401C24A4B204FFE8401C91B3030E00
+B3121000084012671CB20400284012E339C4B303
+B0B31448120004B305481200008400000C80
+B312080008301C20B306301C010004B303
+30B31104B20A0020B20300B3020E00
+B31202B314
+B0B31101B30A3FB203FFFC00000C80
+B3120080B309B207000C80
+30B31240B3110E00
+B31320B313
+B0B31210B3110C80
+B31308B30A0FB204FFB302
+30B31204B30A08B2030001000E00
+B328
+B0B31202B3110C80
+B313010F310C970927B3040BCC44204911B302
+30B31200884912948929B3040A12B30229000E00
+B3144840B3091004204921B302
+B0B31328B3043FB203FFFA100724B3020C80
+B314084012E719C7B204000A1004B8CE71B302
+30B3144812040001B3051204800021000E00
+B31530120408B3060C07004001B302
+B0B313B20A0008B2030001000C80
+B328
+30B31E0FB204FF000E00
+B31FB206000E00
+B0B3250C80
+BFB225FFFC80
+3FB314FDB20F555E00
+B328
+BFB314FAB20FAAAC80
+BEFFBFEFBEFF783FEFFBFDF07DE7BF807C1F3007DF09BAB311
+3EFFDFDFBEFF77DFB302CF9DE7BFBFF3EF37FFDEF3BDB20F555E00
+B3056FEFB302DFDDDBBFBFB202F7FFAEFBB312
+BEFFE03FBEFF7FB303BFEDB302EFB302AF1BBAB20FAAAC80
+BE03EFBFB302DFB304BDB302FFF7FF77E3B312
+3EFDF77FBE00783FE03803B306F00F76FBBDB20F555E00
+3EFEB302FF77FFEFFBFBBFED7EB303F7FEFB7BB312
+BEFEFAFFBEFF6FEFEFFBFDB305F7B30287BAB20FAAAC80
+B30ADFDCFF3FBFB202F7B202FFB312
+3EFDFDB302739FEFFBFBCF9CB302F3EFB303BDB20F555E00
+3E03FDF802FF7C7FE01807F07DFFBFBFFC1FF007B314
+BFB214FFFAB20FAAAC80
+B315B210FFFC80
+B2272200
+
+bitbltsave restore
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 49806 M (\(. SHOW PATHS TO ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Function) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 opens a window that shows a graph of all the ) S
+14400 48006 M (\(analyzed\) functions that directly or indirectly call ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Function) S
+1200 /Times-Roman-Acnt F
+(.) S
+18000 45606 M (Example:  \(. SHOW PATHS TO LC.Print\)) S
+/bitbltsave save def 7200 29999 translate 49500 13500 scale 495 135 true thebitimage
+B32C03B20F88
+B32DB20F22
+0FB23BFFFA
+B33CF8
+0CB23B0018
+B33C1A
+B3293FB203FFFCB30D
+B32920B2030004B30C18
+B32C8401B30E
+B32D0084B30C1A
+B3292F3111E70844B30D
+B3292849119488A4B30C18
+B32A401F948924B30D
+B329E8400AB30F1A
+B3280728400AE709B30E
+B3283828480A000804B30C18
+B32703C02830040018B30E
+B3271C0020B20300B30D1A
+B327E0B314
+B3141FB203FFFEB3047FB203FF00000700003FB203FFFCB30C18
+B31410B2030002B30440B2020001000038B30680B30D
+B317420082B30A01C0000020B20300B30D1A
+B31942B30A0EB20200B313
+B30A07988E124EB304179888F38422B3045E623CC69100F0B31518
+B30A0424891252B304142488CA4452B304509220C91107B203002F311E6348B30E
+B30B2009B307200FCA4492B3058021271138B3032849106488B30D1A
+B30A14200E12527FB203FFF420054A4493B204FFD080392111FFFFF8B302401093B30F
+B30A242009338EB20400142005738492B204005080212611380007FFFFE8401C90B30E18
+B30A4424090002B3052405000402B3059020001107B203002840109308B30E
+B30A84180E10B3061802000CB306603C003100E0B303481000B30E1A
+B30901B2090010B20300B30540B2020001001CB303301E0018B30E
+B30902B31A0380000020B20300B30D18
+B30904B3091FB203FFFEB3047FB203FF000070B315
+B30908B309B211000C00003FB203FFB30D1A
+B30910B31B0380B213001A
+B30920B31B0070B31318
+B30940B31C0EB314
+B30980B30A07B204FF80B30A01C01E6218C938B3043CC4318E912246579E1A
+B30801B20B0004B20400B30B00381092252948B30421244A5292A2A954501A
+B30802B30E108020B30C07108021B307004252923E89558818
+B30804B31010B30C00D0B30249B204FFA1B3031489560418
+B30808000798864B849380B30305E6223CE108B30D108020CE38B2040021004192E715C669C21A
+8CB30710000424894A4494B3050922329114B30E90240008B30520480002148000121A
+4CB3072000042009B3080803F29124B30E6018B30620C03000000800000C18
+B308400014B3049FB203FFFD080152B30FB2120018
+CCB3078000642009738CE380B203000508015CE1B3211A
+4CB306030001842409020000B3050901400100B321
+B3070400060418090204B30606008003B32118
+CCB306080018B20A0004B20400B321
+4CB306100060B3311A
+0CB306200180B30A07B204FFB321
+B3074002B2320018
+B307800CB333
+B306010030B3321A
+B3060200C0B333
+B3060403B20F0003B203FFF8B31D18
+B306080CB30F02B2030008B31E
+B3061030B30604B32B1A
+B30620C0B334
+B30641B2020007988F31927708D23980B304F311E63488B31D18
+B30686B3020424884A54949D224AB204000284910648B31F
+B3050118B30320084A589494E24B80B305010938B31E1A
+B3050260000003F4B3025494B6224A4FB203FFFE8401C908B31F
+0C79888409220580000FFC04200831929736C24980B203000284010930B31E18
+0C42488409250E003FF0000424080010002202B205000284810000B31F
+0C420084092418FFC000000418B30406B3068301E001B31E1A
+B302E489243FB2110002B2030008B31E
+B3029719CE1EB33518
+0C42409000040DC0B31003B203FFF8B31E
+0C4180E008000738B310B223001A
+0CB204000287B335
+B3050160E0B33318
+B30500901CB334
+B3064C03B30D01B204FFE0B31E1A
+B3062200E0B30DB2040020B31F
+B30611801CB30F042008B31F18
+B30608400380B31004B320
+B306043000700798863084691CC0B30479888F3842B31F1A
+B3060208000E042489414E9125B204000142488CA445B320
+B30601060001C42001710A7125C0B30500FCA449B31F18
+B30600818000342006491B112527B204FF420054B322
+B307404000042008339B6124C0B203000142005738B3201A
+B307203000042409011101B20500014240500040B320
+B307100800041806001103B30641802000C0B31F18
+B3070806B20C0001B20400B320
+B3070401B3321A
+B3070200C00FB204FFB306B204FFE0B31F
+B30701002008B2030001B305B2250018
+B307008018B302210041B32C
+B3084004B30421B32B1A
+B30820030BCC4479C211B32C
+B30810008A1244652229B32B18
+CCB30708006A1007E52249B32C
+0CB30704001A1002A5B32D1A
+B30802000A1002B9C2B32D
+B30801000A1202800201B32B18
+8CB30700800A0C010006B32D
+0CB3084008B20300B32C1A
+B30920B332
+CCB308100FB204FFB32B18
+0CB30808B304E0B32C
+B3090408B2030020B32B1A
+B30902B332
+B30901B33118
+B309008BCC4798D2B32D
+B30A4A12441922B32C1A
+B30A2A100424E2B32D
+B30A1A10072422B32C18
+B30A0A100424C2B32D
+B30B12040002B32C1A
+B30B0C078006B32D
+B30A08B20300B32C18
+FCB33C
+5CB3090FB203FFE0B32B1A
+B30AB231001A
+ACB33B18
+AFB23BFFF8
+5FB312D5B227555A
+B33D
+AFB312B228AAB8
+AFBFEFFBEFBFDE0FFFBFC1FF807C1F37FEFDBF73B329
+5FBFF7F7EFBFDDF7FFBF3E7FBFF3EFB30377D5B227555A
+B305DBFBFFBF7F7FBFB202F7B32D
+AFBFF80FEFBFDFFBFFBEFFBFBFEFB305B228AAB8
+AF80FBEFB302F7B305FFF01EB32C
+5FBF7DDFEF801E0FB306F7EE7DBF77D5B227555A
+5FBFBDDFEFBFDDFFB307F6AD9EF7B329
+AFBFBEBFEFBFDBFBB305F7F7F6CDA1E3B228AAB8
+FFB307BF7F7FBFB203F7FFFFF7B329
+2FBF7F7FEFBFDCE7FFBF3E7FBFF3EFF7EFFDFFF7D5B227555A
+2F80FF7E00BFDF1FF803C1FFBFFC1FF01FFDFFFFB329
+8FB212FFB228AABE
+B313B228FFF8
+B2042237B336FE
+B33D
+
+bitbltsave restore
+1200 /Times-Bold-Acnt F
+14400 24906 M (\(. WHO CALLS ) S
+1200 /Times-BoldItalic-Acnt F
+(Function) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 returns a list of functions that directly call ) S
+1200 /Times-Italic-Acnt F
+(Function) S
+1200 /Times-Roman-Acnt F
+(.) S
+18000 22506 M (Example:  \(. WHO CALLS LC.Eval\) returns ) S
+1200 /Times-Italic-Acnt F
+(\(LC.Apply LC.Eval ) S
+18000 20706 M (LC.Cond\)) S
+1200 /Times-Bold-Acnt F
+14400 17106 M (\(. WHO USES ) S
+1200 /Times-BoldItalic-Acnt F
+(Variable) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 returns a list of functions that use the variable ) S
+1200 /Times-Italic-Acnt F
+14400 15306 M (Variable) S
+1200 /Times-Roman-Acnt F
+(.) S
+18000 12706 M (Example:  \(. WHO USES Stack\) retruns ) S
+1200 /Times-Italic-Acnt F
+(\(LC.Bind LC.Unbind ) S
+18000 10906 M (LC.LookupValue LC.SetValue LC.Apply LC.Cond LC.Eval LC.LispApply\)) S
+grestore savepage restore showpage
+
+%%Page: 18 18
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (17) S
+7200 75600 M (LispCourse #41:  The Compiler and MASTERSCOPE) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 71106 M (\(. WHO USES AS A RECORD) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+( RecordName) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 returns a list of functions that ) S
+14400 69306 M (use the record ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(RecordName) S
+1200 /Times-Roman-Acnt F
+(.) S
+1200 /Times-Bold-Acnt F
+14400 65706 M (\(. EDIT WHERE ANY CALLS ) S
+1200 /Times-BoldItalic-Acnt F
+(Function) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( or ) S
+1200 /Times-Bold-Acnt F
+(\(. EDIT WHERE ANY USES ) S
+1200 /Times-BoldItalic-Acnt F
+14400 63906 M (Variable) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( or ) S
+1200 /Times-Bold-Acnt F
+(\(. EDIT WHERE ANY USES) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(AS A RECORD ) S
+1200 /Times-BoldItalic-Acnt F
+(RecordName) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 ) S
+14400 62106 M (invokes DEdit on every function that directly calls the function ) S
+1200 /Times-Italic-Acnt F
+(Function) S
+1200 /Times-Roman-Acnt F
+( \(or uses ) S
+14400 60306 M (the variable ) S
+1200 /Times-Italic-Acnt F
+(Variable) S
+1200 /Times-Roman-Acnt F
+(\).  The exact form in each function that does the calling \(or ) S
+14400 58506 M (using\) is selected and centered in the DEdit window when DEdit starts up.) S
+18000 54906 M (The \(. EDIT WHERE .. \) command can be followed by a \234 and one or more ) S
+18000 53106 M (commands from the TTY Editor.  In this case, these commands will be ) S
+18000 51306 M (carried out on the functions instead of invoking DEdit on the functions.) S
+21600 47706 M (Example:  The following will change all varaibles named ) S
+1200 /Times-Italic-Acnt F
+(Stack) S
+1200 /Times-Roman-Acnt F
+( to ) S
+1200 /Times-Italic-Acnt F
+21600 45906 M (MyStack) S
+1200 /Times-Roman-Acnt F
+( within the HOMEWORK34 functions.) S
+25200 43506 M (\(. EDIT WHERE ANY USES Stack \234 \(R Stack MyStack\)\)) S
+10800 40106 M (MASTERSCOPE actually has many much more specific questions you can ask \(e.g., free ) S
+10800 38306 M (variable usage, who fetches from a record, etc.\).  Consult the IRM for details.) S
+10800 35506 M (There are some strategies, however, that make MASTERSCOPE work better.) S
+14400 32906 M (For example:  If you have many functions each with a bound variable that has the ) S
+14400 31106 M (same "semantics" in each of the functions, then call that bound variable the same ) S
+14400 29306 M (thing in each function. Naming it the same in each function will not effect the ) S
+14400 27506 M (operation of the functions because its locally bound, but it will make it easy to ) S
+14400 25706 M (change all of the functions at once if you want to change the semantics of the ) S
+14400 23906 M (variable.) S
+18000 21306 M (In NoteCards. many \(maybe 100 in total\) functions have a bound variable ) S
+18000 19506 M (called NoteCardID.  It was initially called just ID, but at one point a ) S
+18000 17706 M (LinkID was added to many of these functions and we decided to rename ) S
+18000 15906 M (all ID variables to NoteCardID.  Luckily we had named them all alike so ) S
+18000 14106 M (that this could be accomplished in a single MASTERSCOPE command.  ) S
+10800 11506 M (The bottom line:  learn to use the basics of MASTERSCOPE.  Its one of the handiest ) S
+10800 9706 M (tools around for writing large programs in Interlisp.) S
+grestore savepage restore showpage
+
+%%Page: 19 19
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (18) S
+7200 75600 M (LispCourse #41:  The Compiler and MASTERSCOPE) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (References) S
+1200 /Times-Roman-Acnt F
+10800 68506 M (The Interlisp Compiler is the subject of Chapter 12 of the IRM.) S
+10800 66106 M (Macros are the subject of Section 5.5 of the IRM.) S
+10800 63706 M (MASTERSCOPE is the subject of Chapter 13 of the IRM.) S
+grestore savepage restore showpage
+
+%%Trailer

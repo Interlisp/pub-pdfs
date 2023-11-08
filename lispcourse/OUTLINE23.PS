@@ -1,0 +1,1781 @@
+%!PS-Adobe-2.0%%Title: {DSK}<home>larry>lispcourse>OUTLINE23.PS%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate:  7-Nov-2023 21:40:13%%EndComments/bdef {bind def} bind def
+/ldef {load def} bdef
+/S /show ldef
+/M /moveto ldef
+/DR {transform round exch round exch itransform} bdef
+/L {gsave newpath setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/L1 {gsave newpath 0 setdash setgray setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/F {findfont exch scalefont setfont} bdef
+/CLP {newpath M dup 0 rlineto exch 0 exch rlineto
+  neg 0 rlineto closepath clip newpath} bdef
+/R {gsave setgray newpath M dup 0 rlineto exch 0 exch
+  rlineto neg 0 rlineto closepath eofill grestore} bdef
+/ellipsedict 9 dict def
+ellipsedict /mtrx matrix put
+/ellipse
+ { ellipsedict begin
+  /endangle exch def
+  /startangle exch def
+  /orientation exch def
+  /minorrad exch def
+  /majorrad exch def
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  orientation rotate
+  majorrad minorrad scale
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+ end } bdef
+/concatprocs
+ {/proc2 exch cvlit def
+  /proc1 exch cvlit def
+  /newproc proc1 length proc2 length add array def
+  newproc 0 proc1 putinterval
+  newproc proc1 length proc2 putinterval
+  newproc cvx
+ } bdef
+/resmatrix matrix def
+/findresolution
+ {72 0 resmatrix defaultmatrix dtransform
+  /yres exch def /xres exch def
+  xres dup mul yres dup mul add sqrt
+ } bdef
+/thebitimage
+ {/maskp exch def
+  /bihgt exch def
+  /biwid exch def
+  /byte 1 string def
+  /strbufl biwid 8 div ceiling cvi def
+  /strbuf strbufl string def
+  maskp not{{1 exch sub} currenttransfer concatprocs settransfer} if
+  biwid bihgt
+  maskp { true } { 1 } ifelse
+  [biwid 0 0 bihgt 0 0]
+  {/col 0 def
+   {currentfile byte readhexstring pop 0 get
+    dup 16#B2 eq {pop
+    currentfile byte readhexstring pop 0 get 1 add
+    currentfile byte readhexstring pop pop /nbyte byte 0 get def
+    { strbuf col nbyte put /col col 1 add def} repeat}
+   {dup 16#B3 eq {pop /col col
+    currentfile byte readhexstring pop
+    0 get add 1 add def}
+    {16#B4 eq {currentfile byte readhexstring pop pop} if
+     strbuf col byte 0 get put /col col 1 add def} ifelse
+   } ifelse
+   col strbufl ge { exit } if } loop
+   strbuf }
+  maskp { imagemask } { image } ifelse
+ } bdef
+/setuserscreendict 22 dict def
+setuserscreendict begin
+ /tempctm matrix def
+ /temprot matrix def
+ /tempscale matrix def
+end
+/setuserscreen
+ {setuserscreendict begin
+   /spotfunction exch def
+   /screenangle exch def
+   /cellsize exch def
+   /m tempctm currentmatrix def
+   /rm screenangle temprot rotate def
+   /sm cellsize dup tempscale scale def
+   sm rm m m concatmatrix m concatmatrix pop
+   1 0 m dtransform /y1 exch def /x1 exch def
+   /veclength x1 dup mul y1 dup mul add sqrt def
+   /frequency findresolution veclength div def
+   /newscreenangle y1 x1 atan def
+   m 2 get m 1 get mul m 0 get m 3 get mul sub
+   0 gt { { neg } /spotfunction load concatprocs
+          /spotfunction exch def } if
+   frequency newscreenangle /spotfunction load setscreen
+  end
+ } bdef
+/setpatterndict 18 dict def
+setpatterndict begin
+ /bitison
+  {/ybit exch def /xbit exch def
+   /bytevalue bstring ybit bwidth mul xbit 8 idiv add get def
+   /mask 1 7 xbit 8 mod sub bitshift def
+   bytevalue mask and 0 ne
+  } bdef
+end
+/bitpatternspotfunction
+ {setpatterndict begin
+   /y exch def /x exch def
+   /xindex x 1 add 2 div bpside mul 1 sub cvi def
+   /yindex y 1 add 2 div bpside mul 1 sub cvi def
+   xindex yindex bitison
+    {/onbits onbits 1 add def 1}
+    {/offbits offbits 1 add def 0} ifelse
+  end
+ } bdef
+/setpattern
+ {setpatterndict begin
+   /cellsz exch def
+   /angle exch def
+   /bwidth exch def
+   /bpside exch def
+   /bstring exch def
+   /onbits 0 def /offbits 0 def
+   cellsz angle /bitpatternspotfunction load setuserscreen
+   {} settransfer
+   offbits offbits onbits add div setgray
+  end
+ } bdef
+% - - - - - Fraction-setting code, to support NS fonts better - - - - -
+/fractiondict 20 dict def
+/fractionshow 
+{ fractiondict begin
+/denom exch def 
+/num exch def 
+/regfont currentfont def
+/fractfont currentfont [.65 0 0 .6 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(1) true charpath flattenpath pathbbox 
+/height exch def pop pop pop
+ grestore
+0 .4 height mul rmoveto
+fractfont setfont num show
+0 .4 height mul neg rmoveto regfont setfont (\244) show
+fractfont setfont denom show regfont setfont end } bdef
+/f14 { (1) (4) fractionshow } bdef
+/f12 { (1) (2) fractionshow } bdef
+/f34 { (3) (4) fractionshow } bdef
+/f18 { (1) (8) fractionshow } bdef
+/f38 { (3) (8) fractionshow } bdef
+/f58 { (5) (8) fractionshow } bdef
+/f78 { (7) (8) fractionshow } bdef
+/f13 { (1) (3) fractionshow } bdef
+/f23 { (2) (3) fractionshow } bdef
+/bboxdict 20 dict def
+/bboxchk { bboxdict begin
+/regfont currentfont def
+/chkfont currentfont [1.25 0 0 1.25 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(\161) true charpath flattenpath pathbbox 
+/height exch def pop pop pop 
+ grestore 
+ currentpoint 
+ .2 height mul .3 height mul rmoveto
+chkfont setfont (\063) show
+ moveto
+ regfont setfont
+(\161) show end } bdef
+/rencdict 15 dict def
+/encodefont { rencdict begin
+/newname exch def
+/oldfont exch def
+/newcodes [
+8#001 /Aacute
+8#002 /Acircumflex
+8#003 /Adieresis
+8#004 /Agrave
+8#005 /Aring
+8#006 /Atilde
+8#007 /Ccedilla
+8#010 /Eacute
+8#011 /Ecircumflex
+8#012 /Edieresis
+8#013 /Egrave
+8#014 /Iacute
+8#015 /Icircumflex
+8#016 /Idieresis
+8#017 /Igrave
+8#020 /Ntilde
+8#021 /Oacute
+8#022 /Ocircumflex
+8#023 /Odieresis
+8#024 /Ograve
+8#025 /Otilde
+8#026 /Scaron
+8#027 /Uacute
+8#030 /Ucircumflex
+8#031 /Udieresis
+8#032 /Ugrave
+8#033 /Ydieresis
+8#034 /Zcaron
+8#177 /periodinferior
+8#201 /aacute
+8#202 /acircumflex
+8#203 /adieresis
+8#204 /agrave
+8#205 /aring
+8#206 /atilde
+8#207 /ccedilla
+8#210 /eacute
+8#211 /ecircumflex
+8#212 /edieresis
+8#213 /egrave
+8#214 /iacute
+8#215 /icircumflex
+8#216 /idieresis
+8#217 /igrave
+8#220 /ntilde
+8#221 /oacute
+8#222 /ocircumflex
+8#223 /odieresis
+8#224 /ograve
+8#225 /otilde
+8#226 /scaron
+8#227 /uacute
+8#230 /ucircumflex
+8#231 /udieresis
+8#232 /ugrave
+8#233 /ydieresis
+8#234 /zcaron
+8#235 /Eth
+8#236 /eth
+8#237 /Thorn
+8#240 /thorn
+ ] def
+/olddict oldfont findfont def /newfont olddict maxlength dict def
+olddict { exch dup /FID ne { dup /Encoding eq
+{ exch dup length array copy newfont 3 1 roll put }
+{ exch newfont 3 1 roll put } ifelse }
+ { pop pop } ifelse } forall
+newfont /FontName newname put
+newcodes aload pop
+newcodes length 2 idiv { newfont /Encoding get 3 1 roll put } repeat 
+newname newfont definefont pop end } def
+ /accentdict 10 dict def 
+ /accentor { accentdict begin /scaler exch def /delta exch def 
+/unders exch def /accents exch def /mainch exch def /scrt (X) def
+ /w1 mainch stringwidth pop def 
+ currentpoint mainch show currentpoint 4 2 roll 
+accents { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         w1 w2 sub 2 div delta rmoveto scrt show 
+         /delta delta 150 scaler mul 9 div add def
+        } forall 
+unders { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         ch 46 eq { w1 w2 sub 2 div -175 scaler mul 9 div rmoveto scrt show 0 175 rmoveto }
+           { w1 w2 sub 2 div 0 rmoveto scrt show } ifelse 
+        } forall 
+ pop pop moveto end } def 
+%%EndProlog
+%%BeginSetup
+letter/imagesizefactor 1 def%%EndSetup/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+
+%%Page: 1 1
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+54000 75600 M (F.G.H.          ) S
+54000 73800 M (4/30/85) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (LispCourse #23:  What is Programming; Basic Lisp Revisited) S
+7200 67157 M (What is Programming?) S
+1200 /Times-Bold-Acnt F
+10800 63506 M (Procedures and Data: The Semantics of Programming) S
+1200 /Times-Roman-Acnt F
+14400 60306 M (A program is basically a description of a sequence of ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(actions) S
+1200 /Times-Roman-Acnt F
+( \(i.e., a ) S
+1200 /Times-BoldItalic-Acnt F
+(procedure) S
+1200 /Times-Roman-Acnt F
+(\) to ) S
+14400 58506 M (be carried out on a set of ) S
+1200 /Times-BoldItalic-Acnt F
+(objects) S
+1200 /Times-Roman-Acnt F
+(.  In the computer world, the objects are different ) S
+14400 56706 M (types of "information" and are thus called ) S
+1200 /Times-BoldItalic-Acnt F
+(data) S
+1200 /Times-Roman-Acnt F
+(.) S
+18000 53506 M (For example: \(PLUS 3 4\) is a trivial Lisp program.  The procedure PLUS ) S
+18000 51706 M (takes the action of adding two numbers.  The objects or data are the ) S
+18000 49906 M (numbers, in this case 3 and 4.) S
+14400 46706 M (Writing a program involves specifying two things: ) S
+18000 44306 M (1\)  a description of the procedure to be followed) S
+18000 41906 M (2\)  a description of the data to be used.) S
+14400 38706 M (The abstract description of the procedural component of a program is called its ) S
+1200 /Times-Bold-Acnt F
+14400 36906 M (control structure) S
+1200 /Times-Roman-Acnt F
+(.  The abstract descriptions of the data components of a program ) S
+14400 35106 M (are called its ) S
+1200 /Times-Bold-Acnt F
+(data structures) S
+1200 /Times-Roman-Acnt F
+(.) S
+18000 32306 M (Programming is all about control structures and data structures.  Learning ) S
+18000 30506 M (to program means learning to build combinations of control and data ) S
+18000 28706 M (structures that accomplish target tasks effectively and efficiently.) S
+21600 25906 M (For example:  ) S
+25200 23106 M (Assume that the goal is to program up a simple database ) S
+25200 21306 M (mapping people in ISL to serial numbers of their machines.) S
+25200 18506 M (The first task is to determine a data structure for the ) S
+25200 16706 M (database, e.g., a list of lists where each sublist begins with a ) S
+25200 14906 M (name the second and subsequent items are serial numbers ) S
+25200 13106 M (for that person's machine\(s\).  Note that I would have to ) S
+25200 11306 M (further specify the data structure for the name and serial ) S
+25200 9506 M (numbers \(e.g., they could be atoms or they could be lists, ) S
+grestore savepage restore showpage
+
+%%Page: 2 2
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (2) S
+7200 75600 M (LispCourse #23:  Programming; Basic Lisp) S
+25200 71106 M (depending on what operations I would want to perorm on ) S
+25200 69306 M (them\).) S
+25200 66506 M (The second task is to write the Lisp procedures to create, ) S
+25200 64706 M (access, and modify the chosen data structure.  This may ) S
+25200 62906 M (feed back to modify the data structure \233 for example, you ) S
+25200 61106 M (might discover that the procedures would be much simpler ) S
+25200 59306 M (if the second element of each person's list were the number ) S
+25200 57506 M (of machines that the person had.) S
+14400 54306 M (Lisp is a language for specifying the control and data structures of a program.  ) S
+14400 52506 M (Fortran, Basic, C, Pascal, Mesa, etc. are alternative languages for doing the same ) S
+14400 50706 M (thing.) S
+18000 48106 M (The same basic concepts of control structure and data structure appear in ) S
+18000 46306 M (all of these languages.  They differ only in how they express various ) S
+18000 44506 M (control and data structures.   Control/data structures that are easy to ) S
+18000 42706 M (express in Lisp may be painfully hard to express in Fortran, and vice ) S
+18000 40906 M (versa.) S
+18000 38106 M (Lisp is unusual among these languages in that it blurs the distinction ) S
+18000 36306 M (between procedures and data, both syntactically and semantically.  A list ) S
+1000 /Times-Roman-Acnt F
+18000 34506 M ([e.g., \(PLUS 2 3\)] ) S
+1200 /Times-Roman-Acnt F
+(that is a piece of data to one Lisp program, may be a ) S
+18000 32706 M (description of a procedure that is executed by  another Lisp program.  ) S
+18000 30906 M (Languages like Fortran and Pascal make a much cleaner distinction ) S
+18000 29106 M (between procedure and data.) S
+18000 26306 M (Blurring the distinction between procedure and data can be good or bad, ) S
+18000 24506 M (depending on the task you are trying to program.  ) S
+18000 21706 M (In this course, we'll start out  making clear distinctions between procedure ) S
+18000 19906 M (and data in our Lisp programming style.  Later, we may look at some of ) S
+18000 18106 M (the advantages of bluring over this distinction a bit.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 14306 M (Procedure versus Process:  Running a Program) S
+1200 /Times-Roman-Acnt F
+14400 10506 M (A program is a) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+( procedure) S
+1200 /Times-Roman-Acnt F
+(, i.e., a description of a sequence of actions to be carried ) S
+14400 8706 M (out. ) S
+grestore savepage restore showpage
+
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (3) S
+7200 75600 M (LispCourse #23:  Programming; Basic Lisp) S
+14400 71106 M (For the program to be useful, this description must be transformed into the actual ) S
+14400 69306 M (sequence of actions being described.  This transformation is commonly called ) S
+14400 67506 M ("running the program". ) S
+14400 64506 M (The sequence of actual actions that take place when a program runs is called a ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+14400 62706 M (process) S
+1200 /Times-Roman-Acnt F
+(.) S
+14400 59706 M (The entity that transforms the procedure description \(i.e., program\) into a running ) S
+14400 57906 M (process is an ) S
+1200 /Times-BoldItalic-Acnt F
+(interpreter) S
+1200 /Times-Roman-Acnt F
+(. ) S
+18000 55106 M (At the bottom level, the ultimate interpreter of any program is the ) S
+18000 53306 M (hardware of the computer on which the program is running.   But in most ) S
+18000 51506 M (languages \(as in Lisp\) , there is another program \(an interpreter\) that is ) S
+18000 49706 M (responsible for transforming the program from the higher level-language ) S
+18000 47906 M (into the running process.   This interpreter is the entity responsible for ) S
+18000 46106 M ("understanding" the language and carrying out the requested actions.) S
+21600 43506 M (Note that the interpreter is itself a program being interpreted ) S
+21600 41706 M (\(directly or indirectly\) by the machine hardware. ) S
+14400 38306 M (Understanding Lisp requires understanding the Lisp interpreter, the program that ) S
+14400 36506 M (transforms Lisp code into a running process.   The nice thing about Lisp is that the ) S
+14400 34706 M (interpreter is itself a Lisp program, making it easy to understand \(and modify\) if ) S
+14400 32906 M (you know Lisp. ) S
+18000 30306 M (Seems a bit circular \233 but its really a process of decomposition where you ) S
+18000 28506 M (break Lisp down into simpler and simpler actions until you get to those ) S
+18000 26706 M (actions the machine hardware can execute directly.) S
+14400 23306 M (So, theoretically, there are three components to understand about programming: ) S
+14400 21506 M (control structures, data structures, and interpreters.  Unfortunately, this analysis ) S
+14400 19706 M (skips all of the pragmatic aspects of programming in the real world.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 15906 M (Correctness, Efficiency, Maintainability, & Adaptability Quickly and with Minimal ) S
+10800 14106 M (Effort: The Pragmatics of Programming) S
+1200 /Times-Roman-Acnt F
+14400 10906 M (A good program is:) S
+1200 /Times-Bold-Acnt F
+18000 8306 M (Correct) S
+1200 /Times-Roman-Acnt F
+( \233 it correctly accomplishes the task it is intended to) S
+grestore savepage restore showpage
+
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (4) S
+7200 75600 M (LispCourse #23:  Programming; Basic Lisp) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 71106 M (Efficient) S
+1200 /Times-Roman-Acnt F
+( \233 it make efficient use of the available resources; in particular, it ) S
+18000 69306 M (works as quickly as possible using as few of the computer's resources ) S
+18000 67506 M (\(memory, disk space\) as possible.) S
+1200 /Times-Bold-Acnt F
+18000 64906 M (Maintainable) S
+1200 /Times-Roman-Acnt F
+( \233 it should be easy to debug and make minor changes to; in ) S
+18000 63106 M (particular, it should be easy enough to understand that someone other than ) S
+18000 61306 M (the original programmer can do the maintenance) S
+1200 /Times-Bold-Acnt F
+18000 58706 M (Adaptable) S
+1200 /Times-Roman-Acnt F
+( \233 it should be easy to make large changes to the original ) S
+18000 56906 M (program) S
+14400 53706 M (Good programs must also be written ) S
+1200 /Times-Bold-Acnt F
+(quickly and with minimal effort) S
+1200 /Times-Roman-Acnt F
+(:  i.e., ) S
+14400 51906 M (using as little programming time and as little programming effort as possible.  A ) S
+14400 50106 M (program that takes 1000 person-years to write will never get written.) S
+14400 46906 M (Programming is a constant trade-off between these five goals since it is nearly ) S
+14400 45106 M (impossible to satisfy all five simultaneously.) S
+14400 41906 M (Interlisp takes a definite stand on which of these are important.  In particular, ) S
+14400 40106 M (correctness and efficiency are discarded in favor rapid-prototyping, i.e.,  ) S
+14400 38306 M (programming quickly and with minimal effort.) S
+14400 35106 M (Efficiency and correctness are achievable in Interlisp, but only extremely careful ) S
+14400 33306 M (programming and close attention to issues of efficiency and exact correctness.) S
+14400 30106 M (Maintainablilty and adaptablility in Interlisp \(and in most modern programing ) S
+14400 28306 M (languages\) are a matter of good programming style.  If you follow the rules of ) S
+14400 26506 M (good programming, then your programs will be maintainable and adaptable.) S
+18000 23306 M (In this course we will focus in particular on these "rules of good ) S
+18000 21506 M (programming", covering in detail the notions of abstraction and ) S
+18000 19706 M (modularity.  In the later part of the course, we will briefly consider the ) S
+18000 17906 M (tools for writing efficient and correct programs in Interlisp.) S
+1400 /Times-Bold-Acnt F
+7200 14157 M (Reviewing the Basics of Lisp Prgramming) S
+1200 /Times-Bold-Acnt F
+10800 10506 M (The READ-EVAL-PRINT Loop) S
+grestore savepage restore showpage
+
+%%Page: 5 5
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (5) S
+7200 75600 M (LispCourse #23:  Programming; Basic Lisp) S
+14400 71106 M (Lisp is in a continual loop in the Exec window) S
+18000 69306 M (Read user input) S
+18000 67506 M (Evaluate user input) S
+18000 65706 M (Print result of evaluation) S
+14400 62706 M (All work in Lisp is done in the Evaluation phase of this loop!) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 59106 M (Basic Syntactic Building Blocks: Atoms and Lists) S
+1200 /Times-Roman-Acnt F
+14400 56106 M (One defining feature of Lisp is that its syntax is trivial.) S
+14400 53106 M (There are two basic building blocks of Lisp: ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Atoms) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-BoldItalic-Acnt F
+(Lists) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(.) S
+1200 /Times-Roman-Acnt F
+18000 50706 M (Together Atoms and Lists are known as ) S
+1200 /Times-BoldItalic-Acnt F
+(S-expressions) S
+1200 /Times-Roman-Acnt F
+( \233 \(almost\) ) S
+18000 48906 M (everything in Lisp is an S-expression.) S
+1200 /Times-Italic-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+14400 45906 M (An ) S
+1200 /Times-Italic-Acnt F
+(atom) S
+1200 /Times-Roman-Acnt F
+( is a symbol represented by one or more alphnumeric characters.  Atoms ) S
+14400 44106 M (are the "words" of Lisp; they provide a way in which to reference the actions and ) S
+14400 42306 M (objects in Lisp world.) S
+18000 39906 M (Examples:  Sam, FOO, 123, A2233, VeryLongAtomName, Dashed-Atom.) S
+14400 36906 M (A ) S
+1200 /Times-Italic-Acnt F
+(list) S
+1200 /Times-Roman-Acnt F
+( is a "\(", followed by zero or more atoms or lists, followed by a "\)".  Lists ) S
+14400 35106 M (are the "sentences" of Lisp; they provide the structure to glue atoms together to ) S
+14400 33306 M (make statements or to represent things.) S
+18000 30906 M (Examples:  \(A B C\); \(A \(FOO BAR\) C\);  \(SETQ A 5\); \(CAR \(CAR A\)\).) S
+14400 27906 M (Facts about atoms:) S
+18000 25106 M (Every atom can reference three things: a ) S
+1200 /Times-Italic-Acnt F
+(value) S
+1200 /Times-Roman-Acnt F
+(, a ) S
+1200 /Times-Italic-Acnt F
+(function) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(definition) S
+1200 /Times-Roman-Acnt F
+(, and a ) S
+1200 /Times-Italic-Acnt F
+18000 23306 M (property list) S
+1200 /Times-Roman-Acnt F
+(.) S
+/Helvetica /Helvetica-Acnt encodefont
+1200 /Helvetica-Acnt F
+25300 17430.0 M (Atom) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 29300 17500 M
+stroke
+grestore
+32500 20700 29300 17500 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 32500 20700 M
+stroke
+grestore
+32500 20700 29300 17500 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 29300 17500 M
+stroke
+grestore
+31700 17500 29300 17500 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 31700 17500 M
+stroke
+grestore
+31700 17500 29300 17500 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 29300 17500 M
+stroke
+grestore
+32500 14300 29300 17500 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 32500 14300 M
+stroke
+grestore
+1200 /Helvetica-Acnt F
+32500 14230.0 M (Property List) S
+1200 /Helvetica-Acnt F
+32500 17430.0 M (Function Definition) S
+1200 /Helvetica-Acnt F
+32500 20630.0 M (Value) S
+1200 /Times-Roman-Acnt F
+21600 11506 M (An atom's ) S
+1200 /Times-Italic-Acnt F
+(value) S
+1200 /Times-Roman-Acnt F
+( is some other Lisp object; e.g., another atom, a ) S
+21600 9706 M (list, a window, a process, etc.) S
+grestore savepage restore showpage
+
+%%Page: 6 6
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (6) S
+7200 75600 M (LispCourse #23:  Programming; Basic Lisp) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 71106 M (Function definitions) S
+1200 /Times-Roman-Acnt F
+( are discussed below.) S
+21600 68706 M (An atom's ) S
+1200 /Times-Italic-Acnt F
+(property list) S
+1200 /Times-Roman-Acnt F
+( is simply a list with a special format: ) S
+1200 /Times-Italic-Acnt F
+21600 66906 M (\(Prop1 Value1 Prop2 Value2 ... PropN ValueN\)) S
+1200 /Times-Roman-Acnt F
+(, where each ) S
+1200 /Times-Italic-Acnt F
+(PropI) S
+1200 /Times-Roman-Acnt F
+( ) S
+21600 65106 M (is an atom and each ) S
+1200 /Times-Italic-Acnt F
+(ValueI) S
+1200 /Times-Roman-Acnt F
+( is some other Lisp object;  e.g., another ) S
+21600 63306 M (atom, a list, a window, a process, etc.) S
+18000 60506 M (When evaluated by the Lisp evaluator, an atom evaluates to its value.) S
+18000 57706 M (Numeric atoms are atoms whose name consists of digits only.  The value ) S
+18000 55906 M (of a numeric atom is the atom itself.) S
+18000 53106 M (Non-numeric atoms are called ) S
+1200 /Times-Italic-Acnt F
+(litatoms) S
+1200 /Times-Roman-Acnt F
+(.) S
+1200 /Times-Italic-Acnt F
+18000 50306 M (T) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-Italic-Acnt F
+(NIL) S
+1200 /Times-Roman-Acnt F
+( are special atoms.  The value of T is T and the value of NIL is ) S
+18000 48506 M (NIL.  NIL is also a list, in particular, the empty list \( \).  NIL is the only ) S
+18000 46706 M (thing that is both a list and an atom.) S
+14400 43706 M (Facts about lists:) S
+18000 41106 M (The first item in a list is called its ) S
+1200 /Times-Italic-Acnt F
+(CAR) S
+1200 /Times-Roman-Acnt F
+(.) S
+18000 38506 M (The rest of the list, after the CAR is removed, is called its ) S
+1200 /Times-Italic-Acnt F
+(CDR) S
+1200 /Times-Roman-Acnt F
+(.) S
+18000 35906 M (The operation of the Lisp evaluator w.r.t. lists is discussed in the next ) S
+18000 34106 M (section.) S
+14400 31106 M (Thats all there is of Lisp syntax: all Lisp programs are build up from ) S
+14400 29306 M (combinations of atoms and lists.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 25706 M (Forms and the Lisp Interpreter) S
+1200 /Times-Roman-Acnt F
+14400 22706 M (The basic building block for procedures in Lisp is the ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(form) S
+1200 /Times-Roman-Acnt F
+( or ) S
+1200 /Times-BoldItalic-Acnt F
+(function call) S
+1200 /Times-Roman-Acnt F
+(.  A ) S
+14400 20906 M (form is simply a list structure, the CAR of which is the name of a function \(i.e., an ) S
+14400 19106 M (atom that references a function definition\) and the CDR of which is a list of the ) S
+14400 17306 M (arguments passed to the function.) S
+18000 14306 M (Example: \(IDIFFERENCE 5 2\), IDIFFERENCE is the function name and ) S
+18000 12506 M (\(5 2\) is a list of the arguments to be passed to the IDIFFERENCE ) S
+18000 10706 M (function.) S
+grestore savepage restore showpage
+
+%%Page: 7 7
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (7) S
+7200 75600 M (LispCourse #23:  Programming; Basic Lisp) S
+14400 71106 M (The Lisp evaluator evaluates forms in the following manner:) S
+18000 68506 M (The CAR of the list is assumed to be the name of a function.) S
+18000 65906 M (First, each element in the CDR of the list is evaluated, resulting in a list of ) S
+21600 64106 M (evaluated arguments.) S
+18000 61506 M (Then, the function named by the CAR is ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(applied) S
+1200 /Times-Roman-Acnt F
+( to the resulting evaluated ) S
+21600 59706 M (argument list.) S
+14400 57106 M (What it means to ) S
+1200 /Times-BoldItalic-Acnt F
+(apply) S
+1200 /Times-Roman-Acnt F
+( a function to an argument list is discussed in the following ) S
+18000 55306 M (section.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 52106 M (Special Forms & QUOTE) S
+1200 /Times-Roman-Acnt F
+18000 48906 M (There are some functions which are special in the sense that their ) S
+18000 47106 M (arguments are NOT evaluated before they are executed.  They are ) S
+18000 45306 M (executed using their unevaluated arguments.  [Called NLambda functions]) S
+1200 /Times-Bold-Acnt F
+18000 42106 M (QUOTE) S
+1200 /Times-Roman-Acnt F
+( is such a special form.  QUOTE simply returns its unevaluated ) S
+18000 40306 M (argument.  QUOTE can be abbreviated by a '.   \(QUOTE A\) is equivalent ) S
+18000 38506 M (to 'A.) S
+1200 /Times-Bold-Acnt F
+18000 36106 M (QUOTE is used to prevent evaluation where it is not required.) S
+1200 /Times-Roman-Acnt F
+21600 33706 M (Example:) S
+25200 31906 M (31_ \(SETQ A 4\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+25200 30306 M (4) S
+1200 /Times-Roman-Acnt F
+25200 28706 M (32_ \(SETQ B 5\)) S
+1200 /Times-Italic-Acnt F
+25200 27106 M (5) S
+1200 /Times-Roman-Acnt F
+25200 25506 M (33_ \(COPYFILE A B\)) S
+1200 /Times-Italic-Acnt F
+25200 23906 M (4: File not found) S
+25200 22306 M (5: File not found) S
+25200 20706 M (NIL) S
+1200 /Times-Roman-Acnt F
+25200 19106 M (34_ \(COPYFILE 'A 'B\)) S
+1200 /Times-Italic-Acnt F
+25200 17506 M ({PHYLUM}<HALASZ>B;5) S
+1200 /Times-Bold-Acnt F
+14400 14706 M (EVAL) S
+grestore savepage restore showpage
+
+%%Page: 8 8
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (8) S
+7200 75600 M (LispCourse #23:  Programming; Basic Lisp) S
+18000 71106 M (EVAL is a function which evaluates its arguments.  Note ) S
+18000 69306 M (that means that the arguments of EVAL are evaluated ) S
+18000 67506 M (TWICE!) S
+21600 65306 M (33_ \(SETQ Harp 'Viola\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 63506 M (Viola) S
+1200 /Times-Roman-Acnt F
+21600 61706 M (34_ \(SETQ Viola 'Tuba\)) S
+1200 /Times-Italic-Acnt F
+21600 59906 M (Tuba) S
+1200 /Times-Roman-Acnt F
+21600 58106 M (35_ Harp) S
+1200 /Times-Italic-Acnt F
+21600 56306 M (Viola) S
+1200 /Times-Roman-Acnt F
+21600 54506 M (36_ Viola) S
+1200 /Times-Italic-Acnt F
+21600 52706 M (Tuba) S
+1200 /Times-Roman-Acnt F
+21600 50906 M (37 _ \(EVAL Harp\)  [means evaluate the value of Harp]) S
+1200 /Times-Italic-Acnt F
+21600 49106 M (Tuba) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 45706 M (Lisp Control Structures) S
+1200 /Times-Roman-Acnt F
+14400 42906 M (Basically, a Lisp procedure is a list of forms to be evaluated one after the other in ) S
+14400 41106 M (sequence.) S
+18000 38506 M (Example, the following might be considered a Lisp procedure:) S
+21600 36506 M (\(SETQ A 55\)) S
+21600 34506 M (\(SETQ B 66\)) S
+21600 32506 M (\(IPLUS A B\)) S
+14400 29706 M (Note a sequence of actions is a very limited control structure.  Using this control ) S
+14400 27906 M (structure, it is impossible to specify an action to be done only under certain ) S
+14400 26106 M (circumstances or to be repeated a variable number of times.) S
+14400 23306 M (Interlisp has many special forms that provide more interesting control structures.  ) S
+14400 21506 M (We covered two: COND and Iterative Loops.) S
+1200 /Times-Bold-Acnt F
+14400 18706 M (COND) S
+1200 /Times-Roman-Acnt F
+18000 15706 M (COND is a special form that implements a conditional control structure.  ) S
+18000 13906 M (COND has the following form:) S
+21600 11506 M (\(COND) S
+25200 9706 M (\() S
+1200 /Times-Italic-Acnt F
+(Test1) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(Consequents1) S
+1200 /Times-Roman-Acnt F
+(\)) S
+grestore savepage restore showpage
+
+%%Page: 9 9
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (9) S
+7200 75600 M (LispCourse #23:  Programming; Basic Lisp) S
+25200 71106 M (\() S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Test2) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(Consequents2) S
+1200 /Times-Roman-Acnt F
+(\)) S
+25200 69306 M (\() S
+1200 /Times-Italic-Acnt F
+(Test2) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(Consequents2) S
+1200 /Times-Roman-Acnt F
+(\)) S
+1200 /Times-Italic-Acnt F
+25200 67506 M (...) S
+1200 /Times-Roman-Acnt F
+25200 65706 M (\() S
+1200 /Times-Italic-Acnt F
+(TestN) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(ConsequentsN) S
+1200 /Times-Roman-Acnt F
+(\)\)) S
+18000 62706 M (Each ) S
+1200 /Times-Italic-Acnt F
+(Testi) S
+1200 /Times-Roman-Acnt F
+( is an S-expression \(usually a predicate\) that evaluates to NIL or ) S
+18000 60906 M (non-NIL.  Each ) S
+1200 /Times-Italic-Acnt F
+(Consequentsi) S
+1200 /Times-Roman-Acnt F
+( consists of 0 or more S-expressions.  ) S
+18000 57906 M (COND works as follows:) S
+21600 55206 M (Test1 is evaluated.) S
+25200 53406 M (If it returns a non-NIL value, each S-expression in ) S
+27600 51606 M (Consequents1 is evaluated in turn, and then the COND ) S
+27600 49806 M (is exitted.  The value of the COND is the value of the ) S
+27600 48006 M (last S-expression in Consequents1. ) S
+25200 45606 M (If it returns a NIL value, go on to Test2) S
+21600 42906 M (Test2 is evaluated.) S
+25200 41106 M (If it returns a non-NIL value, each S-expression in ) S
+27600 39306 M (Consequents2 is evaluated in turn, and then the COND ) S
+27600 37506 M (is exitted.  The value of the COND is the value of the ) S
+27600 35706 M (last S-expression in Consequents2.) S
+25200 33306 M (If it returns a NIL value, go on to Test3.) S
+21600 31506 M (...) S
+21600 28806 M (TestN is evaluated.) S
+25200 27006 M (If it returns a non-NIL value, each S-expression in ) S
+27600 25206 M (ConsequentsN is evaluated in turn, and then the ) S
+27600 23406 M (COND is exitted.  The value of the COND is the value ) S
+27600 21606 M (of the last S-expression in ConsequentsN.) S
+25200 19206 M (If it returns a NIL value, the COND is exitted with a value ) S
+27600 17406 M (of NIL.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 15606 M (Example:) S
+1200 /Times-Roman-Acnt F
+21600 13806 M (Return X if X is an atom, NIL otherwise.) S
+25200 12006 M (\(COND) S
+28800 10206 M (\(\(LITATOM X\)  X\)) S
+28800 8206 M (\(\(NUMBERP X\) X\)\)\)\)\)) S
+grestore savepage restore showpage
+
+%%Page: 10 10
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (10) S
+7200 75600 M (LispCourse #23:  Programming; Basic Lisp) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 71106 M (Iterative control structures: The FOR Loop and its cousins) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+18000 68706 M (Iteration) S
+1200 /Times-Roman-Acnt F
+( is a control structure that makes it possible to repeat the same ) S
+18000 66906 M (operation on each element in a sequence \(list\) of things.) S
+18000 64506 M ("To iterate" means "to repeat".) S
+1200 /Times-Bold-Acnt F
+18000 62106 M (The FOR Loop) S
+1200 /Times-Roman-Acnt F
+21600 59706 M (The major iterative construct in Interlisp) S
+41042 59399 37040 59399 75 L
+41042 59706 M ( is the FOR loop.) S
+1000 /Times-Roman-Acnt F
+25200 57455 M ([Footnote) S
+1000 /Times-Italic-Acnt F
+(:  ) S
+1000 /Times-Roman-Acnt F
+(The FOR loop construct is not a standard part of most ) S
+25200 56255 M (Lisps.  The iterative control structure is available in all Lisps, it just has ) S
+25200 55055 M (a different syntax than the Interlisp FOR loop.]) S
+1200 /Times-Roman-Acnt F
+21600 52506 M (The FOR loop has the following form:) S
+1200 /Times-Bold-Acnt F
+25200 50306 M (\(FOR ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(variable) S
+1200 /Times-Bold-Acnt F
+( IN ) S
+1200 /Times-BoldItalic-Acnt F
+(list) S
+1200 /Times-Bold-Acnt F
+( DO ) S
+1200 /Times-BoldItalic-Acnt F
+(operation) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+28800 47906 M (Note:  FOR is a special form; the elements of the ) S
+28800 46106 M (CDR are not evaluated automatically.) S
+28800 43706 M (IN and DO are keywords.) S
+1200 /Times-Italic-Acnt F
+28800 41306 M (Variable) S
+1200 /Times-Roman-Acnt F
+( is unevaluated.  It is the name of an atom ) S
+28800 39506 M (to be used as the local variable in the iteration.) S
+1200 /Times-Italic-Acnt F
+28800 37106 M (List) S
+1200 /Times-Roman-Acnt F
+( is evaluated.  It is a S-expression whose value ) S
+28800 35306 M (is a list.) S
+1200 /Times-Italic-Acnt F
+28800 32906 M (Operation) S
+1200 /Times-Roman-Acnt F
+( consists of 0 or more S-expressions to be ) S
+28800 31106 M (evaluated.   Ordinarily, these S-expression make ) S
+28800 29306 M (some use of the value of ) S
+1200 /Times-Italic-Acnt F
+(the ) S
+1200 /Times-Roman-Acnt F
+(atom in the ) S
+1200 /Times-Italic-Acnt F
+(variable) S
+1200 /Times-Roman-Acnt F
+( ) S
+28800 27506 M (role.) S
+25200 25106 M (FOR works as follows:) S
+27600 22706 M (The ) S
+1200 /Times-Italic-Acnt F
+(variable) S
+1200 /Times-Roman-Acnt F
+( is bound \(i.e., temporarily SETQed\) to ) S
+27600 20906 M (the CAR of the ) S
+1200 /Times-Italic-Acnt F
+(list) S
+1200 /Times-Roman-Acnt F
+(.  The S-expressions in ) S
+1200 /Times-Italic-Acnt F
+(operation) S
+1200 /Times-Roman-Acnt F
+( ) S
+27600 19106 M (are then evaluated.) S
+27600 16706 M (Then the ) S
+1200 /Times-Italic-Acnt F
+(variable) S
+1200 /Times-Roman-Acnt F
+( is bound to the second item in the ) S
+1200 /Times-Italic-Acnt F
+27600 14906 M (list) S
+1200 /Times-Roman-Acnt F
+( and the the S-expressions in ) S
+1200 /Times-Italic-Acnt F
+(operation) S
+1200 /Times-Roman-Acnt F
+( are again ) S
+27600 13106 M (evaluated.) S
+27600 10706 M (Then the ) S
+1200 /Times-Italic-Acnt F
+(variable) S
+1200 /Times-Roman-Acnt F
+( is bound to the third item in the ) S
+1200 /Times-Italic-Acnt F
+(list) S
+1200 /Times-Roman-Acnt F
+( ) S
+27600 8906 M (and the S-expressions in ) S
+1200 /Times-Italic-Acnt F
+(operation) S
+1200 /Times-Roman-Acnt F
+( are evaluated.) S
+grestore savepage restore showpage
+
+%%Page: 11 11
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (11) S
+7200 75600 M (LispCourse #23:  Programming; Basic Lisp) S
+27600 71106 M (...) S
+27600 68706 M (The ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(variable) S
+1200 /Times-Roman-Acnt F
+( is bound to the last item in the ) S
+1200 /Times-Italic-Acnt F
+(list) S
+1200 /Times-Roman-Acnt F
+( and ) S
+27600 66906 M (the S-expressions in ) S
+1200 /Times-Italic-Acnt F
+(operation) S
+1200 /Times-Roman-Acnt F
+( are evaluated.) S
+25200 64506 M (The FOR loop returns NIL.) S
+21600 61506 M (Example:) S
+25200 59506 M (\(FOR Window in \(OPENWINDOWS\) DO \(CLOSEW ) S
+25200 57706 M (Window\)\)) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 54706 M (Alternative FOR loops) S
+21600 52306 M (1.  DO versus COLLECT) S
+1200 /Times-Roman-Acnt F
+21600 49906 M (The DO keyword can be replaced by the COLLECT keyword in ) S
+21600 48106 M (the FOR loop.  In this case, on every iteration the value of the last ) S
+21600 46306 M (S-expression in operation will be saved.  The FOR loop will then ) S
+21600 44506 M (return a list of these values \(in order\) instead of returning NIL.) S
+21600 42106 M (Example:) S
+25200 40306 M (4_ \(FOR Item IN '\(\(A B\)\(C D\)\(E F\)\) COLLECT \(CAR ) S
+25200 38506 M (Item\)\(CDR Item\)\)) S
+1200 /Times-Italic-Acnt F
+25200 36706 M (\(\(B\)\(D\)\(F\)\)) S
+1200 /Times-Bold-Acnt F
+21600 33706 M (2.  "IN ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(list) S
+1200 /Times-Bold-Acnt F
+(" versus "FROM ) S
+1200 /Times-BoldItalic-Acnt F
+(n) S
+1200 /Times-Bold-Acnt F
+( TO ) S
+1200 /Times-BoldItalic-Acnt F
+(m) S
+1200 /Times-Bold-Acnt F
+( BY ) S
+1200 /Times-BoldItalic-Acnt F
+(k) S
+1200 /Times-Bold-Acnt F
+(") S
+1200 /Times-Roman-Acnt F
+21600 31306 M (FOR also allows for iteration over a sequence of numbers.  To do ) S
+21600 29506 M (this, replace the "IN ) S
+1200 /Times-Italic-Acnt F
+(list) S
+1200 /Times-Roman-Acnt F
+(" construction with the construction ) S
+21600 27706 M ("FROM ) S
+1200 /Times-Italic-Acnt F
+(n) S
+1200 /Times-Roman-Acnt F
+( TO ) S
+1200 /Times-Italic-Acnt F
+(m) S
+1200 /Times-Roman-Acnt F
+( BY ) S
+1200 /Times-Italic-Acnt F
+(k) S
+1200 /Times-Roman-Acnt F
+(", where n, m, and k evaluate to numbers.) S
+21600 25306 M (Note:  The "BY ) S
+1200 /Times-Italic-Acnt F
+(k) S
+1200 /Times-Roman-Acnt F
+(" is optional and defaults to "BY 1" if it is not ) S
+21600 23506 M (specified.) S
+25200 21106 M (Example:) S
+28800 18706 M (5_  \(FOR N FROM 1 TO 10 COLLECT \(PLUS N ) S
+28800 16906 M (6\)\)) S
+1200 /Times-Italic-Acnt F
+28800 15106 M (\(7 8 9 10 11 12 13 14 15 16\)) S
+1200 /Times-Bold-Acnt F
+18000 12106 M (WHILE and UNTIL loops:  Alternatives to FOR) S
+grestore savepage restore showpage
+
+%%Page: 12 12
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (12) S
+7200 75600 M (LispCourse #23:  Programming; Basic Lisp) S
+21600 71106 M (WHILE and UNTIL loops allow repetative operations without an ) S
+21600 69306 M (explicit sequence.) S
+21600 66906 M (WHILE has the form:) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+24000 64906 M (\(WHILE ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(predicate) S
+1200 /Times-Bold-Acnt F
+( {DO, COLLECT} ) S
+1200 /Times-BoldItalic-Acnt F
+(operations) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+25200 62506 M (Note:  WHILE is a special form.) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+25200 60106 M (Predicate) S
+1200 /Times-Roman-Acnt F
+( is evaluated.  It is an S-expression that evaluates ) S
+25200 58306 M (to NIL or non-NIL.) S
+1200 /Times-Italic-Acnt F
+25200 55906 M (Operations) S
+1200 /Times-Roman-Acnt F
+( is 0 or more S-expression to be evaluated.) S
+25200 53506 M (The WHILE loop repeatedly evaluates ) S
+1200 /Times-Italic-Acnt F
+(operations) S
+1200 /Times-Roman-Acnt F
+( as long ) S
+53201 53199 49467 53199 75 L
+25200 51706 M (as) S
+26200 51399 25200 51399 75 L
+26200 51706 M ( ) S
+1200 /Times-Italic-Acnt F
+(predicate) S
+1200 /Times-Roman-Acnt F
+( evaluates to non-NIL.) S
+21600 49306 M (DO versus COLLECT works exactly as in FOR.  If DO is used, ) S
+21600 47506 M (then the WHILE loop always returns NIL.  If COLLECT is used, ) S
+21600 45706 M (the WHILE loop returns a list containing, in order, the value of the ) S
+21600 43906 M (last S-expression in ) S
+1200 /Times-Italic-Acnt F
+(operations) S
+1200 /Times-Roman-Acnt F
+( from each iteration.) S
+25200 41506 M (Example:) S
+25200 39506 M (11_ \(WHILE \(MouseButtonDown\) COLLECT ) S
+32400 37506 M (\(WHICHW\)\)) S
+21600 34506 M (UNTIL is similar to while, but it iterates until its ) S
+1200 /Times-Italic-Acnt F
+(predicate) S
+1200 /Times-Roman-Acnt F
+( ) S
+21600 32706 M (becomes non-NIL, i.e., as long as its ) S
+1200 /Times-Italic-Acnt F
+(predicate) S
+1200 /Times-Roman-Acnt F
+( is NIL.) S
+25200 29706 M ("UNTIL ) S
+1200 /Times-Italic-Acnt F
+(predicate) S
+1200 /Times-Roman-Acnt F
+(" is equivalent to "WHILE \(NULL ) S
+1200 /Times-Italic-Acnt F
+25200 27906 M (predicate) S
+1200 /Times-Roman-Acnt F
+(\)".) S
+1200 /Times-Bold-Acnt F
+14400 24306 M (Defining and Applying Functions) S
+1200 /Times-Roman-Acnt F
+18000 21506 M (All of the work in Lisp is done when the Lisp evaluator evaluates a form ) S
+18000 19706 M (or function call.  ) S
+18000 16906 M (Recall that evaluating a form involves applying a ) S
+1200 /Times-BoldItalic-Acnt F
+(function) S
+1200 /Times-Roman-Acnt F
+( to a list of ) S
+18000 15106 M (evaluated arguments. ) S
+18000 12306 M (A function is simply a sequence of forms that have been packaged into a ) S
+18000 10506 M (unit and named.) S
+grestore savepage restore showpage
+
+%%Page: 13 13
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (13) S
+7200 75600 M (LispCourse #23:  Programming; Basic Lisp) S
+21600 71106 M (Once packaged into a function, the sequence of forms can be ) S
+21600 69306 M (manipulated as a single entity.  The process of treating a sequence ) S
+21600 67506 M (of forms as a single entity that carries out a single \(but compound\) ) S
+21600 65706 M (action is known as ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(procedural abstraction) S
+1200 /Times-Roman-Acnt F
+(.  We'll have more to ) S
+21600 63906 M (say about procedural abstraction later in the course.) S
+18000 61106 M (In Lisp packaging and naming a sequence of forms is known as ) S
+1200 /Times-Italic-Acnt F
+(defining a ) S
+18000 59306 M (function) S
+1200 /Times-Roman-Acnt F
+(.  Programming in Lisp consists of defining functions that call ) S
+18000 57506 M (other functions you have already defined \(or will define before you run the ) S
+18000 55706 M (program\).) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 52906 M (Defining functions) S
+1200 /Times-Roman-Acnt F
+21600 50106 M (DEFINEQ is a special form that allows you to define functions in ) S
+21600 48306 M (Lisp.  It has the form:) S
+1200 /Times-Bold-Acnt F
+25200 45906 M (\(DEFINEQ ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Defn1) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Defn2) S
+1200 /Times-Bold-Acnt F
+( ...\)) S
+1200 /Times-Roman-Acnt F
+28800 43506 M (Each ) S
+1200 /Times-Italic-Acnt F
+(Defni) S
+1200 /Times-Roman-Acnt F
+( is the name and definition of a function ) S
+28800 41706 M (and has the form: ) S
+1200 /Times-Bold-Acnt F
+(\() S
+1200 /Times-BoldItalic-Acnt F
+(FunctionName) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(FunctionDefn) S
+1200 /Times-Bold-Acnt F
+(\).) S
+1200 /Times-Italic-Acnt F
+32400 39306 M (FunctionName) S
+1200 /Times-Roman-Acnt F
+( is any atom.) S
+1200 /Times-Italic-Acnt F
+32400 36906 M (FunctionDefn) S
+1200 /Times-Roman-Acnt F
+( has the form:) S
+1200 /Times-Bold-Acnt F
+36000 34906 M (\(LAMBDA ) S
+1200 /Times-BoldItalic-Acnt F
+(ParameterList) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+36000 33106 M (FunctionBody) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+36000 30506 M (LAMBDA is a keyword indicating ) S
+36000 28706 M (that the list is function a definition.  ) S
+36000 26906 M (Just put it there.  It is an historical ) S
+36000 25106 M (remnent from Church's Lambda ) S
+36000 23306 M (calculus, on which Lisp was ) S
+36000 21506 M (originally built.) S
+1200 /Times-Italic-Acnt F
+36000 19106 M (ParameterList ) S
+1200 /Times-Roman-Acnt F
+(is a list of the ) S
+36000 17306 M (parameters \(arguments\) for the) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+36000 15506 M (function.) S
+1200 /Times-Italic-Acnt F
+36000 13106 M (FunctionBody) S
+1200 /Times-Roman-Acnt F
+( is 1 or more Lisp ) S
+36000 11306 M (forms.) S
+21600 8906 M (Example:) S
+grestore savepage restore showpage
+
+%%Page: 14 14
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (14) S
+7200 75600 M (LispCourse #23:  Programming; Basic Lisp) S
+25200 71106 M (\(DEFINEQ) S
+28800 69306 M (\(SumOfSquares) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+43200 69306 M ([FunctionName]) S
+1200 /Times-Roman-Acnt F
+32400 66906 M (\(LAMBDA) S
+1200 /Times-Italic-Acnt F
+39600 66906 M ([Keyword]) S
+1200 /Times-Roman-Acnt F
+36000 64506 M (\(X Y\)) S
+1200 /Times-Italic-Acnt F
+39600 64506 M ([ParameterList]) S
+1200 /Times-Roman-Acnt F
+37800 62106 M (\(PLUS \(TIMES X X\)\(TIMES Y ) S
+37800 60306 M (Y\)) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(  ) S
+1200 /Times-Italic-Acnt F
+([FunctionBody]) S
+1200 /Times-Bold-Acnt F
+18000 57506 M (Applying functions) S
+1200 /Times-Roman-Acnt F
+21600 54706 M (Recall that the final step in evaluating a form involves ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(applying) S
+1200 /Times-Roman-Acnt F
+( the ) S
+21600 52906 M (function named by the CAR to the list of evaluated arguments.) S
+1200 /Times-Bold-Acnt F
+21600 50106 M (APPLY) S
+1200 /Times-Roman-Acnt F
+( works as follows:) S
+25200 47906 M (1.  The value of each parameter in the function definition is ) S
+28800 46106 M (\(temporarily\) set to the corresponding element of ) S
+28800 44306 M (the evaluated argument list.) S
+25200 42106 M (2.  All of the forms of the function body are evaluated in ) S
+28800 40306 M (turn using the normal rules of Lisp evaluation.) S
+25200 38106 M (3.  The value returned by the function is the value of the ) S
+28800 36306 M (last \(only\) form in the function body.) S
+25200 34106 M (4.  All parameters \(i.e., L\) are set to back to their original ) S
+28800 32306 M (value.) S
+21600 29306 M (The process of setting the values of the parameters to the values of ) S
+21600 27506 M (the arguments is known as ) S
+1200 /Times-Italic-Acnt F
+(binding) S
+1200 /Times-Roman-Acnt F
+( the local variables.  Note that ) S
+21600 25706 M (binding affects the parameters only locally within the function.  ) S
+21600 23906 M (The value of the same atom outside of the function is unaffected.) S
+1200 /Times-Bold-Acnt F
+18000 21106 M (Lisp Interpreter: A combination of EVAL and APPLY) S
+1200 /Times-Roman-Acnt F
+21600 18306 M (EVAL and APPLY combine to produce the Lisp interpreter, as the ) S
+21600 16506 M (following example illustrates:) S
+1200 /Times-Italic-Acnt F
+25200 13706 M (Evaluating the form \(SumOfSquares \(TIMES 2 3\) 2\)) S
+1200 /Times-Roman-Acnt F
+28800 10906 M (1.  Each item in the CDR of the form is ) S
+1200 /Times-Bold-Acnt F
+(evaluated) S
+1200 /Times-Roman-Acnt F
+( ) S
+28800 9106 M (in turn:) S
+grestore savepage restore showpage
+
+%%Page: 15 15
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (15) S
+7200 75600 M (LispCourse #23:  Programming; Basic Lisp) S
+32400 71106 M (1.1\) ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+( \(TIMES 2 1\)) S
+1200 /Times-Roman-Acnt F
+( evaluates to 6 \(by ) S
+32400 69306 M (recursive call to the Lisp evaluation of a ) S
+32400 67506 M (form\).) S
+32400 64706 M (1.2\) ) S
+1200 /Times-Italic-Acnt F
+(2) S
+1200 /Times-Roman-Acnt F
+( evaluates to itself.) S
+28800 61906 M (2.  The SumOfSquares function is ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(applied) S
+1200 /Times-Roman-Acnt F
+( to the ) S
+28800 60106 M (list \(6 2\).) S
+32400 57306 M (2.1\)  X is bound to 6 and Y is bound to 2.) S
+32400 54506 M (2.2\) \(PLUS \(TIMES X X\)\(TIMES Y Y\)\) is ) S
+32400 52706 M (evaluated by recursive call to the Lisp ) S
+32400 50906 M (evaluation of forms, resulting in the value ) S
+32400 49106 M (40.) S
+32400 46306 M (2.3\) X and Y are rebound to their previous ) S
+32400 44506 M (values \(if any\).) S
+32400 41706 M (2.4\) SumOfSquares is exited returning, 40.) S
+28800 38906 M (3. The value of the form \(40\) is printed.) S
+1200 /Times-Bold-Acnt F
+14400 35306 M (Lists: the primary Lisp data strucuture ) S
+1200 /Times-Roman-Acnt F
+18000 32306 M (The primary data structure in Lisp is the list.  When you want to ) S
+18000 30506 M (erepresent an object or piece of data in Lisp, the first thing you think of is ) S
+18000 28706 M (a list!!!) S
+1000 /Times-Roman-Acnt F
+21600 26255 M (There are other data structures in Lisp, but lists are the only ones we covered in ) S
+21600 24655 M (the earlier part of the course.) S
+1200 /Times-Roman-Acnt F
+18000 21706 M (Lists can be used to represent almost any data:) S
+1200 /Times-Bold-Acnt F
+21600 19306 M (Examples:) S
+1200 /Times-Roman-Acnt F
+25200 16706 M (A person's name might be a list of three atoms: ) S
+1200 /Times-Italic-Acnt F
+(\(First ) S
+25200 14906 M (Middle Last\)) S
+1200 /Times-Roman-Acnt F
+( as in ) S
+1200 /Times-Italic-Acnt F
+(\(Frank Geza Halasz\)) S
+1200 /Times-Roman-Acnt F
+( or) S
+1200 /Times-Italic-Acnt F
+( \(John Seely ) S
+25200 13106 M (Brown\)) S
+1200 /Times-Roman-Acnt F
+(.) S
+grestore savepage restore showpage
+
+%%Page: 16 16
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (16) S
+7200 75600 M (LispCourse #23:  Programming; Basic Lisp) S
+25200 71106 M (ISL-People might be represented by a list of names \(which ) S
+25200 69306 M (are themselves lists\): ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(\(\(John Seely Brown\) \(Dana ?? ) S
+25200 67506 M (Bloomberg\)\(Thomas P. Moran\)\(Frank Geza Halasz\)\)) S
+1200 /Times-Roman-Acnt F
+25200 64906 M (PARC-Personnel might be a futher aggregation of lists ) S
+25200 63106 M (representing each lab.  Each lab list would consist of two ) S
+25200 61306 M (items, a lab name and a list of lab people: ) S
+1200 /Times-Italic-Acnt F
+(\(PARC \(ISL ) S
+25200 59506 M (\(\(John Seely Brown\) \(Dana ?? Bloomberg\)\(Thomas P. ) S
+25200 57706 M (Moran\)\(Frank Geza Halasz\)\)\)\(CSL \(Robert ?? ) S
+25200 55906 M (Ritchie\)\(Robert ?? Haggman\) ...\)\(SCL \(Adele ?? Goldberg\) ) S
+25200 54106 M (...\)\)\)) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 50506 M (List Maniupulation Functions) S
+1200 /Times-Roman-Acnt F
+21600 47706 M (Interlisp has lots and lots of fucntions for creating, maintaining and ) S
+21600 45906 M (decomposing these list data structures.  Some of those we covered ) S
+21600 44106 M (earlier \(See LispCourses #2 & #3\) were:) S
+25200 41706 M (List Decomposition Functions) S
+28800 39706 M (CAR \234 returns the first element of the list) S
+28800 37706 M (CDR \234 returns the list minus the first element) S
+28800 35706 M (CxxR \(where x=A or D\) \234 compisitions of CAR and ) S
+28800 33906 M (CDR.) S
+28800 31906 M (NTH \234 returns the list ) S
+1200 /Times-Italic-Acnt F
+(tail) S
+1200 /Times-Roman-Acnt F
+( starting at the Nth element) S
+28800 29906 M (LAST \234 returns the list tail containing only the last ) S
+28800 28106 M (element) S
+25200 25106 M (List Composition Functions) S
+28800 22906 M (APPEND \234 returns the concatenation of two or more ) S
+28800 21106 M (lists) S
+28800 18906 M (LIST \234 creates a list consisting of its arguments) S
+28800 16706 M (CONS \234 \(CONS Arg1 Arg2\) returns a list with Arg1 ) S
+36000 14906 M (as its CAR and Arg2 as its CDR.) S
+25200 11906 M (List Manipulation Functions) S
+grestore savepage restore showpage
+
+%%Page: 17 17
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (17) S
+7200 75600 M (LispCourse #23:  Programming; Basic Lisp) S
+28800 71106 M (REVERSE \234 returns list with reverse order of top-) S
+36000 69306 M (level elements) S
+28800 67106 M (LENGTH \234 returns number of top-level elements in ) S
+36000 65306 M (list) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 62306 M (List Formats) S
+1200 /Times-Roman-Acnt F
+21600 59306 M (Each of the lists given in as examples above has a format that ) S
+21600 57506 M (determines the meaning of the elements of the list.  Programs that ) S
+21600 55706 M (might use these lists would have to have built into them the ) S
+21600 53906 M (necessary procedures for making use of these formats.) S
+21600 50906 M (For example, the name list has three elements representing the ) S
+21600 49106 M (first, middle and last names.  If a program needs the first name of a ) S
+21600 47306 M (person, the programmer would have to know enough about the ) S
+21600 45506 M (formatto take the CAR of the person's name list.) S
+21600 42506 M (The examples given above were ad-hoc list formats.  Much of Lisp ) S
+21600 40706 M (programming involves creating \(and documenting\) such ad-hoc list ) S
+21600 38906 M (formats.   But, there are some special list formats that are ) S
+21600 37106 M (commonly used as data structures in Lisp:) S
+21600 34106 M (An ) S
+1200 /Times-Bold-Acnt F
+(ASSOC) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(list) S
+1200 /Times-Roman-Acnt F
+( has the following form:  \(\() S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(key1) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(data1) S
+1200 /Times-Roman-Acnt F
+(\)\() S
+1200 /Times-Italic-Acnt F
+(key2) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+21600 32306 M (data2) S
+1200 /Times-Roman-Acnt F
+(\)\() S
+1200 /Times-Italic-Acnt F
+(key3) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(data3) S
+1200 /Times-Roman-Acnt F
+(\)\() S
+1200 /Times-Italic-Acnt F
+(key4) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(data4) S
+1200 /Times-Roman-Acnt F
+(\) ... \() S
+1200 /Times-Italic-Acnt F
+(keyn) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(datan) S
+1200 /Times-Roman-Acnt F
+(\)\), where each ) S
+1200 /Times-Italic-Acnt F
+(keyi) S
+1200 /Times-Roman-Acnt F
+( ) S
+21600 30506 M (is an atom and each ) S
+1200 /Times-Italic-Acnt F
+(datai ) S
+1200 /Times-Roman-Acnt F
+(consists of 0 or more S-expressions.) S
+25200 28106 M (The function ) S
+1200 /Times-Bold-Acnt F
+(ASSOC) S
+1200 /Times-Roman-Acnt F
+( is used to retrieve items from an ) S
+25200 26306 M (ASSOC list.  ASSOC takes two arguments, a key and an ) S
+25200 24506 M (ASSOC list.  It returns the first ) S
+1200 /Times-Italic-Acnt F
+(key-data) S
+1200 /Times-Roman-Acnt F
+( pair in the list ) S
+25200 22706 M (whose key is equal to the key argument.) S
+21600 20306 M (A ) S
+1200 /Times-Bold-Acnt F
+(Prop) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Bold-Acnt F
+(list) S
+1200 /Times-Roman-Acnt F
+( has the form:  \() S
+1200 /Times-Italic-Acnt F
+(prop1) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(value1) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(prop2) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(value2) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(prop3) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+21600 18506 M (value3) S
+1200 /Times-Roman-Acnt F
+( ... ) S
+1200 /Times-Italic-Acnt F
+(propn) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(valuen) S
+1200 /Times-Roman-Acnt F
+(\), where each ) S
+1200 /Times-Italic-Acnt F
+(propi) S
+1200 /Times-Roman-Acnt F
+( is an atom and each ) S
+1200 /Times-Italic-Acnt F
+21600 16706 M (valuei) S
+1200 /Times-Roman-Acnt F
+( is exactly one S-expression.) S
+25200 14306 M (The function ) S
+1200 /Times-Bold-Acnt F
+(LISTGET) S
+1200 /Times-Roman-Acnt F
+( retrieves a prop values from a ) S
+25200 12506 M (PROP list.  LISTGET takes 2 arguments, a prop list and a ) S
+25200 10706 M (prop.  It returns the value corresponding to prop on the ) S
+25200 8906 M (prop list.) S
+grestore savepage restore showpage
+
+%%Page: 18 18
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (18) S
+7200 75600 M (LispCourse #23:  Programming; Basic Lisp) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+25200 71106 M (LISTPUT) S
+1200 /Times-Roman-Acnt F
+( adds a prop-value pair to an already existing ) S
+25200 69306 M (prop list.  Its three arguments are a prop list, a prop, and a ) S
+25200 67506 M (value.  If the prop is already on the list, it simply updates its ) S
+25200 65706 M (value.  It returns the value.) S
+1400 /Times-Bold-Acnt F
+7200 61957 M (Exercise: Learning Data Abstraction) S
+1200 /Times-Roman-Acnt F
+10800 59506 M (Write a program that manipulates a database of people in ISL, their office numbers and ) S
+10800 57706 M (their phone numbers.) S
+14400 55306 M (First, determine a data structure for your database.) S
+14400 52906 M (Then write functions for:) S
+18000 50906 M (creating the database) S
+18000 48906 M (adding people to the database) S
+18000 46906 M (getting a list of all the first names in ISL) S
+18000 44906 M (getting a list of all the last names in ISL) S
+18000 42906 M (getting a list of all the phone numers in ISL.) S
+14400 40506 M (\(Hint: you will find FOR-COLLECT loops very handy here.\)) S
+1400 /Times-Bold-Acnt F
+7200 37957 M (References) S
+1200 /Times-Roman-Acnt F
+10800 35506 M (LispCourse Notes #2 thru #6.) S
+grestore savepage restore showpage
+
+%%Trailer

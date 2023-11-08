@@ -1,0 +1,6627 @@
+%!PS-Adobe-2.0%%Title: {DSK}<home>larry>lispcourse>OUTLINE40.PS%%Creator: PostScript Driver Copyright (C) 1988-1992 Venue and others%%CreationDate:  7-Nov-2023 21:40:27%%EndComments/bdef {bind def} bind def
+/ldef {load def} bdef
+/S /show ldef
+/M /moveto ldef
+/DR {transform round exch round exch itransform} bdef
+/L {gsave newpath setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/L1 {gsave newpath 0 setdash setgray setlinewidth 0 setlinecap
+  M lineto currentpoint stroke grestore M} bdef
+/F {findfont exch scalefont setfont} bdef
+/CLP {newpath M dup 0 rlineto exch 0 exch rlineto
+  neg 0 rlineto closepath clip newpath} bdef
+/R {gsave setgray newpath M dup 0 rlineto exch 0 exch
+  rlineto neg 0 rlineto closepath eofill grestore} bdef
+/ellipsedict 9 dict def
+ellipsedict /mtrx matrix put
+/ellipse
+ { ellipsedict begin
+  /endangle exch def
+  /startangle exch def
+  /orientation exch def
+  /minorrad exch def
+  /majorrad exch def
+  /y exch def
+  /x exch def
+  /savematrix mtrx currentmatrix def
+  x y translate
+  orientation rotate
+  majorrad minorrad scale
+  0 0 1 startangle endangle arc
+  savematrix setmatrix
+ end } bdef
+/concatprocs
+ {/proc2 exch cvlit def
+  /proc1 exch cvlit def
+  /newproc proc1 length proc2 length add array def
+  newproc 0 proc1 putinterval
+  newproc proc1 length proc2 putinterval
+  newproc cvx
+ } bdef
+/resmatrix matrix def
+/findresolution
+ {72 0 resmatrix defaultmatrix dtransform
+  /yres exch def /xres exch def
+  xres dup mul yres dup mul add sqrt
+ } bdef
+/thebitimage
+ {/maskp exch def
+  /bihgt exch def
+  /biwid exch def
+  /byte 1 string def
+  /strbufl biwid 8 div ceiling cvi def
+  /strbuf strbufl string def
+  maskp not{{1 exch sub} currenttransfer concatprocs settransfer} if
+  biwid bihgt
+  maskp { true } { 1 } ifelse
+  [biwid 0 0 bihgt 0 0]
+  {/col 0 def
+   {currentfile byte readhexstring pop 0 get
+    dup 16#B2 eq {pop
+    currentfile byte readhexstring pop 0 get 1 add
+    currentfile byte readhexstring pop pop /nbyte byte 0 get def
+    { strbuf col nbyte put /col col 1 add def} repeat}
+   {dup 16#B3 eq {pop /col col
+    currentfile byte readhexstring pop
+    0 get add 1 add def}
+    {16#B4 eq {currentfile byte readhexstring pop pop} if
+     strbuf col byte 0 get put /col col 1 add def} ifelse
+   } ifelse
+   col strbufl ge { exit } if } loop
+   strbuf }
+  maskp { imagemask } { image } ifelse
+ } bdef
+/setuserscreendict 22 dict def
+setuserscreendict begin
+ /tempctm matrix def
+ /temprot matrix def
+ /tempscale matrix def
+end
+/setuserscreen
+ {setuserscreendict begin
+   /spotfunction exch def
+   /screenangle exch def
+   /cellsize exch def
+   /m tempctm currentmatrix def
+   /rm screenangle temprot rotate def
+   /sm cellsize dup tempscale scale def
+   sm rm m m concatmatrix m concatmatrix pop
+   1 0 m dtransform /y1 exch def /x1 exch def
+   /veclength x1 dup mul y1 dup mul add sqrt def
+   /frequency findresolution veclength div def
+   /newscreenangle y1 x1 atan def
+   m 2 get m 1 get mul m 0 get m 3 get mul sub
+   0 gt { { neg } /spotfunction load concatprocs
+          /spotfunction exch def } if
+   frequency newscreenangle /spotfunction load setscreen
+  end
+ } bdef
+/setpatterndict 18 dict def
+setpatterndict begin
+ /bitison
+  {/ybit exch def /xbit exch def
+   /bytevalue bstring ybit bwidth mul xbit 8 idiv add get def
+   /mask 1 7 xbit 8 mod sub bitshift def
+   bytevalue mask and 0 ne
+  } bdef
+end
+/bitpatternspotfunction
+ {setpatterndict begin
+   /y exch def /x exch def
+   /xindex x 1 add 2 div bpside mul 1 sub cvi def
+   /yindex y 1 add 2 div bpside mul 1 sub cvi def
+   xindex yindex bitison
+    {/onbits onbits 1 add def 1}
+    {/offbits offbits 1 add def 0} ifelse
+  end
+ } bdef
+/setpattern
+ {setpatterndict begin
+   /cellsz exch def
+   /angle exch def
+   /bwidth exch def
+   /bpside exch def
+   /bstring exch def
+   /onbits 0 def /offbits 0 def
+   cellsz angle /bitpatternspotfunction load setuserscreen
+   {} settransfer
+   offbits offbits onbits add div setgray
+  end
+ } bdef
+% - - - - - Fraction-setting code, to support NS fonts better - - - - -
+/fractiondict 20 dict def
+/fractionshow 
+{ fractiondict begin
+/denom exch def 
+/num exch def 
+/regfont currentfont def
+/fractfont currentfont [.65 0 0 .6 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(1) true charpath flattenpath pathbbox 
+/height exch def pop pop pop
+ grestore
+0 .4 height mul rmoveto
+fractfont setfont num show
+0 .4 height mul neg rmoveto regfont setfont (\244) show
+fractfont setfont denom show regfont setfont end } bdef
+/f14 { (1) (4) fractionshow } bdef
+/f12 { (1) (2) fractionshow } bdef
+/f34 { (3) (4) fractionshow } bdef
+/f18 { (1) (8) fractionshow } bdef
+/f38 { (3) (8) fractionshow } bdef
+/f58 { (5) (8) fractionshow } bdef
+/f78 { (7) (8) fractionshow } bdef
+/f13 { (1) (3) fractionshow } bdef
+/f23 { (2) (3) fractionshow } bdef
+/bboxdict 20 dict def
+/bboxchk { bboxdict begin
+/regfont currentfont def
+/chkfont currentfont [1.25 0 0 1.25 0 0] makefont def 
+gsave newpath 0 0 moveto 
+(\161) true charpath flattenpath pathbbox 
+/height exch def pop pop pop 
+ grestore 
+ currentpoint 
+ .2 height mul .3 height mul rmoveto
+chkfont setfont (\063) show
+ moveto
+ regfont setfont
+(\161) show end } bdef
+/rencdict 15 dict def
+/encodefont { rencdict begin
+/newname exch def
+/oldfont exch def
+/newcodes [
+8#001 /Aacute
+8#002 /Acircumflex
+8#003 /Adieresis
+8#004 /Agrave
+8#005 /Aring
+8#006 /Atilde
+8#007 /Ccedilla
+8#010 /Eacute
+8#011 /Ecircumflex
+8#012 /Edieresis
+8#013 /Egrave
+8#014 /Iacute
+8#015 /Icircumflex
+8#016 /Idieresis
+8#017 /Igrave
+8#020 /Ntilde
+8#021 /Oacute
+8#022 /Ocircumflex
+8#023 /Odieresis
+8#024 /Ograve
+8#025 /Otilde
+8#026 /Scaron
+8#027 /Uacute
+8#030 /Ucircumflex
+8#031 /Udieresis
+8#032 /Ugrave
+8#033 /Ydieresis
+8#034 /Zcaron
+8#177 /periodinferior
+8#201 /aacute
+8#202 /acircumflex
+8#203 /adieresis
+8#204 /agrave
+8#205 /aring
+8#206 /atilde
+8#207 /ccedilla
+8#210 /eacute
+8#211 /ecircumflex
+8#212 /edieresis
+8#213 /egrave
+8#214 /iacute
+8#215 /icircumflex
+8#216 /idieresis
+8#217 /igrave
+8#220 /ntilde
+8#221 /oacute
+8#222 /ocircumflex
+8#223 /odieresis
+8#224 /ograve
+8#225 /otilde
+8#226 /scaron
+8#227 /uacute
+8#230 /ucircumflex
+8#231 /udieresis
+8#232 /ugrave
+8#233 /ydieresis
+8#234 /zcaron
+8#235 /Eth
+8#236 /eth
+8#237 /Thorn
+8#240 /thorn
+ ] def
+/olddict oldfont findfont def /newfont olddict maxlength dict def
+olddict { exch dup /FID ne { dup /Encoding eq
+{ exch dup length array copy newfont 3 1 roll put }
+{ exch newfont 3 1 roll put } ifelse }
+ { pop pop } ifelse } forall
+newfont /FontName newname put
+newcodes aload pop
+newcodes length 2 idiv { newfont /Encoding get 3 1 roll put } repeat 
+newname newfont definefont pop end } def
+ /accentdict 10 dict def 
+ /accentor { accentdict begin /scaler exch def /delta exch def 
+/unders exch def /accents exch def /mainch exch def /scrt (X) def
+ /w1 mainch stringwidth pop def 
+ currentpoint mainch show currentpoint 4 2 roll 
+accents { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         w1 w2 sub 2 div delta rmoveto scrt show 
+         /delta delta 150 scaler mul 9 div add def
+        } forall 
+unders { /ch exch def 2 copy moveto 
+         scrt 0 ch put 
+         /w2 scrt stringwidth pop def 
+         ch 46 eq { w1 w2 sub 2 div -175 scaler mul 9 div rmoveto scrt show 0 175 rmoveto }
+           { w1 w2 sub 2 div 0 rmoveto scrt show } ifelse 
+        } forall 
+ pop pop moveto end } def 
+%%EndProlog
+%%BeginSetup
+letter/imagesizefactor 1 def%%EndSetup/Courier /Courier-Acnt encodefont
+800 /Courier-Acnt F
+
+%%Page: 1 1
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+54000 75600 M (F.G.H.          ) S
+54000 73800 M (7/2/85) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+7200 67157 M (Introduction) S
+1200 /Times-Roman-Acnt F
+10800 64106 M (Interaction with the display from Interlisp-D programs involves 3 basic types of Interlisp ) S
+10800 62306 M (objects \234 ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(bitmaps) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Italic-Acnt F
+(display) S
+1200 /Times-Roman-Acnt F
+( ) S
+1200 /Times-Italic-Acnt F
+(streams) S
+1200 /Times-Roman-Acnt F
+(, and ) S
+1200 /Times-Italic-Acnt F
+(windows) S
+1200 /Times-Roman-Acnt F
+(.) S
+10800 59306 M (A ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(bitmap) S
+1200 /Times-Roman-Acnt F
+( is a two-dimensional array of bits \(1s and 0s\) in your computer's memory.) S
+14400 56706 M (You deal with bitmaps by setting specific bits to 1 or 0, or by copying ) S
+14400 54906 M (rectanglular arrays of bits around from bitmap to bitmap.) S
+14400 52306 M (The Interlisp-D display screen is just a special bitmap \(called the ) S
+14400 50506 M (SCREENBITMAP\) that is 808 bits high and 1024 bits wide that is displayed on ) S
+14400 48706 M (the screen with every 1-bit is black and every 0-bit is white ) S
+1000 /Times-Roman-Acnt F
+(\(or vice versa if you ) S
+14400 47055 M (change the VIDEOCOLOR parameter as per page 19.7 in the IRM\).) S
+1200 /Times-BoldItalic-Acnt F
+10800 44106 M (Display streams) S
+1200 /Times-Roman-Acnt F
+( represent an interface that allows you to deal with bit maps at a level ) S
+10800 42306 M (higher than bits, i.e., in terms of characters, fonts, lines, circles, regions, etc.) S
+14400 39706 M (You can call functions like DRAWCURVE on a display stream.  The result will ) S
+14400 37906 M (be a curve drawn on the destination bitmap of that display stream.) S
+14400 35306 M (A display stream is a datatype that represents some destination bitmap.  Stored in ) S
+14400 33506 M (this datatype are fields that contain things like the current font to be used for ) S
+14400 31706 M (writing characters to the destination bitmap, the X-Y position of the "cursor" in ) S
+14400 29906 M (the bitmap,  left and right margins for writing and drawing on the bitmap, etc.) S
+1200 /Times-BoldItalic-Acnt F
+10800 26906 M (Windows) S
+1200 /Times-Roman-Acnt F
+( are a way of managing what is being displayed on the most important bitmap of ) S
+10800 25106 M (all, the Interlisp-D display screen.) S
+14400 22306 M (A window is a datatype that represents the window object that can be displayed ) S
+14400 20506 M (on the Interlisp screen.) S
+18000 17706 M (Stored in the fields of the window datatype are all kinds of functions that ) S
+18000 15906 M (specify what is to be done when various operations are carried on the ) S
+18000 14106 M (window, e.g., when the window is opened, closed, shrunk, or moved.) S
+grestore savepage restore showpage
+
+%%Page: 2 2
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (2) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+18000 71106 M (Also stored in each window datatype is a display stream through which ) S
+18000 69306 M (characters, lines, curves, etc. are drawn on the window's bitmap \(i.e., the ) S
+18000 67506 M (display stream's destination bitmap\) which is always SCREENBITMAP.) S
+10800 64506 M (In summary, the data structures underlying each window you see on the screen are as ) S
+10800 62706 M (follows:) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 38800 43300 M
+stroke
+grestore
+38800 45700 38800 43300 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 38800 45700 M
+stroke
+grestore
+52400 45700 38800 45700 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 52400 45700 M
+stroke
+grestore
+52400 36900 52400 45700 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 52400 36900 M
+stroke
+grestore
+52400 36900 35600 36900 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 35600 36900 M
+stroke
+grestore
+35600 32900 35600 36900 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 35600 32900 M
+stroke
+grestore
+35600 32900 35000 33939 200 L
+36200 33939 35600 32900 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 38000 56100 M
+stroke
+grestore
+38000 58500 38000 56100 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 38000 58500 M
+stroke
+grestore
+52400 58500 38000 58500 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 52400 58500 M
+stroke
+grestore
+52400 50500 52400 58500 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 52400 50500 M
+stroke
+grestore
+52400 50500 35600 50500 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 35600 50500 M
+stroke
+grestore
+35600 46500 35600 50500 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 35600 46500 M
+stroke
+grestore
+35600 46500 35000 47539 200 L
+36200 47539 35600 46500 200 L
+6599 199 25901 26401 0 R
+6599 199 47501 26401 0 R
+199 21399 26101 32801 0 R
+199 21399 26101 26401 0 R
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+32855.0 29421.0 M (SCREENBITMAP) S
+6599 199 25901 40001 0 R
+6599 199 47501 40001 0 R
+199 21399 26101 46401 0 R
+199 21399 26101 40001 0 R
+1000 /Helvetica-Acnt F
+26101 45021.0 M (DisplayStream) S
+26101 43021.0 M (Fields: Destination bitmap   ,  X-Y cursor) S
+26101 42021.0 M (position, font, offset within destination bitmap,) S
+26101 41021.0 M (etc. ) S
+6599 199 26701 52801 0 R
+6599 199 48301 52801 0 R
+199 21399 26901 59201 0 R
+199 21399 26901 52801 0 R
+1000 /Helvetica-Acnt F
+26901 57821.0 M (Window) S
+26901 56821.0 M ( ) S
+26901 55821.0 M (Fields: DisplayStream    , location on screen,) S
+26901 54821.0 M (order in window stack, open function, close) S
+26901 53821.0 M (function,  etc.) S
+1200 /Helvetica-Acnt F
+21399 56630.0 M (Screen) S
+18197 55430.0 M (Management) S
+1200 /Helvetica-Acnt F
+15866 44430.0 M (Drawing objects) S
+16665 43230.0 M (like characters) S
+18531 42030.0 M (and curves) S
+1200 /Helvetica-Acnt F
+16597 30830.0 M (The actual bits) S
+19333 29630.0 M (displayed) S
+17129 28430.0 M (on the screen) S
+grestore savepage restore showpage
+
+%%Page: 3 3
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 4 4
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (3) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (Coordinate Systems, Positions, & Regions) S
+1200 /Times-Bold-Acnt F
+10800 68106 M (Coordinate Systems for Specifying Locations in Bitmaps, et al.) S
+1200 /Times-Roman-Acnt F
+14400 65306 M (Each bitmap, display stream, and window has its own coordinate system used to ) S
+14400 63506 M (specify locations within the object.  ) S
+14400 60706 M (When dealing with the display, these coordinate systems are always measured in ) S
+14400 58906 M (bits \(or screen units or the area that it takes to display 1 bit on the screen or ) S
+14400 57106 M (1/72nd of an inch\).) S
+14400 54306 M (For all three objects, the coordinate system is a standard Cartesian system in the ) S
+14400 52506 M (standard orientation.) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 32800 48300 M
+stroke
+grestore
+32800 37900 32800 48300 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 32800 37900 M
+stroke
+grestore
+32800 36300 32800 37900 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 32800 36300 M
+stroke
+grestore
+33400 47261 32800 48300 200 L
+32800 48300 32200 47261 200 L
+32800 36300 32200 37339 200 L
+33400 37339 32800 36300 200 L
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+31716.5 49042.0 M (\(0,Y\)) S
+1000 /Helvetica-Acnt F
+33372.0 42642.0 M (\(0,0\)) S
+1000 /Helvetica-Acnt F
+21783.5 41842.0 M (\(--X,0\)) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 25600 41900 M
+stroke
+grestore
+40000 41900 25600 41900 200 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 200 setlinewidth 40000 41900 M
+stroke
+grestore
+26639 42500 25600 41900 200 L
+26639 41300 25600 41900 200 L
+40000 41900 38961 41300 200 L
+40000 41900 38961 42500 200 L
+1000 /Helvetica-Acnt F
+31383.5 34642.0 M (\(0,--Y\)) S
+1000 /Helvetica-Acnt F
+40516.5 41842.0 M (\(X,0\)) S
+1200 /Times-Roman-Acnt F
+14400 31506 M (Bitmaps have a finite size.  Thus, for bitmaps the origin of the coordinate system ) S
+14400 29706 M (is placed at the lower-left corner of the bitmap and  only the upper-right quadrant ) S
+14400 27906 M (\(positive X and Y\) is used to specify locations in the bitmap.) S
+14400 25106 M (Display streams and windows are considered to look onto an infinite plane.  Thus ) S
+14400 23306 M (the origin is arbitrarily placed \(see below\) and the entire coordinate system is ) S
+14400 21506 M (used.) S
+14400 18706 M (The coordinate system for a window is the same as the coordinate system for its ) S
+14400 16906 M (underlying display stream.  The coordinate system for a display stream is mapped ) S
+14400 15106 M (onto the coordinate system for its destination bitmap using X and Y translation ) S
+14400 13306 M (parameters as discussed below.) S
+1200 /Times-Bold-Acnt F
+10800 10106 M (Positions and Regions) S
+grestore savepage restore showpage
+
+%%Page: 5 5
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (4) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+14400 71106 M (Positions and regions are data structures that represent X-Y locations and ) S
+14400 69306 M (rectangles, respectively, in an arbitrary coordinate system.) S
+14400 66506 M (A ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(POSITION) S
+1200 /Times-Roman-Acnt F
+( is a record with two fields, XCOORD and YCCORD.  Most ) S
+14400 64706 M (functions that take an X-Y location as an argument require a POSITION record.) S
+18000 61906 M (To create a POSITION record:) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 59106 M (\(create POSITION XCOORD _ ) S
+1200 /Times-BoldItalic-Acnt F
+(X) S
+1200 /Times-Bold-Acnt F
+( YCOORD _ ) S
+1200 /Times-BoldItalic-Acnt F
+(Y) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+14400 56306 M (A ) S
+1200 /Times-BoldItalic-Acnt F
+(REGION) S
+1200 /Times-Roman-Acnt F
+( is a record with four fields: LEFT, BOTTOM, WIDTH, and ) S
+14400 54506 M (HEIGHT specifying the lower-left corner and extent of a rectangular region in ) S
+14400 52706 M (some coordinate space.) S
+18000 49906 M (To create a REGION record:) S
+1200 /Times-Bold-Acnt F
+21600 47106 M (\(CREATEREGION ) S
+1200 /Times-BoldItalic-Acnt F
+(Left) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Bottom) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Width) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Height) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+14400 43906 M (There are several functions available to manipulate positions and regions, ) S
+14400 42106 M (including the following:) S
+1200 /Times-Bold-Acnt F
+18000 38906 M (\(INSIDEP ) S
+1200 /Times-BoldItalic-Acnt F
+(Region) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Position) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 returns T if ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Position) S
+1200 /Times-Roman-Acnt F
+( is inside ) S
+1200 /Times-Italic-Acnt F
+(Region) S
+1200 /Times-Roman-Acnt F
+(.) S
+21600 35706 M (Examples:) S
+25200 33506 M (1_ \(INSIDEP \(CREATEREGION 100 100 10 10\)\(create ) S
+25200 31706 M (POSITION XCOORD _ 150 YCOORD _ 100\)\)) S
+1200 /Times-Italic-Acnt F
+25200 29506 M (NIL) S
+1200 /Times-Roman-Acnt F
+25200 27306 M (2_ \(INSIDEP \(CREATEREGION 100 100 100 10\)\(create ) S
+25200 25506 M (POSITION XCOORD _ 150 YCOORD _ 100\)\)) S
+1200 /Times-Italic-Acnt F
+25200 23306 M (T) S
+1200 /Times-Bold-Acnt F
+18000 20106 M (\(INTERSECTREGIONS ) S
+1200 /Times-BoldItalic-Acnt F
+(Region1) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Region2 ...) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(RegionN) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 returns the ) S
+18000 18306 M (region that is the intersections of ) S
+1200 /Times-Italic-Acnt F
+(Region1, Region2, ..., and RegionN) S
+1200 /Times-Roman-Acnt F
+(.  ) S
+18000 16506 M (NIL, if there is no intersection.) S
+1200 /Times-Bold-Acnt F
+18000 13306 M (\(UNIONREGIONS ) S
+1200 /Times-BoldItalic-Acnt F
+(Region1) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Region2 ...) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(RegionN) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 returns the region ) S
+18000 11506 M (that is the union of ) S
+1200 /Times-Italic-Acnt F
+(Region1, Region2, ..., and RegionN) S
+1200 /Times-Roman-Acnt F
+(.  The union is the ) S
+18000 9706 M (smallest \(rectangular\) region that contains all of the given regions.) S
+grestore savepage restore showpage
+
+%%Page: 6 6
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (5) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (BITMAPs) S
+1200 /Times-Bold-Acnt F
+10800 67906 M (Introduction) S
+1200 /Times-Roman-Acnt F
+14400 64906 M (A bitmap is datatype that represents an N by M array of bits in memory.) S
+14400 61906 M (The bits in a bitmap are identified using a positive integer coordinate system ) S
+14400 60106 M (whose origin \(0,0\) is the lower-left corner of the bitmap. ) S
+18000 57706 M (For example, \(10,2\) represents the bit that is 10 to the left of and 2 up ) S
+18000 55906 M (from the bit in the lower-left corner of the bitmap.) S
+/bitbltsave save def 21600 30399 translate 21000 23800 scale 210 238 true thebitimage
+B2191100
+B2194440
+B31A
+B2191100
+13B218FF00
+47B31840
+47B217000340
+13B31800
+B31A
+471000100010001000100010001000100010001000100010001340
+47B217000340
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+471000100010001000100010001000100010001000100010001340
+47B217000340
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+471000100010001000100010001000100010001000100010001340
+47B217000340
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+471000100010001000100010001000100010001000100010001340
+47B217000340
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+471000100010001000100010001000100010001000100010001340
+47B217000340
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+471000100010001000100010001000100010001000100010001340
+47B217000340
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+471000100010001000100010001000100010001000100010001340
+47B217000340
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+471000100010001000100010001000100010001000100010001340
+47B217000340
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+471000100010001000100010001000100010001000100010001340
+47B217000340
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+471000100010001000100010001000100010001000100010001340
+47B217000340
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+47100010001FFFF000100010001000100010001000100010001340
+47B20300B303B20F000340
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+47100010B304100010001000100010001000100010001340
+47B217000340
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+47B31840
+B31A
+13B31800
+B31A
+471000100010001000100010001000100010001000100010001340
+470000B215555340
+130000B215AAA300
+B302B215555300
+470000B215AAA340
+B302B215555340
+130000B215AAA300
+B302B215555300
+470000B215AAA340
+B302B215555340
+130000B215AAA300
+130800B215555300
+470000B215AAA340
+B302B215555340
+130000B215AAA300
+B302B215555300
+47B217000340
+B31A
+13B218FF00
+B305FBB306F5B209555700
+47B31840
+B30DEAB209AAAB40
+13E01EE6F7B84A1FF00785DCF0F7B30B00
+13EFEEEEF7B799EFF7FF79DDEF77F5B209555700
+47B304DBF7F7FEFDDDDFB7B30B40
+B304B8B307EAB209AAAB40
+13B303BF1BB31200
+13E01EEEF7B7DBF7F00EB302B4B3F5B209555700
+47EFDEEE73BBD9EFF7FF79DDEF7575B30A40
+B302C68C7C3A1FF7FF85D8F0F66AB209AAAB40
+13EFDFEFB203FFF7FFFDFDFFFFEAB30A00
+13EFDEB307DDFFFFF5B209555700
+47E03EB204FFF007FDDFB30D40
+47B20CFFEAB209AAAB40
+13B30CB20BFF00
+B2191100
+B2194440
+
+bitbltsave restore
+grestore savepage restore showpage
+
+%%Page: 7 7
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 8 8
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (6) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 71106 M (Creating Bitmaps) S
+1200 /Times-Roman-Acnt F
+14400 68106 M (To create a bitmap use the following function:) S
+1200 /Times-Bold-Acnt F
+18000 64906 M (\(BITMAPCREATE ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Width) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Height) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 creates and returns a bitmap ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Height) S
+1200 /Times-Roman-Acnt F
+( ) S
+18000 63106 M (bits high and ) S
+1200 /Times-Italic-Acnt F
+(Width) S
+1200 /Times-Roman-Acnt F
+( bits wide.) S
+1200 /Times-Bold-Acnt F
+10800 59106 M (BITBLT) S
+1200 /Times-Roman-Acnt F
+14400 56306 M (The major operation on bitmaps is the moving of bits from one bit map to another ) S
+14400 54506 M (using the BITBLT function:) S
+1200 /Times-Bold-Acnt F
+18000 51306 M (\(BITBLT ) S
+1200 /Times-BoldItalic-Acnt F
+(SourceBitMap) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(SourceLeft) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(SourceBottom) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(DestBitMap) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+18000 49506 M (DestLeft) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(DestBottom) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Width) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Height) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(SourceType) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Operation) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Texture) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 ) S
+18000 47706 M (copies some bits in ) S
+1200 /Times-Italic-Acnt F
+(SourceBitMap) S
+1200 /Times-Roman-Acnt F
+( and combines them with some bits in ) S
+1200 /Times-Italic-Acnt F
+18000 45906 M (DestBitMap) S
+1200 /Times-Roman-Acnt F
+(, resulting in a change to these bits in ) S
+1200 /Times-Italic-Acnt F
+(DestBitMap) S
+1200 /Times-Roman-Acnt F
+(.) S
+21600 42906 M (The bits copied from ) S
+1200 /Times-Italic-Acnt F
+(SourceBitMap) S
+1200 /Times-Roman-Acnt F
+( are those in the region defined ) S
+21600 41106 M (by ) S
+1200 /Times-Italic-Acnt F
+(SourceLeft) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Italic-Acnt F
+(SourceBottom) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Italic-Acnt F
+(Width) S
+1200 /Times-Roman-Acnt F
+(, & ) S
+1200 /Times-Italic-Acnt F
+(Height) S
+1200 /Times-Roman-Acnt F
+(.) S
+21600 38106 M (The bits effected in the ) S
+1200 /Times-Italic-Acnt F
+(DestBitMap) S
+1200 /Times-Roman-Acnt F
+( are those in the region defined ) S
+21600 36306 M (by ) S
+1200 /Times-Italic-Acnt F
+(DestLeft) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Italic-Acnt F
+(DestBottom) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Italic-Acnt F
+(Width) S
+1200 /Times-Roman-Acnt F
+(, & ) S
+1200 /Times-Italic-Acnt F
+(Height) S
+1200 /Times-Roman-Acnt F
+(.) S
+25200 33906 M (If either of these regions overflows the edges of its bitmap, ) S
+25200 32106 M (then ) S
+1200 /Times-Italic-Acnt F
+(Width) S
+1200 /Times-Roman-Acnt F
+( and/or ) S
+1200 /Times-Italic-Acnt F
+(Height) S
+1200 /Times-Roman-Acnt F
+( are decreased until both regions ) S
+25200 30306 M (fit into their bitmaps.) S
+21600 27306 M (The way in which the bits are copied from the ) S
+1200 /Times-Italic-Acnt F
+(SourceBitMap) S
+1200 /Times-Roman-Acnt F
+( is ) S
+21600 25506 M (determined by ) S
+1200 /Times-Italic-Acnt F
+(SourceType ) S
+1200 /Times-Roman-Acnt F
+(and) S
+1200 /Times-Italic-Acnt F
+( Texture) S
+1200 /Times-Roman-Acnt F
+( as follows:) S
+25200 22906 M (If ) S
+1200 /Times-Italic-Acnt F
+(SourceType) S
+1200 /Times-Roman-Acnt F
+( is INPUT, then the bits are copied directly ) S
+25200 21106 M (from the region in ) S
+1200 /Times-Italic-Acnt F
+(SourceBitMap) S
+1200 /Times-Roman-Acnt F
+(.) S
+25200 18506 M (If ) S
+1200 /Times-Italic-Acnt F
+(SourceType) S
+1200 /Times-Roman-Acnt F
+( is INVERT, then the bits are copied from the ) S
+25200 16706 M (region in ) S
+1200 /Times-Italic-Acnt F
+(SourceBitMap,) S
+1200 /Times-Roman-Acnt F
+( but each bit is inverted \(i.e., 1s ) S
+25200 14906 M (become 0s and vice versa\).) S
+25200 12306 M (If ) S
+1200 /Times-Italic-Acnt F
+(SourceType) S
+1200 /Times-Roman-Acnt F
+( is TEXTURE, then ) S
+1200 /Times-Italic-Acnt F
+(SourceBitMap, ) S
+25200 10506 M (SourceLeft, ) S
+1200 /Times-Roman-Acnt F
+(and) S
+1200 /Times-Italic-Acnt F
+( SourceBottom) S
+1200 /Times-Roman-Acnt F
+( are ignored and the bits to ) S
+25200 8706 M (be copied are taken from the bitmap specified by ) S
+1200 /Times-Italic-Acnt F
+(Texture) S
+1200 /Times-Roman-Acnt F
+(.) S
+grestore savepage restore showpage
+
+%%Page: 9 9
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (7) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+28800 71106 M (If the ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Texture) S
+1200 /Times-Roman-Acnt F
+( bitmap is smaller than ) S
+1200 /Times-Italic-Acnt F
+(Width) S
+1200 /Times-Roman-Acnt F
+( by ) S
+1200 /Times-Italic-Acnt F
+28800 69306 M (Height) S
+1200 /Times-Roman-Acnt F
+(, then it is repeated as many times as ) S
+28800 67506 M (necessary to make a rectangle of bits that is of size ) S
+1200 /Times-Italic-Acnt F
+28800 65706 M (Width) S
+1200 /Times-Roman-Acnt F
+( by ) S
+1200 /Times-Italic-Acnt F
+(Height) S
+1200 /Times-Roman-Acnt F
+(.) S
+28800 63506 M (Note: the global variables ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(WHITESHADE) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-BoldItalic-Acnt F
+28800 61706 M (BLACKSHADE) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-BoldItalic-Acnt F
+(GRAYSHADE) S
+1200 /Times-Roman-Acnt F
+( are small ) S
+28800 59906 M (bitmaps for white, black, and gray, respectively.) S
+1200 /Times-Italic-Acnt F
+25200 57306 M (SourceType) S
+1200 /Times-Roman-Acnt F
+( defaults to INPUT.) S
+21600 54306 M (The way in which the copied bits are combined with the bits ) S
+21600 52506 M (already in ) S
+1200 /Times-Italic-Acnt F
+(DestBitMap) S
+1200 /Times-Roman-Acnt F
+( is determined by ) S
+1200 /Times-Italic-Acnt F
+(Operation) S
+1200 /Times-Roman-Acnt F
+( as follows:) S
+25200 49906 M (If ) S
+1200 /Times-Italic-Acnt F
+(Operation) S
+1200 /Times-Roman-Acnt F
+( is REPLACE, the bits in ) S
+1200 /Times-Italic-Acnt F
+(DestBitMap) S
+1200 /Times-Roman-Acnt F
+( are ) S
+25200 48106 M (replaced by the copied bits.) S
+25200 45506 M (If ) S
+1200 /Times-Italic-Acnt F
+(Operation) S
+1200 /Times-Roman-Acnt F
+( is PAINT, the bits in ) S
+1200 /Times-Italic-Acnt F
+(DestBitMap) S
+1200 /Times-Roman-Acnt F
+( are logically ) S
+25200 43706 M (ORed with the copied bits.) S
+25200 41106 M (If ) S
+1200 /Times-Italic-Acnt F
+(Operation) S
+1200 /Times-Roman-Acnt F
+( is INVERT, the bits in ) S
+1200 /Times-Italic-Acnt F
+(DestBitMap) S
+1200 /Times-Roman-Acnt F
+( are ) S
+25200 39306 M (logically XORed with the copied bits.) S
+25200 36706 M (If ) S
+1200 /Times-Italic-Acnt F
+(Operation) S
+1200 /Times-Roman-Acnt F
+( is ERASE, the bits in ) S
+1200 /Times-Italic-Acnt F
+(DestBitMap) S
+1200 /Times-Roman-Acnt F
+( are ) S
+25200 34906 M (logically ANDed with the inversion of the copied bits.) S
+1200 /Times-Italic-Acnt F
+25200 32306 M (Operation) S
+1200 /Times-Roman-Acnt F
+( defaults to REPLACE.) S
+grestore savepage restore showpage
+
+%%Page: 10 10
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 11 11
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (8) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 71106 M (Examples:) S
+25200 68506 M (START) S
+1200 /Times-Roman-Acnt F
+28800 58999 M (BitMap1: ) S
+/bitbltsave save def 33702 58999 translate 12100 7800 scale 121 78 true thebitimage
+B20EFF80
+B30F
+C0B20C000180
+B30F
+B30F
+B30F
+B30F
+B30F
+B30612A0B306
+B305924028B306
+B30412000003B306
+B3030140B207000180
+B3030FB2030080B305
+B30309B30340B305
+B30318C0B302B204000180
+B3030025FC000020B305
+B303282FC780B307
+B3047C00C0B307
+B303276100A0B205000180
+B303258040900020B305
+B30316002108B205000180
+B3030C000B080020B305
+B30295FE921C04B205000180
+C000060213997A54B307
+C00008022D8786060040B305
+C0000601AD1822AEB205000180
+C000004863E04B260080B305
+B30200CBD40C83B205000180
+B30220574A104140B306
+B302804CA1604119B306
+B302004C548BC1B205000180
+C00002004801B87106B306
+B3034A4AF84DB307
+C0B202004A11808302B306
+C000020048C1820322B306
+B30345402C0382B306
+C0B2020044001406C2B306
+B302802C4003044CB306
+B302403200C09E60B306
+B30215926301B0C0B306
+B3020E9FFC0A7140B306
+B302005D94A1A880B306
+B3031EC00F00B307
+B30307F45801B205000180
+B30305FFE0B308
+B3022397E00006B307
+B3023CB4B4700018B307
+B30200000D00C0B307
+B30400EEB206000180
+B305B207000180
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B20EFF80
+B30F
+
+bitbltsave restore
+28800 49492 M (BitMap2: ) S
+/bitbltsave save def 33702 49492 translate 12100 7800 scale 121 78 true thebitimage
+B20EFF80
+B30F
+C0B20C000180
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B20EFF80
+B30F
+
+bitbltsave restore
+1200 /Times-Bold-Acnt F
+25200 45892 M (\(BITBLT BitMap1 0 0 BitMap2 0 0 50 50 'INPUT ) S
+25200 44092 M ('REPLACE\)) S
+1200 /Times-Roman-Acnt F
+28800 34585 M (BitMap1: ) S
+/bitbltsave save def 33702 34585 translate 12100 7800 scale 121 78 true thebitimage
+B20EFF80
+B30F
+C0B20C000180
+B30F
+B30F
+B30F
+B30F
+B30F
+B30612A0B306
+B305924028B306
+B30412000003B306
+B3030140B207000180
+B3030FB2030080B305
+B30309B30340B305
+B30318C0B302B204000180
+B3030025FC000020B305
+B303282FC780B307
+B3047C00C0B307
+B303276100A0B205000180
+B303258040900020B305
+B30316002108B205000180
+B3030C000B080020B305
+B30295FE921C04B205000180
+C000060213997A54B307
+C00008022D8786060040B305
+C0000601AD1822AEB205000180
+C000004863E04B260080B305
+B30200CBD40C83B205000180
+B30220574A104140B306
+B302804CA1604119B306
+B302004C548BC1B205000180
+C00002004801B87106B306
+B3034A4AF84DB307
+C0B202004A11808302B306
+C000020048C1820322B306
+B30345402C0382B306
+C0B2020044001406C2B306
+B302802C4003044CB306
+B302403200C09E60B306
+B30215926301B0C0B306
+B3020E9FFC0A7140B306
+B302005D94A1A880B306
+B3031EC00F00B307
+B30307F45801B205000180
+B30305FFE0B308
+B3022397E00006B307
+B3023CB4B4700018B307
+B30200000D00C0B307
+B30400EEB206000180
+B305B207000180
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B20EFF80
+B30F
+
+bitbltsave restore
+28800 25078 M (BitMap2: ) S
+/bitbltsave save def 33702 25078 translate 12100 7800 scale 121 78 true thebitimage
+B20EFF80
+B30F
+C0B20C000180
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30590B308
+B30412B207000180
+B3030140B309
+B3030FB208000180
+B30309B30A
+B30318C0B309
+B3030025F0B308
+B303282FC0B308
+B3047CB207000180
+B3032761B309
+B303258040B308
+B303160020B308
+B3030CB208000180
+B30295FE9210B308
+C0000602139970B308
+C00008022D8780B308
+C0000601AD1820B308
+C000004863E040B308
+B30200CBD4B207000180
+B30220574A10B308
+B302804CA160B308
+B302004C5480B308
+C00002004801B0B308
+B3034A4AF0B308
+C0B202004A1180B308
+C000020048C1B309
+B303454020B308
+C0B20200440010B308
+B302802C40B207000180
+B302403200C0B308
+B302159263B207000180
+B3020E9FFCB309
+B302005D94A0B308
+B3031EC0B207000180
+B30307F450B308
+B30305FFE0B308
+B3022397E0B207000180
+B3023CB4B470B309
+B30200000DB309
+B30400E0B308
+B305B207000180
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B20EFF80
+B30F
+
+bitbltsave restore
+1200 /Times-Bold-Acnt F
+25200 21478 M (\(BITBLT BitMap1 0 0 BitMap2 0 0 50 50 'INPUT ) S
+25200 19678 M ('ERASE\)) S
+1200 /Times-Roman-Acnt F
+28800 10171 M (BitMap1: ) S
+/bitbltsave save def 33702 10171 translate 12100 7800 scale 121 78 true thebitimage
+B20EFF80
+B30F
+C0B20C000180
+B30F
+B30F
+B30F
+B30F
+B30F
+B30612A0B306
+B305924028B306
+B30412000003B306
+B3030140B207000180
+B3030FB2030080B305
+B30309B30340B305
+B30318C0B302B204000180
+B3030025FC000020B305
+B303282FC780B307
+B3047C00C0B307
+B303276100A0B205000180
+B303258040900020B305
+B30316002108B205000180
+B3030C000B080020B305
+B30295FE921C04B205000180
+C000060213997A54B307
+C00008022D8786060040B305
+C0000601AD1822AEB205000180
+C000004863E04B260080B305
+B30200CBD40C83B205000180
+B30220574A104140B306
+B302804CA1604119B306
+B302004C548BC1B205000180
+C00002004801B87106B306
+B3034A4AF84DB307
+C0B202004A11808302B306
+C000020048C1820322B306
+B30345402C0382B306
+C0B2020044001406C2B306
+B302802C4003044CB306
+B302403200C09E60B306
+B30215926301B0C0B306
+B3020E9FFC0A7140B306
+B302005D94A1A880B306
+B3031EC00F00B307
+B30307F45801B205000180
+B30305FFE0B308
+B3022397E00006B307
+B3023CB4B4700018B307
+B30200000D00C0B307
+B30400EEB206000180
+B305B207000180
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B20EFF80
+B30F
+
+bitbltsave restore
+grestore savepage restore showpage
+
+%%Page: 12 12
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+53400 75600 M (9) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+28800 64199 M (BitMap2: ) S
+/bitbltsave save def 33702 64199 translate 12100 7800 scale 121 78 true thebitimage
+B20EFF80
+B30F
+C0B20C000180
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B20EFF80
+B30F
+
+bitbltsave restore
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+25200 60599 M (\(BITBLT BitMap1 0 0 BitMap2 0 0 50 50 'INVERT ) S
+25200 58799 M ('PAINT\)) S
+1200 /Times-Roman-Acnt F
+28800 49292 M (BitMap1: ) S
+/bitbltsave save def 33702 49292 translate 12100 7800 scale 121 78 true thebitimage
+B20EFF80
+B30F
+C0B20C000180
+B30F
+B30F
+B30F
+B30F
+B30F
+B30612A0B306
+B305924028B306
+B30412000003B306
+B3030140B207000180
+B3030FB2030080B305
+B30309B30340B305
+B30318C0B302B204000180
+B3030025FC000020B305
+B303282FC780B307
+B3047C00C0B307
+B303276100A0B205000180
+B303258040900020B305
+B30316002108B205000180
+B3030C000B080020B305
+B30295FE921C04B205000180
+C000060213997A54B307
+C00008022D8786060040B305
+C0000601AD1822AEB205000180
+C000004863E04B260080B305
+B30200CBD40C83B205000180
+B30220574A104140B306
+B302804CA1604119B306
+B302004C548BC1B205000180
+C00002004801B87106B306
+B3034A4AF84DB307
+C0B202004A11808302B306
+C000020048C1820322B306
+B30345402C0382B306
+C0B2020044001406C2B306
+B302802C4003044CB306
+B302403200C09E60B306
+B30215926301B0C0B306
+B3020E9FFC0A7140B306
+B302005D94A1A880B306
+B3031EC00F00B307
+B30307F45801B205000180
+B30305FFE0B308
+B3022397E00006B307
+B3023CB4B4700018B307
+B30200000D00C0B307
+B30400EEB206000180
+B305B207000180
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B20EFF80
+B30F
+
+bitbltsave restore
+28800 38785 M (BitMap2: ) S
+/bitbltsave save def 33702 38785 translate 12100 7800 scale 121 78 true thebitimage
+B20EFF80
+B30F
+B305F0B206000180
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30560B308
+B304EDF0B308
+B303FEBFB309
+B303F0FFB309
+B303F6B30A
+B303E73FB309
+B303FFDAB207000180
+B303D7D030B308
+B30483F0B308
+B303D89EB309
+B303DA7FB0B308
+B303E9FFD0B308
+B303F3FFF0B308
+B3026A016DE0B308
+FFFFF9FDEC6680B308
+FFFFF7FDD27870B308
+FFFFF9FE52E7D0B308
+B202FFB79C1FB0B308
+B302FF342BF0B308
+B302DFA8B5E0B308
+B3027FB4B35E90B308
+B302FFB4B3AB70B308
+FFFFFDFFB7FE40B308
+B303B5B5B207000180
+B203FFB5EE70B308
+FFFFFDFFB73EB309
+B303BABFD0B308
+B203FFBBFFE0B308
+B3027FD3BFF0B308
+B302BFCDFF30B308
+B302EA6D9CF0B308
+B302F16003B309
+B302FFA26B50B308
+B303E13FF0B308
+B303F80BA0B308
+B303FA0010B308
+B302DC681FF0B308
+B302C34B8FB309
+B302FFFFF2B309
+B304FF10B308
+B305F0B308
+B30F
+B30F
+C0B20C000180
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B20EFF80
+B30F
+
+bitbltsave restore
+1200 /Times-Bold-Acnt F
+25200 35185 M (\(BITBLT BitMap1 0 0 BitMap2 0 0 125 175 ) S
+25200 33385 M ('TEXTURE 'PAINT GRAYSHADE\)) S
+1200 /Times-Roman-Acnt F
+28800 23878 M (BitMap1: ) S
+/bitbltsave save def 33702 23878 translate 12100 7800 scale 121 78 true thebitimage
+B20EFF80
+B30F
+C0B20C000180
+B30F
+B30F
+B30F
+B30F
+B30F
+B30612A0B306
+B305924028B306
+B30412000003B306
+B3030140B207000180
+B3030FB2030080B305
+B30309B30340B305
+B30318C0B302B204000180
+B3030025FC000020B305
+B303282FC780B307
+B3047C00C0B307
+B303276100A0B205000180
+B303258040900020B305
+B30316002108B205000180
+B3030C000B080020B305
+B30295FE921C04B205000180
+C000060213997A54B307
+C00008022D8786060040B305
+C0000601AD1822AEB205000180
+C000004863E04B260080B305
+B30200CBD40C83B205000180
+B30220574A104140B306
+B302804CA1604119B306
+B302004C548BC1B205000180
+C00002004801B87106B306
+B3034A4AF84DB307
+C0B202004A11808302B306
+C000020048C1820322B306
+B30345402C0382B306
+C0B2020044001406C2B306
+B302802C4003044CB306
+B302403200C09E60B306
+B30215926301B0C0B306
+B3020E9FFC0A7140B306
+B302005D94A1A880B306
+B3031EC00F00B307
+B30307F45801B205000180
+B30305FFE0B308
+B3022397E00006B307
+B3023CB4B4700018B307
+B30200000D00C0B307
+B30400EEB206000180
+B305B207000180
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B20EFF80
+B30F
+
+bitbltsave restore
+28800 14371 M (BitMap2: ) S
+/bitbltsave save def 33702 14371 translate 12100 7800 scale 121 78 true thebitimage
+B20EFF80
+B30F
+B305FAB206AAAB80
+B30F
+B305F5B2075580
+B30F
+B305FAB206AAAB80
+B30F
+B305F5B2075580
+B30575B308
+B304EFFAB206AAAB80
+B303FEBFB309
+B303F5FFF5B2075580
+B303F7B30A
+B303EFBFFAB206AAAB80
+B303FFFAB207AAAB80
+B303D7D575B2075580
+B304D7F5B308
+B303FABEFAB206AAAB80
+B304FFBAB308
+B303FDFFD5B2075580
+B303F7FFF5B308
+B302EAABEFEAB206AAAB80
+FFFFFBFFEEEEB207AAAB80
+FFFFF7FDD77D75B2075580
+FFFFFDFF57F7D5B308
+B202FFBFBEBFBAB206AAAB80
+B302FFBEABFAB308
+B302DFFDF5F5B2075580
+B3027FF75FD5B308
+B302FFBBABFAB206AAAB80
+B303BFFEEAB308
+FFFFFDFFF5F5B2085580
+B203FFF5FF75B308
+B303BFBEFAB206AAAB80
+B303BABFB309
+B303FFFFF5B2075580
+B3027FD7B30A
+B302BFEFFFBAB206AAAB80
+B302EAEFBEFAB308
+B302F57557F5B2075580
+B302FFF77FB2085580
+B303EBBFFAB206AAAB80
+B303FAABB207AAAB80
+B303FFB2095580
+B302DD7D5FF5B308
+B302EBEBAFFAB206AAAB80
+B302FFFFFAB309
+B304FFB2085580
+B305F5B308
+B305FAB206AAAB80
+B30F
+D5B20D5580
+B30F
+EAB20CAAAB80
+B30F
+D5B20D5580
+B30F
+EAB20CAAAB80
+B30F
+D5B20D5580
+B30F
+EAB20CAAAB80
+B30F
+D5B20D5580
+B30F
+EAB20CAAAB80
+B30F
+D5B20D5580
+B30F
+EAB20CAAAB80
+B30F
+D5B20D5580
+B30F
+EAB20CAAAB80
+B30F
+B20EFF80
+B30F
+
+bitbltsave restore
+grestore savepage restore showpage
+
+%%Page: 13 13
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 14 14
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (10) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+25200 71106 M (\(BITBLT BitMap1 0 0 BitMap2 0 0 50 50 'INVERT ) S
+25200 69306 M ('ERASE\)) S
+1200 /Times-Roman-Acnt F
+28800 59799 M (BitMap1: ) S
+/bitbltsave save def 33702 59799 translate 12100 7800 scale 121 78 true thebitimage
+B20EFF80
+B30F
+C0B20C000180
+B30F
+B30F
+B30F
+B30F
+B30F
+B30612A0B306
+B305924028B306
+B30412000003B306
+B3030140B207000180
+B3030FB2030080B305
+B30309B30340B305
+B30318C0B302B204000180
+B3030025FC000020B305
+B303282FC780B307
+B3047C00C0B307
+B303276100A0B205000180
+B303258040900020B305
+B30316002108B205000180
+B3030C000B080020B305
+B30295FE921C04B205000180
+C000060213997A54B307
+C00008022D8786060040B305
+C0000601AD1822AEB205000180
+C000004863E04B260080B305
+B30200CBD40C83B205000180
+B30220574A104140B306
+B302804CA1604119B306
+B302004C548BC1B205000180
+C00002004801B87106B306
+B3034A4AF84DB307
+C0B202004A11808302B306
+C000020048C1820322B306
+B30345402C0382B306
+C0B2020044001406C2B306
+B302802C4003044CB306
+B302403200C09E60B306
+B30215926301B0C0B306
+B3020E9FFC0A7140B306
+B302005D94A1A880B306
+B3031EC00F00B307
+B30307F45801B205000180
+B30305FFE0B308
+B3022397E00006B307
+B3023CB4B4700018B307
+B30200000D00C0B307
+B30400EEB206000180
+B305B207000180
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B30F
+B20EFF80
+B30F
+
+bitbltsave restore
+28800 49292 M (BitMap2: ) S
+/bitbltsave save def 33702 49292 translate 12100 7800 scale 121 78 true thebitimage
+B20EFF80
+B30F
+C0B204000AB206AAAB80
+B30F
+B30505B2075580
+B30F
+B3050AB206AAAB80
+B30F
+B30505B2075580
+B30515B308
+B304020AB206AAAB80
+B30400B309
+B303050005B2075580
+B30301B30A
+B30308800AB206AAAB80
+B3030020B207AAAB80
+B3040545B2075580
+B3045405B308
+B30322200AB206AAAB80
+B3032080B309
+B303140005B2075580
+B30304B30A
+B30280AA820AB206AAAB80
+C000B20202882AB308
+C0B20200B20205B2075580
+C00004010510B309
+C000000822A00AB206AAAB80
+B302008A80B309
+B303554015B2075580
+B303440145B308
+B30308008AB206AAAB80
+C00002B302B207AAAB80
+C0B202004040B2085580
+B3041105B308
+C000020008808AB206AAAB80
+B30300002AB308
+C0B20200440015B2075580
+B303044005B308
+B30322008AB206AAAB80
+B30382220AB308
+B30204155405B2075580
+B302005514B309
+B3030A800AB206AAAB80
+B30302A0B309
+B303055545B2075580
+B30201154005B308
+B30228A0200AB206AAAB80
+B302000008B309
+B3040045B2075580
+B30505B308
+B3050AB206AAAB80
+B30F
+D5B20D5580
+B30F
+EAB20CAAAB80
+B30F
+D5B20D5580
+B30F
+EAB20CAAAB80
+B30F
+D5B20D5580
+B30F
+EAB20CAAAB80
+B30F
+D5B20D5580
+B30F
+EAB20CAAAB80
+B30F
+D5B20D5580
+B30F
+EAB20CAAAB80
+B30F
+D5B20D5580
+B30F
+EAB20CAAAB80
+B30F
+B20EFF80
+B30F
+
+bitbltsave restore
+1200 /Times-Bold-Acnt F
+10800 44092 M (Miscellaneous Bitmap Functions) S
+1200 /Times-Roman-Acnt F
+14400 41292 M (The following are other miscellaneous functions that operate on bitmaps:) S
+1200 /Times-Bold-Acnt F
+18000 38092 M (\(BITMAPBIT ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(BitMap) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(X) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Y) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(NewValue) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 If ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(NewValue) S
+1200 /Times-Roman-Acnt F
+( is either 0 or 1, then ) S
+18000 36292 M (sets the value of the \() S
+1200 /Times-Italic-Acnt F
+(X) S
+1200 /Times-Roman-Acnt F
+(,) S
+1200 /Times-Italic-Acnt F
+(Y) S
+1200 /Times-Roman-Acnt F
+(\)th bit in ) S
+1200 /Times-Italic-Acnt F
+(BitMap) S
+1200 /Times-Roman-Acnt F
+( to have value ) S
+1200 /Times-Italic-Acnt F
+(NewValue) S
+1200 /Times-Roman-Acnt F
+( and ) S
+18000 34492 M (returns its old value \(either 0 or 1\).  If ) S
+1200 /Times-Italic-Acnt F
+(NewValue) S
+1200 /Times-Roman-Acnt F
+( is NIL, just returns the ) S
+18000 32692 M (value of the \() S
+1200 /Times-Italic-Acnt F
+(X) S
+1200 /Times-Roman-Acnt F
+(,) S
+1200 /Times-Italic-Acnt F
+(Y) S
+1200 /Times-Roman-Acnt F
+(\)th bit in ) S
+1200 /Times-Italic-Acnt F
+(BitMap) S
+1200 /Times-Roman-Acnt F
+(.  If ) S
+1200 /Times-Italic-Acnt F
+(NewValue) S
+1200 /Times-Roman-Acnt F
+( is anything else, then its ) S
+18000 30892 M (an error.) S
+1200 /Times-Bold-Acnt F
+18000 27692 M (\(BITMAPCOPY ) S
+1200 /Times-BoldItalic-Acnt F
+(BitMap) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 returns a new bitmap that is an exact copy of ) S
+1200 /Times-Italic-Acnt F
+18000 25892 M (BitMap) S
+1200 /Times-Roman-Acnt F
+(.) S
+1200 /Times-Bold-Acnt F
+18000 22692 M (\(BITMAPHEIGHT ) S
+1200 /Times-BoldItalic-Acnt F
+(BitMap) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 returns the height in bits of ) S
+1200 /Times-Italic-Acnt F
+(BitMap) S
+1200 /Times-Roman-Acnt F
+(.) S
+1200 /Times-Bold-Acnt F
+18000 19492 M (\(BITMAPWIDTH ) S
+1200 /Times-BoldItalic-Acnt F
+(BitMap) S
+1200 /Times-Bold-Acnt F
+(\) ) S
+1200 /Times-Roman-Acnt F
+(\234 returns the width in bits of ) S
+1200 /Times-Italic-Acnt F
+(BitMap) S
+1200 /Times-Roman-Acnt F
+(.) S
+14400 16292 M (The following functions return pointers to the "special" bitmaps:) S
+1200 /Times-Bold-Acnt F
+18000 13092 M (\(SCREENBITMAP\)) S
+1200 /Times-Roman-Acnt F
+( \234 returns the screen bitmap.) S
+1200 /Times-Bold-Acnt F
+18000 9892 M (\(CURSORBITMAP\)) S
+1200 /Times-Roman-Acnt F
+( \234 returns the bitmap that is the cursor.) S
+grestore savepage restore showpage
+
+%%Page: 15 15
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (11) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 71106 M (Hand Editing Bitmaps) S
+14400 67906 M (\(EDITBM ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(BitMap) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 calls an editor to edit ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(BitMap) S
+1200 /Times-Roman-Acnt F
+(.  If ) S
+1200 /Times-Italic-Acnt F
+(BitMap) S
+1200 /Times-Roman-Acnt F
+( is NIL, will create ) S
+14400 66106 M (a bitmap after asking for the height and width of the desired bitmap.) S
+18000 63506 M (The bitmap editor runs in a window which you will be asked to place.  ) S
+18000 61706 M (The window is shown below.) S
+/bitbltsave save def 25200 39699 translate 17600 20300 scale 176 203 true thebitimage
+B21511
+B21544
+B315
+B21511
+1FB213FFF9
+5FB313FC
+58B213001C
+18B31319
+B315
+5880008000D555D555D555D555D5558000800080009C
+58B20300B209AAB205001C
+18B303B20955B30519
+B304B209AAB306
+58B303B20955B3051C
+B304B209AAB306
+18B303B20955B30519
+B304B209AAB306
+58B303B20955B3051C
+B304B209AAB306
+18B303B20955B30519
+B304B209AAB306
+58B303B20955B3051C
+B304B209AAB306
+18B303B20955B30519
+B304B209AAB306
+5880008000D555800080008000D555D555800080009C
+58B20300AAAAB20500B203AAB203001C
+18B3035555B305B20355B30319
+B304AAAAB305B203AAB304
+58B3035555B305B20355B3031C
+B304AAAAB305B203AAB304
+18B3035555B305B20355B30319
+B304AAAAB305B203AAB304
+58B3035555B305B20355B3031C
+B304AAAAB305B203AAB304
+18B3035555B305B20355B30319
+B304AAAAB305B203AAB304
+58B3035555B305B20355B3031C
+B304AAAAB305B203AAB304
+18B3035555B305B20355B30319
+B304AAAAB305B203AAB304
+5880008000D555D555800080008000D555D55580009C
+58B20300B203AAB20500B203AA00001C
+18B303B20355B305B20355000019
+B304B203AAB305B203AAB302
+58B303B20355B305B2035500001C
+B304B203AAB305B203AAB302
+18B303B20355B305B20355000019
+B304B203AAB305B203AAB302
+58B303B20355B305B2035500001C
+B304B203AAB305B203AAB302
+18B303B20355B305B20355000019
+B304B203AAB305B203AAB302
+58B303B20355B305B2035500001C
+B304B203AAB305B203AAB302
+18B303B20355B305B20355000019
+B304B203AAB305B203AAB302
+58800080008000D555D555800080008000D55580009C
+58B20500B203AAB20500AAAA00001C
+18B305B20355B3055555000019
+B306B203AAB305AAAAB302
+58B305B20355B305555500001C
+B306B203AAB305AAAAB302
+18B305B20355B3055555000019
+B306B203AAB305AAAAB302
+58B305B20355B305555500001C
+B306B203AAB305AAAAB302
+18B305B20355B3055555000019
+B306B203AAB305AAAAB302
+58B305B20355B305555500001C
+B306B203AAB305AAAAB302
+18B305B20355B3055555000019
+B306B203AAB305AAAAB302
+588000800080008000D555D55580008000D55580009C
+58B20700B203AAB20300AAAA00001C
+18B307B20355B3035555000019
+B308B203AAB303AAAAB302
+58B307B20355B303555500001C
+B308B203AAB303AAAAB302
+18B307B20355B3035555000019
+B308B203AAB303AAAAB302
+58B307B20355B303555500001C
+B308B203AAB303AAAAB302
+18B307B20355B3035555000019
+B308B203AAB303AAAAB302
+58B307B20355B303555500001C
+B308B203AAB303AAAAB302
+18B307B20355B3035555000019
+B308B203AAB303AAAAB302
+5880008000800080008000D55580008000D555D5559C
+58B20900AAAAB20300B203AA1C
+18B3095555B303B2035519
+B30AAAAAB303B203AA19
+58B3095555B303B203551C
+B30AAAAAB303B203AA1C
+18B3095555B303B2035519
+B30AAAAAB303B203AA19
+58B3095555B303B203551C
+B30AAAAAB303B203AA1C
+18B3095555B303B2035519
+B30AAAAAB303B203AA19
+58B3095555B303B203551C
+B30AAAAAB303B203AA1C
+18B3095555B303B2035519
+B30AAAAAB303B203AA19
+5880008000800080008000D55580008000D555D5559C
+58B20900AAAAB20300B203AA1C
+18B3095555B303B2035519
+B30AAAAAB303B203AA19
+58B3095555B303B203551C
+B30AAAAAB303B203AA1C
+18B3095555B303B2035519
+B30AAAAAB303B203AA19
+58B3095555B303B203551C
+B30AAAAAB303B203AA1C
+18B3095555B303B2035519
+B30AAAAAB303B203AA19
+58B3095555B303B203551C
+B30AAAAAB303B203AA1C
+18B3095555B303B2035519
+B30AAAAAB303B203AA19
+5880008000800080008000D5558000D555D55580009C
+58B20900AAAA0000B203AA00001C
+18B30955550000B20355000019
+B30AAAAA0000B203AAB302
+58B30955550000B2035500001C
+B30AAAAA0000B203AAB302
+18B30955550000B20355000019
+B30AAAAA0000B203AAB302
+58B30955550000B2035500001C
+B30AAAAA0000B203AAB302
+18B30955550000B20355000019
+B30AAAAA0000B203AAB302
+58B30955550000B2035500001C
+B30AAAAA0000B203AAB302
+18B30955550000B20355000019
+B30AAAAA0000B203AAB302
+588000800080008000D555D555D555D555800080009C
+58B20700B207AAB203001C
+18B307B20755B30319
+B308B207AAB304
+58B307B20755B3031C
+B308B207AAB304
+18B307B20755B30319
+B308B207AAB304
+58B307B20755B3031C
+B308B207AAB304
+18B307B20755B30319
+B308B207AAB304
+58B307B20755B3031C
+B308B207AAB304
+18B307B20755B30319
+B308B207AAB304
+588000D555D555D5558000800080008000800080009C
+580000B205AAB20B001C
+180000B20555B30B1F
+B302B205AAB30C
+580000B20555B30B18
+B302B205AAB30C
+180000B20555B30B1F
+B302B205AAB30B18
+580000B20555B30C
+B302B205AAB30B1F
+180000B20555B30B18
+B302B205AAB30C
+580000B20555B30C
+B302B205AAB30B1F
+180000B20555B30B18
+B302B205AAB30C
+5880008000800080008000800080008000800080009F
+587C15B2115518
+18460AB211AA98
+186315B2115518
+58310AB211AA98
+581915B2115518
+18098AB211AA98
+180995B211551C
+580B0AB211AA9C
+581E15B211551C
+18E00AB211AA9A
+180015B211551A
+58000AB211AA9A
+580015B2115518
+18B2130018
+B315
+5FB213FFF8
+B305DFB306B206AABF
+1FB313B8
+B30DB2065558
+5F00F737BDC250FF803C2EE787BFB307
+5F7F7777BDBCCF7FBFFBCEEF7BBFB206AABF
+1FB303BEDFBFBFF7EEEEFDB307B8
+B304C6B307B2065558
+5FB303F8B30E5F
+5F00F777BDBEDFBF8077B3029FB206AAB8
+1F7EF7739DDECF7FBFFBCEEF7BABB307
+1F7EF63463E1D0FFBFFC2EC787B4B3B2065558
+5F7EFF7FB203FFBFFFEFEFFFFFB307
+5F7EF7B306EEB302B206AAB8
+1F01F7B204FF803FEEB202FFB306B9
+1FB20CFFB206555A
+5FB30CB206FFFC
+444472B20200FC08B20300014A3F9021B2030028
+
+bitbltsave restore
+18000 37406 M (In the bar just below the title bar flush to the left side of the window, the ) S
+18000 35606 M (bitmap being edited in displayed at normal resolution.) S
+18000 33006 M (To the right of this is a gray area \233  clicking the MIDDLE mouse button in ) S
+18000 31206 M (this gray area will bring up a menu of commands, including "OK" which ) S
+18000 29406 M (will allow you to exit the editor.) S
+18000 26806 M (The gridded area represents a portion of the bitmap blown up \233 each square ) S
+18000 25006 M (corresponds to one bit.) S
+21600 22606 M (Clicking the RIGHT mouse button in a square makes the ) S
+21600 20806 M (corresponding bit black.) S
+21600 18406 M (Clicking the MIDDLE mouse button in a square makes the ) S
+21600 16606 M (corresponding bit) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(white) S
+1200 /Times-Bold-Acnt F
+(.) S
+1200 /Times-Roman-Acnt F
+21600 14206 M (To change the portion of the bitmap being displayed in this blown-) S
+21600 12406 M (up area, LEFT or MIDDLE click in the normal resolution bitmap ) S
+21600 10606 M (above and choose the "Move" option \(i.e., the only option\) from ) S
+21600 8806 M (the menu that appears.) S
+grestore savepage restore showpage
+
+%%Page: 16 16
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (12) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 71106 M (Notes) S
+1200 /Times-Roman-Acnt F
+14400 68106 M (Most of the above functions can take either a display stream or a window in place ) S
+14400 66306 M (of a bitmap argument.  In this case, the operation is carried out on the bitmap ) S
+14400 64506 M (associated with the given display stream or window.) S
+18000 61506 M (Thus, BITBLT et al. can be used to manipulate the contents of a window. ) S
+18000 59706 M (\(See below\).) S
+1400 /Times-Bold-Acnt F
+7200 55957 M (Display Streams) S
+1200 /Times-Roman-Acnt F
+10800 53106 M (Displays streams are a special type of Stream \(see LispCourse #38, page 3\) designed to ) S
+10800 51306 M (provide an interface to bitmaps \(most importantly the display scrren bitmap\).) S
+10800 48506 M (Display streams allow you to access bitmaps in higher-level terms than just BITBLT and ) S
+10800 46706 M (BITMAPBIT.  In particular, display streams are designed to deal with objects like ) S
+10800 44906 M (characters and geometric objects \(lines, curves, circles, etc.\).) S
+1200 /Times-Bold-Acnt F
+10800 42106 M (Display Stream Properties \(& creating a display stream\)) S
+1200 /Times-Roman-Acnt F
+14400 39306 M (Basically, a display stream has a destination bitmap and set of properties that ) S
+14400 37506 M (specify how higher-level objects like characters and lines should be drawn on this ) S
+14400 35706 M (bitmap.) S
+18000 32106 M (The most important properties of a display stream are the following:) S
+1200 /Times-Bold-Acnt F
+21600 29306 M (Destination) S
+1200 /Times-Roman-Acnt F
+( \234 the bitmap that this display stream refers to.  ) S
+21600 27506 M (Initializes to \(SCREENBITMAP\).) S
+1200 /Times-Bold-Acnt F
+21600 24706 M (XOffset, YOffset) S
+1200 /Times-Roman-Acnt F
+( \234 the origin of the display stream's coordinate ) S
+21600 22906 M (system expressed in terms of the destination bitmap's coordinate ) S
+21600 21106 M (system.  Initializes to 0 and 0, so that the display stream origin is at ) S
+21600 19306 M (the lower-left corner of the destination bitmap.) S
+1200 /Times-Bold-Acnt F
+21600 16506 M (ClippingRegion) S
+1200 /Times-Roman-Acnt F
+( \234 a region ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(in the display stream's coordinate ) S
+21600 14706 M (system) S
+1200 /Times-Roman-Acnt F
+( that limits where anything can be written or drawn to the ) S
+21600 12906 M (display stream.  If a display stream has a clipping region, then ) S
+21600 11106 M (commands that request characters and/or lines to be drawn outside ) S
+21600 9306 M (of this clipping region will simply be ignored.) S
+grestore savepage restore showpage
+
+%%Page: 17 17
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (13) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 71106 M (XPosition, YPosition) S
+1200 /Times-Roman-Acnt F
+( \234 the X and Y coordinates of the "current" ) S
+21600 69306 M (position of the display stream.  The "current" position is an ) S
+21600 67506 M (invidsible cursor that determines where things will be drawn unless ) S
+21600 65706 M (otherwise specified. \(Initially 0 and 0, i.e., at the display stream's ) S
+21600 63906 M (origin.) S
+1200 /Times-Bold-Acnt F
+21600 61106 M (Texture) S
+1200 /Times-Roman-Acnt F
+( \234 the backround pattern used in the display stream \(see ) S
+21600 59306 M (Texture description under BITBLT above\).  Initializes to ) S
+21600 57506 M (WHITESHADE.) S
+1200 /Times-Bold-Acnt F
+21600 54706 M (Font) S
+1200 /Times-Roman-Acnt F
+( \234 a font descriptor that specifies the font to be used for ) S
+21600 52906 M (printing characters on this display stream.  Initializes to font ) S
+21600 51106 M (descriptor for Gacha 10.  \(See LispCourse #21 for a discussion of ) S
+21600 49306 M (fonts.\)) S
+1200 /Times-Bold-Acnt F
+21600 46506 M (Operation) S
+1200 /Times-Roman-Acnt F
+( \234 the BITBLT operation \(see BITBLT above\) used by ) S
+21600 44706 M (default when printing or drawing on the destination bitmap.  Must ) S
+21600 42906 M (be one of REPLACE, PAINT, INVERT, or ERASE as above. ) S
+21600 41106 M (Initializes to REPLACE.) S
+21600 38306 M (For other properties of a display stream, see section 19.9.1 of the ) S
+21600 36506 M (IRM..) S
+18000 32906 M (To create a display stream, use the DSPCREATE function:) S
+1200 /Times-Bold-Acnt F
+21600 29306 M (\(DSPCREATE ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Destination) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 returns a display stream object using ) S
+21600 27506 M (Destination as its destination bitmap.  If Destination is NIL, then ) S
+21600 25706 M (\(SCREENBITMAP\) is used.  All of th properties of the display ) S
+21600 23906 M (stream are initialized as described above.) S
+18000 20306 M (The properties of a display stream can be manipulated using a set of ) S
+18000 18506 M (functions that work as follows:) S
+21600 15906 M (Each property is is manipulated by a selector/mutator whose name ) S
+21600 14106 M (is "DSP" followed by the property name in all caps.) S
+25200 11506 M (For example: the Font property is accessed using the ) S
+25200 9706 M (function ) S
+1200 /Times-Bold-Acnt F
+(DSPFONT) S
+1200 /Times-Roman-Acnt F
+(.) S
+grestore savepage restore showpage
+
+%%Page: 18 18
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (14) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+21600 71106 M (Each of these functions takes two arguments: the new value of the ) S
+21600 69306 M (property and the display stream.) S
+25200 66706 M (If the new value is NIL, then the function just returns the ) S
+25200 64906 M (current value of the property.) S
+25200 62306 M (If the new value is a value, then the function returns the old ) S
+25200 60506 M (value and sets the property to the new value.) S
+21600 57906 M (Example:) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+25200 55306 M (\(DSPFONT NIL DS\)) S
+1200 /Times-Roman-Acnt F
+( returns the Font property of display ) S
+25200 53506 M (stream DS.) S
+1200 /Times-Italic-Acnt F
+25200 50906 M (\(DSPFONT \(FONTCREATE 'TIMESROMAN 16\) DS\)) S
+1200 /Times-Roman-Acnt F
+( ) S
+25200 49106 M (changes the Font property of DS to be TimesRoman 16 and ) S
+25200 47306 M (returns the old font of DS.) S
+1200 /Times-Italic-Acnt F
+25200 44706 M (\(DSPTEXTURE GRAYSHADE DS\)) S
+1200 /Times-Roman-Acnt F
+( changes the ) S
+25200 42906 M (background texture of DS to be gray and returns the old ) S
+25200 41106 M (background texture.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 38306 M (Moving the Current Position in the Display Stream) S
+1200 /Times-Roman-Acnt F
+14400 35506 M (When printing or drawing to a display stream, the default is to print/draw at the ) S
+14400 33706 M (current position, i.e., at \(XPosition, YPosition\) in the display stream.) S
+14400 30906 M (DSPXPOSITION and DSPYPOSITION can be used to independently change the ) S
+14400 29106 M (X and Y coordinates of the current position.) S
+14400 26306 M (The following functions can also be used to change the current position:) S
+1200 /Times-Bold-Acnt F
+18000 23506 M (\(MOVETO ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(X) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Y) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(DisplayStream) S
+1200 /Times-Bold-Acnt F
+(\) ) S
+1200 /Times-Roman-Acnt F
+(\234  moves ) S
+1200 /Times-Italic-Acnt F
+(DisplayStream) S
+1200 /Times-Roman-Acnt F
+('s current ) S
+18000 21706 M (position to point \() S
+1200 /Times-Italic-Acnt F
+(X) S
+1200 /Times-Roman-Acnt F
+(,) S
+1200 /Times-Italic-Acnt F
+(Y) S
+1200 /Times-Roman-Acnt F
+(\).') S
+1200 /Times-Bold-Acnt F
+18000 18906 M (\(RELMOVETO ) S
+1200 /Times-BoldItalic-Acnt F
+(DeltaX) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(DeltaY) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(DisplayStream) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 moves ) S
+1200 /Times-Italic-Acnt F
+(DisplayStream) S
+1200 /Times-Roman-Acnt F
+('s ) S
+18000 17106 M (current position to a point ) S
+1200 /Times-Italic-Acnt F
+(DeltaX) S
+1200 /Times-Roman-Acnt F
+( units to the right and ) S
+1200 /Times-Italic-Acnt F
+(DeltaY) S
+1200 /Times-Roman-Acnt F
+( units up ) S
+18000 15306 M (from its previous position.) S
+1200 /Times-Bold-Acnt F
+10800 12506 M (Printing and Drawing on Display Streams) S
+grestore savepage restore showpage
+
+%%Page: 19 19
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (15) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+14400 71106 M (To print characters on a display stream, use the standard printing routines ) S
+14400 69306 M (discussed in LispCourse #38 \(starting on page 12\).  ) S
+18000 66506 M (For example: \(PRIN1 "ABC" DS\) will print ABC on display stream DS.  ) S
+18000 64706 M (It will do the printing starting at the DS's current point and then will move ) S
+18000 62906 M (the current point to the end of the last character printed.) S
+18000 60106 M (The font used for printing the characters is determined by DS's font ) S
+18000 58306 M (property.) S
+14400 55506 M (To draw straight lines on a display stream use the following functions:) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 52706 M (\(DRAWTO ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(X) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Y) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Width) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Operation) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(DisplayStream) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 draws a line on ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+18000 50906 M (DisplayStream) S
+1200 /Times-Roman-Acnt F
+( from the current point to location \() S
+1200 /Times-Italic-Acnt F
+(X) S
+1200 /Times-Roman-Acnt F
+(,) S
+1200 /Times-Italic-Acnt F
+(Y) S
+1200 /Times-Roman-Acnt F
+(\).  The line is ) S
+1200 /Times-Italic-Acnt F
+(Width) S
+1200 /Times-Roman-Acnt F
+( ) S
+18000 49106 M (bits wide and is drawn using the BITBLT operation specified by ) S
+1200 /Times-Italic-Acnt F
+18000 47306 M (Operation) S
+1200 /Times-Roman-Acnt F
+(  \(defaults to the ) S
+1200 /Times-Italic-Acnt F
+(DisplayStream) S
+1200 /Times-Roman-Acnt F
+('s operation property\).  At the ) S
+18000 45506 M (end, ) S
+1200 /Times-Italic-Acnt F
+(DisplayStream) S
+1200 /Times-Roman-Acnt F
+('s current point is set to \() S
+1200 /Times-Italic-Acnt F
+(X) S
+1200 /Times-Roman-Acnt F
+(,) S
+1200 /Times-Italic-Acnt F
+(Y) S
+1200 /Times-Roman-Acnt F
+(\).) S
+1200 /Times-Bold-Acnt F
+18000 42706 M (\(RELDRAWTO ) S
+1200 /Times-BoldItalic-Acnt F
+(DeltaX) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(DeltaY) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Width) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Operation) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(DisplayStream) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 draws ) S
+18000 40906 M (a line on ) S
+1200 /Times-Italic-Acnt F
+(DisplayStream) S
+1200 /Times-Roman-Acnt F
+( from the current point to the location ) S
+1200 /Times-Italic-Acnt F
+(DeltaX) S
+1200 /Times-Roman-Acnt F
+( to ) S
+18000 39106 M (the right and ) S
+1200 /Times-Italic-Acnt F
+(DeltaY) S
+1200 /Times-Roman-Acnt F
+( up.  The line is ) S
+1200 /Times-Italic-Acnt F
+(Width) S
+1200 /Times-Roman-Acnt F
+( bits wide and is drawn using ) S
+18000 37306 M (the BITBLT operation specified by ) S
+1200 /Times-Italic-Acnt F
+(Operation) S
+1200 /Times-Roman-Acnt F
+(  \(defaults to the ) S
+1200 /Times-Italic-Acnt F
+18000 35506 M (DisplayStream) S
+1200 /Times-Roman-Acnt F
+('s operation property\).  At the end, ) S
+1200 /Times-Italic-Acnt F
+(DisplayStream) S
+1200 /Times-Roman-Acnt F
+('s current ) S
+18000 33706 M (point is set to the end of the line.) S
+1200 /Times-Bold-Acnt F
+18000 30906 M (\(DRAWBETWEEN ) S
+1200 /Times-BoldItalic-Acnt F
+(Position1 Position2) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Width) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Operation) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+18000 29106 M (DisplayStream) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 draws a line on ) S
+1200 /Times-Italic-Acnt F
+(DisplayStream) S
+1200 /Times-Roman-Acnt F
+( from ) S
+1200 /Times-Italic-Acnt F
+(Position1) S
+1200 /Times-Roman-Acnt F
+( to ) S
+1200 /Times-Italic-Acnt F
+18000 27306 M (Position2) S
+1200 /Times-Roman-Acnt F
+(.  The line is ) S
+1200 /Times-Italic-Acnt F
+(Width) S
+1200 /Times-Roman-Acnt F
+( bits wide and is drawn using the BITBLT ) S
+18000 25506 M (operation specified by ) S
+1200 /Times-Italic-Acnt F
+(Operation) S
+1200 /Times-Roman-Acnt F
+(  \(defaults to the ) S
+1200 /Times-Italic-Acnt F
+(DisplayStream) S
+1200 /Times-Roman-Acnt F
+('s ) S
+18000 23706 M (operation property\).  At the end, ) S
+1200 /Times-Italic-Acnt F
+(DisplayStream) S
+1200 /Times-Roman-Acnt F
+('s current point is set to ) S
+1200 /Times-Italic-Acnt F
+18000 21906 M (Position2) S
+1200 /Times-Roman-Acnt F
+(.) S
+14400 19106 M (To draw curved lines on a display stream use the following functions.) S
+21600 16306 M (These functions all take a Brush argument.  The Brush argument is ) S
+21600 14506 M (a two item list containing the ) S
+1200 /Times-BoldItalic-Acnt F
+(shape) S
+1200 /Times-Roman-Acnt F
+( and the ) S
+1200 /Times-BoldItalic-Acnt F
+(width) S
+1200 /Times-Roman-Acnt F
+( of the "brush" ) S
+21600 12706 M (that will be used to draw the curve.  ) S
+1200 /Times-Italic-Acnt F
+(Shape) S
+1200 /Times-Roman-Acnt F
+( is one of: ROUND, ) S
+21600 10906 M (SQUARE, VERTICAL, DIAGONAL.  ) S
+1200 /Times-Italic-Acnt F
+(Width) S
+1200 /Times-Roman-Acnt F
+( is the thickness of ) S
+21600 9106 M (the line to vbe drawn in bits.) S
+grestore savepage restore showpage
+
+%%Page: 20 20
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (16) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+21600 71106 M (These functions also take a Dashing argument that determines how ) S
+21600 69306 M (to dash the line.  If Dashing is NIL, no dashing will be done.  ) S
+21600 67506 M (Otherwise, Dashing is a list containing an even number of positive ) S
+21600 65706 M (integers.  The first integer specifies how long \(in bits\) the brush ) S
+21600 63906 M (should be "on", the second integer then specifies how long the ) S
+21600 62106 M (brush should be "off", the third integer specifies how long the ) S
+21600 60306 M (brush should be "on" again, etc.) S
+25200 57506 M (Example:  A Dashing of \(5 2\) specifies that the line should ) S
+25200 55706 M (have 5 bits on then 2 bits off, then 5 bits on, etc.) S
+/bitbltsave save def 28800 50199 translate 3200 3600 scale 32 36 true thebitimage
+B20322
+B303
+B20388
+B303
+B20322
+B303
+B20388
+8FB202FF
+2FB302
+2CB20200
+8CB302
+8CC00000
+2CE00000
+2C700000
+8C380000
+8C180000
+2CB20200
+2C030000
+8C038000
+8C01C000
+2C00E000
+2C007000
+8C003000
+8CB20200
+2C000600
+2C000700
+8C000380
+8C0001C0
+2C0000E0
+B30260
+8CB20200
+B303
+2CB302
+B303
+8CB302
+B303
+
+bitbltsave restore
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 47706 M (\(DRAWCURVE ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Knots) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(ClosedFlg) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Brush) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Dashing) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(DisplayStream) S
+1200 /Times-Bold-Acnt F
+(\) ) S
+1200 /Times-Roman-Acnt F
+(\234 ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+18000 45906 M (Knots ) S
+1200 /Times-Roman-Acnt F
+(is an ordered list of POSITIONs.  DRAWCURVE draws a spline ) S
+18000 44106 M (curve on ) S
+1200 /Times-Italic-Acnt F
+(DisplayStream) S
+1200 /Times-Roman-Acnt F
+( that is fit to these POSITIONs.  If ClosedFlg in ) S
+18000 42306 M (NIL, the spline will be an open curve; otherwise it will be a closed curve.  ) S
+18000 40506 M (Brush and Dashing are as described above.  The current position is left ) S
+18000 38706 M (unchanged. ) S
+grestore savepage restore showpage
+
+%%Page: 21 21
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 22 22
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (17) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+21600 71106 M (The knots:) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 36400 63300 M
+stroke
+grestore
+36400 62500 36400 63300 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 36400 62500 M
+stroke
+grestore
+36400 64100 36400 62500 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 36400 64100 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 35600 63300 M
+stroke
+grestore
+37200 63300 35600 63300 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 37200 63300 M
+stroke
+grestore
+/Helvetica /Helvetica-Acnt encodefont
+1000 /Helvetica-Acnt F
+36122.0 64842.0 M (2) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 26800 64900 M
+stroke
+grestore
+28400 64900 26800 64900 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 28400 64900 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 27600 64900 M
+stroke
+grestore
+27600 64100 27600 64900 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 27600 64100 M
+stroke
+grestore
+27600 65700 27600 64100 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 27600 65700 M
+stroke
+grestore
+1000 /Helvetica-Acnt F
+27322.0 67242.0 M (4) S
+1000 /Helvetica-Acnt F
+28122.0 57642.0 M (3) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 28400 55300 M
+stroke
+grestore
+28400 54500 28400 55300 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 28400 54500 M
+stroke
+grestore
+28400 56100 28400 54500 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 28400 56100 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 27600 55300 M
+stroke
+grestore
+29200 55300 27600 55300 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 29200 55300 M
+stroke
+grestore
+16199 199 25901 52801 0 R
+16199 199 43501 52801 0 R
+199 17399 26101 68801 0 R
+199 17399 26101 52801 0 R
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 41200 60100 M
+stroke
+grestore
+42800 60100 41200 60100 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 42800 60100 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 42000 60100 M
+stroke
+grestore
+42000 59300 42000 60100 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 42000 59300 M
+stroke
+grestore
+42000 60900 42000 59300 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 42000 60900 M
+stroke
+grestore
+1000 /Helvetica-Acnt F
+41722.0 61642.0 M (1) S
+1200 /Times-Roman-Acnt F
+21600 49706 M (An open curve using drawn unsing these knots:) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 35600 41900 M
+stroke
+grestore
+37200 41900 35600 41900 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 37200 41900 M
+stroke
+grestore
+1000 /Helvetica-Acnt F
+36122.0 43442.0 M (2) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 26800 43500 M
+stroke
+grestore
+28400 43500 26800 43500 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 28400 43500 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 27600 43500 M
+stroke
+grestore
+27600 42700 27600 43500 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 27600 42700 M
+stroke
+grestore
+27600 44300 27600 42700 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 27600 44300 M
+stroke
+grestore
+1000 /Helvetica-Acnt F
+27322.0 45842.0 M (4) S
+1000 /Helvetica-Acnt F
+28122.0 36242.0 M (3) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 28400 33900 M
+stroke
+grestore
+28400 33100 28400 33900 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 28400 33100 M
+stroke
+grestore
+28400 34700 28400 33100 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 28400 34700 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 27600 33900 M
+stroke
+grestore
+29200 33900 27600 33900 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 29200 33900 M
+stroke
+grestore
+16199 199 25901 31401 0 R
+16199 199 43501 31401 0 R
+199 17399 26101 47401 0 R
+199 17399 26101 31401 0 R
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 41200 38700 M
+stroke
+grestore
+42800 38700 41200 38700 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 42800 38700 M
+stroke
+grestore
+1000 /Helvetica-Acnt F
+41722.0 40242.0 M (1) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 42000 38700 M
+40506.668 41153.332 39013.332 43606.668 36400 41900 curveto
+33786.668 40193.332 30053.334 34326.668 28400 33900 curveto
+26746.666 33473.332 27600.0 43500.0 27600 43500 curveto
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 42000 38700 M
+stroke
+grestore
+42000 37900 42000 38700 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 42000 37900 M
+stroke
+grestore
+42000 39500 42000 37900 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 42000 39500 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 36400 41900 M
+stroke
+grestore
+36400 41100 36400 41900 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 36400 41100 M
+stroke
+grestore
+36400 42700 36400 41100 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 36400 42700 M
+stroke
+grestore
+1200 /Times-Roman-Acnt F
+21600 28306 M (A closed curve using drawn unsing these knots:) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 36400 20500 M
+stroke
+grestore
+36400 19700 36400 20500 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 36400 19700 M
+stroke
+grestore
+36400 21300 36400 19700 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 36400 21300 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 35600 20500 M
+stroke
+grestore
+37200 20500 35600 20500 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 37200 20500 M
+stroke
+grestore
+1000 /Helvetica-Acnt F
+36122.0 22042.0 M (2) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 26800 22100 M
+stroke
+grestore
+28400 22100 26800 22100 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 28400 22100 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 27600 22100 M
+stroke
+grestore
+27600 21300 27600 22100 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 27600 21300 M
+stroke
+grestore
+27600 22900 27600 21300 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 27600 22900 M
+stroke
+grestore
+1000 /Helvetica-Acnt F
+27322.0 24442.0 M (4) S
+1000 /Helvetica-Acnt F
+28122.0 14842.0 M (3) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 28400 12500 M
+stroke
+grestore
+28400 11700 28400 12500 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 28400 11700 M
+stroke
+grestore
+28400 13300 28400 11700 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 28400 13300 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 27600 12500 M
+stroke
+grestore
+29200 12500 27600 12500 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 29200 12500 M
+stroke
+grestore
+16199 199 25901 10001 0 R
+16199 199 43501 10001 0 R
+199 17399 26101 26001 0 R
+199 17399 26101 10001 0 R
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 41200 17300 M
+stroke
+grestore
+42800 17300 41200 17300 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 42800 17300 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 42000 17300 M
+stroke
+grestore
+42000 16500 42000 17300 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 42000 16500 M
+stroke
+grestore
+42000 18100 42000 16500 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 42000 18100 M
+stroke
+grestore
+1000 /Helvetica-Acnt F
+41722.0 18842.0 M (1) S
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 27600 22100 M
+31000.0 23300.0 39800.0 17700.0 42000 17300 curveto
+44200.0 16900.0 39800.0 21700.0 36400 20500 curveto
+33000.0 19300.0 30600.0 12100.0 28400 12500 curveto
+26200.0 12900.0 27600.0 22100.0 27600 22100 curveto
+stroke
+grestore
+grestore savepage restore showpage
+
+%%Page: 23 23
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (18) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 71106 M (\(DRAWCIRCLE ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(X Y) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Radius) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Brush) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Dashing) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(DisplayStream) S
+1200 /Times-Bold-Acnt F
+(\) ) S
+1200 /Times-Roman-Acnt F
+(\234 Draws a ) S
+18000 69306 M (circle on ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(DisplayStream) S
+1200 /Times-Roman-Acnt F
+( centered at \() S
+1200 /Times-Italic-Acnt F
+(X) S
+1200 /Times-Roman-Acnt F
+(,) S
+1200 /Times-Italic-Acnt F
+(Y) S
+1200 /Times-Roman-Acnt F
+(\) and having radius ) S
+1200 /Times-Italic-Acnt F
+(Radius.) S
+1200 /Times-Roman-Acnt F
+(  The ) S
+18000 67506 M (current position is left at \() S
+1200 /Times-Italic-Acnt F
+(X) S
+1200 /Times-Roman-Acnt F
+(,) S
+1200 /Times-Italic-Acnt F
+(Y) S
+1200 /Times-Roman-Acnt F
+(\).) S
+1200 /Times-Bold-Acnt F
+18000 63906 M (\(DRAWELLISPSE ) S
+1200 /Times-BoldItalic-Acnt F
+(X Y) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(MinorRadius) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(MajorRadius Orientation Brush) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+18000 62106 M (Dashing) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(DisplayStream) S
+1200 /Times-Bold-Acnt F
+(\) ) S
+1200 /Times-Roman-Acnt F
+(\234 Draws an ellipse on ) S
+1200 /Times-Italic-Acnt F
+(DisplayStream) S
+1200 /Times-Roman-Acnt F
+( centered at ) S
+18000 60306 M (\() S
+1200 /Times-Italic-Acnt F
+(X) S
+1200 /Times-Roman-Acnt F
+(,) S
+1200 /Times-Italic-Acnt F
+(Y) S
+1200 /Times-Roman-Acnt F
+(\) and having a minor radius ) S
+1200 /Times-Italic-Acnt F
+(MinorRadius ) S
+1200 /Times-Roman-Acnt F
+(and a major radius ) S
+1200 /Times-Italic-Acnt F
+18000 58506 M (MajorRadius.) S
+1200 /Times-Roman-Acnt F
+(  The orientation of the ) S
+1200 /Times-Italic-Acnt F
+(MajorRadius) S
+1200 /Times-Roman-Acnt F
+( is determined by ) S
+1200 /Times-Italic-Acnt F
+18000 56706 M (Orientation,) S
+1200 /Times-Roman-Acnt F
+( which is in degrees from upright in the counterclockwise ) S
+18000 54906 M (direction.  The current position is left at \() S
+1200 /Times-Italic-Acnt F
+(X) S
+1200 /Times-Roman-Acnt F
+(,) S
+1200 /Times-Italic-Acnt F
+(Y) S
+1200 /Times-Roman-Acnt F
+(\).) S
+1400 /Times-Bold-Acnt F
+7200 51157 M (Windows & the Window Package) S
+1200 /Times-Roman-Acnt F
+10800 48106 M (The window package provides two basic services to Interlisp-D programs:) S
+14400 45506 M (1\) It manages the "space" on the Interlisp-D display screen, allowing multiple ) S
+14400 43706 M (programs using multiple display streams to all access the screen simultaneously ) S
+14400 41906 M (without interfering with each other.) S
+14400 39306 M (2\) It provides an interface that dispatches the user's mouse "actions" to the ) S
+14400 37506 M (Interlisp-D programs that these actions were intended to effect.) S
+10800 34506 M (We will discuss only the first function in this section.  Mouse action dispatching will be ) S
+10800 32706 M (covered in the section on the Mouse below.) S
+1200 /Times-Bold-Acnt F
+10800 29706 M (Space Management: The Window Stack) S
+1200 /Times-Roman-Acnt F
+14400 27106 M (Space on the Interlisp-D screen is managed using an occlusion stack of open ) S
+14400 25306 M (windows.) S
+14400 22706 M (Each open window represents a rectangular region of the screen in which a ) S
+14400 20906 M (display stream \(or part of a display stream\) is to be displayed.) S
+14400 18306 M (All of the open windows are placed on a stack \(i.e., an ordered list\), ordered by ) S
+14400 16506 M ("depth".) S
+18000 14106 M (If the display regions of two or more windows intersect, then the actual ) S
+18000 12306 M (screen display in the intersection region will reflect the contents of the  ) S
+18000 10506 M (window nearest to the top of the stack \(i.e., earlier in the ordered list\).) S
+grestore savepage restore showpage
+
+%%Page: 24 24
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (19) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+18000 71106 M (The windows that are lower \(deeper, later\) in the stack will have the part ) S
+18000 69306 M (of them corresponding to the intersection region "occluded" by the ) S
+18000 67506 M (windows higher in the stack.) S
+/Helvetica /Helvetica-Acnt encodefont
+1200 /Helvetica-Acnt F
+10999.0 64230.0 M (The Window Stack) S
+1000 /Helvetica-Acnt F
+7938.5 61842.0 M (Top) S
+8099 99 8751 53051 0 R
+8099 99 24751 53051 0 R
+99 15899 8851 61051 0 R
+99 15899 8851 53051 0 R
+1200 /Helvetica-Acnt F
+40366.0 64230.0 M (The Screen Display) S
+
+gsave newpath 100 setlinewidth 1 setlinecap 1 setlinejoin 16800 57100 2529.8223 0 360 arc stroke
+grestore
+8099 99 37551 50651 0 R
+8099 99 53551 50651 0 R
+99 15899 37651 58651 0 R
+99 15899 37651 50651 0 R
+
+gsave newpath 100 setlinewidth 1 setlinecap 1 setlinejoin 45600 54700 2529.8223 0 360 arc stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 55200 53100 M
+stroke
+grestore
+55200 55500 55200 53100 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 55200 55500 M
+stroke
+grestore
+55200 55500 53600 55500 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 53600 55500 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 37600 53100 M
+stroke
+grestore
+37600 53100 35200 53100 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 35200 53100 M
+stroke
+grestore
+35200 48300 35200 53100 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 35200 48300 M
+stroke
+grestore
+56800 48300 35200 48300 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 56800 48300 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 56800 48300 M
+stroke
+grestore
+56800 53100 56800 48300 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 56800 53100 M
+stroke
+grestore
+56800 53100 53600 53100 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 53600 53100 M
+stroke
+grestore
+4899 99 8751 46651 0 R
+4899 99 30351 46651 0 R
+99 21499 8851 51451 0 R
+99 21499 8851 46651 0 R
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 11200 50700 M
+stroke
+grestore
+14400 47500 11200 50700 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 14400 47500 M
+stroke
+grestore
+18400 50700 14400 47500 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 18400 50700 M
+stroke
+grestore
+21600 47500 18400 50700 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 21600 47500 M
+stroke
+grestore
+25600 49900 21600 47500 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 25600 49900 M
+stroke
+grestore
+28800 47500 25600 49900 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 28800 47500 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 42400 50700 M
+stroke
+grestore
+42400 50700 40800 49100 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 40800 49100 M
+stroke
+grestore
+40800 49100 39200 50700 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 39200 50700 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 48000 49100 M
+stroke
+grestore
+48000 49100 46400 50700 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 46400 50700 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 48000 49100 M
+stroke
+grestore
+50400 50700 48000 49100 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 50400 50700 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 55200 49100 M
+stroke
+grestore
+55200 49100 52800 50700 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 52800 50700 M
+stroke
+grestore
+12099 99 8751 33051 0 R
+12099 99 19151 33051 0 R
+99 10299 8851 45051 0 R
+99 10299 8851 33051 0 R
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 44800 43500 M
+stroke
+grestore
+44800 48300 44800 43500 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 44800 48300 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 47200 45900 M
+stroke
+grestore
+48000 48300 47200 45900 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 48000 48300 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 47200 45900 M
+stroke
+grestore
+53600 45900 47200 45900 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 53600 45900 M
+stroke
+grestore
+53600 45900 52000 48300 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 52000 48300 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 44800 43500 M
+stroke
+grestore
+55200 43500 44800 43500 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 55200 43500 M
+stroke
+grestore
+55200 48300 55200 43500 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 55200 48300 M
+stroke
+grestore
+55200 48300 55200 48300 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 55200 48300 M
+stroke
+grestore
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 13600 41900 M
+stroke
+grestore
+13600 41900 10400 35500 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 10400 35500 M
+stroke
+grestore
+17600 35500 10400 35500 100 L
+
+gsave newpath  1 setlinecap 1 setlinejoin 100 setlinewidth 17600 35500 M
+stroke
+grestore
+17600 35500 13600 41900 100 L
+26399 99 32751 36251 0 R
+26399 99 58251 36251 0 R
+99 25399 32851 62551 0 R
+99 25399 32851 36251 0 R
+1200 /Times-Roman-Acnt F
+14400 27306 M (The window at the top of the stack is always visible in its entirety on the screen.) S
+18000 24906 M (Windows later in the stack may also be entirely visible \(if they do not ) S
+18000 23106 M (intersect with any other open windows\), but this cannot be guarenteed.) S
+14400 20706 M (Any operation on a window brings it to the top of the stack.  Thus all operations ) S
+14400 18906 M (are carried out on windows that are entirely visible on the screen.) S
+14400 16506 M (The function call ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(\(OPENWINDOWS\)) S
+1200 /Times-Roman-Acnt F
+( returns the window stack as an ordered ) S
+14400 14706 M (list.) S
+1200 /Times-Bold-Acnt F
+10800 11106 M (Windows) S
+grestore savepage restore showpage
+
+%%Page: 25 25
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (20) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+14400 71106 M (A window is just a data structure that contains all of the information necessary for ) S
+14400 69306 M (the window package to display the window on the screen.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 65706 M (Open and Closed Windows) S
+1200 /Times-Roman-Acnt F
+18000 62906 M (Windows can be ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(open) S
+1200 /Times-Roman-Acnt F
+( or ) S
+1200 /Times-BoldItalic-Acnt F
+(closed) S
+1200 /Times-Roman-Acnt F
+(.) S
+21600 60306 M (A ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(closed) S
+1200 /Times-Roman-Acnt F
+( window is just a data structure and is not part of the ) S
+21600 58506 M (window stack.  It therefore cannot be displayed on the screen.) S
+21600 55906 M (An ) S
+1200 /Times-Italic-Acnt F
+(open) S
+1200 /Times-Roman-Acnt F
+( window is on the window stack and is therefore displayed ) S
+21600 54106 M (on the screen providing that it is not completely occluded by other ) S
+21600 52306 M (open windows on the stack.) S
+21600 49706 M (Whenever you operate on a window \(e.g., draw in the window\), ) S
+21600 47906 M (the window is opened \(and brought to the top of the stack\).) S
+1200 /Times-Bold-Acnt F
+21600 45306 M (\(OPENW ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( opens the closed window ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+(, placing it ) S
+21600 43506 M (at the top of the window stack.) S
+1200 /Times-Bold-Acnt F
+21600 40906 M (\(CLOSEW ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( closes the open window ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+(.) S
+1200 /Times-Bold-Acnt F
+21600 38306 M (\(OPENWP ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( returns ) S
+1200 /Times-Italic-Acnt F
+(Window ) S
+1200 /Times-Roman-Acnt F
+(if it is an open window; NIL ) S
+21600 36506 M (otherwise.) S
+1200 /Times-Bold-Acnt F
+14400 32906 M (Creating Windows) S
+1200 /Times-Roman-Acnt F
+18000 30106 M (To create a window use:) S
+1200 /Times-Bold-Acnt F
+18000 27306 M (\(CREATEW ) S
+1200 /Times-BoldItalic-Acnt F
+(Region) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Title) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Border) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(NoOpenFlg) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 creates and returns a ) S
+18000 25506 M (new window.) S
+21600 23306 M (The created window will be displayed \(if opened\) in screen region ) S
+1200 /Times-Italic-Acnt F
+21600 21506 M (Region) S
+1200 /Times-Roman-Acnt F
+(.  If ) S
+1200 /Times-Italic-Acnt F
+(Region) S
+1200 /Times-Roman-Acnt F
+( is NIL, the the user will be asked to specify a ) S
+21600 19706 M (region on the screen.) S
+21600 17506 M (If ) S
+1200 /Times-Italic-Acnt F
+(Title) S
+1200 /Times-Roman-Acnt F
+( is non-NIL, a title bar will be created at the top of the ) S
+21600 15706 M (window and ) S
+1200 /Times-Italic-Acnt F
+(Title) S
+1200 /Times-Roman-Acnt F
+( will be printed left-flush in this title bar.) S
+21600 13106 M (If ) S
+1200 /Times-Italic-Acnt F
+(Border) S
+1200 /Times-Roman-Acnt F
+( is a number it is the number of bits to use as a border ) S
+21600 11306 M (around the edge of the window; otherwise the window will have a ) S
+21600 9506 M (border width of 4.) S
+grestore savepage restore showpage
+
+%%Page: 26 26
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (21) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+21600 71106 M (If ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(NoOpenFlg ) S
+1200 /Times-Roman-Acnt F
+(is NIL, the created window will be opened and ) S
+21600 69306 M (placed at the top of the window stack.  Otherwise, the created ) S
+21600 67506 M (window will not be opened.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 64506 M (\(WINDOWP ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 returns ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+( if it is a window, NIL otherwise.) S
+1200 /Times-Bold-Acnt F
+14400 60906 M (Windows and Display Streams) S
+1200 /Times-Roman-Acnt F
+18000 58106 M (When a window is created, a corresponding display stream is created and ) S
+18000 56306 M (stored in the window data structure.) S
+21600 54106 M (The function: ) S
+1200 /Times-Bold-Acnt F
+(\(WINDOWPROP ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+( 'DSP\)) S
+1200 /Times-Roman-Acnt F
+( will retrieve the ) S
+21600 52306 M (display stream associated with ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+(. \(See explanation of ) S
+21600 50506 M (WINDOWPROP below.\)) S
+18000 47706 M (This destination of a window's display stream is always ) S
+18000 45906 M (\(SCREENBITMAP\).  Thus, a program should never alter the Destination ) S
+18000 44106 M (property of a window's display stream.) S
+18000 41306 M (The window package automatically takes care of setting the XOffset, ) S
+18000 39506 M (YOffset and ClippingRegion properties for the window's display stream ) S
+18000 37706 M (as the window is scrolled or moved about the screen.) S
+21600 34906 M (A program should never alter the XOffset, YOffset, and ) S
+21600 33106 M (ClippingRegion properties of a window's display stream.) S
+18000 30306 M (Otherwise, all properties and operations applicable to display streams are ) S
+18000 28506 M (also applicable to windows.) S
+21600 25706 M (For example, to change the font used to print in a window, you use ) S
+21600 23906 M (DSPFONT.  It is not necessary to specify the window's display ) S
+21600 22106 M (stream directly since all the DSPxxx functions know how to coerce ) S
+21600 20306 M (a window into its corresponding display stream.) S
+1200 /Times-Italic-Acnt F
+25200 17506 M (\(DSPFONT BigFont Window\)) S
+1200 /Times-Roman-Acnt F
+( has the same effect as ) S
+25200 15706 M (\() S
+1200 /Times-Italic-Acnt F
+(DSPFONT BigFont \(WINDOWPROP Window 'DSP\)\)) S
+1200 /Times-Bold-Acnt F
+14400 12106 M (Printing and Drawing in Windows) S
+grestore savepage restore showpage
+
+%%Page: 27 27
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (22) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+18000 71106 M (Printing and drawing in a windows is identical to printing and drawing in ) S
+18000 69306 M (display streams \234 use the print functions and the ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(DSPxxx) S
+1200 /Times-Roman-Acnt F
+( functions ) S
+18000 67506 M (described above.) S
+21600 64706 M (Just use the window as the argument in place of a display stream.  ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+14400 61106 M (Doing Things to Windows) S
+1200 /Times-Roman-Acnt F
+18000 58306 M (The following functions carry out various operations on windows.) S
+1200 /Times-Bold-Acnt F
+18000 55506 M (\(MOVEW ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Position) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 moves ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+( so that its lower-left corner ) S
+18000 53706 M (is located at POSITION) S
+1200 /Times-Italic-Acnt F
+( Position) S
+1200 /Times-Roman-Acnt F
+( on the display screen.  If ) S
+1200 /Times-Italic-Acnt F
+(Position) S
+1200 /Times-Roman-Acnt F
+( is NIL, ) S
+18000 51906 M (then the user is asked for to specify a position.) S
+21600 49106 M (If ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+( is closed, it will not be opened unless ) S
+1200 /Times-Italic-Acnt F
+(Position) S
+1200 /Times-Roman-Acnt F
+( is NIL.) S
+1200 /Times-Bold-Acnt F
+18000 46306 M (\(SHAPEW Window NewRegion\)) S
+1200 /Times-Roman-Acnt F
+( \234 rehapes and moves ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+( so that it ) S
+18000 44506 M (is displayed in screen region ) S
+1200 /Times-Italic-Acnt F
+(NewRegion) S
+1200 /Times-Roman-Acnt F
+(.  If ) S
+1200 /Times-Italic-Acnt F
+(NewRegion) S
+1200 /Times-Roman-Acnt F
+( is NIL, the user is ) S
+18000 42706 M (asked to specify a new region.  Opens ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+( if it is closed.) S
+1200 /Times-Bold-Acnt F
+18000 39906 M (\(TOTOPW ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 places ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+( at the top of the window stack and ) S
+18000 38106 M (adjusts the display accordingly.  ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+( is opened if it was closed.) S
+1200 /Times-Bold-Acnt F
+18000 35306 M (\(BURYW ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+(\) ) S
+1200 /Times-Roman-Acnt F
+(\234 places ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+( at the bottom of the window stack ) S
+18000 33506 M (and adjusts the display accordingly.) S
+1200 /Times-Bold-Acnt F
+18000 30706 M (\(CLEARW ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+(\) ) S
+1200 /Times-Roman-Acnt F
+(\234 clears the window, filling it with the Texture of its ) S
+18000 28906 M (underlying display stream.  Also sets the current position to the upper-left ) S
+18000 27106 M (corner of the window.) S
+1200 /Times-Bold-Acnt F
+18000 24306 M (\(REDISPLAYW ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+(\) ) S
+1200 /Times-Roman-Acnt F
+(\234 causes ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+( to be redisplayed.  Used if, ) S
+18000 22506 M (for example, the window's display gets messed up.  For this to work ) S
+18000 20706 M (correctly the window must have a REPAINTFN property \(see below\).) S
+1200 /Times-Bold-Acnt F
+18000 17906 M (\(SHRINKW ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+(\) ) S
+1200 /Times-Roman-Acnt F
+(\234) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(closes ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+( and replaces it on the screen with ) S
+18000 16106 M (a smaller icon window.) S
+1200 /Times-Bold-Acnt F
+(  ) S
+1200 /Times-Roman-Acnt F
+(The icon window is actually another window that ) S
+18000 14306 M (is associated with the window being shrunk.) S
+grestore savepage restore showpage
+
+%%Page: 28 28
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (23) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+21600 71106 M (Unless the window's properties specify otherwise \(see below\), the ) S
+21600 69306 M (icon window is just a black bar containing ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+('s title or the ) S
+21600 67506 M (date and time if ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+( has no title.) S
+21600 64706 M (You cannot shrink an icon window.) S
+21600 61906 M (SHRINKW is a no-op if ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+( is closed.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 59106 M (\(EXPANDW ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+(\)  ) S
+1200 /Times-Roman-Acnt F
+(\234) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(expands or "unshrinks" ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+( if it was ) S
+18000 57306 M (previously "shrunk".) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+( If ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+( is an icon window, expands the window ) S
+18000 55506 M (that the icon window represents.  If ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+( is neither shrunk nor an icon ) S
+18000 53706 M (window, EXPANDW is a no-op.) S
+1200 /Times-Bold-Acnt F
+14400 50106 M (Tailoring Windows to Special Applications: Window Properties) S
+1200 /Times-Roman-Acnt F
+18000 47106 M (Every window has a large set of properties that determine how it looks ) S
+18000 45306 M (and, more importantly, how it behaves in various circumstances.) S
+18000 42306 M (You needn't set any of these properties, they will all default to something ) S
+18000 40506 M (reasonable if you just want an ordinary window.) S
+21600 38106 M (But if you want a fancy window, you need to set one or more of ) S
+21600 36306 M (these properties to get the looks or behavior you are interested in.) S
+18000 33306 M (Most of the properties are intended to have functions or lists of functions ) S
+18000 31506 M (as values.  These functions are called \(with the window as an argument\) ) S
+18000 29706 M (whenever some operation is done on the window \(e.g., the window is ) S
+18000 27906 M (closed\) or some event occurs in the window's environment \(e.g., the user ) S
+18000 26106 M (clicks a mouse button in the window\).) S
+21600 23106 M (In addition to these functional properties, each window has a few ) S
+21600 21306 M (properties that are not functions, e.g., the window's title, and a few ) S
+21600 19506 M (that are read-only \(i.e., that the window package sets and that the ) S
+21600 17706 M (user can query but not change\).) S
+1200 /Times-Bold-Acnt F
+18000 14106 M (Looks Properties) S
+21600 11106 M (TITLE) S
+1200 /Times-Roman-Acnt F
+( \234 a title to be printed left-flush in the title bar at the top of ) S
+21600 9306 M (the window.  If TITLE is NIL, the window will have no title bar.  ) S
+grestore savepage restore showpage
+
+%%Page: 29 29
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (24) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+21600 71106 M (If TITLE is changed from NIL to a value, then a title bar is created ) S
+21600 69306 M (resulting in a slight enlargement of the window.  Defaults to NIL.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 66306 M (BORDER) S
+1200 /Times-Roman-Acnt F
+( \234 an integer indicating the width of the border around the ) S
+21600 64506 M (edge of the window.  The border will have \(at most\) 2 bits of white ) S
+21600 62706 M (around the inside with the remaining border width being black; ) S
+21600 60906 M (subject to the constraint that the white bits never make up more ) S
+21600 59106 M (than half the border width.  Defaults to 4.) S
+1200 /Times-Bold-Acnt F
+21600 56106 M (WINDOWTITLESHADE) S
+1200 /Times-Roman-Acnt F
+( \234 a texture \(see texture under BITBLT ) S
+21600 54306 M (above\) that is used as the background in the title bar to the right of ) S
+21600 52506 M (the end of the title.  Where the title is printed, the background is ) S
+21600 50706 M (black.  Defaults to value of global variable ) S
+21600 48906 M (WINDOWTITLESHADE, which defaults to BLACKSHADE.) S
+1200 /Times-Bold-Acnt F
+18000 45306 M (Read-only Properties) S
+21600 42306 M (DSP) S
+1200 /Times-Roman-Acnt F
+( \234 ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(the window's display stream.) S
+1200 /Times-Bold-Acnt F
+21600 39306 M (HEIGHT, WIDTH) S
+1200 /Times-Roman-Acnt F
+( \234 the height and width in bits of the interior of ) S
+21600 37506 M (the window \(i.e., not including the border and title bar\).  The ) S
+21600 35706 M (interior part of the window is the user accessable portion of the ) S
+21600 33906 M (window \233 you cannot draw or print directly on the title bar or ) S
+21600 32106 M (border.) S
+1200 /Times-Bold-Acnt F
+21600 29106 M (REGION) S
+1200 /Times-Roman-Acnt F
+( \234 a REGION that describes \(in the SCREENBITMAP ) S
+21600 27306 M (coordinate system\) the region occupied by the entire window \(title ) S
+21600 25506 M (bar and all\) on the screen.) S
+1200 /Times-Bold-Acnt F
+18000 21906 M (Processes Property) S
+21600 18906 M (PROCESS) S
+1200 /Times-Roman-Acnt F
+( \234 ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(the process that is associated with this window.  This ) S
+21600 17106 M (is the process that will become the TTY process when ) S
+21600 15306 M (GIVE,TTY.PROCESS is called using this window as an argument.) S
+25200 12706 M (By default \(see WINDOWENTRYFN\) this is the process ) S
+25200 10906 M (that becomes the TTY process when you button down ) S
+25200 9106 M (inside the window.) S
+grestore savepage restore showpage
+
+%%Page: 30 30
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (25) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 71106 M (Functions to Be Invoked by Operations on the Window) S
+21600 68106 M (CLOSEFN) S
+1200 /Times-Roman-Acnt F
+( \234 ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(a single function or a list of functions that will be ) S
+21600 66306 M (called \(with the window as the only argument\), in order, just ) S
+21600 64506 M (before the window is closed.  If any function is the atom DON'T ) S
+21600 62706 M (or returns the atom DON'T, then the window will not be closed.) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+25200 59706 M (Warning) S
+1200 /Times-Roman-Acnt F
+(: You cannot call CLOSEW inside of a CLOSEFN ) S
+25200 57906 M (function otherwise you will get infinite recursion.) S
+1200 /Times-Bold-Acnt F
+21600 54906 M (OPENFN) S
+1200 /Times-Roman-Acnt F
+( \234 ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(a single function or a list of functions that will be ) S
+21600 53106 M (called \(with the window as the only argument\), in order, just after ) S
+21600 51306 M (the window is opened.  If the atom DON'T appears anywhere on ) S
+21600 49506 M (the OPENFN list, then the window will not be opened and the ) S
+21600 47706 M (OPENFNs will not be called.) S
+1200 /Times-Bold-Acnt F
+21600 44706 M (TOTOPFN) S
+1200 /Times-Roman-Acnt F
+( \234 ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(a single function that will be called \(with the window ) S
+21600 42906 M (as the only argument\) whenever the window is brought to the top ) S
+21600 41106 M (of the window stack.) S
+1200 /Times-Bold-Acnt F
+21600 38106 M (MOVEFN) S
+1200 /Times-Roman-Acnt F
+( \234 ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(a single function or a list of functions that will be ) S
+21600 36306 M (called \(with the window and the new position of the lower-left ) S
+21600 34506 M (corner of the window as arguments\), in order, just ) S
+1200 /Times-Bold-Acnt F
+(before) S
+1200 /Times-Roman-Acnt F
+( the ) S
+21600 32706 M (window is moved.  If any function is the atom DON'T or returns ) S
+21600 30906 M (the atom DON'T, then the window will not be moved.  If any ) S
+21600 29106 M (function returns a POSITION record, then the window will be ) S
+21600 27306 M (moved to that position.) S
+1200 /Times-Bold-Acnt F
+21600 24306 M (AFTERMOVEFN) S
+1200 /Times-Roman-Acnt F
+( \234 ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(a single function or a list of functions that ) S
+21600 22506 M (will be called \(with the window as the only argument\), in order, ) S
+21600 20706 M (just ) S
+1200 /Times-Bold-Acnt F
+(after) S
+1200 /Times-Roman-Acnt F
+( the window is moved.) S
+1200 /Times-Bold-Acnt F
+21600 17706 M (REPAINTFN) S
+1200 /Times-Roman-Acnt F
+( \234 ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(a single function or a list of functions that will be ) S
+21600 15906 M (called \(with the window and the region of the window to be ) S
+21600 14106 M (repainted as arguments\), in order, whenever the window is ) S
+21600 12306 M (redisplayed \(i.e., during scrolling or when REDISPLAYW is ) S
+21600 10506 M (called\).  The function should redraw the contents of the specified ) S
+21600 8706 M (region in window.) S
+grestore savepage restore showpage
+
+%%Page: 31 31
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (26) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+25200 71106 M (Warning) S
+1200 /Times-Roman-Acnt F
+(: You cannot call CLEARW inside of a ) S
+25200 69306 M (REPAINTFN.  Use DSPFILL instead.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 65706 M (Functions to Be Invoked by Mouse Events in the Window) S
+21600 62706 M (BUTTONEVENTFN) S
+1200 /Times-Roman-Acnt F
+( \234 ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(a single function that will be called \(with ) S
+21600 60906 M (the window as the only argument\) whenever there is a change in ) S
+21600 59106 M (state of the mouse buttons \(a mouse button goes up or down\) while ) S
+21600 57306 M (the cursor is inside the window and the window is associated with ) S
+21600 55506 M (the TTY process.) S
+25200 52906 M (While the BUTTONEVENTFN is being processed, further ) S
+25200 51106 M (mouse events do not reinvoke the BUTTONEVENTFN.) S
+28800 48706 M (As a general convention a BUTTONEVENTFN is ) S
+28800 46906 M (called when a mouse button goes down but does not ) S
+28800 45106 M (do its work until the mouse button goes up.  This ) S
+28800 43306 M (convention is accomplished by writing the "correct" ) S
+28800 41506 M (kind of BUTTONEVENTFNS - i.e., functions that ) S
+28800 39706 M (wait until the mouse button is up before continuing ) S
+28800 37906 M (their work.) S
+1200 /Times-Bold-Acnt F
+21600 34906 M (RIGHTBUTTONFN) S
+1200 /Times-Roman-Acnt F
+( \234 ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(a single function that will be called \(with ) S
+21600 33106 M (the window as the only argument\) instead of the ) S
+21600 31306 M (BUTTONEVENTFN whenever only the RIGHT mouse button ) S
+21600 29506 M (goes down in the window.) S
+25200 27106 M (If RIGHT mouse clicks are to be treated the same as other ) S
+25200 25306 M (mouse clicks, then just make the BUTTONEVENTFN and ) S
+25200 23506 M (the RIGHTBUTTONFN be the same function.) S
+25200 21106 M (Defaults to DOWINDOWCOM, which brings up a menu of ) S
+25200 19306 M (the standard window operations.) S
+1200 /Times-Bold-Acnt F
+21600 16306 M (WINDOWENTRYFN) S
+1200 /Times-Roman-Acnt F
+( \234 ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(a single function that will be called \(with ) S
+21600 14506 M (the window as the only argument\) whenever a button goes down in ) S
+21600 12706 M (the window and the process associated with the window is not the ) S
+21600 10906 M (TTY process.) S
+grestore savepage restore showpage
+
+%%Page: 32 32
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (27) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+25200 71106 M (Default is to call GIVE.TTY.PROCESS on the window and ) S
+25200 69306 M (then call the window's BUTTONEVENTFN.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 66306 M (CURSORINFN, CURSOROUTFN, CURSORMOVEDFN) S
+1200 /Times-Roman-Acnt F
+( \234 ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(a ) S
+21600 64506 M (single function that will be called \(with the window as the only ) S
+21600 62706 M (argument\) whenever the cursor moves into \(out of, about inside of\) ) S
+21600 60906 M (the window.) S
+1200 /Times-Bold-Acnt F
+18000 57306 M (Properties that Support Icons and Shrinking) S
+21600 54306 M (SHRINKFN) S
+1200 /Times-Roman-Acnt F
+( \234 ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(a single function or a list of functions that will be ) S
+21600 52506 M (called \(with the window as the only argument\), in order, just ) S
+21600 50706 M (before the window is shrunk.  If any function is the atom DON'T ) S
+21600 48906 M (or returns the atom DON'T or if any of the CLOSEFNs is DON't ) S
+21600 47106 M (or returns DON'T, then the window will not be shrunk.) S
+1200 /Times-Bold-Acnt F
+21600 44106 M (ICONFN) S
+1200 /Times-Roman-Acnt F
+( \234 ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(a single function that will be called \(with the window ) S
+21600 42306 M (and the previous icon, if any\), just before the window is shrunk.   ) S
+21600 40506 M (The ICONFN should return a bitmap or a window that will be used ) S
+21600 38706 M (as the basis for making the icon window.) S
+1200 /Times-Bold-Acnt F
+21600 35706 M (EXPANDFN) S
+1200 /Times-Roman-Acnt F
+( \234 ) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(a single function or a list of functions that will be ) S
+21600 33906 M (called \(with the window as the only argument\), in order, just after ) S
+21600 32106 M (the window is expanded from the shrunk state.  If any function is ) S
+21600 30306 M (the atom DON'T, then the window will not be shrunk and the rest ) S
+21600 28506 M (of the EXPANDFNs will not be called.) S
+1200 /Times-Bold-Acnt F
+14400 24906 M (Manipulating a Window's Properties: WINDOWPROP, et al.) S
+1200 /Times-Roman-Acnt F
+18000 21906 M (The function WINDOWPROP is a selector/mutator that can be used to ) S
+18000 20106 M (manipulate properties of a window:) S
+1200 /Times-Bold-Acnt F
+21600 17106 M (\(WINDOWPROP ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Property) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(NewValue) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 sets the ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 15306 M (Property) S
+1200 /Times-Roman-Acnt F
+( property of ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+( to be ) S
+1200 /Times-Italic-Acnt F
+(NewValue) S
+1200 /Times-Roman-Acnt F
+(.  Returns the old ) S
+21600 13506 M (value of the specified property.) S
+25200 10506 M (WINDOWPROP is a LAMBDA/No-spread function.  If ) S
+1200 /Times-Italic-Acnt F
+25200 8706 M (NewValue) S
+1200 /Times-Roman-Acnt F
+( is omitted from the function call, then ) S
+grestore savepage restore showpage
+
+%%Page: 33 33
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (28) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+25200 71106 M (WINDOWPROP will simply return the old value of the ) S
+25200 69306 M (specified property. ) S
+1000 /Times-Roman-Acnt F
+( \(Note: Omitting NewValue is not the same as ) S
+25200 67655 M (specifying NIL as the NewValue.  The former will not change the ) S
+25200 66055 M (specified property, the later will set the property's value to NIL.\)) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 62906 M (Important note:) S
+1200 /Times-Roman-Acnt F
+(  WINDOWPROP can be used to add any ) S
+21600 61106 M (arbitrarily named property to a window \233 the ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Property) S
+1200 /Times-Roman-Acnt F
+( argument ) S
+21600 59306 M (need not be one of the properties supported by the window ) S
+21600 57506 M (package \(and described above\).  Thus WINDOWPROP can be ) S
+21600 55706 M (used to cache any sort of information on the window that may be ) S
+21600 53906 M (useful to the program.  See the scrolling window example below.) S
+18000 49906 M (The functions WINDOWADDPROP and WINDOWDELPROP can be ) S
+18000 48106 M (used to add and remove items for properties whose values are lists \(e.g., ) S
+18000 46306 M (lists of functions as for the CLOSEFN property\):) S
+1200 /Times-Bold-Acnt F
+21600 43306 M (\(WINDOWADDPROP ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Property) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(ValueToBeAdded) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 ) S
+21600 41506 M (adds ) S
+1200 /Times-Italic-Acnt F
+(ValueToBeAdded) S
+1200 /Times-Roman-Acnt F
+( to the list that is the value of the ) S
+1200 /Times-Italic-Acnt F
+(Property) S
+1200 /Times-Roman-Acnt F
+( ) S
+21600 39706 M (property of ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+(.  If ) S
+1200 /Times-Italic-Acnt F
+(ValueToBeAdded) S
+1200 /Times-Roman-Acnt F
+( is already on that list it is ) S
+21600 37906 M (not added again.  If the current value of the specified property is ) S
+21600 36106 M (not already a list, it is made into a list before ) S
+1200 /Times-Italic-Acnt F
+(ValueToBeAdded) S
+1200 /Times-Roman-Acnt F
+( is ) S
+21600 34306 M (added.  ) S
+1200 /Times-Italic-Acnt F
+(ValueToBeAdded) S
+1200 /Times-Roman-Acnt F
+( is always placed at the end of the list. ) S
+21600 32506 M (Returns the old value of the specified property.) S
+1200 /Times-Bold-Acnt F
+21600 29506 M (\(WINDOWDELPROP ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Property) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(ValueToBeRemoved) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 ) S
+21600 27706 M (removes ) S
+1200 /Times-Italic-Acnt F
+(ValueToBeRemoved) S
+1200 /Times-Roman-Acnt F
+( from the list that is the value of the ) S
+1200 /Times-Italic-Acnt F
+21600 25906 M (Property) S
+1200 /Times-Roman-Acnt F
+( property of ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+(.  If ) S
+1200 /Times-Italic-Acnt F
+(ValueToBeRemoved) S
+1200 /Times-Roman-Acnt F
+( was actually ) S
+21600 24106 M (on that list, WINDOWDELPROP returns the old value of the ) S
+21600 22306 M (specified property.  Otherwise, WINDOWDELPROP returns NIL.) S
+1200 /Times-Bold-Acnt F
+14400 18706 M (Making Scrollable Windows) S
+1200 /Times-Roman-Acnt F
+18000 15906 M (The window package provides some support for making scrolling ) S
+18000 14106 M (windows.) S
+grestore savepage restore showpage
+
+%%Page: 34 34
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (29) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+21600 71106 M (In particular, the window package provides and manages the scroll ) S
+21600 69306 M (bars that pop up whenever the mouse rolls through the left edge of ) S
+21600 67506 M (the window.) S
+21600 65106 M (The window package also supports a default scheme for doing the ) S
+21600 63306 M (actual scrolling of the window contents \233 although the default ) S
+21600 61506 M (scheme requires some amount of progamming setup.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 58506 M (The SCROLLFN Property) S
+1200 /Times-Roman-Acnt F
+21600 55506 M (Every window has a SCROLLFN property.) S
+21600 52506 M (If the SCROLLFN property is NIL \(the default\), then the window ) S
+21600 50706 M (will not be scrollable.) S
+21600 47706 M (If the SCROLLFN has a non-NIL value, then the window will be ) S
+21600 45906 M (scrollable as follows:) S
+25200 43106 M (Whenever the cursor moves from inside the window to ) S
+25200 41306 M (outside the window across the window's right border, the ) S
+25200 39506 M (window package \(in particular, the scroll handler\) will ) S
+25200 37706 M (bring up a scroll bar.) S
+25200 34906 M (If the user presses a mouse button while the scroll bar is up, ) S
+25200 33106 M (then the window package will call the function that is the ) S
+25200 31306 M (value of the SCROLLFN property.  If the user continues to ) S
+25200 29506 M (hold down the mouse button while in the scroll bar, the ) S
+25200 27706 M (SCROLLFN will be called repeatedly every few ) S
+25200 25906 M (milliseconds until the button is released.) S
+25200 23106 M (The SCROLLFN will be called with the following 4 ) S
+25200 21306 M (arguments:  1\) the window, 2\) the distance to scroll ) S
+25200 19506 M (horizontally, 3\) the distance to scroll vertically, and 4\) a ) S
+25200 17706 M (flag that indicates whether the button is still being held.) S
+25200 14906 M (The distances to scroll depend on which mouse button was ) S
+25200 13106 M (pressed as follows:) S
+grestore savepage restore showpage
+
+%%Page: 35 35
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (30) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+28800 71106 M (LEFT \234 the distance in screen units \(bits\) from the ) S
+28800 69306 M (cursor to the top \(left if horizontal scroll\) of the ) S
+28800 67506 M (window.) S
+28800 65106 M (RIGHT \234 negative of the distance in screen units ) S
+28800 63306 M (\(bits\) from the cursor to the top \(left if horizontal ) S
+28800 61506 M (scroll\) of the window.) S
+28800 59106 M (MIDDLE \234 a FLOATP that describes the ratio of the ) S
+28800 57306 M (distance between the cursor and the top \(or left\) ) S
+28800 55506 M (edge of the window to the length of the entire scroll ) S
+28800 53706 M (bar. \(In other words, proportion of the way down ) S
+28800 51906 M (\(or across\) the scroll bar that the cursor is.\)) S
+25200 48506 M (The SCROLLFN should take care of changing the contents ) S
+25200 46706 M (of the window as appropriate for the distances specified by ) S
+25200 44906 M (the user's mouse press.) S
+21600 41906 M (Every window has a SCROLLFN property.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 38306 M (SCROLLBYREPAINTFN) S
+1200 /Times-Roman-Acnt F
+21600 35306 M (The window package provides a default SCROLLFN, called ) S
+1200 /Times-Bold-Acnt F
+21600 33506 M (SCROLLBYREPAINTFN) S
+1200 /Times-Roman-Acnt F
+(, that can be attached to the ) S
+21600 31706 M (SCROLLFN property of any window that has a non-NIL ) S
+21600 29906 M (REPAINTFN property.) S
+21600 26906 M (The idea behind SCROLLBYREPAINTFN is as follows:) S
+25200 23906 M (A window is seen as showing at any given time a small part ) S
+25200 22106 M (of a much larger display.  The coordinate system of this ) S
+25200 20306 M (display is the coordinate system of the window's display ) S
+25200 18506 M (stream.) S
+25200 15506 M (Each window has a property called EXTENT that describes ) S
+25200 13706 M (the region in the display stream's coordinate system that ) S
+25200 11906 M (the larger display occupies.  Setting the EXTENT property ) S
+25200 10106 M (of the window is the responsibilty of the program that uses ) S
+25200 8306 M (SCROLLBYREPAINTFN.) S
+grestore savepage restore showpage
+
+%%Page: 36 36
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (31) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+25200 71106 M (The ClippingRegion property of the window's display ) S
+25200 69306 M (stream determines what region of the display stream \(and ) S
+25200 67506 M (hence what region of the EXTENT or larger display\) is ) S
+25200 65706 M (being currently shown in the window.) S
+25200 62706 M (When a window scrolls, the ClippingRegion of the display ) S
+25200 60906 M (stream changes \234 another part of the larger display is now ) S
+25200 59106 M (being shown in the window.) S
+25200 56106 M (When a window's REPAINTFN gets called it is passed a ) S
+25200 54306 M (window and a region in the window's display stream.  The ) S
+25200 52506 M (REPAINTFN is responsible for drawing in the window that ) S
+25200 50706 M (region of the display stream.) S
+21600 47706 M (Thus, SCROLLBYREPAINTFN works as follows:) S
+25200 44706 M (SCROLLBYREPAINTFN calls the window's ) S
+25200 42906 M (REPAINTFN to draw in the window the contents of the ) S
+25200 41106 M (new ClippingRegion whenever a scroll is requested \(i.e., ) S
+25200 39306 M (whenever the window's SCROLLFN is called\).) S
+25200 36306 M (SCROLLBYREPAINTFN takes care of translating the ) S
+25200 34506 M (scroll distances \(see the SCROLLFN description above\) ) S
+25200 32706 M (into a new ClippingRegion and then calling the window's ) S
+25200 30906 M (REPAINTFN with the new ClippingRegion as an ) S
+25200 29106 M (argument.) S
+25200 26106 M (The programmer need only write a REPAINTFN that can ) S
+25200 24306 M (display an arbitrary region of the larger display underlying ) S
+25200 22506 M (the window.   The programmer must also specify the ) S
+25200 20706 M (EXTENT of the underlying display since ) S
+25200 18906 M (SCROLLBYREPAINTFN needs to this to caluculate the ) S
+25200 17106 M (new ClippingRegion after each scroll.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 13506 M (Example) S
+grestore savepage restore showpage
+
+%%Page: 37 37
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (32) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+21600 71106 M (The goal is to develop a scrollable window that displays a list of ) S
+21600 69306 M (strings, one string per line.) S
+50400 65599 7200 65599 75 L
+/Courier /Courier-Acnt encodefont
+1000 /Courier-Acnt F
+7200 63149 M (\(MakeStringWindow) S
+7200 62149 M (  \(LAMBDA \(StringList\)                        \(* fgh: "28-Jun-85 12:11"\)) S
+7200 60149 M (          \(* * Create a scrollable window to display the strings in) S
+7200 59149 M (               StringList, one string per line.\)) S
+7200 56149 M (    \(LET \(\(SW \(CREATEW NIL "String Window"\)\)\)) S
+7200 54149 M (          \(* * SCROLLFN will be the default -- SCROLLBYREPAINTFN\)) S
+7200 51149 M (      \(WINDOWPROP SW \(QUOTE SCROLLFN\)) S
+7200 50149 M (                  \(FUNCTION SCROLLBYREPAINTFN\)\)) S
+7200 48149 M (          \(* * REPAINTFN will be StringWindowRepaintFn\)) S
+7200 45149 M (      \(WINDOWPROP SW \(QUOTE REPAINTFN\)) S
+7200 44149 M (                  \(FUNCTION StringWindowRepaintFn\)\)) S
+7200 42149 M (          \(* * EXTENT of underlying display for scrolling is a region whose) S
+7200 41149 M (           lower-left corner is at 0,0 and whose width is the width of the) S
+7200 40149 M (           window and whose height is the number of strings times the height) S
+7200 39149 M (           of each line as determined by the height of the window's font.\)) S
+7200 36149 M (      \(WINDOWPROP SW \(QUOTE EXTENT\)) S
+7200 35149 M (                  \(CREATEREGION 0 0 \(fetch \(REGION WIDTH\)) S
+7200 34149 M (                                       of \(WINDOWPROP SW \(QUOTE REGION\)\)\)) S
+7200 33149 M (                                \(TIMES \(LENGTH StringList\)) S
+7200 32149 M (                                       \(FONTPROP \(DSPFONT NIL SW\)) S
+7200 31149 M (                                                 \(QUOTE HEIGHT\)\)\)\)\)) S
+7200 29149 M (          \(* * Cache the string list on the window so we can use it) S
+7200 28149 M (           in the REPAINTFN\)) S
+7200 25149 M (      \(WINDOWPROP SW \(QUOTE StringList\)) S
+7200 24149 M (                  StringList\)) S
+7200 22149 M (          \(* * Display the first window full -- will be region out of EXTENT) S
+7200 21149 M (              starting from 0,0 with height and width determined by the) S
+7200 20149 M (              height and width of the window.\)) S
+7200 17549 M (      \(REDISPLAYW SW\)) S
+7200 15949 M (          \(* * Return the window\)) S
+7200 13749 M (      SW\)\)\)) S
+7200 9749 M (\(StringWindowRepaintFn) S
+7200 8749 M (  \(LAMBDA \(Window Region\)                     \(* fgh: "28-Jun-85 12:21"\)) S
+grestore savepage restore showpage
+
+%%Page: 38 38
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (33) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+/Courier /Courier-Acnt encodefont
+1000 /Courier-Acnt F
+7200 71349 M (          \(* * Repaint a string window. StringList to print is cached on) S
+7200 70349 M (          the StringList property of the window. Region argument is used to) S
+7200 69349 M (          determine which strings to print in the window. Starting from 0,0) S
+7200 68349 M (          for each LineHeight increment print 1 string. Thus, string 1 goes) S
+7200 67349 M (          at 0,0. String 2 goes at 0, LineHeight. String 3 goes at 0,) S
+7200 66349 M (          \(2*LineHeight\) etc. LineHeight is just the height of the font) S
+7200 65349 M (          used in the window.\)) S
+7200 62349 M (    \(LET \(\(StringList \(WINDOWPROP Window \(QUOTE StringList\)\)\)) S
+7200 61349 M (       \(LineHeight \(FONTPROP \(DSPFONT NIL Window\)) S
+7200 60349 M (                             \(QUOTE HEIGHT\)\)\)) S
+7200 59349 M (       \(RegionHeight \(fetch \(REGION HEIGHT\) of Region\)\)) S
+7200 58349 M (       \(RegionBottom \(fetch \(REGION BOTTOM\) of Region\)\)) S
+7200 57349 M (       FirstLine LastLine\)) S
+7200 55349 M (          \(* * Determine the first {i.e., top most} line to print\)) S
+7200 52349 M (      \(SETQ FirstLine \(ADD1 \(FIX \(QUOTIENT \(PLUS RegionBottom RegionHeight\)) S
+7200 51349 M (                                           LineHeight\)\)\)\)) S
+7200 49349 M (          \(* * Determine the last {i.e., bottom most} line to print\)) S
+7200 46349 M (      \(SETQ LastLine \(ADD1 \(FIX \(QUOTIENT RegionBottom LineHeight\)\)\)\)) S
+7200 44349 M (          \(* * Move to the left edge and the bottom of the first {top most}) S
+7200 43349 M (            line in the window. The Times/Quotient constrution is to) S
+7200 42349 M (            position on an exact line base, i.e., on Y poisition that is) S
+7200 41349 M (            an exact multiple of LineHeight.\)) S
+7200 38349 M (      \(MOVETO \(fetch \(REGION LEFT\) of Region\)) S
+7200 37349 M (              \(TIMES \(QUOTIENT \(PLUS RegionBottom RegionHeight\)) S
+7200 36349 M (                               LineHeight\)) S
+7200 35349 M (                     LineHeight\)) S
+7200 34349 M (              Window\)) S
+7200 32349 M (          \(* * For the top most to the bottom most line in the Region, print) S
+7200 31349 M (           the corresponding string then move down a line. If the calculated) S
+7200 30349 M (           string number is not positive, then we have scrolled below the) S
+7200 29349 M (           end of the EXTENT. In this case don't print any string.\)) S
+7200 26349 M (      \(for Line from FirstLine to LastLine by -1) S
+7200 25349 M (         do \(AND \(GREATERP Line 0\)) S
+7200 24349 M (                 \(PRIN1 \(CAR \(NTH StringList Line\)\)) S
+7200 23349 M (                        Window\)\)) S
+7200 22349 M (            \(DSPXPOSITION 0 Window\)) S
+7200 21349 M (            \(RELMOVETO 0 \(MINUS LineHeight\)) S
+7200 20349 M (                       Window\)\)\)\)\)) S
+50400 17199 7200 17199 75 L
+1200 /Times-Roman-Acnt F
+14400 14506 M (32_\(MakeStringWindow) S
+18000 13106 M (\(FOR X FROM 1 to 50 COLLECT \(CONCAT X X X X X X X X X X\)\)\)) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+14400 11306 M ({WINDOW}#45,5643) S
+grestore savepage restore showpage
+
+%%Page: 39 39
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (34) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+/bitbltsave save def 14400 45799 translate 36100 26200 scale 361 262 true thebitimage
+B22C8880
+B32D
+B22C2200
+B32D
+B22C8880
+B32D
+B22C2200
+B32D
+B22C8880
+8BB228FFF8B302
+22000007B325FA222200
+B303B225001AB302
+8AB32818888880
+B32D
+22B3281A222200
+B32D
+8AB3021F3E7CF9F3E7CF9F3E7CF9F3E7CF9F3E7CF8B31318888880
+B303102040810204081020408102040810204080B317
+22B302081020408102040810204081020408102040B3131A222200
+B303040810204081020408102040810204081020B317
+8AB302020408102040810204081020408102040810B31318888880
+B303112244891224489122448912244891224488B317
+22B3281A222200
+B3030E1C3870E1C3870E1C3870E1C3870E1C3870B317
+8AB302B2250018888880
+B32D
+22B3281A222200
+B32D
+8AB3021F1C7C71F1C7C71F1C7C71F1C7C71F1C7C70B31318888880
+B303102240890224089022408902240890224088B317
+22B302080220088022008802200880220088022008B3131A222200
+B3030402100840210084021008402100840210B318
+8AB302021C087021C087021C087021C087021C0870B31318888880
+B303110244091024409102440910244091024408B317
+22B3032244891224489122448912244891224488B3131A222200
+B3030E1C3870E1C3870E1C3870E1C3870E1C3870B317
+8AB302B2250018888880
+B32D
+22B3281A222200
+B32D
+8AB3021F047C11F047C11F047C11F047C11F047C10B31318888880
+B3031004401100440110044011004401100440B318
+22B302083E20F883E20F883E20F883E20F883E20F8B3131A222200
+B303042410904241090424109042410904241090B317
+8AB3020224089022408902240890224089022408B31418888880
+B303111444511144451114445111444511144450B317
+22B3281A222200
+B3030E0C3830E0C3830E0C3830E0C3830E0C3830B317
+8AB302B2250018888880
+B32D
+22B3281A222200
+B32D
+8AB3021F1C7C71F1C7C71F1C7C71F1C7C71F1C7C70B31318888880
+B303102240890224089022408902240890224088B317
+22B302080220088022008802200880220088022008B3131A222200
+B303042210884221088422108842210884221088B317
+8AB302023C08F023C08F023C08F023C08F023C08F0B31318888880
+B303112044811204481120448112044811204480B317
+22B3281A222200
+B3030E3E38F8E3E38F8E3E38F8E3E38F8E3E38F8B317
+8AB302B2250018888880
+B32D
+22B3281A222200
+B32D
+8AB3021F1C7C71F1C7C71F1C7C71F1C7C71F1C7C70B31318888880
+B303102240890224089022408902240890224088B317
+22B3020822208882220888222088822208882220B3141A222200
+B3030422108842210884221088422108842210B318
+8AB302023C08F023C08F023C08F023C08F023C08F0B31318888880
+B303112044811204481120448112044811204480B317
+22B3032244891224489122448912244891224488B3131A222200
+B3030E1C3870E1C3870E1C3870E1C3870E1C3870B317
+8AB302B2250018888880
+B32D
+22B3281A222200
+B32D
+8AB3021F107C41F107C41F107C41F107C41F107C40B31318888880
+B3031010404101040410104041010404101040B318
+22B302080820208082020808202080820208082020B3131A222200
+B3030408102040810204081020408102040810B318
+8AB302020408102040810204081020408102040810B31318888880
+B3031104441110444111044411104441110444B318
+22B3030244091024409102440910244091024408B3131A222200
+B3030E3E38F8E3E38F8E3E38F8E3E38F8E3E38F8B317
+8AB302B2250018888880
+B32D
+22B3281A222200
+B32D
+8AB3021F1C7C71F1C7C71F1C7C71F1C7C71F1C7C70B31318888880
+B303102240890224089022408902240890224088B317
+22B3020822208882220888222088822208882220B3141A222200
+B3030422108842210884221088422108842210B318
+8AB302021C087021C087021C087021C087021C0870B31318888880
+B303112244891224489122448912244891224488B317
+22B3281A222200
+B3030E1C3870E1C3870E1C3870E1C3870E1C3870B317
+8AB302B2250018888880
+B32D
+22B3281A222200
+B32D
+8AB3021F1C7C71F1C7C71F1C7C71F1C7C71F1C7C70B31318888880
+8AFFFFF7102240890224089022408902240890224088B317
+22B302080220088022008802200880220088022008B3131A222200
+22A22237041E107841E107841E107841E107841E1078B317
+8A800017022208882220888222088822208882220888B31318888880
+8A8888971122448912244891224489122448912244B318
+22800017B3251A222200
+22A222370E1C3870E1C3870E1C3870E1C3870E1C3870B317
+8A800017B2250018888880
+8A888897B329
+22800017B3251A222200
+22A22237B329
+8A8000170E1C3870E1C3870E1C3870E1C3870E1C3870B31318888880
+8A888897112244891224489122448912244891224488B317
+22800017013204C813204C813204C813204C813204C8B3131A222200
+22A22237012A04A812A04A812A04A812A04A812A04A8B317
+8A8000170E2A38A8E2A38A8E2A38A8E2A38A8E2A38B31418888880
+8A888897012604981260498126049812604981260498B317
+22800017112244891224489122448912244891224488B3131A222200
+22A222370E1C3870E1C3870E1C3870E1C3870E1C3870B317
+8A800017B2250018888880
+8A888897B329
+22800017B3251A222200
+22A22237B329
+8A8000170E3E38F8E3E38F8E3E38F8E3E38F8E3E38F8B31318888880
+8A888897110844211084421108442110844211084420B317
+228000170108042010804201080420108042010804B3141A222200
+22A22237B329
+8A8000170E083820E083820E083820E083820E0838B31418888880
+8A888897012804A012804A012804A012804A012804A0B317
+22800017111844611184461118446111844611184460B3131A222200
+22A222370E083820E083820E083820E083820E083820B317
+8A800017B2250018888880
+8A888897B329
+22800017B3251A222200
+22A22237B329
+8A8000170E3E38F8E3E38F8E3E38F8E3E38F8E3E38F8B31318888880
+8A888897112044811204481120448112044811204480B317
+22800017011004401100440110044011004401100440B3131A222200
+22A22237010804201080420108042010804201080420B317
+8A8000170E043810E043810E043810E043810E043810B31318888880
+8A888897012204881220488122048812204881220488B317
+228000171122448912244891224489122448912244B3141A222200
+22A222370E1C3870E1C3870E1C3870E1C3870E1C3870B317
+8A800017B2250018888880
+8A888897B329
+22800017B3251A222200
+22A22237B329
+8A8000170E1C3870E1C3870E1C3870E1C3870E1C3870B31318888880
+8A888897112244891224489122448912244891224488B317
+22800017010204081020408102040810204081020408B3131A222200
+22A22237B329
+8A8000170E1C3870E1C3870E1C3870E1C3870E1C3870B31318888880
+8A888897010204081020408102040810204081020408B317
+22800017112244891224489122448912244891224488B3131A222200
+22A222370E1C3870E1C3870E1C3870E1C3870E1C3870B317
+8A800017B2250018888880
+8A888897B329
+22800017B3251A222200
+22A22237B329
+8A8000170E043810E043810E043810E043810E043810B31318888880
+8A8888971104441110444111044411104441110444B318
+22800017013E04F813E04F813E04F813E04F813E04F8B3131A222200
+22A22237012404901240490124049012404901240490B317
+8A8000170E243890E243890E243890E243890E2438B31418888880
+8A888897011404501140450114045011404501140450B317
+228000171114445111444511144451114445111444B3141A222200
+22A222370E0C3830E0C3830E0C3830E0C3830E0C3830B317
+8A800017B2250018888880
+8A888897B329
+22800017B3251A222200
+22A22237B329
+8A8000170E1C3870E1C3870E1C3870E1C3870E1C3870B31318888880
+8A888897112244891224489122448912244891224488B317
+22800017010204081020408102040810204081020408B3131A222200
+22FFFFF7012204881220488122048812204881220488B317
+8AB3020E3C38F0E3C38F0E3C38F0E3C38F0E3C38F0B31318888880
+8A000007012004801200480120048012004801200480B317
+22B3021120448112044811204481120448112044B3141A222200
+B3030E3E38F8E3E38F8E3E38F8E3E38F8E3E38F8B317
+8AB302B2250018888880
+B32D
+22B3281A222200
+B32D
+8AB3020E1C3870E1C3870E1C3870E1C3870E1C3870B31318888880
+B303112244891224489122448912244891224488B317
+22B3020122048812204881220488122048812204B3141A222200
+B32D
+8AB3020E3C38F0E3C38F0E3C38F0E3C38F0E3C38F0B31318888880
+B303012004801200480120048012004801200480B317
+22B302112244891224489122448912244891224488B3131A222200
+B3030E1C3870E1C3870E1C3870E1C3870E1C3870B317
+8AB302B2250018888880
+B32D
+22B3281A222200
+B32D
+8AB3020E103840E103840E103840E103840E103840B31318888880
+B3031110444111044411104441110444111044B318
+22B302010804201080420108042010804201080420B3131A222200
+B32D
+8AB3020E043810E043810E043810E043810E043810B31318888880
+B3030104041010404101040410104041010404B318
+22B302110244091024409102440910244091024408B3131A222200
+B3030E3E38F8E3E38F8E3E38F8E3E38F8E3E38F8B317
+8AB302B2250018888880
+B32D
+22B3281A222200
+B32D
+8AB3020E1C3870E1C3870E1C3870E1C3870E1C3870B31318888880
+B303112244891224489122448912244891224488B317
+22B3020122048812204881220488122048812204B3141A222200
+B32D
+8AB3020E1C3870E1C3870E1C3870E1C3870E1C3870B31318888880
+B303012204881220488122048812204881220488B317
+22B3021122448912244891224489122448912244B3141A222200
+B3030E1C3870E1C3870E1C3870E1C3870E1C3870B317
+8AB302B2250018888880
+B32D
+22B3281A222200
+B32D
+8AB3020E1C3870E1C3870E1C3870E1C3870E1C3870B31318888880
+B303112244891224489122448912244891224488B317
+22B302010204081020408102040810204081020408B3131A222200
+B3041E047811E047811E047811E047811E0478B317
+8AB3020E223888E223888E223888E223888E223888B31318888880
+B303B22500B303
+22B3281A222200
+B303B225FFFAB302
+8BB207FF87B307F5B2165558888880
+B202888BB3047BB323
+B2022223B303FEFDB307FAB216AABA222200
+B303F83E6FDBF785FFBEFDBF785E1FBDB31B
+B202888BF7DEEFDBF779B303779DEFBDF5B2165558888880
+B303EFEEEFDBF6FDFF5D7DBF6FDBF7B31C
+B2022223FFB30B5AFAB216AABA222200
+B304DEB327
+B202888BF83EE7B302FEEBBDB302F6DB75B2165558888880
+B303F7FEEAD9EF79B3029EF79DEEE7B31B
+B2022223EFEC6CDA1F85B302A1F85E1EE77AB216AABA222200
+B304EEB203FFFDF7DFFFFFDFFFFFFAB31A
+B202888BF39EFFDFB303DDB304F5B2165558888880
+B303FC7FB327
+B2022223B20DFFFAB216AABA222200
+B311B217FFFAB302
+B22C8880
+B32D
+B22C2200
+B32D
+B22C8880
+B32D
+B22C2200
+B32D
+B22C8880
+B32D
+B22C2200
+B32D
+B22C8880
+B32D
+B22C2200
+B32D
+B22C8880
+B32D
+
+bitbltsave restore
+50400 42399 7200 42399 75 L
+grestore savepage restore showpage
+
+%%Page: 40 40
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 41 41
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (35) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 70957 M (Menus) S
+1200 /Times-Roman-Acnt F
+10800 67906 M (The Menu package is very closely related to the Window package.) S
+14400 64906 M (Basically, a menu is a window \(or part of a window\) in which pressing a mouse ) S
+14400 63106 M (button in certain specified regions \(i.e., menu items\) causes certain specified ) S
+14400 61306 M (events to happen.) S
+14400 58306 M (In Interlisp-D, a menu is implemented as window with a special ) S
+14400 56506 M (BUTTONEVENFN that uses a menu data structure to determine what action to ) S
+14400 54706 M (take depending on what menu item the cursor is over when the button was ) S
+14400 52906 M (pressed.) S
+10800 49906 M (Bringing a menu up on the display requires two steps: 1\) creating the menu data ) S
+10800 48106 M (structure, and 2\) displaying the menu in the window.) S
+1200 /Times-Bold-Acnt F
+10800 45106 M (Creating the menu data structure) S
+1200 /Times-Roman-Acnt F
+14400 42106 M (A ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(MENU) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+( ) S
+1200 /Times-Roman-Acnt F
+(is a system datatype.  Cached on the data type is all the information the ) S
+14400 40306 M (menu package needs in order to display the menu in a window and in order to ) S
+14400 38506 M (carry out actions when the mouse is clicked within the menu.) S
+14400 35506 M (The MENU datatype has the following fields:) S
+1200 /Times-Bold-Acnt F
+18000 32506 M (Fields that describe the menu's behavior) S
+21600 29506 M (ITEMS) S
+1200 /Times-Roman-Acnt F
+( \234 a list of the items to be included in the menu.  If an item ) S
+21600 27706 M (is an NLISTP, then it is displayed in the menu.  If an item is a list, ) S
+21600 25906 M (then the CAR of that list is displayed in the menu.) S
+25200 23506 M (The display consists of the print name of the item or its ) S
+25200 21706 M (CAR unless it is a bitmap, in which case the bitmap is ) S
+25200 19906 M (displayed.) S
+25200 17506 M (Under most circumstances, each item will be a list of three ) S
+25200 15706 M (elements: the item ) S
+1200 /Times-Italic-Acnt F
+(label) S
+1200 /Times-Roman-Acnt F
+(, the item ) S
+1200 /Times-Italic-Acnt F
+(action) S
+1200 /Times-Roman-Acnt F
+(, and the item ) S
+1200 /Times-Italic-Acnt F
+25200 13906 M (message) S
+1200 /Times-Roman-Acnt F
+(.  This list is interpreted by the default ) S
+25200 12106 M (WHENSELECTEDFN as described below.) S
+grestore savepage restore showpage
+
+%%Page: 42 42
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (36) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+25200 71106 M (If a WHENSELECTEDFN other than the default is used, ) S
+25200 69306 M (then each item can consist of whatever that ) S
+25200 67506 M (WHENSELECTEDFN requires.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 64506 M (WHENSELECTEDFN) S
+1200 /Times-Roman-Acnt F
+( \234 a function that gets called whenever an ) S
+21600 62706 M (item is selected in the menu by a mouse click.  The function will ) S
+21600 60906 M (get called with three arguments:  1\) the item slected, 2\) the menu, ) S
+21600 59106 M (and 3\) the mouse key used \(LEFT, MIDDLE, or RIGHT\).) S
+25200 56506 M (The WHENSELECTEDFN defaults to the function ) S
+25200 54706 M (DEFAULTWHENSELECTEDFN which operates as ) S
+25200 52906 M (follows:) S
+28800 50506 M (If the CADR of the item is non-NIL, then that ) S
+28800 48706 M (CADR is evaluated and returned as the value of the ) S
+28800 46906 M (function.) S
+28800 44506 M (Otherwise, the item itself is returned.) S
+1200 /Times-Bold-Acnt F
+21600 41506 M (WHENHELDFN) S
+1200 /Times-Roman-Acnt F
+( \234 a function that gets called whenever the user ) S
+21600 39706 M (holds the mouse button down inside an item for more than ) S
+21600 37906 M (MENUHELWAIT milliseconds \(defaults to 1200\).  The function ) S
+21600 36106 M (will get called with three arguments:  1\) the item slected, 2\) the ) S
+21600 34306 M (menu, and 3\) the mouse key used \(LEFT, MIDDLE, or RIGHT\).) S
+25200 31706 M (The WHENHELDFN defaults to the function ) S
+25200 29906 M (DEFAULTMENUHELDFN which operates as follows:) S
+28800 27506 M (If the CADDR of the item is non-NIL, then that ) S
+28800 25706 M (CADDR is printed in the prompt window.) S
+28800 23306 M (Otherwise, ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(This item will be slected when the button ) S
+28800 21506 M (is released) S
+1200 /Times-Roman-Acnt F
+( will be printed in the prompt window.) S
+1200 /Times-Bold-Acnt F
+21600 18506 M (WHENUNHELDFN) S
+1200 /Times-Roman-Acnt F
+( \234 a function that gets called whenever the ) S
+21600 16706 M (WHENHELDFN has been called and the user lets up on the mouse ) S
+21600 14906 M (button or moves the cursor out of the item.  The function will get ) S
+21600 13106 M (called with three arguments:  1\) the item slected, 2\) the menu, and ) S
+21600 11306 M (3\) the mouse key used \(LEFT, MIDDLE, or RIGHT\).) S
+grestore savepage restore showpage
+
+%%Page: 43 43
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (37) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+25200 71106 M (The default WHENUNHELDFN is CLRPROMPT, which ) S
+25200 69306 M (clears the prompt window.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 66306 M (Fields that describe the menu's looks) S
+21600 63306 M (TITLE) S
+1200 /Times-Roman-Acnt F
+( \234 the title to appear in the title bar of the menu.  If NIL, then ) S
+21600 61506 M (the menu will have no title bar.) S
+1200 /Times-Bold-Acnt F
+21600 58506 M (MENUFONT) S
+1200 /Times-Roman-Acnt F
+( \234 the font in which the items will be printed.  ) S
+21600 56706 M (Defaults to Helvetica 10.) S
+1200 /Times-Bold-Acnt F
+21600 53706 M (MENUROWS ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(or) S
+1200 /Times-Bold-Acnt F
+( MENUCOLUMNS) S
+1200 /Times-Roman-Acnt F
+( \234 the number of rows or ) S
+21600 51906 M (columns the menu is to have.  If both of these are NIL, the menu ) S
+21600 50106 M (will have one column.) S
+1200 /Times-Bold-Acnt F
+21600 47106 M (ITEMHEIGHT) S
+1200 /Times-Roman-Acnt F
+(, ) S
+1200 /Times-Bold-Acnt F
+(ITEMWIDTH) S
+1200 /Times-Roman-Acnt F
+( \234 the height \(width\) of each item ) S
+21600 45306 M (in the menu.  If ITEMHEIGHT is not specified, then the height ) S
+21600 43506 M (will be the maximum height of any item in the menu \(as ) S
+21600 41706 M (determined by the sizes of any bitmaps and the height of the ) S
+21600 39906 M (MENUFONT\).  If ITEMWIDTH is not specified, the maximum ) S
+21600 38106 M (width of any item will be used.) S
+1200 /Times-Bold-Acnt F
+21600 35106 M (CENTERFLG) S
+1200 /Times-Roman-Acnt F
+( \234 if non-NIL, the menu items are printed centered in ) S
+21600 33306 M (their areas.  Otherwise, they are left-justified.) S
+1200 /Times-Bold-Acnt F
+21600 30306 M (MENUBORDERSIZE) S
+1200 /Times-Roman-Acnt F
+( \234 the width in bits of the black border ) S
+21600 28506 M (around each item.  Defaults to 0.) S
+1200 /Times-Bold-Acnt F
+21600 25506 M (MENUOUTLINESIZE) S
+1200 /Times-Roman-Acnt F
+( \234 the width in bits of the black border that ) S
+21600 23706 M (outlines the entire menu.  Defaults to the maximum of 1 and ) S
+21600 21906 M (MENUBORDERSIZE.) S
+1200 /Times-Bold-Acnt F
+18000 18906 M (Fields that describe the menu's positioning) S
+21600 15906 M (MENUPOSITION) S
+1200 /Times-Roman-Acnt F
+( \234 the default position of the menu in screen ) S
+21600 14106 M (coordinates \(for pop-up menus\) or window coordinates \(for ) S
+21600 12306 M (permanent menus\) [See below for op-up versus permamnent ) S
+21600 10506 M (menus].) S
+grestore savepage restore showpage
+
+%%Page: 44 44
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (38) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+25200 71106 M (If NIL, then the memu is paced at the cursor.) S
+25200 68506 M (The point of the menu to be placed at MENUPOSITION is ) S
+25200 66706 M (determined by MENUOFFSET.) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+21600 63706 M (MENUOFFSET) S
+1200 /Times-Roman-Acnt F
+( \234 the point inside the menu that will be placed ) S
+21600 61906 M (over MENUPOSITION. Defaults to 0,0, i.e., the lower-left corner.) S
+14400 58306 M (To create a menu data structure use the standard CREATE statement from the ) S
+14400 56506 M (Record Package:) S
+18000 53906 M (Example:) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+21600 51706 M (\(SETQ MenuX) S
+25200 49906 M (\(create MENU ITEMS _ '\(Yes No\) CENTERFLG _ T) S
+25200 48106 M (TITLE _ "Yes or No??"\)\)) S
+1200 /Times-Roman-Acnt F
+14400 44506 M (To change a menu data structure use the standard replace statement from the ) S
+14400 42706 M (Record Package:) S
+18000 40106 M (Example:) S
+1200 /Times-Italic-Acnt F
+21600 37906 M (\(replace \(MENU TITLE\) of MenuX with "Well??"\)) S
+1200 /Times-Bold-Acnt F
+10800 34306 M (Bringing up a menu on the screen: Pop-up and Fixed Menus) S
+1200 /Times-Roman-Acnt F
+14400 31306 M (There are two way to use a menu: ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(pop-up) S
+1200 /Times-Roman-Acnt F
+( and ) S
+1200 /Times-BoldItalic-Acnt F
+(fixed) S
+1200 /Times-Roman-Acnt F
+(.  ) S
+18000 28506 M (Pop-up menus are used in a program to get some information from a user.  ) S
+18000 26706 M (A program using a pop-up menu brings the menu up on the screen and ) S
+18000 24906 M (then waits for the user to select an item.  When the item is selected, the ) S
+18000 23106 M (menu is removed from the screen and the menu's WHENSELECTEDFN ) S
+18000 21306 M (is called.  The WHENSELECTEDFN will carry out some action, return a ) S
+18000 19506 M (value to the program, or both.) S
+18000 16706 M (Fixed menus remain on the screen "permanently.  Whenever the user ) S
+18000 14906 M (clicks a mouse button in one of the menu's items, the menu's ) S
+18000 13106 M (WHENSELECTEDFN is called to carry out some action.  Since fixed ) S
+18000 11306 M (menus are not part of the ongoing processing of a program, the value ) S
+18000 9506 M (returned by the WHENSELECTEDFN is ignored.) S
+grestore savepage restore showpage
+
+%%Page: 45 45
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (39) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+14400 71106 M (The MENU data structure is identical for pop-up and fixed menus.  The ) S
+14400 69306 M (difference is in the function used to bring the menu up on the screen.) S
+14400 66106 M (The function for displaying a pop-up menus is:) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 63306 M (\(MENU ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Menu) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Position) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 displays ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Menu) S
+1200 /Times-Roman-Acnt F
+( at ) S
+1200 /Times-Italic-Acnt F
+(Position) S
+1200 /Times-Roman-Acnt F
+( \(in the screen ) S
+18000 61506 M (coordinate system\) and then waits for the user to press and release a ) S
+18000 59706 M (mouse button.    ) S
+21600 57106 M (Pressing a mouse button has the following effects:) S
+25200 54706 M (If the cursor is an item in ) S
+1200 /Times-Italic-Acnt F
+(Menu) S
+1200 /Times-Roman-Acnt F
+(, that item is inverted on the ) S
+25200 52906 M (screen.) S
+25200 50506 M (If the user holds the mouse button down inside the item for ) S
+25200 48706 M (MENUHELDWAIT milliseconds, then ) S
+1200 /Times-Italic-Acnt F
+(Menu) S
+1200 /Times-Roman-Acnt F
+('s ) S
+25200 46906 M (WHENHELDFN is called.) S
+25200 44506 M (If the user lets up on all mouse buttons while the cursor is ) S
+25200 42706 M (still in the item, then ) S
+1200 /Times-Italic-Acnt F
+(Menu) S
+1200 /Times-Roman-Acnt F
+('s WHENSELECTEDFN is ) S
+25200 40906 M (called.) S
+25200 38506 M (If the user lets up on all mouse buttons while the cursor is ) S
+25200 36706 M (outside of ) S
+1200 /Times-Italic-Acnt F
+(Menu) S
+1200 /Times-Roman-Acnt F
+(, then no action is taken.) S
+21600 33906 M (MENU returns the value returned by the call to the ) S
+21600 32106 M (WHENSELECTEDFN, unless the user releases the mouse button ) S
+21600 30306 M (while the cursor is outside of ) S
+1200 /Times-Italic-Acnt F
+(Menu) S
+1200 /Times-Roman-Acnt F
+( in which case MENU returns ) S
+21600 28506 M (NIL.) S
+21600 25906 M (If the ) S
+1200 /Times-Italic-Acnt F
+(Position) S
+1200 /Times-Roman-Acnt F
+( argument is NIL, then the MENUPOSITION field ) S
+21600 24106 M (of ) S
+1200 /Times-Italic-Acnt F
+(Menu) S
+1200 /Times-Roman-Acnt F
+( is used.  If the MENUPOSITION field is also NIL, then ) S
+21600 22306 M (the current cursor position is used.) S
+21600 19706 M (Example:) S
+25200 17706 M (\(SELECTQ \(MENU \(create MENU ITEMS _'\(Yes No\)\)\)) S
+28800 15706 M (\(Yes \(PRINT "The answer is Yup."\)\)) S
+28800 13706 M (\(No \(PRINT "The answer is Nope."\)\)) S
+28800 11706 M (\(PRINT "No answer given."\)\)) S
+grestore savepage restore showpage
+
+%%Page: 46 46
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (40) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+14400 71106 M (The function for displaying a fixed menus is:) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 67506 M (\(ADDMENU ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Menu) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Position) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234  displays ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Menu) S
+1200 /Times-Roman-Acnt F
+( in ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+( at ) S
+1200 /Times-Italic-Acnt F
+18000 65706 M (Position) S
+1200 /Times-Roman-Acnt F
+( \(in the window's coordinate system\) and returns immediately.  ) S
+18000 63906 M (The CURSORINFN and BUTTONEVENTFN of ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+( are replaced by ) S
+18000 62106 M (the function MENUBUTTONFN so that when the user presses a mouse ) S
+18000 60306 M (button inside an item in ) S
+1200 /Times-Italic-Acnt F
+(Menu) S
+1200 /Times-Roman-Acnt F
+( \(in ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+(\) the following events take ) S
+18000 58506 M (place:) S
+28800 56106 M (The item is inverted.) S
+28800 53706 M (If the user holds the mouse button down inside the ) S
+28800 51906 M (item for MENUHELDWAIT milliseconds, then ) S
+1200 /Times-Italic-Acnt F
+28800 50106 M (Menu) S
+1200 /Times-Roman-Acnt F
+('s WHENHELDFN is called.) S
+28800 47706 M (If the user lets up on all mouse buttons while the ) S
+28800 45906 M (cursor is still in the item, then ) S
+1200 /Times-Italic-Acnt F
+(Menu) S
+1200 /Times-Roman-Acnt F
+('s ) S
+28800 44106 M (WHENSELECTEDFN is called.) S
+28800 41706 M (If the user lets up on all mouse buttons while the ) S
+28800 39906 M (cursor is outside of ) S
+1200 /Times-Italic-Acnt F
+(Menu) S
+1200 /Times-Roman-Acnt F
+(, then no action is taken.) S
+21600 36306 M (If no ) S
+1200 /Times-Italic-Acnt F
+(Position) S
+1200 /Times-Roman-Acnt F
+( argument is given, then the MENUPOSITION field ) S
+21600 34506 M (of ) S
+1200 /Times-Italic-Acnt F
+(Menu) S
+1200 /Times-Roman-Acnt F
+( is used.  If the MENUPOSITION field is also NIL, then ) S
+21600 32706 M (the current cursor position is used.) S
+21600 29906 M (If no ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+( argument is given, then a window is created just big ) S
+21600 28106 M (enough to hold the menu and placed at ) S
+1200 /Times-Italic-Acnt F
+(Position) S
+1200 /Times-Roman-Acnt F
+( \(in the screen ) S
+21600 26306 M (coordinate system\).) S
+21600 23506 M (ADDMENU always returns the window the menu was placed in.) S
+1200 /Times-Bold-Acnt F
+18000 19906 M (Note: ) S
+1200 /Times-Roman-Acnt F
+(you can add more than one menu to a single window.  But you ) S
+18000 18106 M (cannot add a single menu to more than one window!) S
+14400 14506 M (Since fixed menus are no automatically removed, the following function must be ) S
+14400 12706 M (used to remove a fixed menu from the display:) S
+grestore savepage restore showpage
+
+%%Page: 47 47
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (41) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 71106 M (\(DELETEMENU ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(Menu) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(CloseFlg Window) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234  deletes ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Menu) S
+1200 /Times-Roman-Acnt F
+( from ) S
+1200 /Times-Italic-Acnt F
+18000 69306 M (Window) S
+1200 /Times-Roman-Acnt F
+(.  If ) S
+1200 /Times-Italic-Acnt F
+(CloseFlg) S
+1200 /Times-Roman-Acnt F
+( is non-NIL and there are no other menus in ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+(, ) S
+18000 67506 M (then CLOSEW is called on ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+(.) S
+21600 65106 M (If ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+( is not given, \(OPENWINDOWS\) is searched for the ) S
+21600 63306 M (window containing ) S
+1200 /Times-Italic-Acnt F
+(Menu) S
+1200 /Times-Roman-Acnt F
+(.  If no such window is found, ) S
+21600 61506 M (DELETEMENU is a no-op.) S
+1200 /Times-Bold-Acnt F
+10800 57906 M (Hierarchical Menus) S
+1200 /Times-Roman-Acnt F
+14400 55106 M (You can create hierarchical menus by creating menu items that have subitems.) S
+18000 52506 M (A menu item with subitems is displayed with a small gray arrowhead at ) S
+18000 50706 M (the right edge of the item.) S
+18000 48306 M (If the user, drags the cursor from inside the item to outside the item across ) S
+18000 46506 M (the right edge, then a submenu containing the subitems will be brought up.) S
+18000 44106 M (Selecting one of these subitem from this submenu is functionally ) S
+18000 42306 M (equivalent to selecting an item from the main menu.) S
+18000 39906 M (Note that the subitems may themseleves have subitems, making a fully ) S
+18000 38106 M (hierarchical menu.) S
+14400 34506 M (The MENU datatype has a field called SUBITEMFN.  The value of the field ) S
+14400 32706 M (should be a predicate that determines whether an item has subitems or not.  The ) S
+14400 30906 M (SUBITEMFN is called with the menu and the item as arguments.  It should return ) S
+14400 29106 M (either NIL to indicate that the item has no subitems or a list of subitems from ) S
+14400 27306 M (which to use as the ITEMS field while constructing the subitem menu.) S
+18000 23706 M (The default SUBITEMFN is the function DEFAULTSUBITEMFN which ) S
+18000 21906 M (checks to see if the item is a list of 4 elements with the 4th element being a ) S
+18000 20106 M (list whose CAR is SUBITEMS.  If it is, it returns the CDR of this 4th ) S
+18000 18306 M (element. Otherwise, it returns NIL.) S
+14400 14706 M (Example of a menu with subitems and the default SUBITEMFN:) S
+18000 12506 M (\(create MENU ) S
+21600 10506 M (ITEMS _) S
+25200 8506 M ('\(\(Yes 'Yes "Answer Yes") S
+grestore savepage restore showpage
+
+%%Page: 48 48
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (42) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+32400 71106 M (\(SUBITEMS) S
+36000 69106 M (\("Yes w/ Check" 'Yes1 "Anwser ) S
+36000 67306 M (Yes, but check first."\)) S
+36000 65306 M (\("Yes w/o Check" 'Yes2  "Anwser ) S
+36000 63506 M (Yes, without checking first."\)\)\)) S
+25200 61506 M (\(No 'No "Answer No."\)\)\)) S
+/bitbltsave save def 18000 54899 translate 5000 3900 scale 50 39 true thebitimage
+B2054440
+B306
+B2051100
+B306
+B2054440
+B306
+B2051100
+B306
+47B202FFFC4440
+44B20200044440
+14B302051100
+14823CB303
+44864200044440
+448AB304
+14924200051100
+B306
+44A23C00044440
+44C200B303
+14820000051100
+14B20200B302
+44B302044440
+B306
+14B302051100
+14103871B302
+44104488844440
+44104009444440
+14107C70A51100
+14284489551100
+44443870A44440
+44440001444440
+14820000851100
+14000001051100
+44B20200044440
+47B202FFFC4440
+B2051100
+B306
+B2054440
+B306
+B2051100
+
+bitbltsave restore
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+10800 51606 M (Menu Example) S
+1200 /Times-Roman-Acnt F
+14400 48806 M (The following set of functions implements a fixed menu that sits left-flushed ) S
+14400 47006 M (along the bottom of the screen.  The menu has some common commands that you ) S
+14400 45206 M (usually invoke from the Exec window.) S
+14400 42406 M (Note: The function CM.MakeCommandMenu creates a fixed menu while the ) S
+14400 40606 M (function CM.TEdit uses a pop-up menu.) S
+14400 37606 M (\(CM.MakeCommandMenu) S
+18000 35606 M (\(LAMBDA NIL) S
+25200 33606 M (\(ADDMENU) S
+28800 31606 M ( \(CREATE MENU) S
+32400 29606 M (ITEMS _ ) S
+36000 27606 M ('\(\(TEdit \(CM.TEdit\) "Opens up a ) S
+36000 25806 M (new TEdit window."\)) S
+36000 23806 M (\(FileBrowse \(CM.FB\) "Opens a File ) S
+36000 22006 M (Browser window."\)) S
+36000 20006 M (\(Lafite \(CM.Lafite\) "Starts up Lafite ) S
+36000 18206 M (mail program."\)\)) S
+32400 16206 M (TITLE _ "Common Commands") S
+32400 14206 M (MENUFONT _ '\(HELVETICA 14 BOLD\)) S
+32400 12206 M (MENUROWS _ 1) S
+32400 10206 M (CENTERFLG _ T) S
+32400 8206 M (ITEMHEIGHT _ 50) S
+grestore savepage restore showpage
+
+%%Page: 49 49
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (43) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+32400 71106 M (MENUBORDERSIZE _ 2\)) S
+28800 69106 M (NIL) S
+28800 67106 M (\(create POSITION XCOORD _ 0 YCOORD _ 0\)\)\)\)) S
+14400 64706 M (\(CM.TEdit) S
+18000 62706 M (\(LAMBDA NIL) S
+21600 60706 M (\(* * Ask user if New or Old file to TEdit, then open a Tedit\)) S
+21600 58706 M (\(SELECTQ \(MENU \(create MENU ITEMS _ '\(New Old\)) S
+39600 56706 M (MENUFONT _ ) S
+39600 54906 M ('\(HELVETICA 14\)) S
+39600 52906 M (ITEMHEIGHT _ 30) S
+39600 50906 M (CENTERFLG _ T\)\)) S
+25200 48906 M (\(New \(TEDIT\)\)) S
+25200 46906 M (\(Old \(TEDIT) S
+28800 44906 M (     \(PROGN \(PRIN1 "Enter file name: "\)\(READ\)\)\)\)) S
+25200 42906 M (NIL\)\)\)) S
+14400 40506 M (\(CM.FB) S
+18000 38506 M (\(LAMBDA NIL) S
+21600 36106 M (\(FILEBROWSER\)\)\)) S
+14400 33706 M (\(CM.Lafite) S
+18000 31706 M (\(LAMBDA NIL) S
+21600 29306 M (\(LAFITE\)\)\)) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 25557 M (Using the Mouse) S
+1200 /Times-Bold-Acnt F
+10800 22506 M (Writing BUTTONEVENTFNs, CURSORxxxFNs, and WHENSELECTEDFNs) S
+1200 /Times-Roman-Acnt F
+14400 19506 M (In general, programs that depend on mouse actions are best written using the ) S
+14400 17706 M (Window and/or Menu packages.) S
+18000 14706 M (The BUTTONEVENTFNs and CURSORxxFNS for windows and the ) S
+18000 12906 M (WHENSELECTEDFN for menus allow you to carry out arbitrary actions ) S
+18000 11106 M (whenever the user buttons down inside a window or menu item or even ) S
+18000 9306 M (whenever the user moves a the cursor within a window.) S
+grestore savepage restore showpage
+
+%%Page: 50 50
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (44) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+21600 71106 M (For example, the GRAPHER program for editing node-link graphs ) S
+21600 69306 M (is built almost entirely on BUTTONEVENTFNs that fire ) S
+21600 67506 M (whenever the user buttons down inside the GRAPH window.  The ) S
+21600 65706 M (BUTTONEVENTFNs determine what button was pressed and ) S
+21600 63906 M (where in the window it was pressed relative to the graph being ) S
+21600 62106 M (displayed.  Theuse this information to decide what action to carry ) S
+21600 60306 M (out.) S
+18000 57306 M (There is an important factor to pay attention to when writing ) S
+18000 55506 M (BUTTONEVENTFNs, CURSORxxxFNs, and WHENSELECTEDFNs.) S
+21600 52906 M (In particular, these functions are evaluated as part of the Mouse ) S
+21600 51106 M (process \(i.e., the process that tracks the cursor and interprets mouse ) S
+21600 49306 M (button presses\).  While these functions are be evaluated, the Mouse ) S
+21600 47506 M (process can't be doing anything else, i.e., it can't be carrying out ) S
+21600 45706 M (its normal job of tracking the cursor and interpreting button ) S
+21600 43906 M (presses.) S
+21600 41306 M (If a BUTTONEVENTFN, CURSORxxxFN, or ) S
+21600 39506 M (WHENSELECTEDFN is going to be long running, it is good ) S
+21600 37706 M (practice to spin this evaluation off of the mouse process, so that the ) S
+21600 35906 M (user can go off an do other things with the mouse while the ) S
+21600 34106 M (function is being evaluated.) S
+25200 31706 M (To do this, you can use the function call ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+25200 29906 M (\(SPAWN.MOUSE\)) S
+1200 /Times-Roman-Acnt F
+( in the BUTTONEVENTFN, ) S
+25200 28106 M (CURSORxxxFN, or WHENSELECTEDFN.) S
+25200 25706 M (As described in LispCourse #14 \(page 16\), this will make ) S
+25200 23906 M (the current mouse process \(the one thats going to do the ) S
+25200 22106 M (long running evaluation\) into a process called ) S
+25200 20306 M (OLDMOUSE and then start up a new mouse process.) S
+25200 17906 M (The BUTTONEVENTFN, CURSORxxxFN, or ) S
+25200 16106 M (WHENSELECTEDFN will thus run under the ) S
+25200 14306 M (OLDMOUSE process and not interfere with ongoing ) S
+25200 12506 M (mouse operations.) S
+grestore savepage restore showpage
+
+%%Page: 51 51
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (45) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+18000 71106 M (Also, there is a convention in Interlisp-D that a events don't occur until ) S
+18000 69306 M (the user releases a mouse button.  For example, menu items are selected ) S
+18000 67506 M (when the user releases the mouse button inside the item, rather than when ) S
+18000 65706 M (she presses the mouse button.) S
+21600 62506 M (When writing BUTTONEVENTFNs for windows, the programmer ) S
+21600 60706 M (is responsible for adhering to this convention.  When the ) S
+21600 58906 M (BUTTONEVENTFN is called, it is good practice to wait until the ) S
+21600 57106 M (user lets up on the mouse button before carryoing out any actions.  ) S
+21600 55306 M (If the user lets up on the mouse button outside the window, then it ) S
+21600 53506 M (is considered correct return without carrying out the action.) S
+21600 50306 M (So, at the begining of a BUTTONEVENTFN it is common ) S
+21600 48506 M (practice to have a ) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+(\(UNTILMOUSESTATE UP\) ) S
+1200 /Times-Roman-Acnt F
+(and  ) S
+1200 /Times-Bold-Acnt F
+(\(OR ) S
+21600 46706 M (\(INSIDEP \(WINDOWPROP Window 'REGION\) ) S
+21600 44906 M (\(CURSORPOSITION Window\)\) \(RETURN NIL\)\)) S
+1200 /Times-Roman-Acnt F
+(. [See below ) S
+21600 43106 M (for discussion of UNTILMOUSESTATE and ) S
+21600 41306 M (CURSORPOSITION.) S
+1200 /Times-Bold-Acnt F
+10800 38306 M (Getting Information about the Mouse and the Cursor) S
+1200 /Times-Roman-Acnt F
+14400 35306 M (Many programs require information about the state of the mouse buttons or the ) S
+14400 33506 M (cursor.  The following functions return this information:) S
+1200 /Times-Bold-Acnt F
+14400 30506 M (Position of the Cursor) S
+18000 27506 M (\(CURSORPOSITION ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(NewPosition) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 Reads and then returns ) S
+18000 25706 M (the location of the cursor in the coordinate system of ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+(.  If ) S
+1200 /Times-Italic-Acnt F
+18000 23906 M (NewPosition) S
+1200 /Times-Roman-Acnt F
+( is specified, sets the cursor to be at the specified position in ) S
+18000 22106 M (the window's coordinate system.) S
+1200 /Times-Bold-Acnt F
+18000 19106 M (\(LASTMOUSEX ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+(\), \(LASTMOUSEY ) S
+1200 /Times-BoldItalic-Acnt F
+(Window) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 Returns the X ) S
+18000 17306 M (\(Y\) location of the cursor in the coordinate system of ) S
+1200 /Times-Italic-Acnt F
+(Window) S
+1200 /Times-Roman-Acnt F
+( as of the ) S
+18000 15506 M (last time the cursor position was read.  Does not actually read the current ) S
+18000 13706 M (position.) S
+grestore savepage restore showpage
+
+%%Page: 52 52
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (46) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 71106 M (LASTMOUSEX, LASTMOUSEY) S
+1200 /Times-Roman-Acnt F
+( \234 global variables that contain the X ) S
+18000 69306 M (\(Y\) position of the cursor in the screen coordinate system as of the last ) S
+18000 67506 M (time the cursor position was read.) S
+1200 /Times-Bold-Acnt F
+18000 64506 M (\(GETMOUSESTATE\)) S
+1200 /Times-Roman-Acnt F
+( \234 Reads the current mouse state including the ) S
+18000 62706 M (cursor location and sets the global variables LASTMOUSEX and ) S
+18000 60906 M (LASTMOUSEY.) S
+21600 58706 M (CURSORPOSITION calls GETMOUSESTATE before returning ) S
+21600 56906 M (the cursor position.  The functions LASTMOUSEX and ) S
+21600 55106 M (LASTMOUSEY do not.) S
+1200 /Times-Bold-Acnt F
+14400 49106 M (State of the Mouse Buttons) S
+18000 46106 M (\(MOUSESTATE ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(ButtonSpec) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 Reads the mouse button state and returns ) S
+18000 44306 M (T if that state matches ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(ButtonSpec,) S
+1200 /Times-Roman-Acnt F
+( NIL otherwise. ) S
+1200 /Times-Italic-Acnt F
+(ButtonSpec) S
+1200 /Times-Roman-Acnt F
+( is ) S
+18000 42506 M (description of the mouse buttons having one of the following forms:) S
+1200 /Times-Bold-Acnt F
+21600 40106 M (LEFT, MIDDLE, RIGHT) S
+1200 /Times-Roman-Acnt F
+( \233 indicating the corresponding mouse ) S
+21600 38306 M (button is down.) S
+1200 /Times-Bold-Acnt F
+21600 35906 M (UP) S
+1200 /Times-Roman-Acnt F
+( \233 indicating all mouse buttons are released.) S
+1200 /Times-Bold-Acnt F
+21600 33506 M (\(ONLY ) S
+1200 /Times-BoldItalic-Acnt F
+(Button) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 indicating that mouse button ) S
+1200 /Times-Italic-Acnt F
+(Button) S
+1200 /Times-Roman-Acnt F
+( \(i.e., one of ) S
+21600 31706 M (LEFT, MIDDLE, RIGHT\) is the ONLY button down.) S
+1200 /Times-Bold-Acnt F
+21600 29306 M (\(AND ) S
+1200 /Times-BoldItalic-Acnt F
+(ButtonSpecs) S
+1200 /Times-Bold-Acnt F
+(\), \(OR ) S
+1200 /Times-BoldItalic-Acnt F
+(ButtonSpec) S
+1200 /Times-Bold-Acnt F
+(s\), \(NOT ) S
+1200 /Times-BoldItalic-Acnt F
+(ButtonSpec) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \233 ) S
+21600 27506 M (indicating the logical combinations of other ) S
+1200 /Times-Italic-Acnt F
+(ButtonSpecs.) S
+1200 /Times-Roman-Acnt F
+18000 25106 M (Note: MOUSESTATE is a macro which is like an NLAMBDA function in ) S
+18000 23306 M (that its arguments are not quoted.) S
+grestore savepage restore showpage
+
+%%Page: 53 53
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+grestore savepage restore 
+%%Page: 54 54
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (47) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+18000 71106 M (Examples:) S
+21600 68906 M (\(MOUSESTATE LEFT\)) S
+21600 66706 M (\(MOUSESTATE \(ONLY LEFT\)\)) S
+21600 64506 M (\(MOUSESTATE \(OR LEFT MIDDLE\)\)) S
+21600 62306 M (\(MOUSESTATE \(AND \(NOT UP\)\(NOT \(ONLY LEFT\)\)\)) S
+/Times-Bold /Times-Bold-Acnt encodefont
+1200 /Times-Bold-Acnt F
+18000 59306 M (\(LASTMOUSESTATE ) S
+/Times-BoldItalic /Times-BoldItalic-Acnt encodefont
+1200 /Times-BoldItalic-Acnt F
+(ButtonSpec) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 Like MOUSESTATE but does not ) S
+18000 57506 M (first read the current mouse state.  Thus it returns the mouse state as of the ) S
+18000 55706 M (time it was last read.  Good for looking at exactly what caused ) S
+18000 53906 M (MOUSESTATE to return T. \(Does not first call GETMOUSESTATE as ) S
+18000 52106 M (does MOUSESTATE.\)) S
+1200 /Times-Bold-Acnt F
+18000 49106 M (\(UNTILMOUSESTATE ) S
+1200 /Times-BoldItalic-Acnt F
+(ButtonSpec) S
+1200 /Times-Bold-Acnt F
+( ) S
+1200 /Times-BoldItalic-Acnt F
+(Interval) S
+1200 /Times-Bold-Acnt F
+(\)) S
+1200 /Times-Roman-Acnt F
+( \234 waits until ) S
+18000 47306 M (\(MOUSESTATE ) S
+/Times-Italic /Times-Italic-Acnt encodefont
+1200 /Times-Italic-Acnt F
+(ButtonSpec) S
+1200 /Times-Roman-Acnt F
+(\) returns T or until ) S
+1200 /Times-Italic-Acnt F
+(Interval) S
+1200 /Times-Roman-Acnt F
+( milliseconds ) S
+18000 45506 M (have elapsed.) S
+21600 43106 M (If \(MOUSESTATE ) S
+1200 /Times-Italic-Acnt F
+(ButtonSpec) S
+1200 /Times-Roman-Acnt F
+(\) returns T, then ) S
+21600 41306 M (UNTILMOUSESTATE returns T.  If ) S
+1200 /Times-Italic-Acnt F
+(Interval) S
+1200 /Times-Roman-Acnt F
+( milliseconds elapses ) S
+21600 39506 M (without \(MOUSESTATE ) S
+1200 /Times-Italic-Acnt F
+(ButtonSpec) S
+1200 /Times-Roman-Acnt F
+(\) returning T, then ) S
+21600 37706 M (UNTILMOUSESTATE eretunrs NIL.) S
+21600 35306 M (If ) S
+1200 /Times-Italic-Acnt F
+(Interval) S
+1200 /Times-Roman-Acnt F
+( is NIL, then UNTILMOUSESTATE will wait ) S
+21600 33506 M (indefinitely.) S
+1200 /Times-Bold-Acnt F
+10800 30506 M (Example of Using the Mouse) S
+1200 /Times-Roman-Acnt F
+14400 27906 M (The following two functions implement a trap window \234 if the user rolls the cursor ) S
+14400 26106 M (into the window, he cannot roll it out again.  Every time the cursor nears the edge ) S
+14400 24306 M (of the window, the window jumps to be centered around the cursor location.  ) S
+14400 22506 M (Thus wherever the cursor moves, the window will follow.) S
+18000 19906 M (\(Being a nice guy, there is an escape.\)) S
+/Courier /Courier-Acnt encodefont
+1000 /Courier-Acnt F
+7200 17149 M (\(EX.CreateWindow) S
+7200 16149 M (  \(LAMBDA NIL                                 \(* fgh: "29-Jun-85 16:26"\)) S
+7200 15149 M (    \(LET \(\(Window \(CREATEW \(CREATEREGION 100 100 300 150\)\)\)\)) S
+7200 13149 M (          \(* * Add special CURSORINFN to Window\)) S
+7200 11149 M (      \(WINDOWPROP Window \(QUOTE CURSORINFN\)) S
+7200 10149 M (                  \(FUNCTION EX.CursorInFn\)\)) S
+7200 8149 M (          \(* * Add a warning title\)) S
+grestore savepage restore showpage
+
+%%Page: 55 55
+%%BeginPageSetup
+/savepage save def
+0.01 imagesizefactor mul dup scale
+%%EndPageSetup
+gsave
+ 0 rotate 
+ 79200 61200 0 0 CLP
+/Times-Roman /Times-Roman-Acnt encodefont
+1200 /Times-Roman-Acnt F
+52800 75600 M (48) S
+7200 75600 M (LispCourse #40:  Using the Display: Bitmaps, DisplayStreams, & Windows) S
+/Courier /Courier-Acnt encodefont
+1000 /Courier-Acnt F
+7200 70349 M (      \(WINDOWPROP Window \(QUOTE TITLE\)) S
+7200 69349 M (                  "Caution: This window is trap"\)\)\)\)) S
+7200 65749 M (\(EX.CursorInFn) S
+7200 64749 M (  \(LAMBDA \(Window\)                            \(* fgh: "29-Jun-85 16:28"\)) S
+7200 62749 M (          \(* * The user has moved inside of the window, don't let him out\)) S
+7200 60749 M (    \(LET \(\(EdgeWidth 10\)) S
+7200 59749 M (       \(Region \(DSPCLIPPINGREGION NIL Window\)\)) S
+7200 58749 M (       \(HalfWidth \(QUOTIENT \(fetch \(REGION WIDTH\) of \(WINDOWPROP) S
+7200 57749 M (                                                       Window) S
+7200 56749 M (                                                       \(QUOTE REGION\)\)\)) S
+7200 55749 M (                            2\)\)) S
+7200 54749 M (       \(HalfHeight \(QUOTIENT \(fetch \(REGION HEIGHT\)) S
+7200 53749 M (                                of \(WINDOWPROP Window \(QUOTE REGION\)\)\)) S
+7200 52749 M (                             2\)\)) S
+7200 51749 M (       \(Position \(CURSORPOSITION NIL Window\)\)) S
+7200 50749 M (       NewRegion\)) S
+7200 48749 M (          \(* * Compute a region just inside of the border of the window\)) S
+7200 46749 M (      \(SETQ NewRegion \(CREATEREGION \(PLUS EdgeWidth \(fetch \(REGION LEFT\)) S
+7200 45749 M (                                                       of Region\)\)) S
+7200 44749 M (                                    \(PLUS EdgeWidth \(fetch \(REGION BOTTOM\)) S
+7200 43749 M (                                                       of Region\)\)) S
+7200 42749 M (                                    \(DIFFERENCE \(fetch \(REGION WIDTH\)) S
+7200 41749 M (                                                   of Region\)) S
+7200 40749 M (                                                EdgeWidth\)) S
+7200 39749 M (                                    \(DIFFERENCE \(fetch \(REGION HEIGHT\)) S
+7200 38749 M (                                                   of Region\)) S
+7200 37749 M (                                                EdgeWidth\)\)\)) S
+7200 35749 M (          \(* * Forever, if the cursor moves out of the inner region move the ) S
+7200 34749 M (window to center on the cursor position\)) S
+7200 32749 M (      \(while T) S
+7200 31749 M (         do \(COND) S
+7200 30749 M (              \(\(INSIDEP NewRegion \(CURSORPOSITION NIL Window Position\)\)) S
+7200 29749 M (                       \(* Allow user to escape if) S
+7200 28749 M (                          chords the left and right mouse buttons\)) S
+7200 27749 M (                \(AND \(LASTMOUSESTATE \(AND RIGHT LEFT\)\)) S
+7200 26749 M (                     \(RETURN NIL\)\)\)) S
+7200 25749 M (              \(T \(MOVEW Window \(DIFFERENCE LASTMOUSEX HalfWidth\)) S
+7200 24749 M (                        \(DIFFERENCE LASTMOUSEY HalfHeight\)\)\)\)) S
+7200 23749 M (                         \(* Allow other processes to run\)) S
+7200 22749 M (            \(BLOCK\)\)\)\)\)) S
+57600 20799 7200 20799 75 L
+7200 18799 7200 18799 75 L
+/Times-Bold /Times-Bold-Acnt encodefont
+1400 /Times-Bold-Acnt F
+7200 15757 M (References) S
+1200 /Times-Roman-Acnt F
+10800 13506 M (Chapter 19 of the IRM!  But beware that this material is fairly old and out-of-date.  Look ) S
+10800 11706 M (in the Interlisp release messages for updates.) S
+grestore savepage restore showpage
+
+%%Trailer
