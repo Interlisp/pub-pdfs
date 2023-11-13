@@ -189,7 +189,7 @@ var REMOTE_PACKAGE_SIZE = metadata['remote_package_size'];
     }
 
     }
-    loadPackage({"files": [{"filename": "/full.sysout", "start": 0, "end": 58020352}], "remote_package_size": 58020352});
+    loadPackage({"files": [{"filename": "/full.sysout", "start": 0, "end": 13346304}], "remote_package_size": 13346304});
 
   })();
 
